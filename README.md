@@ -1,4 +1,5 @@
-# Devise Sandbox
+# Devise Sandbox - Running Rails 5
+## a place to build
 
 ## Good base build - user auth w/ user model, save image to aws, sendgrid sign-up
 Just setting this up quick for fun and to test a few options.<br>
