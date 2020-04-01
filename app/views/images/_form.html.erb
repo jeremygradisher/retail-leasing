@@ -25,21 +25,21 @@
   <div class="form-group">
     <%= f.label :image, :class => 'control-label col-lg-2' %>
     <div class="col-lg-10">
-      <%= f.text_field :image, :class => 'form-control' %>
+      <%= f.file_field :image, :id => "image_picture", :class => 'form-control' %>
     </div>
     <%=f.error_span(:image) %>
   </div>
   <div class="form-group">
     <%= f.label :width, :class => 'control-label col-lg-2' %>
     <div class="col-lg-10">
-      <%= f.text_field :width, :class => 'form-control' %>
+      <%= f.number_field :width, :class => 'form-control' %>
     </div>
     <%=f.error_span(:width) %>
   </div>
   <div class="form-group">
     <%= f.label :height, :class => 'control-label col-lg-2' %>
     <div class="col-lg-10">
-      <%= f.text_field :height, :class => 'form-control' %>
+      <%= f.number_field :height, :class => 'form-control' %>
     </div>
     <%=f.error_span(:height) %>
   </div>

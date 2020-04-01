@@ -14,8 +14,9 @@
   <div class="row" id="mapHolder">
     <div class="col-xs-12">
 
+  <% if @images.first.image_url != nil %>
     <%= image_tag @images.first.image_url, :class => '', :style => 'max-width:300px;margin:20px;' %>
-
+  <% end %>
     <%#= render 'fullmap' %>
     
     </div>

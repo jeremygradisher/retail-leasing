@@ -42,15 +42,19 @@
     <% if @images.exists? %>
       <%= f.label :map_image, 'Map Image', :class => 'control-label col-lg-2'  %>
         <div class="col-lg-10">
-          <% @images.each do |p| %>
-                <div class="form-control">
-                  <%= image_tag p.image_url, :class => 'form-control-image' %>
-
-                <%= link_to '<i class="fa fa-edit"></i>'.html_safe,
-                      edit_image_path(p), :class => 'form-control-button', 
-                      :title => 'Edit Attachment'  %>
-                </div>
-                
+          <% if (@images.count > 0) %>
+            <% @images.each do |p| %>
+                  <div class="form-control">
+                    <% if p.image_url != nil %>
+                    <%= image_tag p.image_url, :class => 'form-control-image' %>
+                    <% end %>
+  
+                  <%= link_to '<i class="fa fa-edit"></i>'.html_safe,
+                        edit_image_path(p), :class => 'form-control-button', 
+                        :title => 'Edit Attachment'  %>
+                  </div>
+                  
+            <% end %>
           <% end %>
         </div>
     
