@@ -8,9 +8,18 @@
   <dd><%= @map.name %></dd>
   <dt><strong><%= model_class.human_attribute_name(:user_id) %>:</strong></dt>
   <dd><%= @map.user_id %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:key) %>:</strong></dt>
-  <dd><%= @map.key %></dd>
 </dl>
+<br><br>
+
+  <div class="row" id="mapHolder">
+    <div class="col-xs-12">
+
+    <%= image_tag @images.first.image_url, :class => '', :style => 'max-width:300px;margin:20px;' %>
+
+    <%#= render 'fullmap' %>
+    
+    </div>
+  </div>
 
 <%= link_to t('.back', :default => t("helpers.links.back")),
               maps_path, :class => 'btn btn-default'  %>

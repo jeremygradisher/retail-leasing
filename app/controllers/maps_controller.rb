@@ -10,15 +10,20 @@ class MapsController < ApplicationController
   # GET /maps/1
   # GET /maps/1.json
   def show
+    @images = @map.images.all
   end
 
   # GET /maps/new
   def new
     @map = Map.new
+    @image = @map.images.build
+    @images = @map.images.all
   end
 
   # GET /maps/1/edit
   def edit
+    @image = @map.images.build
+    @images = @map.images.all
   end
 
   # POST /maps
@@ -28,6 +33,11 @@ class MapsController < ApplicationController
 
     respond_to do |format|
       if @map.save
+        if params.has_key?(:images)
+           params[:images]['image'].each do |a|
+              @image = @map.images.create!(:image => a)
+           end
+        end
         format.html { redirect_to @map, notice: 'Map was successfully created.' }
         format.json { render :show, status: :created, location: @map }
       else
@@ -42,6 +52,11 @@ class MapsController < ApplicationController
   def update
     respond_to do |format|
       if @map.update(map_params)
+        if params.has_key?(:images)
+           params[:images]['image'].each do |a|
+              @image = @map.images.create!(:image => a)
+           end
+        end
         format.html { redirect_to @map, notice: 'Map was successfully updated.' }
         format.json { render :show, status: :ok, location: @map }
       else
@@ -69,6 +84,6 @@ class MapsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def map_params
-      params.require(:map).permit(:name, :user_id, :key, :user_id)
+      params.require(:map).permit(:name, :user_id, :key, :user_id, images_attributes: [:id, :map_id, :image])
     end
 end

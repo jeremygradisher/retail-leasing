@@ -25,16 +25,49 @@
   <div class="form-group">
     <%= f.label :user_id, :class => 'control-label col-lg-2' %>
     <div class="col-lg-10">
-      <%= f.text_field :user_id, :class => 'form-control' %>
+      <%#= f.text_field :user_id, :class => 'form-control' %>
+      <%= f.number_field :user_id, value: current_user.id, :class => 'form-control' %>
     </div>
     <%=f.error_span(:user_id) %>
   </div>
-  <div class="form-group">
+  <div class="form-group" style="display:none;">
     <%= f.label :key, :class => 'control-label col-lg-2' %>
     <div class="col-lg-10">
       <%= f.text_field :key, :class => 'form-control' %>
     </div>
     <%=f.error_span(:key) %>
+  </div>
+  
+  <div class="form-group">  
+    <% if @images.exists? %>
+      <%= f.label :map_image, 'Map Image', :class => 'control-label col-lg-2'  %>
+        <div class="col-lg-10">
+          <% @images.each do |p| %>
+                <div class="form-control">
+                  <%= image_tag p.image_url, :class => 'form-control-image' %>
+
+                <%= link_to '<i class="fa fa-edit"></i>'.html_safe,
+                      edit_image_path(p), :class => 'form-control-button', 
+                      :title => 'Edit Attachment'  %>
+                </div>
+                
+          <% end %>
+        </div>
+    
+    <% else %>  
+         <%= f.label :map_image, 'Map Image', :class => 'control-label col-lg-2'  %>
+         <div class="col-lg-10">
+         <%= f.file_field :image, :multiple => false, name: "images[image][]",
+          :class => 'form-control', onchange: "validateFiles(this);",
+          data: { max_file_size: 2.megabytes } %>
+         </div>
+    <% end %>
+  </div> 
+
+  <div class="form-group">
+    <div class="col-lg-offset-2 col-lg-10">  
+      *Image files must be in jpg jpeg gif png format and less than 10mb in size.
+    </div>
   </div>
 
   <div class="form-group">
@@ -46,3 +79,32 @@
   </div>
 
 <% end %>
+
+<!-- This is a client side validation for the image -->
+<script>
+  function validateFiles(inputFile) {
+  var maxExceededMessage = "This file exceeds the maximum allowed file size (2 MB)";
+  var extErrorMessage = "Only image file with extensions: .jpg, .jpeg, .gif or .png are allowed";
+  var allowedExtension = ["jpg", "jpeg", "gif", "png"];
+
+  var extName;
+  var maxFileSize = $(inputFile).data('max-file-size');
+  var sizeExceeded = false;
+  var extError = false;
+
+  $.each(inputFile.files, function() {
+    if (this.size && maxFileSize && this.size > parseInt(maxFileSize)) {sizeExceeded=true;};
+    extName = this.name.split('.').pop();
+    if ($.inArray(extName, allowedExtension) == -1) {extError=true;};
+  });
+  if (sizeExceeded) {
+    window.alert(maxExceededMessage);
+    $(inputFile).val('');
+  };
+
+  if (extError) {
+    window.alert(extErrorMessage);
+    $(inputFile).val('');
+  };
+}
+</script>
