@@ -11,6 +11,7 @@ class MapsController < ApplicationController
   # GET /maps/1.json
   def show
     @images = @map.images.all
+    @image = @map.images.first
   end
 
   # GET /maps/new

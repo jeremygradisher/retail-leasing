@@ -3,25 +3,18 @@
   <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
 </div>
 
-<dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
-  <dd><%= @map.name %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:user_id) %>:</strong></dt>
-  <dd><%= @map.user_id %></dd>
-</dl>
-<br><br>
-
   <div class="row" id="mapHolder">
     <div class="col-xs-12">
 
-  <% if @images.first.image_url != nil %>
-    <%= image_tag @images.first.image_url, :class => '', :style => 'max-width:300px;margin:20px;' %>
-  <% end %>
-    <%#= render 'fullmap' %>
+    <%# if @images.first.image_url != nil %>
+      <%#= image_tag @images.first.image_url, :class => '', :style => 'max-width:300px;margin:20px;' %>
+    <%# end %>
+    <%= render 'fullmap' %>
     
     </div>
   </div>
-
+<br><br>
+<hr>
 <%= link_to t('.back', :default => t("helpers.links.back")),
               maps_path, :class => 'btn btn-default'  %>
 <%= link_to t('.edit', :default => t("helpers.links.edit")),

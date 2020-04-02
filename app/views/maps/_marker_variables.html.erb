@@ -1,0 +1,23 @@
+    //Define icon class containing the shared options inheriting from L.Icon
+    var mapIcon = L.Icon.extend({
+		options: {
+			shadowUrl: '/images/clear-shadow.png',
+			iconSize:     [30, 45], // size of the icon
+              shadowSize:   [41, 41], // size of the shadow
+              iconAnchor:   [15, 43], // point of the icon which will correspond to marker's location
+              shadowAnchor: [12, 38],  // the same for the shadow
+              popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+		}
+	});
+    
+    var greenIcon = new mapIcon({iconUrl: '/images/green-marker.png'}),
+    redIcon = new mapIcon({iconUrl: '/images/red-marker.png'}),
+    greenIcon = new mapIcon({iconUrl: '/images/green-marker.png'}),
+    orangeIcon = new mapIcon({iconUrl: '/images/orange-marker.png'}),
+    blueIcon = new mapIcon({iconUrl: '/images/blue-marker.png'}),
+    lblueIcon = new mapIcon({iconUrl: '/images/lblue-marker.png'}),
+    blackIcon = new mapIcon({iconUrl: '/images/black-marker.png'}),
+    yellowIcon = new mapIcon({iconUrl: '/images/yellow-marker.png'}), 
+    grayIcon = new mapIcon({iconUrl: '/images/gray-marker.png'}),
+    fadedIcon = new mapIcon({iconUrl: '/images/faded-marker.png'}),
+    noIcon = new mapIcon({iconUrl: '/images/red-marker.png'});
