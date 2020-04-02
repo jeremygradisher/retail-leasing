@@ -1,6 +1,10 @@
 <%- model_class = Map -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+  <h1 style="float:left;"><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+  <%= link_to '+ Add space', new_area_path(:map_id => @map),
+                    :class => 'btn btn-primary print-none',
+                    :style => 'float:right;margin-top:20px;color:#fff;background-color:#24b9ae;border-color:#24b9ae;' %>
+<br style="clear:both;">
 </div>
 
   <div class="row" id="mapHolder">
@@ -9,6 +13,7 @@
     <%# if @images.first.image_url != nil %>
       <%#= image_tag @images.first.image_url, :class => '', :style => 'max-width:300px;margin:20px;' %>
     <%# end %>
+                 
     <%= render 'fullmap' %>
     
     </div>
@@ -18,7 +23,7 @@
 <%= link_to t('.back', :default => t("helpers.links.back")),
               maps_path, :class => 'btn btn-default'  %>
 <%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_map_path(@map), :class => 'btn btn-default' %>
+              edit_map_path(@map), :class => 'btn btn-primary' %>
 <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
               map_path(@map),
               :method => 'delete',

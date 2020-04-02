@@ -1,0 +1,62 @@
+<div id='map' style="float:left;height:350px;width:100%;"></div>
+
+<script>
+	//A Leaflet map has one CRS (and one CRS only), that can be changed when creating the map. 
+	//In a CRS.Simple, one horizontal map unit is mapped to one horizontal pixel, 
+	//original: var map = L.map('map', {attributionControl: false, crs: L.CRS.Simple, minZoom: -3});
+
+	<% if @image.height.to_i > 10000 %>
+	var map = L.map('map', {attributionControl: false, crs: L.CRS.Simple, zoomSnap: 0.25, minZoom: -6});
+	<% elsif @image.height.to_i > 5000 && @image.height.to_i <= 10000 %>
+	var map = L.map('map', {attributionControl: false, crs: L.CRS.Simple, zoomSnap: 0.25, minZoom: -5});
+	<% elsif @image.height.to_i > 2500 && @image.height.to_i <= 5000 %>
+	var map = L.map('map', {attributionControl: false, crs: L.CRS.Simple, zoomSnap: 0.25, minZoom: -4});
+	<% else %>
+	var map = L.map('map', {attributionControl: false, crs: L.CRS.Simple, zoomSnap: 0.25, minZoom: -3});
+	<% end %>
+	
+	var attributionInfo = L.control.attribution({prefix: '<span class="AttributionClass">Map: <%= link_to @map.name, map_path(@map) %> | <%= @image.width.to_i %>w, <%= @image.height.to_i %>h</span>'}).addTo(map);
+
+	//If working with [y, x] coordinates with something named L.LatLng doesn’t make much sense to you, 
+	//you can easily create wrappers for them:
+	var yx = L.latLng;
+
+	var xy = function(x, y) {
+		if (L.Util.isArray(x)) {    // When doing xy([x, y]);
+			return yx(x[1], x[0]);
+		}
+		return yx(y, x);  // When doing xy(x, y);
+	};
+	//Now we can add a few stars and even a navigation line with [x, y] coordinates! (Shown down the page a bit)
+
+	//Then we can just add a L.ImageOverlay with the starmap image and its approximate bounds:
+	var bounds = [xy(0,0), xy(<%= @image.width.to_i %>,<%= @image.height.to_i %>)];
+	//var image = L.imageOverlay('/images/demo-lease-plan.png', bounds).addTo(map);
+	var image = L.imageOverlay('<%= @image.image_url %>', bounds).addTo(map);
+
+	//map.setView(xy(120, 70), 1);
+    map.fitBounds(bounds);
+    
+    // Restrict view to bounds
+	map.setMaxBounds(bounds);
+
+    var popup = L.popup();
+    
+    //same on all maps - Now we can create our icons from this class and use them:
+    <%= render '/maps/marker_variables' %>
+    
+    var leasingStatus = L.layerGroup();
+  
+	var geojsonFeatureLS = <%= @area.coords.html_safe %>;
+	
+	L.geoJson(geojsonFeatureLS, {
+    pointToLayer: function (feature, latlng) {
+    return L.marker(latlng, {<% if @area.status == 'Available' %>icon: redIcon<% elsif @area.status == 'Prospect' %>icon: yellowIcon<% elsif @area.status == 'LOI'  %>icon: orangeIcon<% elsif @area.status == 'At Lease'  %>icon: blueIcon<% elsif @area.status == 'Leased'  %>icon: greenIcon<% else %>icon: grayIcon <% end %>});
+    }}).addTo(leasingStatus).setStyle({
+    <% if @area.status == 'Available' %>fillColor: '#c22026', color: '#c22026', weight: 1, opacity: 0.6, fillOpacity: 0.6<% elsif @area.status == 'Prospect' %>fillColor: '#dddd4e', color: '#dddd4e', weight: 1, opacity: 0.6, fillOpacity: 0.6<% elsif @area.status == 'LOI' %>fillColor: '#f15b28', color: '#f15b28', weight: 1, opacity: 0.6, fillOpacity: 0.6<% elsif @area.status == 'At Lease' %>fillColor: '#346db5', color: '#346db5', weight: 1, opacity: 0.6, fillOpacity: 0.6<% elsif @area.status == 'Leased' %>fillColor: '#32ab41', color: '#32ab41', weight: 1, opacity: 0.6, fillOpacity: 0.6<% else %>fillColor: '#dd0000', color: '#dd0000', weight: 1, opacity: 0.6, fillOpacity: 0.6<% end %>});
+	<%# end %>
+
+    leasingStatus.addTo(map);
+    //areaStatus.addTo(map);
+    //openingStatus.addTo(map);
+</script>

@@ -1,0 +1,8 @@
+<%# status colors exist here %>
+<% if @area.status == 'Available' %>fillColor: '#c22026', color: '#c22026', weight: 1, opacity: 0.6, fillOpacity: 0.6
+    <% elsif @area.status == 'Prospect' %>fillColor: '#E5BA21', color: '#E5BA21', weight: 1, opacity: 0.6, fillOpacity: 0.6
+    <% elsif @area.status == 'LOI' %>fillColor: '#E5BA21', color: '#E5BA21', weight: 1, opacity: 0.6, fillOpacity: 0.6
+    <% elsif @area.status == 'At Lease' %>fillColor: '#15958A', color: '#15958A', weight: 1, opacity: 0.6, fillOpacity: 0.6
+    <% elsif @area.status == 'Leased' %>fillColor: '#8BC53F', color: '#8BC53F', weight: 1, opacity: 0.6, fillOpacity: 0.6
+    <% else %>fillColor: '#dd0000', color: '#dd0000', weight: 1, opacity: 0.6, fillOpacity: 0.6
+<% end %>
