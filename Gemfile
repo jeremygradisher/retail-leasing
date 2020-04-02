@@ -41,6 +41,8 @@ gem 'carrierwave', '~> 2.0'
 gem 'mini_magick', '4.9.5'
 gem 'fog-aws'
 
+gem 'sql_queries_count'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
