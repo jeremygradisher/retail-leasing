@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  suite_number: MyString
+  map_id: 1
+  status: MyString
+  coords: MyString
+  map: one
+
+two:
+  suite_number: MyString
+  map_id: 1
+  status: MyString
+  coords: MyString
+  map: two
