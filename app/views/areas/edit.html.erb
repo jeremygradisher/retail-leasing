@@ -17,7 +17,7 @@
 
 <script>
 	// Initialise the FeatureGroup to store editable layers
-	var drawnItems = L.geoJson(<%= 's' + @area.id.to_s + @area.suite_number.gsub(/\W\s?/, "") %>, { draggable: true, scalalbe: true });
+	var drawnItems = L.geoJson(<%= 's' + @area.id.to_s + @area.suite_number.gsub(/\W\s?/, "") %>, { draggable: true });
 	map.addLayer(drawnItems);
 	
 	drawnItems.setStyle({<%= render :partial => 'area_status' %>});
@@ -39,8 +39,6 @@
 	});
 	map.addControl(drawControl);
 
-
-
 	//draw:edited - Triggered when a new vector or marker has been edited and saved.
 	map.on('draw:edited', function (e) {
 		var layers = e.layers;
@@ -53,7 +51,6 @@
 			var shape = layer.toGeoJSON();
 	  		var shape_for_db = JSON.stringify(shape);
 	  		
-	  		//console.log(shape_for_db)
 	  		console.log(shape_for_db)
 			//For saving to db - this changes value of coords field
 			//document.getElementById('area_coords').value = shape_for_db;

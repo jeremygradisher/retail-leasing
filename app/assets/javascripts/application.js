@@ -15,5 +15,5 @@
 //= require twitter/bootstrap
 //= require leaflet
 //= require leaflet-draw
-//= require leaflet-transform
+//= require leaflet-draw-drag
 //= require_tree .
