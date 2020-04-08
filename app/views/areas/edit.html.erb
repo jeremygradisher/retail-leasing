@@ -39,8 +39,8 @@
 	});
 	map.addControl(drawControl);
 	
-	map.on('draw:editmove', function (e) {
-		console.log('draw:editmove');
+	map.on('draw:editstart', function (e) {
+		console.log('draw:editstart');
 	});
 
 	//draw:edited - Triggered when a new vector or marker has been edited and saved.
