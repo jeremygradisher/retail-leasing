@@ -38,6 +38,10 @@
 		}
 	});
 	map.addControl(drawControl);
+	
+	map.on('draw:editmove', function (e) {
+		console.log('draw:editmove');
+	});
 
 	//draw:edited - Triggered when a new vector or marker has been edited and saved.
 	map.on('draw:edited', function (e) {
