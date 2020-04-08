@@ -59,12 +59,12 @@
 			layer = e.layer;
 		
 		var shape = layer.toGeoJSON();
-  	var shape_for_db = JSON.stringify(shape);
+  		var shape_for_db = JSON.stringify(shape);
 
 		drawnItems.addLayer(layer);
-		//trying some things here
-
+		
 		//alert(shape_for_db);
+		//For saving to db - this changes value of coords field
 		document.getElementById('area_coords').value = shape_for_db;
 	});
 </script>   
