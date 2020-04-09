@@ -17,11 +17,11 @@
 
 <script>
 	// Initialise the FeatureGroup to store editable layers
-	var drawnItems = L.geoJson(<%= 's' + @area.id.to_s + @area.suite_number.gsub(/\W\s?/, "") %>);
+	var drawnItems = L.geoJson(<%= 's' + @area.id.to_s + @area.suite_number.gsub(/\W\s?/, "") %>, { draggable: true });
 	map.addLayer(drawnItems);
 	
 	drawnItems.setStyle({<%= render :partial => 'area_status' %>});
-
+	
 	// Initialise and alter the draw control and pass it the FeatureGroup of editable layers
 	var drawControl = new L.Control.Draw({
 		draw: {
@@ -38,21 +38,23 @@
 		}
 	});
 	map.addControl(drawControl);
-
 	
+	map.on('draw:editstart', function (e) {
+		console.log('draw:editstart');
+	});
 
-	//draw:created - Triggered when a new vector or marker has been created.
+	//draw:edited - Triggered when a new vector or marker has been edited and saved.
 	map.on('draw:edited', function (e) {
 		var layers = e.layers;
 		
     	layers.eachLayer(function (layer) {
-	        //do whatever you want, most likely save back to db
-	      		//var type = e.layerType,
-				//layer = e.layer;
-			
+
 			var shape = layer.toGeoJSON();
-	  	var shape_for_db = JSON.stringify(shape);
-	
+	  		var shape_for_db = JSON.stringify(shape);
+	  		
+	  		console.log(shape_for_db)
+			//For saving to db - this changes value of coords field
+			//document.getElementById('area_coords').value = shape_for_db;
 			document.getElementById('area_coords').value = shape_for_db;
 	    });
 	});
