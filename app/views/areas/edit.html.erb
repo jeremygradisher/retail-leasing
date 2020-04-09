@@ -48,10 +48,7 @@
 		var layers = e.layers;
 		
     	layers.eachLayer(function (layer) {
-	        	//Layer already exists
-	      		//var type = e.layerType,
-				//layer = e.layer;
-			
+
 			var shape = layer.toGeoJSON();
 	  		var shape_for_db = JSON.stringify(shape);
 	  		
