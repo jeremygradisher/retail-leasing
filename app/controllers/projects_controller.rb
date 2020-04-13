@@ -10,6 +10,16 @@ class ProjectsController < ApplicationController
   # GET /projects/1
   # GET /projects/1.json
   def show
+    @maps = @project.maps.all
+    @map = @project.maps.first
+    
+    if @project.maps.present?
+      @maptitle = @map.name
+      @image = @map.images.first
+      #@areasofprimary = @map.areas.all
+      @mapareas = @map.areas.all
+      #@dealsofprimary = Deal.where(map_id: @map.id)
+    end
   end
 
   # GET /projects/new
