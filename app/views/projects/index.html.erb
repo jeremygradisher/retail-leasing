@@ -16,19 +16,26 @@
     <% @projects.each do |project| %>
       <tr>
         <td><%= link_to project.id, project_path(project) %></td>
+        <td>
+          <% if (project.icons.exists?) && (project.icons.first.icon_url != nil) %>
+          <%= link_to image_tag(project.icons.first.icon_url, 
+              :style => 'max-width:100px;max-height:100px;padding:2px;', :class => ''), 
+              project_path(project) %>
+          <% end %>
+        </td>
         <td><%= link_to project.name, project_path(project) %></td>
         <td><%= project.user_id %></td>
         <td><%=l project.created_at %></td>
         <td>
           <%= link_to t('.show', :default => t("helpers.links.show")),
-                      project_path(project), :class => 'btn btn-default btn-xs' %>
+                      project_path(project), :class => 'btn btn-default' %>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_project_path(project), :class => 'btn btn-primary btn-xs' %>
+                      edit_project_path(project), :class => 'btn btn-primary' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                       project_path(project),
                       :method => :delete,
                       :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                      :class => 'btn btn-xs btn-danger' %>
+                      :class => 'btn btn-danger' %>
         </td>
       </tr>
     <% end %>

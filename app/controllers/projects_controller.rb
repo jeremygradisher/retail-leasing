@@ -25,10 +25,15 @@ class ProjectsController < ApplicationController
   # GET /projects/new
   def new
     @project = Project.new
+    @icon = @project.icons.build
+    @icons = @project.icons.all
   end
 
   # GET /projects/1/edit
   def edit
+    @icon = @project.icons.build
+    @icons = @project.icons.all
+    #@maps = @project.maps.all
   end
 
   # POST /projects
@@ -38,6 +43,11 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       if @project.save
+        if params.has_key?(:icons)
+           params[:icons]['icon'].each do |a|
+              @icon = @project.icons.create!(:icon => a)
+           end
+        end
         format.html { redirect_to @project, notice: 'Project was successfully created.' }
         format.json { render :show, status: :created, location: @project }
       else
@@ -52,6 +62,11 @@ class ProjectsController < ApplicationController
   def update
     respond_to do |format|
       if @project.update(project_params)
+        if params.has_key?(:icons)
+           params[:icons]['icon'].each do |a|
+              @icon = @project.icons.create!(:icon => a)
+           end
+        end
         format.html { redirect_to @project, notice: 'Project was successfully updated.' }
         format.json { render :show, status: :ok, location: @project }
       else
@@ -79,6 +94,6 @@ class ProjectsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def project_params
-      params.require(:project).permit(:name, :user_id, :user_id)
+      params.require(:project).permit(:name, :user_id, :user_id, icons_attributes: [:id, :project_id, :icon])
     end
 end

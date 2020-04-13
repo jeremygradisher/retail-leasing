@@ -1,0 +1,27 @@
+<%= form_for(icon) do |f| %>
+  <% if icon.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(icon.errors.count, "error") %> prohibited this icon from being saved:</h2>
+
+      <ul>
+      <% icon.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :project_id %>
+    <%= f.number_field :project_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :icon %>
+    <%= f.text_field :icon %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
