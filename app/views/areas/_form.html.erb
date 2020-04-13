@@ -1,4 +1,4 @@
-<%= form_for @area, :html => { :class => "form-horizontal area" } do |f| %>
+<%= form_for @area, :html => { :class => "form-horizontal area formatFunctions" } do |f| %>
 
   <% if @area.errors.any? %>
     <div id="error_expl" class="panel panel-danger">
@@ -50,6 +50,12 @@
       <%= f.select :status, ['Available', 'Prospect', 'LOI', 'At Lease', 'Leased'], {include_blank:false}, :class => 'form-control' %>
     </div>
     <%=f.error_span(:status) %>
+    
+    <%= f.label :area_sqft, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+        <%= f.text_field :area_sqft, :class => 'form-control required sf-background' %>
+    </div>
+    <%=f.error_span(:area_sqft) %>
   </div>
   
   <div class="form-group">
@@ -69,3 +75,6 @@
   </div>
 
 <% end %>
+
+
+  <%= render 'formjquery' %>
