@@ -1,7 +1,7 @@
 <%- model_class = Project -%>
 <div class="page-header">
   <h1 style="float:left;"><%= @project.name %></h1>
-  <%= link_to '+ Add space', new_area_path(:map_id => @map),
+  <%= link_to '+ Add space', new_area_path(:map_id => @map,:project_id => @project),
                     :class => 'btn btn-primary print-none',
                     :style => 'float:right;margin-top:20px;color:#fff;background-color:#24b9ae;border-color:#24b9ae;' %>
 <br style="clear:both;">

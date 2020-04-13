@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200413195543) do
+ActiveRecord::Schema.define(version: 20200413213239) do
 
   create_table "areas", force: :cascade do |t|
     t.string   "suite_number"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20200413195543) do
     t.string   "coords"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.integer  "project_id"
     t.index ["map_id"], name: "index_areas_on_map_id"
   end
 
