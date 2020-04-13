@@ -16,8 +16,15 @@
 <dl class="dl-horizontal">
   <dt><strong><%= model_class.human_attribute_name(:suite_number) %>:</strong></dt>
   <dd><%= @area.suite_number %></dd>
+  
+  <dt><strong><%= model_class.human_attribute_name(:area_sqft) %>:</strong></dt>
+  <dd><%= number_with_delimiter(@area.area_sqft, :delimiter => ',') %></dd>
+  
+  
   <dt><strong><%= model_class.human_attribute_name(:map_id) %>:</strong></dt>
   <dd><%= @area.map_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:project_id) %>:</strong></dt>
+  <dd><%= @area.project_id %></dd>
   <dt><strong><%= model_class.human_attribute_name(:status) %>:</strong></dt>
   <dd><%= @area.status %></dd>
   <dt><strong><%= model_class.human_attribute_name(:coords) %>:</strong></dt>

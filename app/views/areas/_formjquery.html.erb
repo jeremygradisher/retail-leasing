@@ -1,0 +1,52 @@
+  <script>
+    $(function(){
+       $(".required").prop('required',true);
+    });
+  </script>
+
+<script>
+    //format total area square feet input for Area
+    function formatTotalAreaSquareFeet()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var totalsqft = parseFloat($("#area_area_sqft").val().replace(/[^\d\.]/g,''));
+        //if it doesn't exist, make it zero
+        if (!totalsqft){totalsqft = 0;}
+        //make sure your float is fixed number with no decimal places
+        var totalsqftfixed = totalsqft.toFixed(0);
+        //make sure commas are correct
+        var totalsqftformatted = totalsqftfixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#area_area_sqft").val(totalsqftformatted);
+        //this input field is saved as a string
+    }
+    
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#area_area_sqft", formatTotalAreaSquareFeet);
+    //make it happen onload
+    $(document).ready(formatTotalAreaSquareFeet);
+    
+
+    
+    //Function to format for Submit to Database
+    function formatForSubmitAreaSqft()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var totalsqft = parseFloat($("#area_area_sqft").val().replace(/[^\d\.]/g,''));
+        //if totalsqft doesn't exist, make it zero
+        if (!totalsqft){
+            totalsqft = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var totalsqftfixed = totalsqft.toFixed(0);
+        //change # to total
+        $("#area_area_sqft").val(totalsqftfixed);
+        //this input field is saved as a string
+    }
+    
+    //Before Submit Run Function(s)
+    $('.formatFunctions').submit(function() {
+      //Runs Function to strip special characters except (.)
+      formatForSubmitAreaSqft();
+    });
+</script>

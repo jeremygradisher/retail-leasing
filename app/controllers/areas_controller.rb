@@ -80,6 +80,6 @@ class AreasController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def area_params
-      params.require(:area).permit(:suite_number, :map_id, :status, :coords, :map_id)
+      params.require(:area).permit(:suite_number, :map_id, :project_id, :status, :coords, :map_id, :area_sqft)
     end
 end

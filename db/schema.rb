@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200402173221) do
+ActiveRecord::Schema.define(version: 20200413232017) do
 
   create_table "areas", force: :cascade do |t|
     t.string   "suite_number"
@@ -19,7 +19,17 @@ ActiveRecord::Schema.define(version: 20200402173221) do
     t.string   "coords"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.integer  "project_id"
+    t.integer  "area_sqft"
     t.index ["map_id"], name: "index_areas_on_map_id"
+    t.index ["project_id"], name: "index_areas_on_project_id"
+  end
+
+  create_table "icons", force: :cascade do |t|
+    t.integer  "project_id"
+    t.string   "icon"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "images", force: :cascade do |t|
@@ -33,11 +43,19 @@ ActiveRecord::Schema.define(version: 20200402173221) do
 
   create_table "maps", force: :cascade do |t|
     t.string   "name"
-    t.integer  "user_id"
     t.string   "key"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_maps_on_user_id"
+    t.integer  "project_id"
+    t.index ["project_id"], name: "index_maps_on_project_id"
+  end
+
+  create_table "projects", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_projects_on_user_id"
   end
 
   create_table "user_avatars", force: :cascade do |t|

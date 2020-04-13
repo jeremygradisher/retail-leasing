@@ -1,0 +1,49 @@
+<%- model_class = Project -%>
+<div class="page-header">
+  <h1 style="float:left;"><%= @project.name %></h1>
+  <%= link_to '+ Add space', new_area_path(:map_id => @map,:project_id => @project),
+                    :class => 'btn btn-primary print-none',
+                    :style => 'float:right;margin-top:20px;color:#fff;background-color:#24b9ae;border-color:#24b9ae;' %>
+<br style="clear:both;">
+</div>
+
+<% if @project.maps.present? %>
+<div class="row" style="display:none">
+<% else %>
+<div class="row">
+<% end %>
+  <div class="col-xs-10 col-xs-offset-1">
+    <div class="page-header">
+        <h1 style="font-size: 38px;color:#231f20;">
+          <% if @project.maps.present? %>
+            <%= link_to @maptitle, map_path(@map), :style => 'color:#231f20' %>
+          <% else %>
+            Add your first image map here: 
+            <%= link_to '+ Image Map',
+                        new_map_path(:project_id => @project),
+                        :class => 'btn btn-primary responsive-none print-none', :style => 'color:#231f20;background-color:#fff;' %> 
+          <% end %>
+        </h1>
+    </div>
+  </div>
+</div>
+
+<% if @project.maps.present? %>
+<div class="row" style="page-break-inside: avoid;">
+  <div class="col-xs-12">
+    <%= render '/maps/fullmap' %>
+  </div>
+</div>
+<% end %>
+
+<br>
+<hr>
+<%= link_to t('.back', :default => t("helpers.links.back")),
+              projects_path, :class => 'btn btn-default'  %>
+<%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_project_path(@project), :class => 'btn btn-primary' %>
+<%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              project_path(@project),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
