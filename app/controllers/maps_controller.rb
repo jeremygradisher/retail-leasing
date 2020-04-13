@@ -12,7 +12,7 @@ class MapsController < ApplicationController
   def show
     @images = @map.images.all
     @image = @map.images.first
-    #@project = Project.find(@map.project_id)
+    @project = Project.find(@map.project_id)
     @mapareas = @map.areas.all
   end
 
