@@ -1,0 +1,88 @@
+  <script>
+    $(function(){
+       $(".required").prop('required',true);
+    });
+  </script>
+
+<script>
+    //format total area square feet input for Area
+    function formatGrossArea()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var totalsqft = parseFloat($("#deal_gross_area").val().replace(/[^\d\.]/g,''));
+        //if it doesn't exist, make it zero
+        if (!totalsqft){totalsqft = 0;}
+        //make sure your float is fixed number with no decimal places
+        var totalsqftfixed = totalsqft.toFixed(0);
+        //make sure commas are correct
+        var totalsqftformatted = totalsqftfixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#deal_gross_area").val(totalsqftformatted);
+        //this input field is saved as a string
+    }
+    
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#deal_gross_area", formatGrossArea);
+    //make it happen onload
+    $(document).ready(formatGrossArea);
+    
+    function formatNetRentableArea()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var totalsqft = parseFloat($("#deal_net_rentable_area").val().replace(/[^\d\.]/g,''));
+        //if it doesn't exist, make it zero
+        if (!totalsqft){totalsqft = 0;}
+        //make sure your float is fixed number with no decimal places
+        var totalsqftfixed = totalsqft.toFixed(0);
+        //make sure commas are correct
+        var totalsqftformatted = totalsqftfixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#deal_net_rentable_area").val(totalsqftformatted);
+        //this input field is saved as a string
+    }
+    
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#deal_net_rentable_area", formatNetRentableArea);
+    //make it happen onload
+    $(document).ready(formatNetRentableArea);
+    
+
+    
+    //Function to format for Submit to Database
+    function formatForGrossArea()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var totalsqft = parseFloat($("#deal_gross_area").val().replace(/[^\d\.]/g,''));
+        //if totalsqft doesn't exist, make it zero
+        if (!totalsqft){
+            totalsqft = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var totalsqftfixed = totalsqft.toFixed(0);
+        //change # to total
+        $("#deal_gross_area").val(totalsqftfixed);
+        //this input field is saved as a string
+    }
+    
+    function formatForNetRentableArea()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var totalsqft = parseFloat($("#deal_net_rentable_area").val().replace(/[^\d\.]/g,''));
+        //if totalsqft doesn't exist, make it zero
+        if (!totalsqft){
+            totalsqft = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var totalsqftfixed = totalsqft.toFixed(0);
+        //change # to total
+        $("#deal_net_rentable_area").val(totalsqftfixed);
+        //this input field is saved as a string
+    }
+    
+    //Before Submit Run Function(s)
+    $('.formatFunctions').submit(function() {
+      //Runs Function to strip special characters except (.)
+      formatForGrossArea();
+      formatForNetRentableArea();
+    });
+</script>

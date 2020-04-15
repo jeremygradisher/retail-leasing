@@ -47,7 +47,7 @@
     <%= f.label :status, :class => 'control-label col-lg-2' %>
     <div class="col-lg-2">
       <%#= f.text_field :status, :class => 'form-control' %>
-      <%= f.select :status, ['Available', 'Prospect', 'LOI', 'At Lease', 'Leased'], {include_blank:false}, :class => 'form-control' %>
+      <%= f.select :status, ['01 Available', '02 Lease Negotiation', '03 Landlord Construction', '04 Tenant Design', '05 Tenant Fit-Out', '06 Open for Business', '07 Close-Out', '08 Operating'], {include_blank:false}, :class => 'form-control' %>
     </div>
     <%=f.error_span(:status) %>
     

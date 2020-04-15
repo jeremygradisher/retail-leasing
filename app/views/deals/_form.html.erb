@@ -1,4 +1,4 @@
-<%= form_for @deal, :html => { :class => "form-horizontal deal" } do |f| %>
+<%= form_for @deal, :html => { :class => "form-horizontal deal formatFunctions" } do |f| %>
 
   <% if @deal.errors.any? %>
     <div id="error_expl" class="panel panel-danger">
@@ -17,52 +17,59 @@
 
   <div class="form-group">
     <%= f.label :deal_name, :class => 'control-label col-lg-2' %>
-    <div class="col-lg-10">
+    <div class="col-lg-2">
       <%= f.text_field :deal_name, :class => 'form-control' %>
     </div>
     <%=f.error_span(:deal_name) %>
-  </div>
-  <div class="form-group">
+
     <%= f.label :gross_area, :class => 'control-label col-lg-2' %>
-    <div class="col-lg-10">
-      <%= f.text_field :gross_area, :class => 'form-control' %>
+    <div class="col-lg-2">
+      <%= f.text_field :gross_area, :class => 'form-control required sf-background' %>
     </div>
     <%=f.error_span(:gross_area) %>
-  </div>
-  <div class="form-group">
+
     <%= f.label :net_rentable_area, :class => 'control-label col-lg-2' %>
-    <div class="col-lg-10">
-      <%= f.text_field :net_rentable_area, :class => 'form-control' %>
+    <div class="col-lg-2">
+      <%= f.text_field :net_rentable_area, :class => 'form-control required sf-background' %>
     </div>
     <%=f.error_span(:net_rentable_area) %>
   </div>
-  <div class="form-group">
-    <%= f.label :lease_status, :class => 'control-label col-lg-2' %>
-    <div class="col-lg-10">
-      <%= f.text_field :lease_status, :class => 'form-control' %>
-    </div>
-    <%=f.error_span(:lease_status) %>
-  </div>
+
   <div class="form-group">
     <%= f.label :project_id, :class => 'control-label col-lg-2' %>
-    <div class="col-lg-10">
-      <%= f.text_field :project_id, :class => 'form-control' %>
+    <div class="col-lg-2">
+      <% if controller.action_name == "new" %>
+        <%= f.number_field :project_id, value: params[:project_id], :class => 'form-control' %>
+      <% else %>
+        <%= f.number_field :project_id, :class => 'form-control' %>
+      <% end %>
     </div>
     <%=f.error_span(:project_id) %>
-  </div>
-  <div class="form-group">
+
     <%= f.label :map_id, :class => 'control-label col-lg-2' %>
-    <div class="col-lg-10">
-      <%= f.text_field :map_id, :class => 'form-control' %>
+    <div class="col-lg-2">
+      <% if controller.action_name == "new" %>
+      <%= f.number_field :map_id, value: params[:map_id], :class => 'form-control' %>
+      <% else %>
+      <%= f.number_field :map_id, :class => 'form-control' %>
+      <% end %>
     </div>
     <%=f.error_span(:map_id) %>
-  </div>
-  <div class="form-group">
+
     <%= f.label :area_id, :class => 'control-label col-lg-2' %>
-    <div class="col-lg-10">
+    <div class="col-lg-2">
       <%= f.text_field :area_id, :class => 'form-control' %>
     </div>
     <%=f.error_span(:area_id) %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :lease_status, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%= f.select :lease_status, ['Available', 'Prospect', 'LOI', 'At Lease', 'Leased'], {include_blank:false}, :class => 'form-control' %>
+
+    </div>
+    <%=f.error_span(:lease_status) %>
   </div>
 
   <div class="form-group">
@@ -74,3 +81,5 @@
   </div>
 
 <% end %>
+
+  <%= render 'formjquery' %>
