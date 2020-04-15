@@ -21,9 +21,9 @@
     <% @deals.each do |deal| %>
       <tr>
         <td><%= link_to deal.id, deal_path(deal) %></td>
-        <td><%= deal.deal_name %></td>
-        <td><%= deal.gross_area %></td>
-        <td><%= deal.net_rentable_area %></td>
+        <td><%= link_to deal.deal_name, deal_path(deal) %></td>
+        <td><%= number_with_delimiter(deal.gross_area, :delimiter => ',') %></td>
+        <td><%= number_with_delimiter(deal.net_rentable_area, :delimiter => ',') %></td>
         <td><%= deal.lease_status %></td>
         <td><%= deal.project_id %></td>
         <td><%= deal.map_id %></td>
@@ -31,14 +31,14 @@
         <td><%=l deal.created_at %></td>
         <td>
           <%= link_to t('.show', :default => t("helpers.links.show")),
-                      deal_path(deal), :class => 'btn btn-default btn-xs' %>
+                      deal_path(deal), :class => 'btn btn-default' %>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_deal_path(deal), :class => 'btn btn-default btn-xs' %>
+                      edit_deal_path(deal), :class => 'btn btn-primary' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                       deal_path(deal),
                       :method => :delete,
                       :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                      :class => 'btn btn-xs btn-danger' %>
+                      :class => 'btn btn-danger' %>
         </td>
       </tr>
     <% end %>

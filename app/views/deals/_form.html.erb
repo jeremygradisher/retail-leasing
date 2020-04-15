@@ -67,7 +67,6 @@
     <%= f.label :lease_status, :class => 'control-label col-lg-2' %>
     <div class="col-lg-2">
       <%= f.select :lease_status, ['Available', 'Prospect', 'LOI', 'At Lease', 'Leased'], {include_blank:false}, :class => 'form-control' %>
-
     </div>
     <%=f.error_span(:lease_status) %>
   </div>
