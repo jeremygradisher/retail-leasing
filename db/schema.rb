@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200414214729) do
+ActiveRecord::Schema.define(version: 20200415225440) do
 
   create_table "areas", force: :cascade do |t|
     t.string   "suite_number"
@@ -23,6 +23,15 @@ ActiveRecord::Schema.define(version: 20200414214729) do
     t.integer  "area_sqft"
     t.index ["map_id"], name: "index_areas_on_map_id"
     t.index ["project_id"], name: "index_areas_on_project_id"
+  end
+
+  create_table "areas_deals", force: :cascade do |t|
+    t.integer  "area_id"
+    t.integer  "deal_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["area_id"], name: "index_areas_deals_on_area_id"
+    t.index ["deal_id"], name: "index_areas_deals_on_deal_id"
   end
 
   create_table "deals", force: :cascade do |t|
