@@ -8,9 +8,9 @@
   <dt><strong><%= model_class.human_attribute_name(:deal_name) %>:</strong></dt>
   <dd><%= @deal.deal_name %></dd>
   <dt><strong><%= model_class.human_attribute_name(:gross_area) %>:</strong></dt>
-  <dd><%= @deal.gross_area %></dd>
+  <dd><%= number_with_delimiter(@deal.gross_area, :delimiter => ',') %></dd>
   <dt><strong><%= model_class.human_attribute_name(:net_rentable_area) %>:</strong></dt>
-  <dd><%= @deal.net_rentable_area %></dd>
+  <dd><%= number_with_delimiter(@deal.net_rentable_area, :delimiter => ',') %></dd>
   <dt><strong><%= model_class.human_attribute_name(:lease_status) %>:</strong></dt>
   <dd><%= @deal.lease_status %></dd>
   <dt><strong><%= model_class.human_attribute_name(:project_id) %>:</strong></dt>
