@@ -1,3 +1,4 @@
+<% if current_user %>
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -12,3 +13,6 @@
 
 <%= link_to 'Edit', edit_icon_path(@icon) %> |
 <%= link_to 'Back', icons_path %>
+<% else %>
+ <h2>Must be logged in. <a href="/" class="btn btn-default">Return Home</a></h2>
+<% end %>
