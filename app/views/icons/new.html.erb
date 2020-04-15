@@ -1,5 +1,9 @@
+<% if current_user %>
 <h1>New Icon</h1>
 
 <%= render 'form', icon: @icon %>
 
 <%= link_to 'Back', icons_path %>
+<% else %>
+ <h2>Must be logged in. <a href="/" class="btn btn-default">Return Home</a></h2>
+<% end %>
