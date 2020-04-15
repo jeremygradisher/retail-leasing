@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200415225440) do
+ActiveRecord::Schema.define(version: 20200415232710) do
 
   create_table "areas", force: :cascade do |t|
     t.string   "suite_number"
@@ -41,7 +41,6 @@ ActiveRecord::Schema.define(version: 20200415225440) do
     t.string   "lease_status"
     t.integer  "project_id"
     t.integer  "map_id"
-    t.integer  "area_id"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
     t.index ["map_id"], name: "index_deals_on_map_id"
