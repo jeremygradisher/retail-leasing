@@ -15,6 +15,7 @@ class AreasDealsController < ApplicationController
   # GET /areas_deals/new
   def new
     @areas_deal = AreasDeal.new
+    @project = Project.find(params[:project_id])
   end
 
   # GET /areas_deals/1/edit

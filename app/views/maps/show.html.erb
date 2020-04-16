@@ -2,9 +2,12 @@
 <%- model_class = Map -%>
 <div class="page-header">
   <h1 style="float:left;"><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+  <%= link_to '+ Associate Area/Deal', new_areas_deal_path(:project_id => @project),
+                    :class => 'btn btn-primary print-none',
+                    :style => 'float:right;margin-top:20px;margin-right:10px;color:#fff;background-color:#16A3BA;border-color:#16A3BA;' %>
   <%= link_to '+ Add space', new_area_path(:map_id => @map,:project_id => @project),
                     :class => 'btn btn-primary print-none',
-                    :style => 'float:right;margin-top:20px;color:#fff;background-color:#F16528;border-color:#F16528;' %>
+                    :style => 'float:right;margin-top:20px;margin-right:10px;color:#fff;background-color:#F16528;border-color:#F16528;' %>
   <%= link_to '+ Add Deal', new_deal_path(:map_id => @map,:project_id => @project),
                     :class => 'btn btn-primary print-none',
                     :style => 'float:right;margin-top:20px;margin-right:10px;color:#fff;background-color:#16A3BA;border-color:#16A3BA;' %>
@@ -25,7 +28,7 @@
 <br><br>
 <hr>
 <%= link_to t('.back', :default => t("helpers.links.back")),
-              maps_path, :class => 'btn btn-default'  %>
+              project_path(@project), :class => 'btn btn-default'  %>
 <%= link_to t('.edit', :default => t("helpers.links.edit")),
               edit_map_path(@map), :class => 'btn btn-primary' %>
 <%= link_to t('.destroy', :default => t("helpers.links.destroy")),

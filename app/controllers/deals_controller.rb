@@ -10,15 +10,18 @@ class DealsController < ApplicationController
   # GET /deals/1
   # GET /deals/1.json
   def show
+    @project = @deal.project_id
   end
 
   # GET /deals/new
   def new
     @deal = Deal.new
+    @project = Project.find(params[:project_id])
   end
 
   # GET /deals/1/edit
   def edit
+    @project = Project.find(@deal.project_id)
   end
 
   # POST /deals
