@@ -20,13 +20,14 @@ class AreasDealsController < ApplicationController
 
   # GET /areas_deals/1/edit
   def edit
+    @project = Project.find(@areas_deal.project_id)
   end
 
   # POST /areas_deals
   # POST /areas_deals.json
   def create
     @areas_deal = AreasDeal.new(areas_deal_params)
-    #@project = Project.find(1)
+    @project = Project.find(@areas_deal.project_id)
 
     respond_to do |format|
       if @areas_deal.save
@@ -71,6 +72,6 @@ class AreasDealsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def areas_deal_params
-      params.require(:areas_deal).permit(:area_id, :deal_id)
+      params.require(:areas_deal).permit(:area_id, :deal_id, :project_id)
     end
 end

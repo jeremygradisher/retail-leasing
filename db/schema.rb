@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200416150159) do
+ActiveRecord::Schema.define(version: 20200416174347) do
 
   create_table "areas", force: :cascade do |t|
     t.string   "suite_number"
@@ -30,9 +30,11 @@ ActiveRecord::Schema.define(version: 20200416150159) do
     t.integer  "deal_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "project_id"
     t.index ["area_id", "deal_id"], name: "by_area_and_deal", unique: true
     t.index ["area_id"], name: "index_areas_deals_on_area_id"
     t.index ["deal_id"], name: "index_areas_deals_on_deal_id"
+    t.index ["project_id"], name: "index_areas_deals_on_project_id"
   end
 
   create_table "deals", force: :cascade do |t|
