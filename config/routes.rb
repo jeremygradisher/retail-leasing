@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :areas_deals
+  resources :areas_deals, :only => [:index, :show, :create, :new, :destroy]
   resources :deals
   resources :icons
   resources :projects

@@ -17,14 +17,14 @@
     <% @areas_deals.each do |areas_deal| %>
       <tr>
         <td><%= link_to areas_deal.id, areas_deal_path(areas_deal) %></td>
-        <td><%= areas_deal.area_id %></td>
+        <td><%= link_to areas_deal.area_id, areas_deal_path(areas_deal) %></td>
         <td><%= areas_deal.deal_id %></td>
         <td><%= areas_deal.project_id %></td>
         <td><%=l areas_deal.created_at %></td>
         <td>
           <%= link_to t('.show', :default => t("helpers.links.show")),
                       areas_deal_path(areas_deal), :class => 'btn btn-default' %>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+          <%#= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_areas_deal_path(areas_deal), :class => 'btn btn-primary' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                       areas_deal_path(areas_deal),
