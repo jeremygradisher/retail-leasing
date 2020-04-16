@@ -29,7 +29,7 @@
     <%= f.label :area, 'Area', :class => 'control-label col-lg-2' %>
     <div class="col-lg-4">
       <!--<span class="show-below-1200">Area:</span>-->
-      <%= f.select :area_id, @project.areas.all.map{ |a| [a.suite_number, a.id] }, {include_blank: true}, :class => 'form-control' %>
+      <%= f.select :area_id, @project.areas.all.map{ |a| [a.suite_number, a.id] }, {include_blank: false}, :class => 'form-control' %>
     </div>
     <%=f.error_span(:area_id) %>
   </div>
@@ -48,7 +48,7 @@
     <%= f.label :deal, 'Deal', :class => 'control-label col-lg-2' %>
     <div class="col-lg-4">
       <!--<span class="show-below-1200">Area:</span>-->
-      <%= f.select :deal_id, @project.deals.all.map{ |d| [d.deal_name, d.id] }, {include_blank: true}, :class => 'form-control' %>
+      <%= f.select :deal_id, @project.deals.all.map{ |d| [d.deal_name, d.id] }, {include_blank: false}, :class => 'form-control' %>
     </div>
     <%=f.error_span(:deal_id) %>
   </div>

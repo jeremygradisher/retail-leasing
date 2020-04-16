@@ -26,6 +26,7 @@ class AreasDealsController < ApplicationController
   # POST /areas_deals.json
   def create
     @areas_deal = AreasDeal.new(areas_deal_params)
+    #@project = Project.find(1)
 
     respond_to do |format|
       if @areas_deal.save
