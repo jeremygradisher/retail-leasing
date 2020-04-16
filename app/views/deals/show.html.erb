@@ -1,7 +1,10 @@
 <% if current_user %>
 <%- model_class = Deal -%>
-<div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+<div class="page-header" style="margin: 20px 0 20px;">
+  <h1 style="float:left;"><%=t '.title', :default => model_class.model_name.human.titleize %>: <%= @deal.deal_name %></h1>
+
+  <h1 style="float:right;">Associated Deals: <%= @deal.areas.count %></h1>
+  <br style="clear:both;">
 </div>
 
 <dl class="dl-horizontal">
