@@ -27,8 +27,8 @@ class AreasDealsController < ApplicationController
   # POST /areas_deals.json
   def create
     @areas_deal = AreasDeal.new(areas_deal_params)
-    #this throws an error on heroku:
-    #@project = Project.find(@areas_deal.project_id)
+    #this was throwing an error on heroku:
+    @project = Project.find(@areas_deal.project_id)
 
     respond_to do |format|
       if @areas_deal.save
@@ -44,6 +44,7 @@ class AreasDealsController < ApplicationController
   # PATCH/PUT /areas_deals/1
   # PATCH/PUT /areas_deals/1.json
   def update
+    @project = Project.find(@areas_deal.project_id)
     respond_to do |format|
       if @areas_deal.update(areas_deal_params)
         format.html { redirect_to @areas_deal, notice: 'Areas deal was successfully updated.' }
