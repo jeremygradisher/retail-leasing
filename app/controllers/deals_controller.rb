@@ -10,15 +10,18 @@ class DealsController < ApplicationController
   # GET /deals/1
   # GET /deals/1.json
   def show
+    @project = @deal.project_id
   end
 
   # GET /deals/new
   def new
     @deal = Deal.new
+    @project = Project.find(params[:project_id])
   end
 
   # GET /deals/1/edit
   def edit
+    @project = Project.find(@deal.project_id)
   end
 
   # POST /deals
@@ -69,6 +72,6 @@ class DealsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def deal_params
-      params.require(:deal).permit(:deal_name, :gross_area, :net_rentable_area, :lease_status, :map_id, :project_id, :area_id)
+      params.require(:deal).permit(:deal_name, :gross_area, :net_rentable_area, :lease_status, :map_id, :project_id)
     end
 end

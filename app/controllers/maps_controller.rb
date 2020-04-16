@@ -21,12 +21,14 @@ class MapsController < ApplicationController
     @map = Map.new
     @image = @map.images.build
     @images = @map.images.all
+    @project = Project.find(params[:project_id])
   end
 
   # GET /maps/1/edit
   def edit
     @image = @map.images.build
     @images = @map.images.all
+    @project = Project.find(@map.project_id)
   end
 
   # POST /maps

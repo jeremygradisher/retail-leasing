@@ -1,7 +1,12 @@
 <% if current_user %>
 <%- model_class = Area -%>
-<div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+<div class="page-header" style="margin: 20px 0 20px;">
+  <h1 style="float:left;"><%=t '.title', :default => model_class.model_name.human.titleize %>: <%= @area.suite_number %></h1>
+
+  <%= link_to '+ Associate Area/Deal', new_areas_deal_path(:project_id => @project),
+                    :class => 'btn btn-primary print-none',
+                    :style => 'float:right;margin-top:20px;margin-right:10px;color:#fff;background-color:#16A3BA;border-color:#16A3BA;' %>
+  <br style="clear:both;">
 </div>
 
 <div class="row">
@@ -17,22 +22,33 @@
   <dt><strong><%= model_class.human_attribute_name(:suite_number) %>:</strong></dt>
   <dd><%= @area.suite_number %></dd>
   
+  <dt><strong><%= model_class.human_attribute_name(:associated_deals) %>:</strong></dt>
+  <dd><%= @area.areas_deals.count %></dd>
+  
+  <dt><strong><%= model_class.human_attribute_name(:deal_titles) %>:</strong></dt>
+  <dd>
+      <% if @area.deals.count > 0 %>
+        <% @area.deals.each do |deal| %><%= deal.deal_name %><br><% end %>
+      <% else %>There are no deals associated.<% end %></dd>
+  
   <dt><strong><%= model_class.human_attribute_name(:area_sqft) %>:</strong></dt>
   <dd><%= number_with_delimiter(@area.area_sqft, :delimiter => ',') %></dd>
   
-  
   <dt><strong><%= model_class.human_attribute_name(:map_id) %>:</strong></dt>
   <dd><%= @area.map_id %></dd>
+  
   <dt><strong><%= model_class.human_attribute_name(:project_id) %>:</strong></dt>
   <dd><%= @area.project_id %></dd>
+  
   <dt><strong><%= model_class.human_attribute_name(:status) %>:</strong></dt>
   <dd><%= @area.status %></dd>
+  
   <dt><strong><%= model_class.human_attribute_name(:coords) %>:</strong></dt>
   <dd><%= @area.coords %></dd>
 </dl>
 
 <%= link_to t('.back', :default => t("helpers.links.back")),
-              map_path(@area.map_id), :class => 'btn btn-default'  %>
+              project_path(@area.project_id), :class => 'btn btn-default'  %>
 <%= link_to t('.edit', :default => t("helpers.links.edit")),
               edit_area_path(@area), :class => 'btn btn-primary' %>
 <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
