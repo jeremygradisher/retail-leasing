@@ -3,7 +3,9 @@
 <div class="page-header" style="margin: 20px 0 20px;">
   <h1 style="float:left;"><%=t '.title', :default => model_class.model_name.human.titleize %>: <%= @area.suite_number %></h1>
 
-  <h1 style="float:right;">Associated Areas: <%= @area.deals.count %></h1>
+  <%= link_to '+ Associate Area/Deal', new_areas_deal_path(:area_id => @area),
+                    :class => 'btn btn-primary print-none',
+                    :style => 'float:right;margin-top:20px;margin-right:10px;color:#fff;background-color:#16A3BA;border-color:#16A3BA;' %>
   <br style="clear:both;">
 </div>
 
@@ -19,14 +21,28 @@
 <dl class="dl-horizontal">
   <dt><strong><%= model_class.human_attribute_name(:suite_number) %>:</strong></dt>
   <dd><%= @area.suite_number %></dd>
+  
+  <dt><strong><%= model_class.human_attribute_name(:associated_deals) %>:</strong></dt>
+  <dd><%= @area.areas_deals.count %></dd>
+  
+  <dt><strong><%= model_class.human_attribute_name(:deal_titles) %>:</strong></dt>
+  <dd>
+      <% if @area.deals.count > 0 %>
+        <% @area.deals.each do |deal| %><%= deal.deal_name %><br><% end %>
+      <% else %>There are no deals associated.<% end %></dd>
+  
   <dt><strong><%= model_class.human_attribute_name(:area_sqft) %>:</strong></dt>
   <dd><%= number_with_delimiter(@area.area_sqft, :delimiter => ',') %></dd>
+  
   <dt><strong><%= model_class.human_attribute_name(:map_id) %>:</strong></dt>
   <dd><%= @area.map_id %></dd>
+  
   <dt><strong><%= model_class.human_attribute_name(:project_id) %>:</strong></dt>
   <dd><%= @area.project_id %></dd>
+  
   <dt><strong><%= model_class.human_attribute_name(:status) %>:</strong></dt>
   <dd><%= @area.status %></dd>
+  
   <dt><strong><%= model_class.human_attribute_name(:coords) %>:</strong></dt>
   <dd><%= @area.coords %></dd>
 </dl>

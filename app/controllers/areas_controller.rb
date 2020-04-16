@@ -14,6 +14,7 @@ class AreasController < ApplicationController
     @map_id = params[:map_id]
     @image = @map.images.first
     @areas = @map.areas.all
+    #@project = Project.find(@map.project_id)
   end
 
   # GET /areas/new
