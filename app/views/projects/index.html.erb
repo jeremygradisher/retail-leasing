@@ -7,8 +7,10 @@
   <thead>
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:picture) %></th>
       <th><%= model_class.human_attribute_name(:name) %></th>
-      <th><%= model_class.human_attribute_name(:user_id) %></th>
+      <!--<th><%#= model_class.human_attribute_name(:users) %></th>-->
+      <th><%= model_class.human_attribute_name(:owned_by) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
@@ -25,6 +27,7 @@
           <% end %>
         </td>
         <td><%= link_to project.name, project_path(project) %></td>
+        <!--<td><%#= project.users.count %></td>-->
         <td><%= project.user_id %></td>
         <td><%=l project.created_at %></td>
         <td>
