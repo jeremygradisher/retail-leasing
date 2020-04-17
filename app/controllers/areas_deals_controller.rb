@@ -10,6 +10,7 @@ class AreasDealsController < ApplicationController
   # GET /areas_deals/1
   # GET /areas_deals/1.json
   def show
+    @project = Project.find(@areas_deal.project_id)
   end
 
   # GET /areas_deals/new

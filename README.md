@@ -1,6 +1,8 @@
 # Mockup101 - Running Rails 5
 ## a place to build and test
+This now has Projects, Maps, Areas, Deals and Areas_Deals (join table)
 
+# Before:
 ## Good base build - user auth w/ user model, save image to aws, sendgrid sign-up
 Just setting this up quick for fun and to test a few options.<br>
 I'll also point out a few pieces of important code in case anyone is looking for something.<br>
