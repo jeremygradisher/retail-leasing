@@ -8,6 +8,9 @@ class User < ApplicationRecord
   has_many :user_avatars, dependent: :destroy
   accepts_nested_attributes_for :user_avatars
   
+  has_many :user_projects, :dependent => :destroy
+  has_many :projects, through: :user_projects
+  
   def is_admin?
     is_admin
   end

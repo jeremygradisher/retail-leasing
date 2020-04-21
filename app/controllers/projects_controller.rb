@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_action :set_project, only: [:show, :edit, :update, :destroy]
+  before_action :set_project, only: [:show, :edit, :update, :destroy, :users, :add_user]
 
   # GET /projects
   # GET /projects.json
@@ -83,6 +83,27 @@ class ProjectsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to projects_url, notice: 'Project was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+  
+  def users
+    @project_users = @project.users.all
+    @other_users = User.where(is_admin: false) - (@project_users + [current_user])
+    @all_users = User.all
+  end
+
+  def add_user
+    @project_user = UserProject.new(user_id: params[:user_id], project_id: @project.id)
+    respond_to do |format|
+      if @project_user.save
+        format.html { redirect_to users_tenant_project_url(id: @project.id,
+        tenant_id: @project.tenant_id),
+        notice: 'User was successfully added to project' }
+      else
+        format.html { redirect_to users_tenant_project_url(id: @project.id,
+        tenant_id: @project.tenant_id),
+        error: 'User was not added to project' }
+      end
     end
   end
 

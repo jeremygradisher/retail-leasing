@@ -13,6 +13,13 @@ Rails.application.routes.draw do
   
   root 'welcome#index'
   
+  resources :projects do
+    member do
+      get 'users'
+      put 'add_user'
+    end
+  end
+  
   #resources :users, :only => [:index, :show, :destroy]
   resources :users
   
