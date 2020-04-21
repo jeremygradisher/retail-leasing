@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :user_projects
   resources :areas_deals
   resources :deals
   resources :icons
@@ -11,6 +12,13 @@ Rails.application.routes.draw do
   get 'welcome/index'
   
   root 'welcome#index'
+  
+  resources :projects do
+    member do
+      get 'users'
+      put 'add_user'
+    end
+  end
   
   #resources :users, :only => [:index, :show, :destroy]
   resources :users

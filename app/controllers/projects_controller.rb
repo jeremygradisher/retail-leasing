@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_action :set_project, only: [:show, :edit, :update, :destroy]
+  before_action :set_project, only: [:show, :edit, :update, :destroy, :users, :add_user]
 
   # GET /projects
   # GET /projects.json
@@ -85,6 +85,25 @@ class ProjectsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def users
+    @project_users = @project.users.all
+    @other_users = User.all - (@project_users + [current_user])
+    @all_users = User.all
+  end
+
+  def add_user
+    @project_user = UserProject.new(user_id: params[:user_id], project_id: @project.id)
+    respond_to do |format|
+      if @project_user.save
+        format.html { redirect_to users_project_url(id: @project.id),
+        notice: 'User was successfully added to project' }
+      else
+        format.html { redirect_to users_project_url(id: @project.id),
+        error: 'User was not added to project' }
+      end
+    end
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -94,6 +113,6 @@ class ProjectsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def project_params
-      params.require(:project).permit(:name, :user_id, :user_id, icons_attributes: [:id, :project_id, :icon])
+      params.require(:project).permit(:name, :user_id, icons_attributes: [:id, :project_id, :icon])
     end
 end
