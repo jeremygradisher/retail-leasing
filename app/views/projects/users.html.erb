@@ -53,9 +53,6 @@
                     <thead>
                         <tr>
                             <th>Email</th>
-                            <% if current_user.is_admin? %>
-                            <th>Invited by</th>
-                            <% end %>
                             <th><%=t '.actions', :default => t("helpers.actions") %></th>
                         </tr>
                     </thead>
@@ -64,9 +61,6 @@
                         <% @other_users.each do |other_user| %>
                         <tr <% if !current_user.is_admin? %><% if other_user.member.invited_by != current_user.id %>style="display:none;"<% end%><% end%>>
                             <td><%= other_user.email %></td>
-                            <% if current_user.is_admin? %>
-                            <td><%= other_user.member.invited_by %></td>
-                            <% end %>
                             <td>
                             <%= link_to 'Add',
                             add_user_project_path(id: @project.id, user_id: other_user.id),

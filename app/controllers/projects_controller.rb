@@ -88,7 +88,7 @@ class ProjectsController < ApplicationController
   
   def users
     @project_users = @project.users.all
-    @other_users = User.where(is_admin: false) - (@project_users + [current_user])
+    @other_users = User.all - (@project_users + [current_user])
     @all_users = User.all
   end
 
@@ -96,12 +96,10 @@ class ProjectsController < ApplicationController
     @project_user = UserProject.new(user_id: params[:user_id], project_id: @project.id)
     respond_to do |format|
       if @project_user.save
-        format.html { redirect_to users_tenant_project_url(id: @project.id,
-        tenant_id: @project.tenant_id),
+        format.html { redirect_to users_project_url(id: @project.id),
         notice: 'User was successfully added to project' }
       else
-        format.html { redirect_to users_tenant_project_url(id: @project.id,
-        tenant_id: @project.tenant_id),
+        format.html { redirect_to users_project_url(id: @project.id),
         error: 'User was not added to project' }
       end
     end
@@ -115,6 +113,6 @@ class ProjectsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def project_params
-      params.require(:project).permit(:name, :user_id, :user_id, icons_attributes: [:id, :project_id, :icon])
+      params.require(:project).permit(:name, :user_id, icons_attributes: [:id, :project_id, :icon])
     end
 end
