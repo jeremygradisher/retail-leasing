@@ -41,7 +41,10 @@ gem 'carrierwave', '~> 2.0'
 gem 'mini_magick', '4.9.5'
 gem 'fog-aws'
 
+#for testing
 gem 'sql_queries_count'
+#for search
+gem 'ransack', '2.1.1'
 
 
 group :development, :test do

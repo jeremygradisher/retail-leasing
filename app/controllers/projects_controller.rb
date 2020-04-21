@@ -87,8 +87,14 @@ class ProjectsController < ApplicationController
   end
   
   def users
-    @project_users = @project.users.all
-    @other_users = User.all - (@project_users + [current_user])
+    #@project_users = @project.users.all
+    @query = @project.users.ransack(params[:q])
+    @project_users = @query.result(distinct: true)
+    
+    #@other_users = User.all - (@project_users + [current_user])
+    @q = User.where.not(is_admin: true).ransack(params[:q])
+    @other_users = @q.result(distinct: true) - (@project_users + [current_user])
+    
     @all_users = User.all
   end
 
