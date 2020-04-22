@@ -1,7 +1,9 @@
-<% if current_user %>
+<% if (current_user && (current_user.project_ids.include? @project.id)) || (current_user && current_user.is_admin?) %>
 <%- model_class = Project -%>
 <div class="page-header">
   <h1 style="float:left;"><%= @project.name %></h1>
+  
+  <% if current_user.is_admin? || current_user.role == 'Admin' || current_user.role == 'Editor' %>
   <%= link_to '+ Associate Area/Deal', new_areas_deal_path(:project_id => @project),
                     :class => 'btn btn-primary print-none',
                     :style => 'float:right;margin-top:20px;margin-right:10px;color:#fff;background-color:#16A3BA;border-color:#16A3BA;' %>
@@ -11,6 +13,8 @@
   <%= link_to '+ Add Deal', new_deal_path(:map_id => @map,:project_id => @project),
                     :class => 'btn btn-primary print-none',
                     :style => 'float:right;margin-top:20px;margin-right:10px;color:#fff;background-color:#16A3BA;border-color:#16A3BA;' %>
+  <% end %>
+
 <br style="clear:both;">
 </div>
 
@@ -45,6 +49,7 @@
 
 <br>
 <hr>
+<% if current_user.is_admin? || current_user.role == 'Admin' || current_user.role == 'Editor' %>
 <%= link_to t('.back', :default => t("helpers.links.back")),
               projects_path, :class => 'btn btn-default'  %>
 <%= link_to t('.edit', :default => t("helpers.links.edit")),
@@ -58,6 +63,7 @@
 <%= link_to '+ Add/Remove Project Users',
                   users_project_path(id: @project.id),
                   :class => 'btn btn-default responsive-none print-none', :style => 'float:right;margin-top:0;' %> 
+<% end %>
 <% else %>
- <h2>Must be logged in. <a href="/" class="btn btn-default">Return Home</a></h2>
+ <h2>You are not authorized to be here. <a href="/" class="btn btn-default">Return Home</a></h2>
 <% end %>

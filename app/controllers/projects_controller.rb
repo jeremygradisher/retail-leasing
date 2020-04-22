@@ -5,10 +5,12 @@ class ProjectsController < ApplicationController
   # GET /projects.json
   def index
     #@projects = Project.all
-    if current_user.is_admin?
-      @projects = Project.all
-    else
-      @projects = current_user.projects
+    if current_user
+      if current_user.is_admin?
+        @projects = Project.all
+      else
+        @projects = current_user.projects
+      end
     end
   end
 
