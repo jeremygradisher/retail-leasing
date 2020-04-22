@@ -12,13 +12,22 @@ body {margin:0 !important;}
 .sf-background {background: url(/images/sf-76.png);background-position: right top;
     background-repeat: no-repeat;background-size: auto 38px;}
 
-.btn-danger { color: #fff; background-color: #d13e27; border-color: #d13e27; }
 
+/* fixes for buttons     */
+.btn-danger { color: #fff; background-color: #d13e27; border-color: #d13e27; }
 .btn-primary, .btn-primary:visited,
 .btn-primary:hover {background-color:#231f20;border-color:#231f20;color:#fff;}
-
 .btn-danger, .btn-danger:visited,
 .btn-danger:hover {background-color:#d13e27;;border-color:#d13e27;;color:#fff;}
+//.btn-primary-altered {background-color:#d13e27;border-color: #d13e27;color:#fff;}
+//.btn-primary-altered:hover {background-color:#d13e27;border-color: #d13e27;color:#fff;}
 
-.btn-primary-altered {background-color:#d13e27;border-color: #d13e27;color:#fff;}
-.btn-primary-altered:hover {background-color:#d13e27;border-color: #d13e27;color:#fff;}
+/* fixes for portfolio */
+.project-panel-heading {background-size: cover;background-position: center center;}
+.project-panel-body { min-height:130px;}
+.project-panel-footer {}
+
+.add-btn { width:96%;margin-left:2%;margin-right:2%;height:100%;line-height:326px; }
+.add-col-height { height:326px; }
+.add-btn {background-color: #8cc63f;border-color: #8cc63f;}
+.add-btn:hover {background-color: #8cd73f;border-color: #8cd73f;}

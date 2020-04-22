@@ -89,7 +89,7 @@
       <%=f.error_span(:role) %>
     </div>
   
-<% elsif (current_user.member.role == 'Admin' && current_user.id != @member.id ) %>
+<% elsif (current_user.role == 'Admin' && current_user.id != @user.id ) %>
 
     <div class="form-group">
       <%= f.label :role, :class => 'control-label col-lg-2' %>
