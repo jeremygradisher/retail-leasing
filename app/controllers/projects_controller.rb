@@ -4,7 +4,12 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.json
   def index
-    @projects = Project.all
+    #@projects = Project.all
+    if current_user.is_admin?
+      @projects = Project.all
+    else
+      @projects = current_user.projects
+    end
   end
 
   # GET /projects/1
@@ -88,7 +93,7 @@ class ProjectsController < ApplicationController
   
   def users
     #@project_users = @project.users.all
-    @query = @project.users.ransack(params[:q])
+    @query = @project.users.where.not(is_admin: true).ransack(params[:q])
     @project_users = @query.result(distinct: true)
     
     #@other_users = User.all - (@project_users + [current_user])
