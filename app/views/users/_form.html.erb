@@ -77,6 +77,30 @@
   </div>
 
 
+
+<% if (current_user.is_admin?) %>
+
+    <div class="form-group">
+      <%= f.label :role, :class => 'control-label col-lg-2' %>
+      <div class="col-lg-10">
+        <%#= f.text_field :role, :class => 'form-control' %>
+        <%= f.select :role, ['User', 'Editor', 'Admin'], {include_blank:false}, :class => 'form-control' %>
+      </div>
+      <%=f.error_span(:role) %>
+    </div>
+  
+<% elsif (current_user.member.role == 'Admin' && current_user.id != @member.id ) %>
+
+    <div class="form-group">
+      <%= f.label :role, :class => 'control-label col-lg-2' %>
+      <div class="col-lg-10">
+        <%#= f.text_field :role, :class => 'form-control' %>
+        <%= f.select :role, ['User', 'Editor', 'Admin'], {include_blank:false}, :class => 'form-control' %>
+      </div>
+      <%=f.error_span(:role) %>
+    </div>
+
+<% end %>
   
   
 
