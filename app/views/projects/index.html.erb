@@ -38,6 +38,9 @@
           <% if (current_user && current_user.is_admin?) || (current_user && current_user.role == 'Admin') || (current_user && current_user.role == 'Editor')  %>
             <%= link_to t('.edit', :default => t("helpers.links.edit")),
                         edit_project_path(project), :class => 'btn btn-primary' %>
+          <% end %>
+          <% if (current_user && current_user.is_admin?) %>
+
             <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                         project_path(project),
                         :method => :delete,
