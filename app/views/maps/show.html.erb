@@ -35,6 +35,8 @@
               project_path(@project), :class => 'btn btn-default'  %>
 <%= link_to t('.edit', :default => t("helpers.links.edit")),
               edit_map_path(@map), :class => 'btn btn-primary' %>
+<% end %>   
+<% if current_user.is_admin? %>
 <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
               map_path(@map),
               :method => 'delete',
