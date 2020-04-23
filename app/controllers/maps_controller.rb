@@ -4,12 +4,9 @@ class MapsController < ApplicationController
   # GET /maps
   # GET /maps.json
   def index
-    #@maps = Map.all
     if current_user.is_admin?
       @maps = Map.all
     else
-      #@projects = current_user.projects
-      #@maps = current_user.project_ids.include? map.project_id
       @maps = Map.where(project_id: current_user.projects)
     end
   end
