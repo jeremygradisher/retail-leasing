@@ -4,7 +4,12 @@ class IconsController < ApplicationController
   # GET /icons
   # GET /icons.json
   def index
-    @icons = Icon.all
+    #@icons = Icon.all
+    if current_user.is_admin?
+      @icons = Icon.all
+    else
+      @icons = Icon.where(project_id: current_user.projects)
+    end
   end
 
   # GET /icons/1
