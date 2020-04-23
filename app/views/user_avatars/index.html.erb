@@ -1,4 +1,4 @@
-<% if current_user %>
+<% if (current_user && current_user.is_admin?) %>
 <p id="notice"><%= notice %></p>
 
 <h1>User Avatars</h1>
@@ -35,5 +35,5 @@
 
 
 <% else %>
- <h2>Must be logged in. <a href="/" class="btn btn-default">Return Home</a></h2>
+ <h2>You are not authorized to be here. <a href="/" class="btn btn-default">Return Home</a></h2>
 <% end %>
