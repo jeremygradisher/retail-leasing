@@ -4,7 +4,12 @@ class DealsController < ApplicationController
   # GET /deals
   # GET /deals.json
   def index
-    @deals = Deal.all
+    #@deals = Deal.all
+    if current_user.is_admin?
+      @deals = Deal.all
+    else
+      @deals = Deal.where(project_id: current_user.projects)
+    end
   end
 
   # GET /deals/1

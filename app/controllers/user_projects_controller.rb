@@ -4,7 +4,12 @@ class UserProjectsController < ApplicationController
   # GET /user_projects
   # GET /user_projects.json
   def index
-    @user_projects = UserProject.all
+    #@user_projects = UserProject.all
+    if current_user.is_admin?
+      @user_projects = UserProject.all
+    else
+      @user_projects = UserProject.where(project_id: current_user.projects)
+    end
   end
 
   # GET /user_projects/1

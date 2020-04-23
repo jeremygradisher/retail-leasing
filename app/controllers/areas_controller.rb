@@ -4,7 +4,12 @@ class AreasController < ApplicationController
   # GET /areas
   # GET /areas.json
   def index
-    @areas = Area.all
+    #@areas = Area.all
+    if current_user.is_admin?
+      @areas = Area.all
+    else
+      @areas = Area.where(project_id: current_user.projects)
+    end
   end
 
   # GET /areas/1

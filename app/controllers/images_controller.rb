@@ -4,7 +4,12 @@ class ImagesController < ApplicationController
   # GET /images
   # GET /images.json
   def index
-    @images = Image.all
+    #@images = Image.all
+    if current_user.is_admin?
+      @images = Image.all
+    else
+      @images = Image.where(project_id: current_user.projects)
+    end
   end
 
   # GET /images/1
@@ -69,6 +74,6 @@ class ImagesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def image_params
-      params.require(:image).permit(:map_id, :image, :width, :height)
+      params.require(:image).permit(:map_id, :project_id, :image, :width, :height)
     end
 end

@@ -1,4 +1,4 @@
-<%= form_for @map, :html => { :class => "form-horizontal map" } do |f| %>
+<%= form_for @map, :html => { :class => "form-horizontal map formatFunctions" } do |f| %>
 
   <% if @map.errors.any? %>
     <div id="error_expl" class="panel panel-danger">
@@ -33,14 +33,7 @@
     </div>
     <%=f.error_span(:user_id) %>
   </div>
-  <div class="form-group" style="display:none;">
-    <%= f.label :key, :class => 'control-label col-lg-2' %>
-    <div class="col-lg-10">
-      <%= f.text_field :key, :class => 'form-control' %>
-    </div>
-    <%=f.error_span(:key) %>
-  </div>
-  
+
   <div class="form-group">  
     <% if @images.exists? %>
       <%= f.label :map_image, 'Map Image', :class => 'control-label col-lg-2'  %>
@@ -66,7 +59,7 @@
          <div class="col-lg-10">
          <%= f.file_field :image, :multiple => false, name: "images[image][]",
           :class => 'form-control', onchange: "validateFiles(this);",
-          data: { max_file_size: 2.megabytes } %>
+          data: { max_file_size: 10.megabytes } %>
          </div>
     <% end %>
   </div> 
@@ -90,7 +83,7 @@
 <!-- This is a client side validation for the image -->
 <script>
   function validateFiles(inputFile) {
-  var maxExceededMessage = "This file exceeds the maximum allowed file size (2 MB)";
+  var maxExceededMessage = "This file exceeds the maximum allowed file size (10 MB)";
   var extErrorMessage = "Only image file with extensions: .jpg, .jpeg, .gif or .png are allowed";
   var allowedExtension = ["jpg", "jpeg", "gif", "png"];
 
@@ -115,3 +108,22 @@
   };
 }
 </script>
+
+<% if controller.action_name == "new" %>
+<script>
+  $(document).ready(function (){
+    validate();
+    $('#map_name, #map_image').change(validate);
+});
+
+function validate(){
+    if ($('#map_name').val().length   >   0   &&
+        $('#map_image').val().length    >   0) {
+        $("input[type=submit]").prop("disabled", false);
+    }
+    else {
+        $("input[type=submit]").prop("disabled", true);
+    }
+}
+</script>
+<% end %>
