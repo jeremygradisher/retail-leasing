@@ -5,6 +5,7 @@ class ImagesController < ApplicationController
   # GET /images.json
   def index
     @images = Image.all
+    
   end
 
   # GET /images/1
@@ -69,6 +70,6 @@ class ImagesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def image_params
-      params.require(:image).permit(:map_id, :image, :width, :height)
+      params.require(:image).permit(:map_id, :project_id, :image, :width, :height)
     end
 end
