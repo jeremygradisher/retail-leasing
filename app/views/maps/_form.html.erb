@@ -1,4 +1,4 @@
-<%= form_for @map, :html => { :class => "form-horizontal map" } do |f| %>
+<%= form_for @map, :html => { :class => "form-horizontal map formatFunctions" } do |f| %>
 
   <% if @map.errors.any? %>
     <div id="error_expl" class="panel panel-danger">
@@ -33,14 +33,7 @@
     </div>
     <%=f.error_span(:user_id) %>
   </div>
-  <div class="form-group" style="display:none;">
-    <%= f.label :key, :class => 'control-label col-lg-2' %>
-    <div class="col-lg-10">
-      <%= f.text_field :key, :class => 'form-control' %>
-    </div>
-    <%=f.error_span(:key) %>
-  </div>
-  
+
   <div class="form-group">  
     <% if @images.exists? %>
       <%= f.label :map_image, 'Map Image', :class => 'control-label col-lg-2'  %>
@@ -115,3 +108,5 @@
   };
 }
 </script>
+
+<%#= render :partial => 'calcjquery' %>

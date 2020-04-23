@@ -96,6 +96,6 @@ class MapsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def map_params
-      params.require(:map).permit(:name, :user_id, :project_id, images_attributes: [:id, :map_id, :image])
+      params.require(:map).permit(:name, :user_id, :project_id, images_attributes: [:id, :project_id, :map_id, :image])
     end
 end
