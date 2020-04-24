@@ -5,10 +5,12 @@ class IconsController < ApplicationController
   # GET /icons.json
   def index
     #@icons = Icon.all
-    if current_user.is_admin?
-      @icons = Icon.all
-    else
-      @icons = Icon.where(project_id: current_user.projects)
+    if current_user
+      if current_user.is_admin?
+        @icons = Icon.all
+      else
+        @icons = Icon.where(project_id: current_user.projects)
+      end
     end
   end
 
