@@ -5,10 +5,12 @@ class ImagesController < ApplicationController
   # GET /images.json
   def index
     #@images = Image.all
-    if current_user.is_admin?
-      @images = Image.all
-    else
-      @images = Image.where(project_id: current_user.projects)
+    if current_user
+      if current_user.is_admin?
+        @images = Image.all
+      else
+        @images = Image.where(project_id: current_user.projects)
+      end
     end
   end
 

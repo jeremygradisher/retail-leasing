@@ -5,10 +5,12 @@ class AreasDealsController < ApplicationController
   # GET /areas_deals.json
   def index
     #@areas_deals = AreasDeal.all
-    if current_user.is_admin?
-      @areas_deals = AreasDeal.all
-    else
-      @areas_deals = AreasDeal.where(project_id: current_user.projects)
+    if current_user
+      if current_user.is_admin?
+        @areas_deals = AreasDeal.all
+      else
+        @areas_deals = AreasDeal.where(project_id: current_user.projects)
+      end
     end
   end
 
