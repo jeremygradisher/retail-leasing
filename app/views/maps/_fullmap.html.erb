@@ -1,4 +1,4 @@
-<div id='map' class="mapshowmap" style="height:464px;"></div>
+<div id='map' class="mapshowmap" style="height:420px;"></div>
 
 <script>
 	//A Leaflet map has one CRS (and one CRS only), that can be changed when creating the map. 
@@ -50,6 +50,8 @@
     <% else %>
         map.setView(xy(<%= @image.width.to_i/2 %>, <%= @image.height.to_i/2 %>), .25);
     <% end %>
+    
+    map.addControl(new L.Control.Fullscreen());
     
     // Restrict view to bounds
 	//map.setMaxBounds(bounds);

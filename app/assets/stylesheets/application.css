@@ -12,6 +12,7 @@
  *
  *= require leaflet
  *= require leaflet-draw
+ *= require leaflet-fullscreen
  *= require_tree .
  *= require_self
  */
