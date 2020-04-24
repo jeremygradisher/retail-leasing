@@ -16,4 +16,5 @@
 //= require leaflet
 //= require leaflet-draw
 //= require leaflet-draw-drag
+//= require chartkick
 //= require_tree .

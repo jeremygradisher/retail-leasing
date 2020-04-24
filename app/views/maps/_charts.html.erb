@@ -1,0 +1,13 @@
+
+    <!-- this original way was messing up the colors -->
+    <%#= pie_chart @areas.group(:status).sum(:area_sqft), donut: true, library: {pieSliceText: "value", backgroundColor: "none", pieHole: 0.4, legend: {position: "none"}, slices: { '0': { color: '#D13E27' }, '1': { color: '#F16528' }, '2': { color: '#d7b920' }, '3': { color: '#89cadc' }, '4': { color: '#38b449' }, '5': { color: '#561871' }, '6': { color: '#337198' } }} %>
+    <center>
+    <div id="chart-9" style="height: 300px; width: 100%; text-align: center; color: #999; line-height: 300px; font-size: 14px; font-family: 'Lucida Grande', 'Lucida Sans Unicode', Verdana, Arial, Helvetica, sans-serif;">Loading...</div>
+    <script type="text/javascript">
+      //new Chartkick.PieChart("chart-9", {"01 Available":5300,"02 Lease Negotiation":7050,"05 Open for Business":4300,"06 Close-Out":1200,"07 Operating":1756}, {"donut":true,"library":{"pieSliceText":"value","backgroundColor":"none","pieHole":0.4,"legend":{"position":"none"},"slices":{"0":{"color":"#D13E27"},"1":{"color":"#F16528"},"2":{"color":"#d7b920"},"3":{"color":"#89cadc"},"4":{"color":"#38b449"},"5":{"color":"#561871"},"6":{"color":"#337198"}}}});
+      new Chartkick.PieChart("chart-9", {"01 Available":<%= @areas.where(status: "01 Available").sum(:area_sqft) %>,"02 Lease Negotiation":<%= @areas.where(status: "02 Lease Negotiation").sum(:area_sqft) %>,"03 Landlord Construction":<%= @areas.where(status: "03 Landlord Construction").sum(:area_sqft) %>,"04 Tenant Design":<%= @areas.where(status: "04 Tenant Design").sum(:area_sqft) %>,"05 Tenant Fit-Out":<%= @areas.where(status: "05 Tenant Fit-Out").sum(:area_sqft) %>,"06 Open for Business":<%= @areas.where(status: "06 Open for Business").sum(:area_sqft) %>,"07 Close-Out":<%= @areas.where(status: "07 Close-Out").sum(:area_sqft) %>,"08 Operating":<%= @areas.where(status: "08 Operating").sum(:area_sqft) %>}, {"donut":true,"library":{"pieSliceText":"value","backgroundColor":"none","pieHole":0.4,"legend":{"position":"none"},"slices":{"0":{"color":"#D13E27"},"1":{"color":"#F16528"},"2":{"color":"#E5BA21"},"3":{"color":"#24b9ae"},"4":{"color":"#c9e1f7"},"5":{"color":"#15958A"},"6":{"color":"#6e4db5"},"7":{"color":"#8BC53F"}}}});
+    </script>
+    
+    
+    <h3 style="margin-top:20px;margin-bottom:2px;"><%= number_with_delimiter(@areasquarefootage.compact.sum, :delimiter => ',') %> GLA (sf)</h3>
+    </center>

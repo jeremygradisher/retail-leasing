@@ -12,6 +12,12 @@ body {margin:0 !important;}
 .sf-background {background: url(/images/sf-76.png);background-position: right top;
     background-repeat: no-repeat;background-size: auto 38px;}
 
+/* fixes for page header */
+.page-header {
+    padding-bottom: 4px;
+    margin: 0px 0 20px;
+    border-bottom: 1px solid #eee;
+}
 
 /* fixes for buttons     */
 .btn-danger { color: #fff; background-color: #d13e27; border-color: #d13e27; }
