@@ -12,6 +12,12 @@ body {margin:0 !important;}
 .sf-background {background: url(/images/sf-76.png);background-position: right top;
     background-repeat: no-repeat;background-size: auto 38px;}
 
+/* fixes for page header */
+.page-header {
+    padding-bottom: 4px;
+    margin: 0px 0 20px;
+    border-bottom: 1px solid #eee;
+}
 
 /* fixes for buttons     */
 .btn-danger { color: #fff; background-color: #d13e27; border-color: #d13e27; }
@@ -53,3 +59,74 @@ body {margin:0 !important;}
     overflow: hidden;
     border-top: 1px solid #e9ecef;
 }
+
+/* print stuff */
+.print-only {display:none;}
+.print-only-inline {display:none;}
+.print-only-block {display:none;}
+.print-only-inline-block {display:none;}
+.print-only-table-row {display:none;}
+
+@media print {
+    
+  #tenant-collapse, #maps-collapse, #info-collapse {
+    display: block !important;
+    height: auto !important;
+}    
+  .print-none {display:none;}
+  .print-only {display:inherit;}
+  .print-only-inline {display:inline;}
+  .print-only-block {display:block;}
+  .print-only-inline-block {display:inline-block;}
+  .print-only-table-row {display:table-row;}
+  .leasing-information {color:#f00;}
+  .mapshowmap {float:center;width:100%;}
+  #legend {float:center;width:100%;}
+  #legend2 {float:center;width:100%;}
+  .no-break { page-break-inside: avoid; }
+  .print-color {color: #f00 !important;}
+  .stay100 {width:100px;}
+  .stay25percent {width:25%;}
+  #legend tr td {padding-top:10px;padding-bottom:10px;text-align:left;}
+  #legend2 tr td {padding-top:1px;padding-bottom:1px;text-align:left;}
+  a[href]:after {content: none !important;}
+  .btn {display:none;}
+  
+  .leased {color:#8BC53F !important;-webkit-print-color-adjust: exact;}
+  .at_lease {color:#15958A !important;-webkit-print-color-adjust: exact;}
+  .loi {color:#F16528 !important;-webkit-print-color-adjust: exact;}
+  .prospect {color:#E5BA21 !important;-webkit-print-color-adjust: exact;}
+  .available {color:#D13E27 !important;-webkit-print-color-adjust: exact;}
+  
+  .a01_available {color:#D13E27 !important;-webkit-print-color-adjust: exact;}
+  .a02_lease_negotiation {color:#F16528 !important;-webkit-print-color-adjust: exact;}
+  .a03_landlord_construction {color:#E5BA21 !important;-webkit-print-color-adjust: exact;}
+  .a04_tenant_design {color:#24b9ae !important;-webkit-print-color-adjust: exact;}
+  .a05_tenant_fit_out {color:#c9e1f7 !important;-webkit-print-color-adjust: exact;}
+  .a06_open_for_business {color:#15958A !important;-webkit-print-color-adjust: exact;}
+  .a07_close_out {color:#6e4a86 !important;-webkit-print-color-adjust: exact;}
+  .a08_operating {color:#8BC53F !important;-webkit-print-color-adjust: exact;}
+  
+  .challenged {color:#E5BA21 !important;-webkit-print-color-adjust: exact;}
+  .yes {color:#8BC53F !important;-webkit-print-color-adjust: exact;}
+  .no {color:#D13E27 !important;-webkit-print-color-adjust: exact;}
+  
+  .auto_gas {color:#66635f !important;-webkit-print-color-adjust: exact;}
+  .candy_confectionary {color:#f9ef7b !important;-webkit-print-color-adjust: exact;}
+  .department_store {color:#fed389 !important;-webkit-print-color-adjust: exact;}
+  .electronics {color:#be8b67 !important;-webkit-print-color-adjust: exact;}
+  .entertainment {color:#e62536 !important;-webkit-print-color-adjust: exact;}
+  .fashion {color:#67a5d7 !important;-webkit-print-color-adjust: exact;}
+  .food_beverage {color:#f7b131 !important;-webkit-print-color-adjust: exact;}
+  .footwear {color:#388b00 !important;-webkit-print-color-adjust: exact;}
+  .grocery_hypermarket {color:#b6cf42 !important;-webkit-print-color-adjust: exact;}
+  .home_furnishings {color:#f38a7c !important;-webkit-print-color-adjust: exact;}
+  .jewelry_handbags {color:#a6749c !important;-webkit-print-color-adjust: exact;}
+  .mobiles_accessories {color:#3a63a8 !important;-webkit-print-color-adjust: exact;}
+  .perfume_cosmetics {color:#ec4f92 !important;-webkit-print-color-adjust: exact;}
+  .pets {color:#e29423 !important;-webkit-print-color-adjust: exact;}
+  .services_specialty_stores {color:#efa1c5 !important;-webkit-print-color-adjust: exact;}
+  .sports_outdoor_fitness {color:#7ca180 !important;-webkit-print-color-adjust: exact;}
+  .toys_hobbies_gifts_books {color:#b2cce9 !important;-webkit-print-color-adjust: exact;}
+}
+/* print stuff */
