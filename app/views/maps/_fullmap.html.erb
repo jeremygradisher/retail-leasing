@@ -51,6 +51,7 @@
         map.setView(xy(<%= @image.width.to_i/2 %>, <%= @image.height.to_i/2 %>), .25);
     <% end %>
     
+    //for fullscreen
     map.addControl(new L.Control.Fullscreen());
     
     // Restrict view to bounds
