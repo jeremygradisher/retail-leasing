@@ -2,8 +2,9 @@
 <%- model_class = Map -%>
 <div class="page-header">
   <h1 style="float:left;"><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
-  <% if current_user.is_admin? || current_user.role == 'Admin' || current_user.role == 'Editor' %>
+  <h1 style="float:left;"><%= @map.name %></h1>
   
+  <% if current_user.is_admin? || current_user.role == 'Admin' || current_user.role == 'Editor' %>
   <%= link_to '+ Associate Area/Deal', new_areas_deal_path(:project_id => @project),
                     :class => 'btn btn-primary print-none',
                     :style => 'float:right;margin-top:20px;margin-right:10px;color:#fff;background-color:#16A3BA;border-color:#16A3BA;' %>
