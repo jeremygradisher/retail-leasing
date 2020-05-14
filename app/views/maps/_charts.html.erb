@@ -1,4 +1,30 @@
 
+    
+    
+    
+<div class="row" id="areaStatusRow">
+  <div class="col-xs-5" style="text-align:center;">
+    <!-- this original way was messing up the colors -->
+    <%#= pie_chart @areas.group(:status).size, donut: true, library: {pieSliceText: "value", backgroundColor: "none", pieHole: 0.4, legend: {position: "none"}, slices: [{color: '#D13E27'}, {color: '#F16528'}, {color: '#d7b920'}, {color: '#89cadc'}, {color: '#38b449'}, {color: '#561871'}, {color: '#337198'}]} %>
+
+    <div id="chart-8" style="height: 300px; width: 100%; text-align: center; color: #999; line-height: 300px; font-size: 14px; font-family: 'Lucida Grande', 'Lucida Sans Unicode', Verdana, Arial, Helvetica, sans-serif;">Loading...</div>
+    <script type="text/javascript">
+      new Chartkick.PieChart("chart-8", {"01 Available":<%= @areas.where(status: "01 Available").size %>,
+      "02 Lease Negotiation":<%= @areas.where(status: "02 Lease Negotiation").size %>, 
+      "03 Landlord Construction":<%= @areas.where(status: "03 Landlord Construction").size %>,
+      "04 Tenant Design":<%= @areas.where(status: "04 Tenant Design").size %>, 
+      "05 Tenant Fit-Out":<%= @areas.where(status: "05 Tenant Fit-Out").size %>, 
+      "06 Open for Business":<%= @areas.where(status: "06 Open for Business").size %>,
+      "07 Close-Out":<%= @areas.where(status: "07 Close-Out").size %>,
+      "08 Operating":<%= @areas.where(status: "08 Operating").size %>}, 
+      {"donut":true,"library":{"pieSliceText":"value","backgroundColor":"none","pieHole":0.4,
+      "legend":{"position":"none"},
+      "slices":[{"color":"#D13E27"},{"color":"#F16528"},{"color":"#E5BA21"},{"color":"#24b9ae"},{"color":"#c9e1f7"},{"color":"#15958A"},{"color":"#6e4a86"},{"color":"#8BC53F"}]}});
+    </script>  
+    
+    <h3 style="margin-top:20px;margin-bottom:2px;">Tenants: <%= @tenants %></h3>
+  </div>
+  <div class="col-xs-4" style="text-align:center;">
     <!-- this original way was messing up the colors -->
     <%#= pie_chart @areas.group(:status).sum(:area_sqft), donut: true, library: {pieSliceText: "value", backgroundColor: "none", pieHole: 0.4, legend: {position: "none"}, slices: { '0': { color: '#D13E27' }, '1': { color: '#F16528' }, '2': { color: '#d7b920' }, '3': { color: '#89cadc' }, '4': { color: '#38b449' }, '5': { color: '#561871' }, '6': { color: '#337198' } }} %>
     <center>
@@ -11,3 +37,17 @@
     
     <h3 style="margin-top:20px;margin-bottom:2px;"><%= number_with_delimiter(@areasquarefootage.compact.sum, :delimiter => ',') %> GLA (sf)</h3>
     </center>
+  </div>
+  <div class="col-xs-2" style="text-align:center;">
+    <table id="legend" style="opacity:0.8;margin-top:50px;" class="no-break">
+      <tr><td><i class="fa fa-certificate" style="color:#D13E27 !important;"></i> 01 Available <%#= number_to_percentage(@availablepercent * 100, precision: 0) %></td></tr>
+      <tr><td><i class="fa fa-certificate" style="color:#F16528 !important;"></i> 02 Lease Negotiation <%#= number_to_percentage(@llconstructionpercent * 100, precision: 0) %></td></tr>
+      <tr><td><i class="fa fa-certificate" style="color:#E5BA21 !important;"></i> 03 Landlord Construction <%#= number_to_percentage(@tenantdesignpercent * 100, precision: 0) %></td></tr>
+      <tr><td><i class="fa fa-certificate" style="color:#24b9ae !important;"></i> 04 Tenant Design  <%#= number_to_percentage(@tenantfitoutpercent * 100, precision: 0) %></td></tr>
+      <tr><td><i class="fa fa-certificate" style="color:#c9e1f7 !important;"></i> 05 Tenant Fit-Out  <%#= number_to_percentage(@openforbusinesspercent * 100, precision: 0) %></td></tr>
+      <tr><td><i class="fa fa-certificate" style="color:#15958A !important;"></i> 06 Open for Business  <%#= number_to_percentage(@closeoutpercent * 100, precision: 0) %></td></tr>
+      <tr><td><i class="fa fa-certificate" style="color:#6e4a86 !important;"></i> 07 Close-Out  <%#= number_to_percentage(@operatingpercent * 100, precision: 0) %></td></tr>
+      <tr><td><i class="fa fa-certificate" style="color:#8BC53F !important;"></i> 08 Operating  <%#= number_to_percentage(@operatingpercent * 100, precision: 0) %></td></tr>
+    </table>  
+  </div>
+</div>
