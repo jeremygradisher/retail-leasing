@@ -4,4 +4,7 @@ class Deal < ApplicationRecord
   
   has_many :areas_deals, :dependent => :destroy
   has_many :areas, through: :areas_deals
+  
+  has_many :dealimages, dependent: :destroy
+  accepts_nested_attributes_for :dealimages
 end
