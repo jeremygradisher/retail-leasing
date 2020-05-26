@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  deal_id: 1
+  dealimage: MyString
+  deal: one
+
+two:
+  deal_id: 1
+  dealimage: MyString
+  deal: two
