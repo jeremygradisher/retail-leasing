@@ -42,13 +42,12 @@ class DealimagesController < ApplicationController
   def update
     respond_to do |format|
       if @dealimage.update(dealimage_params)
-        format.html { redirect_to @dealimage, notice: 'Dealimage was successfully updated.' }
-        format.json { render :show, status: :ok, location: @dealimage }
+        format.html { redirect_to @dealimage.deal, notice: 'Deal image was successfully updated.' }
+        format.json { render :show, status: :ok, location: @image }
       else
         format.html { render :edit }
-        format.json { render json: @dealimage.errors, status: :unprocessable_entity }
+        format.json { render json: @image.errors, status: :unprocessable_entity }
       end
-    end
   end
 
   # DELETE /dealimages/1
@@ -56,7 +55,7 @@ class DealimagesController < ApplicationController
   def destroy
     @dealimage.destroy
     respond_to do |format|
-      format.html { redirect_to dealimages_url, notice: 'Dealimage was successfully destroyed.' }
+      format.html { redirect_to @dealimage.deal, notice: 'Deal image was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

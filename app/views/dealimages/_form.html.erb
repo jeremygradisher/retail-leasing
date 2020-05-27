@@ -29,6 +29,29 @@
     </div>
     <%=f.error_span(:dealimage) %>
   </div>
+  
+  
+  <%= image_tag @dealimage.dealimage, :style => 'max-width:300px;padding:20px;' %>
+    <%= form_for(@dealimage) do |f| %>
+      <% if @dealimage.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@dealimage.errors.count, "error") %> prohibited this dealimage from being saved:</h2>
+  
+        <ul>
+        <% @dealimage.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+      <div class="field">
+        <%= f.label :dealimage %><br>
+        <%= f.file_field :dealimage, :id => "image_picture" %>
+      </div>
+      <div class="actions">
+        <%= f.submit %>
+      </div>
+  <% end %>
 
   <div class="form-group">
     <div class="col-lg-offset-2 col-lg-10">
