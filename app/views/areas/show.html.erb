@@ -31,7 +31,20 @@
   <dd>
       <% if @area.deals.count > 0 %>
         <% @area.deals.each do |deal| %><%= deal.deal_name %><br><% end %>
-      <% else %>There are no deals associated.<% end %></dd>
+      <% else %>There are no deals associated.<% end %>
+  </dd>
+  
+  <dt><strong><%= model_class.human_attribute_name(:associated_deal) %>:</strong></dt>
+  <dd>
+    <% if @area.deals.count > 0 %>
+      <% if @area.deals.first.dealimages.blank? %>
+        <%= link_to image_tag('/images/status-plan-logo.png', :style => 'width:300px !important;float:left;margin-top:20px;margin-bottom:20px;'), deal_path(@area.deals.first) %>
+      <% else %>
+        <%= link_to image_tag(@area.deals.first.dealimages.first.dealimage_url, :style => 'width:300px !important;float:left;'), area_path(@area) %>
+      <% end %>
+    <% end %>
+      
+  </dd>
   
   <dt><strong><%= model_class.human_attribute_name(:area_sqft) %>:</strong></dt>
   <dd><%= number_with_delimiter(@area.area_sqft, :delimiter => ',') %></dd>
