@@ -18,17 +18,22 @@ class DealsController < ApplicationController
   # GET /deals/1.json
   def show
     @project = @deal.project_id
+    @dealimages = @deal.dealimages.all
   end
 
   # GET /deals/new
   def new
     @deal = Deal.new
     @project = Project.find(params[:project_id])
+    @dealimage = @deal.dealimages.build
+    @dealimages = @deal.dealimages.all
   end
 
   # GET /deals/1/edit
   def edit
     @project = Project.find(@deal.project_id)
+    @dealimage = @deal.dealimages.build
+    @dealimages = @deal.dealimages.all
   end
 
   # POST /deals
@@ -38,6 +43,11 @@ class DealsController < ApplicationController
 
     respond_to do |format|
       if @deal.save
+        if params.has_key?(:dealimages)
+           params[:dealimages]['dealimage'].each do |a|
+              @dealimage = @deal.dealimages.create!(:dealimage => a)
+           end
+        end
         format.html { redirect_to @deal, notice: 'Deal was successfully created.' }
         format.json { render :show, status: :created, location: @deal }
       else
@@ -52,6 +62,11 @@ class DealsController < ApplicationController
   def update
     respond_to do |format|
       if @deal.update(deal_params)
+        if params.has_key?(:dealimages)
+           params[:dealimages]['dealimage'].each do |a|
+              @dealimage = @deal.dealimages.create!(:dealimage => a)
+           end
+        end
         format.html { redirect_to @deal, notice: 'Deal was successfully updated.' }
         format.json { render :show, status: :ok, location: @deal }
       else
@@ -79,6 +94,6 @@ class DealsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def deal_params
-      params.require(:deal).permit(:deal_name, :gross_area, :net_rentable_area, :lease_status, :map_id, :project_id)
+      params.require(:deal).permit(:deal_name, :gross_area, :net_rentable_area, :lease_status, :map_id, :project_id, dealimages_attributes: [:id, :deal_id, :dealimage])
     end
 end
