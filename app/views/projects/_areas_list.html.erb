@@ -6,10 +6,10 @@
       style='float:right;margin-left:10px;margin-top:12px;'><i class="fa fa-chevron-down"></i></button>
       
       <% if current_user.is_admin? || current_user.role == 'Admin' || current_user.role == 'Editor' %>
-          <%= link_to '+ Add space', new_area_path(:map_id => @map), :class => 'btn btn-primary responsive-none print-none responsive-none print-none', :style => 'float:right;margin-top:12px;' %>
+          <%= link_to '+ Add Space', new_area_path(:map_id => @map,:project_id => @project), :class => 'btn btn-primary responsive-none print-none responsive-none print-none', :style => 'float:right;margin-top:12px;' %>
       <% end %>
       
-      <h1>Tenant Areas</h1>
+      <h1>Spaces</h1>
     </div>
     
     <div id="areas-collapse" class="collapse">    
