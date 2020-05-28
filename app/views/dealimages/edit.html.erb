@@ -4,5 +4,6 @@
 
 <%#= link_to 'Show', @dealimage %>
 <%#= link_to 'Back', dealimages_path %>
+
 <%= link_to t('.back', :default => t("helpers.links.back")),
-                      @dealimage.deal.area, :class => 'btn btn-default'  %>
+                      @dealimage.deal.areas.first, :class => 'btn btn-default'  %>

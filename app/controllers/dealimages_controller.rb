@@ -48,6 +48,7 @@ class DealimagesController < ApplicationController
         format.html { render :edit }
         format.json { render json: @image.errors, status: :unprocessable_entity }
       end
+    end
   end
 
   # DELETE /dealimages/1
