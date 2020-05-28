@@ -30,7 +30,9 @@
   <dt><strong><%= model_class.human_attribute_name(:deal_titles) %>:</strong></dt>
   <dd>
       <% if @area.deals.count > 0 %>
-        <% @area.deals.each do |deal| %><%= link_to deal.deal_name, deal %><br><% end %>
+        <% @area.deals.each do |deal| %>
+          <%= link_to deal.deal_name, deal %> | Areas/Deals Associations: <%= deal.areas_deals.ids %><br>
+        <% end %>
       <% else %>There are no deals associated.<% end %>
   </dd>
   

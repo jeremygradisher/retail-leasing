@@ -62,6 +62,14 @@
 <br>
 <hr>
 
+<div class="row /*print-none*/" style="">
+  <%= render '/projects/areas_list' %>
+  <%= render '/projects/deals_list' %>
+</div>
+
+<br>
+<hr>
+
 <%= link_to t('.back', :default => t("helpers.links.back")),
               root_path, :class => 'btn btn-default'  %>
 
