@@ -28,6 +28,7 @@ class ProjectsController < ApplicationController
       @areas = @map.areas.all
       @deals = Deal.where(map_id: @map.id)
       @areasquarefootage = Area.where(project_id: params[:id]).pluck(:area_sqft)
+      @areas_deals = AreasDeal.where(project_id: params[:id]).all
     end
     @tenants = Area.where(project_id: params[:id]).size
   end
