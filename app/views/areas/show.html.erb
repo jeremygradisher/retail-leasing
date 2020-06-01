@@ -31,7 +31,12 @@
   <dd>
       <% if @area.deals.count > 0 %>
         <% @area.deals.each do |deal| %>
-          <%= link_to deal.deal_name, deal %> | Areas/Deals Associations: <%= deal.areas_deals.ids %><br>
+          <%= link_to deal.deal_name, deal %> <%#= AreasDeal.where(deal_id: deal, area_id: @area).ids %> 
+          <%= link_to '<i class="fa fa-minus-square"></i>'.html_safe,
+                      areas_deal_path(AreasDeal.where(deal_id: deal, area_id: @area).ids),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => '/*btn btn-danger*/' %><br>
         <% end %>
       <% else %>There are no deals associated.<% end %>
   </dd>

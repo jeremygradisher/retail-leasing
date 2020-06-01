@@ -67,9 +67,10 @@ class AreasDealsController < ApplicationController
   # DELETE /areas_deals/1
   # DELETE /areas_deals/1.json
   def destroy
+    @project = Project.find(@areas_deal.project_id)
     @areas_deal.destroy
     respond_to do |format|
-      format.html { redirect_to areas_deals_url, notice: 'Areas deal was successfully destroyed.' }
+      format.html { redirect_to @project, notice: 'Areas deal was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
