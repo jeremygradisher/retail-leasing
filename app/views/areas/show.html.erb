@@ -35,6 +35,7 @@
           <%= link_to '<i class="fa fa-minus-square"></i>'.html_safe,
                       areas_deal_path(AreasDeal.where(deal_id: deal, area_id: @area).ids),
                       :method => :delete,
+                      :title => 'Remove Association',
                       :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
                       :class => '/*btn btn-danger*/' %><br>
         <% end %>
