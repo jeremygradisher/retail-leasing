@@ -41,6 +41,9 @@
         <% end %>
       <% else %>There are no deals associated.<% end %>
   </dd>
+  
+  <br>
+  <%= render :partial => 'add_deal_association' %>
 
   <dt><strong><%= model_class.human_attribute_name(:deal_image) %>:</strong></dt>
   <dd>
@@ -51,7 +54,6 @@
         <%= link_to image_tag(@area.deals.first.dealimages.first.dealimage_url, :style => 'width:300px !important;float:left;'), deal_path(@area.deals.first) %>
       <% end %>
     <% end %>
-      
   </dd>
   
   <dt><strong><%= model_class.human_attribute_name(:area_sqft) %>:</strong></dt>
@@ -70,7 +72,7 @@
   <dd><%= @area.coords %></dd>
 </dl>
 
-<%= link_to t('.back', :default => t("helpers.links.back")),
+<%= link_to "<= Project",
               project_path(@area.project_id), :class => 'btn btn-default'  %>
 <% if (current_user && current_user.is_admin?) || (current_user && current_user.role == 'Admin' && (current_user.project_ids.include? @area.project_id)) || (current_user && current_user.role == 'Editor' && (current_user.project_ids.include? @area.project_id)) %>
 

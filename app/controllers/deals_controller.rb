@@ -17,8 +17,11 @@ class DealsController < ApplicationController
   # GET /deals/1
   # GET /deals/1.json
   def show
-    @project = @deal.project_id
+    #@project = @deal.project_id
+    @project = Project.find(@deal.project_id)
     @dealimages = @deal.dealimages.all
+    
+    @areas_deal = AreasDeal.new
   end
 
   # GET /deals/new
