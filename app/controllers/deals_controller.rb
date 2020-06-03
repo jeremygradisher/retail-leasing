@@ -22,6 +22,7 @@ class DealsController < ApplicationController
     @dealimages = @deal.dealimages.all
     
     @areas_deal = AreasDeal.new
+    @otherareas = @project.areas.all - @deal.areas
   end
 
   # GET /deals/new
