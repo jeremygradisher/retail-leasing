@@ -71,7 +71,7 @@
   <dd><%= @area.coords %></dd>
 </dl>
 
-<%= link_to t('.back', :default => t("helpers.links.back")),
+<%= link_to "<= back to Project",
               project_path(@area.project_id), :class => 'btn btn-default'  %>
 <% if (current_user && current_user.is_admin?) || (current_user && current_user.role == 'Admin' && (current_user.project_ids.include? @area.project_id)) || (current_user && current_user.role == 'Editor' && (current_user.project_ids.include? @area.project_id)) %>
 
