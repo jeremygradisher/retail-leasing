@@ -40,7 +40,7 @@ class AreasDealsController < ApplicationController
 
     respond_to do |format|
       if @areas_deal.save
-        format.html { redirect_to @areas_deal, notice: 'Areas deal was successfully created.' }
+        format.html { redirect_to @project, notice: 'Areas deal was successfully created.' }
         format.json { render :show, status: :created, location: @areas_deal }
       else
         format.html { render :new }
