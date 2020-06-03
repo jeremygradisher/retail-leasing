@@ -21,7 +21,7 @@
 
 <div style="width:200px;float:left;padding-right:5px;margin-bottom:20px;">
     <%= f.number_field :area_id, value: params[:id], :class => 'form-control', :style => 'display:none;' %>
-    <%= f.select :deal_id, @project.deals.all.map{ |d| [d.deal_name, d.id] }, {include_blank: false}, :class => 'form-control', :style => 'height:40px;' %>
+    <%= f.select :deal_id, @otherdeals.map{ |d| [d.deal_name, d.id] }, {include_blank: false}, :class => 'form-control', :style => 'height:40px;' %>
     <%= f.number_field :project_id, value: @area.project_id, :class => 'form-control', :style => 'display:none;' %>
 
     <%=f.error_span(:area_id) %>
