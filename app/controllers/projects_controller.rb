@@ -33,7 +33,7 @@ class ProjectsController < ApplicationController
     @tenants = Area.where(project_id: params[:id]).size
     
     @areas_deal = AreasDeal.new
-    @otherdeals = @project.deals.all
+    @deals = @project.deals.all
   end
 
   # GET /projects/new
