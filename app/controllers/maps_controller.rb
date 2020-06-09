@@ -20,6 +20,9 @@ class MapsController < ApplicationController
     @image = @map.images.first
     @project = Project.find(@map.project_id)
     @mapareas = @map.areas.all
+    
+    @areas_deal = AreasDeal.new
+    @deals = @project.deals.all
   end
 
   # GET /maps/new
