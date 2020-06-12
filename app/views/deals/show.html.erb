@@ -33,9 +33,11 @@
         <% end %>
       <% else %>There are no areas associated.<% end %></dd>
   
+  
+  <% if current_user.is_admin? || current_user.role == 'Admin' || current_user.role == 'Editor' %>
   <br>
   <%= render :partial => 'add_area_association' %>
-  
+  <% end %>
   
   <dt><strong><%= model_class.human_attribute_name(:gross_area) %>:</strong></dt>
   <dd><%= number_with_delimiter(@deal.gross_area, :delimiter => ',') %></dd>
