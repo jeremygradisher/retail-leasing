@@ -10,17 +10,56 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200526200235) do
+ActiveRecord::Schema.define(version: 20200806202914) do
 
   create_table "areas", force: :cascade do |t|
     t.string   "suite_number"
     t.integer  "map_id"
     t.string   "status"
     t.string   "coords"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
     t.integer  "project_id"
     t.integer  "area_sqft"
+    t.string   "address"
+    t.text     "landlord_plan_notes"
+    t.string   "tenant_approval"
+    t.text     "area_comments"
+    t.string   "system_type"
+    t.integer  "quantity"
+    t.string   "unit_brand"
+    t.string   "unit_voltage"
+    t.string   "pipe_system"
+    t.string   "voltage"
+    t.string   "main_amperage"
+    t.string   "transformer"
+    t.string   "sub_panel_amperage"
+    t.string   "conduit_size"
+    t.string   "electric_meter_number"
+    t.string   "electric_meter_install_date"
+    t.string   "electric_meter_transfer_date"
+    t.integer  "restrooms"
+    t.string   "sanitary_size"
+    t.string   "sanitary_type"
+    t.string   "vent_size"
+    t.string   "water_size"
+    t.string   "water_meter_number"
+    t.string   "sub_meter_number"
+    t.string   "sub_meter_install_date"
+    t.string   "sub_meter_transfer_date"
+    t.string   "gas_size"
+    t.string   "gas_meter"
+    t.string   "gas_meter_install_date"
+    t.string   "gas_meter_transfer_date"
+    t.string   "grease_size"
+    t.integer  "tonnage"
+    t.integer  "vav_size"
+    t.integer  "conduit_quantity"
+    t.string   "telephone_conduit_size"
+    t.string   "telephone_conduit_quantity"
+    t.string   "pipe_system_note"
+    t.float    "area_budget_rate"
+    t.string   "service_door_quantity"
     t.index ["map_id"], name: "index_areas_on_map_id"
     t.index ["project_id"], name: "index_areas_on_project_id"
   end

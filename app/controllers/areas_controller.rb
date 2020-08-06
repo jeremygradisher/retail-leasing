@@ -95,6 +95,6 @@ class AreasController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def area_params
-      params.require(:area).permit(:suite_number, :map_id, :project_id, :status, :coords, :map_id, :area_sqft)
+      params.require(:area).permit(:suite_number, :map_id, :project_id, :status, :coords, :map_id, :area_sqft, :address, :landlord_plan_notes, :tenant_approval, :area_comments, :system_type, :quantity, :unit_brand, :unit_voltage, :pipe_system, :voltage, :main_amperage, :transformer, :sub_panel_amperage, :conduit_size, :electric_meter_number, :electric_meter_install_date, :electric_meter_transfer_date, :restrooms, :sanitary_size, :sanitary_type, :vent_size, :water_size, :water_meter_number, :sub_meter_number, :sub_meter_install_date, :sub_meter_transfer_date, :gas_size, :gas_meter, :gas_meter_install_date, :gas_meter_transfer_date, :grease_size, :tonnage, :vav_size, :conduit_quantity, :telephone_conduit_size, :telephone_conduit_quantity, :pipe_system_note, :area_budget_rate, :service_door_quantity)
     end
 end
