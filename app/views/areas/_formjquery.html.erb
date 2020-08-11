@@ -40,7 +40,7 @@
         //make sure your float is fixed number with two decimal places
         var areabudgetratefixed = areabudgetrate.toFixed(2);
         //add $ and make sure commas are correct
-        var areabudgetrateformatted = '$' + areabudgetratefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        var areabudgetrateformatted = areabudgetratefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
         //change # to total
         $("#area_area_budget_rate").val(areabudgetrateformatted);
         //this input field is saved as a string
