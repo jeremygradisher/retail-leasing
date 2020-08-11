@@ -90,7 +90,6 @@
       <%= f.select :status, ['01 Available', '02 Lease Negotiation', '03 Landlord Construction', '04 Tenant Design', '05 Tenant Fit-Out', '06 Open for Business', '07 Close-Out', '08 Operating'], {include_blank:false}, :class => 'form-control' %>
     </div>
     <%=f.error_span(:status) %>
-
   </div>
 
   <div class="form-group">
@@ -99,6 +98,14 @@
       <%= f.text_field :address, :class => 'form-control' %>
     </div>
     <%=f.error_span(:address) %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :area_budget_rate, 'Area Budget Rate', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%= f.text_field :area_budget_rate, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:area_budget_rate) %>
   </div>
 
 
@@ -392,11 +399,34 @@
     <table class="report-table" style="border:none;">
       <tr>
         <td style="text-align:center;color:#fff;background-color:#231f20;border:none;">
-          Technical Information (Fire Protection)
+          Technical Information (Other)
         </td>
       </tr>
     </table>
   </div>
+  
+  <div class="form-group">
+    <%= f.label :tenant_approval, 'Tenant Approval', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%= f.text_field :tenant_approval, 'data-provide' => 'datepicker', :class => 'form-control', :placeholder => 'mm/dd/yyyy' %>
+    </div>
+    <%=f.error_span(:tenant_approval) %>
+    
+    <%= f.label :service_door_quantity, 'Service Door Quantity', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%= f.number_field :service_door_quantity, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:service_door_quantity) %>
+    
+    <%= f.label :restrooms, 'Restrooms', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%= f.text_field :restrooms, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:restrooms) %>
+  </div> 
+  
+    
+  
 <!-- END Technical Information additions -->
 
 </div><!-- END collapse form -->
