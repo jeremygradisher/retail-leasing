@@ -60,6 +60,24 @@ body {margin:0 !important;}
     border-top: 1px solid #e9ecef;
 }
 
+/* form stuff   */
+table.report-table {
+    width:100%;
+    border: 1px solid #ddd;
+    margin-bottom:20px;
+}
+
+table.report-table-less {
+    width: 100%;
+    border: 1px solid #ddd;
+    margin-bottom: 6px;
+}
+
+table.report-table tr td, table.report-table tr th, table.report-table-less tr td, table.report-table-less tr th {
+    border: 1px solid #ddd;
+    padding:4px;
+}
+
 /* print stuff */
 .print-only {display:none;}
 .print-only-inline {display:none;}

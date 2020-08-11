@@ -15,56 +15,85 @@
     </div>
   <% end %>
 
+<!-- Hidden form fields -->  
+  <div class="form-group" style="display:none;">
+    <hr>
+    <div class="row">
+      <div class="col-lg-12" style="text-align:center;">
+        *These fields are (or will be) hidden
+      </div>
+    </div>
+    <hr>
+    
+    <div class="row">
+      <%= f.label :map_id, :class => 'control-label col-lg-2' %>
+      <div class="col-lg-2">
+        <% if controller.action_name == "new" %>
+        <%= f.number_field :map_id, value: params[:map_id], :class => 'form-control' %>
+        <% else %>
+        <%= f.number_field :map_id, :class => 'form-control' %>
+        <% end %>
+      </div>
+      <%=f.error_span(:map_id) %>
+  
+      <%= f.label :project_id, :class => 'control-label col-lg-2' %>
+      <div class="col-lg-2">
+        <% if controller.action_name == "new" %>
+          <%= f.number_field :project_id, value: params[:project_id], :class => 'form-control' %>
+        <% else %>
+          <%= f.number_field :project_id, :class => 'form-control' %>
+        <% end %>
+      </div>
+      <%=f.error_span(:project_id) %>
+    </div>
+
+  </div>
+  
+  <div class="row" style="display:none;">
+    <div class="form-group">
+      <%= f.label :coords, :class => 'control-label col-lg-2' %>
+      <div class="col-lg-10">
+        <%= f.text_field :coords, :class => 'form-control' %>
+      </div>
+      <%=f.error_span(:coords) %>
+    </div>
+  </div>
+  <hr style="display:none;">
+<!-- END Hidden form fields -->
+
   <div class="form-group">
-    <%= f.label :suite_number, :class => 'control-label col-lg-2' %>
+    <table class="report-table">
+      <tr>
+        <td style="text-align:center;color:#210f5b;background-color:#fff;">
+          General
+        </td>
+      </tr>
+    </table>
+  </div>
+    
+  <div class="form-group">
+    <%= f.label :suite_number, 'Suite #', :class => 'control-label col-lg-2' %>
     <div class="col-lg-2">
       <%= f.text_field :suite_number, :class => 'form-control' %>
     </div>
     <%=f.error_span(:suite_number) %>
 
-    <%= f.label :map_id, :class => 'control-label col-lg-2' %>
+    <%= f.label :area_sqft, 'Area SqFt', :class => 'control-label col-lg-2' %>
     <div class="col-lg-2">
-      <% if controller.action_name == "new" %>
-      <%= f.number_field :map_id, value: params[:map_id], :class => 'form-control' %>
-      <% else %>
-      <%= f.number_field :map_id, :class => 'form-control' %>
-      <% end %>
+        <%= f.text_field :area_sqft, :class => 'form-control required sf-background' %>
     </div>
-    <%=f.error_span(:map_id) %>
+    <%=f.error_span(:area_sqft) %>
 
-    <%= f.label :project_id, :class => 'control-label col-lg-2' %>
-    <div class="col-lg-2">
-      <% if controller.action_name == "new" %>
-        <%= f.number_field :project_id, value: params[:project_id], :class => 'form-control' %>
-      <% else %>
-        <%= f.number_field :project_id, :class => 'form-control' %>
-      <% end %>
-    </div>
-    <%=f.error_span(:project_id) %>
-  </div>
-  
-  <div class="form-group">
-    <%= f.label :status, :class => 'control-label col-lg-2' %>
+    <%= f.label :area_status, 'Area Status', :class => 'control-label col-lg-2' %>
     <div class="col-lg-2">
       <%#= f.text_field :status, :class => 'form-control' %>
       <%= f.select :status, ['01 Available', '02 Lease Negotiation', '03 Landlord Construction', '04 Tenant Design', '05 Tenant Fit-Out', '06 Open for Business', '07 Close-Out', '08 Operating'], {include_blank:false}, :class => 'form-control' %>
     </div>
     <%=f.error_span(:status) %>
-    
-    <%= f.label :area_sqft, :class => 'control-label col-lg-2' %>
-    <div class="col-lg-2">
-        <%= f.text_field :area_sqft, :class => 'form-control required sf-background' %>
-    </div>
-    <%=f.error_span(:area_sqft) %>
+
   </div>
   
-  <div class="form-group">
-    <%= f.label :coords, :class => 'control-label col-lg-2' %>
-    <div class="col-lg-10">
-      <%= f.text_field :coords, :class => 'form-control' %>
-    </div>
-    <%=f.error_span(:coords) %>
-  </div>
+
 
   <div class="form-group">
     <div class="col-lg-offset-2 col-lg-10">
