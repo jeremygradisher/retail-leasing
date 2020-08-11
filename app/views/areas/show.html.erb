@@ -12,24 +12,26 @@
 </div>
 
 <div class="row">
-  <div class="col-xs-10 col-xs-offset-1">
+  <div class="col-xs-5 col-xs-offset-1">
     <%= render 'areamap' %>
   </div>
-</div>
-
-<br>
-<hr>
-
-<dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:suite_number) %>:</strong></dt>
-  <dd><%= @area.suite_number %></dd>
-  
-  <dt><strong><%= model_class.human_attribute_name(:associated_deals) %>:</strong></dt>
-  <dd><%= @area.areas_deals.count %></dd>
-  
-  <dt><strong><%= model_class.human_attribute_name(:deal_titles) %>:</strong></dt>
-  <dd>
-      <% if @area.deals.count > 0 %>
+  <div class="col-xs-5">
+    <% if @area.deals.count > 0 %>
+      <% if @area.deals.first.dealimages.blank? %>
+        <%= link_to image_tag('/images/status-plan-logo.png', :style => 'max-width:300px !important;'), deal_path(@area.deals.first) %>
+      <% else %>
+        <%= link_to image_tag(@area.deals.first.dealimages.first.dealimage_url, :style => 'max-width:300px !important;'), deal_path(@area.deals.first) %>
+      <% end %>
+    <% end %>
+    <br><hr>
+    SqFt: <%= number_with_delimiter(@area.area_sqft, :delimiter => ',') %><br>
+    Suite #: <%= @area.suite_number %><br>
+    Status: <%= @area.status %><br>
+    Area Budget Rate: <%= number_with_delimiter(@area.area_budget_rate, :delimiter => ',') %><br><br>
+    
+    Associated Deals: <%= @area.areas_deals.count %><br>
+    Deal Titles:<br>
+    <% if @area.deals.count > 0 %>
         <% @area.deals.each do |deal| %>
           <%= link_to deal.deal_name, deal %> <%#= AreasDeal.where(deal_id: deal, area_id: @area).ids %> 
           <% if current_user.is_admin? || current_user.role == 'Admin' || current_user.role == 'Editor' %>
@@ -42,39 +44,300 @@
           <% end %><br>
         <% end %>
       <% else %>There are no deals associated.<% end %>
-  </dd>
-  
-  <% if current_user.is_admin? || current_user.role == 'Admin' || current_user.role == 'Editor' %>
-  <br>
-  <%= render :partial => 'add_deal_association' %>
-  <% end %>
-  
-  <dt><strong><%= model_class.human_attribute_name(:deal_image) %>:</strong></dt>
-  <dd>
-    <% if @area.deals.count > 0 %>
-      <% if @area.deals.first.dealimages.blank? %>
-        <%= link_to image_tag('/images/status-plan-logo.png', :style => 'width:300px !important;float:left;margin-top:20px;margin-bottom:20px;'), deal_path(@area.deals.first) %>
-      <% else %>
-        <%= link_to image_tag(@area.deals.first.dealimages.first.dealimage_url, :style => 'width:300px !important;float:left;'), deal_path(@area.deals.first) %>
-      <% end %>
+    <br>
+    <% if current_user.is_admin? || current_user.role == 'Admin' || current_user.role == 'Editor' %>
+    <br>
+    <%= render :partial => 'add_deal_association' %>
     <% end %>
-  </dd>
-  
-  <dt><strong><%= model_class.human_attribute_name(:area_sqft) %>:</strong></dt>
-  <dd><%= number_with_delimiter(@area.area_sqft, :delimiter => ',') %></dd>
-  
-  <dt><strong><%= model_class.human_attribute_name(:map_id) %>:</strong></dt>
-  <dd><%= @area.map_id %></dd>
-  
-  <dt><strong><%= model_class.human_attribute_name(:project_id) %>:</strong></dt>
-  <dd><%= @area.project_id %></dd>
-  
-  <dt><strong><%= model_class.human_attribute_name(:status) %>:</strong></dt>
-  <dd><%= @area.status %></dd>
-  
-  <dt><strong><%= model_class.human_attribute_name(:coords) %>:</strong></dt>
-  <dd><%= @area.coords %></dd>
-</dl>
+  </div>
+</div>
+
+
+<hr>
+<div class="row">
+  <div class="col-xs-10 col-xs-offset-1">
+    <table class="report-table" style="margin-bottom:0;border:none;">
+      <tr>
+        <td style="text-align:center;border:none;">General</td>
+      </tr>
+    </table>
+    
+    <table class="report-table add-responsive">
+      <thead>
+      <tr>
+        <th>Suite #:</th>
+        <th>Area SF:</th>
+        <th>Status:</th>
+        <th>Area Budget Rate:</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td><%= @area.suite_number %></td>
+        <td><%= number_with_delimiter(@area.area_sqft, :delimiter => ',') %></td>
+        <td><%= @area.status %></td>
+        <td><%= number_with_delimiter(@area.area_budget_rate, :delimiter => ',') %></td>
+      </tr>
+      <tr>
+        <td colspan="4" style="text-align:center;">Address:</td>
+      </tr>
+      <tr>
+        <td colspan="4" style= "text-align:center;"><%= @area.address %></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+
+
+<div class="row">
+  <div class="col-xs-10 col-xs-offset-1">
+<table class="report-table" style="margin-bottom:0;border:none;">
+      <tr>
+        <td style="text-align:center;color:#fff;background-color:#231f20;border:none;">Technical Information (HVAC) <i class="fa fa-certificate print-only-inline" style="color:#231f20 !important;"></i></td>
+      </tr>
+    </table>
+    
+    <table class="report-table add-responsive">
+      <thead>
+      <tr>
+        <th>System Type:</th>
+        <th>Quantity:</th>
+        <th>Tonnage:</th>
+        <th>Unit-brand:</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td><%= @area.system_type %></td>
+        <td><%= @area.quantity %></td>
+        <td><%= @area.tonnage %></td>
+        <td><%= @area.unit_brand %></td>
+      </tr>
+      </tbody>
+    </table>
+    
+    <table class="report-table add-responsive">
+      <thead>
+      <tr>
+        <th>Unit Voltage:</th>
+        <th>Vav Size:</th>
+        <th>Pipe System:</th>
+        
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td><%= @area.unit_voltage %></td>
+        <td><%= @area.vav_size %></td>
+        <td><%= @area.pipe_system %></td>
+      </tr>
+      </tbody>
+    </table>
+    
+    <% if @area.pipe_system == 'other' %>
+    <table class="report-table add-responsive">
+      <thead>
+      <tr>
+        <th>Pipe System Note:</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td><%= @area.pipe_system_note %></td>
+      </tr>
+      </tbody>
+    </table>
+    <% end %>
+
+    <table class="report-table" style="margin-bottom:0;border:none;">
+      <tr>
+        <td style="text-align:center;color:#fff;background-color:#231f20;border:none;">Technical Information (Electrical) <i class="fa fa-certificate print-only-inline" style="color:#231f20 !important;"></i></td>
+      </tr>
+    </table>
+    
+    <table class="report-table add-responsive">
+      <thead>
+      <tr>
+        <th>Voltage:</th>
+        <th>Main Amperage:</th>
+        <th>Transformer:</th>
+        <th>Sub Panel Amperage:</th>
+        <th>Conduit Quantity:</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td><%= @area.voltage %></td>
+        <td><%= @area.main_amperage %></td>
+        <td><%= @area.transformer %></td>
+        <td><%= @area.sub_panel_amperage %></td>
+        <td><%= @area.conduit_quantity %></td>
+      </tr>
+      </tbody>
+    </table>
+    
+    <table class="report-table add-responsive">
+      <thead>
+      <tr>
+        <th>Main Amperage:</th>
+        <th>Transformer:</th>
+        <th>Sub Panel Amperage:</th>
+        <th>Conduit Quantity:</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td><%= @area.main_amperage %></td>
+        <td><%= @area.transformer %></td>
+        <td><%= @area.sub_panel_amperage %></td>
+        <td><%= @area.conduit_quantity %></td>
+      </tr>
+      </tbody>
+    </table>
+    
+    <table class="report-table add-responsive">
+      <thead>
+      <tr>
+        <th>Conduit Size:</th>
+        <th>Meter Number:</th>
+        <th>Meter Install Date:</th>
+        <th>Meter Transfer Date:</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td><%= @area.conduit_size %></td>
+        <td><%= @area.electric_meter_number %></td>
+        <td><%= @area.electric_meter_install_date %></td>
+        <td><%= @area.electric_meter_transfer_date %></td>
+      </tr>
+      </tbody>
+    </table>
+
+    <table class="report-table" style="margin-bottom:0;border:none;">
+      <tr>
+        <td style="text-align:center;color:#fff;background-color:#231f20;border:none;">Technical Information (Plumbing) <i class="fa fa-certificate print-only-inline" style="color:#231f20 !important;"></i></td>
+      </tr>
+    </table>
+    
+    <table class="report-table add-responsive">
+      <thead>
+      <tr>
+        <th>Sanitary Size:</th>
+        <th>Sanitary Type:</th>
+        <th>Vent Size:</th>
+        <th>Water Size:</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td><%= @area.sanitary_size %></td>
+        <td><%= @area.sanitary_type %></td>
+        <td><%= @area.vent_size %></td>
+        <td><%= @area.water_size %></td>
+      </tr>
+      </tbody>
+    </table>
+    
+    <table class="report-table add-responsive">
+      <thead>
+      <tr>
+        <th>Water Meter Number:</th>
+        <th>Sub Meter Number:</th>
+        <th>Sub Meter Install Date:</th>
+        <th>Sub Meter Transfer Date:</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td><%= @area.water_meter_number %></td>
+        <td><%= @area.sub_meter_number %></td>
+        <td><%= @area.sub_meter_install_date %></td>
+        <td><%= @area.sub_meter_transfer_date %></td>
+      </tr>
+      </tbody>
+    </table>
+    
+    <table class="report-table add-responsive">
+      <thead>
+      <tr>
+        <th>Gas Size:</th>
+        <th>Gas Meter:</th>
+        <th>Gas Meter Install Date:</th>
+        <th>Gas Meter Transfer Date:</th>
+        <th>Grease Size:</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td><%= @area.gas_size %></td>
+        <td><%= @area.gas_meter %></td>
+        <td><%= @area.gas_meter_install_date %></td>
+        <td><%= @area.gas_meter_transfer_date %></td>
+        <td><%= @area.grease_size %></td>
+      </tr>
+      </tbody>
+    </table>
+    
+    <table class="report-table" style="margin-bottom:0;border:none;">
+      <tr>
+        <td style="text-align:center;color:#fff;background-color:#231f20;border:none;">Technical Information (Other) <i class="fa fa-certificate print-only-inline" style="color:#231f20 !important;"></i></td>
+      </tr>
+    </table>
+
+    <table class="report-table add-responsive">
+      <thead>
+      <tr>
+        <th>Tenant Approval:</th>
+        <th>Service Door Quantity:</th>
+        <th>Restrooms:</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td><%= @area.tenant_approval %></td>
+        <td><%= @area.service_door_quantity %></td>
+        <td><%= @area.restrooms %></td>
+      </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-xs-10 col-xs-offset-1">
+   <table class="report-table" style="border:none;">
+      <tr>
+        <td style="text-align:center;color:#fff;background-color:#8BC53F;border:none;">
+          Additional Information
+        </td>
+      </tr>
+    </table>
+    <table class="report-table add-responsive">
+      <thead>
+      <tr>
+        <th>Area Comments:</th>
+        <th>Landlord Plan Notes:</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td style="width:50%;"><%= @area.area_comments %></td>
+        <td><%= @area.landlord_plan_notes %></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+<hr>
+
 
 <%= link_to "<= Project",
               project_path(@area.project_id), :class => 'btn btn-default'  %>
