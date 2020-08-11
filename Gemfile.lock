@@ -43,6 +43,8 @@ GEM
     arel (7.1.4)
     bcrypt (3.1.13)
     bindex (0.8.1)
+    bootstrap-datepicker-rails (1.8.0.1)
+      railties (>= 3.0)
     builder (3.2.4)
     byebug (11.1.1)
     carrierwave (2.1.0)
@@ -235,6 +237,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bootstrap-datepicker-rails (~> 1.8.0)
   byebug
   carrierwave (~> 2.0)
   chartkick (= 2.3.5)
