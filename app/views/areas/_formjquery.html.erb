@@ -5,6 +5,8 @@
   </script>
 
 <script>
+    $(document).ready(formatAreaBudgetRate);
+
     //format total area square feet input for Area
     function formatTotalAreaSquareFeet()
     {
@@ -26,7 +28,40 @@
     //make it happen onload
     $(document).ready(formatTotalAreaSquareFeet);
     
+    
+    function formatAreaBudgetRate()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var areabudgetrate = parseFloat($("#area_area_budget_rate").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!areabudgetrate){
+            areabudgetrate = 0;
+        }
+        //make sure your float is fixed number with two decimal places
+        var areabudgetratefixed = areabudgetrate.toFixed(2);
+        //add $ and make sure commas are correct
+        var areabudgetrateformatted = '$' + areabudgetratefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#area_area_budget_rate").val(areabudgetrateformatted);
+        //this input field is saved as a string
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#area_area_budget_rate", formatAreaBudgetRate);
 
+    function formatForAreaBudgetRate()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#area_area_budget_rate").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with 2 decimal places
+        var variablefixed = variable.toFixed(2);
+        //change # to total
+        $("#area_area_budget_rate").val(variablefixed);
+        //this input field is saved as a string
+    }
     
     //Function to format for Submit to Database
     function formatForSubmitAreaSqft()
@@ -48,5 +83,6 @@
     $('.formatFunctions').submit(function() {
       //Runs Function to strip special characters except (.)
       formatForSubmitAreaSqft();
+      formatForAreaBudgetRate();
     });
 </script>

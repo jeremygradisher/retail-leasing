@@ -35,6 +35,7 @@ gem 'jbuilder', '~> 2.5'
 #bootstrap it up
 gem 'twitter-bootstrap-rails'
 gem 'devise-bootstrap-views'
+gem 'bootstrap-datepicker-rails', '~> 1.8.0'
 
 #for image uploading
 gem 'carrierwave', '~> 2.0'

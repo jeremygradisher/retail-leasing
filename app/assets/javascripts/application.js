@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
+//= require bootstrap-datepicker
 //= require leaflet
 //= require leaflet-draw
 //= require leaflet-draw-drag

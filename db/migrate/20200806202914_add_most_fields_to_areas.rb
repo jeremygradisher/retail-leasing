@@ -1,0 +1,43 @@
+class AddMostFieldsToAreas < ActiveRecord::Migration[5.0]
+  def change
+    add_column :areas, :address, :string
+    add_column :areas, :landlord_plan_notes, :text
+    add_column :areas, :tenant_approval, :string
+    add_column :areas, :area_comments, :text
+    add_column :areas, :system_type, :string
+    add_column :areas, :quantity, :integer
+    add_column :areas, :unit_brand, :string
+    add_column :areas, :unit_voltage, :string
+    add_column :areas, :pipe_system, :string
+    add_column :areas, :voltage, :string
+    add_column :areas, :main_amperage, :string
+    add_column :areas, :transformer, :string
+    add_column :areas, :sub_panel_amperage, :string
+    add_column :areas, :conduit_size, :string
+    add_column :areas, :electric_meter_number, :string
+    add_column :areas, :electric_meter_install_date, :string
+    add_column :areas, :electric_meter_transfer_date, :string
+    add_column :areas, :restrooms, :integer
+    add_column :areas, :sanitary_size, :string
+    add_column :areas, :sanitary_type, :string
+    add_column :areas, :vent_size, :string
+    add_column :areas, :water_size, :string
+    add_column :areas, :water_meter_number, :string
+    add_column :areas, :sub_meter_number, :string
+    add_column :areas, :sub_meter_install_date, :string
+    add_column :areas, :sub_meter_transfer_date, :string
+    add_column :areas, :gas_size, :string
+    add_column :areas, :gas_meter, :string
+    add_column :areas, :gas_meter_install_date, :string
+    add_column :areas, :gas_meter_transfer_date, :string
+    add_column :areas, :grease_size, :string
+    add_column :areas, :tonnage, :integer
+    add_column :areas, :vav_size, :integer
+    add_column :areas, :conduit_quantity, :integer
+    add_column :areas, :telephone_conduit_size, :string
+    add_column :areas, :telephone_conduit_quantity, :string
+    add_column :areas, :pipe_system_note, :string
+    add_column :areas, :area_budget_rate, :float
+    add_column :areas, :service_door_quantity, :string
+  end
+end
