@@ -72,19 +72,19 @@
   </div>
     
   <div class="form-group">
-    <%= f.label :suite_number, 'Suite #', :class => 'control-label col-lg-2' %>
+    <%= f.label :suite_number, 'Suite #:', :class => 'control-label col-lg-2' %>
     <div class="col-lg-2">
       <%= f.text_field :suite_number, :class => 'form-control' %>
     </div>
     <%=f.error_span(:suite_number) %>
 
-    <%= f.label :area_sqft, 'Area SqFt', :class => 'control-label col-lg-2' %>
+    <%= f.label :area_sqft, 'Area SqFt:', :class => 'control-label col-lg-2' %>
     <div class="col-lg-2">
         <%= f.text_field :area_sqft, :class => 'form-control required sf-background' %>
     </div>
     <%=f.error_span(:area_sqft) %>
 
-    <%= f.label :area_status, 'Area Status', :class => 'control-label col-lg-2' %>
+    <%= f.label :area_status, 'Area Status:', :class => 'control-label col-lg-2' %>
     <div class="col-lg-2">
       <%#= f.text_field :status, :class => 'form-control' %>
       <%= f.select :status, ['01 Available', '02 Lease Negotiation', '03 Landlord Construction', '04 Tenant Design', '05 Tenant Fit-Out', '06 Open for Business', '07 Close-Out', '08 Operating'], {include_blank:false}, :class => 'form-control' %>
@@ -93,7 +93,13 @@
 
   </div>
 
-
+  <div class="form-group">
+    <%= f.label :address, 'Address:', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :address, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:address) %>
+  </div>
 
 
 
@@ -274,6 +280,12 @@
       <%= f.select :telephone_conduit_size, ['1"', '1 1/2"', '2"', '2 1/2"', '3"', '4', '5"', '6"'], {include_blank:true}, :class => 'form-control' %>
     </div>
     <%=f.error_span(:telephone_conduit_size) %>
+    
+    <%= f.label :telephone_conduit_quantity, 'Telephone Conduit Quantity', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%= f.number_field :telephone_conduit_quantity, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:telephone_conduit_quantity) %>
   </div> 
 
   
@@ -391,7 +403,35 @@
 
 
 
-
+<div class="form-group">
+    <table class="report-table" style="border:none;">
+      <tr>
+        <td style="text-align:center;color:#fff;background-color:#8BC53F;border:none;">
+          Additional Information
+        </td>
+      </tr>
+    </table>
+  </div>
+  
+  
+  <div class="form-group">
+    <%= f.label :area_comments, 'Area Comments', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%#= f.text_field :permit_notes, :class => 'form-control' %>
+      <%= f.text_area :area_comments, :rows => 4, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:area_comments) %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :landlord_plan_notes, 'Landlord Plan Notes', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%#= f.text_field :permit_notes, :class => 'form-control' %>
+      <%= f.text_area :landlord_plan_notes, :rows => 4, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:landlord_plan_notes) %>
+  </div>
+<hr>
 
 
 
