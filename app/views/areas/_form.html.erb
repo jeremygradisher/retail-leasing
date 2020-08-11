@@ -92,9 +92,317 @@
     <%=f.error_span(:status) %>
 
   </div>
+
+
+
+
+
+
+
+
+<!-- Technical Information additions -->
+  <div class="form-group">
+    <table class="report-table" style="border:none;">
+      <tr>
+        <td style="text-align:center;color:#fff;background-color:#231f20;border:none;">
+          Technical Information Section
+          
+          <!-- Can't use the button within the form or it submits when pushed
+          <button data-toggle="collapse" data-target="#tech-collapse" 
+      class='btn btn-primary responsive-none print-none' 
+      style='float:right;margin-left:10px;margin-top:12px;'><i class="fa fa-chevron-down"></i></button>
+          -->
+          
+          <a href="#tech-collapse" data-toggle="collapse"
+          class='btn btn-primary print-none' 
+          style='float:right;margin-left:10px;margin-top:0;'>
+          <i class="fa fa-chevron-down"></i>
+          </a>
+          
+        </td>
+      </tr>
+    </table>
+  </div>
   
 
 
+  
+<div id="tech-collapse" class="collapse"><!-- collapse form -->
+
+  <div class="form-group">
+    <table class="report-table" style="border:none;">
+      <tr>
+        <td style="text-align:center;color:#fff;background-color:#231f20;border:none;">
+          Technical Information (HVAC)
+        </td>
+      </tr>
+    </table>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :system_type, 'System Type', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%= f.select :system_type, ['RTU', 'Split System', 'Chilled Water Loop', 'VAV'], {include_blank:true}, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:system_type) %>
+
+    <%= f.label :quantity, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%= f.number_field :quantity, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:quantity) %>
+    
+    <%= f.label :tonnage, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%= f.number_field :tonnage, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:tonnage) %>
+  </div>  
+  
+  <div class="form-group">
+    <%= f.label :unit_brand, 'Unit Brand', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%= f.text_field :unit_brand, :class => 'form-control', :placeholder => 'Career, Trane, Lennox, etc.' %>
+    </div>
+    <%=f.error_span(:unit_brand) %>
+
+    <%= f.label :unit_voltage, 'Unit Voltage', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%= f.select :unit_voltage, ['208 V', '480 V', 'Other'], {include_blank:true}, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:unit_voltage) %>
+    
+    <%= f.label :vav_size, 'Vav Size', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%= f.number_field :vav_size, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:vav_size) %>
+  </div> 
+  
+  <div class="form-group">
+    <%= f.label :pipe_system, 'Pipe System', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%= f.select :pipe_system, ['other', '2 pipe', '3 pipe', '4 pipe'], {include_blank:true}, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:pipe_system) %>
+    
+    <%= f.label :pipe_system_note, 'Pipe System Note', :class => 'control-label col-lg-2 pipehiddenif' %>
+    <div class="col-lg-6 pipehiddenif">
+      <%= f.text_field :pipe_system_note, :class => 'form-control pipehiddenif' %>
+    </div>
+    <%=f.error_span(:pipe_system_note) %>
+  </div> 
+
+  <div class="form-group">
+    <table class="report-table" style="border:none;">
+      <tr>
+        <td style="text-align:center;color:#fff;background-color:#231f20;border:none;">
+          Technical Information (Electrical)
+        </td>
+      </tr>
+    </table>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :voltage, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%= f.select :voltage, ['120 / 208 V',  '480 / 277 V', '600 V'], {include_blank:true}, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:voltage) %>
+
+    <%= f.label :main_amperage, 'Main Amperage', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%= f.select :main_amperage, ['100 A', '125 A', '150 A', '200 A', '225 A', '250 A', '400 A', '600 A', '800 A', '1200 A'], {include_blank:true}, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:main_amperage) %>
+    
+    <%= f.label :transformer, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%= f.select :transformer, ['15 kVA', '30 kVA', '45 kVA', '75 kVA', '112.5 kVA', '150 kVA', '225 kVA', '300 kVA', '500 kVA'], {include_blank:true}, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:transformer) %>
+  </div>  
+  
+  <div class="form-group">
+    <%= f.label :sub_panel_amperage, 'Sub Panel Amperage', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%= f.select :sub_panel_amperage, ['30 A', '50 A', '60 A', '100 A', '200 A', '400 A', '600 A', '800 A', 'other'], {include_blank:true}, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:sub_panel_amperage) %>
+
+    <%= f.label :conduit_quantity, 'Conduit Quantity', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%= f.number_field :conduit_quantity, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:conduit_quantity) %>
+    
+    <%= f.label :conduit_size, 'Conduit Size', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%= f.select :conduit_size, ['2"', '2 1/2"', '3"', '3 1/2"', '4"', '5"', '6"'], {include_blank:true}, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:conduit_size) %>
+  </div> 
+  
+  <div class="form-group">
+    <%= f.label :electric_meter_number, 'Electrical Meter Number', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%= f.text_field :electric_meter_number, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:electric_meter_number) %>
+
+    <%= f.label :electric_meter_install_date, 'Electrical Meter Install Date', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%= f.text_field :electric_meter_install_date, 'data-provide' => 'datepicker', :class => 'form-control', :placeholder => 'mm/dd/yyyy' %>
+    </div>
+    <%=f.error_span(:electric_meter_install_date) %>
+    
+    <%= f.label :electric_meter_transfer_date, 'Electric Meter Transfer Date', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%= f.text_field :electric_meter_transfer_date, 'data-provide' => 'datepicker', :class => 'form-control', :placeholder => 'mm/dd/yyyy' %>
+    </div>
+    <%=f.error_span(:electric_meter_transfer_date) %>
+  </div> 
+  
+
+  <div class="form-group">
+    <table class="report-table" style="border:none;">
+      <tr>
+        <td style="text-align:center;color:#fff;background-color:#231f20;border:none;">
+          Technical Information (Telephone)
+        </td>
+      </tr>
+    </table>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :telephone_conduit_size, 'Telephone Conduit Size', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%= f.select :telephone_conduit_size, ['1"', '1 1/2"', '2"', '2 1/2"', '3"', '4', '5"', '6"'], {include_blank:true}, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:telephone_conduit_size) %>
+  </div> 
+
+  
+  <div class="form-group">
+    <table class="report-table" style="border:none;">
+      <tr>
+        <td style="text-align:center;color:#fff;background-color:#231f20;border:none;">
+          Technical Information (Plumbing)
+        </td>
+      </tr>
+    </table>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :sanitary_size, 'Sanitary Size', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%= f.select :sanitary_size, ['3"', '4"', '6"', '8"', '10"'], {include_blank:true}, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:sanitary_size) %>
+
+    <%= f.label :sanitary_type, 'Sanitary Type', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%= f.select :sanitary_type, ['Cast Iron','PVC', 'Other'], {include_blank:true}, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:sanitary_type) %>
+    
+    <%= f.label :vent_size, 'Vent Size', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%= f.select :vent_size, ['2"', '3"', '4"', '6"', '8"', 'Other'], {include_blank:true}, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:vent_size) %>
+  </div> 
+  
+  <div class="form-group">
+    <%= f.label :water_size, 'Water Size', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%= f.select :water_size, ['1"', '1 1/2"', '2"', '2 1/2"', '3"', '4"'], {include_blank:true}, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:water_size) %>
+
+    <%= f.label :water_meter_number, 'Water Meter Number', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%= f.text_field :water_meter_number, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:water_meter_number) %>
+    
+    <%= f.label :sub_meter_number, 'Sub Meter Number', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%= f.text_field :sub_meter_number, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:sub_meter_number) %>
+  </div> 
+  
+  <div class="form-group">
+    <%= f.label :sub_meter_install_date, 'Sub Meter Install Date', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%= f.text_field :sub_meter_install_date, 'data-provide' => 'datepicker', :class => 'form-control', :placeholder => 'mm/dd/yyyy' %>
+    </div>
+    <%=f.error_span(:sub_meter_install_date) %>
+
+    <%= f.label :sub_meter_transfer_date, 'Sub Meter Transfer Date', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%= f.text_field :sub_meter_transfer_date, 'data-provide' => 'datepicker', :class => 'form-control', :placeholder => 'mm/dd/yyyy' %>
+    </div>
+    <%=f.error_span(:sub_meter_transfer_date) %>
+    
+    <%= f.label :gas_size, 'Gas Size', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%#= f.text_field :turn_over_condition, :class => 'form-control' %>
+      <%= f.select :gas_size, ['N/A', '1"', '1 1/2"', '2"', '2 1/2"', '3"', '4"'], {include_blank:true}, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:gas_size) %>
+  </div> 
+  
+  <div class="form-group">
+    <%= f.label :gas_meter_number, 'Gas Meter Number', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%= f.text_field :gas_meter, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:gas_meter) %>
+
+    <%= f.label :gas_meter_install_date, 'Gas Meter Install Date', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%= f.text_field :gas_meter_install_date, 'data-provide' => 'datepicker', :class => 'form-control', :placeholder => 'mm/dd/yyyy' %>
+    </div>
+    <%=f.error_span(:gas_meter_install_date) %>
+    
+    <%= f.label :gas_meter_transfer_date, 'Gas Meter Transfer Date', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%= f.text_field :gas_meter_transfer_date, 'data-provide' => 'datepicker', :class => 'form-control', :placeholder => 'mm/dd/yyyy' %>
+    </div>
+    <%=f.error_span(:gas_meter_transfer_date) %>
+  </div> 
+  
+  <div class="form-group">
+    <%= f.label :grease_size, 'Grease Size', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%= f.select :grease_size, ['N/A', '3"', '4"', '6"', '8"'], {include_blank:true}, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:grease_size) %>
+  </div> 
+  
+  <div class="form-group">
+    <table class="report-table" style="border:none;">
+      <tr>
+        <td style="text-align:center;color:#fff;background-color:#231f20;border:none;">
+          Technical Information (Fire Protection)
+        </td>
+      </tr>
+    </table>
+  </div>
+<!-- END Technical Information additions -->
+
+</div><!-- END collapse form -->
+
+
+
+
+
+  
+
+<br>
+<hr>
   <div class="form-group">
     <div class="col-lg-offset-2 col-lg-10">
       <%= f.submit nil, :class => 'btn btn-primary' %>
