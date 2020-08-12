@@ -15,90 +15,7 @@
     </div>
   <% end %>
 
-
-<!-- before -->
-  <div class="form-group">
-    <%= f.label :deal_name, :class => 'control-label col-lg-2' %>
-    <div class="col-lg-2">
-      <%= f.text_field :deal_name, :class => 'form-control' %>
-    </div>
-    <%=f.error_span(:deal_name) %>
-
-    <%= f.label :gross_area, :class => 'control-label col-lg-2' %>
-    <div class="col-lg-2">
-      <%= f.text_field :gross_area, :class => 'form-control required sf-background' %>
-    </div>
-    <%=f.error_span(:gross_area) %>
-
-    <%= f.label :net_rentable_area, :class => 'control-label col-lg-2' %>
-    <div class="col-lg-2">
-      <%= f.text_field :net_rentable_area, :class => 'form-control required sf-background' %>
-    </div>
-    <%=f.error_span(:net_rentable_area) %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :project_id, :class => 'control-label col-lg-2' %>
-    <div class="col-lg-2">
-      <% if controller.action_name == "new" %>
-        <%= f.number_field :project_id, value: params[:project_id], :class => 'form-control' %>
-      <% else %>
-        <%= f.number_field :project_id, :class => 'form-control' %>
-      <% end %>
-    </div>
-    <%=f.error_span(:project_id) %>
-
-    <%= f.label :map_id, :class => 'control-label col-lg-2' %>
-    <div class="col-lg-2">
-      <% if controller.action_name == "new" %>
-      <%= f.number_field :map_id, value: params[:map_id], :class => 'form-control' %>
-      <% else %>
-      <%= f.number_field :map_id, :class => 'form-control' %>
-      <% end %>
-    </div>
-    <%=f.error_span(:map_id) %>
-  </div>
   
-  <div class="form-group">
-    <%= f.label :lease_status, :class => 'control-label col-lg-2' %>
-    <div class="col-lg-2">
-      <%= f.select :lease_status, ['Available', 'Prospect', 'LOI', 'At Lease', 'Leased'], {include_blank:false}, :class => 'form-control' %>
-    </div>
-    <%=f.error_span(:lease_status) %>
-    
-    <% if @dealimages.exists? %>
-    <%= f.label :deal_image, 'Deal Image', :class => 'control-label col-lg-2'  %>
-      <div class="col-lg-4">
-        <% @dealimages.each do |p| %>
-              <div class="form-control">
-              <%= image_tag p.dealimage_url, :class => 'form-control-image' %>
-
-              <%= link_to '<i class="fa fa-edit"></i>'.html_safe,
-                    edit_dealimage_path(p), :class => 'form-control-button', 
-                    :title => 'Edit Attachment'  %>
-                    
-              <%= link_to '<i class="fa fa-trash"></i>'.html_safe,
-                            dealimage_path(p),
-                            :method => :delete,
-                            :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                            :class => 'form-control-button' %>
-              </div>
-              
-        <% end %>
-      </div>
-    
-    <% else %>  
-         <%= f.label :deal_image, 'Deal Image', :class => 'control-label col-lg-2'  %>
-         <div class="col-lg-4">
-         <%= f.file_field :dealimage, :multiple => true, name: "dealimages[dealimage][]",
-          :class => 'form-control', onchange: "validateFiles(this);",
-          data: { max_file_size: 2.megabytes } %>
-         </div>
-    <% end %>
-  </div>
-<!-- END before -->  
-
-
 
 
 
@@ -133,7 +50,7 @@
     
     <% else %>  
     
-          <%= image_tag '/images/status-plan-logo-large.png', :style => 'max-width:100%;
+          <%= image_tag '/images/status-plan-logo.png', :style => 'max-width:100%;
                                                         border: 1px solid #ccc;
                                                         padding: 2px;
                                                         border-radius: 8px;' %>
@@ -165,9 +82,11 @@
     <div class="col-lg-3">
       
       <%= f.select :merchandising_status, ['Fashion', 'Auto / Gas', 'Candy / Confectionary', 'Department Store', 'Electronics', 'Entertainment', 'Food & Beverage', 'Footwear', 'Grocery / Hypermarket', 'Home / Furnishings', 'Jewelry / Handbags', 'Mobiles / Accessories', 'Perfume / Cosmetics', 'Pets', 'Services / Specialty Stores', 'Sports / Outdoor / Fitness', 'Toys & Hobbies / Gifts / Books'], {include_blank:true}, :class => 'form-control' %>
-      <% if @deal.merchandising_status == nil || @deal.merchandising_status == '' %>
+      <!--
+      <%# if @deal.merchandising_status == nil || @deal.merchandising_status == '' %>
         <br>(<%#= @area.merchandising_status %>)
-      <% end %>
+      <%# end %>
+      -->
     </div>
     <%=f.error_span(:merchandising_status) %>
     
@@ -750,6 +669,7 @@
   </div>
 
 <!-- hidden fields for new form only -->
+  <% if controller.action_name == "new" %>
   <div class="form-group" style="display:none;">
     <%= f.label :project_id, :class => 'control-label col-lg-2' %>
     <div class="col-lg-10">
@@ -771,13 +691,7 @@
     </div>
     <%=f.error_span(:area_id) %>
   </div>
-  <div class="form-group" style="display:none;">
-    <%= f.label :key, :class => 'control-label col-lg-2' %>
-    <div class="col-lg-10">
-      <%= f.text_field :key, value: @area_id, :class => 'form-control' %>
-    </div>
-    <%=f.error_span(:key) %>
-  </div>
+  <% end %>
   <!-- END hidden fields for new form only -->
 
 

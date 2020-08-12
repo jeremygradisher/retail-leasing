@@ -86,3 +86,1881 @@
       formatForNetRentableArea();
     });
 </script>
+
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+        $(".tag-test").tagit({
+        
+            // Options
+            fieldName: "link",
+            //availableTags: ["c++", "java", "php", "javascript", "ruby", "python", "c"],
+            //autocomplete: {delay: 0, minLength: 2},
+            //showAutocompleteOnFocus: false,
+            removeConfirmation: false,
+            caseSensitive: true,
+            allowDuplicates: false,
+            allowSpaces: false,
+            readOnly: false,
+            tagLimit: null,
+            singleField: false,
+            singleFieldDelimiter: ',',
+            singleFieldNode: null,
+            tabIndex: null,
+            placeholderText: null,
+        
+            // Events
+            onTagClicked: function(event, ui) {
+                console.log(ui.tag);
+                console.log(ui.tagLabel);
+                //window.location = ui.tag;
+                window.open(ui.tagLabel);
+            },
+            onTagLimitExceeded: function(event, ui) {
+                console.log(ui.tag);
+            }
+        
+        });
+
+    });
+  </script>
+
+<script>
+$(document).ready(function()
+{
+    
+    /*** If Net Area Changes, run these functions ***/
+    function updateAllMathFromArea()
+    {
+        //Functions I need to run go here:
+        updateTotalBaseRent();
+        updateTiWorkCost();
+        //updateLlWorkCost();
+        updateFitOutCost();
+        updateCamCost();
+        updateTaxesCost();
+        updateInsuranceCost();
+        updateMarketingCost();
+        updateGoMarketingCost();
+        updateTrashCost();
+        updateOtherCost();
+        updateFeeCostTotal();
+        
+    }
+    //change or keyup on #deal_ti_cost will trigger function updateTiAllowance
+    $(document).on("change, keyup, blur", "#deal_net_rentable_area", updateAllMathFromArea);
+    /*** END If Net Area Changes, run these functions ***/
+    
+    
+    function updateTiAllowance()
+    {
+        //create variable netarea from form input #deal_net_rentable_area change to float
+        var netarea = parseFloat($("#deal_net_rentable_area").val().replace(/[^\d\.]/g,''));
+        if (!netarea){ netarea = 0; }
+        //create variable ticost for equation from input #deal_ti_cost which is really already a float
+        var ticost = parseFloat($("#deal_ti_cost").val().replace(/[^\d\.]/g,''));
+        //if ticost is Nan make it zero
+        if (!ticost){ ticost = 0; }
+        //create variable total from the equation
+        var total = ticost / netarea;
+            //change total back to currency format
+        var totalfixed = total.toFixed(2);
+        var totalformatted = '$' + totalfixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change input id='deal_ti_allowance' to the total worked out above
+        $("#deal_ti_allowance").val(totalformatted);
+    }
+    //change or keyup on #deal_ti_cost will trigger function updateTiAllowance
+    $(document).on("change, keyup, blur", "#deal_ti_cost", updateTiAllowance);
+    
+    function updateTiWorkCost()
+    {
+        var netarea = parseFloat($("#deal_net_rentable_area").val().replace(/[^\d\.]/g,''));
+        if (!netarea){ netarea = 0; }
+        var tiallowance = parseFloat($("#deal_ti_allowance").val().replace(/[^\d\.]/g,''));
+        //if ticost is Nan make it zero
+        if (!tiallowance){
+            tiallowance = 0;
+        }
+        var total = tiallowance * netarea;
+        var totalfixed = total.toFixed(2);
+        var totalformatted = '$' + totalfixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#deal_ti_cost").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#deal_ti_allowance", updateTiWorkCost);
+    
+    function formatTiAllowance()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var tiallowance = parseFloat($("#deal_ti_allowance").val().replace(/[^\d\.]/g,''));
+        if (!tiallowance){ tiallowance = 0; }
+        //make sure your float is fixed number with two decimal places
+        var tiallowancefixed = tiallowance.toFixed(2);
+        //add $ and make sure commas are correct
+        var tiallowanceformatted = '$' + tiallowancefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#deal_ti_allowance").val(tiallowanceformatted);
+        //this input field is saved as a string
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#deal_ti_allowance", formatTiAllowance);
+    
+    function formatTiCost()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var ticost = parseFloat($("#deal_ti_cost").val().replace(/[^\d\.]/g,''));
+        if (!ticost){ ticost = 0; }
+        //make sure your float is fixed number with two decimal places
+        var ticostfixed = ticost.toFixed(2);
+        //add $ and make sure commas are correct
+        var ticostformatted = '$' + ticostfixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#deal_ti_cost").val(ticostformatted);
+        //this input field is saved as a string
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#deal_ti_cost", formatTiCost);
+    
+    /*
+    function updateLlAllowance()
+    {
+        var netarea = parseFloat($("#deal_net_rentable_area").val().replace(/[^\d\.]/g,''));
+        if (!netarea){ netarea = 0; }
+        var llcost = parseFloat($("#deal_ll_work_cost").val().replace(/[^\d\.]/g,''));
+        if (!llcost){ llcost = 0; }
+        var total = llcost / netarea;
+        var totalfixed = total.toFixed(2);
+        //add $ and make sure commas are correct
+        var totalformatted = '$' + totalfixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#deal_ll_work").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#deal_ll_work_cost", updateLlAllowance);
+    
+    function formatLlWork()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var llwork = parseFloat($("#deal_ll_work").val().replace(/[^\d\.]/g,''));
+        if (!llwork){
+            llwork = 0;
+        }
+        //make sure your float is fixed number with two decimal places
+        var llworkfixed = llwork.toFixed(2);
+        //add $ and make sure commas are correct
+        var llworkformatted = '$' + llworkfixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#deal_ll_work").val(llworkformatted);
+        //this input field is saved as a string
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#deal_ll_work", formatLlWork);
+    
+    function formatLlWorkCost()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var llworkcost = parseFloat($("#deal_ll_work_cost").val().replace(/[^\d\.]/g,''));
+        if (!llworkcost){
+            llworkcost = 0;
+        }
+        //make sure your float is fixed number with two decimal places
+        var llworkcostfixed = llworkcost.toFixed(2);
+        //add $ and make sure commas are correct
+        var llworkcostformatted = '$' + llworkcostfixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#deal_ll_work_cost").val(llworkcostformatted);
+        //this input field is saved as a string
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#deal_ll_work_cost", formatLlWorkCost);
+    */
+    
+    
+    
+    
+    function formatFitOut()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var fitout = parseFloat($("#deal_fit_out").val().replace(/[^\d\.]/g,''));
+        if (!fitout){
+            fitout = 0;
+        }
+        //make sure your float is fixed number with two decimal places
+        var fitoutfixed = fitout.toFixed(2);
+        //add $ and make sure commas are correct
+        var fitoutformatted = '$' + fitoutfixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#deal_fit_out").val(fitoutformatted);
+        //this input field is saved as a string
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#deal_fit_out", formatFitOut);
+    
+    function formatFitOutCost()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var fitoutcost = parseFloat($("#deal_fit_out_cost").val().replace(/[^\d\.]/g,''));
+        if (!fitoutcost){
+            fitoutcost = 0;
+        }
+        //make sure your float is fixed number with two decimal places
+        var fitoutcostfixed = fitoutcost.toFixed(2);
+        //add $ and make sure commas are correct
+        var fitoutcostformatted = '$' + fitoutcostfixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#deal_fit_out_cost").val(fitoutcostformatted);
+        //this input field is saved as a string
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#deal_fit_out_cost", formatFitOutCost);
+    
+    
+    function updateFitOut()
+    {
+        //create variable netarea from form input #deal_net_rentable_area change to float
+        var netarea = parseFloat($("#deal_net_rentable_area").val().replace(/[^\d\.]/g,''));
+        if (!netarea){ netarea = 0; }
+        //create variable ticost for equation from input #deal_ti_cost which is really already a float
+        var fitoutcost = parseFloat($("#deal_fit_out_cost").val().replace(/[^\d\.]/g,''));
+        //if ticost is Nan make it zero
+        if (!fitoutcost){ fitoutcost = 0; }
+        //create variable total from the equation
+        var total = fitoutcost / netarea;
+            //change total back to currency format
+        var totalfixed = total.toFixed(2);
+        var totalformatted = '$' + totalfixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change input id='deal_ti_allowance' to the total worked out above
+        $("#deal_fit_out").val(totalformatted);
+    }
+    //change or keyup on #deal_ti_cost will trigger function updateTiAllowance
+    $(document).on("change, keyup, blur", "#deal_fit_out_cost", updateFitOut);
+    
+    function updateFitOutCost()
+    {
+        var netarea = parseFloat($("#deal_net_rentable_area").val().replace(/[^\d\.]/g,''));
+        if (!netarea){ netarea = 0; }
+        var fitout = parseFloat($("#deal_fit_out").val().replace(/[^\d\.]/g,''));
+        //if ticost is Nan make it zero
+        if (!fitout){
+            fitout = 0;
+        }
+        var total = fitout * netarea;
+        var totalfixed = total.toFixed(2);
+        var totalformatted = '$' + totalfixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#deal_fit_out_cost").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#deal_fit_out", updateFitOutCost);
+    
+    
+    
+    
+    
+    /*
+    function updateLlWorkCost()
+    {
+        var netarea = parseFloat($("#deal_net_rentable_area").val().replace(/[^\d\.]/g,''));
+        if (!netarea){ netarea = 0; }
+        var llwork = parseFloat($("#deal_ll_work").val().replace(/[^\d\.]/g,''));
+        if (!llwork){ llwork = 0; }
+        var total = llwork * netarea;
+        var totalfixed = total.toFixed(2);
+        //add $ and make sure commas are correct
+        var totalformatted = '$' + totalfixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#deal_ll_work_cost").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#deal_ll_work", updateLlWorkCost);
+    */
+    
+    //most of these work in pairs
+    function updateCamCost()
+    {
+        var netarea = parseFloat($("#deal_net_rentable_area").val().replace(/[^\d\.]/g,''));
+        if (!netarea){netarea = 0;}
+        var cam = parseFloat($("#deal_cam").val().replace(/[^\d\.]/g,''));
+        if (!cam){cam = 0;}
+        var total = cam * netarea;
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#deal_cam_cost").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#deal_cam", updateCamCost);
+    
+    function updateCam()
+    {
+        var netarea = parseFloat($("#deal_net_rentable_area").val().replace(/[^\d\.]/g,''));
+        if (!netarea){netarea = 0;}
+        var camcost = parseFloat($("#deal_cam_cost").val().replace(/[^\d\.]/g,''));
+        if (!camcost){camcost = 0;}
+        var total = camcost / netarea;
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#deal_cam").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#deal_cam_cost", updateCam);
+    //end most of these work in pairs
+    
+    function formatCam()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var cam = parseFloat($("#deal_cam").val().replace(/[^\d\.]/g,''));
+        if (!cam){cam = 0;}
+        //make sure your float is fixed number with two decimal places
+        var camfixed = cam.toFixed(2);
+        //add $ and make sure commas are correct
+        var camformatted = '$' + camfixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#deal_cam").val(camformatted);
+        //this input field is saved as a string
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#deal_cam", formatCam);
+    
+    function formatCamCost()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var camcost = parseFloat($("#deal_cam_cost").val().replace(/[^\d\.]/g,''));
+        if (!camcost){camcost = 0;}
+        //make sure your float is fixed number with two decimal places
+        var camcostfixed = camcost.toFixed(2);
+        //add $ and make sure commas are correct
+        var camcostformatted = '$' + camcostfixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#deal_cam_cost").val(camcostformatted);
+        //this input field is saved as a string
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#deal_cam_cost", formatCamCost);
+    
+    function formatCommInside()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var comminside = parseFloat($("#deal_comm_inside").val().replace(/[^\d\.]/g,''));
+        if (!comminside){comminside = 0;}
+        //make sure your float is fixed number with two decimal places
+        var comminsidefixed = comminside.toFixed(2);
+        //add $ and make sure commas are correct
+        var comminsideformatted = '$' + comminsidefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#deal_comm_inside").val(comminsideformatted);
+        //this input field is saved as a string
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#deal_comm_inside", formatCommInside);
+    
+    function formatCommOutside()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var commoutside = parseFloat($("#deal_comm_outside").val().replace(/[^\d\.]/g,''));
+        if (!commoutside){commoutside = 0;}
+        //make sure your float is fixed number with two decimal places
+        var commoutsidefixed = commoutside.toFixed(2);
+        //add $ and make sure commas are correct
+        var commoutsideformatted = '$' + commoutsidefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#deal_comm_outside").val(commoutsideformatted);
+        //this input field is saved as a string
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#deal_comm_outside", formatCommOutside);
+    
+    //most of these work in pairs
+    function updateTaxesCost()
+    {
+        var netarea = parseFloat($("#deal_net_rentable_area").val().replace(/[^\d\.]/g,''));
+        if (!netarea){netarea = 0;}
+        var taxes = parseFloat($("#deal_taxes").val().replace(/[^\d\.]/g,''));
+        if (!taxes){taxes = 0;}
+        var total = taxes * netarea;
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#deal_taxes_cost").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#deal_taxes", updateTaxesCost);
+    
+    function updateTaxes()
+    {
+        var netarea = parseFloat($("#deal_net_rentable_area").val().replace(/[^\d\.]/g,''));
+        if (!netarea){netarea = 0;}
+        var taxescost = parseFloat($("#deal_taxes_cost").val().replace(/[^\d\.]/g,''));
+        if (!taxescost){taxescost = 0;}
+        var total = taxescost / netarea;
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#deal_taxes").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#deal_taxes_cost", updateTaxes);
+    //end most of these work in pairs
+    
+    function formatTaxes()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var taxes = parseFloat($("#deal_taxes").val().replace(/[^\d\.]/g,''));
+        if (!taxes){taxes = 0;}
+        //make sure your float is fixed number with two decimal places
+        var taxesfixed = taxes.toFixed(2);
+        //add $ and make sure commas are correct
+        var taxesformatted = '$' + taxesfixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#deal_taxes").val(taxesformatted);
+        //this input field is saved as a string
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#deal_taxes", formatTaxes);
+    
+    function formatTaxesCost()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var taxescost = parseFloat($("#deal_taxes_cost").val().replace(/[^\d\.]/g,''));
+        if (!taxescost){taxescost = 0;}
+        //make sure your float is fixed number with two decimal places
+        var taxescostfixed = taxescost.toFixed(2);
+        //add $ and make sure commas are correct
+        var taxescostformatted = '$' + taxescostfixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#deal_taxes_cost").val(taxescostformatted);
+        //this input field is saved as a string
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#deal_taxes_cost", formatTaxesCost);
+    
+    //most of these work in pairs
+    function updateInsuranceCost()
+    {
+        var netarea = parseFloat($("#deal_net_rentable_area").val().replace(/[^\d\.]/g,''));
+        if (!netarea){netarea = 0;}
+        var insurance = parseFloat($("#deal_insurance").val().replace(/[^\d\.]/g,''));
+        if (!insurance){insurance = 0;}
+        var total = insurance * netarea;
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#deal_insurance_cost").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#deal_insurance", updateInsuranceCost);
+    
+    function updateInsurance()
+    {
+        var netarea = parseFloat($("#deal_net_rentable_area").val().replace(/[^\d\.]/g,''));
+        if (!netarea){netarea = 0;}
+        var insurancecost = parseFloat($("#deal_insurance_cost").val().replace(/[^\d\.]/g,''));
+        if (!insurancecost){insurancecost = 0;}
+        var total = insurancecost / netarea;
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#deal_insurance").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#deal_insurance_cost", updateInsurance);
+    //end most of these work in pairs
+    
+    function formatInsurance()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var insurance = parseFloat($("#deal_insurance").val().replace(/[^\d\.]/g,''));
+        if (!insurance){insurance = 0;}
+        //make sure your float is fixed number with two decimal places
+        var insurancefixed = insurance.toFixed(2);
+        //add $ and make sure commas are correct
+        var insuranceformatted = '$' + insurancefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#deal_insurance").val(insuranceformatted);
+        //this input field is saved as a string
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#deal_insurance", formatInsurance);
+    
+    function formatInsuranceCost()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var insurancecost = parseFloat($("#deal_insurance_cost").val().replace(/[^\d\.]/g,''));
+        if (!insurancecost){insurancecost = 0;}
+        //make sure your float is fixed number with two decimal places
+        var insurancecostfixed = insurancecost.toFixed(2);
+        //add $ and make sure commas are correct
+        var insurancecostformatted = '$' + insurancecostfixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#deal_insurance_cost").val(insurancecostformatted);
+        //this input field is saved as a string
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#deal_insurance_cost", formatInsuranceCost);
+    
+    //most of these work in pairs
+    function updateMarketingCost()
+    {
+        var netarea = parseFloat($("#deal_net_rentable_area").val().replace(/[^\d\.]/g,''));
+        if (!netarea){netarea = 0;}
+        var marketing = parseFloat($("#deal_marketing").val().replace(/[^\d\.]/g,''));
+        if (!marketing){marketing = 0;}
+        var total = marketing * netarea;
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#deal_marketing_cost").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#deal_marketing", updateMarketingCost);
+    
+    function updateMarketing()
+    {
+        var netarea = parseFloat($("#deal_net_rentable_area").val().replace(/[^\d\.]/g,''));
+        if (!netarea){netarea = 0;}
+        var marketingcost = parseFloat($("#deal_marketing_cost").val().replace(/[^\d\.]/g,''));
+        if (!marketingcost){marketingcost = 0;}
+        var total = marketingcost / netarea;
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#deal_marketing").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#deal_marketing_cost", updateMarketing);
+    //end most of these work in pairs
+    
+    function formatMarketing()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var marketing = parseFloat($("#deal_marketing").val().replace(/[^\d\.]/g,''));
+        if (!marketing){marketing = 0;}
+        //make sure your float is fixed number with two decimal places
+        var marketingfixed = marketing.toFixed(2);
+        //add $ and make sure commas are correct
+        var marketingformatted = '$' + marketingfixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#deal_marketing").val(marketingformatted);
+        //this input field is saved as a string
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#deal_marketing", formatMarketing);
+    
+    function formatMarketingCost()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var marketingcost = parseFloat($("#deal_marketing_cost").val().replace(/[^\d\.]/g,''));
+        if (!marketingcost){marketingcost = 0;}
+        //make sure your float is fixed number with two decimal places
+        var marketingcostfixed = marketingcost.toFixed(2);
+        //add $ and make sure commas are correct
+        var marketingcostformatted = '$' + marketingcostfixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#deal_marketing_cost").val(marketingcostformatted);
+        //this input field is saved as a string
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#deal_marketing_cost", formatMarketingCost);
+
+
+
+    //most of these work in pairs
+    function updateGoMarketingCost()
+    {
+        var netarea = parseFloat($("#deal_net_rentable_area").val().replace(/[^\d\.]/g,''));
+        if (!netarea){netarea = 0;}
+        var marketing = parseFloat($("#deal_go_marketing").val().replace(/[^\d\.]/g,''));
+        if (!marketing){marketing = 0;}
+        var total = marketing * netarea;
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#deal_go_marketing_cost").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#deal_go_marketing", updateGoMarketingCost);
+    
+    function updateGoMarketing()
+    {
+        var netarea = parseFloat($("#deal_net_rentable_area").val().replace(/[^\d\.]/g,''));
+        if (!netarea){netarea = 0;}
+        var marketingcost = parseFloat($("#deal_go_marketing_cost").val().replace(/[^\d\.]/g,''));
+        if (!marketingcost){marketingcost = 0;}
+        var total = marketingcost / netarea;
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#deal_go_marketing").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#deal_go_marketing_cost", updateGoMarketing);
+    //end most of these work in pairs
+    
+    function formatGoMarketing()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var marketing = parseFloat($("#deal_go_marketing").val().replace(/[^\d\.]/g,''));
+        if (!marketing){marketing = 0;}
+        //make sure your float is fixed number with two decimal places
+        var marketingfixed = marketing.toFixed(2);
+        //add $ and make sure commas are correct
+        var marketingformatted = '$' + marketingfixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#deal_go_marketing").val(marketingformatted);
+        //this input field is saved as a string
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#deal_go_marketing", formatGoMarketing);
+    
+    function formatGoMarketingCost()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var marketingcost = parseFloat($("#deal_go_marketing_cost").val().replace(/[^\d\.]/g,''));
+        if (!marketingcost){marketingcost = 0;}
+        //make sure your float is fixed number with two decimal places
+        var marketingcostfixed = marketingcost.toFixed(2);
+        //add $ and make sure commas are correct
+        var marketingcostformatted = '$' + marketingcostfixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#deal_go_marketing_cost").val(marketingcostformatted);
+        //this input field is saved as a string
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#deal_go_marketing_cost", formatGoMarketingCost);
+
+
+    //most of these work in pairs
+    function updateTrashCost()
+    {
+        var netarea = parseFloat($("#deal_net_rentable_area").val().replace(/[^\d\.]/g,''));
+        if (!netarea){netarea = 0;}
+        var trash = parseFloat($("#deal_trash").val().replace(/[^\d\.]/g,''));
+        if (!trash){trash = 0;}
+        var total = trash * netarea;
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#deal_trash_cost").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup", "#deal_trash", updateTrashCost);
+    
+    function updateTrash()
+    {
+        var netarea = parseFloat($("#deal_net_rentable_area").val().replace(/[^\d\.]/g,''));
+        if (!netarea){netarea = 0;}
+        var trashcost = parseFloat($("#deal_trash_cost").val().replace(/[^\d\.]/g,''));
+        if (!trashcost){trashcost = 0;}
+        var total = trashcost / netarea;
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#deal_trash").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#deal_trash_cost", updateTrash);
+    //end most of these work in pairs
+    
+    function formatTrash()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var trash = parseFloat($("#deal_trash").val().replace(/[^\d\.]/g,''));
+        if (!trash){trash = 0;}
+        //make sure your float is fixed number with two decimal places
+        var trashfixed = trash.toFixed(2);
+        //add $ and make sure commas are correct
+        var trashformatted = '$' + trashfixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#deal_trash").val(trashformatted);
+        //this input field is saved as a string
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#deal_trash", formatTrash);
+    
+    function formatTrashCost()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var trashcost = parseFloat($("#deal_trash_cost").val().replace(/[^\d\.]/g,''));
+        if (!trashcost){trashcost = 0;}
+        //make sure your float is fixed number with two decimal places
+        var trashcostfixed = trashcost.toFixed(2);
+        //add $ and make sure commas are correct
+        var trashcostformatted = '$' + trashcostfixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#deal_trash_cost").val(trashcostformatted);
+        //this input field is saved as a string
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#deal_trash_cost", formatTrashCost);
+    
+    //most of these work in pairs
+    function updateOtherCost()
+    {
+        var netarea = parseFloat($("#deal_net_rentable_area").val().replace(/[^\d\.]/g,''));
+        if (!netarea){netarea = 0;}
+        var other = parseFloat($("#deal_other").val().replace(/[^\d\.]/g,''));
+        if (!other){other = 0;}
+        var total = other * netarea;
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#deal_other_cost").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#deal_other", updateOtherCost);
+    
+    function updateOther()
+    {
+        var netarea = parseFloat($("#deal_net_rentable_area").val().replace(/[^\d\.]/g,''));
+        if (!netarea){netarea = 0;}
+        var othercost = parseFloat($("#deal_other_cost").val().replace(/[^\d\.]/g,''));
+        if (!othercost){othercost = 0;}
+        var total = othercost / netarea;
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#deal_other").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#deal_other_cost", updateOther);
+    //end most of these work in pairs
+    
+    function formatOther()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var other = parseFloat($("#deal_other").val().replace(/[^\d\.]/g,''));
+        if (!other){other = 0;}
+        //make sure your float is fixed number with two decimal places
+        var otherfixed = other.toFixed(2);
+        //add $ and make sure commas are correct
+        var otherformatted = '$' + otherfixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#deal_other").val(otherformatted);
+        //this input field is saved as a string
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#deal_other", formatOther);
+    
+    function formatOtherCost()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var othercost = parseFloat($("#deal_other_cost").val().replace(/[^\d\.]/g,''));
+        if (!othercost){othercost = 0;}
+        //make sure your float is fixed number with two decimal places
+        var othercostfixed = othercost.toFixed(2);
+        //add $ and make sure commas are correct
+        var othercostformatted = '$' + othercostfixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#deal_other_cost").val(othercostformatted);
+        //this input field is saved as a string
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#deal_other_cost", formatOtherCost);
+    
+    //most of these work in pairs
+    //these two functions are different than the others
+    function updateFeeSqFtTotal()
+    {
+        /*var taxes = parseFloat($("#deal_taxes").val());
+        if (!taxes){
+            taxes = 0;
+        }*/
+        
+        /* .replace(/[^\d\.]/g,'') - Removes any non-numeric characters except for periods. */
+        
+        var taxes = parseFloat($("#deal_taxes").val().replace(/[^\d\.]/g,''));
+        if (!taxes){
+            taxes = 0;
+        }
+        var insurance = parseFloat($("#deal_insurance").val().replace(/[^\d\.]/g,''));
+        if (!insurance){
+            insurance = 0;
+        }
+        var marketing = parseFloat($("#deal_marketing").val().replace(/[^\d\.]/g,''));
+        if (!marketing){
+            marketing = 0;
+        }
+        var gomarketing = parseFloat($("#deal_go_marketing").val().replace(/[^\d\.]/g,''));
+        if (!gomarketing){
+            gomarketing = 0;
+        }
+        var trash = parseFloat($("#deal_trash").val().replace(/[^\d\.]/g,''));
+        if (!trash){
+            trash = 0;
+        }
+        var other = parseFloat($("#deal_other").val().replace(/[^\d\.]/g,''));
+        if (!other){
+            other = 0;
+        }
+        var total = taxes + insurance + marketing + gomarketing + trash + other;
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#deal_fee_sqft_total").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#deal_taxes", updateFeeSqFtTotal);
+    $(document).on("change, keyup, blur", "#deal_taxes_cost", updateFeeSqFtTotal);
+    $(document).on("change, keyup, blur", "#deal_insurance", updateFeeSqFtTotal);
+    $(document).on("change, keyup, blur", "#deal_insurance_cost", updateFeeSqFtTotal);
+    $(document).on("change, keyup, blur", "#deal_marketing", updateFeeSqFtTotal);
+    $(document).on("change, keyup, blur", "#deal_marketing_cost", updateFeeSqFtTotal);
+    $(document).on("change, keyup, blur", "#deal_go_marketing", updateFeeSqFtTotal);
+    $(document).on("change, keyup, blur", "#deal_go_marketing_cost", updateFeeSqFtTotal);
+    $(document).on("change, keyup, blur", "#deal_trash", updateFeeSqFtTotal);
+    $(document).on("change, keyup, blur", "#deal_trash_cost", updateFeeSqFtTotal);
+    $(document).on("change, keyup, blur", "#deal_other", updateFeeSqFtTotal);
+    $(document).on("change, keyup, blur", "#deal_other_cost", updateFeeSqFtTotal);
+    
+    function updateFeeCostTotal()
+    {
+        var taxescost = parseFloat($("#deal_taxes_cost").val().replace(/[^\d\.]/g,''));
+        if (!taxescost){
+            taxescost = 0;
+        }
+        var insurancecost = parseFloat($("#deal_insurance_cost").val().replace(/[^\d\.]/g,''));
+        if (!insurancecost){
+            insurancecost = 0;
+        }
+        var marketingcost = parseFloat($("#deal_marketing_cost").val().replace(/[^\d\.]/g,''));
+        if (!marketingcost){
+            marketingcost = 0;
+        }
+        var gomarketingcost = parseFloat($("#deal_go_marketing_cost").val().replace(/[^\d\.]/g,''));
+        if (!gomarketingcost){
+            gomarketingcost = 0;
+        }
+        var trashcost = parseFloat($("#deal_trash_cost").val().replace(/[^\d\.]/g,''));
+        if (!trashcost){
+            trashcost = 0;
+        }
+        var othercost = parseFloat($("#deal_other_cost").val().replace(/[^\d\.]/g,''));
+        if (!othercost){
+            othercost = 0;
+        }
+        var total = taxescost + insurancecost + marketingcost + gomarketingcost + trashcost + othercost;
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#deal_fee_cost_total").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#deal_taxes", updateFeeCostTotal);
+    $(document).on("change, keyup, blur", "#deal_taxes_cost", updateFeeCostTotal);
+    $(document).on("change, keyup, blur", "#deal_insurance", updateFeeCostTotal);
+    $(document).on("change, keyup, blur", "#deal_insurance_cost", updateFeeCostTotal);
+    $(document).on("change, keyup, blur", "#deal_marketing", updateFeeCostTotal);
+    $(document).on("change, keyup, blur", "#deal_marketing_cost", updateFeeCostTotal);
+    $(document).on("change, keyup, blur", "#deal_go_marketing", updateFeeCostTotal);
+    $(document).on("change, keyup, blur", "#deal_go_marketing_cost", updateFeeCostTotal);
+    $(document).on("change, keyup, blur", "#deal_trash", updateFeeCostTotal);
+    $(document).on("change, keyup, blur", "#deal_trash_cost", updateFeeCostTotal);
+    $(document).on("change, keyup, blur", "#deal_other", updateFeeCostTotal);
+    $(document).on("change, keyup, blur", "#deal_other_cost", updateFeeCostTotal);
+    //end most of these work in pairs
+    
+    
+    
+    
+    
+    
+    function formatGrossArea()
+    {
+        //parseInt # value after stripping the string of special charactes except period (.)
+        var grossarea = parseInt($("#deal_gross_area").val().replace(/[^\d\.]/g,''));
+        //if grossarea is Nan change to zero
+        if (!grossarea){
+            grossarea = 0;
+        }
+        //make sure your number is fixed number with no decimal places
+        var grossareafixed = grossarea.toFixed(0);
+        //make sure commas are correct
+        var grossareaformatted = grossareafixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        
+        //change # to total
+        $("#deal_gross_area").val(grossareaformatted);
+        //this input field is saved as a string
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#deal_gross_area", formatGrossArea);
+    
+    function formatNetRentableArea()
+    {
+        //parseInt # value after stripping the string of special charactes except period (.)
+        var netrentablearea = parseInt($("#deal_net_rentable_area").val().replace(/[^\d\.]/g,''));
+        //if netrentablearea is Nan change to zero
+        if (!netrentablearea){
+            netrentablearea = 0;
+        }
+        //make sure your number is fixed number with no decimal places
+        var netrentableareafixed = netrentablearea.toFixed(0);
+        //make sure commas are correct
+        var netrentableareaformatted = netrentableareafixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        
+        //change # to total
+        $("#deal_net_rentable_area").val(netrentableareaformatted);
+        //this input field is saved as a string
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#deal_net_rentable_area", formatNetRentableArea);
+    
+    function formatBaseRent()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var baserent = parseFloat($("#deal_base_rent").val().replace(/[^\d\.]/g,''));
+        //if baserent doesn't exist, make it zero
+        if (!baserent){
+            baserent = 0;
+        }
+        //make sure your float is fixed number with two decimal places
+        var baserentfixed = baserent.toFixed(2);
+        //add $ and make sure commas are correct
+        var baserentformatted = '$' + baserentfixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#deal_base_rent").val(baserentformatted);
+        //this input field is saved as a string
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#deal_base_rent", formatBaseRent);
+    
+    function formatTotalBaseRent()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var totalbaserent = parseFloat($("#deal_total_base_rent").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!totalbaserent){
+            totalbaserent = 0;
+        }
+        //make sure your float is fixed number with two decimal places
+        var totalbaserentfixed = totalbaserent.toFixed(2);
+        //add $ and make sure commas are correct
+        var totalbaserentformatted = '$' + totalbaserentfixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#deal_total_base_rent").val(totalbaserentformatted);
+        //this input field is saved as a string
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#deal_total_base_rent", formatTotalBaseRent);
+    
+    function formatBudgetRate()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var budgetrate = parseFloat($("#deal_budget_rate").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!budgetrate){
+            budgetrate = 0;
+        }
+        //make sure your float is fixed number with two decimal places
+        var budgetratefixed = budgetrate.toFixed(2);
+        //add $ and make sure commas are correct
+        var budgetrateformatted = '$' + budgetratefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#deal_budget_rate").val(budgetrateformatted);
+        //this input field is saved as a string
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#deal_budget_rate", formatBudgetRate);
+    
+    
+    function formatBudgetTI()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#deal_budget_ti").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with two decimal places
+        var variablefixed = variable.toFixed(2);
+        //add $ and make sure commas are correct
+        var variableformatted = '$' + variablefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#deal_budget_ti").val(variableformatted);
+        //this input field is saved as a string
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#deal_budget_ti", formatBudgetTI);
+    
+    function formatBaseBuildingCost()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#deal_base_building_cost").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with two decimal places
+        var variablefixed = variable.toFixed(2);
+        //add $ and make sure commas are correct
+        var variableformatted = '$' + variablefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#deal_base_building_cost").val(variableformatted);
+        //this input field is saved as a string
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#deal_base_building_cost", formatBaseBuildingCost);
+        
+    
+    //acting as a pair
+    function updateTotalBaseRent()
+    {
+        var netarea = parseFloat($("#deal_net_rentable_area").val().replace(/[^\d\.]/g,''));
+        var baserent = parseFloat($("#deal_base_rent").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!baserent){
+            baserent = 0;
+        }
+        var total = baserent * netarea;
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#deal_total_base_rent").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#deal_base_rent", updateTotalBaseRent);
+    
+    function updateBaseRent()
+    {
+        var netarea = parseFloat($("#deal_net_rentable_area").val().replace(/[^\d\.]/g,''));
+        var totalbaserent = parseFloat($("#deal_total_base_rent").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!totalbaserent){
+            totalbaserent = 0;
+        }
+        var total = totalbaserent / netarea;
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#deal_base_rent").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#deal_total_base_rent", updateBaseRent);
+    //end most of these work in pairs
+    
+    function formatPercentageOfRent()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var percentageofrent = parseFloat($("#deal_percentage_of_rent").val().replace(/[^\d\.]/g,''));
+        if (!percentageofrent){
+            percentageofrent = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var percentageofrentfixed = percentageofrent.toFixed(1);
+        //make sure commas are correct and add %
+        var percentageofrentformatted = percentageofrentfixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#deal_percentage_of_rent").val(percentageofrentformatted);
+        //this input field is saved as a string
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#deal_percentage_of_rent", formatPercentageOfRent);
+
+    function formatIncrease()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#deal_increase").val().replace(/[^\d\.]/g,''));
+        if (!variable){variable = 0;}
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(1);
+        //make sure commas are correct and add %
+        var variableformatted = variablefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#deal_increase").val(variableformatted);
+        //this input field is saved as a string
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#deal_increase", formatIncrease);
+    
+    function formatBreakPoint()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var breakpoint = parseFloat($("#deal_break_point").val().replace(/[^\d\.]/g,''));
+        if (!breakpoint){
+            breakpoint = 0;
+        }
+        //make sure your float is fixed number with two decimal places
+        var breakpointfixed = breakpoint.toFixed(0);
+        //add $ and make sure commas are correct
+        var breakpointformatted = '$' + breakpointfixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#deal_break_point").val(breakpointformatted);
+        //this input field is saved as a string
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#deal_break_point", formatBreakPoint);
+    
+    function formatFeeSqftTotal()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#deal_fee_sqft_total").val().replace(/[^\d\.]/g,''));
+        if (!variable){ variable = 0; }
+        //make sure your float is fixed number with two decimal places
+        var variablefixed = variable.toFixed(0);
+        //add $ and make sure commas are correct
+        var variableformatted = '$' + variablefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#deal_fee_sqft_total").val(variableformatted);
+        //this input field is saved as a string
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#deal_fee_sqft_total", formatFeeSqftTotal);
+    
+    function formatFeeCostTotal()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#deal_fee_cost_total").val().replace(/[^\d\.]/g,''));
+        if (!variable){ variable = 0; }
+        //make sure your float is fixed number with two decimal places
+        var variablefixed = variable.toFixed(0);
+        //add $ and make sure commas are correct
+        var variableformatted = '$' + variablefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#deal_fee_cost_total").val(variableformatted);
+        //this input field is saved as a string
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#deal_fee_cost_total", formatFeeCostTotal);
+    
+    
+    //run functions on page load
+    $(document).ready(formatBaseRent);
+    $(document).ready(formatTotalBaseRent);
+    $(document).ready(formatBudgetRate);
+    $(document).ready(formatBudgetTI);
+    $(document).ready(formatBaseBuildingCost);
+    $(document).ready(formatGrossArea);
+    $(document).ready(formatNetRentableArea);
+    $(document).ready(formatBreakPoint);
+    $(document).ready(formatPercentageOfRent);
+    $(document).ready(formatIncrease);
+    $(document).ready(formatTiAllowance);
+    $(document).ready(formatTiCost);
+    $(document).ready(formatFitOut);
+    $(document).ready(formatFitOutCost);
+    //$(document).ready(formatLlWork);
+    //$(document).ready(formatLlWorkCost);
+    $(document).ready(formatCam);
+    $(document).ready(formatCamCost);
+    $(document).ready(formatCommInside);
+    $(document).ready(formatCommOutside);
+    $(document).ready(formatTaxes);
+    $(document).ready(formatTaxesCost);
+    $(document).ready(formatInsurance);
+    $(document).ready(formatInsuranceCost);
+    $(document).ready(formatMarketing);
+    $(document).ready(formatMarketingCost);
+    $(document).ready(formatGoMarketing);
+    $(document).ready(formatGoMarketingCost);
+    $(document).ready(formatTrash);
+    $(document).ready(formatTrashCost);
+    $(document).ready(formatOther);
+    $(document).ready(formatOtherCost);
+    $(document).ready(formatFeeSqftTotal);
+    $(document).ready(formatFeeCostTotal);
+    
+    
+    
+    //Function to format for Submit to Database
+    function formatForSubmitNetRentableArea()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var netrentablearea = parseFloat($("#deal_net_rentable_area").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!netrentablearea){
+            netrentablearea = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var netrentableareafixed = netrentablearea.toFixed(0);
+        //change # to total
+        $("#deal_net_rentable_area").val(netrentableareafixed);
+        //this input field is saved as a string
+    }
+    
+    function formatForIncrease()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var increase = parseFloat($("#deal_increase").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!increase){
+            increase = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var increasefixed = increase.toFixed(0);
+        //change # to total
+        $("#deal_increase").val(increasefixed);
+        //this input field is saved as a string
+    }
+    
+    function formatForPercentageOfRent()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#deal_percentage_of_rent").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(1);
+        //change # to total
+        $("#deal_percentage_of_rent").val(variablefixed);
+        //this input field is saved as a string
+    }
+    
+    function formatForIncrease()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var increase = parseFloat($("#deal_increase").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!increase){
+            increase = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var increasefixed = increase.toFixed(0);
+        //change # to total
+        $("#deal_increase").val(increasefixed);
+        //this input field is saved as a string
+    }
+    
+    function formatForBudgetRate()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#deal_budget_rate").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with 2 decimal places
+        var variablefixed = variable.toFixed(2);
+        //change # to total
+        $("#deal_budget_rate").val(variablefixed);
+        //this input field is saved as a string
+    }
+    
+    function formatForBudgetTI()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#deal_budget_ti").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with 2 decimal places
+        var variablefixed = variable.toFixed(2);
+        //change # to total
+        $("#deal_budget_ti").val(variablefixed);
+        //this input field is saved as a string
+    }
+    
+    function formatForBaseBuildingCost()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#deal_base_building_cost").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with 2 decimal places
+        var variablefixed = variable.toFixed(2);
+        //change # to total
+        $("#deal_base_building_cost").val(variablefixed);
+        //this input field is saved as a string
+    }
+    
+    //Function to format for Submit to Database
+    function formatForSubmitGrossArea()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var grossarea = parseFloat($("#deal_gross_area").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!grossarea){
+            grossarea = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var grossareafixed = grossarea.toFixed(0);
+        //change # to total
+        $("#deal_gross_area").val(grossareafixed);
+        //this input field is saved as a string
+    }
+    
+    function formatForSubmitBaseRent()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var baserent = parseFloat($("#deal_base_rent").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!baserent){
+            baserent = 0;
+        }
+        //make sure your float is fixed number with 2 decimal places
+        var baserentfixed = baserent.toFixed(2);
+        //change # to total
+        $("#deal_base_rent").val(baserentfixed);
+        //this input field is saved as a string
+    }
+    
+    function formatForSubmitTotalBaseRent()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var totalbaserent = parseFloat($("#deal_total_base_rent").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!totalbaserent){
+            totalbaserent = 0;
+        }
+        //make sure your float is fixed number with 2 decimal places
+        var totalbaserentfixed = totalbaserent.toFixed(2);
+        //change # to total
+        $("#deal_total_base_rent").val(totalbaserentfixed);
+        //this input field is saved as a string
+    }
+    
+    function formatForSubmitPercentageOfRent()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var percentageofrent = parseFloat($("#deal_percentage_of_rent").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!percentageofrent){
+            percentageofrent = 0;
+        }
+        //make sure your float is fixed number with 0 decimal places
+        var percentageofrentfixed = percentageofrent.toFixed(1);
+        //change # to total
+        $("#deal_percentage_of_rent").val(percentageofrentfixed);
+        //this input field is saved as a string
+    }
+    
+    function formatForSubmitBreakPoint()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var breakpoint = parseFloat($("#deal_break_point").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!breakpoint){
+            breakpoint = 0;
+        }
+        //make sure your float is fixed number with 0 decimal places
+        var breakpointfixed = breakpoint.toFixed(0);
+        //change # to total
+        $("#deal_break_point").val(breakpointfixed);
+        //this input field is saved as a string
+    }
+    
+    function formatForSubmitTiAllowance()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var tiallowance = parseFloat($("#deal_ti_allowance").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!tiallowance){
+            tiallowance = 0;
+        }
+        //make sure your float is fixed number with 2 decimal places
+        var tiallowancefixed = tiallowance.toFixed(2);
+        //change # to total
+        $("#deal_ti_allowance").val(tiallowancefixed);
+        //this input field is saved as a string
+    }
+    
+    function formatForSubmitTiCost()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var ticost = parseFloat($("#deal_ti_cost").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!ticost){
+            ticost = 0;
+        }
+        //make sure your float is fixed number with 2 decimal places
+        var ticostfixed = ticost.toFixed(2);
+        //change # to total
+        $("#deal_ti_cost").val(ticostfixed);
+        //this input field is saved as a string
+    }
+    
+    /*
+    function formatForSubmitLlWork()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var llwork = parseFloat($("#deal_ll_work").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!llwork){
+            llwork = 0;
+        }
+        //make sure your float is fixed number with 2 decimal places
+        var llworkfixed = llwork.toFixed(2);
+        //change # to total
+        $("#deal_ll_work").val(llworkfixed);
+        //this input field is saved as a string
+    }
+    
+    function formatForSubmitLlWorkCost()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var llworkcost = parseFloat($("#deal_ll_work_cost").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!llworkcost){
+            llworkcost = 0;
+        }
+        //make sure your float is fixed number with 2 decimal places
+        var llworkcostfixed = llworkcost.toFixed(2);
+        //change # to total
+        $("#deal_ll_work_cost").val(llworkcostfixed);
+        //this input field is saved as a string
+    }
+    */
+    
+    function formatForSubmitCam()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var cam = parseFloat($("#deal_cam").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!cam){
+            cam = 0;
+        }
+        //make sure your float is fixed number with 2 decimal places
+        var camfixed = cam.toFixed(2);
+        //change # to total
+        $("#deal_cam").val(camfixed);
+        //this input field is saved as a string
+    }
+    
+    function formatForSubmitCamCost()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var camcost = parseFloat($("#deal_cam_cost").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!camcost){
+            camcost = 0;
+        }
+        //make sure your float is fixed number with 2 decimal places
+        var camcostfixed = camcost.toFixed(2);
+        //change # to total
+        $("#deal_cam_cost").val(camcostfixed);
+        //this input field is saved as a string
+    }
+    
+    function formatForSubmitCommInside()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var comminside = parseFloat($("#deal_comm_inside").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!comminside){
+            comminside = 0;
+        }
+        //make sure your float is fixed number with 2 decimal places
+        var comminsidefixed = comminside.toFixed(2);
+        //change # to total
+        $("#deal_comm_inside").val(comminsidefixed);
+        //this input field is saved as a string
+    }
+    
+    function formatForSubmitCommOutside()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var commoutside = parseFloat($("#deal_comm_outside").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!commoutside){
+            commoutside = 0;
+        }
+        //make sure your float is fixed number with 2 decimal places
+        var commoutsidefixed = commoutside.toFixed(2);
+        //change # to total
+        $("#deal_comm_outside").val(commoutsidefixed);
+        //this input field is saved as a string
+    }
+    
+    function formatForSubmitTaxes()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var taxes = parseFloat($("#deal_taxes").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!taxes){
+            taxes = 0;
+        }
+        //make sure your float is fixed number with 2 decimal places
+        var taxesfixed = taxes.toFixed(2);
+        //change # to total
+        $("#deal_taxes").val(taxesfixed);
+        //this input field is saved as a string
+    }
+    
+    function formatForSubmitTaxesCost()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var taxescost = parseFloat($("#deal_taxes_cost").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!taxescost){
+            taxescost = 0;
+        }
+        //make sure your float is fixed number with 2 decimal places
+        var taxescostfixed = taxescost.toFixed(2);
+        //change # to total
+        $("#deal_taxes_cost").val(taxescostfixed);
+        //this input field is saved as a string
+    }
+    
+    function formatForSubmitInsurance()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var insurance = parseFloat($("#deal_insurance").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!insurance){
+            insurance = 0;
+        }
+        //make sure your float is fixed number with 2 decimal places
+        var insurancefixed = insurance.toFixed(2);
+        //change # to total
+        $("#deal_insurance").val(insurancefixed);
+        //this input field is saved as a string
+    }
+    
+    function formatForSubmitInsuranceCost()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var insurancecost = parseFloat($("#deal_insurance_cost").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!insurancecost){
+            insurancecost = 0;
+        }
+        //make sure your float is fixed number with 2 decimal places
+        var insurancecostfixed = insurancecost.toFixed(2);
+        //change # to total
+        $("#deal_insurance_cost").val(insurancecostfixed);
+        //this input field is saved as a string
+    }
+    
+    function formatForSubmitMarketing()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#deal_marketing").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with 2 decimal places
+        var variablefixed = variable.toFixed(2);
+        //change # to total
+        $("#deal_marketing").val(variablefixed);
+        //this input field is saved as a string
+    }
+    
+    function formatForSubmitMarketingCost()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#deal_marketing_cost").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with 2 decimal places
+        var variablefixed = variable.toFixed(2);
+        //change # to total
+        $("#deal_marketing_cost").val(variablefixed);
+        //this input field is saved as a string
+    }
+    
+    function formatForSubmitGoMarketing()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#deal_go_marketing").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with 2 decimal places
+        var variablefixed = variable.toFixed(2);
+        //change # to total
+        $("#deal_go_marketing").val(variablefixed);
+        //this input field is saved as a string
+    }
+    
+    function formatForSubmitGoMarketingCost()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#deal_go_marketing_cost").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with 2 decimal places
+        var variablefixed = variable.toFixed(2);
+        //change # to total
+        $("#deal_go_marketing_cost").val(variablefixed);
+        //this input field is saved as a string
+    }
+    
+    function formatForSubmitTrash()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#deal_trash").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with 2 decimal places
+        var variablefixed = variable.toFixed(2);
+        //change # to total
+        $("#deal_trash").val(variablefixed);
+        //this input field is saved as a string
+    }
+    
+    function formatForSubmitTrashCost()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#deal_trash_cost").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with 2 decimal places
+        var variablefixed = variable.toFixed(2);
+        //change # to total
+        $("#deal_trash_cost").val(variablefixed);
+        //this input field is saved as a string
+    }
+    
+    function formatForSubmitOther()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#deal_other").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with 2 decimal places
+        var variablefixed = variable.toFixed(2);
+        //change # to total
+        $("#deal_other").val(variablefixed);
+        //this input field is saved as a string
+    }
+    
+    function formatForSubmitOtherCost()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#deal_other_cost").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with 2 decimal places
+        var variablefixed = variable.toFixed(2);
+        //change # to total
+        $("#deal_other_cost").val(variablefixed);
+        //this input field is saved as a string
+    }
+    
+    function formatForSubmitFeeSqftTotal()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#deal_fee_sqft_total").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with 2 decimal places
+        var variablefixed = variable.toFixed(2);
+        //change # to total
+        $("#deal_fee_sqft_total").val(variablefixed);
+        //this input field is saved as a string
+    }
+    
+    function formatForSubmitFeeCostTotal()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#deal_fee_cost_total").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with 2 decimal places
+        var variablefixed = variable.toFixed(2);
+        //change # to total
+        $("#deal_fee_cost_total").val(variablefixed);
+        //this input field is saved as a string
+    }
+    
+    function formatForFitOut()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#deal_fit_out").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with 2 decimal places
+        var variablefixed = variable.toFixed(2);
+        //change # to total
+        $("#deal_fit_out").val(variablefixed);
+        //this input field is saved as a string
+    }
+    
+    function formatForFitOutCost()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#deal_fit_out_cost").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with 2 decimal places
+        var variablefixed = variable.toFixed(2);
+        //change # to total
+        $("#deal_fit_out_cost").val(variablefixed);
+        //this input field is saved as a string
+    }
+    
+    //Function to take Deal Gross Area and add to hidden field Area Sq Ft (formatted for database)
+    function GrossAreaToAreaSqFt()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var grossarea = parseFloat($("#deal_gross_area").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!grossarea){
+            grossarea = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var grossareafixed = grossarea.toFixed(0);
+        //change # to total
+        $("#deal_area_attributes_area_square_feet").val(grossareafixed);
+        //this input field is saved as a string
+    }
+    
+    //Before Submit Run Function(s)
+    $('.formatFunctions').submit(function() {
+      GrossAreaToAreaSqFt();
+      formatForSubmitNetRentableArea();
+      formatForFitOut();
+      formatForFitOutCost();
+      formatForSubmitGrossArea();
+      formatForSubmitBaseRent();
+      formatForSubmitTotalBaseRent();
+      formatForSubmitPercentageOfRent();
+      formatForSubmitBreakPoint();
+      formatForSubmitTiAllowance();
+      formatForSubmitTiCost();
+      formatForBudgetRate();
+      formatForBudgetTI();
+      formatForBaseBuildingCost();
+      formatForSubmitCam();
+      formatForSubmitCamCost();
+      formatForSubmitCommInside();
+      formatForSubmitCommOutside();
+      formatForSubmitTaxes();
+      formatForSubmitTaxesCost();
+      formatForSubmitInsurance();
+      formatForSubmitInsuranceCost();
+      formatForSubmitMarketing();
+      formatForSubmitMarketingCost();
+      formatForSubmitGoMarketing();
+      formatForSubmitGoMarketingCost();
+      formatForSubmitTrash();
+      formatForSubmitTrashCost();
+      formatForSubmitOther();
+      formatForSubmitOtherCost();
+      formatForSubmitFeeSqftTotal();
+      formatForSubmitFeeCostTotal();
+      
+      formatForPercentageOfRent();
+      formatForIncrease();
+    });
+    
+    
+    //Fit-out Duration stuff:
+    function fitOutChange()
+    {
+        if ($("#deal_fit_out_duration").val() == "other")
+          $("#fitOutIf").show();
+        else
+          $("#fitOutIf").hide();
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change", "#deal_fit_out_duration", fitOutChange);
+    $(document).ready(fitOutChange);
+
+    
+    //cash on cash and budget variance calculations:
+    
+
+
+
+    // Cash On Cash Return is calculated:
+    // Base Rent / (Base Building Cost +TI Allowance + LL Work)
+    function updateCashOnCash()
+    {
+        var baserent = parseFloat($("#deal_base_rent").val().replace(/[^\d\.]/g,''));
+        if (!baserent){baserent = 0;}
+        var basebuildingcost = parseFloat($("#deal_base_building_cost").val().replace(/[^\d\.]/g,''));
+        if (!basebuildingcost){basebuildingcost = 0.01;}
+        var tiallowance = parseFloat($("#deal_ti_allowance").val().replace(/[^\d\.]/g,''));
+        if (!tiallowance){tiallowance = 0;}
+        var llwork = parseFloat(<% if @workletter != nil %><%= @workletter.ll_work %><% else %>0.00<% end %>);
+        if (!llwork){llwork = 0;}
+        
+        var addition = basebuildingcost + tiallowance + llwork;
+            addition = addition.toFixed(2);
+        
+        //cash on cash calculation:
+        //baserent / basebuildingcost + tiallowance + llwork
+        var total = baserent / addition;
+            total = total.toFixed(2);
+            
+        var percent = total * 100;
+            percent = percent.toFixed(1);
+        //var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#deal_cash_on_cash").val(percent);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#deal_base_building_cost", updateCashOnCash);
+    $(document).on("change, keyup, blur", "#deal_ti_allowance", updateCashOnCash);
+    $(document).on("change, keyup, blur", "#deal_base_rent", updateCashOnCash);
+    $(document).ready(updateCashOnCash);
+    
+    function updateBudgetVariance()
+    {
+        var baserent = parseFloat($("#deal_base_rent").val().replace(/[^\d\.]/g,''));
+        if (!baserent){baserent = 0;}
+        var basebuildingcost = parseFloat($("#deal_base_building_cost").val().replace(/[^\d\.]/g,''));
+        if (!basebuildingcost){basebuildingcost = 0.01;}
+        var tiallowance = parseFloat($("#deal_ti_allowance").val().replace(/[^\d\.]/g,''));
+        if (!tiallowance){tiallowance = 0;}
+        var llwork = parseFloat(<% if @workletter != nil %><%= @workletter.ll_work %><% else %>0.00<% end %>);
+        if (!llwork){llwork = 0;}
+        
+        var addition = basebuildingcost + tiallowance + llwork;
+            addition = addition.toFixed(2);
+        
+        //this gives us cash on cash for
+        var cashoncash = baserent / addition;
+            cashoncash = cashoncash.toFixed(2);
+            
+        var budgetrate = parseFloat($("#deal_budget_rate").val().replace(/[^\d\.]/g,''));
+        if (!budgetrate){budgetrate = 0;}
+        var budget_ti = parseFloat($("#deal_budget_ti").val().replace(/[^\d\.]/g,''));
+        if (!budget_ti){budget_ti = 0;}
+        var base_building_cost = parseFloat($("#deal_base_building_cost").val().replace(/[^\d\.]/g,''));
+        if (!base_building_cost){base_building_cost = 0;}
+        
+        var budget_return_add = budget_ti + base_building_cost;
+            budget_return_add = budget_return_add.toFixed(2);
+        
+        // budget_return = budgetrate / (budget_ti + base_building_cost)
+        var budget_return = budgetrate / budget_return_add;
+            budget_return = budget_return.toFixed(1);
+
+        var percent = budget_return * 100;
+            percent = percent.toFixed(1);
+        //var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#deal_budget_variance").val(percent);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#deal_budget_rate", updateBudgetVariance);
+    $(document).on("change, keyup, blur", "#deal_budget_ti", updateBudgetVariance);
+    $(document).on("change, keyup, blur", "#deal_base_building_cost", updateBudgetVariance);
+    $(document).on("change, keyup, blur", "#deal_ti_allowance", updateBudgetVariance);
+    $(document).on("change, keyup, blur", "#deal_base_rent", updateBudgetVariance);
+    $(document).ready(updateBudgetVariance);
+
+
+    
+    
+});
+</script>
