@@ -65,9 +65,7 @@ class DealsController < ApplicationController
   # PATCH/PUT /deals/1.json
   def update
     @project = Project.find(@deal.project_id)
-    @dealimage = @deal.dealimages.build
-    @dealimages = @deal.dealimages.all
-    
+
     respond_to do |format|
       if @deal.update(deal_params)
         if params.has_key?(:dealimages)
