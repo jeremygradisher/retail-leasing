@@ -15,6 +15,8 @@
     </div>
   <% end %>
 
+
+<!-- before -->
   <div class="form-group">
     <%= f.label :deal_name, :class => 'control-label col-lg-2' %>
     <div class="col-lg-2">
@@ -94,7 +96,704 @@
          </div>
     <% end %>
   </div>
+<!-- END before -->  
+
+
+
+
+
+
+
+
+
+  <div class="form-group" style="/*display:none;*/">
+    <div class="col-lg-2">
+      
+      <% if @dealimages.exists? %>
+
+        <% @dealimages.each do |p| %>
+              <%= image_tag p.dealimage_url, :style => 'max-width:100%;
+                                                        border: 1px solid #ccc;
+                                                        border-radius: 8px;' %>
+
+              <div style="margin-top:20px;">
+                <center>
+              <%= link_to '<i class="fa fa-edit"></i>'.html_safe,
+                    edit_dealimage_path(p), :class => 'form-control-button', 
+                    :title => 'Edit Attachment'  %>
+                    
+              <%= link_to '<i class="fa fa-trash"></i>'.html_safe,
+                            dealimage_path(p),
+                            :method => :delete,
+                            :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                            :class => 'form-control-button' %>
+              </center>
+              </div>
+        <% end %>
+    
+    <% else %>  
+    
+          <%= image_tag '/images/status-plan-logo-large.png', :style => 'max-width:100%;
+                                                        border: 1px solid #ccc;
+                                                        padding: 2px;
+                                                        border-radius: 8px;' %>
+                                                        
+         <%= f.file_field :dealimage, :multiple => true, name: "dealimages[dealimage][]",
+          :class => 'form-control', onchange: "validateFiles(this);",
+          :style => 'margin-top:20px;',
+          data: { max_file_size: 2.megabytes } %>
+    <% end %>
+      
+    </div>
+    <div class="col-lg-10">
+
+<!-- from here -->
+  <div class="form-group" style="/*display:none;*/">
+
+    <%= f.label :deal_name, "Deal Name", :class => 'control-label col-lg-2' %>
+    <div class="col-lg-3">
+      <!-- value: @name should be removed on the edit form -->
+      <% if controller.action_name == "new" %>
+        <%= f.text_field :deal_name, value: @name, :class => 'form-control' %>
+      <% else %>
+        <%= f.text_field :deal_name, :class => 'form-control' %>
+      <% end %>
+      <%=f.error_span(:deal_name) %>
+    </div>
+    
+    <%= f.label :merchandising_status, 'Merchandising Status', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-3">
+      
+      <%= f.select :merchandising_status, ['Fashion', 'Auto / Gas', 'Candy / Confectionary', 'Department Store', 'Electronics', 'Entertainment', 'Food & Beverage', 'Footwear', 'Grocery / Hypermarket', 'Home / Furnishings', 'Jewelry / Handbags', 'Mobiles / Accessories', 'Perfume / Cosmetics', 'Pets', 'Services / Specialty Stores', 'Sports / Outdoor / Fitness', 'Toys & Hobbies / Gifts / Books'], {include_blank:true}, :class => 'form-control' %>
+      <% if @deal.merchandising_status == nil || @deal.merchandising_status == '' %>
+        <br>(<%#= @area.merchandising_status %>)
+      <% end %>
+    </div>
+    <%=f.error_span(:merchandising_status) %>
+    
+    <%= f.label :archive, 'Archive', :class => 'control-label col-lg-1' %>
+      <div class="col-lg-1">
+        <%= f.check_box :archive, :style => 'margin-top:10px;' %>
+      </div>
+  </div>
   
+  <div class="form-group">
+    <%= f.label :net_rentable_area, 'Net Rentable Area', :placeholder => 'SF', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <% if controller.action_name == "new" %>
+        <%= f.text_field :net_rentable_area, value: @area.area_square_feet, :placeholder => 'SF', :class => 'form-control sf-background' %>
+      <% else %>
+        <%= f.text_field :net_rentable_area, :placeholder => 'SF', :class => 'form-control sf-background', :style => '' %>
+      <% end %>
+      <%=f.error_span(:net_rentable_area) %>
+    </div>
+    
+    <%= f.label :gross_area, 'Gross Area', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <% if controller.action_name == "new" %>
+        <%= f.text_field :gross_area, value: @area.area_square_feet, :placeholder => 'SF', :class => 'form-control sf-background' %>
+      <% else %>
+        <%= f.text_field :gross_area, :placeholder => 'SF', :class => 'form-control sf-background' %>
+      <% end %>
+      <%=f.error_span(:gross_area) %>
+    </div>
+  </div>
+
+  <!-- this saves gross_area from the deal to the area_square_feet field within the associated area with
+        help from the function GrossAreaToAreaSqFt() in file _calcjquery.html.erb - 
+        Now that we are utilizing multiple deals I am not sure this is the right play
+        -->
+  <div class="form-group" style="display:none;">
+    <%= f.label :area_square_feet, 'Area Sq Ft', :class => 'control-label col-lg-3', :style => 'display:none;' %>
+    <div class="col-lg-3" style="display:none;">
+      <%= f.fields_for :area do |a| %>
+        <%= a.text_field :area_square_feet, :placeholder => 'SF', :class => 'form-control', :style => 'display:none;' %>
+      <% end %>
+    </div>
+    <%=f.error_span(:area_square_feet) %>
+  </div>  
+  <!-- end -->  
+
+  <div class="form-group">
+    <%= f.label :tenant_description, 'Tenant Description', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%#= f.text_field :signage_notes, :class => 'form-control' %>
+      <%= f.text_area :tenant_description, :rows => 4, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:tenant_description) %>
+  </div>
+
+
+  <hr>
+  
+  <!--
+  <div class="form-group">
+    <%#= f.label :lease_status, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%#= f.select :lease_status, ['Available', 'Prospect', 'LOI', 'At Lease', 'Leased'], {include_blank:false}, :class => 'form-control' %>
+      <%#=f.error_span(:lease_status) %>
+    </div>
+  </div>
+  <hr>
+  -->
+
+  <div class="form-group">
+    <%= f.label :lease_status, 'Lease Status', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      
+      <div id="radios">
+      <!--  -->
+      <% if @deal.lease_status == nil %>
+        <%= f.radio_button :lease_status, 'Available', :checked => 'checked' %>
+      <% else %>
+        <%= f.radio_button :lease_status, 'Available' %>
+      <% end %>
+      <%= f.label :lease_status, 'Available', :value => 'Available', :class => 'available-label' %>
+      
+      <%= f.radio_button :lease_status, 'Prospect' %>
+      <%= f.label :lease_status, 'Prospect', :value => 'Prospect', :class => 'prospect-label' %>
+      
+      <%= f.radio_button :lease_status, 'LOI' %>
+      <%= f.label :lease_status, 'LOI', :value => 'LOI', :class => 'loi-label' %>
+      
+      <%= f.radio_button :lease_status, 'At Lease' %>
+      <%= f.label :lease_status, 'At Lease', :value => 'At Lease', :class => 'at-lease-label' %>
+      
+      <%= f.radio_button :lease_status, 'Leased' %>
+      <%= f.label :lease_status, 'Leased', :value => 'Leased', :class => 'leased-label' %>
+      </div>
+      
+      <script>
+        $('#radios').radiosToSlider({
+            animation: true,
+        });
+      </script>
+      
+      <%=f.error_span(:lease_status) %>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label "Priority", :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+        <%= f.check_box :priority, :style => 'margin-top:10px;' %>
+    </div>
+    <%= f.label :lease_status, 'Owner Approval', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-1">
+      <%= f.check_box :owner_approval, :style => 'margin-top:10px;' %>
+    </div>
+    <div class="col-lg-7">
+    </div>
+  </div>
+
+<div class="form-group">
+    <%= f.label :status_notes, "Status Notes", :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+    <span class="show-below-1200">Description:</span>
+    <%= f.text_area :status_notes, :rows => 4, :class => 'form-control' %>
+    <%=f.error_span(:status_notes) %>
+    </div>
+  </div>
+<!-- may need this later
+  <div class="form-group"> 
+   <%#= f.label :leasing_manager, 'Leasing Manager', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <span class="show-below-1200">Leasing Manager:</span>
+      <%#= f.select :leasing_manager, @project.leasing_managers.all.map{ |v| [v.name, v.name] }, {include_blank: true}, :class => 'form-control' %>
+    </div>
+    <%#=f.error_span(:leasing_manager) %>
+    
+    <%#= f.label :tenant_contact, 'Tenant Contact', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%#= f.text_field :tenant_contact, :class => 'form-control' %>
+      <%#=f.error_span(:tenant_contact) %>
+    </div>
+  </div>
+ <hr> 
+--> 
+  <div class="form-group">
+    <%= f.label :tenant_contact, 'Tenant Contacts', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%#= f.text_field :permit_notes, :class => 'form-control' %>
+      <%= f.text_area :tenant_contact, :rows => 6, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:tenant_contact) %>
+
+    <%= f.label :architect, 'Architect', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%#= f.text_field :permit_notes, :class => 'form-control' %>
+      <%= f.text_area :architect, :rows => 6, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:architect) %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :general_contractor, 'General Contractor', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%#= f.text_field :permit_notes, :class => 'form-control' %>
+      <%= f.text_area :general_contractor, :rows => 6, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:general_contractor) %>
+
+    <%= f.label :other_contacts, 'Other Contacts', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%#= f.text_field :permit_notes, :class => 'form-control' %>
+      <%= f.text_area :other_contacts, :rows => 6, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:other_contacts) %>
+  </div>
+  
+  
+
+ <hr> 
+
+  <div class="form-group">
+    <%= f.label :key_contacts, 'Key Contacts', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%#= f.text_field :permit_notes, :class => 'form-control' %>
+      <%= f.text_area :key_contacts, :rows => 4, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:key_contacts) %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :tenant_documents, "Tenant Documents", :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :tenant_documents, :class => 'form-control tag-test' %>
+    </div>
+    <%=f.error_span(:tenant_documents) %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :landlord_work, "Landlord Work", :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :landlord_work, :class => 'form-control tag-test' %>
+    </div>
+    <%=f.error_span(:landlord_work) %>
+  </div>
+  
+
+
+
+
+<div class="page-header">
+    <h3>Calculations</h3>
+  </div>
+  <div class="form-group">
+    <%= f.label :cash_on_cash, 'Cash on Cash', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%= f.text_field :cash_on_cash, :placeholder => '', :class => 'form-control percent-background' %>
+      <%=f.error_span(:cash_on_cash) %>
+    </div>
+    
+    <%= f.label :budget_variance, 'Budget Variance', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%= f.text_field :budget_variance, :placeholder => '', :class => 'form-control percent-background' %>
+    </div>
+    <%=f.error_span(:budget_variance) %>
+  </div>
+
+
+
+
+
+  <div class="page-header">
+    <h3>Term of Deal</h3>
+  </div>
+  <div class="form-group">
+    <%= f.label :deal_term, 'Deal Term', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%= f.text_field :deal_term, :placeholder => '# of years', :class => 'form-control' %>
+      <%=f.error_span(:deal_term) %>
+    </div>
+    
+    <%= f.label :date_of_possession, 'Date of Possession', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%= f.text_field :date_of_possession, 'data-provide' => 'datepicker', :class => 'form-control', :placeholder => 'mm/dd/yyyy' %>
+    </div>
+    <%=f.error_span(:date_of_possession) %>
+
+    <!-- this -->
+    <%= f.label :fit_out_duration, 'Fit Out Duration', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%#= f.text_field :fit_out_duration, :class => 'form-control' %>
+      <%= f.select :fit_out_duration, ['60', '90', '120', '150', '180', '210', '240', '300', '360', 'other'], {include_blank:false}, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:fit_out_duration) %>
+    <!-- this -->
+  </div>
+
+
+  
+  <div class="form-group">
+    <%= f.label :action_required, 'Action Required', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%= f.text_field :action_required, :class => 'form-control' %>
+      <%=f.error_span(:action_required) %>
+    </div>
+  </div>
+  
+  <!-- if -->
+  <div id="fitOutIf" class="form-group" style="display:none;">
+    <div class="col-lg-5">
+    </div>
+    <%= f.label :fit_out_duration_if, 'Fit-Out Duration (other)', :class => 'control-label col-lg-3' %>
+    <div class="col-lg-4">
+    <%= f.text_field :fit_out_duration_if, :class => 'form-control' %>
+    </div>
+  </div>
+  <!-- END if -->
+  
+  <div class="form-group">
+    <%= f.label :term_notes, "Term Notes", :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+    <span class="show-below-1200">Description:</span>
+    <%= f.text_area :term_notes, :rows => 4, :class => 'form-control' %>
+    <%=f.error_span(:term_notes) %>
+    </div>
+  </div>
+
+
+
+
+  <div class="page-header">
+    <h3>Budget</h3>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :budget_rate, 'Budget Rate', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%= f.text_field :budget_rate, :placeholder => '$', :class => 'form-control sf-background' %>
+      <%=f.error_span(:budget_rate) %>
+    </div>
+    
+    <%= f.label :budget_ti, 'Budget TI', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%= f.text_field :budget_ti, :placeholder => '$', :class => 'form-control sf-background' %>
+      <%=f.error_span(:budget_ti) %>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <%#= f.label :budget_rate, 'Budget Rate', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-6">
+      <%#= f.text_field :budget_rate, :placeholder => '$', :class => 'form-control' %>
+      <%#=f.error_span(:budget_rate) %>
+    </div>
+    
+    <%= f.label :base_building_cost, 'Base Building Cost', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%= f.text_field :base_building_cost, :placeholder => '$', :class => 'form-control sf-background' %>
+      <%=f.error_span(:base_building_cost) %>
+    </div>
+  </div>
+
+
+  <div class="page-header">
+    <h3>Rent</h3>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :base_rent, 'Base Rent', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%= f.text_field :base_rent, :placeholder => '$/SF', :class => 'form-control sf-background' %>
+      <%=f.error_span(:base_rent) %>
+    </div>
+    
+    <%= f.label :total_base_rent, 'Total Base Rent', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%= f.text_field :total_base_rent, :placeholder => '$', :class => 'form-control' %>
+      <%=f.error_span(:total_base_rent) %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :percentage_of_rent, 'Percentage Rent', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%= f.text_field :percentage_of_rent, :placeholder => '%', :class => 'form-control percent-background' %>
+      <%=f.error_span(:percentage_of_rent) %>
+    </div>
+    
+    <%= f.label :break_point, 'Break Point', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%= f.text_field :break_point, :placeholder => '$', :class => 'form-control' %>
+      <%=f.error_span(:break_point) %>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :increase, 'Increase', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%= f.text_field :increase, :placeholder => '%', :class => 'form-control percent-background' %>
+      <%=f.error_span(:increase) %>
+    </div>
+    
+    <%#= f.label :break_point, 'Break Point', :class => 'control-label col-lg-2' %>
+    <!--
+    <div class="col-lg-4">
+      <%#= f.text_field :break_point, :placeholder => '$', :class => 'form-control' %>
+      <%#=f.error_span(:break_point) %>
+    </div>
+    -->
+  </div>
+  
+
+  
+  <div class="page-header">
+    <h3>Inducement</h3>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :ti_allowance, 'TI Allowance', :style => 'text-transform:none;', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%= f.text_field :ti_allowance, :placeholder => '$/SF', :class => 'form-control sf-background' %>
+      <%=f.error_span(:ti_allowance) %>
+    </div>
+    
+    <%= f.label :ti_cost, 'TI Cost', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%= f.text_field :ti_cost, :placeholder => '$', :class => 'form-control' %>
+      <%=f.error_span(:ti_cost) %>
+    </div>
+    
+  </div>
+
+
+<script>
+  //I tried to do this to get the form to submit from the links
+  //and still allow you to follow the link,
+  //but it still redirects you to the area because the deal form was submitted.
+  /*
+  $(document).ready(function() { 
+    $('.editclicker').click(function() {
+        $('.dealForm').submit();
+    });
+  });
+  */
+</script>
+  
+  <div class="form-group">
+    <%= f.label :ll_work, 'LL Work', :style => 'text-transform:none;', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <label class="control-label" id="test"><% if @workletter != nil %>$<%= number_with_delimiter(@workletter.ll_work, :delimiter => ',') %><% end %></label>
+      <label class="control-label"><% if @workletter != nil %><%= link_to "Edit", edit_workletter_path(@workletter), :class => 'editclicker' %><% else %>*There is currently no workletter.<% end %></label>
+    </div>
+    
+    <%= f.label :ll_work_cost, 'LL Work Cost', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <label class="control-label"><% if @workletter != nil %>$<%= number_with_delimiter(@workletter.ll_work_cost, :delimiter => ',') %><% end %></label>
+      <label class="control-label"><% if @workletter != nil %><%= link_to "Edit", edit_workletter_path(@workletter), :class => 'editclicker' %><% else %>*There is currently no workletter.<% end %></label>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :fit_out, 'Fit Out', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%= f.text_field :fit_out, :placeholder => '$/SF', :class => 'form-control sf-background' %>
+      <%=f.error_span(:fit_out) %>
+    </div>
+
+    <%= f.label :fit_out_cost, 'Fit Out Cost', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%= f.text_field :fit_out_cost, :placeholder => '$', :class => 'form-control' %>
+      <%=f.error_span(:fit_out_cost) %>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :abatement, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+    <span class="show-below-1200">Description:</span>
+    <%= f.text_area :abatement, :rows => 4, :class => 'form-control' %>
+    <%=f.error_span(:abatement) %>
+    </div>
+  </div>
+
+  <div class="page-header">
+    <h3>CAM</h3>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :cam, 'CAM', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%= f.text_field :cam, :placeholder => '$/SF', :class => 'form-control sf-background' %>
+      <%=f.error_span(:cam) %>
+    </div>
+    
+    <%= f.label :cam_cost, 'CAM Cost Annually', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%= f.text_field :cam_cost, :placeholder => '$', :class => 'form-control' %>
+      <%=f.error_span(:cam_cost) %>
+    </div>
+  </div>
+ 
+   <div class="page-header">
+    <h3>Commission</h3>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :comm_inside, 'Comm Inside', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%= f.text_field :comm_inside, :placeholder => '$', :class => 'form-control' %>
+      <%=f.error_span(:comm_inside) %>
+    </div>
+    
+    <%= f.label :comm_outside, 'Comm Outside', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%= f.text_field :comm_outside, :placeholder => '$', :class => 'form-control' %>
+      <%=f.error_span(:comm_outside) %>
+    </div>
+  </div>
+
+  <div class="page-header">
+    <h3>Fees</h3>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :taxes, 'Taxes', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%= f.text_field :taxes, :placeholder => '$/SF', :class => 'form-control sf-background' %>
+      <%=f.error_span(:taxes) %>
+    </div>
+
+    <%= f.label :taxes_cost, 'Taxes Cost', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%= f.text_field :taxes_cost, :placeholder => '$', :class => 'form-control' %>
+      <%=f.error_span(:taxes_cost) %>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :insurance, 'Insurance', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%= f.text_field :insurance, :placeholder => '$/SF', :class => 'form-control sf-background' %>
+      <%=f.error_span(:insurance) %>
+    </div>
+
+    <%= f.label :insurance_cost, 'Insurance Cost', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%= f.text_field :insurance_cost, :placeholder => '$', :class => 'form-control' %>
+      <%=f.error_span(:insurance_cost) %>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :marketing, 'Marketing', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%= f.text_field :marketing, :placeholder => '$/SF', :class => 'form-control sf-background' %>
+      <%=f.error_span(:marketing) %>
+    </div>
+    
+
+    <%= f.label :marketing_cost, 'Marketing Cost', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%= f.text_field :marketing_cost, :placeholder => '$', :class => 'form-control' %>
+      <%=f.error_span(:marketing_cost) %>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :go_marketing, 'GO Marketing', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%= f.text_field :go_marketing, :placeholder => '$/SF', :class => 'form-control sf-background' %>
+      <%=f.error_span(:go_marketing) %>
+    </div>
+    
+
+    <%= f.label :go_marketing_cost, 'GO Marketing Cost', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%= f.text_field :go_marketing_cost, :placeholder => '$', :class => 'form-control' %>
+      <%=f.error_span(:go_marketing_cost) %>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :trash, 'Trash', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%= f.text_field :trash, :placeholder => '$/SF', :class => 'form-control sf-background' %>
+      <%=f.error_span(:trash) %>
+    </div>
+    
+    <%= f.label :trash_cost, 'Trash Cost', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%= f.text_field :trash_cost, :placeholder => '$', :class => 'form-control' %>
+      <%=f.error_span(:trash_cost) %>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :other, 'Other', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%= f.text_field :other, :placeholder => '$/SF', :class => 'form-control sf-background' %>
+      <%=f.error_span(:other) %>
+    </div>
+    
+    <%= f.label :other_cost, 'Other Cost', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%= f.text_field :other_cost, :placeholder => '$', :class => 'form-control' %>
+      <%=f.error_span(:other_cost) %>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :fee_sqft_total, 'Fee Sq Ft Total', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%= f.text_field :fee_sqft_total, :placeholder => '$/SF', :class => 'form-control sf-background' %>
+      <%=f.error_span(:fee_sqft_total) %>
+    </div>
+    
+    <%= f.label :fee_cost_total, 'Fee Cost Total', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%= f.text_field :fee_cost_total, :placeholder => '$', :class => 'form-control' %>
+      <%=f.error_span(:fee_cost_total) %>
+    </div>
+  </div>
+
+<!-- hidden fields for new form only -->
+  <div class="form-group" style="display:none;">
+    <%= f.label :project_id, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :project_id, value: @project_id, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:project_id) %>
+  </div>
+  <div class="form-group" style="display:none;">
+    <%= f.label :map_id, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :map_id, value: @map_id, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:map_id) %>
+  </div>
+  <div class="form-group" style="display:none;">
+    <%= f.label :area_id, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :area_id, value: @area_id, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:area_id) %>
+  </div>
+  <div class="form-group" style="display:none;">
+    <%= f.label :key, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :key, value: @area_id, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:key) %>
+  </div>
+  <!-- END hidden fields for new form only -->
+
+
+    </div>
+  </div>
+<!-- to here maybe -->
+
+
+
+
+
+
+
+
+
+
   
 
   <div class="form-group">
