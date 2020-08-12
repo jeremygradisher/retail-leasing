@@ -103,21 +103,13 @@
   <div class="form-group">
     <%= f.label :net_rentable_area, 'Net Rentable Area', :placeholder => 'SF', :class => 'control-label col-lg-2' %>
     <div class="col-lg-4">
-      <% if controller.action_name == "new" %>
-        <%= f.text_field :net_rentable_area, value: @area.area_square_feet, :placeholder => 'SF', :class => 'form-control sf-background' %>
-      <% else %>
-        <%= f.text_field :net_rentable_area, :placeholder => 'SF', :class => 'form-control sf-background', :style => '' %>
-      <% end %>
+      <%= f.text_field :net_rentable_area, :placeholder => 'SF', :class => 'form-control sf-background', :style => '' %>
       <%=f.error_span(:net_rentable_area) %>
     </div>
     
     <%= f.label :gross_area, 'Gross Area', :class => 'control-label col-lg-2' %>
     <div class="col-lg-4">
-      <% if controller.action_name == "new" %>
-        <%= f.text_field :gross_area, value: @area.area_square_feet, :placeholder => 'SF', :class => 'form-control sf-background' %>
-      <% else %>
-        <%= f.text_field :gross_area, :placeholder => 'SF', :class => 'form-control sf-background' %>
-      <% end %>
+      <%= f.text_field :gross_area, :placeholder => 'SF', :class => 'form-control sf-background' %>
       <%=f.error_span(:gross_area) %>
     </div>
   </div>
