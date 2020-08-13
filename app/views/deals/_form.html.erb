@@ -15,62 +15,30 @@
     </div>
   <% end %>
 
-  <div class="form-group">
-    <%= f.label :deal_name, :class => 'control-label col-lg-2' %>
-    <div class="col-lg-2">
-      <%= f.text_field :deal_name, :class => 'form-control' %>
-    </div>
-    <%=f.error_span(:deal_name) %>
 
-    <%= f.label :gross_area, :class => 'control-label col-lg-2' %>
-    <div class="col-lg-2">
-      <%= f.text_field :gross_area, :class => 'form-control required sf-background' %>
-    </div>
-    <%=f.error_span(:gross_area) %>
 
-    <%= f.label :net_rentable_area, :class => 'control-label col-lg-2' %>
-    <div class="col-lg-2">
-      <%= f.text_field :net_rentable_area, :class => 'form-control required sf-background' %>
-    </div>
-    <%=f.error_span(:net_rentable_area) %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :project_id, :class => 'control-label col-lg-2' %>
-    <div class="col-lg-2">
-      <% if controller.action_name == "new" %>
-        <%= f.number_field :project_id, value: params[:project_id], :class => 'form-control' %>
-      <% else %>
-        <%= f.number_field :project_id, :class => 'form-control' %>
-      <% end %>
-    </div>
-    <%=f.error_span(:project_id) %>
-
-    <%= f.label :map_id, :class => 'control-label col-lg-2' %>
-    <div class="col-lg-2">
-      <% if controller.action_name == "new" %>
-      <%= f.number_field :map_id, value: params[:map_id], :class => 'form-control' %>
-      <% else %>
-      <%= f.number_field :map_id, :class => 'form-control' %>
-      <% end %>
-    </div>
-    <%=f.error_span(:map_id) %>
-  </div>
   
-  <div class="form-group">
-    <%= f.label :lease_status, :class => 'control-label col-lg-2' %>
-    <div class="col-lg-2">
-      <%= f.select :lease_status, ['Available', 'Prospect', 'LOI', 'At Lease', 'Leased'], {include_blank:false}, :class => 'form-control' %>
-    </div>
-    <%=f.error_span(:lease_status) %>
-    
-    <% if @dealimages.exists? %>
-    <%= f.label :deal_image, 'Deal Image', :class => 'control-label col-lg-2'  %>
-      <div class="col-lg-4">
-        <% @dealimages.each do |p| %>
-              <div class="form-control">
-              <%= image_tag p.dealimage_url, :class => 'form-control-image' %>
+  
 
+
+
+
+
+
+
+
+  <div class="form-group" style="/*display:none;*/">
+    <div class="col-lg-2">
+      
+      <% if @dealimages.exists? %>
+
+        <% @dealimages.each do |p| %>
+              <%= image_tag p.dealimage_url, :style => 'max-width:100%;
+                                                        border: 1px solid #ccc;
+                                                        border-radius: 8px;' %>
+
+              <div style="margin-top:20px;">
+                <center>
               <%= link_to '<i class="fa fa-edit"></i>'.html_safe,
                     edit_dealimage_path(p), :class => 'form-control-button', 
                     :title => 'Edit Attachment'  %>
@@ -80,22 +48,1071 @@
                             :method => :delete,
                             :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
                             :class => 'form-control-button' %>
+              </center>
               </div>
-              
         <% end %>
-      </div>
     
     <% else %>  
-         <%= f.label :deal_image, 'Deal Image', :class => 'control-label col-lg-2'  %>
-         <div class="col-lg-4">
+    
+          <%= image_tag '/images/status-plan-logo.png', :style => 'max-width:100%;
+                                                        border: 1px solid #ccc;
+                                                        padding: 2px;
+                                                        border-radius: 8px;' %>
+                                                        
          <%= f.file_field :dealimage, :multiple => true, name: "dealimages[dealimage][]",
           :class => 'form-control', onchange: "validateFiles(this);",
+          :style => 'margin-top:20px;',
           data: { max_file_size: 2.megabytes } %>
-         </div>
     <% end %>
+      
+    </div>
+    <div class="col-lg-10">
+
+<!-- from here -->
+  <div class="form-group" style="/*display:none;*/">
+
+    <%= f.label :deal_name, "Deal Name", :class => 'control-label col-lg-2' %>
+    <div class="col-lg-3">
+      <!-- value: @name should be removed on the edit form -->
+      <% if controller.action_name == "new" %>
+        <%= f.text_field :deal_name, value: @name, :class => 'form-control' %>
+      <% else %>
+        <%= f.text_field :deal_name, :class => 'form-control' %>
+      <% end %>
+      <%=f.error_span(:deal_name) %>
+    </div>
+    
+    <%= f.label :merchandising_status, 'Merchandising Status', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-3">
+      
+      <%= f.select :merchandising_status, ['Fashion', 'Auto / Gas', 'Candy / Confectionary', 'Department Store', 'Electronics', 'Entertainment', 'Food & Beverage', 'Footwear', 'Grocery / Hypermarket', 'Home / Furnishings', 'Jewelry / Handbags', 'Mobiles / Accessories', 'Perfume / Cosmetics', 'Pets', 'Services / Specialty Stores', 'Sports / Outdoor / Fitness', 'Toys & Hobbies / Gifts / Books'], {include_blank:true}, :class => 'form-control' %>
+      <!--
+      <%# if @deal.merchandising_status == nil || @deal.merchandising_status == '' %>
+        <br>(<%#= @area.merchandising_status %>)
+      <%# end %>
+      -->
+    </div>
+    <%=f.error_span(:merchandising_status) %>
+    
+    <%= f.label :archive, 'Archive', :class => 'control-label col-lg-1' %>
+      <div class="col-lg-1">
+        <%= f.check_box :archive, :style => 'margin-top:10px;' %>
+      </div>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :net_rentable_area, 'Net Rentable Area', :placeholder => 'SF', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%= f.text_field :net_rentable_area, :placeholder => 'SF', :class => 'form-control sf-background', :style => '' %>
+      <%=f.error_span(:net_rentable_area) %>
+    </div>
+    
+    <%= f.label :gross_area, 'Gross Area', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%= f.text_field :gross_area, :placeholder => 'SF', :class => 'form-control sf-background' %>
+      <%=f.error_span(:gross_area) %>
+    </div>
+  </div>
+
+  <!-- this saves gross_area from the deal to the area_square_feet field within the associated area with
+        help from the function GrossAreaToAreaSqFt() in file _calcjquery.html.erb - 
+        Now that we are utilizing multiple deals I am not sure this is the right play
+        -->
+  <div class="form-group" style="display:none;">
+    <%= f.label :area_square_feet, 'Area Sq Ft', :class => 'control-label col-lg-3', :style => 'display:none;' %>
+    <div class="col-lg-3" style="display:none;">
+      <%= f.fields_for :area do |a| %>
+        <%= a.text_field :area_square_feet, :placeholder => 'SF', :class => 'form-control', :style => 'display:none;' %>
+      <% end %>
+    </div>
+    <%=f.error_span(:area_square_feet) %>
+  </div>  
+  <!-- end -->  
+
+  <div class="form-group">
+    <%= f.label :tenant_description, 'Tenant Description', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%#= f.text_field :signage_notes, :class => 'form-control' %>
+      <%= f.text_area :tenant_description, :rows => 4, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:tenant_description) %>
+  </div>
+
+  <hr>
+  
+  <!--
+  <div class="form-group">
+    <%#= f.label :lease_status, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%#= f.select :lease_status, ['Available', 'Prospect', 'LOI', 'At Lease', 'Leased'], {include_blank:false}, :class => 'form-control' %>
+      <%#=f.error_span(:lease_status) %>
+    </div>
+  </div>
+  <hr>
+  -->
+
+  <div class="form-group">
+    <%= f.label :lease_status, 'Lease Status', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      
+      <div id="radios">
+      <!--  -->
+      <% if @deal.lease_status == nil %>
+        <%= f.radio_button :lease_status, 'Available', :checked => 'checked' %>
+      <% else %>
+        <%= f.radio_button :lease_status, 'Available' %>
+      <% end %>
+      <%= f.label :lease_status, 'Available', :value => 'Available', :class => 'available-label' %>
+      
+      <%= f.radio_button :lease_status, 'Prospect' %>
+      <%= f.label :lease_status, 'Prospect', :value => 'Prospect', :class => 'prospect-label' %>
+      
+      <%= f.radio_button :lease_status, 'LOI' %>
+      <%= f.label :lease_status, 'LOI', :value => 'LOI', :class => 'loi-label' %>
+      
+      <%= f.radio_button :lease_status, 'At Lease' %>
+      <%= f.label :lease_status, 'At Lease', :value => 'At Lease', :class => 'at-lease-label' %>
+      
+      <%= f.radio_button :lease_status, 'Leased' %>
+      <%= f.label :lease_status, 'Leased', :value => 'Leased', :class => 'leased-label' %>
+      </div>
+      
+      <script>
+        $('#radios').radiosToSlider({
+            animation: true,
+        });
+      </script>
+      
+      <%=f.error_span(:lease_status) %>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label "Priority", :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+        <%= f.check_box :priority, :style => 'margin-top:10px;' %>
+    </div>
+    <%= f.label :lease_status, 'Owner Approval', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-1">
+      <%= f.check_box :owner_approval, :style => 'margin-top:10px;' %>
+    </div>
+    <div class="col-lg-7">
+    </div>
+  </div>
+
+<div class="form-group">
+    <%= f.label :status_notes, "Status Notes", :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+    <!--<span class="show-below-1200">Description:</span>-->
+    <%= f.text_area :status_notes, :rows => 4, :class => 'form-control' %>
+    <%=f.error_span(:status_notes) %>
+    </div>
+  </div>
+<!-- may need this later
+  <div class="form-group"> 
+   <%#= f.label :leasing_manager, 'Leasing Manager', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <span class="show-below-1200">Leasing Manager:</span>
+      <%#= f.select :leasing_manager, @project.leasing_managers.all.map{ |v| [v.name, v.name] }, {include_blank: true}, :class => 'form-control' %>
+    </div>
+    <%#=f.error_span(:leasing_manager) %>
+    
+    <%#= f.label :tenant_contact, 'Tenant Contact', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%#= f.text_field :tenant_contact, :class => 'form-control' %>
+      <%#=f.error_span(:tenant_contact) %>
+    </div>
+  </div>
+ <hr> 
+--> 
+  <div class="form-group">
+    <%= f.label :tenant_contact, 'Tenant Contacts', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%#= f.text_field :permit_notes, :class => 'form-control' %>
+      <%= f.text_area :tenant_contact, :rows => 6, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:tenant_contact) %>
+
+    <%= f.label :architect, 'Architect', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%#= f.text_field :permit_notes, :class => 'form-control' %>
+      <%= f.text_area :architect, :rows => 6, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:architect) %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :general_contractor, 'General Contractor', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%#= f.text_field :permit_notes, :class => 'form-control' %>
+      <%= f.text_area :general_contractor, :rows => 6, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:general_contractor) %>
+
+    <%= f.label :other_contacts, 'Other Contacts', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%#= f.text_field :permit_notes, :class => 'form-control' %>
+      <%= f.text_area :other_contacts, :rows => 6, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:other_contacts) %>
   </div>
   
   
+
+ <hr> 
+
+  <div class="form-group">
+    <%= f.label :key_contacts, 'Key Contacts', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%#= f.text_field :permit_notes, :class => 'form-control' %>
+      <%= f.text_area :key_contacts, :rows => 4, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:key_contacts) %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :tenant_documents, "Tenant Documents", :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :tenant_documents, :class => 'form-control tag-test' %>
+    </div>
+    <%=f.error_span(:tenant_documents) %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :landlord_work, "Landlord Work", :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :landlord_work, :class => 'form-control tag-test' %>
+    </div>
+    <%=f.error_span(:landlord_work) %>
+  </div>
+  
+
+
+
+
+<div class="page-header">
+    <h3>Calculations</h3>
+  </div>
+  <div class="form-group">
+    <%= f.label :cash_on_cash, 'Cash on Cash', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%= f.text_field :cash_on_cash, :placeholder => '', :class => 'form-control percent-background' %>
+      <%=f.error_span(:cash_on_cash) %>
+    </div>
+    
+    <%= f.label :budget_variance, 'Budget Variance', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%= f.text_field :budget_variance, :placeholder => '', :class => 'form-control percent-background' %>
+    </div>
+    <%=f.error_span(:budget_variance) %>
+  </div>
+
+
+
+
+
+  <div class="page-header">
+    <h3>Term of Deal</h3>
+  </div>
+  <div class="form-group">
+    <%= f.label :deal_term, 'Deal Term', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%= f.text_field :deal_term, :placeholder => '# of years', :class => 'form-control' %>
+      <%=f.error_span(:deal_term) %>
+    </div>
+    
+    <%= f.label :date_of_possession, 'Date of Possession', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%= f.text_field :date_of_possession, 'data-provide' => 'datepicker', :class => 'form-control', :placeholder => 'mm/dd/yyyy' %>
+    </div>
+    <%=f.error_span(:date_of_possession) %>
+
+    <!-- this -->
+    <%= f.label :fit_out_duration, 'Fit Out Duration', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%#= f.text_field :fit_out_duration, :class => 'form-control' %>
+      <%= f.select :fit_out_duration, ['60', '90', '120', '150', '180', '210', '240', '300', '360', 'other'], {include_blank:false}, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:fit_out_duration) %>
+    <!-- this -->
+  </div>
+
+
+  
+  <div class="form-group">
+    <%= f.label :action_required, 'Action Required', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%= f.text_field :action_required, :class => 'form-control' %>
+      <%=f.error_span(:action_required) %>
+    </div>
+  </div>
+  
+  <!-- if -->
+  <div id="fitOutIf" class="form-group" style="display:none;">
+    <div class="col-lg-5">
+    </div>
+    <%= f.label :fit_out_duration_if, 'Fit-Out Duration (other)', :class => 'control-label col-lg-3' %>
+    <div class="col-lg-4">
+    <%= f.text_field :fit_out_duration_if, :class => 'form-control' %>
+    </div>
+  </div>
+  <!-- END if -->
+  
+  <div class="form-group">
+    <%= f.label :term_notes, "Term Notes", :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+    <span class="show-below-1200">Description:</span>
+    <%= f.text_area :term_notes, :rows => 4, :class => 'form-control' %>
+    <%=f.error_span(:term_notes) %>
+    </div>
+  </div>
+
+
+
+
+  <div class="page-header">
+    <h3>Budget</h3>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :budget_rate, 'Budget Rate', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%= f.text_field :budget_rate, :placeholder => '$', :class => 'form-control sf-background' %>
+      <%=f.error_span(:budget_rate) %>
+    </div>
+    
+    <%= f.label :budget_ti, 'Budget TI', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%= f.text_field :budget_ti, :placeholder => '$', :class => 'form-control sf-background' %>
+      <%=f.error_span(:budget_ti) %>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <%#= f.label :budget_rate, 'Budget Rate', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-6">
+      <%#= f.text_field :budget_rate, :placeholder => '$', :class => 'form-control' %>
+      <%#=f.error_span(:budget_rate) %>
+    </div>
+    
+    <%= f.label :base_building_cost, 'Base Building Cost', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%= f.text_field :base_building_cost, :placeholder => '$', :class => 'form-control sf-background' %>
+      <%=f.error_span(:base_building_cost) %>
+    </div>
+  </div>
+
+
+  <div class="page-header">
+    <h3>Rent</h3>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :base_rent, 'Base Rent', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%= f.text_field :base_rent, :placeholder => '$/SF', :class => 'form-control sf-background' %>
+      <%=f.error_span(:base_rent) %>
+    </div>
+    
+    <%= f.label :total_base_rent, 'Total Base Rent', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%= f.text_field :total_base_rent, :placeholder => '$', :class => 'form-control' %>
+      <%=f.error_span(:total_base_rent) %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :percentage_of_rent, 'Percentage Rent', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%= f.text_field :percentage_of_rent, :placeholder => '%', :class => 'form-control percent-background' %>
+      <%=f.error_span(:percentage_of_rent) %>
+    </div>
+    
+    <%= f.label :break_point, 'Break Point', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%= f.text_field :break_point, :placeholder => '$', :class => 'form-control' %>
+      <%=f.error_span(:break_point) %>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :increase, 'Increase', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%= f.text_field :increase, :placeholder => '%', :class => 'form-control percent-background' %>
+      <%=f.error_span(:increase) %>
+    </div>
+    
+    <%#= f.label :break_point, 'Break Point', :class => 'control-label col-lg-2' %>
+    <!--
+    <div class="col-lg-4">
+      <%#= f.text_field :break_point, :placeholder => '$', :class => 'form-control' %>
+      <%#=f.error_span(:break_point) %>
+    </div>
+    -->
+  </div>
+  
+
+  
+  <div class="page-header">
+    <h3>Inducement</h3>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :ti_allowance, 'TI Allowance', :style => 'text-transform:none;', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%= f.text_field :ti_allowance, :placeholder => '$/SF', :class => 'form-control sf-background' %>
+      <%=f.error_span(:ti_allowance) %>
+    </div>
+    
+    <%= f.label :ti_cost, 'TI Cost', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%= f.text_field :ti_cost, :placeholder => '$', :class => 'form-control' %>
+      <%=f.error_span(:ti_cost) %>
+    </div>
+    
+  </div>
+
+
+<script>
+  //I tried to do this to get the form to submit from the links
+  //and still allow you to follow the link,
+  //but it still redirects you to the area because the deal form was submitted.
+  /*
+  $(document).ready(function() { 
+    $('.editclicker').click(function() {
+        $('.dealForm').submit();
+    });
+  });
+  */
+</script>
+  
+  <div class="form-group">
+    <%= f.label :ll_work, 'LL Work', :style => 'text-transform:none;', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <label class="control-label" id="test"><% if @workletter != nil %>$<%= number_with_delimiter(@workletter.ll_work, :delimiter => ',') %><% end %></label>
+      <label class="control-label"><% if @workletter != nil %><%= link_to "Edit", edit_workletter_path(@workletter), :class => 'editclicker' %><% else %>*There is currently no workletter.<% end %></label>
+    </div>
+    
+    <%= f.label :ll_work_cost, 'LL Work Cost', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <label class="control-label"><% if @workletter != nil %>$<%= number_with_delimiter(@workletter.ll_work_cost, :delimiter => ',') %><% end %></label>
+      <label class="control-label"><% if @workletter != nil %><%= link_to "Edit", edit_workletter_path(@workletter), :class => 'editclicker' %><% else %>*There is currently no workletter.<% end %></label>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :fit_out, 'Fit Out', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%= f.text_field :fit_out, :placeholder => '$/SF', :class => 'form-control sf-background' %>
+      <%=f.error_span(:fit_out) %>
+    </div>
+
+    <%= f.label :fit_out_cost, 'Fit Out Cost', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%= f.text_field :fit_out_cost, :placeholder => '$', :class => 'form-control' %>
+      <%=f.error_span(:fit_out_cost) %>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :abatement, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+    <span class="show-below-1200">Description:</span>
+    <%= f.text_area :abatement, :rows => 4, :class => 'form-control' %>
+    <%=f.error_span(:abatement) %>
+    </div>
+  </div>
+
+  <div class="page-header">
+    <h3>CAM</h3>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :cam, 'CAM', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%= f.text_field :cam, :placeholder => '$/SF', :class => 'form-control sf-background' %>
+      <%=f.error_span(:cam) %>
+    </div>
+    
+    <%= f.label :cam_cost, 'CAM Cost Annually', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%= f.text_field :cam_cost, :placeholder => '$', :class => 'form-control' %>
+      <%=f.error_span(:cam_cost) %>
+    </div>
+  </div>
+ 
+   <div class="page-header">
+    <h3>Commission</h3>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :comm_inside, 'Comm Inside', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%= f.text_field :comm_inside, :placeholder => '$', :class => 'form-control' %>
+      <%=f.error_span(:comm_inside) %>
+    </div>
+    
+    <%= f.label :comm_outside, 'Comm Outside', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%= f.text_field :comm_outside, :placeholder => '$', :class => 'form-control' %>
+      <%=f.error_span(:comm_outside) %>
+    </div>
+  </div>
+
+  <div class="page-header">
+    <h3>Fees</h3>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :taxes, 'Taxes', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%= f.text_field :taxes, :placeholder => '$/SF', :class => 'form-control sf-background' %>
+      <%=f.error_span(:taxes) %>
+    </div>
+
+    <%= f.label :taxes_cost, 'Taxes Cost', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%= f.text_field :taxes_cost, :placeholder => '$', :class => 'form-control' %>
+      <%=f.error_span(:taxes_cost) %>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :insurance, 'Insurance', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%= f.text_field :insurance, :placeholder => '$/SF', :class => 'form-control sf-background' %>
+      <%=f.error_span(:insurance) %>
+    </div>
+
+    <%= f.label :insurance_cost, 'Insurance Cost', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%= f.text_field :insurance_cost, :placeholder => '$', :class => 'form-control' %>
+      <%=f.error_span(:insurance_cost) %>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :marketing, 'Marketing', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%= f.text_field :marketing, :placeholder => '$/SF', :class => 'form-control sf-background' %>
+      <%=f.error_span(:marketing) %>
+    </div>
+    
+
+    <%= f.label :marketing_cost, 'Marketing Cost', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%= f.text_field :marketing_cost, :placeholder => '$', :class => 'form-control' %>
+      <%=f.error_span(:marketing_cost) %>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :go_marketing, 'GO Marketing', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%= f.text_field :go_marketing, :placeholder => '$/SF', :class => 'form-control sf-background' %>
+      <%=f.error_span(:go_marketing) %>
+    </div>
+    
+
+    <%= f.label :go_marketing_cost, 'GO Marketing Cost', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%= f.text_field :go_marketing_cost, :placeholder => '$', :class => 'form-control' %>
+      <%=f.error_span(:go_marketing_cost) %>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :trash, 'Trash', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%= f.text_field :trash, :placeholder => '$/SF', :class => 'form-control sf-background' %>
+      <%=f.error_span(:trash) %>
+    </div>
+    
+    <%= f.label :trash_cost, 'Trash Cost', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%= f.text_field :trash_cost, :placeholder => '$', :class => 'form-control' %>
+      <%=f.error_span(:trash_cost) %>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :other, 'Other', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%= f.text_field :other, :placeholder => '$/SF', :class => 'form-control sf-background' %>
+      <%=f.error_span(:other) %>
+    </div>
+    
+    <%= f.label :other_cost, 'Other Cost', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%= f.text_field :other_cost, :placeholder => '$', :class => 'form-control' %>
+      <%=f.error_span(:other_cost) %>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :fee_sqft_total, 'Fee Sq Ft Total', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%= f.text_field :fee_sqft_total, :placeholder => '$/SF', :class => 'form-control sf-background' %>
+      <%=f.error_span(:fee_sqft_total) %>
+    </div>
+    
+    <%= f.label :fee_cost_total, 'Fee Cost Total', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%= f.text_field :fee_cost_total, :placeholder => '$', :class => 'form-control' %>
+      <%=f.error_span(:fee_cost_total) %>
+    </div>
+  </div>
+
+<!-- hidden fields for new form only -->
+  <% if controller.action_name == "new" %>
+  <div class="form-group" style="display:none;">
+    <%= f.label :project_id, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :project_id, value: @project_id, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:project_id) %>
+  </div>
+  <div class="form-group" style="display:none;">
+    <%= f.label :map_id, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :map_id, value: @map_id, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:map_id) %>
+  </div>
+  <div class="form-group" style="display:none;">
+    <%= f.label :area_id, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :area_id, value: @area_id, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:area_id) %>
+  </div>
+  <% end %>
+  <!-- END hidden fields for new form only -->
+
+
+    </div>
+  </div>
+<!-- to here maybe -->
+
+
+
+
+<hr>
+*Fields added to Deal - potentially need instruction on how to proceed
+<hr><br><br>
+
+
+
+  <div class="form-group">
+    <%= f.label :turn_over_condition, 'Turn Over Condition', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%= f.text_field :turn_over_condition, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:turn_over_condition) %>
+  
+  
+    <%= f.label :lease_execution, 'Lease Execution', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%= f.text_field :lease_execution, 'data-provide' => 'datepicker', :class => 'form-control', :placeholder => 'mm/dd/yyyy' %>
+    </div>
+    <%=f.error_span(:lease_execution) %>
+  </div> 
+  
+  <div class="form-group">
+    <%= f.label :welcome_package, 'Welcome Package', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%= f.text_field :welcome_package, 'data-provide' => 'datepicker', :class => 'form-control', :placeholder => 'mm/dd/yyyy' %>
+    </div>
+    <%=f.error_span(:welcome_package) %>
+    
+    <%= f.label :base_building_cds, 'Base Building CDs', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%= f.text_field :base_building_cds, 'data-provide' => 'datepicker', :class => 'form-control', :placeholder => 'mm/dd/yyyy' %>
+    </div>
+    <%=f.error_span(:base_building_cds) %>
+
+    <%= f.label :kick_off_call, 'Kick Off Call', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%= f.text_field :kick_off_call, 'data-provide' => 'datepicker', :class => 'form-control', :placeholder => 'mm/dd/yyyy' %>
+    </div>
+    <%=f.error_span(:kick_off_call) %>
+  </div> 
+  
+  <div class="form-group">
+    <%= f.label :landlord_work_sent, 'Landlord Work Sent', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%= f.text_field :landlord_work_sent, 'data-provide' => 'datepicker', :class => 'form-control', :placeholder => 'mm/dd/yyyy' %>
+    </div>
+    <%=f.error_span(:landlord_work_sent) %>
+  </div> 
+  
+  <div class="form-group">
+    <%= f.label :signage_received, 'Signage Received', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%= f.text_field :signage_received, 'data-provide' => 'datepicker', :class => 'form-control', :placeholder => 'mm/dd/yyyy' %>
+    </div>
+    <%=f.error_span(:signage_received) %>
+
+    <%= f.label :signage_reviewed, 'Signage Reviewed', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%= f.text_field :signage_reviewed, 'data-provide' => 'datepicker', :class => 'form-control', :placeholder => 'mm/dd/yyyy' %>
+    </div>
+    <%=f.error_span(:signage_reviewed) %>
+    
+    <%= f.label :signage_status, 'Signage Status', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%= f.select :signage_status, ['RAR', 'AAN'], {include_blank:true}, :class => 'form-control' %>
+      <%#= f.text_field :opening_status, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:signage_status) %>
+  </div>  
+  
+  <div class="form-group">
+    <%= f.label :final_plans_status, 'Final Plans Status', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-3">
+      <%= f.select :final_plans_status, ['RAR', 'AAN'], {include_blank:true}, :class => 'form-control' %>
+      <%#= f.text_field :opening_status, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:final_plans_status) %>
+    
+    <%= f.label :final_plans_notes, 'Final Plans Notes', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-5">
+      <%#= f.text_field :signage_notes, :class => 'form-control' %>
+      <%= f.text_area :final_plans_notes, :rows => 4, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:final_plans_notes) %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :final_plans_received, 'Final Plans Received', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%= f.text_field :final_plans_received, 'data-provide' => 'datepicker', :class => 'form-control', :placeholder => 'mm/dd/yyyy' %>
+    </div>
+    <%=f.error_span(:final_plans_received) %>
+
+    <%= f.label :final_plans_reviewed, 'Final Plans Reviewed', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%= f.text_field :final_plans_reviewed, 'data-provide' => 'datepicker', :class => 'form-control', :placeholder => 'mm/dd/yyyy' %>
+    </div>
+    <%=f.error_span(:final_plans_reviewed) %>
+    
+    <%= f.label :cad_release_form, 'CAD Release Form', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%= f.text_field :cad_release_form, 'data-provide' => 'datepicker', :class => 'form-control', :placeholder => 'mm/dd/yyyy' %>
+    </div>
+    <%=f.error_span(:cad_release_form) %>
+  </div> 
+  
+  <div class="form-group">
+    <%= f.label :signage_notes, 'Signage Notes', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%#= f.text_field :signage_notes, :class => 'form-control' %>
+      <%= f.text_area :signage_notes, :rows => 4, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:signage_notes) %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :signage_sent, 'Signage Sent', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%= f.text_field :signage_sent, 'data-provide' => 'datepicker', :class => 'form-control', :placeholder => 'mm/dd/yyyy' %>
+    </div>
+    <%=f.error_span(:signage_sent) %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :permit_submitted, 'Permit Submitted', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%= f.text_field :permit_submitted, 'data-provide' => 'datepicker', :class => 'form-control', :placeholder => 'mm/dd/yyyy' %>
+    </div>
+    <%=f.error_span(:permit_submitted) %>
+
+    <%= f.label :permit_received, 'Permit Received', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%= f.text_field :permit_received, 'data-provide' => 'datepicker', :class => 'form-control', :placeholder => 'mm/dd/yyyy' %>
+    </div>
+    <%=f.error_span(:permit_received) %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :permit_notes, 'Permit Notes', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%#= f.text_field :permit_notes, :class => 'form-control' %>
+      <%= f.text_area :permit_notes, :rows => 4, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:permit_notes) %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :check_in, 'Check In', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%= f.text_field :check_in, 'data-provide' => 'datepicker', :class => 'form-control', :placeholder => 'mm/dd/yyyy' %>
+    </div>
+    <%=f.error_span(:check_in) %>
+
+    <%= f.label :premises_acceptance, 'Premises Acceptance', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%= f.text_field :premises_acceptance, 'data-provide' => 'datepicker', :class => 'form-control', :placeholder => 'mm/dd/yyyy' %>
+    </div>
+    <%=f.error_span(:premises_acceptance) %>
+
+    <%= f.label :construction_start, 'Construction Start', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%= f.text_field :construction_start, 'data-provide' => 'datepicker', :class => 'form-control', :placeholder => 'mm/dd/yyyy' %>
+    </div>
+    <%=f.error_span(:construction_start) %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :lay_out_rough_in, 'Layout Rough In', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%= f.text_field :lay_out_rough_in, 'data-provide' => 'datepicker', :class => 'form-control', :placeholder => 'mm/dd/yyyy' %>
+    </div>
+    <%=f.error_span(:lay_out_rough_in) %>
+
+    <%= f.label :fit_out_finishes, 'Fit Out Finishes', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%= f.text_field :fit_out_finishes, 'data-provide' => 'datepicker', :class => 'form-control', :placeholder => 'mm/dd/yyyy' %>
+    </div>
+    <%=f.error_span(:fit_out_finishes) %>
+
+    <%= f.label :fixtures, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%= f.text_field :fixtures, 'data-provide' => 'datepicker', :class => 'form-control', :placeholder => 'mm/dd/yyyy' %>
+    </div>
+    <%=f.error_span(:fixtures) %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :final_inspections, 'Final Inspections', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%= f.text_field :final_inspections, 'data-provide' => 'datepicker', :class => 'form-control', :placeholder => 'mm/dd/yyyy' %>
+    </div>
+    <%=f.error_span(:final_inspections) %>
+
+    <%= f.label :merchandising, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%= f.text_field :merchandising, 'data-provide' => 'datepicker', :class => 'form-control', :placeholder => 'mm/dd/yyyy' %>
+    </div>
+    <%=f.error_span(:merchandising) %>
+
+    <%= f.label :open_for_business, 'Open For Business', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%= f.text_field :open_for_business, 'data-provide' => 'datepicker', :class => 'form-control', :placeholder => 'mm/dd/yyyy' %>
+    </div>
+    <%=f.error_span(:open_for_business) %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :close_out_letter_sent, 'Close Out Letter Sent', :class => 'control-label col-lg-3' %>
+    <div class="col-lg-3">
+      <%= f.text_field :close_out_letter, 'data-provide' => 'datepicker', :class => 'form-control', :placeholder => 'mm/dd/yyyy' %>
+    </div>
+    <%=f.error_span(:close_out_letter) %>
+
+    <%= f.label :certificate_of_occupancy, 'Certificate of Occupancy', :class => 'control-label col-lg-3' %>
+    <div class="col-lg-3">
+      <%= f.text_field :certificate_of_occupancy, 'data-provide' => 'datepicker', :class => 'form-control', :placeholder => 'mm/dd/yyyy' %>
+    </div>
+    <%=f.error_span(:certificate_of_occupancy) %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :punchlist_request, 'Punchlist Request', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%= f.text_field :punchlist_request, 'data-provide' => 'datepicker', :class => 'form-control', :placeholder => 'mm/dd/yyyy' %>
+    </div>
+    <%=f.error_span(:punchlist_request) %>
+
+    <%= f.label :punchlist_inspection, 'Punchlist Inspection', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%= f.text_field :punchlist_inspection, 'data-provide' => 'datepicker', :class => 'form-control', :placeholder => 'mm/dd/yyyy' %>
+    </div>
+    <%=f.error_span(:punchlist_inspection) %>
+
+    <%= f.label :punchlist_complete, 'Punchlist Complete', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%= f.text_field :punchlist_complete, 'data-provide' => 'datepicker', :class => 'form-control', :placeholder => 'mm/dd/yyyy' %>
+    </div>
+    <%=f.error_span(:punchlist_complete) %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :final_lien_waver, 'Final Lien Waver', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%= f.text_field :final_lien_waver, 'data-provide' => 'datepicker', :class => 'form-control', :placeholder => 'mm/dd/yyyy' %>
+    </div>
+    <%=f.error_span(:final_lien_waver) %>
+    
+    <%= f.label :construction_cost_summary, 'Construction Cost Summary', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%= f.text_field :construction_cost_summary, 'data-provide' => 'datepicker', :class => 'form-control', :placeholder => 'mm/dd/yyyy' %>
+    </div>
+    <%=f.error_span(:construction_cost_summary) %>
+    
+    <%= f.label :final_construction_cost, 'Final Construction Cost', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%= f.text_field :final_construction_cost, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:final_construction_cost) %>
+
+  </div> 
+  
+  <div class="form-group">
+    <%= f.label :as_builts_received, 'As Builts Received', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%= f.text_field :as_builts_received, 'data-provide' => 'datepicker', :class => 'form-control', :placeholder => 'mm/dd/yyyy' %>
+    </div>
+    <%=f.error_span(:as_builts_received) %>
+    
+    <%= f.label :sprinkler_shop_drawings, 'Sprinkler Shop Drawings', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%= f.text_field :sprinkler_shop_drawings, 'data-provide' => 'datepicker', :class => 'form-control', :placeholder => 'mm/dd/yyyy' %>
+    </div>
+    <%=f.error_span(:sprinkler_shop_drawings) %>
+    
+    <%= f.label :sprinkler_work_order, 'Sprinkler Work Order', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%= f.text_field :sprinkler_work_order, 'data-provide' => 'datepicker', :class => 'form-control', :placeholder => 'mm/dd/yyyy' %>
+    </div>
+    <%=f.error_span(:sprinkler_work_order) %>
+
+    
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :sprinkler_check, 'Sprinkler Check', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%= f.text_field :sprinkler_check, 'data-provide' => 'datepicker', :class => 'form-control', :placeholder => 'mm/dd/yyyy' %>
+    </div>
+    <%=f.error_span(:sprinkler_check) %>
+    
+    <%= f.label :air_balance_report, 'Air Balance Report', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%= f.text_field :air_balance_report, 'data-provide' => 'datepicker', :class => 'form-control', :placeholder => 'mm/dd/yyyy' %>
+    </div>
+    <%=f.error_span(:air_balance_report) %>
+    
+    <%= f.label :deposit_release_approved, 'Deposit Release Approved', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%= f.text_field :deposit_release_approved, 'data-provide' => 'datepicker', :class => 'form-control', :placeholder => 'mm/dd/yyyy' %>
+    </div>
+    <%=f.error_span(:deposit_release_approved) %>
+
+    
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :deposit_released, 'Deposit Released', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%= f.text_field :deposit_released, 'data-provide' => 'datepicker', :class => 'form-control', :placeholder => 'mm/dd/yyyy' %>
+    </div>
+    <%=f.error_span(:deposit_released) %>
+    
+    <%= f.label :ta_ti_release_approved, 'TA/TI Release Approved', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%= f.text_field :ta_ti_release_approved, 'data-provide' => 'datepicker', :class => 'form-control', :placeholder => 'mm/dd/yyyy' %>
+    </div>
+    <%=f.error_span(:ta_ti_release_approved) %>
+    
+    <%= f.label :ta_ti_released, 'TA/TI Released', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%= f.text_field :ta_ti_released, 'data-provide' => 'datepicker', :class => 'form-control', :placeholder => 'mm/dd/yyyy' %>
+    </div>
+    <%=f.error_span(:ta_ti_released) %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :certificate_of_insurance, 'Certificate of Insurance', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%= f.text_field :certificate_of_insurance, 'data-provide' => 'datepicker', :class => 'form-control', :placeholder => 'mm/dd/yyyy' %>
+    </div>
+    <%=f.error_span(:certificate_of_insurance) %>
+    
+    <%= f.label :w9, 'W9', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%= f.text_field :w9, 'data-provide' => 'datepicker', :class => 'form-control', :placeholder => 'mm/dd/yyyy' %>
+    </div>
+    <%=f.error_span(:w9) %>
+    
+    <%= f.label :utility_cost, 'Utility Cost', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%= f.text_field :utility_cost, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:utility_cost) %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :tenant_cost, 'Tenant Cost', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%= f.text_field :tenant_cost, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:tenant_cost) %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :close_out_notes, 'Close Out Notes', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%#= f.text_field :close_out_notes, :class => 'form-control' %>
+      <%= f.text_area :close_out_notes, :rows => 4, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:close_out_notes) %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :storefront_plans_received, 'Storefront Plans Received', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%= f.text_field :storefront_plans_received, 'data-provide' => 'datepicker', :class => 'form-control', :placeholder => 'mm/dd/yyyy' %>
+    </div>
+    <%=f.error_span(:storefront_plans_received) %>
+    
+    <%= f.label :storefront_plans_reviewed, 'Storefront Plans Reviewed', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%= f.text_field :storefront_plans_reviewed, 'data-provide' => 'datepicker', :class => 'form-control', :placeholder => 'mm/dd/yyyy' %>
+    </div>
+    <%=f.error_span(:storefront_plans_reviewed) %>
+    
+    <%= f.label :storefront_plans_status, 'Storefront Plans Status', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%= f.text_field :storefront_plans_status, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:storefront_plans_status) %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :storefront_notes, 'Storefront Notes', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%#= f.text_field :close_out_notes, :class => 'form-control' %>
+      <%= f.text_area :storefront_notes, :rows => 4, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:storefront_notes) %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :expiration, 'Expiration', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%= f.text_field :expiration, 'data-provide' => 'datepicker', :class => 'form-control', :placeholder => 'mm/dd/yyyy' %>
+    </div>
+    <%=f.error_span(:expiration) %>
+    
+    <%= f.label :date_of_possession, 'Date Of Possession', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%= f.text_field :date_of_possession, 'data-provide' => 'datepicker', :class => 'form-control', :placeholder => 'mm/dd/yyyy' %>
+    </div>
+    <%=f.error_span(:date_of_possession) %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :abatement, 'Abatement', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%#= f.text_field :close_out_notes, :class => 'form-control' %>
+      <%= f.text_area :abatement, :rows => 4, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:abatement) %>
+  </div>
+
+
+<hr><br><br> 
 
   <div class="form-group">
     <div class="col-lg-offset-2 col-lg-10">
@@ -107,4 +1124,4 @@
 
 <% end %>
 
-  <%= render 'formjquery' %>
+<%= render 'formjquery' %>

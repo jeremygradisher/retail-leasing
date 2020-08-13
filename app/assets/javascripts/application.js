@@ -12,6 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui
+//= require jquery.validate
 //= require twitter/bootstrap
 //= require bootstrap-datepicker
 //= require leaflet
@@ -19,4 +21,6 @@
 //= require leaflet-draw-drag
 //= require leaflet-fullscreen-min
 //= require chartkick
+//= require javascript-phone-format
+//= require tag-it
 //= require_tree .

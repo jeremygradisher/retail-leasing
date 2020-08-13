@@ -13,6 +13,9 @@
  *= require leaflet
  *= require leaflet-draw
  *= require leaflet-fullscreen
+ *= require jquery-ui
+ *= require jquerytagit
+ *= require radios-to-slider
  *= require_tree .
  *= require_self
  */

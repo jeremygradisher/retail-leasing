@@ -9,8 +9,19 @@ body {margin:0 !important;}
 .form-control {height:38px;}
 .form-control-button {vertical-align: middle;font-size: 16pt; }
     
-.sf-background {background: url(/images/sf-76.png);background-position: right top;
-    background-repeat: no-repeat;background-size: auto 38px;}
+.sf-background {
+    background: url(/images/sf-76.png); 
+    background-position: right top; 
+    background-repeat: no-repeat; 
+    background-size: auto 38px;
+}
+
+.percent-background {
+    background: url(/images/percent-76.png); 
+    background-position: right top; 
+    background-repeat: no-repeat; 
+    background-size: auto 38px;
+}
 
 /* fixes for page header */
 .page-header {
@@ -76,6 +87,26 @@ table.report-table-less {
 table.report-table tr td, table.report-table tr th, table.report-table-less tr td, table.report-table-less tr th {
     border: 1px solid #ddd;
     padding:4px;
+}
+
+/* media queries and container fixes */
+
+.affix {width:975px;}
+.affixfooter {position:fixed;width:100%;z-index:9999;}
+.only-768 {display:none;}
+.responsive-only {display:none;}
+.show-below-1200 {display:none;}
+#link1, #link2 {display:none;}
+@media only screen and (max-width: 1200px) {
+    .add-col-height { margin-bottom:20px; }
+    .display-above-1200 {display:none;}
+    .affix {width: 808.33px;}
+    .affix-smaller {font-size:8pt;}
+    .show-below-1200 {display:inline;}
+}
+
+@media only screen and (max-width: 992px) {
+    .affix {width: 625px;}
 }
 
 /* print stuff */
