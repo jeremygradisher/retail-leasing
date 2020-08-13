@@ -89,6 +89,26 @@ table.report-table tr td, table.report-table tr th, table.report-table-less tr t
     padding:4px;
 }
 
+/* media queries and container fixes */
+
+.affix {width:975px;}
+.affixfooter {position:fixed;width:100%;z-index:9999;}
+.only-768 {display:none;}
+.responsive-only {display:none;}
+.show-below-1200 {display:none;}
+#link1, #link2 {display:none;}
+@media only screen and (max-width: 1200px) {
+    .add-col-height { margin-bottom:20px; }
+    .display-above-1200 {display:none;}
+    .affix {width: 808.33px;}
+    .affix-smaller {font-size:8pt;}
+    .show-below-1200 {display:inline;}
+}
+
+@media only screen and (max-width: 992px) {
+    .affix {width: 625px;}
+}
+
 /* print stuff */
 .print-only {display:none;}
 .print-only-inline {display:none;}

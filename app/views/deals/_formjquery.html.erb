@@ -4,6 +4,43 @@
     });
   </script>
 
+<script type="text/javascript">
+    $(document).ready(function() {
+        $(".tag-test").tagit({
+        
+            // Options
+            fieldName: "link",
+            //availableTags: ["c++", "java", "php", "javascript", "ruby", "python", "c"],
+            //autocomplete: {delay: 0, minLength: 2},
+            //showAutocompleteOnFocus: false,
+            removeConfirmation: false,
+            caseSensitive: true,
+            allowDuplicates: false,
+            allowSpaces: false,
+            readOnly: false,
+            tagLimit: null,
+            singleField: false,
+            singleFieldDelimiter: ',',
+            singleFieldNode: null,
+            tabIndex: null,
+            placeholderText: null,
+        
+            // Events
+            onTagClicked: function(event, ui) {
+                console.log(ui.tag);
+                console.log(ui.tagLabel);
+                //window.location = ui.tag;
+                window.open(ui.tagLabel);
+            },
+            onTagLimitExceeded: function(event, ui) {
+                console.log(ui.tag);
+            }
+        
+        });
+
+    });
+  </script>
+
 <script>
     //format total area square feet input for Area
     function formatGrossArea()
@@ -78,52 +115,10 @@
         $("#deal_net_rentable_area").val(totalsqftfixed);
         //this input field is saved as a string
     }
-    
-    //Before Submit Run Function(s)
-    $('.formatFunctions').submit(function() {
-      //Runs Function to strip special characters except (.)
-      formatForGrossArea();
-      formatForNetRentableArea();
-    });
 </script>
 
 
-  <script type="text/javascript">
-    $(document).ready(function() {
-        $(".tag-test").tagit({
-        
-            // Options
-            fieldName: "link",
-            //availableTags: ["c++", "java", "php", "javascript", "ruby", "python", "c"],
-            //autocomplete: {delay: 0, minLength: 2},
-            //showAutocompleteOnFocus: false,
-            removeConfirmation: false,
-            caseSensitive: true,
-            allowDuplicates: false,
-            allowSpaces: false,
-            readOnly: false,
-            tagLimit: null,
-            singleField: false,
-            singleFieldDelimiter: ',',
-            singleFieldNode: null,
-            tabIndex: null,
-            placeholderText: null,
-        
-            // Events
-            onTagClicked: function(event, ui) {
-                console.log(ui.tag);
-                console.log(ui.tagLabel);
-                //window.location = ui.tag;
-                window.open(ui.tagLabel);
-            },
-            onTagLimitExceeded: function(event, ui) {
-                console.log(ui.tag);
-            }
-        
-        });
-
-    });
-  </script>
+  
 
 <script>
 $(document).ready(function()
@@ -1825,6 +1820,8 @@ $(document).ready(function()
     //Before Submit Run Function(s)
     $('.formatFunctions').submit(function() {
       GrossAreaToAreaSqFt();
+      formatForGrossArea();
+      formatForNetRentableArea();
       formatForSubmitNetRentableArea();
       formatForFitOut();
       formatForFitOutCost();
@@ -1856,7 +1853,6 @@ $(document).ready(function()
       formatForSubmitOtherCost();
       formatForSubmitFeeSqftTotal();
       formatForSubmitFeeCostTotal();
-      
       formatForPercentageOfRent();
       formatForIncrease();
     });
