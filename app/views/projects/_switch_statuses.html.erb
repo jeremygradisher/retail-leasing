@@ -1,0 +1,112 @@
+<!-- buttons for changing the color layers with script for buttons -->
+<div class="row" style="margin-top:10px;margin-bottom:10px;" class="print-none">
+  <div class="col-xs-10 col-xs-offset-1">
+    <button type="button" id="leasingStatusbtn" class="btn btn-primary leasingStatusClicked print-none">Leasing</button>
+    <button type="button" id="areaStatusbtn" class="btn btn-default areaStatusClicked print-none">Tenant Coordination</button>
+    <!--<button type="button" id="openingStatusbtn" class="btn btn-default openingStatusClicked print-none">Opening</button>-->
+    <button type="button" id="merchandisingStatusbtn" class="btn btn-default merchandisingStatusClicked print-none">Merchandising</button>
+    
+    <!--<h3 style="float:right;margin-top:4px;" id="mapColorsExp">*Leasing Status</h3>-->
+  </div>
+</div>
+
+<script>
+  $(document).ready(function(){
+    
+    $('.leasingStatusClicked').click(function (){
+      leasingStatus.addTo(map);
+      areaStatus.removeFrom(map);
+      //openingStatus.removeFrom(map);
+      merchandisingStatus.removeFrom(map);
+      $('#areaStatusRow').hide("slow");
+      //$('#openingStatusRow').hide("slow");
+      $('#leasingStatusRow').show("slow");
+      $('#merchandisingStatusRow').hide("slow");
+      $( "#leasingStatusbtn" ).removeClass( "btn-default" ).addClass( "btn-primary" );
+      $( "#areaStatusbtn" ).removeClass( "btn-primary" ).addClass( "btn-default" );
+      //$( "#openingStatusbtn" ).removeClass( "btn-primary" ).addClass( "btn-default" );
+      $( "#merchandisingStatusbtn" ).removeClass( "btn-primary" ).addClass( "btn-default" );
+      $('#mapColorsExp').text('*Leasing Status');
+      
+      $('.leaseStatusCol').show("slow");
+      $('.areaStatusCol').hide("slow");
+      //$('.openingStatusCol').hide("slow");
+      $('.merchandisingStatusCol').hide("slow");
+      
+      $('.leaseStatusNotesCol').show("slow");
+      $('.areaStatusNotesCol').hide("slow");
+      //$('.openingStatusNotesCol').hide("slow");
+      $('.merchandisingStatusNotesCol').hide("slow");
+    });  
+
+    $('.areaStatusClicked').click(function (){
+      areaStatus.addTo(map);
+      //openingStatus.removeFrom(map);
+      leasingStatus.removeFrom(map);
+      merchandisingStatus.removeFrom(map);
+      //$('#openingStatusRow').hide("slow");
+      $('#leasingStatusRow').hide("slow");
+      $('#merchandisingStatusRow').hide("slow");
+      $('#areaStatusRow').show("slow");
+      $( "#areaStatusbtn" ).removeClass( "btn-default" ).addClass( "btn-primary" );
+      //$( "#openingStatusbtn" ).removeClass( "btn-primary" ).addClass( "btn-default" );
+      $( "#leasingStatusbtn" ).removeClass( "btn-primary" ).addClass( "btn-default" );
+      $( "#merchandisingStatusbtn" ).removeClass( "btn-primary" ).addClass( "btn-default" );
+      $('#mapColorsExp').text('*Area Status');
+      
+      $('.leaseStatusCol').hide("slow");
+      $('.areaStatusCol').show("slow");
+      //$('.openingStatusCol').hide("slow");
+      $('.merchandisingStatusCol').hide("slow");
+      
+      $('.leaseStatusNotesCol').hide("slow");
+      $('.areaStatusNotesCol').hide("slow");
+      //$('.openingStatusNotesCol').hide("slow");
+      $('.merchandisingStatusNotesCol').hide("slow");
+    });
+    
+
+    $('.merchandisingStatusClicked').click(function (){
+      merchandisingStatus.addTo(map);
+      areaStatus.removeFrom(map);
+      //openingStatus.removeFrom(map);
+      leasingStatus.removeFrom(map);
+      $('#areaStatusRow').hide("slow");
+      //$('#openingStatusRow').hide("slow");
+      $('#leasingStatusRow').hide("slow");
+      $('#merchandisingStatusRow').show("slow");
+      $( "#merchandisingStatusbtn" ).removeClass( "btn-default" ).addClass( "btn-primary" );
+      $( "#areaStatusbtn" ).removeClass( "btn-primary" ).addClass( "btn-default" );
+      //$( "#openingStatusbtn" ).removeClass( "btn-primary" ).addClass( "btn-default" );
+      $( "#leasingStatusbtn" ).removeClass( "btn-primary" ).addClass( "btn-default" );
+      $('#mapColorsExp').text('*Merchandising Status');
+      
+      $('.leaseStatusCol').hide("slow");
+      $('.areaStatusCol').hide("slow");
+      //$('.openingStatusCol').hide("slow");
+      $('.merchandisingStatusCol').show("slow");
+      
+      $('.leaseStatusNotesCol').hide("slow");
+      $('.areaStatusNotesCol').hide("slow");
+      $('.openingStatusNotesCol').hide("slow");
+      $('.merchandisingStatusNotesCol').hide("slow");
+    });
+    
+  });
+  
+  $(document).ready(function() {
+    setTimeout(function() {
+      $('#areaStatusRow').hide("slow");
+      //$('#openingStatusRow').hide("slow");
+      $('#merchandisingStatusRow').hide("slow");
+      
+      $('.areaStatusCol').hide("slow");
+      //$('.openingStatusCol').hide("slow");
+      $('.merchandisingStatusCol').hide("slow");
+      $('.areaStatusNotesCol').hide("slow");
+      //$('.openingStatusNotesCol').hide("slow");
+      $('.merchandisingStatusNotesCol').hide("slow");
+    }, 1000);
+  });
+</script>
+<!-- END buttons for changing the color layers with script for buttons -->
