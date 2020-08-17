@@ -34,6 +34,9 @@ class ProjectsController < ApplicationController
     
     @areas_deal = AreasDeal.new
     @deals = @project.deals.all
+    
+    @areasquarefootage = Area.where(project_id: params[:id]).pluck(:area_sqft)
+    @netrentablearea = @deals.pluck(:net_rentable_area)
   end
 
   # GET /projects/new
