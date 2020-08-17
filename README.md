@@ -11,7 +11,7 @@ Basic Ruby on Rails application with a User Model, Devise for user authenticatio
 It uses Sendgrid to email on account verification and password resets.
 
 Check it out if you would like:<br>
-<a href="https://devise-sandbox.herokuapp.com" target="_blank">https://devise-sandbox.herokuapp.com</a><br>
+<a href="https://mockup101.herokuapp.com/" target="_blank">mockup101.herokuapp.com</a><br>
 You need to make an account to see anything...
 
 # Saving Images
