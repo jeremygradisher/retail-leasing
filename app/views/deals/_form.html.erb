@@ -85,7 +85,7 @@
     <%= f.label :merchandising_status, 'Merchandising Status', :class => 'control-label col-lg-2' %>
     <div class="col-lg-3">
       
-      <%= f.select :merchandising_status, ['Fashion', 'Auto / Gas', 'Candy / Confectionary', 'Department Store', 'Electronics', 'Entertainment', 'Food & Beverage', 'Footwear', 'Grocery / Hypermarket', 'Home / Furnishings', 'Jewelry / Handbags', 'Mobiles / Accessories', 'Perfume / Cosmetics', 'Pets', 'Services / Specialty Stores', 'Sports / Outdoor / Fitness', 'Toys & Hobbies / Gifts / Books'], {include_blank:true}, :class => 'form-control' %>
+      <%= f.select :merchandising_status, ['Fashion', 'Auto / Gas', 'Candy / Confectionary', 'Department Store', 'Electronics', 'Entertainment', 'Food & Beverage', 'Footwear', 'Grocery / Hypermarket', 'Home / Furnishings', 'Jewelry / Handbags', 'Mobiles / Accessories', 'Perfume / Cosmetics', 'Pets', 'Services / Specialty Stores', 'Sports / Outdoor / Fitness', 'Toys & Hobbies / Gifts / Books'], {include_blank:false}, :class => 'form-control' %>
       <!--
       <%# if @deal.merchandising_status == nil || @deal.merchandising_status == '' %>
         <br>(<%#= @area.merchandising_status %>)
