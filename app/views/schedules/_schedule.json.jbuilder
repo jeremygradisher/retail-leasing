@@ -1,0 +1,2 @@
+json.extract! schedule, :id, :project_id, :map_id, :area_id, :lease_execution_date, :final_plans_received_date, :final_plans_reviewed_date, :permit_submitted_date, :permit_received_date, :premises_acceptance_date, :construction_completion_date, :open_for_business_date, :total_days, :design_duration, :ll_review_duration, :permit_submittal_duration, :permit_reviewed_duration, :mobilization_duration, :tenant_fit_out_duration, :merchandising_duration, :created_at, :updated_at
+json.url schedule_url(schedule, format: :json)

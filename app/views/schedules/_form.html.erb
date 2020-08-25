@@ -1,0 +1,160 @@
+<%= form_for @schedule, :html => { :class => "form-horizontal schedule" } do |f| %>
+
+  <% if @schedule.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@schedule.errors.count, "error") %> prohibited this schedule from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @schedule.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :project_id, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :project_id, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:project_id) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :map_id, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :map_id, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:map_id) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :area_id, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :area_id, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:area_id) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :lease_execution_date, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :lease_execution_date, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:lease_execution_date) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :final_plans_received_date, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :final_plans_received_date, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:final_plans_received_date) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :final_plans_reviewed_date, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :final_plans_reviewed_date, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:final_plans_reviewed_date) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :permit_submitted_date, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :permit_submitted_date, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:permit_submitted_date) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :permit_received_date, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :permit_received_date, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:permit_received_date) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :premises_acceptance_date, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :premises_acceptance_date, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:premises_acceptance_date) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :construction_completion_date, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :construction_completion_date, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:construction_completion_date) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :open_for_business_date, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :open_for_business_date, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:open_for_business_date) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :total_days, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :total_days, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:total_days) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :design_duration, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :design_duration, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:design_duration) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :ll_review_duration, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :ll_review_duration, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:ll_review_duration) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :permit_submittal_duration, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :permit_submittal_duration, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:permit_submittal_duration) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :permit_reviewed_duration, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :permit_reviewed_duration, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:permit_reviewed_duration) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :mobilization_duration, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :mobilization_duration, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:mobilization_duration) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :tenant_fit_out_duration, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :tenant_fit_out_duration, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:tenant_fit_out_duration) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :merchandising_duration, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :merchandising_duration, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:merchandising_duration) %>
+  </div>
+
+  <div class="form-group">
+    <div class="col-lg-offset-2 col-lg-10">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                schedules_path, :class => 'btn btn-default' %>
+    </div>
+  </div>
+
+<% end %>
