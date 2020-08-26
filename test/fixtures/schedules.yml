@@ -1,0 +1,43 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  project_id: 1
+  map_id: 1
+  area_id: 1
+  lease_execution_date: MyString
+  final_plans_received_date: MyString
+  final_plans_reviewed_date: MyString
+  permit_submitted_date: MyString
+  permit_received_date: MyString
+  premises_acceptance_date: MyString
+  construction_completion_date: MyString
+  open_for_business_date: MyString
+  total_days: 1
+  design_duration: 1
+  ll_review_duration: 1
+  permit_submittal_duration: 1
+  permit_reviewed_duration: 1
+  mobilization_duration: 1
+  tenant_fit_out_duration: 1
+  merchandising_duration: 1
+
+two:
+  project_id: 1
+  map_id: 1
+  area_id: 1
+  lease_execution_date: MyString
+  final_plans_received_date: MyString
+  final_plans_reviewed_date: MyString
+  permit_submitted_date: MyString
+  permit_received_date: MyString
+  premises_acceptance_date: MyString
+  construction_completion_date: MyString
+  open_for_business_date: MyString
+  total_days: 1
+  design_duration: 1
+  ll_review_duration: 1
+  permit_submittal_duration: 1
+  permit_reviewed_duration: 1
+  mobilization_duration: 1
+  tenant_fit_out_duration: 1
+  merchandising_duration: 1

@@ -1,0 +1,55 @@
+<%- model_class = Schedule -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:project_id) %>:</strong></dt>
+  <dd><%= @schedule.project_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:map_id) %>:</strong></dt>
+  <dd><%= @schedule.map_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:area_id) %>:</strong></dt>
+  <dd><%= @schedule.area_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:lease_execution_date) %>:</strong></dt>
+  <dd><%= @schedule.lease_execution_date %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:final_plans_received_date) %>:</strong></dt>
+  <dd><%= @schedule.final_plans_received_date %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:final_plans_reviewed_date) %>:</strong></dt>
+  <dd><%= @schedule.final_plans_reviewed_date %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:permit_submitted_date) %>:</strong></dt>
+  <dd><%= @schedule.permit_submitted_date %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:permit_received_date) %>:</strong></dt>
+  <dd><%= @schedule.permit_received_date %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:premises_acceptance_date) %>:</strong></dt>
+  <dd><%= @schedule.premises_acceptance_date %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:construction_completion_date) %>:</strong></dt>
+  <dd><%= @schedule.construction_completion_date %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:open_for_business_date) %>:</strong></dt>
+  <dd><%= @schedule.open_for_business_date %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:total_days) %>:</strong></dt>
+  <dd><%= @schedule.total_days %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:design_duration) %>:</strong></dt>
+  <dd><%= @schedule.design_duration %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:ll_review_duration) %>:</strong></dt>
+  <dd><%= @schedule.ll_review_duration %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:permit_submittal_duration) %>:</strong></dt>
+  <dd><%= @schedule.permit_submittal_duration %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:permit_reviewed_duration) %>:</strong></dt>
+  <dd><%= @schedule.permit_reviewed_duration %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:mobilization_duration) %>:</strong></dt>
+  <dd><%= @schedule.mobilization_duration %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:tenant_fit_out_duration) %>:</strong></dt>
+  <dd><%= @schedule.tenant_fit_out_duration %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:merchandising_duration) %>:</strong></dt>
+  <dd><%= @schedule.merchandising_duration %></dd>
+</dl>
+
+<%= link_to t('.back', :default => t("helpers.links.back")),
+              schedules_path, :class => 'btn btn-default'  %>
+<%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_schedule_path(@schedule), :class => 'btn btn-default' %>
+<%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              schedule_path(@schedule),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>

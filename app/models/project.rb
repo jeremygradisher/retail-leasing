@@ -9,6 +9,8 @@ class Project < ApplicationRecord
   has_many :user_projects
   has_many :users, through: :user_projects, dependent: :destroy
   
+  has_many :schedules, dependent: :destroy
+  
   has_many :icons, dependent: :destroy
   accepts_nested_attributes_for :icons
 end

@@ -1,0 +1,218 @@
+<%= form_for @schedule, :html => { :class => "form-horizontal schedule" } do |f| %>
+
+  <% if @schedule.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@schedule.errors.count, "error") %> prohibited this schedule from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @schedule.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="form-group" style="display:none;">
+    <%= f.label :project_id, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :project_id, value: @project_id, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:project_id) %>
+  </div>
+  <div class="form-group" style="display:none;">
+    <%= f.label :map_id, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :map_id, value: @map_id, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:map_id) %>
+  </div>
+  <div class="form-group" style="display:none;">
+    <%= f.label :area_id, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :area_id, value: @area_id, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:area_id) %>
+  </div>
+  
+  
+  <div class="form-group">
+    <div class="col-lg-2" style="text-align:center;">
+      <img src="/images/pencil-icon.svg" style="width:36pt;height:36pt;filter: invert(.5) sepia(1) saturate(5) hue-rotate(45deg);"><br>
+    </div>
+    <%= f.label :lease_execution_date, 'Lease Execution Date', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-3">
+      <%= f.text_field :lease_execution_date, 'data-provide' => 'datepicker', :class => 'form-control', :placeholder => 'mm/dd/yyyy' %>
+    </div>
+    
+    <%= f.label :design_duration, 'Design Duration', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-3">
+      <% if @schedule.design_duration == nil || @schedule.design_duration == 0 %>
+      <%= f.number_field :design_duration, :value => 60, :class => 'form-control', :placeholder => '# of days' %>
+      <% else %>
+      <%= f.number_field :design_duration, :class => 'form-control', :placeholder => '# of days' %>
+      <% end %>
+    </div>
+    <%=f.error_span(:lease_execution_date) %>
+    <%=f.error_span(:design_duration) %>
+  </div>
+  
+  <div class="form-group">
+    <div class="col-lg-2" style="text-align:center;">
+      <img src="/images/floor-plan-icon3.svg" style="width:36pt;height:36pt;filter: invert(.5) sepia(1) saturate(5) hue-rotate(45deg);"><br>
+    </div>
+    <%= f.label :final_plans_received_date, 'Final Plans Received Date', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-3">
+      <%= f.text_field :final_plans_received_date, 'data-provide' => 'datepicker', :class => 'form-control', :placeholder => 'mm/dd/yyyy' %>
+    </div>
+
+    <%= f.label :ll_review_duration, 'LL Review Duration', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-3">
+      <% if @schedule.ll_review_duration == nil || @schedule.ll_review_duration == 0 %>
+      <%= f.number_field :ll_review_duration, :value => 30, :class => 'form-control', :placeholder => '# of days' %>
+      <% else %>
+      <%= f.number_field :ll_review_duration, :class => 'form-control', :placeholder => '# of days' %>
+      <% end %>
+    </div>
+    <%=f.error_span(:final_plans_received_date) %>
+    <%=f.error_span(:ll_review_duration) %>
+  </div>
+  
+  
+  <div class="form-group">
+    <div class="col-lg-2" style="text-align:center;">
+      <img src="/images/check-book3.svg" style="width:36pt;height:36pt;filter: invert(.5) sepia(1) saturate(5) hue-rotate(125deg);"><br>
+    </div>
+    <%= f.label :final_plans_reviewed_date, 'Final Plans Reviewed Date', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-3">
+      <%= f.text_field :final_plans_reviewed_date, 'data-provide' => 'datepicker', :class => 'form-control', :placeholder => 'mm/dd/yyyy' %>
+    </div>
+
+    <%= f.label :permit_submittal_duration, 'Permit Submittal Duration', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-3">
+      <% if @schedule.ll_review_duration == nil || @schedule.ll_review_duration == 0 %>
+      <%= f.number_field :permit_submittal_duration, :value => 5, :class => 'form-control', :placeholder => '# of days' %>
+      <% else %>
+      <%= f.number_field :permit_submittal_duration, :class => 'form-control', :placeholder => '# of days' %>
+      <% end %>
+    </div>
+    <%=f.error_span(:final_plans_reviewed_date) %>
+    <%=f.error_span(:permit_submittal_duration) %>
+  </div>
+  
+  <div class="form-group">
+    <div class="col-lg-2" style="text-align:center;">
+      <img src="/images/certificate-icon.svg" style="width:36pt;height:36pt;filter: invert(.5) sepia(1) saturate(5) hue-rotate(175deg);"><br>
+    </div>
+    <%= f.label :permit_submitted_date, 'Permit Submitted Date', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-3">
+      <%= f.text_field :permit_submitted_date, 'data-provide' => 'datepicker', :class => 'form-control', :placeholder => 'mm/dd/yyyy' %>
+    </div>
+
+    <%= f.label :permit_reviewed_duration, 'Permit Reviewed Duration', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-3">
+      <% if @schedule.permit_reviewed_duration == nil || @schedule.permit_reviewed_duration == 0 %>
+      <%= f.number_field :permit_reviewed_duration, :value => 42,  :class => 'form-control', :placeholder => '# of days' %>
+      <% else %>
+      <%= f.number_field :permit_reviewed_duration, :class => 'form-control', :placeholder => '# of days' %>
+      <% end %>
+    </div>
+    <%=f.error_span(:permit_submitted_date) %>
+    <%=f.error_span(:permit_reviewed_duration) %>
+  </div>
+  
+  <div class="form-group">
+    <div class="col-lg-2" style="text-align:center;">
+      <img src="/images/certificate-icon.svg" style="width:36pt;height:36pt;filter: invert(.5) sepia(1) saturate(5) hue-rotate(215deg);"><br>
+    </div>
+    <%= f.label :permit_received_date, 'Permit Received Date', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-3">
+      <%= f.text_field :permit_received_date, 'data-provide' => 'datepicker', :class => 'form-control', :placeholder => 'mm/dd/yyyy' %>
+    </div>
+    
+
+    <%= f.label :mobilization_duration, 'Mobilization Duration', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-3">
+      <% if @schedule.permit_reviewed_duration == nil || @schedule.permit_reviewed_duration == 0 %>
+      <%= f.number_field :mobilization_duration, :value => 7, :class => 'form-control', :placeholder => '# of days' %>
+      <% else %>
+      <%= f.number_field :mobilization_duration, :class => 'form-control', :placeholder => '# of days' %>
+      <% end %>
+    </div>
+    <%=f.error_span(:permit_received_date) %>
+    <%=f.error_span(:mobilization_duration) %>
+  </div>
+  
+  <div class="form-group">
+    <div class="col-lg-2" style="text-align:center;">
+      <img src="/images/key-icon2.svg" style="width:36pt;height:36pt;filter: invert(.5) sepia(1) saturate(5) hue-rotate(305deg);"><br>
+    </div>
+    <%= f.label :premises_acceptance_date, 'Premises Acceptance Date', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-3">
+      <%= f.text_field :premises_acceptance_date, 'data-provide' => 'datepicker', :class => 'form-control', :placeholder => 'mm/dd/yyyy' %>
+    </div>
+
+    <%= f.label :tenant_fit_out_duration, 'Tenant Fit-out Duration', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-3">
+      <% if @schedule.tenant_fit_out_duration == nil || @schedule.tenant_fit_out_duration == 0 %>
+      <%= f.number_field :tenant_fit_out_duration, :value => 30, :class => 'form-control', :placeholder => '# of days' %>
+      <% else %>
+      <%= f.number_field :tenant_fit_out_duration, :class => 'form-control', :placeholder => '# of days' %>
+      <% end %>
+    </div>
+    <%=f.error_span(:premises_acceptance_date) %>
+    <%=f.error_span(:tenant_fit_out_duration) %>
+  </div>
+  
+  <div class="form-group">
+    <div class="col-lg-2" style="text-align:center;">
+      <img src="/images/hardhat.svg" style="width:36pt;height:36pt;filter: invert(.5) sepia(1) saturate(5) hue-rotate(345deg);"><br>
+    </div>
+    <%= f.label :construction_completion_date, 'Construction Completion Date', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-3">
+      <%= f.text_field :construction_completion_date, 'data-provide' => 'datepicker', :class => 'form-control', :placeholder => 'mm/dd/yyyy' %>
+    </div>
+    
+
+    <%= f.label :merchandising_duration, 'Merchandising Duration', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-3">
+      <% if @schedule.merchandising_duration == nil || @schedule.merchandising_duration == 0 %>
+      <%= f.number_field :merchandising_duration, :value => 7, :class => 'form-control', :placeholder => '# of days' %>
+      <% else %>
+      <%= f.number_field :merchandising_duration, :class => 'form-control', :placeholder => '# of days' %>
+      <% end %>
+    </div>
+    <%=f.error_span(:construction_completion_date) %>
+    <%=f.error_span(:merchandising_duration) %>
+  </div>
+  
+  <div class="form-group">
+    <div class="col-lg-2" style="text-align:center;">
+      <img src="/images/ribbonCutting.svg" style="width:36pt;height:36pt;filter: invert(.3) sepia(1) saturate(5) hue-rotate(215deg);"><br>
+    </div>
+    <%= f.label :open_for_business_date, 'Open For Business Date', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-3">
+      <%= f.text_field :open_for_business_date, 'data-provide' => 'datepicker', :class => 'form-control', :placeholder => 'mm/dd/yyyy' %>
+    </div>
+
+    <%= f.label :total_days, 'Total Days', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-3">
+      <%= f.number_field :total_days, :class => 'form-control', :placeholder => '# of days' %>
+    </div>
+    <%=f.error_span(:open_for_business_date) %>
+    <%=f.error_span(:total_days) %>
+  </div>
+
+  <div class="form-group">
+    <div class="col-lg-offset-2 col-lg-10">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                area_path(@area), :class => 'btn btn-default' %>
+    </div>
+  </div>
+
+<% end %>
+
+<%= render 'schedulemathjquery' %>

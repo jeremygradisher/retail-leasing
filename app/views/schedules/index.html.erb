@@ -1,0 +1,74 @@
+<%- model_class = Schedule -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:project_id) %></th>
+      <th><%= model_class.human_attribute_name(:map_id) %></th>
+      <th><%= model_class.human_attribute_name(:area_id) %></th>
+      <th><%= model_class.human_attribute_name(:lease_execution_date) %></th>
+      <th><%= model_class.human_attribute_name(:final_plans_received_date) %></th>
+      <th><%= model_class.human_attribute_name(:final_plans_reviewed_date) %></th>
+      <th><%= model_class.human_attribute_name(:permit_submitted_date) %></th>
+      <th><%= model_class.human_attribute_name(:permit_received_date) %></th>
+      <th><%= model_class.human_attribute_name(:premises_acceptance_date) %></th>
+      <th><%= model_class.human_attribute_name(:construction_completion_date) %></th>
+      <th><%= model_class.human_attribute_name(:open_for_business_date) %></th>
+      <th><%= model_class.human_attribute_name(:total_days) %></th>
+      <th><%= model_class.human_attribute_name(:design_duration) %></th>
+      <th><%= model_class.human_attribute_name(:ll_review_duration) %></th>
+      <th><%= model_class.human_attribute_name(:permit_submittal_duration) %></th>
+      <th><%= model_class.human_attribute_name(:permit_reviewed_duration) %></th>
+      <th><%= model_class.human_attribute_name(:mobilization_duration) %></th>
+      <th><%= model_class.human_attribute_name(:tenant_fit_out_duration) %></th>
+      <th><%= model_class.human_attribute_name(:merchandising_duration) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @schedules.each do |schedule| %>
+      <tr>
+        <td><%= link_to schedule.id, schedule_path(schedule) %></td>
+        <td><%= schedule.project_id %></td>
+        <td><%= schedule.map_id %></td>
+        <td><%= schedule.area_id %></td>
+        <td><%= schedule.lease_execution_date %></td>
+        <td><%= schedule.final_plans_received_date %></td>
+        <td><%= schedule.final_plans_reviewed_date %></td>
+        <td><%= schedule.permit_submitted_date %></td>
+        <td><%= schedule.permit_received_date %></td>
+        <td><%= schedule.premises_acceptance_date %></td>
+        <td><%= schedule.construction_completion_date %></td>
+        <td><%= schedule.open_for_business_date %></td>
+        <td><%= schedule.total_days %></td>
+        <td><%= schedule.design_duration %></td>
+        <td><%= schedule.ll_review_duration %></td>
+        <td><%= schedule.permit_submittal_duration %></td>
+        <td><%= schedule.permit_reviewed_duration %></td>
+        <td><%= schedule.mobilization_duration %></td>
+        <td><%= schedule.tenant_fit_out_duration %></td>
+        <td><%= schedule.merchandising_duration %></td>
+        <td><%=l schedule.created_at %></td>
+        <td>
+          <%= link_to t('.show', :default => t("helpers.links.show")),
+                      schedule_path(schedule), :class => 'btn btn-default btn-xs' %>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_schedule_path(schedule), :class => 'btn btn-default btn-xs' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      schedule_path(schedule),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-xs btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_schedule_path,
+            :class => 'btn btn-primary' %>

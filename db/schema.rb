@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200812184618) do
+ActiveRecord::Schema.define(version: 20200825204602) do
 
   create_table "areas", force: :cascade do |t|
     t.string   "suite_number"
@@ -240,6 +240,32 @@ ActiveRecord::Schema.define(version: 20200812184618) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_projects_on_user_id"
+  end
+
+  create_table "schedules", force: :cascade do |t|
+    t.integer  "project_id"
+    t.integer  "map_id"
+    t.integer  "area_id"
+    t.string   "lease_execution_date"
+    t.string   "final_plans_received_date"
+    t.string   "final_plans_reviewed_date"
+    t.string   "permit_submitted_date"
+    t.string   "permit_received_date"
+    t.string   "premises_acceptance_date"
+    t.string   "construction_completion_date"
+    t.string   "open_for_business_date"
+    t.integer  "total_days"
+    t.integer  "design_duration"
+    t.integer  "ll_review_duration"
+    t.integer  "permit_submittal_duration"
+    t.integer  "permit_reviewed_duration"
+    t.integer  "mobilization_duration"
+    t.integer  "tenant_fit_out_duration"
+    t.integer  "merchandising_duration"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.index ["area_id"], name: "index_schedules_on_area_id"
+    t.index ["project_id"], name: "index_schedules_on_project_id"
   end
 
   create_table "user_avatars", force: :cascade do |t|
