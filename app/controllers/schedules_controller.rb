@@ -34,6 +34,7 @@ class SchedulesController < ApplicationController
   # POST /schedules.json
   def create
     @schedule = Schedule.new(schedule_params)
+    @project = Project.find(@schedule.project_id)
 
     respond_to do |format|
       if @schedule.save
@@ -49,6 +50,8 @@ class SchedulesController < ApplicationController
   # PATCH/PUT /schedules/1
   # PATCH/PUT /schedules/1.json
   def update
+    @project = Project.find(@schedule.project_id)
+    
     respond_to do |format|
       if @schedule.update(schedule_params)
         format.html { redirect_to @schedule.area, notice: 'Schedule was successfully updated.' }
