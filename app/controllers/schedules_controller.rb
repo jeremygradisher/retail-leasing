@@ -15,10 +15,19 @@ class SchedulesController < ApplicationController
   # GET /schedules/new
   def new
     @schedule = Schedule.new
+    
+    @area = Area.find(params[:area_id])
+    @area_id = @area.id
+    @project_id = @area.project_id
+    @map_id = @area.map_id
   end
 
   # GET /schedules/1/edit
   def edit
+    @area = Area.find(@schedule.area)
+    @area_id = @area.id
+    @project_id = @area.project_id
+    @map_id = @area.map_id
   end
 
   # POST /schedules
@@ -28,7 +37,7 @@ class SchedulesController < ApplicationController
 
     respond_to do |format|
       if @schedule.save
-        format.html { redirect_to @schedule, notice: 'Schedule was successfully created.' }
+        format.html { redirect_to @schedule.area, notice: 'Schedule was successfully created.' }
         format.json { render :show, status: :created, location: @schedule }
       else
         format.html { render :new }
@@ -42,7 +51,7 @@ class SchedulesController < ApplicationController
   def update
     respond_to do |format|
       if @schedule.update(schedule_params)
-        format.html { redirect_to @schedule, notice: 'Schedule was successfully updated.' }
+        format.html { redirect_to @schedule.area, notice: 'Schedule was successfully updated.' }
         format.json { render :show, status: :ok, location: @schedule }
       else
         format.html { render :edit }

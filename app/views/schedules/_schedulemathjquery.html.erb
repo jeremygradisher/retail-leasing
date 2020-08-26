@@ -1,0 +1,432 @@
+<script type="text/javascript">
+$(document).ready(function() {
+        
+    function updateFinalPlansReceivedDate()
+    {
+        //get number of days for math
+        var days = $('#schedule_design_duration').val();
+        //console.log("days " + days);
+        
+        //get date formatted value
+        var dateValue = $("#schedule_lease_execution_date").val();
+        //console.log("dateValue " + dateValue);
+        
+        //change formatted date value to Javascript date
+        var oldDate = new Date(dateValue);
+        //console.log("oldDate " + oldDate);
+        
+        //get new javascript date after math
+        var newdate = new Date(oldDate);
+        newdate.setDate(oldDate.getDate()+Number(days));
+        //console.log("newdate " + newdate);
+
+        //format the date
+        var new_date = newdate.getDate();
+        var new_month = newdate.getMonth() + 1; //Months are zero based
+        var new_year = newdate.getFullYear();
+        var formattedDate = new_month + "/" + new_date + "/" + new_year;
+        //console.log("formattedDate " + formattedDate);
+        
+        //use formatted date
+        $("#schedule_final_plans_received_date").val(formattedDate);
+        
+
+    }
+    //change or keyup on #deal_ti_cost will trigger function updateTiAllowance
+    $(document).on("change, keyup, blur", "#schedule_lease_execution_date", updateFinalPlansReceivedDate);
+    $(document).on("change, keyup, blur", "#schedule_design_duration", updateFinalPlansReceivedDate);
+    $(document).on("change, keyup, blur", "#schedule_lease_execution_date", updateFinalPlansReviewedDate);
+    $(document).on("change, keyup, blur", "#schedule_design_duration", updateFinalPlansReviewedDate);
+    $(document).on("change, keyup, blur", "#schedule_lease_execution_date", updatePermitSubmittedDate);
+    $(document).on("change, keyup, blur", "#schedule_design_duration", updatePermitSubmittedDate);
+    $(document).on("change, keyup, blur", "#schedule_lease_execution_date", updatePermitReceivedDate);
+    $(document).on("change, keyup, blur", "#schedule_design_duration", updatePermitReceivedDate);
+    $(document).on("change, keyup, blur", "#schedule_lease_execution_date", updatePremisesAcceptanceDate);
+    $(document).on("change, keyup, blur", "#schedule_design_duration", updatePremisesAcceptanceDate);
+    $(document).on("change, keyup, blur", "#schedule_lease_execution_date", updateConstructionCompletionDate);
+    $(document).on("change, keyup, blur", "#schedule_design_duration", updateConstructionCompletionDate);
+    $(document).on("change, keyup, blur", "#schedule_lease_execution_date", updateOpenForBusinessDate);
+    $(document).on("change, keyup, blur", "#schedule_design_duration", updateOpenForBusinessDate);
+     
+      
+
+    function updateFinalPlansReviewedDate()
+    {
+        //get number of days for math
+        var days = $('#schedule_ll_review_duration').val();
+        //console.log("days " + days);
+        
+        //get date formatted value
+        var dateValue = $("#schedule_final_plans_received_date").val();
+        //console.log("2nd dateValue " + dateValue);
+        
+        //change formatted date value to Javascript date
+        var oldDate = new Date(dateValue);
+        //console.log("oldDate " + oldDate);
+        
+        //get new javascript date after math
+        var newdate = new Date(oldDate);
+        newdate.setDate(oldDate.getDate()+Number(days));
+        //console.log("newdate " + newdate);
+
+        //format the date
+        var new_date = newdate.getDate();
+        //console.log("newdate " + newdate);
+        var new_month = newdate.getMonth() + 1; //Months are zero based
+        //console.log("new_month " + new_month);
+        var new_year = newdate.getFullYear();
+        //console.log("new_year " + new_year);
+        var formattedDate = new_month + "/" + new_date + "/" + new_year;
+        //console.log("formattedDate " + formattedDate);
+        
+        //use formatted date
+        $("#schedule_final_plans_reviewed_date").val(formattedDate);
+        
+
+    }
+    //change or keyup on #deal_ti_cost will trigger function updateTiAllowance
+    $(document).on("change, keyup, blur", "#schedule_final_plans_received_date", updateFinalPlansReviewedDate);
+    $(document).on("change, keyup, blur", "#schedule_ll_review_duration", updateFinalPlansReviewedDate);
+    $(document).on("change, keyup, blur", "#schedule_final_plans_received_date", updatePermitSubmittedDate);
+    $(document).on("change, keyup, blur", "#schedule_ll_review_duration", updatePermitSubmittedDate);
+    $(document).on("change, keyup, blur", "#schedule_final_plans_received_date", updatePermitReceivedDate);
+    $(document).on("change, keyup, blur", "#schedule_ll_review_duration", updatePermitReceivedDate);
+    $(document).on("change, keyup, blur", "#schedule_final_plans_received_date", updatePremisesAcceptanceDate);
+    $(document).on("change, keyup, blur", "#schedule_ll_review_duration", updatePremisesAcceptanceDate);
+    $(document).on("change, keyup, blur", "#schedule_final_plans_received_date", updateConstructionCompletionDate);
+    $(document).on("change, keyup, blur", "#schedule_ll_review_duration", updateConstructionCompletionDate);
+    $(document).on("change, keyup, blur", "#schedule_final_plans_received_date", updateOpenForBusinessDate);
+    $(document).on("change, keyup, blur", "#schedule_ll_review_duration", updateOpenForBusinessDate);
+       
+
+
+    function updatePermitSubmittedDate()
+    {
+        //get number of days for math
+        var days = $('#schedule_permit_submittal_duration').val();
+        //console.log("days " + days);
+        
+        //get date formatted value
+        var dateValue = $("#schedule_final_plans_reviewed_date").val();
+        //console.log("dateValue " + dateValue);
+        
+        //change formatted date value to Javascript date
+        var oldDate = new Date(dateValue);
+        //console.log("oldDate " + oldDate);
+        
+        //get new javascript date after math
+        var newdate = new Date(oldDate);
+        newdate.setDate(oldDate.getDate()+Number(days));
+        //console.log("newdate " + newdate);
+
+        //format the date
+        var new_date = newdate.getDate();
+        var new_month = newdate.getMonth() + 1; //Months are zero based
+        var new_year = newdate.getFullYear();
+        var formattedDate = new_month + "/" + new_date + "/" + new_year;
+        //console.log("formattedDate " + formattedDate);
+        
+        //use formatted date
+        $("#schedule_permit_submitted_date").val(formattedDate);
+
+    }
+    //change or keyup on #deal_ti_cost will trigger function updateTiAllowance
+    $(document).on("change, keyup, blur", "#schedule_final_plans_reviewed_date", updatePermitSubmittedDate);
+    $(document).on("change, keyup, blur", "#schedule_permit_submittal_duration", updatePermitSubmittedDate);
+    $(document).on("change, keyup, blur", "#schedule_final_plans_reviewed_date", updatePermitReceivedDate);
+    $(document).on("change, keyup, blur", "#schedule_permit_submittal_duration", updatePermitReceivedDate);
+    $(document).on("change, keyup, blur", "#schedule_final_plans_reviewed_date", updatePremisesAcceptanceDate);
+    $(document).on("change, keyup, blur", "#schedule_permit_submittal_duration", updatePremisesAcceptanceDate);
+    $(document).on("change, keyup, blur", "#schedule_final_plans_reviewed_date", updateConstructionCompletionDate);
+    $(document).on("change, keyup, blur", "#schedule_permit_submittal_duration", updateConstructionCompletionDate);
+    $(document).on("change, keyup, blur", "#schedule_final_plans_reviewed_date", updateOpenForBusinessDate);
+    $(document).on("change, keyup, blur", "#schedule_permit_submittal_duration", updateOpenForBusinessDate);
+    
+    function updatePermitReceivedDate()
+    {
+        //get number of days for math
+        var days = $('#schedule_permit_reviewed_duration').val();
+        //console.log("days " + days);
+        
+        //get date formatted value
+        var dateValue = $("#schedule_permit_submitted_date").val();
+        //console.log("dateValue " + dateValue);
+        
+        //change formatted date value to Javascript date
+        var oldDate = new Date(dateValue);
+        //console.log("oldDate " + oldDate);
+        
+        //get new javascript date after math
+        var newdate = new Date(oldDate);
+        newdate.setDate(oldDate.getDate()+Number(days));
+        //console.log("newdate " + newdate);
+
+        //format the date
+        var new_date = newdate.getDate();
+        var new_month = newdate.getMonth() + 1; //Months are zero based
+        var new_year = newdate.getFullYear();
+        var formattedDate = new_month + "/" + new_date + "/" + new_year;
+        //console.log("formattedDate " + formattedDate);
+        
+        //use formatted date
+        $("#schedule_permit_received_date").val(formattedDate);
+
+    }
+    //change or keyup on #deal_ti_cost will trigger function updateTiAllowance
+    $(document).on("change, keyup, blur", "#schedule_permit_submitted_date", updatePermitReceivedDate);
+    $(document).on("change, keyup, blur", "#schedule_permit_reviewed_duration", updatePermitReceivedDate);
+    $(document).on("change, keyup, blur", "#schedule_permit_submitted_date", updatePremisesAcceptanceDate);
+    $(document).on("change, keyup, blur", "#schedule_permit_reviewed_duration", updatePremisesAcceptanceDate);
+    $(document).on("change, keyup, blur", "#schedule_permit_submitted_date", updateConstructionCompletionDate);
+    $(document).on("change, keyup, blur", "#schedule_permit_reviewed_duration", updateConstructionCompletionDate);
+    $(document).on("change, keyup, blur", "#schedule_permit_submitted_date", updateOpenForBusinessDate);
+    $(document).on("change, keyup, blur", "#schedule_permit_reviewed_duration", updateOpenForBusinessDate);
+   
+   
+    function updatePremisesAcceptanceDate()
+    {
+        //get number of days for math
+        var days = $('#schedule_mobilization_duration').val();
+        //console.log("days " + days);
+        
+        //get date formatted value
+        var dateValue = $("#schedule_permit_received_date").val();
+        //console.log("dateValue " + dateValue);
+        
+        //change formatted date value to Javascript date
+        var oldDate = new Date(dateValue);
+        //console.log("oldDate " + oldDate);
+        
+        //get new javascript date after math
+        var newdate = new Date(oldDate);
+        newdate.setDate(oldDate.getDate()+Number(days));
+        //console.log("newdate " + newdate);
+
+        //format the date
+        var new_date = newdate.getDate();
+        var new_month = newdate.getMonth() + 1; //Months are zero based
+        var new_year = newdate.getFullYear();
+        var formattedDate = new_month + "/" + new_date + "/" + new_year;
+        //console.log("formattedDate " + formattedDate);
+        
+        //use formatted date
+        $("#schedule_premises_acceptance_date").val(formattedDate);
+        
+    }
+    //change or keyup on #deal_ti_cost will trigger function updateTiAllowance
+    $(document).on("change, keyup, blur", "#schedule_permit_received_date", updatePremisesAcceptanceDate);
+    $(document).on("change, keyup, blur", "#schedule_mobilization_duration", updatePremisesAcceptanceDate);
+    $(document).on("change, keyup, blur", "#schedule_permit_received_date", updateConstructionCompletionDate);
+    $(document).on("change, keyup, blur", "#schedule_mobilization_duration", updateConstructionCompletionDate);
+    $(document).on("change, keyup, blur", "#schedule_permit_received_date", updateOpenForBusinessDate);
+    $(document).on("change, keyup, blur", "#schedule_mobilization_duration", updateOpenForBusinessDate);
+    
+    
+    function updateConstructionCompletionDate()
+    {
+        //get number of days for math
+        var days = $('#schedule_tenant_fit_out_duration').val();
+        //console.log("days " + days);
+        
+        //get date formatted value
+        var dateValue = $("#schedule_premises_acceptance_date").val();
+        //console.log("dateValue " + dateValue);
+        
+        //change formatted date value to Javascript date
+        var oldDate = new Date(dateValue);
+        //console.log("oldDate " + oldDate);
+        
+        //get new javascript date after math
+        var newdate = new Date(oldDate);
+        newdate.setDate(oldDate.getDate()+Number(days));
+        //console.log("newdate " + newdate);
+
+        //format the date
+        var new_date = newdate.getDate();
+        var new_month = newdate.getMonth() + 1; //Months are zero based
+        var new_year = newdate.getFullYear();
+        var formattedDate = new_month + "/" + new_date + "/" + new_year;
+        //console.log("formattedDate " + formattedDate);
+        
+        //use formatted date
+        $("#schedule_construction_completion_date").val(formattedDate);
+        
+    }
+    //change or keyup on #deal_ti_cost will trigger function updateTiAllowance
+    $(document).on("change, keyup, blur", "#schedule_premises_acceptance_date", updateConstructionCompletionDate);
+    $(document).on("change, keyup, blur", "#schedule_tenant_fit_out_duration", updateConstructionCompletionDate);
+    $(document).on("change, keyup, blur", "#schedule_premises_acceptance_date", updateOpenForBusinessDate);
+    $(document).on("change, keyup, blur", "#schedule_tenant_fit_out_duration", updateOpenForBusinessDate);
+
+
+    function updateOpenForBusinessDate()
+    {
+        //get number of days for math
+        var days = $('#schedule_merchandising_duration').val();
+        //console.log("days " + days);
+        
+        //get date formatted value
+        var dateValue = $("#schedule_construction_completion_date").val();
+        //console.log("dateValue " + dateValue);
+        
+        //change formatted date value to Javascript date
+        var oldDate = new Date(dateValue);
+        //console.log("oldDate " + oldDate);
+        
+        //get new javascript date after math
+        var newdate = new Date(oldDate);
+        newdate.setDate(oldDate.getDate()+Number(days));
+        //console.log("newdate " + newdate);
+
+        //format the date
+        var new_date = newdate.getDate();
+        var new_month = newdate.getMonth() + 1; //Months are zero based
+        var new_year = newdate.getFullYear();
+        var formattedDate = new_month + "/" + new_date + "/" + new_year;
+        //console.log("formattedDate " + formattedDate);
+        
+        //use formatted date
+        $("#schedule_open_for_business_date").val(formattedDate);
+        
+    }
+    //change or keyup on #deal_ti_cost will trigger function updateTiAllowance
+    $(document).on("change, keyup, blur", "#schedule_construction_completion_date", updateOpenForBusinessDate);
+    $(document).on("change, keyup, blur", "#schedule_merchandising_duration", updateOpenForBusinessDate);
+
+    function updateTotalDays()
+    {
+        //create variables from form input
+        var leaseExecutionDays = $('#schedule_design_duration').val();
+        
+        //create variables from form input
+        var finalPlansReceivedDays = $('#schedule_ll_review_duration').val();
+        
+        //create variables from form input
+        var finalPlansReviewedDays = $('#schedule_permit_submittal_duration').val();
+        
+        //create variables from form input
+        var permitSubmittedDays = $('#schedule_permit_reviewed_duration').val();
+        
+        //create variables from form input
+        var permitReceivedDays = $('#schedule_mobilization_duration').val();
+        
+        //create variables from form input
+        var premisesAcceptanceDays = $('#schedule_tenant_fit_out_duration').val();
+
+        //create variables from form input
+        var constructionCompletionDays = $('#schedule_merchandising_duration').val();
+        
+        var total_days = Number(leaseExecutionDays) + Number(finalPlansReceivedDays) + Number(finalPlansReviewedDays) + Number(permitSubmittedDays) + Number(permitReceivedDays) + Number(premisesAcceptanceDays) + Number(constructionCompletionDays)
+        //use formatted date
+        $("#schedule_total_days").val(total_days);
+    }
+    //change or keyup on #deal_ti_cost will trigger function updateTiAllowance
+    $(document).on("change, keyup, blur", "#schedule_lease_execution_date", updateTotalDays);
+    $(document).on("change, keyup, blur", "#schedule_design_duration", updateTotalDays);
+    $(document).on("change, keyup, blur", "#schedule_final_plans_received_date", updateTotalDays);
+    $(document).on("change, keyup, blur", "#schedule_ll_review_duration", updateTotalDays);
+    $(document).on("change, keyup, blur", "#schedule_final_plans_reviewed_date", updateTotalDays);
+    $(document).on("change, keyup, blur", "#schedule_permit_submittal_duration", updateTotalDays);
+    $(document).on("change, keyup, blur", "#schedule_permit_submitted_date", updateTotalDays);
+    $(document).on("change, keyup, blur", "#schedule_permit_reviewed_duration", updateTotalDays);
+    $(document).on("change, keyup, blur", "#schedule_permit_received_date", updateTotalDays);
+    $(document).on("change, keyup, blur", "#schedule_mobilization_duration", updateTotalDays);
+    $(document).on("change, keyup, blur", "#schedule_premises_acceptance_date", updateTotalDays);
+    $(document).on("change, keyup, blur", "#schedule_tenant_fit_out_duration", updateTotalDays);
+    $(document).on("change, keyup, blur", "#schedule_construction_completion_date", updateTotalDays);
+    $(document).on("change, keyup, blur", "#schedule_merchandising_duration", updateTotalDays);
+    $(document).on("change, keyup, blur", "#schedule_open_for_business_date", updateTotalDays);
+    
+    
+    
+    //do back calculations on days since last date if date is changed
+    
+    function ledCalcBetween()
+    {
+        //get number of days for math
+        var str1 = $("#schedule_lease_execution_date").val();
+        var str2 = $("#schedule_final_plans_received_date").val();
+        var diff =  Math.floor(( Date.parse(str2) - Date.parse(str1) ) / 86400000);
+
+        //use formatted date
+        $("#schedule_design_duration").val(diff);
+    }
+    $(document).on("change, keyup, blur", "#schedule_final_plans_received_date", ledCalcBetween);
+    
+    
+    function fprecBetween()
+    {
+        //get number of days for math
+        var str1 = $("#schedule_final_plans_received_date").val();
+        var str2 = $("#schedule_final_plans_reviewed_date").val();
+        var diff =  Math.floor(( Date.parse(str2) - Date.parse(str1) ) / 86400000);
+
+        //use formatted date
+        $("#schedule_ll_review_duration").val(diff);
+    }
+    $(document).on("change, keyup, blur", "#schedule_final_plans_reviewed_date", fprecBetween);
+    
+    function fprewBetween()
+    {
+        //get number of days for math
+        var str1 = $("#schedule_final_plans_reviewed_date").val();
+        var str2 = $("#schedule_permit_submitted_date").val();
+        var diff =  Math.floor(( Date.parse(str2) - Date.parse(str1) ) / 86400000);
+
+        //use formatted date
+        $("#schedule_permit_submittal_duration").val(diff);
+    }
+    $(document).on("change, keyup, blur", "#schedule_permit_submitted_date", fprewBetween);
+    
+    function persubBetween()
+    {
+        //get number of days for math
+        var str1 = $("#schedule_permit_submitted_date").val();
+        var str2 = $("#schedule_permit_received_date").val();
+        var diff =  Math.floor(( Date.parse(str2) - Date.parse(str1) ) / 86400000);
+
+        //use formatted date
+        $("#schedule_permit_reviewed_duration").val(diff);
+    }
+    $(document).on("change, keyup, blur", "#schedule_permit_received_date", persubBetween);
+    
+    function perrecBetween()
+    {
+        //get number of days for math
+        var str1 = $("#schedule_permit_received_date").val();
+        var str2 = $("#schedule_premises_acceptance_date").val();
+        var diff =  Math.floor(( Date.parse(str2) - Date.parse(str1) ) / 86400000);
+
+        //use formatted date
+        $("#schedule_mobilization_duration").val(diff);
+    }
+    $(document).on("change, keyup, blur", "#schedule_premises_acceptance_date", perrecBetween);
+    
+    function preaccBetween()
+    {
+        //get number of days for math
+        var str1 = $("#schedule_premises_acceptance_date").val();
+        var str2 = $("#schedule_construction_completion_date").val();
+        var diff =  Math.floor(( Date.parse(str2) - Date.parse(str1) ) / 86400000);
+
+        //use formatted date
+        $("#schedule_tenant_fit_out_duration").val(diff);
+    }
+    $(document).on("change, keyup, blur", "#schedule_construction_completion_date", preaccBetween);
+    
+    function concomBetween()
+    {
+        //get number of days for math
+        var str1 = $("#schedule_construction_completion_date").val();
+        var str2 = $("#schedule_open_for_business_date").val();
+        var diff =  Math.floor(( Date.parse(str2) - Date.parse(str1) ) / 86400000);
+
+        //use formatted date
+        $("#schedule_merchandising_duration").val(diff);
+    }
+    $(document).on("change, keyup, blur", "#schedule_open_for_business_date", concomBetween);
+
+    //END do back calculations on days since last date if date is changed
+ 
+});
+</script>

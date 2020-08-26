@@ -27,6 +27,8 @@ class AreasController < ApplicationController
     #@deals = @area.deals.all
     @areas_deal = AreasDeal.new
     @otherdeals = @project.deals.all - @area.deals
+    
+    @schedule = @area.schedule
   end
 
   # GET /areas/new
