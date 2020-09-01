@@ -1,0 +1,2 @@
+class WorkletterTemplate < ApplicationRecord
+end

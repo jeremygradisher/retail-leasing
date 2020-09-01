@@ -1,0 +1,2 @@
+module WorkletterTemplatesHelper
+end
