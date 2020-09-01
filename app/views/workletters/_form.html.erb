@@ -1,0 +1,1651 @@
+<%= form_for @workletter, :html => { :class => "form-horizontal workletter" } do |f| %>
+
+  <% if @workletter.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@workletter.errors.count, "error") %> prohibited this workletter from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @workletter.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :name, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :name, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:name) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :project_id, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :project_id, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:project_id) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :map_id, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :map_id, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:map_id) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :area_id, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :area_id, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:area_id) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :slab, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :slab, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:slab) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :studs, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :studs, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:studs) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :drywall, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :drywall, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:drywall) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :insulation, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :insulation, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:insulation) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :service_door, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :service_door, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:service_door) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :storefront, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :storefront, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:storefront) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :supply, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :supply, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:supply) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :exhaust, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :exhaust, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:exhaust) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :unit, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :unit, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:unit) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :line_set_pathways, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :line_set_pathways, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:line_set_pathways) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :ems, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :ems, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:ems) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :voltage, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :voltage, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:voltage) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :amperage, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :amperage, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:amperage) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :conduit_size, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :conduit_size, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:conduit_size) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :electrical_meter, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :electrical_meter, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:electrical_meter) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :tele_conduit_size, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :tele_conduit_size, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:tele_conduit_size) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :sanitary, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :sanitary, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:sanitary) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :sanitary_vent, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :sanitary_vent, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:sanitary_vent) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :grease, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :grease, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:grease) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :water, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :water, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:water) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :gas, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :gas, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:gas) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :sprinkler_stub, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :sprinkler_stub, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:sprinkler_stub) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :sprinkler_grid, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :sprinkler_grid, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:sprinkler_grid) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :fire_alarm, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :fire_alarm, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:fire_alarm) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :slab_description, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :slab_description, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:slab_description) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :studs_description, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :studs_description, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:studs_description) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :drywall_description, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :drywall_description, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:drywall_description) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :storefront_description, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :storefront_description, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:storefront_description) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :servicedoor_description, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :servicedoor_description, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:servicedoor_description) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :untis_description, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :untis_description, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:untis_description) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :supplyduct_description, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :supplyduct_description, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:supplyduct_description) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :exhaustduct_description, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :exhaustduct_description, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:exhaustduct_description) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :linesetpathway_description, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :linesetpathway_description, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:linesetpathway_description) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :emergency_description, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :emergency_description, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:emergency_description) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :voltage_description, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :voltage_description, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:voltage_description) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :amperage_description, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :amperage_description, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:amperage_description) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :conduitsize_description, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :conduitsize_description, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:conduitsize_description) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :panels_description, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :panels_description, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:panels_description) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :meter_description, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :meter_description, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:meter_description) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :telephone_description, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :telephone_description, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:telephone_description) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :sanitary_description, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :sanitary_description, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:sanitary_description) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :sanitaryvent_description, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :sanitaryvent_description, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:sanitaryvent_description) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :grease_description, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :grease_description, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:grease_description) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :water_description, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :water_description, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:water_description) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :gas_description, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :gas_description, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:gas_description) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :sprinklerstub_description, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :sprinklerstub_description, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:sprinklerstub_description) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :sprinklergrid_description, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :sprinklergrid_description, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:sprinklergrid_description) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :firealarm_description, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :firealarm_description, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:firealarm_description) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :insulation_description, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :insulation_description, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:insulation_description) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :slab_complete, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :slab_complete, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:slab_complete) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :slab_typical, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :slab_typical, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:slab_typical) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :slab_date, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :slab_date, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:slab_date) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :studs_typical, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :studs_typical, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:studs_typical) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :drywall_typical, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :drywall_typical, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:drywall_typical) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :insulation_typical, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :insulation_typical, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:insulation_typical) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :service_door_typical, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :service_door_typical, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:service_door_typical) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :storefront_typical, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :storefront_typical, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:storefront_typical) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :supply_duct_typical, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :supply_duct_typical, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:supply_duct_typical) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :exhaust_duct_typical, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :exhaust_duct_typical, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:exhaust_duct_typical) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :unit_typical, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :unit_typical, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:unit_typical) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :line_set_pathways_typical, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :line_set_pathways_typical, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:line_set_pathways_typical) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :ems_typical, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :ems_typical, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:ems_typical) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :voltage_typical, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :voltage_typical, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:voltage_typical) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :amperage_typical, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :amperage_typical, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:amperage_typical) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :conduit_size_typical, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :conduit_size_typical, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:conduit_size_typical) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :electrical_meter_typical, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :electrical_meter_typical, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:electrical_meter_typical) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :telephone_typical, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :telephone_typical, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:telephone_typical) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :sanitary_typical, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :sanitary_typical, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:sanitary_typical) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :sanitary_vent_typical, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :sanitary_vent_typical, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:sanitary_vent_typical) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :grease_typical, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :grease_typical, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:grease_typical) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :water_typical, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :water_typical, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:water_typical) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :gas_typical, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :gas_typical, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:gas_typical) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :sprinkler_stub_typical, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :sprinkler_stub_typical, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:sprinkler_stub_typical) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :sprinkler_grid_typical, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :sprinkler_grid_typical, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:sprinkler_grid_typical) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :fire_alarm_typical, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :fire_alarm_typical, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:fire_alarm_typical) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :studs_complete, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :studs_complete, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:studs_complete) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :drywall_complete, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :drywall_complete, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:drywall_complete) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :insulation_complete, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :insulation_complete, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:insulation_complete) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :service_door_complete, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :service_door_complete, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:service_door_complete) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :storefront_complete, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :storefront_complete, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:storefront_complete) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :supply_duct_complete, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :supply_duct_complete, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:supply_duct_complete) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :exhaust_duct_complete, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :exhaust_duct_complete, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:exhaust_duct_complete) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :unit_complete, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :unit_complete, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:unit_complete) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :line_set_pathways_complete, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :line_set_pathways_complete, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:line_set_pathways_complete) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :ems_complete, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :ems_complete, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:ems_complete) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :voltage_complete, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :voltage_complete, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:voltage_complete) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :amperage_complete, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :amperage_complete, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:amperage_complete) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :conduit_size_complete, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :conduit_size_complete, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:conduit_size_complete) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :electrical_meter_complete, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :electrical_meter_complete, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:electrical_meter_complete) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :telephone_complete, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :telephone_complete, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:telephone_complete) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :sanitary_complete, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :sanitary_complete, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:sanitary_complete) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :sanitary_vent_complete, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :sanitary_vent_complete, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:sanitary_vent_complete) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :grease_complete, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :grease_complete, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:grease_complete) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :water_complete, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :water_complete, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:water_complete) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :gas_complete, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :gas_complete, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:gas_complete) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :sprinkler_stub_complete, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :sprinkler_stub_complete, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:sprinkler_stub_complete) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :sprinkler_grid_complete, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :sprinkler_grid_complete, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:sprinkler_grid_complete) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :fire_alarm_complete, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :fire_alarm_complete, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:fire_alarm_complete) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :studs_date, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :studs_date, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:studs_date) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :drywall_date, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :drywall_date, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:drywall_date) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :insulation_date, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :insulation_date, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:insulation_date) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :service_door_date, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :service_door_date, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:service_door_date) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :storefront_date, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :storefront_date, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:storefront_date) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :supply_date, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :supply_date, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:supply_date) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :exhaust_date, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :exhaust_date, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:exhaust_date) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :unit_date, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :unit_date, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:unit_date) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :line_set_pathways_date, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :line_set_pathways_date, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:line_set_pathways_date) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :ems_date, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :ems_date, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:ems_date) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :voltage_date, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :voltage_date, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:voltage_date) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :amperage_date, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :amperage_date, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:amperage_date) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :conduit_size_date, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :conduit_size_date, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:conduit_size_date) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :electrical_meter_date, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :electrical_meter_date, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:electrical_meter_date) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :tele_conduit_size_date, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :tele_conduit_size_date, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:tele_conduit_size_date) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :sanitary_date, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :sanitary_date, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:sanitary_date) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :grease_date, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :grease_date, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:grease_date) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :water_date, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :water_date, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:water_date) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :sprinkler_stub_date, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :sprinkler_stub_date, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:sprinkler_stub_date) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :sprinkler_grid_date, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :sprinkler_grid_date, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:sprinkler_grid_date) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :fire_alarm_date, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :fire_alarm_date, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:fire_alarm_date) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :gas_date, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :gas_date, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:gas_date) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :sanitary_vent_date, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :sanitary_vent_date, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:sanitary_vent_date) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :electrical, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :electrical, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:electrical) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :electrical_description, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :electrical_description, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:electrical_description) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :electrical_typical, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :electrical_typical, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:electrical_typical) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :electrical_responsibility, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :electrical_responsibility, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:electrical_responsibility) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :electrical_complete, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :electrical_complete, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:electrical_complete) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :electrical_date, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :electrical_date, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:electrical_date) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :ll_work, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :ll_work, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:ll_work) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :ll_work_cost, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :ll_work_cost, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:ll_work_cost) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :slab_cost, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :slab_cost, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:slab_cost) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :studs_cost, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :studs_cost, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:studs_cost) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :drywall_cost, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :drywall_cost, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:drywall_cost) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :insulation_cost, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :insulation_cost, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:insulation_cost) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :service_door_cost, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :service_door_cost, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:service_door_cost) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :storefront_cost, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :storefront_cost, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:storefront_cost) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :supply_cost, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :supply_cost, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:supply_cost) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :exhaust_cost, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :exhaust_cost, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:exhaust_cost) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :unit_cost, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :unit_cost, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:unit_cost) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :ems_cost, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :ems_cost, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:ems_cost) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :voltage_cost, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :voltage_cost, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:voltage_cost) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :amperage_cost, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :amperage_cost, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:amperage_cost) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :conduit_size_cost, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :conduit_size_cost, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:conduit_size_cost) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :electrical_cost, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :electrical_cost, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:electrical_cost) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :electrical_meter_cost, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :electrical_meter_cost, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:electrical_meter_cost) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :telephone_cost, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :telephone_cost, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:telephone_cost) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :sanitary_cost, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :sanitary_cost, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:sanitary_cost) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :sanitary_vent_cost, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :sanitary_vent_cost, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:sanitary_vent_cost) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :grease_cost, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :grease_cost, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:grease_cost) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :water_cost, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :water_cost, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:water_cost) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :gas_cost, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :gas_cost, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:gas_cost) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :sprinkler_stub_cost, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :sprinkler_stub_cost, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:sprinkler_stub_cost) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :sprinkler_grid_cost, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :sprinkler_grid_cost, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:sprinkler_grid_cost) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :fire_alarm_cost, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :fire_alarm_cost, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:fire_alarm_cost) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :line_set_pathways_cost, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :line_set_pathways_cost, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:line_set_pathways_cost) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :structure, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :structure, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:structure) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :structure_description, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :structure_description, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:structure_description) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :structure_typical, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :structure_typical, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:structure_typical) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :structure_complete, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :structure_complete, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:structure_complete) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :structure_date, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :structure_date, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:structure_date) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :structure_cost, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :structure_cost, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:structure_cost) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :demolition, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :demolition, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:demolition) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :demolition_description, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :demolition_description, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:demolition_description) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :demolition_typical, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :demolition_typical, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:demolition_typical) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :demolition_complete, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :demolition_complete, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:demolition_complete) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :demolition_date, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :demolition_date, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:demolition_date) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :demolition_cost, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :demolition_cost, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:demolition_cost) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :other, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :other, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:other) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :other_description, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :other_description, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:other_description) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :other_typical, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :other_typical, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:other_typical) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :other_complete, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :other_complete, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:other_complete) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :other_date, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :other_date, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:other_date) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :other_cost, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :other_cost, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:other_cost) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :structure_sqft, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :structure_sqft, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:structure_sqft) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :structure_unit, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :structure_unit, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:structure_unit) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :slab_sqft, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :slab_sqft, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:slab_sqft) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :slab_unit, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :slab_unit, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:slab_unit) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :studs_sqft, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :studs_sqft, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:studs_sqft) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :studs_unit, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :studs_unit, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:studs_unit) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :drywall_sqft, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :drywall_sqft, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:drywall_sqft) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :drywall_unit, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :drywall_unit, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:drywall_unit) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :insulation_sqft, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :insulation_sqft, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:insulation_sqft) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :insulation_unit, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :insulation_unit, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:insulation_unit) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :service_door_sqft, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :service_door_sqft, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:service_door_sqft) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :service_door_unit, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :service_door_unit, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:service_door_unit) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :storefront_sqft, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :storefront_sqft, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:storefront_sqft) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :storefront_unit, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :storefront_unit, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:storefront_unit) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :hvac_unit_sqft, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :hvac_unit_sqft, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:hvac_unit_sqft) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :hvac_unit_unit, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :hvac_unit_unit, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:hvac_unit_unit) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :supply_duct_sqft, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :supply_duct_sqft, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:supply_duct_sqft) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :supply_duct_unit, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :supply_duct_unit, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:supply_duct_unit) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :exhaust_sqft, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :exhaust_sqft, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:exhaust_sqft) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :exhaust_unit, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :exhaust_unit, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:exhaust_unit) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :line_set_pathways_sqft, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :line_set_pathways_sqft, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:line_set_pathways_sqft) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :line_set_pathways_unit, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :line_set_pathways_unit, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:line_set_pathways_unit) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :ems_sqft, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :ems_sqft, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:ems_sqft) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :ems_unit, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :ems_unit, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:ems_unit) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :electrical_sqft, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :electrical_sqft, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:electrical_sqft) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :electrical_unit, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :electrical_unit, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:electrical_unit) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :voltage_sqft, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :voltage_sqft, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:voltage_sqft) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :voltage_unit, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :voltage_unit, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:voltage_unit) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :amperage_sqft, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :amperage_sqft, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:amperage_sqft) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :amperage_unit, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :amperage_unit, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:amperage_unit) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :conduit_size_sqft, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :conduit_size_sqft, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:conduit_size_sqft) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :conduit_size_unit, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :conduit_size_unit, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:conduit_size_unit) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :electrical_meter_sqft, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :electrical_meter_sqft, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:electrical_meter_sqft) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :electrical_meter_unit, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :electrical_meter_unit, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:electrical_meter_unit) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :telephone_sqft, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :telephone_sqft, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:telephone_sqft) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :telephone_unit, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :telephone_unit, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:telephone_unit) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :sanitary_sqft, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :sanitary_sqft, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:sanitary_sqft) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :sanitary_unit, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :sanitary_unit, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:sanitary_unit) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :sanitary_vent_sqft, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :sanitary_vent_sqft, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:sanitary_vent_sqft) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :sanitary_vent_unit, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :sanitary_vent_unit, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:sanitary_vent_unit) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :grease_sqft, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :grease_sqft, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:grease_sqft) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :grease_unit, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :grease_unit, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:grease_unit) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :water_sqft, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :water_sqft, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:water_sqft) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :water_unit, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :water_unit, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:water_unit) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :gas_sqft, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :gas_sqft, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:gas_sqft) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :gas_unit, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :gas_unit, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:gas_unit) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :sprinkler_stub_sqft, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :sprinkler_stub_sqft, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:sprinkler_stub_sqft) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :sprinkler_stub_unit, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :sprinkler_stub_unit, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:sprinkler_stub_unit) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :sprinkler_grid_sqft, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :sprinkler_grid_sqft, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:sprinkler_grid_sqft) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :sprinkler_grid_unit, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :sprinkler_grid_unit, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:sprinkler_grid_unit) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :fire_alarm_sqft, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :fire_alarm_sqft, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:fire_alarm_sqft) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :fire_alarm_unit, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :fire_alarm_unit, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:fire_alarm_unit) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :demolition_sqft, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :demolition_sqft, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:demolition_sqft) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :demolition_unit, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :demolition_unit, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:demolition_unit) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :other_sqft, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :other_sqft, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:other_sqft) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :other_unit, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :other_unit, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:other_unit) %>
+  </div>
+
+  <div class="form-group">
+    <div class="col-lg-offset-2 col-lg-10">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                workletters_path, :class => 'btn btn-default' %>
+    </div>
+  </div>
+
+<% end %>

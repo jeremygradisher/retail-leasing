@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :workletters
   resources :schedules
   resources :dealimages
   resources :user_projects

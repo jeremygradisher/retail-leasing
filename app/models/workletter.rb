@@ -1,0 +1,2 @@
+class Workletter < ApplicationRecord
+end
