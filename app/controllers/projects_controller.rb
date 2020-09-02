@@ -38,6 +38,8 @@ class ProjectsController < ApplicationController
     
     @areasquarefootage = Area.where(project_id: params[:id]).pluck(:area_sqft)
     @netrentablearea = @deals.pluck(:net_rentable_area)
+    
+    @workletter_templates = WorkletterTemplate.where(project_id: params[:id])
   end
 
   # GET /projects/new

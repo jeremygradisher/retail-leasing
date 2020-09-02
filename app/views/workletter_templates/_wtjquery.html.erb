@@ -1,0 +1,754 @@
+<script>
+$(document).ready(function()
+{
+        function addDefaultValues()
+        {
+           //create variable and change # to total
+           
+            var structuredescription = "A structural system designed to carry loads in accordance with and to meet all governing codes. Structural system includes foundations, beams, columns, bar joists, suspended floors, roof deck system, and roofing. The building superstructure, at-grade and above-grade supported floor slabs are constructed of structural steel members, reinforced cast-in-place structural concrete, and/or post-tension structural concrete. A minimum clearance to structure of approximately 12\'-0\" to 14\'-0\", as specified in the base building drawings, shall be provided by Landlord. The structure and adjacent ceiling area shall be considered a non-plenum rated shared utility zone for Landlord and Tenant utility distribution including but not limited to fire protection mains and laterals; electrical home runs and pull boxes; storm and sanitary laterals and leaders; and exhaust and make up air ducting."
+            $("#workletter_template_structure_description").val(structuredescription);
+            $('#workletter_template_structure_typical').prop('checked', true);
+            $("#workletter_template_structure_landlord").prop("checked", true);
+            
+            var slabdescription = "A concrete floor slab at grade, designed and constructed to meet all applicable codes and consist of a 3,000-psi, 4\" minimum thickness concrete slab reinforced with 6\"x6\" welded wire mesh, atop vapor-barrier and sealed steel trowel finish. In areas with a supported slab, a post-tension structural slab or composite deck shall be provided. Moisture content within slab can vary greatly and Landlord makes no representation, warranty or guarantee of said moisture content. For slab at grade, an area at the back of the Tenant space, approximately 15\'-0\" in depth, has been left out to facilitate the installation of underground utilities. A 1\' wide ribbon slab has been installed to support demising walls. This area and all others not installed by Landlord per the base building drawings shall be installed by Tenant, at Tenant\'s expense, in accord with code and the Tenant Design Criteria Manual."
+            $("#workletter_template_slab_description").val(slabdescription);
+            $('#workletter_template_slab_typical').prop('checked', true);
+            $("#workletter_template_slab_landlord").prop("checked", true);
+            
+            var studsdescription = "Rear and side exterior walls shall be constructed with metal stud framing (gauge and thickness as determined by the design and load requirements), unfinished concrete, and/or concrete masonry."
+            $("#workletter_template_studs_description").val(studsdescription);
+            $('#workletter_template_studs_typical').prop('checked', true);
+            $("#workletter_template_studs_landlord").prop("checked", true);
+            
+            var drywalldescription = "No interior gypsum board shall be provided. Tenant is to supply all drywall or any other finishes and insulation as required by Tenant per Code and in accord with the Tenant Design Criteria Manual capable of achieving a U-factor and fire rating satisfactory to Landlord and governing municipal jurisdictions."
+            $("#workletter_template_drywall_description").val(drywalldescription);
+            $('#workletter_template_drywall_typical').prop('checked', true);
+            $("#workletter_template_drywall_landlord").prop("checked", true);
+            
+            var insulationdescription = "Exterior walls shall have insulation as required by municipal Energy Code. None shall be provided by Landlord for interior walls."
+            $("#workletter_template_insulation_description").val(insulationdescription);
+            $('#workletter_template_insulation_typical').prop('checked', true);
+            $("#workletter_template_insulation_landlord").prop("checked", true);
+            
+            var servicedoordescription = "One (1) hollow metal rear exterior service/personnel door (3\'-6\" x 7\'-0\") with standard hardware set shall be provided in each Tenant space per the Landlord's base building drawings."
+            $("#workletter_template_service_door_description").val(servicedoordescription);
+            $('#workletter_template_service_door_typical').prop('checked', true);
+            $("#workletter_template_service_door_landlord").prop("checked", true);
+            
+            var storefrontdescription = "A leave-out opening approximately 12\'-0\" to 14\'-0\" in height, as specified in the base building drawings, by the width of the Premises has been provided for the installation of Tenant storefront system. Landlord will install architectural neutral piers at various locations throughout the fascia, as outlined in the Landlord base building drawings, which can serve as the boundaries for storefront infill. Where not provided by Landlord, Tenant shall be responsible for purchasing or constructing and installing Landlord designed neutral piers. All light gauge framing, structural framing, building finish, glazing, entries, caulking, coping and all necessary storefront materials to achieve a waterproof exterior envelope by Tenant are subject to Landlord approval. The Tenant will reimburse the Landlord for their proportional share for any storefront systems installed by Landlord. Based on construction sequence schedule the Landlord may provide a temporary wall or barricade to secure each Tenant space for which Tenant shall reimburse Landlord. Any graphics shall be by Tenant in accord with the Tenant Design Criteria Manual."
+            $("#workletter_template_storefront_description").val(storefrontdescription);
+            $('#workletter_template_storefront_typical').prop('checked', true);
+            $("#workletter_template_storefront_landlord").prop("checked", true);
+            
+            var supplydescription = "If access to the roof is not available to Tenant and where applicable as deemed by the Landlord, locations on the exterior façade of the building or within the Premises, at various locations and at Landlord's sole discretion, have been provided by Landlord for supply air intake."
+            $("#workletter_template_supply_description").val(supplydescription);
+            $('#workletter_template_supply_typical').prop('checked', true);
+            $("#workletter_template_supply_landlord").prop("checked", true);
+            
+            var exhaustdescription = "Make up air connections shall be provided within the RTU or shall be outdoor air louver(s) or Landlord provided ductwork at or near the rear of each space, sized per ASHRAE 62 minimum ventilation requirements. Tenant spaces below residential may have a common exhaust duct provided for Tenant to connect toilet exhaust duct work. Exhaust shall be per ASHRAE 62.1."
+            $("#workletter_template_exhaust_description").val(exhaustdescription);
+            $('#workletter_template_exhaust_typical').prop('checked', true);
+            $("#workletter_template_exhaust_landlord").prop("checked", true);
+            
+            var unitdescription = "Designated locations for Tenant provided and installed HVAC split-system condenser units or package roof top units (RTUs) shall be given by Landlord. Landlord to provide a structured roof area to support Tenant provided roof-mounted condenser equipment or RTUs sized to accommodate one ton per 350 SF of Premises for retail and one ton per 150 SF for restaurant spaces. Tenant systems shall include, but not be limited to residential style heat pump (5 ton maximum) or RTU package units with electrical heating element, air handling units, ductwork, dampers, diffusers, grilles and controls. Tenant shall be responsible for all curbs and supplemental structure required to support Tenant mechanical equipment. Tenant shall be responsible for mounting, installation, and flashing per Tenant Design Criteria Manual. Routing and layout of all Tenant equipment both within and outside the Tenant Premises must be submitted to and approved by the Landlord in writing."
+            $("#workletter_template_unit_description").val(unitdescription);
+            $('#workletter_template_unit_typical').prop('checked', true);
+            $("#workletter_template_unit_landlord").prop("checked", true);
+            
+            var linesetpathwaysdescription = "Where split systems with remote condensers are required, Landlord to provide access to 4\" conduit(s), for Tenant provided and installed refrigerant lines, unit power and controls, at or near the rear of the Tenant space to the designated condenser unit area."
+            $("#workletter_template_line_set_pathways_description").val(linesetpathwaysdescription);
+            $('#workletter_template_line_set_pathways_typical').prop('checked', true);
+            $("#workletter_template_line_set_pathways_landlord").prop("checked", true);
+            
+            var emsdescription = "At Landlord\'s option, a base building energy management system may be utilized for the center. In such case, one (1) junction box shall be provided and located within the Premises for Tenant\'s use to connect to the Landlord provided central system."
+            $("#workletter_template_ems_description").val(emsdescription);
+            $('#workletter_template_ems_typical').prop('checked', true);
+            $("#workletter_template_ems_tenant").prop("checked", true);
+            
+            var voltagedescription = "Landlord shall provide access to 277/480V or 120/208V, 3-phase 4-wire service."
+            $("#workletter_template_voltage_description").val(voltagedescription);
+            $('#workletter_template_voltage_typical').prop('checked', true);
+            $("#workletter_template_voltage_landlord").prop("checked", true);
+            
+            var amperagedescription = "Tenant service size shall not exceed 20 watts/SF for inline retailers or 60 watts/SF for restaurants."
+            $("#workletter_template_amperage_description").val(amperagedescription);
+            $('#workletter_template_amperage_typical').prop('checked', true);
+            $("#workletter_template_amperage_landlord").prop("checked", true);
+            
+            var conduitsizedescription = "Empty conduit at or near the rear or the space to a location as determined by Landlord near the Landlord provided electrical service room or electrical gutter. Generally, retail uses shall be provided one (1) - 4\" conduit and restaurants shall be provided two (2) - 4\" conduit with pull string."
+            $("#workletter_template_conduit_size_description").val(conduitsizedescription);
+            $('#workletter_template_conduit_size_typical').prop('checked', true);
+            $("#workletter_template_conduit_size_landlord").prop("checked", true);
+            
+            var electricaldescription = "Landlord shall provide access to electrical service main panels designed to accommodate Tenant service sized based upon actual anticipated load calculations. All electrical equipment required to service the space, including, but not limited to, disconnects, CT can, meter base, meters, panels, transformers, conduit, feeders, sub-panels, breakers, branch conduit, wiring, switches, receptacles and lighting panels, shall be provided by Tenant at Tenant\'s expense. Any transformers required by Tenant must be furnished and installed on the floor by Tenant inside the Premises at Tenant\'s expense per the Tenant Design Criteria Manual requirements."
+            $("#workletter_template_electrical_description").val(electricaldescription);
+            $('#workletter_template_electrical_typical').prop('checked', true);
+            $("#workletter_template_electrical_landlord").prop("checked", true);
+            
+            var electricalmeterdescription = "Landlord shall provide a location for Tenant provided meter base and Utility installed meter. Tenant shall be responsible for all utility costs upon turnover of the space to Tenant."
+            $("#workletter_template_electrical_meter_description").val(electricalmeterdescription);
+            $('#workletter_template_electrical_meter_typical').prop('checked', true);
+            $("#workletter_template_electrical_meter_landlord").prop("checked", true);
+            
+            var telephonedescription = "One (1) empty conduit 2\" in diameter at or near the rear or the space to a location as determined by Landlord near the Landlord provided telecom service room. All telephone equipment required to service the space, including, but not limited to, backboards, punchdowns, modems, troughs, wiring and cabling shall be located within the Tenant space and provided and installed by Tenant at Tenant's expense."
+            $("#workletter_template_telephone_description").val(telephonedescription);
+            $('#workletter_template_telephone_typical').prop('checked', true);
+            $("#workletter_template_telephone_landlord").prop("checked", true);
+            
+            var sanitarydescription = "Access to one (1) common 4\" sanitary sewer stub or lateral at a location near the Premises as determined by Landlord. Tenant is required to perform all work at Tenant\'s expense to tap the main line or stack and all distribution throughout the Premises. Landlord has provided roof storm drains, piping, valves, fixtures, and equipment, as required to meet base building, minimum code, or utility company requirements and Landlord\'s plan requirements. Locations of all existing and proposed piping may be within Tenant space and shall be verified by Tenant. Tenant may not alter without written approval from Landlord."
+            $("#workletter_template_sanitary_description").val(sanitarydescription);
+            $('#workletter_template_sanitary_typical').prop('checked', true);
+            $("#workletter_template_sanitary_landlord").prop("checked", true);
+            
+            var sanitaryventdescription = "Access to one (1) common 3\" vent stack shall be provided at a location near the Premises as determined by Landlord."
+            $("#workletter_template_sanitary_vent_description").val(sanitaryventdescription);
+            $('#workletter_template_sanitary_vent_typical').prop('checked', true);
+            $("#workletter_template_sanitary_vent_landlord").prop("checked", true);
+            
+            var greasedescription = "For restaurant tenants only, one (1) common 3\" common grease stub or lateral shall be provided at a location as determined by Landlord. A connected common grease trap shall be provided, with size and capacity as required by Code. Restaurant tenants will contribute to the common area grease trap costs as directed per the Lease. Where required, Landlord to provide shared fire rated chase for Tenant kitchen exhaust and make-up air for all proposed restaurant uses. Some locations may require horizontal runs through adjacent spaces. All odor and grease producing Tenants, shall provide and install at Tenant\'s expense, pollution control units (PCUs) within Tenant space as required and in accord with code and the Tenant Design Criteria Manual."
+            $("#workletter_template_grease_description").val(greasedescription);
+            $('#workletter_template_grease_typical').prop('checked', true);
+            $("#workletter_template_grease_landlord").prop("checked", true);
+            
+            var waterdescription = "Access to domestic water supply line with shut-off valve shall be available at a location near the Premises as determined by Landlord. Retail uses shall be permitted a 1\" service and restaurants shall be permitted a 2\" service. Water meters shall be either specified or provided by Landlord at Tenant\'s expense."
+            $("#workletter_template_water_description").val(waterdescription);
+            $('#workletter_template_water_typical').prop('checked', true);
+            $("#workletter_template_water_landlord").prop("checked", true);
+            
+            var gasdescription = "Access to natural gas service at an exterior meter block at a location as determined by Landlord. Gas service will be sized based on and limited to: base building mechanical heating requirements and restaurant Tenants\' cooking requirements only."
+            $("#workletter_template_gas_description").val(gasdescription);
+            $('#workletter_template_gas_typical').prop('checked', true);
+            $("#workletter_template_gas_landlord").prop("checked", true);
+            
+            var sprinklerstubdescription = "A hydraulically calculated fire sprinkler main system to the space including mains, standpipes, sprinkler risers, grids, and/or sprinkler heads to meet minimum local code, fire department, NFPA and Landlord\'s insurance underwriting requirements. Tenant shall extend, distribute, modify, and/or reposition as required by code, utilizing Landlord approved subcontractor, at Tenant's sole expense. Landlord shall also provide fire department hose connections, tamper and flow alarms zoned on a full or partial floor basis, required annunciation, fire department inspection stations and main sprinkler piping on each floor. All piping shall be hydraulically sized and placed in locations as determined and as required by the municipal authorities. Landlord shall provide all sprinkler drainage systems in locations and as required by the municipal authorities including those required within a Tenant's premises."
+            $("#workletter_template_sprinkler_stub_description").val(sprinklerstubdescription);
+            $('#workletter_template_sprinkler_stub_typical').prop('checked', true);
+            $("#workletter_template_sprinkler_stub_landlord").prop("checked", true);
+            
+            var sprinklergriddescription = "If required, Landlord shall provide a hydraulically calculated fire sprinkler grid with sprinkler heads to meet minimum local code, fire department, NFPA and Landlord\'s insurance underwriting requirements."
+            $("#workletter_template_sprinkler_grid_description").val(sprinklergriddescription);
+            $('#workletter_template_sprinkler_grid_typical').prop('checked', true);
+            $("#workletter_template_sprinkler_grid_landlord").prop("checked", true);
+            
+            var firealarmdescription = "A fire alarm j-box with wire to be located in ceiling area if required by local code. Tenant shall be responsible for providing power booster in each space to accommodate their fire alarm devices. A horn/fire strobe shall be located at the front of suite and tenant shall relocate it to satisfy Fire Marshal requirements."
+            $("#workletter_template_fire_alarm_description").val(firealarmdescription);
+            $('#workletter_template_fire_alarm_typical').prop('checked', true);
+            $("#workletter_template_fire_alarm_landlord").prop("checked", true);
+            
+            var demolitiondescription = "None shall be provided."
+            $("#workletter_template_demolition_description").val(demolitiondescription);
+            $("#workletter_template_demolition_typical").prop("checked", true);
+            $("#workletter_template_demolition_landlord").prop("checked", true);
+            
+            var otherdescription = "None shall be provided."
+            $("#workletter_template_other_description").val(otherdescription);
+            $('#workletter_template_other_typical').prop('checked', true);
+            $("#workletter_template_other_landlord").prop("checked", true);
+
+        }
+        
+        //change or keyup on # will trigger function
+        $(document).on("click", "#default_template", addDefaultValues);
+        
+        
+    <% @workletter_templates.each do |wtemplate| %>
+        function addTemplateValues<%= wtemplate.id %>()
+        {
+            //create variable and change # to total
+            var slabdescription = "<%= wtemplate.slab_description %>"
+            var fixampslabdescription = slabdescription.replace(/amp;/g, '');
+            var fixquoteslabdescription = fixampslabdescription.replace(/&quot;/gi, '\"');
+            var fixbothslabdescription = fixquoteslabdescription.replace(/&#39;/gi, '\'');
+            $("#workletter_template_slab_description").val(fixbothslabdescription);
+
+            <% if wtemplate.slab_typical == true %>
+            $('#workletter_template_slab_typical').prop('checked', true);
+            <% else %>
+            $('#workletter_template_slab_typical').prop('checked', false);
+            <% end %>
+
+            <% if wtemplate.slab == "Landlord" %>
+            $("#workletter_template_slab_landlord").prop("checked", true);
+            <% elsif wtemplate.slab == "Tenant" %>
+            $("#workletter_template_slab_tenant").prop("checked", true);
+            <% else %>
+            $("#workletter_template_slab_na").prop("checked", true);
+            <% end %>
+            
+            //create variable and change # to total
+            var structuredescription = "<%= wtemplate.structure_description %>"
+            var fixampstructuredescription = structuredescription.replace(/amp;/g, '');
+            var fixquotestructuredescription = fixampstructuredescription.replace(/&quot;/gi, '\"');
+            var fixbothstructuredescription = fixquotestructuredescription.replace(/&#39;/gi, '\'');
+            $("#workletter_template_structure_description").val(fixbothstructuredescription);
+
+            <% if wtemplate.structure_typical == true %>
+            $('#workletter_template_structure_typical').prop('checked', true);
+            <% else %>
+            $('#workletter_template_structure_typical').prop('checked', false);
+            <% end %>
+
+            <% if wtemplate.structure == "Landlord" %>
+            $("#workletter_template_structure_landlord").prop("checked", true);
+            <% elsif wtemplate.structure == "Tenant" %>
+            $("#workletter_template_structure_tenant").prop("checked", true);
+            <% else %>
+            $("#workletter_template_structure_na").prop("checked", true);
+            <% end %>
+            
+            //create variable and change # to total
+            var demolitiondescription = "<%= wtemplate.demolition_description %>"
+            var fixampdemolitiondescription = demolitiondescription.replace(/amp;/g, '');
+            var fixquotedemolitiondescription = fixampdemolitiondescription.replace(/&quot;/gi, '\"');
+            var fixbothdemolitiondescription = fixquotedemolitiondescription.replace(/&#39;/gi, '\'');
+            $("#workletter_template_demolition_description").val(fixbothdemolitiondescription);
+
+            <% if wtemplate.demolition_typical == true %>
+            $('#workletter_template_demolition_typical').prop('checked', true);
+            <% else %>
+            $('#workletter_template_demolition_typical').prop('checked', false);
+            <% end %>
+
+            <% if wtemplate.demolition == "Landlord" %>
+            $("#workletter_template_demolition_landlord").prop("checked", true);
+            <% elsif wtemplate.demolition == "Tenant" %>
+            $("#workletter_template_demolition_tenant").prop("checked", true);
+            <% else %>
+            $("#workletter_template_demolition_na").prop("checked", true);
+            <% end %>
+            
+            //create variable and change # to total
+            var otherdescription = "<%= wtemplate.other_description %>"
+            var fixampotherdescription = otherdescription.replace(/amp;/g, '');
+            var fixquoteotherdescription = fixampotherdescription.replace(/&quot;/gi, '\"');
+            var fixbothotherdescription = fixquoteotherdescription.replace(/&#39;/gi, '\'');
+            $("#workletter_template_other_description").val(fixbothotherdescription);
+
+            <% if wtemplate.other_typical == true %>
+            $('#workletter_template_other_typical').prop('checked', true);
+            <% else %>
+            $('#workletter_template_other_typical').prop('checked', false);
+            <% end %>
+
+            <% if wtemplate.other == "Landlord" %>
+            $("#workletter_template_other_landlord").prop("checked", true);
+            <% elsif wtemplate.other == "Tenant" %>
+            $("#workletter_template_other_tenant").prop("checked", true);
+            <% else %>
+            $("#workletter_template_other_na").prop("checked", true);
+            <% end %>
+
+
+
+            //create variable and change # to total
+            var studsdescription = "<%= wtemplate.studs_description %>"
+            var fixampstudsdescription = studsdescription.replace(/amp;/g, '');
+            var fixquotestudsdescription = fixampstudsdescription.replace(/&quot;/gi, '\"');
+            var fixbothstudsdescription = fixquotestudsdescription.replace(/&#39;/gi, '\'');
+            $("#workletter_template_studs_description").val(fixbothstudsdescription);
+            
+            <% if wtemplate.studs_typical == true %>
+            $('#workletter_template_studs_typical').prop('checked', true);
+            <% else %>
+            $('#workletter_template_studs_typical').prop('checked', false);
+            <% end %>
+
+            <% if wtemplate.studs == "Landlord" %>
+            $("#workletter_template_studs_landlord").prop("checked", true);
+            <% elsif wtemplate.studs == "Tenant" %>
+            $("#workletter_template_studs_tenant").prop("checked", true);
+            <% else %>
+            $("#workletter_template_studs_na").prop("checked", true);
+            <% end %>
+            
+            //create variable and change # to total
+            var drywalldescription = "<%= wtemplate.drywall_description %>"
+            var fixampdrywalldescription = drywalldescription.replace(/amp;/g, '');
+            var fixquotedrywalldescription = fixampdrywalldescription.replace(/&quot;/gi, '\"');
+            var fixbothdrywalldescription = fixquotedrywalldescription.replace(/&#39;/gi, '\'');
+            $("#workletter_template_drywall_description").val(fixbothdrywalldescription);
+            
+            <% if wtemplate.drywall_typical == true %>
+            $('#workletter_template_drywall_typical').prop('checked', true);
+            <% else %>
+            $('#workletter_template_drywall_typical').prop('checked', false);
+            <% end %>
+
+            <% if wtemplate.drywall == "Landlord" %>
+            $("#workletter_template_drywall_landlord").prop("checked", true);
+            <% elsif wtemplate.drywall == "Tenant" %>
+            $("#workletter_template_drywall_tenant").prop("checked", true);
+            <% else %>
+            $("#workletter_template_drywall_na").prop("checked", true);
+            <% end %>
+            
+            //create variable and change # to total
+            var insulationdescription = "<%= wtemplate.insulation_description %>"
+            var fixampinsulationdescription = insulationdescription.replace(/amp;/g, '');
+            var fixquoteinsulationdescription = fixampinsulationdescription.replace(/&quot;/gi, '\"');
+            var fixbothinsulationdescription = fixquoteinsulationdescription.replace(/&#39;/gi, '\'');
+            $("#workletter_template_insulation_description").val(fixbothinsulationdescription);
+            
+            <% if wtemplate.insulation_typical == true %>
+            $('#workletter_template_insulation_typical').prop('checked', true);
+            <% else %>
+            $('#workletter_template_insulation_typical').prop('checked', false);
+            <% end %>
+
+            <% if wtemplate.insulation == "Landlord" %>
+            $("#workletter_template_insulation_landlord").prop("checked", true);
+            <% elsif wtemplate.insulation == "Tenant" %>
+            $("#workletter_template_insulation_tenant").prop("checked", true);
+            <% else %>
+            $("#workletter_template_insulation_na").prop("checked", true);
+            <% end %>
+            
+            //create variable and change # to total
+            var servicedoordescription = "<%= wtemplate.service_door_description %>"
+            var fixampservicedoordescription = servicedoordescription.replace(/amp;/g, '');
+            var fixquoteservicedoordescription = fixampservicedoordescription.replace(/&quot;/gi, '\"');
+            var fixbothservicedoordescription = fixquoteservicedoordescription.replace(/&#39;/gi, '\'');
+            $("#workletter_template_service_door_description").val(fixbothservicedoordescription);
+            
+            <% if wtemplate.service_door_typical == true %>
+            $('#workletter_template_service_door_typical').prop('checked', true);
+            <% else %>
+            $('#workletter_template_service_door_typical').prop('checked', false);
+            <% end %>
+
+            <% if wtemplate.service_door == "Landlord" %>
+            $("#workletter_template_service_door_landlord").prop("checked", true);
+            <% elsif wtemplate.service_door == "Tenant" %>
+            $("#workletter_template_service_door_tenant").prop("checked", true);
+            <% else %>
+            $("#workletter_template_service_door_na").prop("checked", true);
+            <% end %>
+            
+            //create variable and change # to total
+            var storefrontdescription = "<%= wtemplate.storefront_description %>"
+            var fixampstorefrontdescription = storefrontdescription.replace(/amp;/g, '');
+            var fixquotestorefrontdescription = fixampstorefrontdescription.replace(/&quot;/gi, '\"');
+            var fixbothstorefrontdescription = fixquotestorefrontdescription.replace(/&#39;/gi, '\'');
+            $("#workletter_template_storefront_description").val(fixbothstorefrontdescription);
+            
+            <% if wtemplate.storefront_typical == true %>
+            $('#workletter_template_storefront_typical').prop('checked', true);
+            <% else %>
+            $('#workletter_template_storefront_typical').prop('checked', false);
+            <% end %>
+
+            <% if wtemplate.storefront == "Landlord" %>
+            $("#workletter_template_storefront_landlord").prop("checked", true);
+            <% elsif wtemplate.storefront == "Tenant" %>
+            $("#workletter_template_storefront_tenant").prop("checked", true);
+            <% else %>
+            $("#workletter_template_storefront_na").prop("checked", true);
+            <% end %>
+            
+            //create variable and change # to total
+            var supplydescription = "<%= wtemplate.supply_description %>"
+            var fixampsupplydescription = supplydescription.replace(/amp;/g, '');
+            var fixquotesupplydescription = fixampsupplydescription.replace(/&quot;/gi, '\"');
+            var fixbothsupplydescription = fixquotesupplydescription.replace(/&#39;/gi, '\'');
+            $("#workletter_template_supply_description").val(fixbothsupplydescription);
+            
+            <% if wtemplate.supply_typical == true %>
+            $('#workletter_template_supply_typical').prop('checked', true);
+            <% else %>
+            $('#workletter_template_supply_typical').prop('checked', false);
+            <% end %>
+
+            <% if wtemplate.supply == "Landlord" %>
+            $("#workletter_template_supply_landlord").prop("checked", true);
+            <% elsif wtemplate.supply == "Tenant" %>
+            $("#workletter_template_supply_tenant").prop("checked", true);
+            <% else %>
+            $("#workletter_template_supply_na").prop("checked", true);
+            <% end %>
+            
+            //create variable and change # to total
+            var exhaustdescription = "<%= wtemplate.exhaust_description %>"
+            var fixampexhaustdescription = exhaustdescription.replace(/amp;/g, '');
+            var fixquoteexhaustdescription = fixampexhaustdescription.replace(/&quot;/gi, '\"');
+            var fixbothexhaustdescription = fixquoteexhaustdescription.replace(/&#39;/gi, '\'');
+            $("#workletter_template_exhaust_description").val(fixbothexhaustdescription);
+            
+            <% if wtemplate.exhaust_typical == true %>
+            $('#workletter_template_exhaust_typical').prop('checked', true);
+            <% else %>
+            $('#workletter_template_exhaust_typical').prop('checked', false);
+            <% end %>
+
+            <% if wtemplate.exhaust == "Landlord" %>
+            $("#workletter_template_exhaust_landlord").prop("checked", true);
+            <% elsif wtemplate.exhaust == "Tenant" %>
+            $("#workletter_template_exhaust_tenant").prop("checked", true);
+            <% else %>
+            $("#workletter_template_exhaust_na").prop("checked", true);
+            <% end %>
+            
+            //create variable and change # to total
+            var unitdescription = "<%= wtemplate.unit_description %>"
+            var fixampunitdescription = unitdescription.replace(/amp;/g, '');
+            var fixquoteunitdescription = fixampunitdescription.replace(/&quot;/gi, '\"');
+            var fixbothunitdescription = fixquoteunitdescription.replace(/&#39;/gi, '\'');
+            $("#workletter_template_unit_description").val(fixbothunitdescription);
+            
+            <% if wtemplate.unit_typical == true %>
+            $('#workletter_template_unit_typical').prop('checked', true);
+            <% else %>
+            $('#workletter_template_unit_typical').prop('checked', false);
+            <% end %>
+
+            <% if wtemplate.unit == "Landlord" %>
+            $("#workletter_template_unit_landlord").prop("checked", true);
+            <% elsif wtemplate.unit == "Tenant" %>
+            $("#workletter_template_unit_tenant").prop("checked", true);
+            <% else %>
+            $("#workletter_template_unit_na").prop("checked", true);
+            <% end %>
+            
+            //create variable and change # to total
+            var linesetpathwaysdescription = "<%= wtemplate.line_set_pathways_description %>"
+            var fixamplinesetpathwaysdescription = linesetpathwaysdescription.replace(/amp;/g, '');
+            var fixquotelinesetpathwaysdescription = fixamplinesetpathwaysdescription.replace(/&quot;/gi, '\"');
+            var fixbothlinesetpathwaysdescription = fixquotelinesetpathwaysdescription.replace(/&#39;/gi, '\'');
+            $("#workletter_template_line_set_pathways_description").val(fixbothlinesetpathwaysdescription);
+            
+            <% if wtemplate.line_set_pathways_typical == true %>
+            $('#workletter_template_line_set_pathways_typical').prop('checked', true);
+            <% else %>
+            $('#workletter_template_line_set_pathways_typical').prop('checked', false);
+            <% end %>
+
+            <% if wtemplate.line_set_pathways == "Landlord" %>
+            $("#workletter_template_line_set_pathways_landlord").prop("checked", true);
+            <% elsif wtemplate.line_set_pathways == "Tenant" %>
+            $("#workletter_template_line_set_pathways_tenant").prop("checked", true);
+            <% else %>
+            $("#workletter_template_line_set_pathways_na").prop("checked", true);
+            <% end %>
+            
+            //create variable and change # to total
+            var emsdescription = "<%= wtemplate.ems_description %>"
+            var fixampemsdescription = emsdescription.replace(/amp;/g, '');
+            var fixquoteemsdescription = fixampemsdescription.replace(/&quot;/gi, '\"');
+            var fixbothemsdescription = fixquoteemsdescription.replace(/&#39;/gi, '\'');
+            $("#workletter_template_ems_description").val(fixbothemsdescription);
+            
+            <% if wtemplate.ems_typical == true %>
+            $('#workletter_template_ems_typical').prop('checked', true);
+            <% else %>
+            $('#workletter_template_ems_typical').prop('checked', false);
+            <% end %>
+
+            <% if wtemplate.ems == "Landlord" %>
+            $("#workletter_template_ems_landlord").prop("checked", true);
+            <% elsif wtemplate.ems == "Tenant" %>
+            $("#workletter_template_ems_tenant").prop("checked", true);
+            <% else %>
+            $("#workletter_template_ems_na").prop("checked", true);
+            <% end %>
+            
+            //create variable and change # to total
+            var voltagedescription = "<%= wtemplate.voltage_description %>"
+            var fixampvoltagedescription = voltagedescription.replace(/amp;/g, '');
+            var fixquotevoltagedescription = fixampvoltagedescription.replace(/&quot;/gi, '\"');
+            var fixbothvoltagedescription = fixquotevoltagedescription.replace(/&#39;/gi, '\'');
+            $("#workletter_template_voltage_description").val(fixbothvoltagedescription);
+            
+            <% if wtemplate.voltage_typical == true %>
+            $('#workletter_template_voltage_typical').prop('checked', true);
+            <% else %>
+            $('#workletter_template_voltage_typical').prop('checked', false);
+            <% end %>
+
+            <% if wtemplate.voltage == "Landlord" %>
+            $("#workletter_template_voltage_landlord").prop("checked", true);
+            <% elsif wtemplate.voltage == "Tenant" %>
+            $("#workletter_template_voltage_tenant").prop("checked", true);
+            <% else %>
+            $("#workletter_template_voltage_na").prop("checked", true);
+            <% end %>
+            
+            //create variable and change # to total
+            var amperagedescription = "<%= wtemplate.amperage_description %>"
+            var fixampamperagedescription = amperagedescription.replace(/amp;/g, '');
+            var fixquoteamperagedescription = fixampamperagedescription.replace(/&quot;/gi, '\"');
+            var fixbothamperagedescription = fixquoteamperagedescription.replace(/&#39;/gi, '\'');
+            $("#workletter_template_amperage_description").val(fixbothamperagedescription);
+            
+            <% if wtemplate.amperage_typical == true %>
+            $('#workletter_template_amperage_typical').prop('checked', true);
+            <% else %>
+            $('#workletter_template_amperage_typical').prop('checked', false);
+            <% end %>
+
+            <% if wtemplate.amperage == "Landlord" %>
+            $("#workletter_template_amperage_landlord").prop("checked", true);
+            <% elsif wtemplate.amperage == "Tenant" %>
+            $("#workletter_template_amperage_tenant").prop("checked", true);
+            <% else %>
+            $("#workletter_template_amperage_na").prop("checked", true);
+            <% end %>
+            
+            //create variable and change # to total
+            var conduitsizedescription = "<%= wtemplate.conduit_size_description %>"
+            var fixampconduitsizedescription = conduitsizedescription.replace(/amp;/g, '');
+            var fixquoteconduitsizedescription = fixampconduitsizedescription.replace(/&quot;/gi, '\"');
+            var fixbothconduitsizedescription = fixquoteconduitsizedescription.replace(/&#39;/gi, '\'');
+            $("#workletter_template_conduit_size_description").val(fixbothconduitsizedescription);
+            
+            <% if wtemplate.conduit_size_typical == true %>
+            $('#workletter_template_conduit_size_typical').prop('checked', true);
+            <% else %>
+            $('#workletter_template_conduit_size_typical').prop('checked', false);
+            <% end %>
+
+            <% if wtemplate.conduit_size == "Landlord" %>
+            $("#workletter_template_conduit_size_landlord").prop("checked", true);
+            <% elsif wtemplate.conduit_size == "Tenant" %>
+            $("#workletter_template_conduit_size_tenant").prop("checked", true);
+            <% else %>
+            $("#workletter_template_conduit_size_na").prop("checked", true);
+            <% end %>
+            
+            //create variable and change # to total
+            var electricaldescription = "<%= wtemplate.electrical_description %>"
+            var fixampelectricaldescription = electricaldescription.replace(/amp;/g, '');
+            var fixquoteelectricaldescription = fixampelectricaldescription.replace(/&quot;/gi, '\"');
+            var fixbothelectricaldescription = fixquoteelectricaldescription.replace(/&#39;/gi, '\'');
+            $("#workletter_template_electrical_description").val(fixbothelectricaldescription);
+            
+            <% if wtemplate.electrical_typical == true %>
+            $('#workletter_template_electrical_typical').prop('checked', true);
+            <% else %>
+            $('#workletter_template_electrical_typical').prop('checked', false);
+            <% end %>
+
+            <% if wtemplate.electrical == "Landlord" %>
+            $("#workletter_template_electrical_landlord").prop("checked", true);
+            <% elsif wtemplate.electrical == "Tenant" %>
+            $("#workletter_template_electrical_tenant").prop("checked", true);
+            <% else %>
+            $("#workletter_template_electrical_na").prop("checked", true);
+            <% end %>
+            
+            //create variable and change # to total
+            var electricalmeterdescription = "<%= wtemplate.electrical_meter_description %>"
+            var fixampelectricalmeterdescription = electricalmeterdescription.replace(/amp;/g, '');
+            var fixquoteelectricalmeterdescription = fixampelectricalmeterdescription.replace(/&quot;/gi, '\"');
+            var fixbothelectricalmeterdescription = fixquoteelectricalmeterdescription.replace(/&#39;/gi, '\'');
+            $("#workletter_template_electrical_meter_description").val(fixbothelectricalmeterdescription);
+            
+            <% if wtemplate.electrical_meter_typical == true %>
+            $('#workletter_template_electrical_meter_typical').prop('checked', true);
+            <% else %>
+            $('#workletter_template_electrical_meter_typical').prop('checked', false);
+            <% end %>
+
+            <% if wtemplate.electrical_meter == "Landlord" %>
+            $("#workletter_template_electrical_meter_landlord").prop("checked", true);
+            <% elsif wtemplate.electrical_meter == "Tenant" %>
+            $("#workletter_template_electrical_meter_tenant").prop("checked", true);
+            <% else %>
+            $("#workletter_template_electrical_meter_na").prop("checked", true);
+            <% end %>
+            
+            //create variable and change # to total
+            var telephonedescription = "<%= wtemplate.telephone_description %>"
+            var fixamptelephonedescription = telephonedescription.replace(/amp;/g, '');
+            var fixquotetelephonedescription = fixamptelephonedescription.replace(/&quot;/gi, '\"');
+            var fixbothtelephonedescription = fixquotetelephonedescription.replace(/&#39;/gi, '\'');
+            $("#workletter_template_telephone_description").val(fixbothtelephonedescription);
+            
+            <% if wtemplate.telephone_typical == true %>
+            $('#workletter_template_telephone_typical').prop('checked', true);
+            <% else %>
+            $('#workletter_template_telephone_typical').prop('checked', false);
+            <% end %>
+
+            <% if wtemplate.telephone == "Landlord" %>
+            $("#workletter_template_telephone_landlord").prop("checked", true);
+            <% elsif wtemplate.telephone == "Tenant" %>
+            $("#workletter_template_telephone_tenant").prop("checked", true);
+            <% else %>
+            $("#workletter_template_telephone_na").prop("checked", true);
+            <% end %>
+            
+            //create variable and change # to total
+            var sanitarydescription = "<%= wtemplate.sanitary_description %>"
+            var fixampsanitarydescription = sanitarydescription.replace(/amp;/g, '');
+            var fixquotesanitarydescription = fixampsanitarydescription.replace(/&quot;/gi, '\"');
+            var fixbothsanitarydescription = fixquotesanitarydescription.replace(/&#39;/gi, '\'');
+            $("#workletter_template_sanitary_description").val(fixbothsanitarydescription);
+            
+            <% if wtemplate.sanitary_typical == true %>
+            $('#workletter_template_sanitary_typical').prop('checked', true);
+            <% else %>
+            $('#workletter_template_sanitary_typical').prop('checked', false);
+            <% end %>
+
+            <% if wtemplate.sanitary == "Landlord" %>
+            $("#workletter_template_sanitary_landlord").prop("checked", true);
+            <% elsif wtemplate.sanitary == "Tenant" %>
+            $("#workletter_template_sanitary_tenant").prop("checked", true);
+            <% else %>
+            $("#workletter_template_sanitary_na").prop("checked", true);
+            <% end %>
+            
+            //create variable and change # to total
+            var sanitaryventdescription = "<%= wtemplate.sanitary_vent_description %>"
+            var fixampsanitaryventdescription = sanitaryventdescription.replace(/amp;/g, '');
+            var fixquotesanitaryventdescription = fixampsanitaryventdescription.replace(/&quot;/gi, '\"');
+            var fixbothsanitaryventdescription = fixquotesanitaryventdescription.replace(/&#39;/gi, '\'');
+            $("#workletter_template_sanitary_vent_description").val(fixbothsanitaryventdescription);
+            
+            <% if wtemplate.sanitary_vent_typical == true %>
+            $('#workletter_template_sanitary_vent_typical').prop('checked', true);
+            <% else %>
+            $('#workletter_template_sanitary_vent_typical').prop('checked', false);
+            <% end %>
+
+            <% if wtemplate.sanitary_vent == "Landlord" %>
+            $("#workletter_template_sanitary_vent_landlord").prop("checked", true);
+            <% elsif wtemplate.sanitary_vent == "Tenant" %>
+            $("#workletter_template_sanitary_vent_tenant").prop("checked", true);
+            <% else %>
+            $("#workletter_template_sanitary_vent_na").prop("checked", true);
+            <% end %>
+            
+            //create variable and change # to total
+            var greasedescription = "<%= wtemplate.grease_description %>"
+            var fixampgreasedescription = greasedescription.replace(/amp;/g, '');
+            var fixquotegreasedescription = fixampgreasedescription.replace(/&quot;/gi, '\"');
+            var fixbothgreasedescription = fixquotegreasedescription.replace(/&#39;/gi, '\'');
+            $("#workletter_template_grease_description").val(fixbothgreasedescription);
+            
+            <% if wtemplate.grease_typical == true %>
+            $('#workletter_template_grease_typical').prop('checked', true);
+            <% else %>
+            $('#workletter_template_grease_typical').prop('checked', false);
+            <% end %>
+
+            <% if wtemplate.grease == "Landlord" %>
+            $("#workletter_template_grease_landlord").prop("checked", true);
+            <% elsif wtemplate.grease == "Tenant" %>
+            $("#workletter_template_grease_tenant").prop("checked", true);
+            <% else %>
+            $("#workletter_template_grease_na").prop("checked", true);
+            <% end %>
+            
+            //create variable and change # to total
+            var waterdescription = "<%= wtemplate.water_description %>"
+            var fixampwaterdescription = waterdescription.replace(/amp;/g, '');
+            var fixquotewaterdescription = fixampwaterdescription.replace(/&quot;/gi, '\"');
+            var fixbothwaterdescription = fixquotewaterdescription.replace(/&#39;/gi, '\'');
+            $("#workletter_template_water_description").val(fixbothwaterdescription);
+            
+            <% if wtemplate.water_typical == true %>
+            $('#workletter_template_water_typical').prop('checked', true);
+            <% else %>
+            $('#workletter_template_water_typical').prop('checked', false);
+            <% end %>
+
+            <% if wtemplate.water == "Landlord" %>
+            $("#workletter_template_water_landlord").prop("checked", true);
+            <% elsif wtemplate.water == "Tenant" %>
+            $("#workletter_template_water_tenant").prop("checked", true);
+            <% else %>
+            $("#workletter_template_water_na").prop("checked", true);
+            <% end %>
+            
+            //create variable and change # to total
+            var gasdescription = "<%= wtemplate.gas_description %>"
+            var fixampgasdescription = gasdescription.replace(/amp;/g, '');
+            var fixquotegasdescription = fixampgasdescription.replace(/&quot;/gi, '\"');
+            var fixbothgasdescription = fixquotegasdescription.replace(/&#39;/gi, '\'');
+            $("#workletter_template_gas_description").val(fixbothgasdescription);
+            
+            <% if wtemplate.gas_typical == true %>
+            $('#workletter_template_gas_typical').prop('checked', true);
+            <% else %>
+            $('#workletter_template_gas_typical').prop('checked', false);
+            <% end %>
+
+            <% if wtemplate.gas == "Landlord" %>
+            $("#workletter_template_gas_landlord").prop("checked", true);
+            <% elsif wtemplate.gas == "Tenant" %>
+            $("#workletter_template_gas_tenant").prop("checked", true);
+            <% else %>
+            $("#workletter_template_gas_na").prop("checked", true);
+            <% end %>
+            
+            //create variable and change # to total
+            var sprinklerstubdescription = "<%= wtemplate.sprinkler_stub_description %>"
+            var fixampsprinklerstubdescription = sprinklerstubdescription.replace(/amp;/g, '');
+            var fixquotesprinklerstubdescription = fixampsprinklerstubdescription.replace(/&quot;/gi, '\"');
+            var fixbothsprinklerstubdescription = fixquotesprinklerstubdescription.replace(/&#39;/gi, '\'');
+            $("#workletter_template_sprinkler_stub_description").val(fixbothsprinklerstubdescription);
+            
+            <% if wtemplate.sprinkler_stub_typical == true %>
+            $('#workletter_template_sprinkler_stub_typical').prop('checked', true);
+            <% else %>
+            $('#workletter_template_sprinkler_stub_typical').prop('checked', false);
+            <% end %>
+
+            <% if wtemplate.sprinkler_stub == "Landlord" %>
+            $("#workletter_template_sprinkler_stub_landlord").prop("checked", true);
+            <% elsif wtemplate.sprinkler_stub == "Tenant" %>
+            $("#workletter_template_sprinkler_stub_tenant").prop("checked", true);
+            <% else %>
+            $("#workletter_template_sprinkler_stub_na").prop("checked", true);
+            <% end %>
+            
+            //create variable and change # to total
+            var sprinklergriddescription = "<%= wtemplate.sprinkler_grid_description %>"
+            var fixampsprinklergriddescription = sprinklergriddescription.replace(/amp;/g, '');
+            var fixquotesprinklergriddescription = fixampsprinklergriddescription.replace(/&quot;/gi, '\"');
+            var fixbothsprinklergriddescription = fixquotesprinklergriddescription.replace(/&#39;/gi, '\'');
+            $("#workletter_template_sprinkler_grid_description").val(fixbothsprinklergriddescription);
+            
+            <% if wtemplate.sprinkler_grid_typical == true %>
+            $('#workletter_template_sprinkler_grid_typical').prop('checked', true);
+            <% else %>
+            $('#workletter_template_sprinkler_grid_typical').prop('checked', false);
+            <% end %>
+
+            <% if wtemplate.sprinkler_grid == "Landlord" %>
+            $("#workletter_template_sprinkler_grid_landlord").prop("checked", true);
+            <% elsif wtemplate.sprinkler_grid == "Tenant" %>
+            $("#workletter_template_sprinkler_grid_tenant").prop("checked", true);
+            <% else %>
+            $("#workletter_template_sprinkler_grid_na").prop("checked", true);
+            <% end %>
+            
+            //create variable and change # to total
+            var firealarmdescription = "<%= wtemplate.fire_alarm_description %>"
+            var fixampfirealarmdescription = firealarmdescription.replace(/amp;/g, '');
+            var fixquotefirealarmdescription = fixampfirealarmdescription.replace(/&quot;/gi, '\"');
+            var fixbothfirealarmdescription = fixquotefirealarmdescription.replace(/&#39;/gi, '\'');
+            $("#workletter_template_fire_alarm_description").val(fixbothfirealarmdescription);
+            
+            <% if wtemplate.fire_alarm_typical == true %>
+            $('#workletter_template_fire_alarm_typical').prop('checked', true);
+            <% else %>
+            $('#workletter_template_fire_alarm_typical').prop('checked', false);
+            <% end %>
+
+            <% if wtemplate.fire_alarm == "Landlord" %>
+            $("#workletter_template_fire_alarm_landlord").prop("checked", true);
+            <% elsif wtemplate.fire_alarm == "Tenant" %>
+            $("#workletter_template_fire_alarm_tenant").prop("checked", true);
+            <% else %>
+            $("#workletter_template_fire_alarm_na").prop("checked", true);
+            <% end %>
+            
+        }
+        
+        //change or keyup on # will trigger function
+        $(document).on("click", "#w<%= wtemplate.id %>", addTemplateValues<%= wtemplate.id %>);
+    <% end %>
+    
+});
+</script>

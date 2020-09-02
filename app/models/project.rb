@@ -5,6 +5,7 @@ class Project < ApplicationRecord
   has_many :areas, dependent: :destroy
   has_many :deals, dependent: :destroy
   has_many :areas_deals, dependent: :destroy
+  has_many :workletter_templates, dependent: :destroy
   
   has_many :user_projects
   has_many :users, through: :user_projects, dependent: :destroy
