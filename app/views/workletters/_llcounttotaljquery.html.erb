@@ -1,0 +1,26 @@
+<script>
+$(document).ready(function()
+{
+  /*Get LL Count Total*/
+  function getLLCountTotal()
+    {
+        var matches = 0;
+            matches = $('input.countclass:radio:checked').length;
+        //change # to total
+        $("#workletter_ll_count_total").val(matches);
+        //this input field is saved as a string
+    }
+    //change or keyup on # will trigger function
+    $(document).on("click", ".ws-radio-buttons", getLLCountTotal);
+    
+    //run function(s) on page load
+    $(document).ready(getLLCountTotal);
+    
+    //Before Submit Run Function(s)
+    $('.llCountFunction').submit(function() {
+      //Runs Function to strip special characters except (.)
+      getLLCountTotal();
+    });
+  /*End Get LL Count Total*/
+});
+</script>

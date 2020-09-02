@@ -1,0 +1,1436 @@
+<script>
+$(document).ready(function()
+{
+    //3 per section
+    function updateStructureCost()
+    {
+        var sqft = parseFloat($("#workletter_structure_sqft").val().replace(/[^\d\.]/g,''));
+        if (!sqft){sqft = 1;}
+        var unit = parseFloat($("#workletter_structure_unit").val().replace(/[^\d\.]/g,''));
+        if (!unit){unit = 0;}
+        var total = unit * sqft;
+        if (!total){total = 0;}
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_structure_cost").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_structure_unit", updateStructureCost);
+    
+    function updateStructureUnit()
+    {
+        var sqft = parseFloat($("#workletter_structure_sqft").val().replace(/[^\d\.]/g,''));
+        if (!sqft){sqft = 1;}
+        var cost = parseFloat($("#workletter_structure_cost").val().replace(/[^\d\.]/g,''));
+        if (!cost){cost = 0;}
+        var total = cost / sqft;
+        if (!total){total = 0;}
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_structure_unit").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_structure_cost", updateStructureUnit);
+    //end most of these work in pairs
+    
+    function updateStructureSqFt()
+    {
+        var unit = parseFloat($("#workletter_structure_unit").val().replace(/[^\d\.]/g,''));
+        if (!unit){unit = 0;}
+        var sqft = parseFloat($("#workletter_structure_sqft").val().replace(/[^\d\.]/g,''));
+        if (!sqft){sqft = 1;}
+        var total = unit * sqft;
+        if (!total){total = 0;}
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_structure_cost").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_structure_sqft", updateStructureSqFt);
+    //end 3 per section
+    
+    //3 per section
+    function updateSlabCost()
+    {
+        var sqft = parseFloat($("#workletter_slab_sqft").val().replace(/[^\d\.]/g,''));
+        if (!sqft){sqft = 1;}
+        var unit = parseFloat($("#workletter_slab_unit").val().replace(/[^\d\.]/g,''));
+        if (!unit){unit = 0;}
+        var total = unit * sqft;
+        if (!total){total = 0;}
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_slab_cost").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_slab_unit", updateSlabCost);
+    
+    function updateSlabUnit()
+    {
+        var sqft = parseFloat($("#workletter_slab_sqft").val().replace(/[^\d\.]/g,''));
+        if (!sqft){sqft = 1;}
+        var cost = parseFloat($("#workletter_slab_cost").val().replace(/[^\d\.]/g,''));
+        if (!cost){cost = 0;}
+        var total = cost / sqft;
+        if (!total){total = 0;}
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_slab_unit").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_slab_cost", updateSlabUnit);
+    //end most of these work in pairs
+    
+    function updateSlabSqFt()
+    {
+        var unit = parseFloat($("#workletter_slab_unit").val().replace(/[^\d\.]/g,''));
+        if (!unit){unit = 0;}
+        var sqft = parseFloat($("#workletter_slab_sqft").val().replace(/[^\d\.]/g,''));
+        if (!sqft){sqft = 1;}
+        var total = unit * sqft;
+        if (!total){total = 0;}
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_slab_cost").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_slab_sqft", updateSlabSqFt);
+    //end 3 per section
+    
+    //3 per section
+    function updateStudsCost()
+    {
+        var sqft = parseFloat($("#workletter_studs_sqft").val().replace(/[^\d\.]/g,''));
+        if (!sqft){sqft = 1;}
+        var unit = parseFloat($("#workletter_studs_unit").val().replace(/[^\d\.]/g,''));
+        if (!unit){unit = 0;}
+        var total = unit * sqft;
+        if (!total){total = 0;}
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_studs_cost").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_studs_unit", updateStudsCost);
+    
+    function updateStudsUnit()
+    {
+        var sqft = parseFloat($("#workletter_studs_sqft").val().replace(/[^\d\.]/g,''));
+        if (!sqft){sqft = 1;}
+        var cost = parseFloat($("#workletter_studs_cost").val().replace(/[^\d\.]/g,''));
+        if (!cost){cost = 0;}
+        var total = cost / sqft;
+        if (!total){total = 0;}
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_studs_unit").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_studs_cost", updateStudsUnit);
+    //end most of these work in pairs
+    
+    function updateStudsSqFt()
+    {
+        var unit = parseFloat($("#workletter_studs_unit").val().replace(/[^\d\.]/g,''));
+        if (!unit){unit = 0;}
+        var sqft = parseFloat($("#workletter_studs_sqft").val().replace(/[^\d\.]/g,''));
+        if (!sqft){sqft = 1;}
+        var total = unit * sqft;
+        if (!total){total = 0;}
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_studs_cost").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_studs_sqft", updateStudsSqFt);
+    //end 3 per section
+    
+  //3 per section
+    function updateDrywallCost()
+    {
+        var sqft = parseFloat($("#workletter_drywall_sqft").val().replace(/[^\d\.]/g,''));
+        if (!sqft){sqft = 1;}
+        var unit = parseFloat($("#workletter_drywall_unit").val().replace(/[^\d\.]/g,''));
+        if (!unit){unit = 0;}
+        var total = unit * sqft;
+        if (!total){total = 0;}
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_drywall_cost").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_drywall_unit", updateDrywallCost);
+    
+    function updateDrywallUnit()
+    {
+        var sqft = parseFloat($("#workletter_drywall_sqft").val().replace(/[^\d\.]/g,''));
+        if (!sqft){sqft = 1;}
+        var cost = parseFloat($("#workletter_drywall_cost").val().replace(/[^\d\.]/g,''));
+        if (!cost){cost = 0;}
+        var total = cost / sqft;
+        if (!total){total = 0;}
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_drywall_unit").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_drywall_cost", updateDrywallUnit);
+    //end most of these work in pairs
+    
+    function updateDrywallSqFt()
+    {
+        var unit = parseFloat($("#workletter_drywall_unit").val().replace(/[^\d\.]/g,''));
+        if (!unit){unit = 0;}
+        var sqft = parseFloat($("#workletter_drywall_sqft").val().replace(/[^\d\.]/g,''));
+        if (!sqft){sqft = 1;}
+        var total = unit * sqft;
+        if (!total){total = 0;}
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_drywall_cost").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_drywall_sqft", updateDrywallSqFt);
+    //end 3 per section
+    
+  //3 per section
+    function updateInsulationCost()
+    {
+        var sqft = parseFloat($("#workletter_insulation_sqft").val().replace(/[^\d\.]/g,''));
+        if (!sqft){sqft = 1;}
+        var unit = parseFloat($("#workletter_insulation_unit").val().replace(/[^\d\.]/g,''));
+        if (!unit){unit = 0;}
+        var total = unit * sqft;
+        if (!total){total = 0;}
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_insulation_cost").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_insulation_unit", updateInsulationCost);
+    
+    function updateInsulationUnit()
+    {
+        var sqft = parseFloat($("#workletter_insulation_sqft").val().replace(/[^\d\.]/g,''));
+        if (!sqft){sqft = 1;}
+        var cost = parseFloat($("#workletter_insulation_cost").val().replace(/[^\d\.]/g,''));
+        if (!cost){cost = 0;}
+        var total = cost / sqft;
+        if (!total){total = 0;}
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_insulation_unit").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_insulation_cost", updateInsulationUnit);
+    //end most of these work in pairs
+    
+    function updateInsulationSqFt()
+    {
+        var unit = parseFloat($("#workletter_insulation_unit").val().replace(/[^\d\.]/g,''));
+        if (!unit){unit = 0;}
+        var sqft = parseFloat($("#workletter_insulation_sqft").val().replace(/[^\d\.]/g,''));
+        if (!sqft){sqft = 1;}
+        var total = unit * sqft;
+        if (!total){total = 0;}
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_insulation_cost").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_insulation_sqft", updateInsulationSqFt);
+    //end 3 per section
+    
+  //3 per section
+    function updateServiceDoorCost()
+    {
+        var sqft = parseFloat($("#workletter_service_door_sqft").val().replace(/[^\d\.]/g,''));
+        if (!sqft){sqft = 1;}
+        var unit = parseFloat($("#workletter_service_door_unit").val().replace(/[^\d\.]/g,''));
+        if (!unit){unit = 0;}
+        var total = unit * sqft;
+        if (!total){total = 0;}
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_service_door_cost").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_service_door_unit", updateServiceDoorCost);
+    
+    function updateServiceDoorUnit()
+    {
+        var sqft = parseFloat($("#workletter_service_door_sqft").val().replace(/[^\d\.]/g,''));
+        if (!sqft){sqft = 1;}
+        var cost = parseFloat($("#workletter_service_door_cost").val().replace(/[^\d\.]/g,''));
+        if (!cost){cost = 0;}
+        var total = cost / sqft;
+        if (!total){total = 0;}
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_service_door_unit").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_service_door_cost", updateServiceDoorUnit);
+    //end most of these work in pairs
+    
+    function updateServiceDoorSqFt()
+    {
+        var unit = parseFloat($("#workletter_service_door_unit").val().replace(/[^\d\.]/g,''));
+        if (!unit){unit = 0;}
+        var sqft = parseFloat($("#workletter_service_door_sqft").val().replace(/[^\d\.]/g,''));
+        if (!sqft){sqft = 1;}
+        var total = unit * sqft;
+        if (!total){total = 0;}
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_service_door_cost").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_service_door_sqft", updateServiceDoorSqFt);
+    //end 3 per section
+
+  //3 per section
+    function updateStorefrontCost()
+    {
+        var sqft = parseFloat($("#workletter_storefront_sqft").val().replace(/[^\d\.]/g,''));
+        if (!sqft){sqft = 1;}
+        var unit = parseFloat($("#workletter_storefront_unit").val().replace(/[^\d\.]/g,''));
+        if (!unit){unit = 0;}
+        var total = unit * sqft;
+        if (!total){total = 0;}
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_storefront_cost").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_storefront_unit", updateStorefrontCost);
+    
+    function updateStorefrontUnit()
+    {
+        var sqft = parseFloat($("#workletter_storefront_sqft").val().replace(/[^\d\.]/g,''));
+        if (!sqft){sqft = 1;}
+        var cost = parseFloat($("#workletter_storefront_cost").val().replace(/[^\d\.]/g,''));
+        if (!cost){cost = 0;}
+        var total = cost / sqft;
+        if (!total){total = 0;}
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_storefront_unit").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_storefront_cost", updateStorefrontUnit);
+    //end most of these work in pairs
+    
+    function updateStorefrontSqFt()
+    {
+        var unit = parseFloat($("#workletter_storefront_unit").val().replace(/[^\d\.]/g,''));
+        if (!unit){unit = 0;}
+        var sqft = parseFloat($("#workletter_storefront_sqft").val().replace(/[^\d\.]/g,''));
+        if (!sqft){sqft = 1;}
+        var total = unit * sqft;
+        if (!total){total = 0;}
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_storefront_cost").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_storefront_sqft", updateStorefrontSqFt);
+    //end 3 per section
+    
+  //3 per section
+    function updateHVACUnitCost()
+    {
+        var sqft = parseFloat($("#workletter_hvac_unit_sqft").val().replace(/[^\d\.]/g,''));
+        if (!sqft){sqft = 1;}
+        var unit = parseFloat($("#workletter_hvac_unit_unit").val().replace(/[^\d\.]/g,''));
+        if (!unit){unit = 0;}
+        var total = unit * sqft;
+        if (!total){total = 0;}
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_unit_cost").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_hvac_unit_unit", updateHVACUnitCost);
+    
+    function updateHVACUnitUnit()
+    {
+        var sqft = parseFloat($("#workletter_hvac_unit_sqft").val().replace(/[^\d\.]/g,''));
+        if (!sqft){sqft = 1;}
+        var cost = parseFloat($("#workletter_unit_cost").val().replace(/[^\d\.]/g,''));
+        if (!cost){cost = 0;}
+        var total = cost / sqft;
+        if (!total){total = 0;}
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_hvac_unit_unit").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_unit_cost", updateHVACUnitUnit);
+    //end most of these work in pairs
+    
+    function updateHVACUnitSqFt()
+    {
+        var unit = parseFloat($("#workletter_hvac_unit_unit").val().replace(/[^\d\.]/g,''));
+        if (!unit){unit = 0;}
+        var sqft = parseFloat($("#workletter_hvac_unit_sqft").val().replace(/[^\d\.]/g,''));
+        if (!sqft){sqft = 1;}
+        var total = unit * sqft;
+        if (!total){total = 0;}
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_unit_cost").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_hvac_unit_sqft", updateHVACUnitSqFt);
+    //end 3 per section
+    
+  //3 per section
+    function updateSupplyDuctCost()
+    {
+        var sqft = parseFloat($("#workletter_supply_duct_sqft").val().replace(/[^\d\.]/g,''));
+        if (!sqft){sqft = 1;}
+        var unit = parseFloat($("#workletter_supply_duct_unit").val().replace(/[^\d\.]/g,''));
+        if (!unit){unit = 0;}
+        var total = unit * sqft;
+        if (!total){total = 0;}
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_supply_cost").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_supply_duct_unit", updateSupplyDuctCost);
+    
+    function updateSupplyDuctUnit()
+    {
+        var sqft = parseFloat($("#workletter_supply_duct_sqft").val().replace(/[^\d\.]/g,''));
+        if (!sqft){sqft = 1;}
+        var cost = parseFloat($("#workletter_supply_cost").val().replace(/[^\d\.]/g,''));
+        if (!cost){cost = 0;}
+        var total = cost / sqft;
+        if (!total){total = 0;}
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_supply_duct_unit").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_supply_cost", updateSupplyDuctUnit);
+    //end most of these work in pairs
+    
+    function updateSupplyDuctSqFt()
+    {
+        var unit = parseFloat($("#workletter_supply_duct_unit").val().replace(/[^\d\.]/g,''));
+        if (!unit){unit = 0;}
+        var sqft = parseFloat($("#workletter_supply_duct_sqft").val().replace(/[^\d\.]/g,''));
+        if (!sqft){sqft = 1;}
+        var total = unit * sqft;
+        if (!total){total = 0;}
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_supply_cost").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_supply_duct_sqft", updateSupplyDuctSqFt);
+    //end 3 per section
+    
+  //3 per section
+    function updateExhaustCost()
+    {
+        var sqft = parseFloat($("#workletter_exhaust_sqft").val().replace(/[^\d\.]/g,''));
+        if (!sqft){sqft = 1;}
+        var unit = parseFloat($("#workletter_exhaust_unit").val().replace(/[^\d\.]/g,''));
+        if (!unit){unit = 0;}
+        var total = unit * sqft;
+        if (!total){total = 0;}
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_exhaust_cost").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_exhaust_unit", updateExhaustCost);
+    
+    function updateExhaustUnit()
+    {
+        var sqft = parseFloat($("#workletter_exhaust_sqft").val().replace(/[^\d\.]/g,''));
+        if (!sqft){sqft = 1;}
+        var cost = parseFloat($("#workletter_exhaust_cost").val().replace(/[^\d\.]/g,''));
+        if (!cost){cost = 0;}
+        var total = cost / sqft;
+        if (!total){total = 0;}
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_exhaust_unit").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_exhaust_cost", updateExhaustUnit);
+    //end most of these work in pairs
+    
+    function updateExhaustSqFt()
+    {
+        var unit = parseFloat($("#workletter_exhaust_unit").val().replace(/[^\d\.]/g,''));
+        if (!unit){unit = 0;}
+        var sqft = parseFloat($("#workletter_exhaust_sqft").val().replace(/[^\d\.]/g,''));
+        if (!sqft){sqft = 1;}
+        var total = unit * sqft;
+        if (!total){total = 0;}
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_exhaust_cost").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_exhaust_sqft", updateExhaustSqFt);
+    //end 3 per section
+    
+  //3 per section
+    function updateLineSetPathwaysCost()
+    {
+        var sqft = parseFloat($("#workletter_line_set_pathways_sqft").val().replace(/[^\d\.]/g,''));
+        if (!sqft){sqft = 1;}
+        var unit = parseFloat($("#workletter_line_set_pathways_unit").val().replace(/[^\d\.]/g,''));
+        if (!unit){unit = 0;}
+        var total = unit * sqft;
+        if (!total){total = 0;}
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_line_set_pathways_cost").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_line_set_pathways_unit", updateLineSetPathwaysCost);
+    
+    function updateLineSetPathwaysUnit()
+    {
+        var sqft = parseFloat($("#workletter_line_set_pathways_sqft").val().replace(/[^\d\.]/g,''));
+        if (!sqft){sqft = 1;}
+        var cost = parseFloat($("#workletter_line_set_pathways_cost").val().replace(/[^\d\.]/g,''));
+        if (!cost){cost = 0;}
+        var total = cost / sqft;
+        if (!total){total = 0;}
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_line_set_pathways_unit").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_line_set_pathways_cost", updateLineSetPathwaysUnit);
+    //end most of these work in pairs
+    
+    function updateLineSetPathwaysSqFt()
+    {
+        var unit = parseFloat($("#workletter_line_set_pathways_unit").val().replace(/[^\d\.]/g,''));
+        if (!unit){unit = 0;}
+        var sqft = parseFloat($("#workletter_line_set_pathways_sqft").val().replace(/[^\d\.]/g,''));
+        if (!sqft){sqft = 1;}
+        var total = unit * sqft;
+        if (!total){total = 0;}
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_line_set_pathways_cost").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_line_set_pathways_sqft", updateLineSetPathwaysSqFt);
+    //end 3 per section
+
+  //3 per section
+    function updateEMSCost()
+    {
+        var sqft = parseFloat($("#workletter_ems_sqft").val().replace(/[^\d\.]/g,''));
+        if (!sqft){sqft = 1;}
+        var unit = parseFloat($("#workletter_ems_unit").val().replace(/[^\d\.]/g,''));
+        if (!unit){unit = 0;}
+        var total = unit * sqft;
+        if (!total){total = 0;}
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_ems_cost").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_ems_unit", updateEMSCost);
+    
+    function updateEMSUnit()
+    {
+        var sqft = parseFloat($("#workletter_ems_sqft").val().replace(/[^\d\.]/g,''));
+        if (!sqft){sqft = 1;}
+        var cost = parseFloat($("#workletter_ems_cost").val().replace(/[^\d\.]/g,''));
+        if (!cost){cost = 0;}
+        var total = cost / sqft;
+        if (!total){total = 0;}
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_ems_unit").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_ems_cost", updateEMSUnit);
+    //end most of these work in pairs
+    
+    function updateEMSSqFt()
+    {
+        var unit = parseFloat($("#workletter_ems_unit").val().replace(/[^\d\.]/g,''));
+        if (!unit){unit = 0;}
+        var sqft = parseFloat($("#workletter_ems_sqft").val().replace(/[^\d\.]/g,''));
+        if (!sqft){sqft = 1;}
+        var total = unit * sqft;
+        if (!total){total = 0;}
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_ems_cost").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_ems_sqft", updateEMSSqFt);
+    //end 3 per section
+
+  //3 per section
+    function updateElectricalCost()
+    {
+        var sqft = parseFloat($("#workletter_electrical_sqft").val().replace(/[^\d\.]/g,''));
+        if (!sqft){sqft = 1;}
+        var unit = parseFloat($("#workletter_electrical_unit").val().replace(/[^\d\.]/g,''));
+        if (!unit){unit = 0;}
+        var total = unit * sqft;
+        if (!total){total = 0;}
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_electrical_cost").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_electrical_unit", updateElectricalCost);
+    
+    function updateElectricalUnit()
+    {
+        var sqft = parseFloat($("#workletter_electrical_sqft").val().replace(/[^\d\.]/g,''));
+        if (!sqft){sqft = 1;}
+        var cost = parseFloat($("#workletter_electrical_cost").val().replace(/[^\d\.]/g,''));
+        if (!cost){cost = 0;}
+        var total = cost / sqft;
+        if (!total){total = 0;}
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_electrical_unit").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_electrical_cost", updateElectricalUnit);
+    //end most of these work in pairs
+    
+    function updateElectricalSqFt()
+    {
+        var unit = parseFloat($("#workletter_electrical_unit").val().replace(/[^\d\.]/g,''));
+        if (!unit){unit = 0;}
+        var sqft = parseFloat($("#workletter_electrical_sqft").val().replace(/[^\d\.]/g,''));
+        if (!sqft){sqft = 1;}
+        var total = unit * sqft;
+        if (!total){total = 0;}
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_electrical_cost").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_electrical_sqft", updateElectricalSqFt);
+    //end 3 per section
+
+  //3 per section
+    function updateVoltageCost()
+    {
+        var sqft = parseFloat($("#workletter_voltage_sqft").val().replace(/[^\d\.]/g,''));
+        if (!sqft){sqft = 1;}
+        var unit = parseFloat($("#workletter_voltage_unit").val().replace(/[^\d\.]/g,''));
+        if (!unit){unit = 0;}
+        var total = unit * sqft;
+        if (!total){total = 0;}
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_voltage_cost").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_voltage_unit", updateVoltageCost);
+    
+    function updateVoltageUnit()
+    {
+        var sqft = parseFloat($("#workletter_voltage_sqft").val().replace(/[^\d\.]/g,''));
+        if (!sqft){sqft = 1;}
+        var cost = parseFloat($("#workletter_voltage_cost").val().replace(/[^\d\.]/g,''));
+        if (!cost){cost = 0;}
+        var total = cost / sqft;
+        if (!total){total = 0;}
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_voltage_unit").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_voltage_cost", updateVoltageUnit);
+    //end most of these work in pairs
+    
+    function updateVoltageSqFt()
+    {
+        var unit = parseFloat($("#workletter_voltage_unit").val().replace(/[^\d\.]/g,''));
+        if (!unit){unit = 0;}
+        var sqft = parseFloat($("#workletter_voltage_sqft").val().replace(/[^\d\.]/g,''));
+        if (!sqft){sqft = 1;}
+        var total = unit * sqft;
+        if (!total){total = 0;}
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_voltage_cost").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_voltage_sqft", updateVoltageSqFt);
+    //end 3 per section
+
+  //3 per section
+    function updateAmperageCost()
+    {
+        var sqft = parseFloat($("#workletter_amperage_sqft").val().replace(/[^\d\.]/g,''));
+        if (!sqft){sqft = 1;}
+        var unit = parseFloat($("#workletter_amperage_unit").val().replace(/[^\d\.]/g,''));
+        if (!unit){unit = 0;}
+        var total = unit * sqft;
+        if (!total){total = 0;}
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_amperage_cost").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_amperage_unit", updateAmperageCost);
+    
+    function updateAmperageUnit()
+    {
+        var sqft = parseFloat($("#workletter_amperage_sqft").val().replace(/[^\d\.]/g,''));
+        if (!sqft){sqft = 1;}
+        var cost = parseFloat($("#workletter_amperage_cost").val().replace(/[^\d\.]/g,''));
+        if (!cost){cost = 0;}
+        var total = cost / sqft;
+        if (!total){total = 0;}
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_amperage_unit").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_amperage_cost", updateAmperageUnit);
+    //end most of these work in pairs
+    
+    function updateAmperageSqFt()
+    {
+        var unit = parseFloat($("#workletter_amperage_unit").val().replace(/[^\d\.]/g,''));
+        if (!unit){unit = 0;}
+        var sqft = parseFloat($("#workletter_amperage_sqft").val().replace(/[^\d\.]/g,''));
+        if (!sqft){sqft = 1;}
+        var total = unit * sqft;
+        if (!total){total = 0;}
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_amperage_cost").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_amperage_sqft", updateAmperageSqFt);
+    //end 3 per section
+
+  //3 per section
+    function updateConduitSizeCost()
+    {
+        var sqft = parseFloat($("#workletter_conduit_size_sqft").val().replace(/[^\d\.]/g,''));
+        if (!sqft){sqft = 1;}
+        var unit = parseFloat($("#workletter_conduit_size_unit").val().replace(/[^\d\.]/g,''));
+        if (!unit){unit = 0;}
+        var total = unit * sqft;
+        if (!total){total = 0;}
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_conduit_size_cost").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_conduit_size_unit", updateConduitSizeCost);
+    
+    function updateConduitSizeUnit()
+    {
+        var sqft = parseFloat($("#workletter_conduit_size_sqft").val().replace(/[^\d\.]/g,''));
+        if (!sqft){sqft = 1;}
+        var cost = parseFloat($("#workletter_conduit_size_cost").val().replace(/[^\d\.]/g,''));
+        if (!cost){cost = 0;}
+        var total = cost / sqft;
+        if (!total){total = 0;}
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_conduit_size_unit").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_conduit_size_cost", updateConduitSizeUnit);
+    //end most of these work in pairs
+    
+    function updateConduitSizeSqFt()
+    {
+        var unit = parseFloat($("#workletter_conduit_size_unit").val().replace(/[^\d\.]/g,''));
+        if (!unit){unit = 0;}
+        var sqft = parseFloat($("#workletter_conduit_size_sqft").val().replace(/[^\d\.]/g,''));
+        if (!sqft){sqft = 1;}
+        var total = unit * sqft;
+        if (!total){total = 0;}
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_conduit_size_cost").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_conduit_size_sqft", updateConduitSizeSqFt);
+    //end 3 per section
+
+
+  //3 per section
+    function updateElectricalMeterCost()
+    {
+        var sqft = parseFloat($("#workletter_electrical_meter_sqft").val().replace(/[^\d\.]/g,''));
+        if (!sqft){sqft = 1;}
+        var unit = parseFloat($("#workletter_electrical_meter_unit").val().replace(/[^\d\.]/g,''));
+        if (!unit){unit = 0;}
+        var total = unit * sqft;
+        if (!total){total = 0;}
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_electrical_meter_cost").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_electrical_meter_unit", updateElectricalMeterCost);
+    
+    function updateElectricalMeterUnit()
+    {
+        var sqft = parseFloat($("#workletter_electrical_meter_sqft").val().replace(/[^\d\.]/g,''));
+        if (!sqft){sqft = 1;}
+        var cost = parseFloat($("#workletter_electrical_meter_cost").val().replace(/[^\d\.]/g,''));
+        if (!cost){cost = 0;}
+        var total = cost / sqft;
+        if (!total){total = 0;}
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_electrical_meter_unit").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_electrical_meter_cost", updateElectricalMeterUnit);
+    //end most of these work in pairs
+    
+    function updateElectricalMeterSqFt()
+    {
+        var unit = parseFloat($("#workletter_electrical_meter_unit").val().replace(/[^\d\.]/g,''));
+        if (!unit){unit = 0;}
+        var sqft = parseFloat($("#workletter_electrical_meter_sqft").val().replace(/[^\d\.]/g,''));
+        if (!sqft){sqft = 1;}
+        var total = unit * sqft;
+        if (!total){total = 0;}
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_electrical_meter_cost").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_electrical_meter_sqft", updateElectricalMeterSqFt);
+    //end 3 per section
+    
+    
+    
+  //3 per section
+    function updateTelephoneCost()
+    {
+        var sqft = parseFloat($("#workletter_telephone_sqft").val().replace(/[^\d\.]/g,''));
+        if (!sqft){sqft = 1;}
+        var unit = parseFloat($("#workletter_telephone_unit").val().replace(/[^\d\.]/g,''));
+        if (!unit){unit = 0;}
+        var total = unit * sqft;
+        if (!total){total = 0;}
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_telephone_cost").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_telephone_unit", updateTelephoneCost);
+    
+    function updateTelephoneUnit()
+    {
+        var sqft = parseFloat($("#workletter_telephone_sqft").val().replace(/[^\d\.]/g,''));
+        if (!sqft){sqft = 1;}
+        var cost = parseFloat($("#workletter_telephone_cost").val().replace(/[^\d\.]/g,''));
+        if (!cost){cost = 0;}
+        var total = cost / sqft;
+        if (!total){total = 0;}
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_telephone_unit").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_telephone_cost", updateTelephoneUnit);
+    //end most of these work in pairs
+    
+    function updateTelephoneSqFt()
+    {
+        var unit = parseFloat($("#workletter_telephone_unit").val().replace(/[^\d\.]/g,''));
+        if (!unit){unit = 0;}
+        var sqft = parseFloat($("#workletter_telephone_sqft").val().replace(/[^\d\.]/g,''));
+        if (!sqft){sqft = 1;}
+        var total = unit * sqft;
+        if (!total){total = 0;}
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_telephone_cost").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_telephone_sqft", updateTelephoneSqFt);
+    //end 3 per section    
+
+  //3 per section
+    function updateSanitaryCost()
+    {
+        var sqft = parseFloat($("#workletter_sanitary_sqft").val().replace(/[^\d\.]/g,''));
+        if (!sqft){sqft = 1;}
+        var unit = parseFloat($("#workletter_sanitary_unit").val().replace(/[^\d\.]/g,''));
+        if (!unit){unit = 0;}
+        var total = unit * sqft;
+        if (!total){total = 0;}
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_sanitary_cost").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_sanitary_unit", updateSanitaryCost);
+    
+    function updateSanitaryUnit()
+    {
+        var sqft = parseFloat($("#workletter_sanitary_sqft").val().replace(/[^\d\.]/g,''));
+        if (!sqft){sqft = 1;}
+        var cost = parseFloat($("#workletter_sanitary_cost").val().replace(/[^\d\.]/g,''));
+        if (!cost){cost = 0;}
+        var total = cost / sqft;
+        if (!total){total = 0;}
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_sanitary_unit").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_sanitary_cost", updateSanitaryUnit);
+    //end most of these work in pairs
+    
+    function updateSanitarySqFt()
+    {
+        var unit = parseFloat($("#workletter_sanitary_unit").val().replace(/[^\d\.]/g,''));
+        if (!unit){unit = 0;}
+        var sqft = parseFloat($("#workletter_sanitary_sqft").val().replace(/[^\d\.]/g,''));
+        if (!sqft){sqft = 1;}
+        var total = unit * sqft;
+        if (!total){total = 0;}
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_sanitary_cost").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_sanitary_sqft", updateSanitarySqFt);
+    //end 3 per section
+
+  //3 per section
+    function updateSanitaryVentCost()
+    {
+        var sqft = parseFloat($("#workletter_sanitary_vent_sqft").val().replace(/[^\d\.]/g,''));
+        if (!sqft){sqft = 1;}
+        var unit = parseFloat($("#workletter_sanitary_vent_unit").val().replace(/[^\d\.]/g,''));
+        if (!unit){unit = 0;}
+        var total = unit * sqft;
+        if (!total){total = 0;}
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_sanitary_vent_cost").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_sanitary_vent_unit", updateSanitaryVentCost);
+    
+    function updateSanitaryVentUnit()
+    {
+        var sqft = parseFloat($("#workletter_sanitary_vent_sqft").val().replace(/[^\d\.]/g,''));
+        if (!sqft){sqft = 1;}
+        var cost = parseFloat($("#workletter_sanitary_vent_cost").val().replace(/[^\d\.]/g,''));
+        if (!cost){cost = 0;}
+        var total = cost / sqft;
+        if (!total){total = 0;}
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_sanitary_vent_unit").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_sanitary_vent_cost", updateSanitaryVentUnit);
+    //end most of these work in pairs
+    
+    function updateSanitaryVentSqFt()
+    {
+        var unit = parseFloat($("#workletter_sanitary_vent_unit").val().replace(/[^\d\.]/g,''));
+        if (!unit){unit = 0;}
+        var sqft = parseFloat($("#workletter_sanitary_vent_sqft").val().replace(/[^\d\.]/g,''));
+        if (!sqft){sqft = 1;}
+        var total = unit * sqft;
+        if (!total){total = 0;}
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_sanitary_vent_cost").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_sanitary_vent_sqft", updateSanitaryVentSqFt);
+    //end 3 per section
+
+  //3 per section
+    function updateGreaseCost()
+    {
+        var sqft = parseFloat($("#workletter_grease_sqft").val().replace(/[^\d\.]/g,''));
+        if (!sqft){sqft = 1;}
+        var unit = parseFloat($("#workletter_grease_unit").val().replace(/[^\d\.]/g,''));
+        if (!unit){unit = 0;}
+        var total = unit * sqft;
+        if (!total){total = 0;}
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_grease_cost").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_grease_unit", updateGreaseCost);
+    
+    function updateGreaseUnit()
+    {
+        var sqft = parseFloat($("#workletter_grease_sqft").val().replace(/[^\d\.]/g,''));
+        if (!sqft){sqft = 1;}
+        var cost = parseFloat($("#workletter_grease_cost").val().replace(/[^\d\.]/g,''));
+        if (!cost){cost = 0;}
+        var total = cost / sqft;
+        if (!total){total = 0;}
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_grease_unit").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_grease_cost", updateGreaseUnit);
+    //end most of these work in pairs
+    
+    function updateGreaseSqFt()
+    {
+        var unit = parseFloat($("#workletter_grease_unit").val().replace(/[^\d\.]/g,''));
+        if (!unit){unit = 0;}
+        var sqft = parseFloat($("#workletter_grease_sqft").val().replace(/[^\d\.]/g,''));
+        if (!sqft){sqft = 1;}
+        var total = unit * sqft;
+        if (!total){total = 0;}
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_grease_cost").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_grease_sqft", updateGreaseSqFt);
+    //end 3 per section
+    
+  //3 per section
+    function updateWaterCost()
+    {
+        var sqft = parseFloat($("#workletter_water_sqft").val().replace(/[^\d\.]/g,''));
+        if (!sqft){sqft = 1;}
+        var unit = parseFloat($("#workletter_water_unit").val().replace(/[^\d\.]/g,''));
+        if (!unit){unit = 0;}
+        var total = unit * sqft;
+        if (!total){total = 0;}
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_water_cost").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_water_unit", updateWaterCost);
+    
+    function updateWaterUnit()
+    {
+        var sqft = parseFloat($("#workletter_water_sqft").val().replace(/[^\d\.]/g,''));
+        if (!sqft){sqft = 1;}
+        var cost = parseFloat($("#workletter_water_cost").val().replace(/[^\d\.]/g,''));
+        if (!cost){cost = 0;}
+        var total = cost / sqft;
+        if (!total){total = 0;}
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_water_unit").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_water_cost", updateWaterUnit);
+    //end most of these work in pairs
+    
+    function updateWaterSqFt()
+    {
+        var unit = parseFloat($("#workletter_water_unit").val().replace(/[^\d\.]/g,''));
+        if (!unit){unit = 0;}
+        var sqft = parseFloat($("#workletter_water_sqft").val().replace(/[^\d\.]/g,''));
+        if (!sqft){sqft = 1;}
+        var total = unit * sqft;
+        if (!total){total = 0;}
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_water_cost").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_water_sqft", updateWaterSqFt);
+    //end 3 per section
+    
+  //3 per section
+    function updateGasCost()
+    {
+        var sqft = parseFloat($("#workletter_gas_sqft").val().replace(/[^\d\.]/g,''));
+        if (!sqft){sqft = 1;}
+        var unit = parseFloat($("#workletter_gas_unit").val().replace(/[^\d\.]/g,''));
+        if (!unit){unit = 0;}
+        var total = unit * sqft;
+        if (!total){total = 0;}
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_gas_cost").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_gas_unit", updateGasCost);
+    
+    function updateGasUnit()
+    {
+        var sqft = parseFloat($("#workletter_gas_sqft").val().replace(/[^\d\.]/g,''));
+        if (!sqft){sqft = 1;}
+        var cost = parseFloat($("#workletter_gas_cost").val().replace(/[^\d\.]/g,''));
+        if (!cost){cost = 0;}
+        var total = cost / sqft;
+        if (!total){total = 0;}
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_gas_unit").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_gas_cost", updateGasUnit);
+    //end most of these work in pairs
+    
+    function updateGasSqFt()
+    {
+        var unit = parseFloat($("#workletter_gas_unit").val().replace(/[^\d\.]/g,''));
+        if (!unit){unit = 0;}
+        var sqft = parseFloat($("#workletter_gas_sqft").val().replace(/[^\d\.]/g,''));
+        if (!sqft){sqft = 1;}
+        var total = unit * sqft;
+        if (!total){total = 0;}
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_gas_cost").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_gas_sqft", updateGasSqFt);
+    //end 3 per section
+
+  //3 per section
+    function updateDemolitionCost()
+    {
+        var sqft = parseFloat($("#workletter_demolition_sqft").val().replace(/[^\d\.]/g,''));
+        if (!sqft){sqft = 1;}
+        var unit = parseFloat($("#workletter_demolition_unit").val().replace(/[^\d\.]/g,''));
+        if (!unit){unit = 0;}
+        var total = unit * sqft;
+        if (!total){total = 0;}
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_demolition_cost").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_demolition_unit", updateDemolitionCost);
+    
+    function updateDemolitionUnit()
+    {
+        var sqft = parseFloat($("#workletter_demolition_sqft").val().replace(/[^\d\.]/g,''));
+        if (!sqft){sqft = 1;}
+        var cost = parseFloat($("#workletter_demolition_cost").val().replace(/[^\d\.]/g,''));
+        if (!cost){cost = 0;}
+        var total = cost / sqft;
+        if (!total){total = 0;}
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_demolition_unit").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_demolition_cost", updateDemolitionUnit);
+    //end most of these work in pairs
+    
+    function updateDemolitionSqFt()
+    {
+        var unit = parseFloat($("#workletter_demolition_unit").val().replace(/[^\d\.]/g,''));
+        if (!unit){unit = 0;}
+        var sqft = parseFloat($("#workletter_demolition_sqft").val().replace(/[^\d\.]/g,''));
+        if (!sqft){sqft = 1;}
+        var total = unit * sqft;
+        if (!total){total = 0;}
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_demolition_cost").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_demolition_sqft", updateDemolitionSqFt);
+    //end 3 per section
+    
+  //3 per section
+    function updateOtherCost()
+    {
+        var sqft = parseFloat($("#workletter_other_sqft").val().replace(/[^\d\.]/g,''));
+        if (!sqft){sqft = 1;}
+        var unit = parseFloat($("#workletter_other_unit").val().replace(/[^\d\.]/g,''));
+        if (!unit){unit = 0;}
+        var total = unit * sqft;
+        if (!total){total = 0;}
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_other_cost").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_other_unit", updateOtherCost);
+    
+    function updateOtherUnit()
+    {
+        var sqft = parseFloat($("#workletter_other_sqft").val().replace(/[^\d\.]/g,''));
+        if (!sqft){sqft = 1;}
+        var cost = parseFloat($("#workletter_other_cost").val().replace(/[^\d\.]/g,''));
+        if (!cost){cost = 0;}
+        var total = cost / sqft;
+        if (!total){total = 0;}
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_other_unit").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_other_cost", updateOtherUnit);
+    //end most of these work in pairs
+    
+    function updateOtherSqFt()
+    {
+        var unit = parseFloat($("#workletter_other_unit").val().replace(/[^\d\.]/g,''));
+        if (!unit){unit = 0;}
+        var sqft = parseFloat($("#workletter_other_sqft").val().replace(/[^\d\.]/g,''));
+        if (!sqft){sqft = 1;}
+        var total = unit * sqft;
+        if (!total){total = 0;}
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_other_cost").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_other_sqft", updateOtherSqFt);
+    //end 3 per section
+
+  //3 per section
+    function updateSprinklerStubCost()
+    {
+        var sqft = parseFloat($("#workletter_sprinkler_stub_sqft").val().replace(/[^\d\.]/g,''));
+        if (!sqft){sqft = 1;}
+        var unit = parseFloat($("#workletter_sprinkler_stub_unit").val().replace(/[^\d\.]/g,''));
+        if (!unit){unit = 0;}
+        var total = unit * sqft;
+        if (!total){total = 0;}
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_sprinkler_stub_cost").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_sprinkler_stub_unit", updateSprinklerStubCost);
+    
+    function updateSprinklerStubUnit()
+    {
+        var sqft = parseFloat($("#workletter_sprinkler_stub_sqft").val().replace(/[^\d\.]/g,''));
+        if (!sqft){sqft = 1;}
+        var cost = parseFloat($("#workletter_sprinkler_stub_cost").val().replace(/[^\d\.]/g,''));
+        if (!cost){cost = 0;}
+        var total = cost / sqft;
+        if (!total){total = 0;}
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_sprinkler_stub_unit").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_sprinkler_stub_cost", updateSprinklerStubUnit);
+    //end most of these work in pairs
+    
+    function updateSprinklerStubSqFt()
+    {
+        var unit = parseFloat($("#workletter_sprinkler_stub_unit").val().replace(/[^\d\.]/g,''));
+        if (!unit){unit = 0;}
+        var sqft = parseFloat($("#workletter_sprinkler_stub_sqft").val().replace(/[^\d\.]/g,''));
+        if (!sqft){sqft = 1;}
+        var total = unit * sqft;
+        if (!total){total = 0;}
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_sprinkler_stub_cost").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_sprinkler_stub_sqft", updateSprinklerStubSqFt);
+    //end 3 per section
+    
+  //3 per section
+    function updateSprinklerGridCost()
+    {
+        var sqft = parseFloat($("#workletter_sprinkler_grid_sqft").val().replace(/[^\d\.]/g,''));
+        if (!sqft){sqft = 1;}
+        var unit = parseFloat($("#workletter_sprinkler_grid_unit").val().replace(/[^\d\.]/g,''));
+        if (!unit){unit = 0;}
+        var total = unit * sqft;
+        if (!total){total = 0;}
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_sprinkler_grid_cost").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_sprinkler_grid_unit", updateSprinklerGridCost);
+    
+    function updateSprinklerGridUnit()
+    {
+        var sqft = parseFloat($("#workletter_sprinkler_grid_sqft").val().replace(/[^\d\.]/g,''));
+        if (!sqft){sqft = 1;}
+        var cost = parseFloat($("#workletter_sprinkler_grid_cost").val().replace(/[^\d\.]/g,''));
+        if (!cost){cost = 0;}
+        var total = cost / sqft;
+        if (!total){total = 0;}
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_sprinkler_grid_unit").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_sprinkler_grid_cost", updateSprinklerGridUnit);
+    //end most of these work in pairs
+    
+    function updateSprinklerGridSqFt()
+    {
+        var unit = parseFloat($("#workletter_sprinkler_grid_unit").val().replace(/[^\d\.]/g,''));
+        if (!unit){unit = 0;}
+        var sqft = parseFloat($("#workletter_sprinkler_grid_sqft").val().replace(/[^\d\.]/g,''));
+        if (!sqft){sqft = 1;}
+        var total = unit * sqft;
+        if (!total){total = 0;}
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_sprinkler_grid_cost").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_sprinkler_grid_sqft", updateSprinklerGridSqFt);
+    //end 3 per section
+    
+  //3 per section
+    function updateFireAlarmCost()
+    {
+        var sqft = parseFloat($("#workletter_fire_alarm_sqft").val().replace(/[^\d\.]/g,''));
+        if (!sqft){sqft = 1;}
+        var unit = parseFloat($("#workletter_fire_alarm_unit").val().replace(/[^\d\.]/g,''));
+        if (!unit){unit = 0;}
+        var total = unit * sqft;
+        if (!total){total = 0;}
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_fire_alarm_cost").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_fire_alarm_unit", updateFireAlarmCost);
+    
+    function updateFireAlarmUnit()
+    {
+        var sqft = parseFloat($("#workletter_fire_alarm_sqft").val().replace(/[^\d\.]/g,''));
+        if (!sqft){sqft = 1;}
+        var cost = parseFloat($("#workletter_fire_alarm_cost").val().replace(/[^\d\.]/g,''));
+        if (!cost){cost = 0;}
+        var total = cost / sqft;
+        if (!total){total = 0;}
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_fire_alarm_unit").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_fire_alarm_cost", updateFireAlarmUnit);
+    //end most of these work in pairs
+    
+    function updateFireAlarmSqFt()
+    {
+        var unit = parseFloat($("#workletter_fire_alarm_unit").val().replace(/[^\d\.]/g,''));
+        if (!unit){unit = 0;}
+        var sqft = parseFloat($("#workletter_fire_alarm_sqft").val().replace(/[^\d\.]/g,''));
+        if (!sqft){sqft = 1;}
+        var total = unit * sqft;
+        if (!total){total = 0;}
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_fire_alarm_cost").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_fire_alarm_sqft", updateFireAlarmSqFt);
+    //end 3 per section
+    
+});
+</script>

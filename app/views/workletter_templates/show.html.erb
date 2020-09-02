@@ -1,0 +1,733 @@
+  <style>
+  .affix {
+      top: 0;
+      /*width: 83.3333333%;*/
+      /*width: 975px;*/
+      background-color:#fff !important;
+      z-index: 999999;
+  }
+
+  .affix + .container {
+      padding-top: 70px;
+  }
+  
+  </style>
+
+<div class="row" style="/*margin-top:40px;*/">
+  <div class="col-xs-10 col-xs-offset-1">
+
+  <div class="row" style="margin-bottom:20px;">
+    <div class="col-xs-12 responsive-center">
+      <h1 style="font-size:12pt;">Template: <strong style="font-size:30pt;"><%= @workletter_template.template_name %></strong></h1>
+    </div>
+  </div>
+  <hr>
+  
+  <div class="row">
+    <div style="background-color:#fff;">
+      <div data-spy="affix" data-offset-top="150" class="responsive-none">
+        <div class="col-xs-2"><strong class="affix-smaller">Scope:</strong></div>
+        <div class="col-xs-6"><strong class="affix-smaller">Description:</strong></div>
+        <div class="col-xs-1" style="text-align:center"><strong class="affix-smaller">Typical:</strong></div>
+        <div class="col-xs-3" style="text-align:center"><strong class="affix-smaller">Responsibility:</strong><!--<br>LL | Tenant | N/A--></div>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+  
+  <div class="row">
+    <div class="col-xs-2 responsive-center responsive100">
+      <strong>Structure:</strong>
+    </div>
+    <div class="col-xs-6 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@workletter_template.structure_description) %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @workletter_template.structure_typical == true %>
+        <span class="fa fa-check-square ws-checked-typical"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @workletter_template.structure %>
+    </div>
+  </div>
+  
+  <hr>
+  
+  <div class="row">
+    <div class="col-xs-2 responsive-center responsive100">
+      <strong>Slab:</strong>
+    </div>
+    <div class="col-xs-6 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@workletter_template.slab_description) %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @workletter_template.slab_typical == true %>
+        <span class="fa fa-check-square ws-checked-typical"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @workletter_template.slab %>
+    </div>
+  </div>
+  
+  <hr>
+  
+  
+  
+  
+  
+  <div class="row">
+    <div class="col-xs-2 responsive-center responsive100">
+      <strong>Studs:</strong>
+    </div>
+    <div class="col-xs-6 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@workletter_template.studs_description) %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @workletter_template.studs_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @workletter_template.studs %>
+    </div>
+  </div>
+  
+  <hr>
+
+  <div class="row">
+    <div class="col-xs-2 responsive-center responsive100">
+      <strong>Drywall:</strong>
+    </div>
+    <div class="col-xs-6 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@workletter_template.drywall_description) %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @workletter_template.drywall_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @workletter_template.drywall %>
+    </div>
+  </div>
+  
+  <hr>
+  
+  <div class="row">
+    <div class="col-xs-2 responsive-center responsive100">
+      <strong>Insulation:</strong>
+    </div>
+    <div class="col-xs-6 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@workletter_template.insulation_description) %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @workletter_template.insulation_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @workletter_template.insulation %>
+    </div>
+  </div>
+  
+  <hr>
+  
+  <div class="row">
+    <div class="col-xs-2 responsive-center responsive100">
+      <strong>Service Door:</strong>
+    </div>
+    <div class="col-xs-6 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@workletter_template.service_door_description) %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @workletter_template.service_door_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @workletter_template.service_door %>
+    </div>
+  </div>
+  
+  <hr>
+  
+  <div class="row">
+    <div class="col-xs-2 responsive-center responsive100">
+      <strong>Storefront:</strong>
+    </div>
+    <div class="col-xs-6 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@workletter_template.storefront_description) %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @workletter_template.storefront_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @workletter_template.storefront %>
+    </div>
+  </div>
+  
+  <hr>
+  
+  <div class="row">
+    <div class="col-xs-2 responsive-center responsive100">
+      <strong>HVAC Unit(s):</strong>
+    </div>
+    <div class="col-xs-6 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@workletter_template.unit_description) %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @workletter_template.unit_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @workletter_template.unit %>
+    </div>
+  </div>
+  
+  <hr>
+  
+  
+  <div class="row">
+    <div class="col-xs-2 responsive-center responsive100">
+      <strong>Supply:</strong>
+    </div>
+    <div class="col-xs-6 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@workletter_template.supply_description) %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @workletter_template.supply_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @workletter_template.supply %>
+    </div>
+  </div>
+  
+  <hr>
+  
+  <div class="row">
+    <div class="col-xs-2 responsive-center responsive100">
+      <strong>Exhaust:</strong>
+    </div>
+    <div class="col-xs-6 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@workletter_template.exhaust_description) %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @workletter_template.exhaust_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @workletter_template.exhaust %>
+    </div>
+  </div>
+  
+  <hr>
+  
+  
+  
+  <div class="row">
+    <div class="col-xs-2 responsive-center responsive100">
+      <strong>Line Set Pathways:</strong>
+    </div>
+    <div class="col-xs-6 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@workletter_template.line_set_pathways_description) %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @workletter_template.line_set_pathways_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @workletter_template.line_set_pathways %>
+    </div>
+
+  </div>
+  
+  <hr>
+  
+  <div class="row">
+    <div class="col-xs-2 responsive-center responsive100">
+      <strong>EMS:</strong>
+    </div>
+    <div class="col-xs-6 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@workletter_template.ems_description) %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @workletter_template.ems_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @workletter_template.ems %>
+    </div>
+  </div>
+  
+  <hr>
+  
+  
+  <div class="row">
+    <div class="col-xs-2 responsive-center responsive100">
+      <strong>Electrical:</strong>
+    </div>
+    <div class="col-xs-6 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@workletter_template.electrical_description) %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @workletter_template.electrical_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @workletter_template.electrical %>
+    </div>
+  </div>
+  
+  <hr>
+  
+  
+    <div class="row">
+    <div class="col-xs-2 responsive-center responsive100">
+      <strong>Voltage:</strong>
+    </div>
+    <div class="col-xs-6 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@workletter_template.voltage_description) %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @workletter_template.voltage_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @workletter_template.voltage %>
+    </div>
+  </div>
+  
+  <hr>
+  
+  <div class="row">
+    <div class="col-xs-2 responsive-center responsive100">
+      <strong>Amperage:</strong>
+    </div>
+    <div class="col-xs-6 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@workletter_template.amperage_description) %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @workletter_template.amperage_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @workletter_template.amperage %>
+    </div>
+  </div>
+  
+  <hr>
+  
+  <div class="row">
+    <div class="col-xs-2 responsive-center responsive100">
+      <strong>Conduit Size:</strong>
+    </div>
+    <div class="col-xs-6 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@workletter_template.conduit_size_description) %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @workletter_template.conduit_size_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @workletter_template.conduit_size %>
+    </div>
+  </div>
+  
+  <hr>
+  
+  
+  
+  <div class="row">
+    <div class="col-xs-2 responsive-center responsive100">
+      <strong>Electrical Meter:</strong>
+    </div>
+    <div class="col-xs-6 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@workletter_template.electrical_meter_description) %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @workletter_template.electrical_meter_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @workletter_template.electrical_meter %>
+    </div>
+  </div>
+  
+  <hr>
+  
+  <div class="row">
+    <div class="col-xs-2 responsive-center responsive100">
+      <strong>Telephone:</strong>
+    </div>
+    <div class="col-xs-6 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@workletter_template.telephone_description) %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @workletter_template.telephone_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @workletter_template.conduit_size %>
+    </div>
+  </div>
+  
+  <hr>
+  
+  <div class="row">
+    <div class="col-xs-2 responsive-center responsive100">
+      <strong>Sanitary:</strong>
+    </div>
+    <div class="col-xs-6 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@workletter_template.sanitary_description) %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @workletter_template.sanitary_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @workletter_template.sanitary %>
+    </div>
+  </div>
+  
+  <hr>
+  
+  <div class="row">
+    <div class="col-xs-2 responsive-center responsive100">
+      <strong>Sanitary Vent:</strong>
+    </div>
+    <div class="col-xs-6 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@workletter_template.sanitary_vent_description) %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @workletter_template.sanitary_vent_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @workletter_template.sanitary_vent %>
+    </div>
+  </div>
+  
+  <hr>
+  
+  <div class="row">
+    <div class="col-xs-2 responsive-center responsive100">
+      <strong>Grease:</strong>
+    </div>
+    <div class="col-xs-6 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@workletter_template.grease_description) %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @workletter_template.grease_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @workletter_template.grease %>
+    </div>
+  </div>
+  
+  <hr>
+  
+  <div class="row">
+    <div class="col-xs-2 responsive-center responsive100">
+      <strong>Water:</strong>
+    </div>
+    <div class="col-xs-6 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@workletter_template.water_description) %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @workletter_template.water_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @workletter_template.water %>
+    </div>
+  </div>
+  
+  <hr>
+  
+<div class="row">
+    <div class="col-xs-2 responsive-center responsive100">
+      <strong>Gas:</strong>
+    </div>
+    <div class="col-xs-6 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@workletter_template.gas_description) %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @workletter_template.gas_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @workletter_template.gas %>
+    </div>
+  </div>
+  
+  <hr>
+  
+  <div class="row">
+    <div class="col-xs-2 responsive-center responsive100">
+      <strong>Sprinkler Stub:</strong>
+    </div>
+    <div class="col-xs-6 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@workletter_template.sprinkler_stub_description) %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @workletter_template.sprinkler_stub_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @workletter_template.sprinkler_stub %>
+    </div>
+  </div>
+  
+  <hr>
+  
+  <div class="row">
+    <div class="col-xs-2 responsive-center responsive100">
+      <strong>Sprinkler Grid:</strong>
+    </div>
+    <div class="col-xs-6 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@workletter_template.sprinkler_grid_description) %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @workletter_template.sprinkler_grid_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @workletter_template.sprinkler_grid %>
+    </div>
+  </div>
+  
+  <hr>
+  
+  <div class="row">
+    <div class="col-xs-2 responsive-center responsive100">
+      <strong>Fire Alarm:</strong>
+    </div>
+    <div class="col-xs-6 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@workletter_template.fire_alarm_description) %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @workletter_template.fire_alarm_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @workletter_template.fire_alarm %>
+    </div>
+  </div>
+  
+  <hr>
+  
+  <div class="row">
+    <div class="col-xs-2 responsive-center responsive100">
+      <strong>Demolition:</strong>
+    </div>
+    <div class="col-xs-6 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@workletter_template.demolition_description) %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @workletter_template.demolition_typical == true %>
+        <span class="fa fa-check-square ws-checked-typical"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @workletter_template.demolition %>
+    </div>
+  </div>
+  
+  <hr>
+  
+  <div class="row">
+    <div class="col-xs-2 responsive-center responsive100">
+      <strong>Other:</strong>
+    </div>
+    <div class="col-xs-6 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@workletter_template.other_description) %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @workletter_template.other_typical == true %>
+        <span class="fa fa-check-square ws-checked-typical"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @workletter_template.other %>
+    </div>
+  </div>
+  
+  <hr>
+
+<%= link_to 'Back to Project', project_url(@project.id), :class => 'btn btn-primary responsive-none print-none', :style => 'margin-right:10px;' %>
+
+<% if current_user.is_admin? || current_user.member.role == 'Admin' %>
+  <%= link_to 'Edit', edit_workletter_template_path(@workletter_template), :class => 'btn btn-default responsive-none print-none', :style => 'margin-right:10px;' %>
+<% end %>
+
+<%#= link_to 'Workletter Templates', workletter_templates_path, :class => 'btn btn-primary responsive-none print-none', :style => 'margin-right:10px;' %>
+
+  </div>
+</div>
+<br><br>

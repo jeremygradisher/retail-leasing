@@ -1,0 +1,196 @@
+<script>
+$(document).ready(function()
+{
+    /*functions to do math on LL Work and LL Work Cost*/
+    function updateLlWorkCost()
+    {
+        var netarea = <%= @deal.net_rentable_area %>;
+        if (!netarea){ netarea = 0; }
+        var llwork = parseFloat($("#workletter_ll_work").val().replace(/[^\d\.]/g,''));
+        if (!llwork){ llwork = 0; }
+        var total = llwork * netarea;
+        var totalfixed = total.toFixed(2);
+        //add $ and make sure commas are correct
+        var totalformatted = '$' + totalfixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_ll_work_cost").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_ll_work", updateLlWorkCost);
+    
+    function updateLlWork()
+    {
+        var netarea = <%= @deal.net_rentable_area %>;
+        if (!netarea){ netarea = 0; }
+        var llworkcost = parseFloat($("#workletter_ll_work_cost").val().replace(/[^\d\.]/g,''));
+        if (!llworkcost){ llworkcost = 0; }
+        var total = llworkcost / netarea;
+        var totalfixed = total.toFixed(2);
+        //add $ and make sure commas are correct
+        var totalformatted = '$' + totalfixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_ll_work").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_ll_work_cost", updateLlWork);
+    /*functions to do math on LL Work and LL Work Cost*/
+    
+    //do a little math for 
+    function updateLLWorkCost()
+    {
+        var structurecost = parseFloat($("#workletter_structure_cost").val().replace(/[^\d\.]/g,''));
+        if (!structurecost){ structurecost = 0; }
+        
+        var demolitioncost = parseFloat($("#workletter_demolition_cost").val().replace(/[^\d\.]/g,''));
+        if (!demolitioncost){ demolitioncost = 0; }
+        
+        var othercost = parseFloat($("#workletter_other_cost").val().replace(/[^\d\.]/g,''));
+        if (!othercost){ othercost = 0; }
+        
+        var slabcost = parseFloat($("#workletter_slab_cost").val().replace(/[^\d\.]/g,''));
+        if (!slabcost){ slabcost = 0; }
+        
+        var studscost = parseFloat($("#workletter_studs_cost").val().replace(/[^\d\.]/g,''));
+        if (!studscost){ studscost = 0; }
+        
+        var drywallcost = parseFloat($("#workletter_drywall_cost").val().replace(/[^\d\.]/g,''));
+        if (!drywallcost){ drywallcost = 0; }
+        
+        var insulationcost = parseFloat($("#workletter_insulation_cost").val().replace(/[^\d\.]/g,''));
+        if (!insulationcost){ insulationcost = 0; }
+        
+        var servicedoorcost = parseFloat($("#workletter_service_door_cost").val().replace(/[^\d\.]/g,''));
+        if (!servicedoorcost){ servicedoorcost = 0; }
+        
+        var storefrontcost = parseFloat($("#workletter_storefront_cost").val().replace(/[^\d\.]/g,''));
+        if (!storefrontcost){ storefrontcost = 0; }
+        
+        var supplycost = parseFloat($("#workletter_supply_cost").val().replace(/[^\d\.]/g,''));
+        if (!supplycost){ supplycost = 0; }
+        
+        var exhaustcost = parseFloat($("#workletter_exhaust_cost").val().replace(/[^\d\.]/g,''));
+        if (!exhaustcost){ exhaustcost = 0; }
+        
+        var unitcost = parseFloat($("#workletter_unit_cost").val().replace(/[^\d\.]/g,''));
+        if (!unitcost){ unitcost = 0; }
+        
+        var linesetpathwayscost = parseFloat($("#workletter_line_set_pathways_cost").val().replace(/[^\d\.]/g,''));
+        if (!linesetpathwayscost){ linesetpathwayscost = 0; }
+        
+        var emscost = parseFloat($("#workletter_ems_cost").val().replace(/[^\d\.]/g,''));
+        if (!emscost){ emscost = 0; }
+        
+        var voltagecost = parseFloat($("#workletter_voltage_cost").val().replace(/[^\d\.]/g,''));
+        if (!voltagecost){ voltagecost = 0; }
+        
+        var amperagecost = parseFloat($("#workletter_amperage_cost").val().replace(/[^\d\.]/g,''));
+        if (!amperagecost){ amperagecost = 0; }
+        
+        var conduitsizecost = parseFloat($("#workletter_conduit_size_cost").val().replace(/[^\d\.]/g,''));
+        if (!conduitsizecost){ conduitsizecost = 0; }
+        
+        var electricalcost = parseFloat($("#workletter_electrical_cost").val().replace(/[^\d\.]/g,''));
+        if (!electricalcost){ electricalcost = 0; }
+        
+        var electricalmetercost = parseFloat($("#workletter_electrical_meter_cost").val().replace(/[^\d\.]/g,''));
+        if (!electricalmetercost){ electricalmetercost = 0; }
+        
+        var telephonecost = parseFloat($("#workletter_telephone_cost").val().replace(/[^\d\.]/g,''));
+        if (!telephonecost){ telephonecost = 0; }
+        
+        var sanitarycost = parseFloat($("#workletter_sanitary_cost").val().replace(/[^\d\.]/g,''));
+        if (!sanitarycost){ sanitarycost = 0; }
+        
+        var sanitaryventcost = parseFloat($("#workletter_sanitary_vent_cost").val().replace(/[^\d\.]/g,''));
+        if (!sanitaryventcost){ sanitaryventcost = 0; }
+        
+        var greasecost = parseFloat($("#workletter_grease_cost").val().replace(/[^\d\.]/g,''));
+        if (!greasecost){ greasecost = 0; }
+        
+        var watercost = parseFloat($("#workletter_water_cost").val().replace(/[^\d\.]/g,''));
+        if (!watercost){ watercost = 0; }
+        
+        var gascost = parseFloat($("#workletter_gas_cost").val().replace(/[^\d\.]/g,''));
+        if (!gascost){ gascost = 0; }
+        
+        var sprinklerstubcost = parseFloat($("#workletter_sprinkler_stub_cost").val().replace(/[^\d\.]/g,''));
+        if (!sprinklerstubcost){ sprinklerstubcost = 0; }
+        
+        var sprinklergridcost = parseFloat($("#workletter_sprinkler_grid_cost").val().replace(/[^\d\.]/g,''));
+        if (!sprinklergridcost){ sprinklergridcost = 0; }
+        
+        var firealarmcost = parseFloat($("#workletter_fire_alarm_cost").val().replace(/[^\d\.]/g,''));
+        if (!firealarmcost){ firealarmcost = 0; }
+        
+        var total = structurecost + slabcost + studscost + drywallcost + insulationcost + servicedoorcost + 
+                    storefrontcost + supplycost + exhaustcost + unitcost + linesetpathwayscost +
+                    emscost + voltagecost + amperagecost + conduitsizecost + electricalcost +
+                    electricalmetercost + telephonecost + sanitarycost + sanitaryventcost + greasecost +
+                    watercost + gascost + sprinklerstubcost + sprinklergridcost + firealarmcost +
+                    demolitioncost + othercost;
+            total = total.toFixed(2);
+        var totalformatted = '$' + total.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_ll_work_cost").val(totalformatted);
+    }
+    //change or keyup on # will trigger function
+    $(document).ready(updateLLWorkCost);
+    $(document).ready(updateLlWork);
+    $(document).on("change, keyup, blur", "#workletter_structure_cost", updateLLWorkCost);
+    $(document).on("change, keyup, blur", "#workletter_structure_cost", updateLlWork);
+    $(document).on("change, keyup, blur", "#workletter_demolition_cost", updateLLWorkCost);
+    $(document).on("change, keyup, blur", "#workletter_demolition_cost", updateLlWork);
+    $(document).on("change, keyup, blur", "#workletter_other_cost", updateLLWorkCost);
+    $(document).on("change, keyup, blur", "#workletter_other_cost", updateLlWork);
+    $(document).on("change, keyup, blur", "#workletter_slab_cost", updateLLWorkCost);
+    $(document).on("change, keyup, blur", "#workletter_slab_cost", updateLlWork);
+    $(document).on("change, keyup, blur", "#workletter_studs_cost", updateLLWorkCost);
+    $(document).on("change, keyup, blur", "#workletter_studs_cost", updateLlWork);
+    $(document).on("change, keyup, blur", "#workletter_drywall_cost", updateLLWorkCost);
+    $(document).on("change, keyup, blur", "#workletter_drywall_cost", updateLlWork);
+    $(document).on("change, keyup, blur", "#workletter_insulation_cost", updateLLWorkCost);
+    $(document).on("change, keyup, blur", "#workletter_insulation_cost", updateLlWork);
+    $(document).on("change, keyup, blur", "#workletter_service_door_cost", updateLLWorkCost);
+    $(document).on("change, keyup, blur", "#workletter_service_door_cost", updateLlWork);
+    $(document).on("change, keyup, blur", "#workletter_storefront_cost", updateLLWorkCost);
+    $(document).on("change, keyup, blur", "#workletter_storefront_cost", updateLlWork);
+    $(document).on("change, keyup, blur", "#workletter_supply_cost", updateLLWorkCost);
+    $(document).on("change, keyup, blur", "#workletter_supply_cost", updateLlWork);
+    $(document).on("change, keyup, blur", "#workletter_exhaust_cost", updateLLWorkCost);
+    $(document).on("change, keyup, blur", "#workletter_exhaust_cost", updateLlWork);
+    $(document).on("change, keyup, blur", "#workletter_unit_cost", updateLLWorkCost);
+    $(document).on("change, keyup, blur", "#workletter_unit_cost", updateLlWork);
+    $(document).on("change, keyup, blur", "#workletter_line_set_pathways_cost", updateLLWorkCost);
+    $(document).on("change, keyup, blur", "#workletter_line_set_pathways_cost", updateLlWork);
+    $(document).on("change, keyup, blur", "#workletter_ems_cost", updateLLWorkCost);
+    $(document).on("change, keyup, blur", "#workletter_ems_cost", updateLlWork);
+    $(document).on("change, keyup, blur", "#workletter_voltage_cost", updateLLWorkCost);
+    $(document).on("change, keyup, blur", "#workletter_voltage_cost", updateLlWork);
+    $(document).on("change, keyup, blur", "#workletter_amperage_cost", updateLLWorkCost);
+    $(document).on("change, keyup, blur", "#workletter_amperage_cost", updateLlWork);
+    $(document).on("change, keyup, blur", "#workletter_conduit_size_cost", updateLLWorkCost);
+    $(document).on("change, keyup, blur", "#workletter_conduit_size_cost", updateLlWork);
+    $(document).on("change, keyup, blur", "#workletter_electrical_cost", updateLLWorkCost);
+    $(document).on("change, keyup, blur", "#workletter_electrical_cost", updateLlWork);
+    $(document).on("change, keyup, blur", "#workletter_electrical_meter_cost", updateLLWorkCost);
+    $(document).on("change, keyup, blur", "#workletter_electrical_meter_cost", updateLlWork);
+    $(document).on("change, keyup, blur", "#workletter_telephone_cost", updateLLWorkCost);
+    $(document).on("change, keyup, blur", "#workletter_telephone_cost", updateLlWork);
+    $(document).on("change, keyup, blur", "#workletter_sanitary_cost", updateLLWorkCost);
+    $(document).on("change, keyup, blur", "#workletter_sanitary_cost", updateLlWork);
+    $(document).on("change, keyup, blur", "#workletter_sanitary_vent_cost", updateLLWorkCost);
+    $(document).on("change, keyup, blur", "#workletter_sanitary_vent_cost", updateLlWork);
+    $(document).on("change, keyup, blur", "#workletter_grease_cost", updateLLWorkCost);
+    $(document).on("change, keyup, blur", "#workletter_grease_cost", updateLlWork);
+    $(document).on("change, keyup, blur", "#workletter_water_cost", updateLLWorkCost);
+    $(document).on("change, keyup, blur", "#workletter_water_cost", updateLlWork);
+    $(document).on("change, keyup, blur", "#workletter_gas_cost", updateLLWorkCost);
+    $(document).on("change, keyup, blur", "#workletter_gas_cost", updateLlWork);
+    $(document).on("change, keyup, blur", "#workletter_sprinkler_stub_cost", updateLLWorkCost);
+    $(document).on("change, keyup, blur", "#workletter_sprinkler_stub_cost", updateLlWork);
+    $(document).on("change, keyup, blur", "#workletter_sprinkler_grid_cost", updateLLWorkCost);
+    $(document).on("change, keyup, blur", "#workletter_sprinkler_grid_cost", updateLlWork);
+    $(document).on("change, keyup, blur", "#workletter_fire_alarm_cost", updateLLWorkCost);
+    $(document).on("change, keyup, blur", "#workletter_fire_alarm_cost", updateLlWork);
+});
+</script>
