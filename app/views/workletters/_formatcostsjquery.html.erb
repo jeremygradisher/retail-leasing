@@ -1,0 +1,2241 @@
+<script>
+$(document).ready(function()
+{
+    function formatStructureCost()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_structure_cost").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //make sure commas are correct
+        var variableformatted = '$' + variablefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_structure_cost").val(variableformatted);
+        //this input field is saved as a string
+    }
+    
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_structure_cost", formatStructureCost);
+    //make it happen onload
+    $(document).ready(formatStructureCost);
+    
+    
+    //test
+    function formatStructureUnit()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_structure_unit").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){variable = 0;}
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //make sure commas are correct
+        var variableformatted = '$' + variablefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_structure_unit").val(variableformatted);
+        //this input field is saved as a string
+    }
+    
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_structure_unit", formatStructureUnit);
+    //make it happen onload
+    $(document).ready(formatStructureUnit);
+    //test
+    
+    
+    function formatSlabCost()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_slab_cost").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //make sure commas are correct
+        var variableformatted = '$' + variablefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_slab_cost").val(variableformatted);
+        //this input field is saved as a string
+    }
+    
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_slab_cost", formatSlabCost);
+    //make it happen onload
+    $(document).ready(formatSlabCost);
+    
+    function formatSlabUnit()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_slab_unit").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){variable = 0;}
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //make sure commas are correct
+        var variableformatted = '$' + variablefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_slab_unit").val(variableformatted);
+        //this input field is saved as a string
+    }
+    
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_slab_unit", formatSlabUnit);
+    //make it happen onload
+    $(document).ready(formatSlabUnit);
+
+    
+    
+    function formatDemolitionCost()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_demolition_cost").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //make sure commas are correct
+        var variableformatted = '$' + variablefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_demolition_cost").val(variableformatted);
+        //this input field is saved as a string
+    }
+    
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_demolition_cost", formatDemolitionCost);
+    //make it happen onload
+    $(document).ready(formatDemolitionCost);
+    
+    function formatDemolitionUnit()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_demolition_unit").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){variable = 0;}
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //make sure commas are correct
+        var variableformatted = '$' + variablefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_demolition_unit").val(variableformatted);
+        //this input field is saved as a string
+    }
+    
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_demolition_unit", formatDemolitionUnit);
+    //make it happen onload
+    $(document).ready(formatDemolitionUnit);
+    
+
+    function formatOtherCost()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_other_cost").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //make sure commas are correct
+        var variableformatted = '$' + variablefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_other_cost").val(variableformatted);
+        //this input field is saved as a string
+    }
+    
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_other_cost", formatOtherCost);
+    //make it happen onload
+    $(document).ready(formatOtherCost);
+    
+    function formatOtherUnit()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_other_unit").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){variable = 0;}
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //make sure commas are correct
+        var variableformatted = '$' + variablefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_other_unit").val(variableformatted);
+        //this input field is saved as a string
+    }
+    
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_other_unit", formatOtherUnit);
+    //make it happen onload
+    $(document).ready(formatOtherUnit);
+    
+    
+    function formatStudsCost()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_studs_cost").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //make sure commas are correct
+        var variableformatted = '$' + variablefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_studs_cost").val(variableformatted);
+        //this input field is saved as a string
+    }
+    
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_studs_cost", formatStudsCost);
+    //make it happen onload
+    $(document).ready(formatStudsCost);
+    
+    function formatStudsUnit()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_studs_unit").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){variable = 0;}
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //make sure commas are correct
+        var variableformatted = '$' + variablefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_studs_unit").val(variableformatted);
+        //this input field is saved as a string
+    }
+    
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_studs_unit", formatStudsUnit);
+    //make it happen onload
+    $(document).ready(formatStudsUnit);
+    
+    function formatDrywallCost()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_drywall_cost").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //make sure commas are correct
+        var variableformatted = '$' + variablefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_drywall_cost").val(variableformatted);
+        //this input field is saved as a string
+    }
+    
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_drywall_cost", formatDrywallCost);
+    //make it happen onload
+    $(document).ready(formatDrywallCost);
+    
+    function formatDrywallUnit()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_drywall_unit").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){variable = 0;}
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //make sure commas are correct
+        var variableformatted = '$' + variablefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_drywall_unit").val(variableformatted);
+        //this input field is saved as a string
+    }
+    
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_drywall_unit", formatDrywallUnit);
+    //make it happen onload
+    $(document).ready(formatDrywallUnit);
+    
+    function formatInsulationCost()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_insulation_cost").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //make sure commas are correct
+        var variableformatted = '$' + variablefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_insulation_cost").val(variableformatted);
+        //this input field is saved as a string
+    }
+    
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_insulation_cost", formatInsulationCost);
+    //make it happen onload
+    $(document).ready(formatInsulationCost);
+    
+    function formatInsulationUnit()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_insulation_unit").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){variable = 0;}
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //make sure commas are correct
+        var variableformatted = '$' + variablefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_insulation_unit").val(variableformatted);
+        //this input field is saved as a string
+    }
+    
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_insulation_unit", formatInsulationUnit);
+    //make it happen onload
+    $(document).ready(formatInsulationUnit);
+    
+    function formatServiceDoorCost()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_service_door_cost").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //make sure commas are correct
+        var variableformatted = '$' + variablefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_service_door_cost").val(variableformatted);
+        //this input field is saved as a string
+    }
+    
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_service_door_cost", formatServiceDoorCost);
+    //make it happen onload
+    $(document).ready(formatServiceDoorCost);
+    
+    function formatServiceDoorUnit()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_service_door_unit").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){variable = 0;}
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //make sure commas are correct
+        var variableformatted = '$' + variablefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_service_door_unit").val(variableformatted);
+        //this input field is saved as a string
+    }
+    
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_service_door_unit", formatServiceDoorUnit);
+    //make it happen onload
+    $(document).ready(formatServiceDoorUnit);
+    
+    function formatStorefrontCost()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_storefront_cost").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //make sure commas are correct
+        var variableformatted = '$' + variablefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_storefront_cost").val(variableformatted);
+        //this input field is saved as a string
+    }
+    
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_storefront_cost", formatStorefrontCost);
+    //make it happen onload
+    $(document).ready(formatStorefrontCost);
+    
+    function formatStorefrontUnit()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_storefront_unit").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){variable = 0;}
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //make sure commas are correct
+        var variableformatted = '$' + variablefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_storefront_unit").val(variableformatted);
+        //this input field is saved as a string
+    }
+    
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_storefront_unit", formatStorefrontUnit);
+    //make it happen onload
+    $(document).ready(formatStorefrontUnit);
+    
+    
+    function formatUnitCost()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_unit_cost").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //make sure commas are correct
+        var variableformatted = '$' + variablefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_unit_cost").val(variableformatted);
+        //this input field is saved as a string
+    }
+    
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_unit_cost", formatUnitCost);
+    //make it happen onload
+    $(document).ready(formatUnitCost);
+    
+    function formatHVACUnitUnit()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_hvac_unit_unit").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){variable = 0;}
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //make sure commas are correct
+        var variableformatted = '$' + variablefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_hvac_unit_unit").val(variableformatted);
+        //this input field is saved as a string
+    }
+    
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_hvac_unit_unit", formatHVACUnitUnit);
+    //make it happen onload
+    $(document).ready(formatHVACUnitUnit);
+    
+    
+    function formatSupplyCost()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_supply_cost").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //make sure commas are correct
+        var variableformatted = '$' + variablefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_supply_cost").val(variableformatted);
+        //this input field is saved as a string
+    }
+    
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_supply_cost", formatSupplyCost);
+    //make it happen onload
+    $(document).ready(formatSupplyCost);
+    
+    function formatSupplyDuctUnit()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_supply_duct_unit").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){variable = 0;}
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //make sure commas are correct
+        var variableformatted = '$' + variablefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_supply_duct_unit").val(variableformatted);
+        //this input field is saved as a string
+    }
+    
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_supply_duct_unit", formatSupplyDuctUnit);
+    //make it happen onload
+    $(document).ready(formatSupplyDuctUnit);
+    
+    function formatExhaustCost()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_exhaust_cost").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //make sure commas are correct
+        var variableformatted = '$' + variablefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_exhaust_cost").val(variableformatted);
+        //this input field is saved as a string
+    }
+    
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_exhaust_cost", formatExhaustCost);
+    //make it happen onload
+    $(document).ready(formatExhaustCost);
+    
+    function formatExhaustUnit()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_exhaust_unit").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){variable = 0;}
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //make sure commas are correct
+        var variableformatted = '$' + variablefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_exhaust_unit").val(variableformatted);
+        //this input field is saved as a string
+    }
+    
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_exhaust_unit", formatExhaustUnit);
+    //make it happen onload
+    $(document).ready(formatExhaustUnit);
+    
+    
+    
+    function formatLineSetPathwaysCost()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_line_set_pathways_cost").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //make sure commas are correct
+        var variableformatted = '$' + variablefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_line_set_pathways_cost").val(variableformatted);
+        //this input field is saved as a string
+    }
+    
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_line_set_pathways_cost", formatLineSetPathwaysCost);
+    //make it happen onload
+    $(document).ready(formatLineSetPathwaysCost);
+    
+    function formatLineSetPathwaysUnit()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_line_set_pathways_unit").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){variable = 0;}
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //make sure commas are correct
+        var variableformatted = '$' + variablefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_line_set_pathways_unit").val(variableformatted);
+        //this input field is saved as a string
+    }
+    
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_line_set_pathways_unit", formatLineSetPathwaysUnit);
+    //make it happen onload
+    $(document).ready(formatLineSetPathwaysUnit);
+    
+    function formatEMSCost()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_ems_cost").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //make sure commas are correct
+        var variableformatted = '$' + variablefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_ems_cost").val(variableformatted);
+        //this input field is saved as a string
+    }
+    
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_ems_cost", formatEMSCost);
+    //make it happen onload
+    $(document).ready(formatEMSCost);
+    
+    function formatEMSUnit()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_ems_unit").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){variable = 0;}
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //make sure commas are correct
+        var variableformatted = '$' + variablefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_ems_unit").val(variableformatted);
+        //this input field is saved as a string
+    }
+    
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_ems_unit", formatEMSUnit);
+    //make it happen onload
+    $(document).ready(formatEMSUnit);
+    
+    function formatVoltageCost()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_voltage_cost").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //make sure commas are correct
+        var variableformatted = '$' + variablefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_voltage_cost").val(variableformatted);
+        //this input field is saved as a string
+    }
+    
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_voltage_cost", formatVoltageCost);
+    //make it happen onload
+    $(document).ready(formatVoltageCost);
+    
+    function formatVoltageUnit()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_voltage_unit").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){variable = 0;}
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //make sure commas are correct
+        var variableformatted = '$' + variablefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_voltage_unit").val(variableformatted);
+        //this input field is saved as a string
+    }
+    
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_voltage_unit", formatVoltageUnit);
+    //make it happen onload
+    $(document).ready(formatVoltageUnit);
+    
+    function formatAmperageCost()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_amperage_cost").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //make sure commas are correct
+        var variableformatted = '$' + variablefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_amperage_cost").val(variableformatted);
+        //this input field is saved as a string
+    }
+    
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_amperage_cost", formatAmperageCost);
+    //make it happen onload
+    $(document).ready(formatAmperageCost);
+    
+    function formatAmperageUnit()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_amperage_unit").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){variable = 0;}
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //make sure commas are correct
+        var variableformatted = '$' + variablefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_amperage_unit").val(variableformatted);
+        //this input field is saved as a string
+    }
+    
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_amperage_unit", formatAmperageUnit);
+    //make it happen onload
+    $(document).ready(formatAmperageUnit);
+    
+    function formatConduitSizeCost()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_conduit_size_cost").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //make sure commas are correct
+        var variableformatted = '$' + variablefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_conduit_size_cost").val(variableformatted);
+        //this input field is saved as a string
+    }
+    
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_conduit_size_cost", formatConduitSizeCost);
+    //make it happen onload
+    $(document).ready(formatConduitSizeCost);
+    
+    function formatConduitSizeUnit()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_conduit_size_unit").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){variable = 0;}
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //make sure commas are correct
+        var variableformatted = '$' + variablefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_conduit_size_unit").val(variableformatted);
+        //this input field is saved as a string
+    }
+    
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_conduit_size_unit", formatConduitSizeUnit);
+    //make it happen onload
+    $(document).ready(formatConduitSizeUnit);
+    
+    function formatElectricalCost()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_electrical_cost").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //make sure commas are correct
+        var variableformatted = '$' + variablefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_electrical_cost").val(variableformatted);
+        //this input field is saved as a string
+    }
+    
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_electrical_cost", formatElectricalCost);
+    //make it happen onload
+    $(document).ready(formatElectricalCost);
+    
+    function formatElectricalUnit()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_electrical_unit").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){variable = 0;}
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //make sure commas are correct
+        var variableformatted = '$' + variablefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_electrical_unit").val(variableformatted);
+        //this input field is saved as a string
+    }
+    
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_electrical_unit", formatElectricalUnit);
+    //make it happen onload
+    $(document).ready(formatElectricalUnit);
+    
+    
+    function formatElectricalMeterCost()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_electrical_meter_cost").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //make sure commas are correct
+        var variableformatted = '$' + variablefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_electrical_meter_cost").val(variableformatted);
+        //this input field is saved as a string
+    }
+    
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_electrical_meter_cost", formatElectricalMeterCost);
+    //make it happen onload
+    $(document).ready(formatElectricalMeterCost);
+    
+    function formatElectricalMeterUnit()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_electrical_meter_unit").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){variable = 0;}
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //make sure commas are correct
+        var variableformatted = '$' + variablefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_electrical_meter_unit").val(variableformatted);
+        //this input field is saved as a string
+    }
+    
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_electrical_meter_unit", formatElectricalMeterUnit);
+    //make it happen onload
+    $(document).ready(formatElectricalMeterUnit);
+    
+    function formatTelephoneCost()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_telephone_cost").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //make sure commas are correct
+        var variableformatted = '$' + variablefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_telephone_cost").val(variableformatted);
+        //this input field is saved as a string
+    }
+    
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_telephone_cost", formatTelephoneCost);
+    //make it happen onload
+    $(document).ready(formatTelephoneCost);
+    
+    function formatTelephoneUnit()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_telephone_unit").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){variable = 0;}
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //make sure commas are correct
+        var variableformatted = '$' + variablefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_telephone_unit").val(variableformatted);
+        //this input field is saved as a string
+    }
+    
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_telephone_unit", formatTelephoneUnit);
+    //make it happen onload
+    $(document).ready(formatTelephoneUnit);
+    
+    function formatSanitaryCost()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_sanitary_cost").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //make sure commas are correct
+        var variableformatted = '$' + variablefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_sanitary_cost").val(variableformatted);
+        //this input field is saved as a string
+    }
+    
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_sanitary_cost", formatSanitaryCost);
+    //make it happen onload
+    $(document).ready(formatSanitaryCost);
+    
+    function formatSanitaryUnit()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_sanitary_unit").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){variable = 0;}
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //make sure commas are correct
+        var variableformatted = '$' + variablefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_sanitary_unit").val(variableformatted);
+        //this input field is saved as a string
+    }
+    
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_sanitary_unit", formatSanitaryUnit);
+    //make it happen onload
+    $(document).ready(formatSanitaryUnit);
+    
+    function formatSanitaryVentCost()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_sanitary_vent_cost").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //make sure commas are correct
+        var variableformatted = '$' + variablefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_sanitary_vent_cost").val(variableformatted);
+        //this input field is saved as a string
+    }
+    
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_sanitary_vent_cost", formatSanitaryVentCost);
+    //make it happen onload
+    $(document).ready(formatSanitaryVentCost);
+    
+    function formatSanitaryVentUnit()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_sanitary_vent_unit").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){variable = 0;}
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //make sure commas are correct
+        var variableformatted = '$' + variablefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_sanitary_vent_unit").val(variableformatted);
+        //this input field is saved as a string
+    }
+    
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_sanitary_vent_unit", formatSanitaryVentUnit);
+    //make it happen onload
+    $(document).ready(formatSanitaryVentUnit);
+    
+    function formatGreaseCost()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_grease_cost").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //make sure commas are correct
+        var variableformatted = '$' + variablefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_grease_cost").val(variableformatted);
+        //this input field is saved as a string
+    }
+    
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_grease_cost", formatGreaseCost);
+    //make it happen onload
+    $(document).ready(formatGreaseCost);
+    
+    function formatGreaseUnit()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_grease_unit").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){variable = 0;}
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //make sure commas are correct
+        var variableformatted = '$' + variablefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_grease_unit").val(variableformatted);
+        //this input field is saved as a string
+    }
+    
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_grease_unit", formatGreaseUnit);
+    //make it happen onload
+    $(document).ready(formatGreaseUnit);
+    
+    function formatWaterCost()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_water_cost").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //make sure commas are correct
+        var variableformatted = '$' + variablefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_water_cost").val(variableformatted);
+        //this input field is saved as a string
+    }
+    
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_water_cost", formatWaterCost);
+    //make it happen onload
+    $(document).ready(formatWaterCost);
+    
+    function formatWaterUnit()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_water_unit").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){variable = 0;}
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //make sure commas are correct
+        var variableformatted = '$' + variablefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_water_unit").val(variableformatted);
+        //this input field is saved as a string
+    }
+    
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_water_unit", formatWaterUnit);
+    //make it happen onload
+    $(document).ready(formatWaterUnit);
+    
+    function formatGasCost()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_gas_cost").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //make sure commas are correct
+        var variableformatted = '$' + variablefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_gas_cost").val(variableformatted);
+        //this input field is saved as a string
+    }
+    
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_gas_cost", formatGasCost);
+    //make it happen onload
+    $(document).ready(formatGasCost);
+    
+    function formatGasUnit()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_gas_unit").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){variable = 0;}
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //make sure commas are correct
+        var variableformatted = '$' + variablefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_gas_unit").val(variableformatted);
+        //this input field is saved as a string
+    }
+    
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_gas_unit", formatGasUnit);
+    //make it happen onload
+    $(document).ready(formatGasUnit);
+    
+    function formatSprinklerStubCost()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_sprinkler_stub_cost").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //make sure commas are correct
+        var variableformatted = '$' + variablefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_sprinkler_stub_cost").val(variableformatted);
+        //this input field is saved as a string
+    }
+    
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_sprinkler_stub_cost", formatSprinklerStubCost);
+    //make it happen onload
+    $(document).ready(formatSprinklerStubCost);
+    
+    function formatSprinklerStubUnit()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_sprinkler_stub_unit").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){variable = 0;}
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //make sure commas are correct
+        var variableformatted = '$' + variablefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_sprinkler_stub_unit").val(variableformatted);
+        //this input field is saved as a string
+    }
+    
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_sprinkler_stub_unit", formatSprinklerStubUnit);
+    //make it happen onload
+    $(document).ready(formatSprinklerStubUnit);
+    
+    function formatSprinklerGridCost()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_sprinkler_grid_cost").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //make sure commas are correct
+        var variableformatted = '$' + variablefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_sprinkler_grid_cost").val(variableformatted);
+        //this input field is saved as a string
+    }
+    
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_sprinkler_grid_cost", formatSprinklerGridCost);
+    //make it happen onload
+    $(document).ready(formatSprinklerGridCost);
+    
+    function formatSprinklerGridUnit()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_sprinkler_grid_unit").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){variable = 0;}
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //make sure commas are correct
+        var variableformatted = '$' + variablefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_sprinkler_grid_unit").val(variableformatted);
+        //this input field is saved as a string
+    }
+    
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_sprinkler_grid_unit", formatSprinklerGridUnit);
+    //make it happen onload
+    $(document).ready(formatSprinklerGridUnit);
+    
+    function formatFireAlarmCost()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_fire_alarm_cost").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //make sure commas are correct
+        var variableformatted = '$' + variablefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_fire_alarm_cost").val(variableformatted);
+        //this input field is saved as a string
+    }
+    
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_fire_alarm_cost", formatFireAlarmCost);
+    //make it happen onload
+    $(document).ready(formatFireAlarmCost);
+    
+    function formatFireAlarmUnit()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_fire_alarm_unit").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){variable = 0;}
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //make sure commas are correct
+        var variableformatted = '$' + variablefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_fire_alarm_unit").val(variableformatted);
+        //this input field is saved as a string
+    }
+    
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_fire_alarm_unit", formatFireAlarmUnit);
+    //make it happen onload
+    $(document).ready(formatFireAlarmUnit);
+    
+
+
+    /*format LL Work and LL Work Cost*/
+    function formatLLWork()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var llwork = parseFloat($("#workletter_ll_work").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!llwork){
+            llwork = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var llworkfixed = llwork.toFixed(2);
+        //make sure commas are correct
+        var llworkformatted = '$' + llworkfixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_ll_work").val(llworkformatted);
+        //this input field is saved as a string
+    }
+    
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_ll_work", formatLLWork);
+    //make it happen onload
+    $(document).ready(formatLLWork);
+    
+    //format total area square feet input for Area
+    function formatLLWorkCost()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var llworkcost = parseFloat($("#workletter_ll_work_cost").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!llworkcost){
+            llworkcost = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var llworkcostfixed = llworkcost.toFixed(2);
+        //make sure commas are correct
+        var llworkcostformatted = '$' + llworkcostfixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#workletter_ll_work_cost").val(llworkcostformatted);
+        //this input field is saved as a string
+    }
+    
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_ll_work_cost", formatLLWorkCost);
+    //make it happen onload
+    $(document).ready(formatLLWorkCost);
+    /*format LL Work and LL Work Cost*/
+    
+    
+    
+    
+    
+    
+    //Function to format for Submit to Database
+    function formatForDBLLWorkCost()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var llworkcost = parseFloat($("#workletter_ll_work_cost").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!llworkcost){
+            llworkcost = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var llworkcostfixed = llworkcost.toFixed(2);
+        //change # to total
+        $("#workletter_ll_work_cost").val(llworkcostfixed);
+        
+    }
+    
+    //Function to format for Submit to Database
+    function formatForDBLLWork()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var llwork = parseFloat($("#workletter_ll_work").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!llwork){
+            llwork = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var llworkfixed = llwork.toFixed(2);
+        //change # to total
+        $("#workletter_ll_work").val(llworkfixed);
+        
+    }
+    
+    //Function to format for Submit to Database
+    function formatForDBSlabCost()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_slab_cost").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //change # to total
+        $("#workletter_slab_cost").val(variablefixed);
+        
+    }
+    
+    //Function to format for Submit to Database
+    function formatForDBStructureCost()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_structure_cost").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //change # to total
+        $("#workletter_structure_cost").val(variablefixed);
+        
+    }
+    
+    //Function to format for Submit to Database
+    function formatForDBDemolitionCost()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_demolition_cost").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //change # to total
+        $("#workletter_demolition_cost").val(variablefixed);
+        
+    }
+    
+    //Function to format for Submit to Database
+    function formatForDBOtherCost()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_other_cost").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //change # to total
+        $("#workletter_other_cost").val(variablefixed);
+        
+    }
+    
+    //Function to format for Submit to Database
+    function formatForDBStudsCost()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_studs_cost").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //change # to total
+        $("#workletter_studs_cost").val(variablefixed);
+        
+    }
+    
+    //Function to format for Submit to Database
+    function formatForDBDrywallCost()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_drywall_cost").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //change # to total
+        $("#workletter_drywall_cost").val(variablefixed);
+        
+    }
+    
+    //Function to format for Submit to Database
+    function formatForDBInsulationCost()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_insulation_cost").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //change # to total
+        $("#workletter_insulation_cost").val(variablefixed);
+        
+    }
+    
+    //Function to format for Submit to Database
+    function formatForDBServiceDoorCost()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_service_door_cost").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //change # to total
+        $("#workletter_service_door_cost").val(variablefixed);
+        
+    }
+    
+    //Function to format for Submit to Database
+    function formatForDBStorefrontCost()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_storefront_cost").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //change # to total
+        $("#workletter_storefront_cost").val(variablefixed);
+        
+    }
+    
+    //Function to format for Submit to Database
+    function formatForDBSupplyCost()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_supply_cost").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //change # to total
+        $("#workletter_supply_cost").val(variablefixed);
+        
+    }
+    
+    //Function to format for Submit to Database
+    function formatForDBExhaustCost()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_exhaust_cost").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //change # to total
+        $("#workletter_exhaust_cost").val(variablefixed);
+        
+    }
+    
+    //Function to format for Submit to Database
+    function formatForDBUnitCost()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_unit_cost").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //change # to total
+        $("#workletter_unit_cost").val(variablefixed);
+        
+    }
+    
+    //Function to format for Submit to Database
+    function formatForDBLineSetPathwaysCost()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_line_set_pathways_cost").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //change # to total
+        $("#workletter_line_set_pathways_cost").val(variablefixed);
+        
+    }
+    
+    //Function to format for Submit to Database
+    function formatForDBEMSCost()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_ems_cost").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //change # to total
+        $("#workletter_ems_cost").val(variablefixed);
+        
+    }
+    
+    //Function to format for Submit to Database
+    function formatForDBVoltageCost()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_voltage_cost").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //change # to total
+        $("#workletter_voltage_cost").val(variablefixed);
+        
+    }
+    
+    //Function to format for Submit to Database
+    function formatForDBAmperageCost()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_amperage_cost").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //change # to total
+        $("#workletter_amperage_cost").val(variablefixed);
+        
+    }
+    
+    //Function to format for Submit to Database
+    function formatForDBConduitSizeCost()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_conduit_size_cost").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //change # to total
+        $("#workletter_conduit_size_cost").val(variablefixed);
+        
+    }
+    
+    //Function to format for Submit to Database
+    function formatForDBElectricalCost()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_electrical_cost").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //change # to total
+        $("#workletter_electrical_cost").val(variablefixed);
+        
+    }
+    
+    //Function to format for Submit to Database
+    function formatForDBElectricalMeterCost()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_electrical_meter_cost").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //change # to total
+        $("#workletter_electrical_meter_cost").val(variablefixed);
+        
+    }
+    
+    //Function to format for Submit to Database
+    function formatForDBTelephoneCost()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_telephone_cost").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //change # to total
+        $("#workletter_telephone_cost").val(variablefixed);
+        
+    }
+    
+    //Function to format for Submit to Database
+    function formatForDBSanitaryCost()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_sanitary_cost").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //change # to total
+        $("#workletter_sanitary_cost").val(variablefixed);
+        
+    }
+    
+    //Function to format for Submit to Database
+    function formatForDBSanitaryVentCost()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_sanitary_vent_cost").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //change # to total
+        $("#workletter_sanitary_vent_cost").val(variablefixed);
+        
+    }
+    
+    //Function to format for Submit to Database
+    function formatForDBGreaseCost()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_grease_cost").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //change # to total
+        $("#workletter_grease_cost").val(variablefixed);
+        
+    }
+    
+    //Function to format for Submit to Database
+    function formatForDBWaterCost()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_water_cost").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //change # to total
+        $("#workletter_water_cost").val(variablefixed);
+        
+    }
+    
+    //Function to format for Submit to Database
+    function formatForDBGasCost()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_gas_cost").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //change # to total
+        $("#workletter_gas_cost").val(variablefixed);
+        
+    }
+    
+    //Function to format for Submit to Database
+    function formatForDBSprinklerStubCost()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_sprinkler_stub_cost").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //change # to total
+        $("#workletter_sprinkler_stub_cost").val(variablefixed);
+        
+    }
+    
+    //Function to format for Submit to Database
+    function formatForDBSprinklerGridCost()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_sprinkler_grid_cost").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //change # to total
+        $("#workletter_sprinkler_grid_cost").val(variablefixed);
+        
+    }
+    
+    //Function to format for Submit to Database
+    function formatForDBFireAlarmCost()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_fire_alarm_cost").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //change # to total
+        $("#workletter_fire_alarm_cost").val(variablefixed);
+        
+    }
+    
+    //additions
+    //Function to format for Submit to Database
+    function formatForDBSlabUnit()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_slab_unit").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //change # to total
+        $("#workletter_slab_unit").val(variablefixed);
+        
+    }
+    
+    //Function to format for Submit to Database
+    function formatForDBStructureUnit()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_structure_unit").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //change # to total
+        $("#workletter_structure_unit").val(variablefixed);
+        
+    }
+    
+    //Function to format for Submit to Database
+    function formatForDBDemolitionUnit()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_demolition_unit").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //change # to total
+        $("#workletter_demolition_unit").val(variablefixed);
+        
+    }
+    
+    //Function to format for Submit to Database
+    function formatForDBOtherUnit()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_other_unit").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //change # to total
+        $("#workletter_other_unit").val(variablefixed);
+        
+    }
+    
+    //Function to format for Submit to Database
+    function formatForDBStudsUnit()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_studs_unit").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //change # to total
+        $("#workletter_studs_unit").val(variablefixed);
+        
+    }
+    
+    //Function to format for Submit to Database
+    function formatForDBDrywallUnit()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_drywall_unit").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //change # to total
+        $("#workletter_drywall_unit").val(variablefixed);
+        
+    }
+    
+    //Function to format for Submit to Database
+    function formatForDBInsulationUnit()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_insulation_unit").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //change # to total
+        $("#workletter_insulation_unit").val(variablefixed);
+        
+    }
+    
+    //Function to format for Submit to Database
+    function formatForDBServiceDoorUnit()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_service_door_unit").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //change # to total
+        $("#workletter_service_door_unit").val(variablefixed);
+        
+    }
+    
+    //Function to format for Submit to Database
+    function formatForDBStorefrontUnit()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_storefront_unit").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //change # to total
+        $("#workletter_storefront_unit").val(variablefixed);
+        
+    }
+    
+    //Function to format for Submit to Database
+    function formatForDBSupplyUnit()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_supply_duct_unit").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //change # to total
+        $("#workletter_supply_duct_unit").val(variablefixed);
+        
+    }
+    
+    //Function to format for Submit to Database
+    function formatForDBExhaustUnit()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_exhaust_unit").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //change # to total
+        $("#workletter_exhaust_unit").val(variablefixed);
+        
+    }
+    
+    //Function to format for Submit to Database
+    function formatForDBHVACUnitUnit()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_hvac_unit_unit").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //change # to total
+        $("#workletter_hvac_unit_unit").val(variablefixed);
+        
+    }
+    
+    //Function to format for Submit to Database
+    function formatForDBLineSetPathwaysUnit()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_line_set_pathways_unit").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //change # to total
+        $("#workletter_line_set_pathways_unit").val(variablefixed);
+        
+    }
+    
+    //Function to format for Submit to Database
+    function formatForDBEMSUnit()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_ems_unit").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //change # to total
+        $("#workletter_ems_unit").val(variablefixed);
+        
+    }
+    
+    //Function to format for Submit to Database
+    function formatForDBVoltageUnit()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_voltage_unit").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //change # to total
+        $("#workletter_voltage_unit").val(variablefixed);
+        
+    }
+    
+    //Function to format for Submit to Database
+    function formatForDBAmperageUnit()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_amperage_unit").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //change # to total
+        $("#workletter_amperage_unit").val(variablefixed);
+        
+    }
+    
+    //Function to format for Submit to Database
+    function formatForDBConduitSizeUnit()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_conduit_size_unit").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //change # to total
+        $("#workletter_conduit_size_unit").val(variablefixed);
+        
+    }
+    
+    //Function to format for Submit to Database
+    function formatForDBElectricalUnit()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_electrical_unit").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //change # to total
+        $("#workletter_electrical_unit").val(variablefixed);
+        
+    }
+    
+    //Function to format for Submit to Database
+    function formatForDBElectricalMeterUnit()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_electrical_meter_unit").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //change # to total
+        $("#workletter_electrical_meter_unit").val(variablefixed);
+        
+    }
+    
+    //Function to format for Submit to Database
+    function formatForDBTelephoneUnit()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_telephone_unit").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //change # to total
+        $("#workletter_telephone_unit").val(variablefixed);
+        
+    }
+    
+    //Function to format for Submit to Database
+    function formatForDBSanitaryUnit()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_sanitary_unit").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //change # to total
+        $("#workletter_sanitary_unit").val(variablefixed);
+        
+    }
+    
+    //Function to format for Submit to Database
+    function formatForDBSanitaryVentUnit()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_sanitary_vent_unit").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //change # to total
+        $("#workletter_sanitary_vent_unit").val(variablefixed);
+        
+    }
+    
+    //Function to format for Submit to Database
+    function formatForDBGreaseUnit()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_grease_unit").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //change # to total
+        $("#workletter_grease_unit").val(variablefixed);
+        
+    }
+    
+    //Function to format for Submit to Database
+    function formatForDBWaterUnit()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_water_unit").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //change # to total
+        $("#workletter_water_unit").val(variablefixed);
+        
+    }
+    
+    //Function to format for Submit to Database
+    function formatForDBGasUnit()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_gas_unit").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //change # to total
+        $("#workletter_gas_unit").val(variablefixed);
+        
+    }
+    
+    //Function to format for Submit to Database
+    function formatForDBSprinklerStubUnit()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_sprinkler_stub_unit").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //change # to total
+        $("#workletter_sprinkler_stub_unit").val(variablefixed);
+        
+    }
+    
+    //Function to format for Submit to Database
+    function formatForDBSprinklerGridUnit()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_sprinkler_grid_unit").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //change # to total
+        $("#workletter_sprinkler_grid_unit").val(variablefixed);
+        
+    }
+    
+    //Function to format for Submit to Database
+    function formatForDBFireAlarmUnit()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_fire_alarm_unit").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(2);
+        //change # to total
+        $("#workletter_fire_alarm_unit").val(variablefixed);
+        
+    }
+    //additions
+    
+    //Before Submit Run Function(s)
+    $('.formatFunctions').submit(function() {
+      //Runs Function to strip special characters except (.)
+      formatForDBVoltageCost();
+      formatForDBLLWorkCost();
+      formatForDBLLWork();
+      formatForDBSlabCost();
+      formatForDBStudsCost();
+      formatForDBDrywallCost();
+      formatForDBInsulationCost();
+      formatForDBServiceDoorCost();
+      formatForDBStorefrontCost();
+      formatForDBSupplyCost();
+      formatForDBExhaustCost();
+      formatForDBUnitCost();
+      formatForDBLineSetPathwaysCost();
+      formatForDBEMSCost();
+      formatForDBAmperageCost();
+      formatForDBConduitSizeCost();
+      formatForDBElectricalCost();
+      formatForDBElectricalMeterCost();
+      formatForDBTelephoneCost();
+      formatForDBSanitaryCost();
+      formatForDBSanitaryVentCost();
+      formatForDBGreaseCost();
+      formatForDBWaterCost();
+      formatForDBGasCost();
+      formatForDBSprinklerStubCost();
+      formatForDBSprinklerGridCost();
+      formatForDBFireAlarmCost();
+      formatForDBStructureCost();
+      formatForDBDemolitionCost();
+      formatForDBOtherCost();
+      
+      formatForDBStructureUnit();
+      formatForDBSlabUnit();
+      formatForDBStudsUnit();
+      formatForDBDrywallUnit();
+      formatForDBInsulationUnit();
+      formatForDBServiceDoorUnit();
+      formatForDBStorefrontUnit();
+      formatForDBHVACUnitUnit();
+      formatForDBSupplyUnit();
+      formatForDBExhaustUnit();
+      formatForDBLineSetPathwaysUnit();
+      formatForDBEMSUnit();
+      formatForDBElectricalUnit();
+      formatForDBVoltageUnit();
+      formatForDBAmperageUnit();
+      formatForDBConduitSizeUnit();
+      formatForDBElectricalMeterUnit();
+      formatForDBTelephoneUnit();
+      formatForDBSanitaryUnit();
+      formatForDBSanitaryVentUnit();
+      formatForDBGreaseUnit();
+      formatForDBWaterUnit();
+      formatForDBGasUnit();
+      formatForDBSprinklerStubUnit();
+      formatForDBSprinklerGridUnit();
+      formatForDBFireAlarmUnit();
+      formatForDBDemolitionUnit();
+      formatForDBOtherUnit();
+    });
+});
+</script>

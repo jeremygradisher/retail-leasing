@@ -22,18 +22,14 @@ class WorklettersController < ApplicationController
     @area_id = @area.id
     @map_id = @area.map_id
     @project_id = @area.project_id
-    @name = @area.name
+    @name = @area.suite_number
     #@map = Map.find(params[:map_id])
     
     #this needs a change:
     #@deal = @area.deals.first
-    if @area.primary_deal == nil || @area.primary_deal == ''
-      @deal = @area.deals.first
-    elsif Deal.where(id: @area.primary_deal.to_i).exists?
-      @deal = Deal.find(@area.primary_deal.to_i)
-    else
-      @deal = @area.deals.first
-    end
+
+    @deal = @area.deals.first
+    
     
     @project = Project.find(@area.project_id)
     @workletter_templates = @project.workletter_templates.all
@@ -68,7 +64,7 @@ class WorklettersController < ApplicationController
 
     respond_to do |format|
       if @workletter.save
-        format.html { redirect_to @workletter, notice: 'Workletter was successfully created.' }
+        format.html { redirect_to area_path(@workletter.area_id), notice: 'Workletter was successfully created.' }
         format.json { render :show, status: :created, location: @workletter }
       else
         format.html { render :new }
@@ -84,7 +80,7 @@ class WorklettersController < ApplicationController
     
     respond_to do |format|
       if @workletter.update(workletter_params)
-        format.html { redirect_to @workletter, notice: 'Workletter was successfully updated.' }
+        format.html { redirect_to area_path(@workletter.area_id), notice: 'Workletter was successfully updated.' }
         format.json { render :show, status: :ok, location: @workletter }
       else
         format.html { render :edit }

@@ -1,0 +1,1055 @@
+<script>
+$(document).ready(function()
+{
+    //format back and forth from integer to number with commas
+
+    //these work in pairs...
+    function formatStructureSqFt()
+    {
+        //parseInt # value after stripping the string of special charactes except period (.)
+        var variable = parseInt($("#workletter_structure_sqft").val().replace(/[^\d\.]/g,''));
+        //if netrentablearea is Nan change to zero
+        if (!variable){variable = 0;}
+        //make sure your number is fixed number with no decimal places
+        var variablefixed = variable.toFixed(0);
+        //make sure commas are correct
+        var variableformatted = variablefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        
+        //change # to total
+        $("#workletter_structure_sqft").val(variableformatted);
+        //this input field is saved as a string
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_structure_sqft", formatStructureSqFt);
+    //make it happen onload
+    $(document).ready(formatStructureSqFt);
+    
+    //Function to format for Submit to Database
+    function formatForSubmitStructureSqFt()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_structure_sqft").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){variable = 0;}
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(0);
+        //change # to total
+        $("#workletter_structure_sqft").val(variablefixed);
+        //this input field is saved as a string
+    }
+    //END these work in pairs...
+    
+    
+    //these work in pairs...
+    function formatSlabSqFt()
+    {
+        //parseInt # value after stripping the string of special charactes except period (.)
+        var variable = parseInt($("#workletter_slab_sqft").val().replace(/[^\d\.]/g,''));
+        //if netrentablearea is Nan change to zero
+        if (!variable){variable = 0;}
+        //make sure your number is fixed number with no decimal places
+        var variablefixed = variable.toFixed(0);
+        //make sure commas are correct
+        var variableformatted = variablefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        
+        //change # to total
+        $("#workletter_slab_sqft").val(variableformatted);
+        //this input field is saved as a string
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_slab_sqft", formatSlabSqFt);
+    //make it happen onload
+    $(document).ready(formatSlabSqFt);
+    
+    //Function to format for Submit to Database
+    function formatForSubmitSlabSqFt()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_slab_sqft").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){variable = 0;}
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(0);
+        //change # to total
+        $("#workletter_slab_sqft").val(variablefixed);
+        //this input field is saved as a string
+    }
+    //END these work in pairs...
+    
+    //these work in pairs...
+    function formatStudsSqFt()
+    {
+        //parseInt # value after stripping the string of special charactes except period (.)
+        var variable = parseInt($("#workletter_studs_sqft").val().replace(/[^\d\.]/g,''));
+        //if netrentablearea is Nan change to zero
+        if (!variable){variable = 0;}
+        //make sure your number is fixed number with no decimal places
+        var variablefixed = variable.toFixed(0);
+        //make sure commas are correct
+        var variableformatted = variablefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        
+        //change # to total
+        $("#workletter_studs_sqft").val(variableformatted);
+        //this input field is saved as a string
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_studs_sqft", formatStudsSqFt);
+    //make it happen onload
+    $(document).ready(formatStudsSqFt);
+    
+    //Function to format for Submit to Database
+    function formatForSubmitStudsSqFt()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_studs_sqft").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){variable = 0;}
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(0);
+        //change # to total
+        $("#workletter_studs_sqft").val(variablefixed);
+        //this input field is saved as a string
+    }
+    //END these work in pairs...
+    
+    //these work in pairs...
+    function formatDrywallSqFt()
+    {
+        //parseInt # value after stripping the string of special charactes except period (.)
+        var variable = parseInt($("#workletter_drywall_sqft").val().replace(/[^\d\.]/g,''));
+        //if netrentablearea is Nan change to zero
+        if (!variable){variable = 0;}
+        //make sure your number is fixed number with no decimal places
+        var variablefixed = variable.toFixed(0);
+        //make sure commas are correct
+        var variableformatted = variablefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        
+        //change # to total
+        $("#workletter_drywall_sqft").val(variableformatted);
+        //this input field is saved as a string
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_drywall_sqft", formatDrywallSqFt);
+    //make it happen onload
+    $(document).ready(formatDrywallSqFt);
+    
+    //Function to format for Submit to Database
+    function formatForSubmitDrywallSqFt()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_drywall_sqft").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){variable = 0;}
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(0);
+        //change # to total
+        $("#workletter_drywall_sqft").val(variablefixed);
+        //this input field is saved as a string
+    }
+    //END these work in pairs...
+    
+    //these work in pairs...
+    function formatInsulationSqFt()
+    {
+        //parseInt # value after stripping the string of special charactes except period (.)
+        var variable = parseInt($("#workletter_insulation_sqft").val().replace(/[^\d\.]/g,''));
+        //if netrentablearea is Nan change to zero
+        if (!variable){variable = 0;}
+        //make sure your number is fixed number with no decimal places
+        var variablefixed = variable.toFixed(0);
+        //make sure commas are correct
+        var variableformatted = variablefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        
+        //change # to total
+        $("#workletter_insulation_sqft").val(variableformatted);
+        //this input field is saved as a string
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_insulation_sqft", formatInsulationSqFt);
+    //make it happen onload
+    $(document).ready(formatInsulationSqFt);
+    
+    //Function to format for Submit to Database
+    function formatForSubmitInsulationSqFt()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_insulation_sqft").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){variable = 0;}
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(0);
+        //change # to total
+        $("#workletter_insulation_sqft").val(variablefixed);
+        //this input field is saved as a string
+    }
+    //END these work in pairs...
+    
+    //these work in pairs...
+    function formatServiceDoorSqFt()
+    {
+        //parseInt # value after stripping the string of special charactes except period (.)
+        var variable = parseInt($("#workletter_service_door_sqft").val().replace(/[^\d\.]/g,''));
+        //if netrentablearea is Nan change to zero
+        if (!variable){variable = 0;}
+        //make sure your number is fixed number with no decimal places
+        var variablefixed = variable.toFixed(0);
+        //make sure commas are correct
+        var variableformatted = variablefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        
+        //change # to total
+        $("#workletter_service_door_sqft").val(variableformatted);
+        //this input field is saved as a string
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_service_door_sqft", formatServiceDoorSqFt);
+    //make it happen onload
+    $(document).ready(formatServiceDoorSqFt);
+    
+    //Function to format for Submit to Database
+    function formatForSubmitServiceDoorSqFt()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_service_door_sqft").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){variable = 0;}
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(0);
+        //change # to total
+        $("#workletter_service_door_sqft").val(variablefixed);
+        //this input field is saved as a string
+    }
+    //END these work in pairs...
+    
+    //these work in pairs...
+    function formatStorefrontSqFt()
+    {
+        //parseInt # value after stripping the string of special charactes except period (.)
+        var variable = parseInt($("#workletter_storefront_sqft").val().replace(/[^\d\.]/g,''));
+        //if netrentablearea is Nan change to zero
+        if (!variable){variable = 0;}
+        //make sure your number is fixed number with no decimal places
+        var variablefixed = variable.toFixed(0);
+        //make sure commas are correct
+        var variableformatted = variablefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        
+        //change # to total
+        $("#workletter_storefront_sqft").val(variableformatted);
+        //this input field is saved as a string
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_storefront_sqft", formatStorefrontSqFt);
+    //make it happen onload
+    $(document).ready(formatStorefrontSqFt);
+    
+    //Function to format for Submit to Database
+    function formatForSubmitStorefrontSqFt()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_storefront_sqft").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){variable = 0;}
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(0);
+        //change # to total
+        $("#workletter_storefront_sqft").val(variablefixed);
+        //this input field is saved as a string
+    }
+    //END these work in pairs...
+    
+    //these work in pairs...
+    function formatHVACUnitSqFt()
+    {
+        //parseInt # value after stripping the string of special charactes except period (.)
+        var variable = parseInt($("#workletter_hvac_unit_sqft").val().replace(/[^\d\.]/g,''));
+        //if netrentablearea is Nan change to zero
+        if (!variable){variable = 0;}
+        //make sure your number is fixed number with no decimal places
+        var variablefixed = variable.toFixed(0);
+        //make sure commas are correct
+        var variableformatted = variablefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        
+        //change # to total
+        $("#workletter_hvac_unit_sqft").val(variableformatted);
+        //this input field is saved as a string
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_hvac_unit_sqft", formatHVACUnitSqFt);
+    //make it happen onload
+    $(document).ready(formatHVACUnitSqFt);
+    
+    //Function to format for Submit to Database
+    function formatForSubmitHVACUnitSqFt()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_hvac_unit_sqft").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){variable = 0;}
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(0);
+        //change # to total
+        $("#workletter_hvac_unit_sqft").val(variablefixed);
+        //this input field is saved as a string
+    }
+    //END these work in pairs...
+    
+    //these work in pairs...
+    function formatSupplyDuctSqFt()
+    {
+        //parseInt # value after stripping the string of special charactes except period (.)
+        var variable = parseInt($("#workletter_supply_duct_sqft").val().replace(/[^\d\.]/g,''));
+        //if netrentablearea is Nan change to zero
+        if (!variable){variable = 0;}
+        //make sure your number is fixed number with no decimal places
+        var variablefixed = variable.toFixed(0);
+        //make sure commas are correct
+        var variableformatted = variablefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        
+        //change # to total
+        $("#workletter_supply_duct_sqft").val(variableformatted);
+        //this input field is saved as a string
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_supply_duct_sqft", formatSupplyDuctSqFt);
+    //make it happen onload
+    $(document).ready(formatSupplyDuctSqFt);
+    
+    //Function to format for Submit to Database
+    function formatForSubmitSupplyDuctSqFt()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_supply_duct_sqft").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){variable = 0;}
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(0);
+        //change # to total
+        $("#workletter_supply_duct_sqft").val(variablefixed);
+        //this input field is saved as a string
+    }
+    //END these work in pairs...
+    
+    //these work in pairs...
+    function formatExhaustSqFt()
+    {
+        //parseInt # value after stripping the string of special charactes except period (.)
+        var variable = parseInt($("#workletter_exhaust_sqft").val().replace(/[^\d\.]/g,''));
+        //if netrentablearea is Nan change to zero
+        if (!variable){variable = 0;}
+        //make sure your number is fixed number with no decimal places
+        var variablefixed = variable.toFixed(0);
+        //make sure commas are correct
+        var variableformatted = variablefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        
+        //change # to total
+        $("#workletter_exhaust_sqft").val(variableformatted);
+        //this input field is saved as a string
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_exhaust_sqft", formatExhaustSqFt);
+    //make it happen onload
+    $(document).ready(formatExhaustSqFt);
+    
+    //Function to format for Submit to Database
+    function formatForSubmitExhaustSqFt()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_exhaust_sqft").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){variable = 0;}
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(0);
+        //change # to total
+        $("#workletter_exhaust_sqft").val(variablefixed);
+        //this input field is saved as a string
+    }
+    //END these work in pairs...
+    
+    //these work in pairs...
+    function formatLineSetPathwaysSqFt()
+    {
+        //parseInt # value after stripping the string of special charactes except period (.)
+        var variable = parseInt($("#workletter_line_set_pathways_sqft").val().replace(/[^\d\.]/g,''));
+        //if netrentablearea is Nan change to zero
+        if (!variable){variable = 0;}
+        //make sure your number is fixed number with no decimal places
+        var variablefixed = variable.toFixed(0);
+        //make sure commas are correct
+        var variableformatted = variablefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        
+        //change # to total
+        $("#workletter_line_set_pathways_sqft").val(variableformatted);
+        //this input field is saved as a string
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_line_set_pathways_sqft", formatLineSetPathwaysSqFt);
+    //make it happen onload
+    $(document).ready(formatLineSetPathwaysSqFt);
+    
+    //Function to format for Submit to Database
+    function formatForSubmitLineSetPathwaysSqFt()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_line_set_pathways_sqft").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){variable = 0;}
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(0);
+        //change # to total
+        $("#workletter_line_set_pathways_sqft").val(variablefixed);
+        //this input field is saved as a string
+    }
+    //END these work in pairs...
+    
+    //these work in pairs...
+    function formatEMSSqFt()
+    {
+        //parseInt # value after stripping the string of special charactes except period (.)
+        var variable = parseInt($("#workletter_ems_sqft").val().replace(/[^\d\.]/g,''));
+        //if netrentablearea is Nan change to zero
+        if (!variable){variable = 0;}
+        //make sure your number is fixed number with no decimal places
+        var variablefixed = variable.toFixed(0);
+        //make sure commas are correct
+        var variableformatted = variablefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        
+        //change # to total
+        $("#workletter_ems_sqft").val(variableformatted);
+        //this input field is saved as a string
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_ems_sqft", formatEMSSqFt);
+    //make it happen onload
+    $(document).ready(formatEMSSqFt);
+    
+    //Function to format for Submit to Database
+    function formatForSubmitEMSSqFt()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_ems_sqft").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){variable = 0;}
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(0);
+        //change # to total
+        $("#workletter_ems_sqft").val(variablefixed);
+        //this input field is saved as a string
+    }
+    //END these work in pairs...
+    
+    
+    //these work in pairs...
+    function formatElectricalSqFt()
+    {
+        //parseInt # value after stripping the string of special charactes except period (.)
+        var variable = parseInt($("#workletter_electrical_sqft").val().replace(/[^\d\.]/g,''));
+        //if netrentablearea is Nan change to zero
+        if (!variable){variable = 0;}
+        //make sure your number is fixed number with no decimal places
+        var variablefixed = variable.toFixed(0);
+        //make sure commas are correct
+        var variableformatted = variablefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        
+        //change # to total
+        $("#workletter_electrical_sqft").val(variableformatted);
+        //this input field is saved as a string
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_electrical_sqft", formatElectricalSqFt);
+    //make it happen onload
+    $(document).ready(formatElectricalSqFt);
+    
+    //Function to format for Submit to Database
+    function formatForSubmitElectricalSqFt()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_electrical_sqft").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){variable = 0;}
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(0);
+        //change # to total
+        $("#workletter_electrical_sqft").val(variablefixed);
+        //this input field is saved as a string
+    }
+    //END these work in pairs...
+    
+    //these work in pairs...
+    function formatVoltageSqFt()
+    {
+        //parseInt # value after stripping the string of special charactes except period (.)
+        var variable = parseInt($("#workletter_voltage_sqft").val().replace(/[^\d\.]/g,''));
+        //if netrentablearea is Nan change to zero
+        if (!variable){variable = 0;}
+        //make sure your number is fixed number with no decimal places
+        var variablefixed = variable.toFixed(0);
+        //make sure commas are correct
+        var variableformatted = variablefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        
+        //change # to total
+        $("#workletter_voltage_sqft").val(variableformatted);
+        //this input field is saved as a string
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_voltage_sqft", formatVoltageSqFt);
+    //make it happen onload
+    $(document).ready(formatVoltageSqFt);
+    
+    //Function to format for Submit to Database
+    function formatForSubmitVoltageSqFt()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_voltage_sqft").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){variable = 0;}
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(0);
+        //change # to total
+        $("#workletter_voltage_sqft").val(variablefixed);
+        //this input field is saved as a string
+    }
+    //END these work in pairs...
+    
+    //these work in pairs...
+    function formatAmperageSqFt()
+    {
+        //parseInt # value after stripping the string of special charactes except period (.)
+        var variable = parseInt($("#workletter_amperage_sqft").val().replace(/[^\d\.]/g,''));
+        //if netrentablearea is Nan change to zero
+        if (!variable){variable = 0;}
+        //make sure your number is fixed number with no decimal places
+        var variablefixed = variable.toFixed(0);
+        //make sure commas are correct
+        var variableformatted = variablefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        
+        //change # to total
+        $("#workletter_amperage_sqft").val(variableformatted);
+        //this input field is saved as a string
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_amperage_sqft", formatAmperageSqFt);
+    //make it happen onload
+    $(document).ready(formatAmperageSqFt);
+    
+    //Function to format for Submit to Database
+    function formatForSubmitAmperageSqFt()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_amperage_sqft").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){variable = 0;}
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(0);
+        //change # to total
+        $("#workletter_amperage_sqft").val(variablefixed);
+        //this input field is saved as a string
+    }
+    //END these work in pairs...
+    
+    //these work in pairs...
+    function formatConduitSizeSqFt()
+    {
+        //parseInt # value after stripping the string of special charactes except period (.)
+        var variable = parseInt($("#workletter_conduit_size_sqft").val().replace(/[^\d\.]/g,''));
+        //if netrentablearea is Nan change to zero
+        if (!variable){variable = 0;}
+        //make sure your number is fixed number with no decimal places
+        var variablefixed = variable.toFixed(0);
+        //make sure commas are correct
+        var variableformatted = variablefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        
+        //change # to total
+        $("#workletter_conduit_size_sqft").val(variableformatted);
+        //this input field is saved as a string
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_conduit_size_sqft", formatConduitSizeSqFt);
+    //make it happen onload
+    $(document).ready(formatConduitSizeSqFt);
+    
+    //Function to format for Submit to Database
+    function formatForSubmitConduitSizeSqFt()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_conduit_size_sqft").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){variable = 0;}
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(0);
+        //change # to total
+        $("#workletter_conduit_size_sqft").val(variablefixed);
+        //this input field is saved as a string
+    }
+    //END these work in pairs...
+    
+    //these work in pairs...
+    function formatElectricalMeterSqFt()
+    {
+        //parseInt # value after stripping the string of special charactes except period (.)
+        var variable = parseInt($("#workletter_electrical_meter_sqft").val().replace(/[^\d\.]/g,''));
+        //if netrentablearea is Nan change to zero
+        if (!variable){variable = 0;}
+        //make sure your number is fixed number with no decimal places
+        var variablefixed = variable.toFixed(0);
+        //make sure commas are correct
+        var variableformatted = variablefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        
+        //change # to total
+        $("#workletter_electrical_meter_sqft").val(variableformatted);
+        //this input field is saved as a string
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_electrical_meter_sqft", formatElectricalMeterSqFt);
+    //make it happen onload
+    $(document).ready(formatElectricalMeterSqFt);
+    
+    //Function to format for Submit to Database
+    function formatForSubmitElectricalMeterSqFt()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_electrical_meter_sqft").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){variable = 0;}
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(0);
+        //change # to total
+        $("#workletter_electrical_meter_sqft").val(variablefixed);
+        //this input field is saved as a string
+    }
+    //END these work in pairs...
+    
+    //these work in pairs...
+    function formatTelephoneSqFt()
+    {
+        //parseInt # value after stripping the string of special charactes except period (.)
+        var variable = parseInt($("#workletter_telephone_sqft").val().replace(/[^\d\.]/g,''));
+        //if netrentablearea is Nan change to zero
+        if (!variable){variable = 0;}
+        //make sure your number is fixed number with no decimal places
+        var variablefixed = variable.toFixed(0);
+        //make sure commas are correct
+        var variableformatted = variablefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        
+        //change # to total
+        $("#workletter_telephone_sqft").val(variableformatted);
+        //this input field is saved as a string
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_telephone_sqft", formatTelephoneSqFt);
+    //make it happen onload
+    $(document).ready(formatTelephoneSqFt);
+    
+    //Function to format for Submit to Database
+    function formatForSubmitTelephoneSqFt()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_telephone_sqft").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){variable = 0;}
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(0);
+        //change # to total
+        $("#workletter_telephone_sqft").val(variablefixed);
+        //this input field is saved as a string
+    }
+    //END these work in pairs...
+    
+    //these work in pairs...
+    function formatSanitarySqFt()
+    {
+        //parseInt # value after stripping the string of special charactes except period (.)
+        var variable = parseInt($("#workletter_sanitary_sqft").val().replace(/[^\d\.]/g,''));
+        //if netrentablearea is Nan change to zero
+        if (!variable){variable = 0;}
+        //make sure your number is fixed number with no decimal places
+        var variablefixed = variable.toFixed(0);
+        //make sure commas are correct
+        var variableformatted = variablefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        
+        //change # to total
+        $("#workletter_sanitary_sqft").val(variableformatted);
+        //this input field is saved as a string
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_sanitary_sqft", formatSanitarySqFt);
+    //make it happen onload
+    $(document).ready(formatSanitarySqFt);
+    
+    //Function to format for Submit to Database
+    function formatForSubmitSanitarySqFt()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_sanitary_sqft").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){variable = 0;}
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(0);
+        //change # to total
+        $("#workletter_sanitary_sqft").val(variablefixed);
+        //this input field is saved as a string
+    }
+    //END these work in pairs...
+    
+    //these work in pairs...
+    function formatSanitaryVentSqFt()
+    {
+        //parseInt # value after stripping the string of special charactes except period (.)
+        var variable = parseInt($("#workletter_sanitary_vent_sqft").val().replace(/[^\d\.]/g,''));
+        //if netrentablearea is Nan change to zero
+        if (!variable){variable = 0;}
+        //make sure your number is fixed number with no decimal places
+        var variablefixed = variable.toFixed(0);
+        //make sure commas are correct
+        var variableformatted = variablefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        
+        //change # to total
+        $("#workletter_sanitary_vent_sqft").val(variableformatted);
+        //this input field is saved as a string
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_sanitary_vent_sqft", formatSanitaryVentSqFt);
+    //make it happen onload
+    $(document).ready(formatSanitaryVentSqFt);
+    
+    //Function to format for Submit to Database
+    function formatForSubmitSanitaryVentSqFt()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_sanitary_vent_sqft").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){variable = 0;}
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(0);
+        //change # to total
+        $("#workletter_sanitary_vent_sqft").val(variablefixed);
+        //this input field is saved as a string
+    }
+    //END these work in pairs...
+    
+    //these work in pairs...
+    function formatGreaseSqFt()
+    {
+        //parseInt # value after stripping the string of special charactes except period (.)
+        var variable = parseInt($("#workletter_grease_sqft").val().replace(/[^\d\.]/g,''));
+        //if netrentablearea is Nan change to zero
+        if (!variable){variable = 0;}
+        //make sure your number is fixed number with no decimal places
+        var variablefixed = variable.toFixed(0);
+        //make sure commas are correct
+        var variableformatted = variablefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        
+        //change # to total
+        $("#workletter_grease_sqft").val(variableformatted);
+        //this input field is saved as a string
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_grease_sqft", formatGreaseSqFt);
+    //make it happen onload
+    $(document).ready(formatGreaseSqFt);
+    
+    //Function to format for Submit to Database
+    function formatForSubmitGreaseSqFt()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_grease_sqft").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){variable = 0;}
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(0);
+        //change # to total
+        $("#workletter_grease_sqft").val(variablefixed);
+        //this input field is saved as a string
+    }
+    //END these work in pairs...
+    
+    //these work in pairs...
+    function formatWaterSqFt()
+    {
+        //parseInt # value after stripping the string of special charactes except period (.)
+        var variable = parseInt($("#workletter_water_sqft").val().replace(/[^\d\.]/g,''));
+        //if netrentablearea is Nan change to zero
+        if (!variable){variable = 0;}
+        //make sure your number is fixed number with no decimal places
+        var variablefixed = variable.toFixed(0);
+        //make sure commas are correct
+        var variableformatted = variablefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        
+        //change # to total
+        $("#workletter_water_sqft").val(variableformatted);
+        //this input field is saved as a string
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_water_sqft", formatWaterSqFt);
+    //make it happen onload
+    $(document).ready(formatWaterSqFt);
+    
+    //Function to format for Submit to Database
+    function formatForSubmitWaterSqFt()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_water_sqft").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){variable = 0;}
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(0);
+        //change # to total
+        $("#workletter_water_sqft").val(variablefixed);
+        //this input field is saved as a string
+    }
+    //END these work in pairs...
+    
+    //these work in pairs...
+    function formatGasSqFt()
+    {
+        //parseInt # value after stripping the string of special charactes except period (.)
+        var variable = parseInt($("#workletter_gas_sqft").val().replace(/[^\d\.]/g,''));
+        //if netrentablearea is Nan change to zero
+        if (!variable){variable = 0;}
+        //make sure your number is fixed number with no decimal places
+        var variablefixed = variable.toFixed(0);
+        //make sure commas are correct
+        var variableformatted = variablefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        
+        //change # to total
+        $("#workletter_gas_sqft").val(variableformatted);
+        //this input field is saved as a string
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_gas_sqft", formatGasSqFt);
+    //make it happen onload
+    $(document).ready(formatGasSqFt);
+    
+    //Function to format for Submit to Database
+    function formatForSubmitGasSqFt()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_gas_sqft").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){variable = 0;}
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(0);
+        //change # to total
+        $("#workletter_gas_sqft").val(variablefixed);
+        //this input field is saved as a string
+    }
+    //END these work in pairs...
+    
+    //these work in pairs...
+    function formatSprinklerStubSqFt()
+    {
+        //parseInt # value after stripping the string of special charactes except period (.)
+        var variable = parseInt($("#workletter_sprinkler_stub_sqft").val().replace(/[^\d\.]/g,''));
+        //if netrentablearea is Nan change to zero
+        if (!variable){variable = 0;}
+        //make sure your number is fixed number with no decimal places
+        var variablefixed = variable.toFixed(0);
+        //make sure commas are correct
+        var variableformatted = variablefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        
+        //change # to total
+        $("#workletter_sprinkler_stub_sqft").val(variableformatted);
+        //this input field is saved as a string
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_sprinkler_stub_sqft", formatSprinklerStubSqFt);
+    //make it happen onload
+    $(document).ready(formatSprinklerStubSqFt);
+    
+    //Function to format for Submit to Database
+    function formatForSubmitSprinklerStubSqFt()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_sprinkler_stub_sqft").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){variable = 0;}
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(0);
+        //change # to total
+        $("#workletter_sprinkler_stub_sqft").val(variablefixed);
+        //this input field is saved as a string
+    }
+    //END these work in pairs...
+    
+    //these work in pairs...
+    function formatSprinklerGridSqFt()
+    {
+        //parseInt # value after stripping the string of special charactes except period (.)
+        var variable = parseInt($("#workletter_sprinkler_grid_sqft").val().replace(/[^\d\.]/g,''));
+        //if netrentablearea is Nan change to zero
+        if (!variable){variable = 0;}
+        //make sure your number is fixed number with no decimal places
+        var variablefixed = variable.toFixed(0);
+        //make sure commas are correct
+        var variableformatted = variablefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        
+        //change # to total
+        $("#workletter_sprinkler_grid_sqft").val(variableformatted);
+        //this input field is saved as a string
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_sprinkler_grid_sqft", formatSprinklerGridSqFt);
+    //make it happen onload
+    $(document).ready(formatSprinklerGridSqFt);
+    
+    //Function to format for Submit to Database
+    function formatForSubmitSprinklerGridSqFt()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_sprinkler_grid_sqft").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){variable = 0;}
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(0);
+        //change # to total
+        $("#workletter_sprinkler_grid_sqft").val(variablefixed);
+        //this input field is saved as a string
+    }
+    //END these work in pairs...
+    
+    //these work in pairs...
+    function formatFireAlarmSqFt()
+    {
+        //parseInt # value after stripping the string of special charactes except period (.)
+        var variable = parseInt($("#workletter_fire_alarm_sqft").val().replace(/[^\d\.]/g,''));
+        //if netrentablearea is Nan change to zero
+        if (!variable){variable = 0;}
+        //make sure your number is fixed number with no decimal places
+        var variablefixed = variable.toFixed(0);
+        //make sure commas are correct
+        var variableformatted = variablefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        
+        //change # to total
+        $("#workletter_fire_alarm_sqft").val(variableformatted);
+        //this input field is saved as a string
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_fire_alarm_sqft", formatFireAlarmSqFt);
+    //make it happen onload
+    $(document).ready(formatFireAlarmSqFt);
+    
+    //Function to format for Submit to Database
+    function formatForSubmitFireAlarmSqFt()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_fire_alarm_sqft").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){variable = 0;}
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(0);
+        //change # to total
+        $("#workletter_fire_alarm_sqft").val(variablefixed);
+        //this input field is saved as a string
+    }
+    //END these work in pairs...
+    
+    //these work in pairs...
+    function formatDemolitionSqFt()
+    {
+        //parseInt # value after stripping the string of special charactes except period (.)
+        var variable = parseInt($("#workletter_demolition_sqft").val().replace(/[^\d\.]/g,''));
+        //if netrentablearea is Nan change to zero
+        if (!variable){variable = 0;}
+        //make sure your number is fixed number with no decimal places
+        var variablefixed = variable.toFixed(0);
+        //make sure commas are correct
+        var variableformatted = variablefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        
+        //change # to total
+        $("#workletter_demolition_sqft").val(variableformatted);
+        //this input field is saved as a string
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_demolition_sqft", formatDemolitionSqFt);
+    //make it happen onload
+    $(document).ready(formatDemolitionSqFt);
+    
+    //Function to format for Submit to Database
+    function formatForSubmitDemolitionSqFt()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_demolition_sqft").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){variable = 0;}
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(0);
+        //change # to total
+        $("#workletter_demolition_sqft").val(variablefixed);
+        //this input field is saved as a string
+    }
+    //END these work in pairs...
+    
+    //these work in pairs...
+    function formatOtherSqFt()
+    {
+        //parseInt # value after stripping the string of special charactes except period (.)
+        var variable = parseInt($("#workletter_other_sqft").val().replace(/[^\d\.]/g,''));
+        //if netrentablearea is Nan change to zero
+        if (!variable){variable = 0;}
+        //make sure your number is fixed number with no decimal places
+        var variablefixed = variable.toFixed(0);
+        //make sure commas are correct
+        var variableformatted = variablefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        
+        //change # to total
+        $("#workletter_other_sqft").val(variableformatted);
+        //this input field is saved as a string
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#workletter_other_sqft", formatOtherSqFt);
+    //make it happen onload
+    $(document).ready(formatOtherSqFt);
+    
+    //Function to format for Submit to Database
+    function formatForSubmitOtherSqFt()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#workletter_other_sqft").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){variable = 0;}
+        //make sure your float is fixed number with no decimal places
+        var variablefixed = variable.toFixed(0);
+        //change # to total
+        $("#workletter_other_sqft").val(variablefixed);
+        //this input field is saved as a string
+    }
+    //END these work in pairs...
+    
+    
+    
+    
+    
+    
+    //Before Submit Run Function(s)
+    $('.formatFunctions').submit(function() {
+      //Runs Function to strip special characters except (.) - Actually here it is an integer
+      formatForSubmitStructureSqFt();
+      formatForSubmitSlabSqFt();
+      formatForSubmitStudsSqFt();
+      formatForSubmitDrywallSqFt();
+      formatForSubmitInsulationSqFt();
+      formatForSubmitServiceDoorSqFt();
+      formatForSubmitStorefrontSqFt();
+      formatForSubmitHVACUnitSqFt();
+      formatForSubmitSupplyDuctSqFt();
+      formatForSubmitExhaustSqFt();
+      formatForSubmitLineSetPathwaysSqFt();
+      formatForSubmitEMSSqFt();
+      formatForSubmitElectricalSqFt();
+      formatForSubmitVoltageSqFt();
+      formatForSubmitAmperageSqFt();
+      formatForSubmitConduitSizeSqFt();
+      formatForSubmitElectricalMeterSqFt();
+      formatForSubmitTelephoneSqFt();
+      formatForSubmitSanitarySqFt();
+      formatForSubmitSanitaryVentSqFt();
+      formatForSubmitGreaseSqFt();
+      formatForSubmitWaterSqFt();
+      formatForSubmitGasSqFt();
+      formatForSubmitSprinklerStubSqFt();
+      formatForSubmitSprinklerGridSqFt();
+      formatForSubmitFireAlarmSqFt();
+      formatForSubmitDemolitionSqFt();
+      formatForSubmitOtherSqFt();
+    });
+    
+});
+</script>
