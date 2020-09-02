@@ -10,15 +10,25 @@ class WorkletterTemplatesController < ApplicationController
   # GET /workletter_templates/1
   # GET /workletter_templates/1.json
   def show
+    @project = Project.find(@workletter_template.project_id)
   end
 
   # GET /workletter_templates/new
   def new
     @workletter_template = WorkletterTemplate.new
+    @project_id = params[:project_id]
+    #I need this project_id
+    @project = Project.find(params[:project_id])
+    
+    @workletter_templates = @project.workletter_templates.all
   end
 
   # GET /workletter_templates/1/edit
   def edit
+    @project_id = @workletter_template.project_id
+    @project = Project.find(@workletter_template.project_id)
+    
+    @workletter_templates = @project.workletter_templates.all
   end
 
   # POST /workletter_templates

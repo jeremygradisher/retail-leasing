@@ -10,21 +10,61 @@ class WorklettersController < ApplicationController
   # GET /workletters/1
   # GET /workletters/1.json
   def show
+    @area = @workletter.area_id
+    @project = Project.find(@workletter.project_id)
   end
 
   # GET /workletters/new
   def new
     @workletter = Workletter.new
+    
+    @area = Area.find(params[:area_id])
+    @area_id = @area.id
+    @map_id = @area.map_id
+    @project_id = @area.project_id
+    @name = @area.name
+    #@map = Map.find(params[:map_id])
+    
+    #this needs a change:
+    #@deal = @area.deals.first
+    if @area.primary_deal == nil || @area.primary_deal == ''
+      @deal = @area.deals.first
+    elsif Deal.where(id: @area.primary_deal.to_i).exists?
+      @deal = Deal.find(@area.primary_deal.to_i)
+    else
+      @deal = @area.deals.first
+    end
+    
+    @project = Project.find(@area.project_id)
+    @workletter_templates = @project.workletter_templates.all
   end
 
   # GET /workletters/1/edit
   def edit
+    @area = Area.find(@workletter.area_id)
+    @project = Project.find(@workletter.project_id)
+    
+    if @area.primary_deal == nil || @area.primary_deal == ''
+      @deal = @area.deals.first
+    elsif Deal.where(id: @area.primary_deal.to_i).exists?
+      @deal = Deal.find(@area.primary_deal.to_i)
+    else
+      @deal = @area.deals.first
+    end
+   
+    @project_id = @area.project_id
+    @map_id = @area.map_id
+    @area_id = @area.id
+    @name = @area.name
+    
+    @workletter_templates = @project.workletter_templates.all
   end
 
   # POST /workletters
   # POST /workletters.json
   def create
     @workletter = Workletter.new(workletter_params)
+    @project = Project.find(@workletter.project_id)
 
     respond_to do |format|
       if @workletter.save
@@ -40,6 +80,8 @@ class WorklettersController < ApplicationController
   # PATCH/PUT /workletters/1
   # PATCH/PUT /workletters/1.json
   def update
+    @project = Project.find(@workletter.project_id)
+    
     respond_to do |format|
       if @workletter.update(workletter_params)
         format.html { redirect_to @workletter, notice: 'Workletter was successfully updated.' }
