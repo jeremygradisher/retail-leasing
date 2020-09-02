@@ -1,0 +1,1106 @@
+  
+
+
+  <div class="row">
+    <div class="col-xs-4" style="text-align:center">
+      <strong>LL Work (per SqFt):</strong> $<%= number_with_delimiter(@area.workletter.ll_work, :delimiter => ',') %>
+    </div>
+    <div class="col-xs-4" style="text-align:center">
+     <strong>LL Work Cost:</strong> $<%= number_with_delimiter(@area.workletter.ll_work_cost, :delimiter => ',') %>
+    </div>
+    <div class="col-xs-4" style="text-align:center">
+      <strong>LL Count Total:</strong> <%= number_with_delimiter(@area.workletter.ll_count_total, :delimiter => ',') %>
+    </div>
+  </div>
+  
+  <hr>
+  
+  <style>
+  .affix {
+      top: 0;
+      /*width: 83.3333333%;*/
+      /*width: 975px;*/
+      background-color:#fff !important;
+      z-index: 999999;
+  }
+
+  .affix + .container {
+      padding-top: 70px;
+  }
+  
+  </style>
+  
+  <div class="row">
+    <div style="background-color:#fff;">
+      <div data-spy="affix" data-offset-top="800" class="responsive-none">
+        <div class="col-xs-1"><strong class="affix-smaller">Scope:</strong></div>
+        <div class="col-xs-4"><strong class="affix-smaller">Description:</strong></div>
+        <div class="col-xs-1" style="text-align:center"><strong class="affix-smaller">Typical:</strong></div>
+        <div class="col-xs-3" style="text-align:center"><strong class="affix-smaller">Responsibility:</strong><!--<br>LL | Tenant | N/A--></div>
+        <div class="col-xs-1" style="text-align:center"><strong class="affix-smaller">Complete:</strong></div>
+        <div class="col-xs-2" style="text-align:center"><strong class="affix-smaller">Date:</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+  
+  
+  <div class="row">
+    <div class="col-xs-1 responsive-center responsive100">
+      <strong>Structure:</strong>
+    </div>
+    <div class="col-xs-4 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@area.workletter.structure_description) %>
+      <br>Cost: <%= number_to_currency(@area.workletter.structure_cost, :unit => "$") %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @area.workletter.structure_typical == true %>
+        <span class="fa fa-check-square ws-checked-typical"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @area.workletter.structure %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Complete:</span>
+      <% if @area.workletter.structure_complete == true %>
+        <span class="fa fa-check-square ws-check-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-complete"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-2" style="text-align:center">
+      <span class="responsive-only">Completion:</span>
+      <%= @area.workletter.structure_date %>
+    </div>
+  </div>
+  
+  <hr>
+  
+  
+  
+  <div class="row">
+    <div class="col-xs-1 responsive-center responsive100">
+      <strong>Slab:</strong>
+    </div>
+    <div class="col-xs-4 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@area.workletter.slab_description) %>
+      <br>Cost: <%= number_to_currency(@area.workletter.slab_cost, :unit => "$") %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @area.workletter.slab_typical == true %>
+        <span class="fa fa-check-square ws-checked-typical"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @area.workletter.slab %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Complete:</span>
+      <% if @area.workletter.slab_complete == true %>
+        <span class="fa fa-check-square ws-check-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-complete"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-2" style="text-align:center">
+      <span class="responsive-only">Completion:</span>
+      <%= @area.workletter.slab_date %>
+    </div>
+  </div>
+  
+  <hr>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <div class="row">
+    <div class="col-xs-1 responsive-center responsive100">
+      <strong>Studs:</strong>
+    </div>
+    <div class="col-xs-4 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@area.workletter.studs_description) %>
+      <br>Cost: <%= number_to_currency(@area.workletter.studs_cost, :unit => "$") %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @area.workletter.studs_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @area.workletter.studs %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Complete:</span>
+      <% if @area.workletter.studs_complete == true %>
+        <span class="fa fa-check-square ws-check-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-complete"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-2" style="text-align:center">
+      <span class="responsive-only">Completion:</span>
+      <%= @area.workletter.studs_date %>
+    </div>
+  </div>
+  
+  <hr>
+
+  <div class="row">
+    <div class="col-xs-1 responsive-center responsive100">
+      <strong>Drywall:</strong>
+    </div>
+    <div class="col-xs-4 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@area.workletter.drywall_description) %>
+      <br>Cost: <%= number_to_currency(@area.workletter.drywall_cost, :unit => "$") %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @area.workletter.drywall_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @area.workletter.drywall %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Complete:</span>
+      <% if @area.workletter.drywall_complete == true %>
+        <span class="fa fa-check-square ws-check-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-complete"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-2" style="text-align:center">
+      <span class="responsive-only">Completion:</span>
+      <%= @area.workletter.drywall_date %>
+    </div>
+  </div>
+  
+  <hr>
+  
+  <div class="row">
+    <div class="col-xs-1 responsive-center responsive100">
+      <strong>Insulation:</strong>
+    </div>
+    <div class="col-xs-4 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@area.workletter.insulation_description) %>
+      <br>Cost: <%= number_to_currency(@area.workletter.insulation_cost, :unit => "$") %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @area.workletter.insulation_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @area.workletter.insulation %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Complete:</span>
+      <% if @area.workletter.insulation_complete == true %>
+        <span class="fa fa-check-square ws-check-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-complete"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-2" style="text-align:center">
+      <span class="responsive-only">Completion:</span>
+      <%= @area.workletter.insulation_date %>
+    </div>
+  </div>
+  
+  <hr>
+  
+  <div class="row">
+    <div class="col-xs-1 responsive-center responsive100">
+      <strong>Service Door:</strong>
+    </div>
+    <div class="col-xs-4 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@area.workletter.servicedoor_description) %>
+      <br>Cost: <%= number_to_currency(@area.workletter.service_door_cost, :unit => "$") %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @area.workletter.service_door_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @area.workletter.service_door %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Complete:</span>
+      <% if @area.workletter.service_door_complete == true %>
+        <span class="fa fa-check-square ws-check-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-complete"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-2" style="text-align:center">
+      <span class="responsive-only">Completion:</span>
+      <%= @area.workletter.service_door_date %>
+    </div>
+  </div>
+  
+  <hr>
+  
+  <div class="row">
+    <div class="col-xs-1 responsive-center responsive100">
+      <strong>Storefront:</strong>
+    </div>
+    <div class="col-xs-4 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@area.workletter.storefront_description) %>
+      <br>Cost: <%= number_to_currency(@area.workletter.storefront_cost, :unit => "$") %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @area.workletter.storefront_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @area.workletter.storefront %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Complete:</span>
+      <% if @area.workletter.storefront_complete == true %>
+        <span class="fa fa-check-square ws-check-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-complete"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-2" style="text-align:center">
+      <span class="responsive-only">Completion:</span>
+      <%= @area.workletter.storefront_date %>
+    </div>
+  </div>
+  
+  <hr>
+
+
+  <div class="row">
+    <div class="col-xs-1 responsive-center responsive100">
+      <strong>HVAC Unit(s):</strong>
+    </div>
+    <div class="col-xs-4 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@area.workletter.untis_description) %>
+      <br>Cost: <%= number_to_currency(@area.workletter.unit_cost, :unit => "$") %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @area.workletter.unit_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @area.workletter.unit %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Complete:</span>
+      <% if @area.workletter.unit_complete == true %>
+        <span class="fa fa-check-square ws-check-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-complete"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-2" style="text-align:center">
+      <span class="responsive-only">Completion:</span>
+      <%= @area.workletter.unit_date %>
+    </div>
+  </div>
+  
+  <hr>
+
+
+  
+  <div class="row">
+    <div class="col-xs-1 responsive-center responsive100">
+      <strong>Supply Duct:</strong>
+    </div>
+    <div class="col-xs-4 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@area.workletter.supplyduct_description) %>
+      <br>Cost: <%= number_to_currency(@area.workletter.supply_cost, :unit => "$") %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @area.workletter.supply_duct_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @area.workletter.supply %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Complete:</span>
+      <% if @area.workletter.supply_duct_complete == true %>
+        <span class="fa fa-check-square ws-check-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-complete"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-2" style="text-align:center">
+      <span class="responsive-only">Completion:</span>
+      <%= @area.workletter.supply_date %>
+    </div>
+  </div>
+  
+  <hr>
+  
+  <div class="row">
+    <div class="col-xs-1 responsive-center responsive100">
+      <strong>Exhaust:</strong>
+    </div>
+    <div class="col-xs-4 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@area.workletter.exhaustduct_description) %>
+      <br>Cost: <%= number_to_currency(@area.workletter.exhaust_cost, :unit => "$") %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @area.workletter.exhaust_duct_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @area.workletter.exhaust %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Complete:</span>
+      <% if @area.workletter.exhaust_duct_complete == true %>
+        <span class="fa fa-check-square ws-check-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-complete"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-2" style="text-align:center">
+      <span class="responsive-only">Completion:</span>
+      <%= @area.workletter.exhaust_date %>
+    </div>
+  </div>
+  
+  <hr>
+  
+
+  
+  <div class="row">
+    <div class="col-xs-1 responsive-center responsive100">
+      <strong>Line Set Pathways:</strong>
+    </div>
+    <div class="col-xs-4 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@area.workletter.linesetpathway_description) %>
+      <br>Cost: <%= number_to_currency(@area.workletter.line_set_pathways_cost, :unit => "$") %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @area.workletter.line_set_pathways_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @area.workletter.line_set_pathways %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Complete:</span>
+      <% if @area.workletter.line_set_pathways_complete == true %>
+        <span class="fa fa-check-square ws-check-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-complete"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-2" style="text-align:center">
+      <span class="responsive-only">Completion:</span>
+      <%= @area.workletter.line_set_pathways_date %>
+    </div>
+  </div>
+  
+  <hr>
+  
+  <div class="row">
+    <div class="col-xs-1 responsive-center responsive100">
+      <strong>EMS:</strong>
+    </div>
+    <div class="col-xs-4 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@area.workletter.emergency_description) %>
+      <br>Cost: <%= number_to_currency(@area.workletter.ems_cost, :unit => "$") %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @area.workletter.ems_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @area.workletter.ems %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Complete:</span>
+      <% if @area.workletter.ems_complete == true %>
+        <span class="fa fa-check-square ws-check-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-complete"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-2" style="text-align:center">
+      <span class="responsive-only">Completion:</span>
+      <%= @area.workletter.ems_date %>
+    </div>
+  </div>
+  
+  <hr>
+  
+  
+  <div class="row">
+    <div class="col-xs-1 responsive-center responsive100">
+      <strong>Electrical:</strong>
+    </div>
+    <div class="col-xs-4 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@area.workletter.electrical_description) %>
+      <br>Cost: <%= number_to_currency(@area.workletter.electrical_cost, :unit => "$") %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @area.workletter.electrical_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @area.workletter.electrical %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Complete:</span>
+      <% if @area.workletter.electrical_complete == true %>
+        <span class="fa fa-check-square ws-check-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-complete"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-2" style="text-align:center">
+      <span class="responsive-only">Completion:</span>
+      <%= @area.workletter.electrical_date %>
+    </div>
+  </div>
+  
+  <hr>
+  
+  
+  
+  
+  
+    <div class="row">
+    <div class="col-xs-1 responsive-center responsive100">
+      <strong>Voltage:</strong>
+    </div>
+    <div class="col-xs-4 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@area.workletter.voltage_description) %>
+      <br>Cost: <%= number_to_currency(@area.workletter.voltage_cost, :unit => "$") %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @area.workletter.voltage_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @area.workletter.voltage %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Complete:</span>
+      <% if @area.workletter.voltage_complete == true %>
+        <span class="fa fa-check-square ws-check-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-complete"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-2" style="text-align:center">
+      <span class="responsive-only">Completion:</span>
+      <%= @area.workletter.voltage_date %>
+    </div>
+  </div>
+  
+  <hr>
+  
+  <div class="row">
+    <div class="col-xs-1 responsive-center responsive100">
+      <strong>Amperage:</strong>
+    </div>
+    <div class="col-xs-4 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@area.workletter.amperage_description) %>
+      <br>Cost: <%= number_to_currency(@area.workletter.amperage_cost, :unit => "$") %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @area.workletter.amperage_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @area.workletter.amperage %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Complete:</span>
+      <% if @area.workletter.amperage_complete == true %>
+        <span class="fa fa-check-square ws-check-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-complete"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-2" style="text-align:center">
+      <span class="responsive-only">Completion:</span>
+      <%= @area.workletter.amperage_date %>
+    </div>
+  </div>
+  
+  <hr>
+  
+  <div class="row">
+    <div class="col-xs-1 responsive-center responsive100">
+      <strong>Conduit Size:</strong>
+    </div>
+    <div class="col-xs-4 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@area.workletter.conduitsize_description) %>
+      <br>Cost: <%= number_to_currency(@area.workletter.conduit_size_cost, :unit => "$") %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @area.workletter.conduit_size_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @area.workletter.conduit_size %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Complete:</span>
+      <% if @area.workletter.conduit_size_complete == true %>
+        <span class="fa fa-check-square ws-check-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-complete"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-2" style="text-align:center">
+      <span class="responsive-only">Completion:</span>
+      <%= @area.workletter.conduit_size_date %>
+    </div>
+  </div>
+  
+  <hr>
+  
+  
+  
+  <div class="row">
+    <div class="col-xs-1 responsive-center responsive100">
+      <strong>Electrical Meter:</strong>
+    </div>
+    <div class="col-xs-4 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@area.workletter.meter_description) %>
+      <br>Cost: <%= number_to_currency(@area.workletter.electrical_meter_cost, :unit => "$") %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @area.workletter.electrical_meter_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @area.workletter.electrical_meter %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Complete:</span>
+      <% if @area.workletter.electrical_meter_complete == true %>
+        <span class="fa fa-check-square ws-check-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-complete"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-2" style="text-align:center">
+      <span class="responsive-only">Completion:</span>
+      <%= @area.workletter.electrical_meter_date %>
+    </div>
+  </div>
+  
+  <hr>
+  
+  <div class="row">
+    <div class="col-xs-1 responsive-center responsive100">
+      <strong>Telephone:</strong>
+    </div>
+    <div class="col-xs-4 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@area.workletter.telephone_description) %>
+      <br>Cost: <%= number_to_currency(@area.workletter.telephone_cost, :unit => "$") %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @area.workletter.telephone_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @area.workletter.tele_conduit_size %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Complete:</span>
+      <% if @area.workletter.telephone_complete == true %>
+        <span class="fa fa-check-square ws-check-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-complete"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-2" style="text-align:center">
+      <span class="responsive-only">Completion:</span>
+      <%= @area.workletter.tele_conduit_size_date %>
+    </div>
+  </div>
+  
+  <hr>
+  
+  <div class="row">
+    <div class="col-xs-1 responsive-center responsive100">
+      <strong>Sanitary:</strong>
+    </div>
+    <div class="col-xs-4 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@area.workletter.sanitary_description) %>
+      <br>Cost: <%= number_to_currency(@area.workletter.sanitary_cost, :unit => "$") %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @area.workletter.sanitary_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @area.workletter.sanitary %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Complete:</span>
+      <% if @area.workletter.sanitary_complete == true %>
+        <span class="fa fa-check-square ws-check-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-complete"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-2" style="text-align:center">
+      <span class="responsive-only">Completion:</span>
+      <%= @area.workletter.sanitary_date %>
+    </div>
+  </div>
+  
+  <hr>
+  
+  <div class="row">
+    <div class="col-xs-1 responsive-center responsive100">
+      <strong>Sanitary Vent:</strong>
+    </div>
+    <div class="col-xs-4 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@area.workletter.sanitaryvent_description) %>
+      <br>Cost: <%= number_to_currency(@area.workletter.sanitary_vent_cost, :unit => "$") %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @area.workletter.sanitary_vent_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @area.workletter.sanitary_vent %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Complete:</span>
+      <% if @area.workletter.sanitary_vent_complete == true %>
+        <span class="fa fa-check-square ws-check-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-complete"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-2" style="text-align:center">
+      <span class="responsive-only">Completion:</span>
+      <%= @area.workletter.sanitary_vent_date %>
+    </div>
+  </div>
+  
+  <hr>
+  
+  <div class="row">
+    <div class="col-xs-1 responsive-center responsive100">
+      <strong>Grease:</strong>
+    </div>
+    <div class="col-xs-4 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@area.workletter.grease_description) %>
+      <br>Cost: <%= number_to_currency(@area.workletter.grease_cost, :unit => "$") %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @area.workletter.grease_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @area.workletter.grease %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Complete:</span>
+      <% if @area.workletter.grease_complete == true %>
+        <span class="fa fa-check-square ws-check-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-complete"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-2" style="text-align:center">
+      <span class="responsive-only">Completion:</span>
+      <%= @area.workletter.grease_date %>
+    </div>
+  </div>
+  
+  <hr>
+  
+  <div class="row">
+    <div class="col-xs-1 responsive-center responsive100">
+      <strong>Water:</strong>
+    </div>
+    <div class="col-xs-4 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@area.workletter.water_description) %>
+      <br>Cost: <%= number_to_currency(@area.workletter.water_cost, :unit => "$") %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @area.workletter.water_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @area.workletter.water %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Complete:</span>
+      <% if @area.workletter.water_complete == true %>
+        <span class="fa fa-check-square ws-check-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-complete"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-2" style="text-align:center">
+      <span class="responsive-only">Completion:</span>
+      <%= @area.workletter.water_date %>
+    </div>
+  </div>
+  
+  <hr>
+  
+<div class="row">
+    <div class="col-xs-1 responsive-center responsive100">
+      <strong>Gas:</strong>
+    </div>
+    <div class="col-xs-4 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@area.workletter.gas_description) %>
+      <br>Cost: <%= number_to_currency(@area.workletter.gas_cost, :unit => "$") %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @area.workletter.gas_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @area.workletter.gas %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Complete:</span>
+      <% if @area.workletter.gas_complete == true %>
+        <span class="fa fa-check-square ws-check-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-complete"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-2" style="text-align:center">
+      <span class="responsive-only">Completion:</span>
+      <%= @area.workletter.gas_date %>
+    </div>
+  </div>
+  
+  <hr>
+  
+  <div class="row">
+    <div class="col-xs-1 responsive-center responsive100">
+      <strong>Sprinkler Stub:</strong>
+    </div>
+    <div class="col-xs-4 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@area.workletter.sprinklerstub_description) %>
+      <br>Cost: <%= number_to_currency(@area.workletter.sprinkler_stub_cost, :unit => "$") %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @area.workletter.sprinkler_stub_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @area.workletter.sprinkler_stub %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Complete:</span>
+      <% if @area.workletter.sprinkler_stub_complete == true %>
+        <span class="fa fa-check-square ws-check-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-complete"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-2" style="text-align:center">
+      <span class="responsive-only">Completion:</span>
+      <%= @area.workletter.sprinkler_stub_date %>
+    </div>
+  </div>
+  
+  <hr>
+  
+  <div class="row">
+    <div class="col-xs-1 responsive-center responsive100">
+      <strong>Sprinkler Grid:</strong>
+    </div>
+    <div class="col-xs-4 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@area.workletter.sprinklergrid_description) %>
+      <br>Cost: <%= number_to_currency(@area.workletter.sprinkler_grid_cost, :unit => "$") %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @area.workletter.sprinkler_grid_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @area.workletter.sprinkler_grid %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Complete:</span>
+      <% if @area.workletter.sprinkler_grid_complete == true %>
+        <span class="fa fa-check-square ws-check-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-complete"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-2" style="text-align:center">
+      <span class="responsive-only">Completion:</span>
+      <%= @area.workletter.sprinkler_grid_date %>
+    </div>
+  </div>
+  
+  <hr>
+  
+  <div class="row">
+    <div class="col-xs-1 responsive-center responsive100">
+      <strong>Fire Alarm:</strong>
+    </div>
+    <div class="col-xs-4 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@area.workletter.firealarm_description) %>
+      <br>Cost: <%= number_to_currency(@area.workletter.fire_alarm_cost, :unit => "$") %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @area.workletter.fire_alarm_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @area.workletter.fire_alarm %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Complete:</span>
+      <% if @area.workletter.fire_alarm_complete == true %>
+        <span class="fa fa-check-square ws-check-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-complete"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-2" style="text-align:center">
+      <span class="responsive-only">Completion:</span>
+      <%= @area.workletter.fire_alarm_date %>
+    </div>
+  </div>
+  
+  <hr>
+  
+  <div class="row">
+    <div class="col-xs-1 responsive-center responsive100">
+      <strong>Demolition:</strong>
+    </div>
+    <div class="col-xs-4 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@area.workletter.demolition_description) %>
+      <br>Cost: <%= number_to_currency(@area.workletter.demolition_cost, :unit => "$") %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @area.workletter.demolition_typical == true %>
+        <span class="fa fa-check-square ws-checked-typical"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @area.workletter.demolition %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Complete:</span>
+      <% if @area.workletter.demolition_complete == true %>
+        <span class="fa fa-check-square ws-check-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-complete"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-2" style="text-align:center">
+      <span class="responsive-only">Completion:</span>
+      <%= @area.workletter.demolition_date %>
+    </div>
+  </div>
+  
+  <hr>
+  
+  <div class="row">
+    <div class="col-xs-1 responsive-center responsive100">
+      <strong>Other:</strong>
+    </div>
+    <div class="col-xs-4 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@area.workletter.other_description) %>
+      <br>Cost: <%= number_to_currency(@area.workletter.other_cost, :unit => "$") %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @area.workletter.other_typical == true %>
+        <span class="fa fa-check-square ws-checked-typical"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @area.workletter.other %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Complete:</span>
+      <% if @area.workletter.other_complete == true %>
+        <span class="fa fa-check-square ws-check-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-complete"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-2" style="text-align:center">
+      <span class="responsive-only">Completion:</span>
+      <%= @area.workletter.other_date %>
+    </div>
+  </div>
+  
+  <hr>
