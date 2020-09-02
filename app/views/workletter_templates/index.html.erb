@@ -1,208 +1,68 @@
-<%- model_class = WorkletterTemplate -%>
-<div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
-</div>
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:template_name) %></th>
-      <th><%= model_class.human_attribute_name(:project_id) %></th>
-      <th><%= model_class.human_attribute_name(:slab) %></th>
-      <th><%= model_class.human_attribute_name(:slab_description) %></th>
-      <th><%= model_class.human_attribute_name(:slab_typical) %></th>
-      <th><%= model_class.human_attribute_name(:studs) %></th>
-      <th><%= model_class.human_attribute_name(:studs_description) %></th>
-      <th><%= model_class.human_attribute_name(:studs_typical) %></th>
-      <th><%= model_class.human_attribute_name(:drywall) %></th>
-      <th><%= model_class.human_attribute_name(:drywall_description) %></th>
-      <th><%= model_class.human_attribute_name(:drywall_typical) %></th>
-      <th><%= model_class.human_attribute_name(:insulation) %></th>
-      <th><%= model_class.human_attribute_name(:insulation_description) %></th>
-      <th><%= model_class.human_attribute_name(:insulation_typical) %></th>
-      <th><%= model_class.human_attribute_name(:service_door) %></th>
-      <th><%= model_class.human_attribute_name(:service_door_description) %></th>
-      <th><%= model_class.human_attribute_name(:service_door_typical) %></th>
-      <th><%= model_class.human_attribute_name(:storefront) %></th>
-      <th><%= model_class.human_attribute_name(:storefront_description) %></th>
-      <th><%= model_class.human_attribute_name(:storefront_typical) %></th>
-      <th><%= model_class.human_attribute_name(:supply) %></th>
-      <th><%= model_class.human_attribute_name(:supply_description) %></th>
-      <th><%= model_class.human_attribute_name(:supply_typical) %></th>
-      <th><%= model_class.human_attribute_name(:exhaust) %></th>
-      <th><%= model_class.human_attribute_name(:exhaust_description) %></th>
-      <th><%= model_class.human_attribute_name(:exhaust_typical) %></th>
-      <th><%= model_class.human_attribute_name(:unit) %></th>
-      <th><%= model_class.human_attribute_name(:unit_description) %></th>
-      <th><%= model_class.human_attribute_name(:unit_typical) %></th>
-      <th><%= model_class.human_attribute_name(:line_set_pathways) %></th>
-      <th><%= model_class.human_attribute_name(:line_set_pathways_description) %></th>
-      <th><%= model_class.human_attribute_name(:line_set_pathways_typical) %></th>
-      <th><%= model_class.human_attribute_name(:ems) %></th>
-      <th><%= model_class.human_attribute_name(:ems_description) %></th>
-      <th><%= model_class.human_attribute_name(:ems_typical) %></th>
-      <th><%= model_class.human_attribute_name(:voltage) %></th>
-      <th><%= model_class.human_attribute_name(:voltage_description) %></th>
-      <th><%= model_class.human_attribute_name(:voltage_typical) %></th>
-      <th><%= model_class.human_attribute_name(:amperage) %></th>
-      <th><%= model_class.human_attribute_name(:amperage_description) %></th>
-      <th><%= model_class.human_attribute_name(:amperage_typical) %></th>
-      <th><%= model_class.human_attribute_name(:conduit_size) %></th>
-      <th><%= model_class.human_attribute_name(:conduit_size_description) %></th>
-      <th><%= model_class.human_attribute_name(:conduit_size_typical) %></th>
-      <th><%= model_class.human_attribute_name(:electrical) %></th>
-      <th><%= model_class.human_attribute_name(:electrical_description) %></th>
-      <th><%= model_class.human_attribute_name(:electrical_typical) %></th>
-      <th><%= model_class.human_attribute_name(:electrical_meter) %></th>
-      <th><%= model_class.human_attribute_name(:electrical_meter_description) %></th>
-      <th><%= model_class.human_attribute_name(:electrical_meter_typical) %></th>
-      <th><%= model_class.human_attribute_name(:telephone) %></th>
-      <th><%= model_class.human_attribute_name(:telephone_description) %></th>
-      <th><%= model_class.human_attribute_name(:telephone_typical) %></th>
-      <th><%= model_class.human_attribute_name(:sanitary) %></th>
-      <th><%= model_class.human_attribute_name(:sanitary_description) %></th>
-      <th><%= model_class.human_attribute_name(:sanitary_typical) %></th>
-      <th><%= model_class.human_attribute_name(:sanitary_vent) %></th>
-      <th><%= model_class.human_attribute_name(:sanitary_vent_description) %></th>
-      <th><%= model_class.human_attribute_name(:sanitary_vent_typical) %></th>
-      <th><%= model_class.human_attribute_name(:grease) %></th>
-      <th><%= model_class.human_attribute_name(:grease_description) %></th>
-      <th><%= model_class.human_attribute_name(:grease_typical) %></th>
-      <th><%= model_class.human_attribute_name(:water) %></th>
-      <th><%= model_class.human_attribute_name(:water_description) %></th>
-      <th><%= model_class.human_attribute_name(:water_typical) %></th>
-      <th><%= model_class.human_attribute_name(:gas) %></th>
-      <th><%= model_class.human_attribute_name(:gas_description) %></th>
-      <th><%= model_class.human_attribute_name(:gas_typical) %></th>
-      <th><%= model_class.human_attribute_name(:sprinkler_stub) %></th>
-      <th><%= model_class.human_attribute_name(:sprinkler_stub_description) %></th>
-      <th><%= model_class.human_attribute_name(:sprinkler_stub_typical) %></th>
-      <th><%= model_class.human_attribute_name(:sprinkler_grid) %></th>
-      <th><%= model_class.human_attribute_name(:sprinkler_grid_description) %></th>
-      <th><%= model_class.human_attribute_name(:sprinkler_grid_typical) %></th>
-      <th><%= model_class.human_attribute_name(:fire_alarm) %></th>
-      <th><%= model_class.human_attribute_name(:fire_alarm_description) %></th>
-      <th><%= model_class.human_attribute_name(:fire_alarm_typical) %></th>
-      <th><%= model_class.human_attribute_name(:structure) %></th>
-      <th><%= model_class.human_attribute_name(:structure_description) %></th>
-      <th><%= model_class.human_attribute_name(:structure_typical) %></th>
-      <th><%= model_class.human_attribute_name(:demolition) %></th>
-      <th><%= model_class.human_attribute_name(:demolition_description) %></th>
-      <th><%= model_class.human_attribute_name(:demolition_typical) %></th>
-      <th><%= model_class.human_attribute_name(:other) %></th>
-      <th><%= model_class.human_attribute_name(:other_description) %></th>
-      <th><%= model_class.human_attribute_name(:other_typical) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @workletter_templates.each do |workletter_template| %>
-      <tr>
-        <td><%= link_to workletter_template.id, workletter_template_path(workletter_template) %></td>
-        <td><%= workletter_template.template_name %></td>
-        <td><%= workletter_template.project_id %></td>
-        <td><%= workletter_template.slab %></td>
-        <td><%= workletter_template.slab_description %></td>
-        <td><%= workletter_template.slab_typical %></td>
-        <td><%= workletter_template.studs %></td>
-        <td><%= workletter_template.studs_description %></td>
-        <td><%= workletter_template.studs_typical %></td>
-        <td><%= workletter_template.drywall %></td>
-        <td><%= workletter_template.drywall_description %></td>
-        <td><%= workletter_template.drywall_typical %></td>
-        <td><%= workletter_template.insulation %></td>
-        <td><%= workletter_template.insulation_description %></td>
-        <td><%= workletter_template.insulation_typical %></td>
-        <td><%= workletter_template.service_door %></td>
-        <td><%= workletter_template.service_door_description %></td>
-        <td><%= workletter_template.service_door_typical %></td>
-        <td><%= workletter_template.storefront %></td>
-        <td><%= workletter_template.storefront_description %></td>
-        <td><%= workletter_template.storefront_typical %></td>
-        <td><%= workletter_template.supply %></td>
-        <td><%= workletter_template.supply_description %></td>
-        <td><%= workletter_template.supply_typical %></td>
-        <td><%= workletter_template.exhaust %></td>
-        <td><%= workletter_template.exhaust_description %></td>
-        <td><%= workletter_template.exhaust_typical %></td>
-        <td><%= workletter_template.unit %></td>
-        <td><%= workletter_template.unit_description %></td>
-        <td><%= workletter_template.unit_typical %></td>
-        <td><%= workletter_template.line_set_pathways %></td>
-        <td><%= workletter_template.line_set_pathways_description %></td>
-        <td><%= workletter_template.line_set_pathways_typical %></td>
-        <td><%= workletter_template.ems %></td>
-        <td><%= workletter_template.ems_description %></td>
-        <td><%= workletter_template.ems_typical %></td>
-        <td><%= workletter_template.voltage %></td>
-        <td><%= workletter_template.voltage_description %></td>
-        <td><%= workletter_template.voltage_typical %></td>
-        <td><%= workletter_template.amperage %></td>
-        <td><%= workletter_template.amperage_description %></td>
-        <td><%= workletter_template.amperage_typical %></td>
-        <td><%= workletter_template.conduit_size %></td>
-        <td><%= workletter_template.conduit_size_description %></td>
-        <td><%= workletter_template.conduit_size_typical %></td>
-        <td><%= workletter_template.electrical %></td>
-        <td><%= workletter_template.electrical_description %></td>
-        <td><%= workletter_template.electrical_typical %></td>
-        <td><%= workletter_template.electrical_meter %></td>
-        <td><%= workletter_template.electrical_meter_description %></td>
-        <td><%= workletter_template.electrical_meter_typical %></td>
-        <td><%= workletter_template.telephone %></td>
-        <td><%= workletter_template.telephone_description %></td>
-        <td><%= workletter_template.telephone_typical %></td>
-        <td><%= workletter_template.sanitary %></td>
-        <td><%= workletter_template.sanitary_description %></td>
-        <td><%= workletter_template.sanitary_typical %></td>
-        <td><%= workletter_template.sanitary_vent %></td>
-        <td><%= workletter_template.sanitary_vent_description %></td>
-        <td><%= workletter_template.sanitary_vent_typical %></td>
-        <td><%= workletter_template.grease %></td>
-        <td><%= workletter_template.grease_description %></td>
-        <td><%= workletter_template.grease_typical %></td>
-        <td><%= workletter_template.water %></td>
-        <td><%= workletter_template.water_description %></td>
-        <td><%= workletter_template.water_typical %></td>
-        <td><%= workletter_template.gas %></td>
-        <td><%= workletter_template.gas_description %></td>
-        <td><%= workletter_template.gas_typical %></td>
-        <td><%= workletter_template.sprinkler_stub %></td>
-        <td><%= workletter_template.sprinkler_stub_description %></td>
-        <td><%= workletter_template.sprinkler_stub_typical %></td>
-        <td><%= workletter_template.sprinkler_grid %></td>
-        <td><%= workletter_template.sprinkler_grid_description %></td>
-        <td><%= workletter_template.sprinkler_grid_typical %></td>
-        <td><%= workletter_template.fire_alarm %></td>
-        <td><%= workletter_template.fire_alarm_description %></td>
-        <td><%= workletter_template.fire_alarm_typical %></td>
-        <td><%= workletter_template.structure %></td>
-        <td><%= workletter_template.structure_description %></td>
-        <td><%= workletter_template.structure_typical %></td>
-        <td><%= workletter_template.demolition %></td>
-        <td><%= workletter_template.demolition_description %></td>
-        <td><%= workletter_template.demolition_typical %></td>
-        <td><%= workletter_template.other %></td>
-        <td><%= workletter_template.other_description %></td>
-        <td><%= workletter_template.other_typical %></td>
-        <td><%=l workletter_template.created_at %></td>
-        <td>
-          <%= link_to t('.show', :default => t("helpers.links.show")),
-                      workletter_template_path(workletter_template), :class => 'btn btn-default btn-xs' %>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_workletter_template_path(workletter_template), :class => 'btn btn-default btn-xs' %>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      workletter_template_path(workletter_template),
-                      :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                      :class => 'btn btn-xs btn-danger' %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<% if current_user.is_admin? %>
 
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_workletter_template_path,
-            :class => 'btn btn-primary' %>
+  <div class="row">
+    <div class="col-xs-10 col-xs-offset-1">
+
+<h1>Listing Workletter Templates</h1>
+
+  <div class="row" style="margin-top:20px;">
+    <div class="col-xs-2">
+      Template name
+    </div>
+    <div class="col-xs-2">
+      Project
+    </div>
+    <div class="col-xs-5">
+      Description
+    </div>
+    <div class="col-xs-3">
+      Actions
+    </div>
+  </div>
+  <hr>
+  <% @workletter_templates.each do |workletter_template| %>
+    <div class="row">
+      <div class="col-xs-2">
+        <%= workletter_template.template_name %>
+      </div>
+      <div class="col-xs-2">
+        <%= workletter_template.project_id %>
+      </div>
+      <div class="col-xs-5">
+        <%= workletter_template.slab_description %>
+      </div>
+      <div class="col-xs-3">
+        <%= link_to t('.view', :default => t("helpers.links.view")),
+                                    workletter_template_path(workletter_template), :class => 'btn btn-primary btn-xs print-none' %>
+                                    
+        <% if current_user.is_admin? || current_user.member.role == 'Editor' %>
+        <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                    edit_workletter_template_path(workletter_template), :class => 'btn btn-default btn-xs responsive-none print-none' %>
+        <% end %>
+        
+        <% if current_user.is_admin? %>
+        <%= link_to 'Delete',
+                    workletter_template_path(workletter_template),
+                    :method => :delete,
+                    :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                    :class => 'btn btn-xs btn-danger responsive-none print-none' %>
+        <% end %>
+      </div>
+    </div>
+    <hr>
+  <% end %>
+      
+      
+    </div>
+  </div>
+  
+  <div class="col-xs-10 col-xs-offset-1" style="margin-bottom:40px;">
+      	<div style="width:100%;text-align:left;">
+      	  <%= link_to 'Home',
+              root_path, 
+              :class => 'btn btn-primary print-none' %>
+        </div>
+  </div>
+<% else %>
+ <h2>Only admins can access this page. <a href="/" class="btn btn-default">Return Home</a></h2>
+<% end %>
