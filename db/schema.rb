@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200901205922) do
+ActiveRecord::Schema.define(version: 20200908202216) do
 
   create_table "areas", force: :cascade do |t|
     t.string   "suite_number"
@@ -237,8 +237,24 @@ ActiveRecord::Schema.define(version: 20200901205922) do
   create_table "projects", force: :cascade do |t|
     t.string   "name"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.string   "address"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip"
+    t.string   "project_type"
+    t.text     "description"
+    t.string   "owner"
+    t.string   "owner_address"
+    t.string   "owner_city"
+    t.string   "owner_state"
+    t.string   "owner_zip"
+    t.string   "owner_contact"
+    t.string   "owner_email"
+    t.string   "owner_phone"
+    t.integer  "project_square_feet"
+    t.string   "status"
     t.index ["user_id"], name: "index_projects_on_user_id"
   end
 
