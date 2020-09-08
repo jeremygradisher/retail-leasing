@@ -39,6 +39,10 @@ class ProjectsController < ApplicationController
     @areasquarefootage = Area.where(project_id: params[:id]).pluck(:area_sqft)
     @netrentablearea = @deals.pluck(:net_rentable_area)
     
+    #Going to need something like this:
+    @q = @project.users.where(is_admin: false).ransack(params[:q])
+    @project_users = @q.result(distinct: true).paginate(:page => params[:page], :per_page => 5)
+    
     @workletter_templates = WorkletterTemplate.where(project_id: params[:id])
   end
 
