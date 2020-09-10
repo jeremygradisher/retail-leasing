@@ -15,6 +15,7 @@ class LeasingManagersController < ApplicationController
   # GET /leasing_managers/new
   def new
     @leasing_manager = LeasingManager.new
+    @projects = Project.where(id: current_user.project_ids)
   end
 
   # GET /leasing_managers/1/edit
@@ -25,6 +26,7 @@ class LeasingManagersController < ApplicationController
   # POST /leasing_managers.json
   def create
     @leasing_manager = LeasingManager.new(leasing_manager_params)
+    @projects = Project.where(id: current_user.project_ids)
 
     respond_to do |format|
       if @leasing_manager.save
@@ -40,6 +42,8 @@ class LeasingManagersController < ApplicationController
   # PATCH/PUT /leasing_managers/1
   # PATCH/PUT /leasing_managers/1.json
   def update
+    @projects = Project.where(id: current_user.project_ids)
+    
     respond_to do |format|
       if @leasing_manager.update(leasing_manager_params)
         format.html { redirect_to @leasing_manager, notice: 'Leasing manager was successfully updated.' }
