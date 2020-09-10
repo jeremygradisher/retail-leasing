@@ -44,6 +44,9 @@ class ProjectsController < ApplicationController
     @project_users = @q.result(distinct: true).paginate(:page => params[:page], :per_page => 5)
     
     @workletter_templates = WorkletterTemplate.where(project_id: params[:id])
+    
+    #For Leasing Managers Index on projects#show:
+    @leasing_managers = LeasingManager.where(project_id: params[:id]).all
   end
 
   # GET /projects/new
