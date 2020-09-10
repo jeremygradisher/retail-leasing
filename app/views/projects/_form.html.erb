@@ -1,4 +1,4 @@
-<%= form_for @project, :html => { :class => "form-horizontal project" } do |f| %>
+<%= form_for @project, :html => { :class => "form-horizontal project formatFunctions" } do |f| %>
 
   <% if @project.errors.any? %>
     <div id="error_expl" class="panel panel-danger">
@@ -15,16 +15,8 @@
     </div>
   <% end %>
 
-  <div class="form-group">
-    <%= f.label :name, :class => 'control-label col-lg-2' %>
-    <div class="col-lg-10">
-      <%= f.text_field :name, :class => 'form-control' %>
-    </div>
-    <%=f.error_span(:name) %>
-  </div>
-  
   <% if controller.action_name == "new" %>
-  <div class="form-group">
+  <div class="form-group" style="display:none;">
     <%= f.label :user_id, :class => 'control-label col-lg-2' %>
     <div class="col-lg-10">
       <% if controller.action_name == "new" %>
@@ -36,11 +28,17 @@
     <%=f.error_span(:user_id) %>
   </div>
   <% end %>
-  
+
   <div class="form-group">
+    <%= f.label :name, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%= f.text_field :name, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:name) %>
+
   <% if @icons.exists? %>
       <%= f.label :project_icon, 'Project Icon', :class => 'control-label col-lg-2'  %>
-        <div class="col-lg-10">
+        <div class="col-lg-4">
           <% @icons.each do |p| %>
                 <div class="form-control">
                   <%= image_tag p.icon_url, :class => 'form-control-image' %>
@@ -61,13 +59,146 @@
     
     <% else %>  
          <%= f.label :project_icon, 'Project Icon', :class => 'control-label col-lg-2'  %>
-         <div class="col-lg-10">
+         <div class="col-lg-4">
          <%= f.file_field :icon, :multiple => true, name: "icons[icon][]",
          :class => 'form-control', onchange: "validateFiles(this);",
           data: { max_file_size: 2.megabytes } %>
          </div>
     <% end %>
   </div>
+  
+  
+  
+  
+  
+  
+ <div class="form-group">
+    <%= f.label :address, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%= f.text_field :address, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:address) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :city, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%= f.text_field :city, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:city) %>
+
+    <%= f.label :state, :class => 'control-label col-lg-1' %>
+    <div class="col-lg-1">
+      <%= f.select :state, ['AL', 'AK', 'AR', 'AZ', 'CA', 'CO', 'CT', 'DE', 'FL', 'GA', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MD', 'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 'OH', 'OK', 'OR', 'PA', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VA', 'WA', 'WV', 'WI', 'WY'], {include_blank: true}, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:state) %>
+
+    <%= f.label :zip, :class => 'control-label col-lg-1' %>
+    <div class="col-lg-2">
+      <%= f.text_field :zip, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:zip) %>
+  </div>
+
+<hr>
+
+  <div class="form-group">
+    <%= f.label :status, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%#= f.text_field :project_status, :class => 'form-control' %>
+      <%= f.select :status, ['Prospect', 'In Process', 'Complete', 'Archived'], {include_blank: true}, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:status) %>
+  </div>
+
+<hr>
+
+  <div class="form-group">
+    <%= f.label :owner, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%= f.text_field :owner, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:owner) %>
+
+    <%= f.label :owner_contact, 'Owner Contact', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%= f.text_field :owner_contact, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:owner_contact) %>
+  </div>
+  
+  <div class="form-group">
+
+
+    <%= f.label :owner_email, 'Owner Email', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%= f.text_field :owner_email, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:owner_email) %>
+
+    <%= f.label :owner_phone, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%= f.text_field :owner_phone, :class => 'form-control', :onkeydown => 'javascript:backspacerDOWN(this,event);', :onkeyup => 'javascript:backspacerUP(this,event);' %>
+    </div>
+    <%=f.error_span(:owner_phone) %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :owner_address, 'Owner Address', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%= f.text_field :owner_address, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:owner_address) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :owner_city, 'Owner City', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%= f.text_field :owner_city, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:owner_city) %>
+
+    <%= f.label :owner_state, 'Owner State', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-1">
+      <%= f.select :owner_state, ['AL', 'AK', 'AR', 'AZ', 'CA', 'CO', 'CT', 'DE', 'FL', 'GA', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MD', 'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 'OH', 'OK', 'OR', 'PA', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VA', 'WA', 'WV', 'WI', 'WY'], {include_blank: true}, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:owner_state) %>
+
+    <%= f.label :owner_zip, 'Owner Zip', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%= f.text_field :owner_zip, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:owner_zip) %>
+  </div>
+ 
+ <hr> 
+  
+  <div class="form-group">
+    <%= f.label :project_type, 'Project Type', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%#= f.text_field :project_type, :class => 'form-control' %>
+      <%= f.select :project_type, ['Retail', 'Office', 'Mixed-use', 'Multi-family', 'Healthcare', 'Leisure'], {include_blank: true}, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:project_type) %>
+
+    <%= f.label :sq_ft, 'Sq Ft', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%= f.text_field :project_square_feet, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:project_square_feet) %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :description, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_area :description, :rows => 4, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:description) %>
+  </div>
+ 
+  
+  
+  
+  
+  
 
   <div class="form-group">
     <div class="col-lg-offset-2 col-lg-10">
@@ -107,3 +238,6 @@
   };
 }
 </script>
+
+
+  <%= render 'formjquery' %>

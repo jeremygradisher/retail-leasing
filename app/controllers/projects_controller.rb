@@ -39,7 +39,14 @@ class ProjectsController < ApplicationController
     @areasquarefootage = Area.where(project_id: params[:id]).pluck(:area_sqft)
     @netrentablearea = @deals.pluck(:net_rentable_area)
     
+    #Going to need something like this:
+    @q = @project.users.where(is_admin: false).ransack(params[:q])
+    @project_users = @q.result(distinct: true).paginate(:page => params[:page], :per_page => 5)
+    
     @workletter_templates = WorkletterTemplate.where(project_id: params[:id])
+    
+    #For Leasing Managers Index on projects#show:
+    @leasing_managers = LeasingManager.where(project_id: params[:id]).all
   end
 
   # GET /projects/new
@@ -139,6 +146,6 @@ class ProjectsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def project_params
-      params.require(:project).permit(:name, :user_id, icons_attributes: [:id, :project_id, :icon])
+      params.require(:project).permit(:name, :user_id, :address, :city, :state, :zip, :project_type, :description, :owner, :owner_address, :owner_city, :owner_state, :owner_zip, :owner_contact, :owner_email, :owner_phone, :project_square_feet, :status, icons_attributes: [:id, :project_id, :icon])
     end
 end
