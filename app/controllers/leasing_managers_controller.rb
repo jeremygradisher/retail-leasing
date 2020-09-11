@@ -15,7 +15,13 @@ class LeasingManagersController < ApplicationController
   # GET /leasing_managers/new
   def new
     @leasing_manager = LeasingManager.new
-    @projects = Project.where(id: current_user.project_ids)
+
+    #@projects = Project.where(id: current_user.project_ids)
+    if current_user.is_admin?
+      @projects = Project.all
+    else
+      @projects = Project.where(id: current_user.project_ids)
+    end
   end
 
   # GET /leasing_managers/1/edit

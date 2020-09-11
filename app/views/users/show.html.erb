@@ -19,6 +19,11 @@
               role: <% if @user.is_admin? %>Super-Admin
               <% elsif @user.role.blank? %>User
               <% else %><%= @user.role %><% end %><br>
+              
+              <strong>projects:</strong> <%#= @member.user.project_ids %><br>
+              <% @userprojects.each do |f| %>
+                <%= link_to Project.find(f).name, project_url(f) %><br>
+              <% end %>
           
         </div>
         <div class="panel-footer project-panel-footer">
