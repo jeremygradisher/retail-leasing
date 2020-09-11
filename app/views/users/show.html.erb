@@ -13,16 +13,21 @@
             <!--<%#= @user.user_company %></h4>-->
         </div>
         <div class="panel-body project-panel-body" style="text-align:center;">
-              <% if @user.is_admin? %>*Admin User<br><% end %>
-              <%= @user.first_name %> <%= @user.last_name %><br>
+              <!--<%# if @user.is_admin? %><b>*Super-Admin User</b><br><%# end %>-->
+              <b><%= @user.first_name %> <%= @user.last_name %></b><br>
               <%= @user.email %><br>
-              role: <% if @user.is_admin? %>Super-Admin
-              <% elsif @user.role.blank? %>User
-              <% else %><%= @user.role %><% end %><br>
+              role: <% if @user.is_admin? %><b>Super-Admin</b>
+              <% elsif @user.role.blank? %><b>User</b>
+              <% else %><b><%= @user.role %></b><% end %><br><br>
               
-              <strong>projects:</strong> <%#= @member.user.project_ids %><br>
-              <% @userprojects.each do |f| %>
-                <%= link_to Project.find(f).name, project_url(f) %><br>
+              <% if @user.is_admin? %>
+                <strong>projects:</strong><br>
+                Access to all projects.
+              <% else %>
+                <strong>projects:</strong> <%#= @member.user.project_ids %><br>
+                <% @userprojects.each do |f| %>
+                  <%= link_to Project.find(f).name, project_url(f) %><br>
+                <% end %>
               <% end %>
           
         </div>
@@ -34,7 +39,7 @@
           </span>           
           <span style="float:right;">
             <% if current_user.is_admin? || current_user.id == @user.id %>
-              <%= link_to 'Edit User =>',
+              <%= link_to 'Edit',
                   edit_user_path(@user), :class => 'btn btn-primary' %>
 
               <%= link_to 'Delete User',
