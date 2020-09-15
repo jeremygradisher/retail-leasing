@@ -14,4 +14,12 @@ class Project < ApplicationRecord
   
   has_many :icons, dependent: :destroy
   accepts_nested_attributes_for :icons
+  
+  def self.by_user_plan(user)
+      if user.is_admin?
+      user.projects
+      else
+      user.projects
+      end
+  end
 end

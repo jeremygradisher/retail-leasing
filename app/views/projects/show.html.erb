@@ -84,7 +84,7 @@
       <button data-toggle="collapse" data-target="#workletter-template-collapse" 
       class='btn btn-primary responsive-none print-none' 
       style='float:right;margin-left:10px;margin-top:12px;'><i class="fa fa-chevron-down"></i></button>
-      <% if current_user.is_admin? || current_user.member.role == 'Admin' %>
+      <% if current_user.is_admin? || current_user.role == 'Admin' %>
       <%= link_to '+ Add Workletter Template',
                   new_workletter_template_path(:project_id => @project),
                   :class => 'btn btn-primary responsive-none print-none', :style => 'float:right;margin-top:12px;' %>
@@ -113,7 +113,7 @@
                 <td style="min-width:180px;">
                   <%= link_to 'View',
                               workletter_template_path(workletter_template), :class => 'btn btn-default btn-xs add-responsive-bottom print-none' %>
-                  <% if current_user.is_admin? || current_user.member.role == 'Admin' %>
+                  <% if current_user.is_admin? || current_user.role == 'Admin' %>
                   <%= link_to 'Edit',
                               edit_workletter_template_path(workletter_template), :class => 'btn btn-primary btn-xs responsive-none print-none' %>
                   <%= link_to 'Destroy',
@@ -292,7 +292,7 @@
     <div class="panel panel-branded print-none">
       <div class="panel-heading">
         <p style="float:left;">Users</p> 
-        <% if (current_user && current_user.is_admin?) || (current_user && current_user.member.role == 'Admin') %> 
+        <% if (current_user && current_user.is_admin?) || (current_user && current_user.role == 'Admin') %> 
         <%= link_to '+ Add/Remove Project Users',
                   users_project_path(@project.id),
                   :class => 'btn btn-xs btn-default responsive-none print-none', :style => 'float:right;margin-top:0;' %> 
@@ -352,7 +352,7 @@
     <div class="panel panel-branded print-none">
       <div class="panel-heading">
         <p style="float:left;">Leasing Managers</p> 
-        <% if (current_user && current_user.is_admin?) || (current_user && current_user.member.role == 'Admin') %> 
+        <% if (current_user && current_user.is_admin?) || (current_user && current_user.role == 'Admin') %> 
         <%= link_to '+ Add/Remove Leasing Manager',
                   leasing_managers_path(),
                   :class => 'btn btn-xs btn-default responsive-none print-none', :style => 'float:right;margin-top:0;' %> 
