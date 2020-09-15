@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   resources :images
   resources :maps
   resources :user_avatars
+  resources :archived_projects
+  
   devise_for :users, :controllers => { registrations: 'registrations' }
   get 'welcome/index'
   

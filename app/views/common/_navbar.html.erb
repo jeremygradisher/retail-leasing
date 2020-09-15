@@ -142,7 +142,7 @@
             <% end %>
             
             <% if current_user.is_admin? %>
-              <li class="dropdown-menu-right"><%#= link_to 'Archives', archived_projects_path %></li>
+              <li class="dropdown-menu-right"><%= link_to 'Archives', archived_projects_path %></li>
             <% end %>
             
             <li class="dropdown-menu-right" id="link1"><%= link_to 'Profile', user_path(current_user) %></li>
