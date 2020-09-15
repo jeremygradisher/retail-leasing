@@ -43,78 +43,111 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js" type="text/javascript"></script>
     <![endif]-->
   </head>
-  <body>
 
-    <div class="navbar navbar-default navbar-static-top">
-      <div class="container">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="/" style="font-weight:bold;color:#333;">StatusPlan2</a>
-        <div class="navbar-collapse collapse navbar-responsive-collapse">
-          <ul class="nav navbar-nav">
-            <% if current_user %>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                views
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <!--<a class="dropdown-item" href="#">Another action</a>-->
-                <%= link_to "Users", users_path, :class => 'dropdown-item' %>
-                <div class="dropdown-divider"></div>
-                <%= link_to "Projects", projects_path, :class => 'dropdown-item' %>
-                <div class="dropdown-divider"></div>
-                <%= link_to "Maps", maps_path, :class => 'dropdown-item' %>
-                <%= link_to "Areas", areas_path, :class => 'dropdown-item' %>
-                <%= link_to "Deals", deals_path, :class => 'dropdown-item' %>
-                <div class="dropdown-divider"></div>
-                <%= link_to "Areas/Deals", areas_deals_path, :class => 'dropdown-item' %>
-                <%= link_to "User_Projects", user_projects_path, :class => 'dropdown-item' %>
-                <div class="dropdown-divider"></div>
-                <%= link_to "Images", images_path, :class => 'dropdown-item' %>
-                <%= link_to "User Avatars", user_avatars_path, :class => 'dropdown-item' %>
-                <%= link_to "Icons", icons_path, :class => 'dropdown-item' %>
-                <!--<a class="dropdown-item" href="#">Something else here</a>-->
-              </div>
-            </li>
-            <% end %>
-            <!--<li><%#= link_to "Users", users_path  %></li>-->
-          </ul>
-          <div style="float:right;margin-top:8px;margin-bottom:8px;text-align:right;">
-            <% if current_user %>
-              <%#= current_user.email %>
-              <%= link_to(current_user.email, user_path(current_user)) %>
-              <br>
-              <%= link_to('logout', destroy_user_session_path,
-                                    class: '', title: 'Logout', :method => :delete) %>
-            <% else %>
-              <%= link_to('Sign In', new_user_session_path, class: 'btn btn-primary btn-primary-altered', title: 'Sign In') %>
-            <% end %>
-          </div>
-        </div>
-        
+    
+  <% if !current_user && current_page?(root_path) %>
+  <body style="height:100vh;background-image: url('/images/background-103.jpg');background-size:100%;background-position: center top;background-repeat: no-repeat;border-style:none;border:0;">
+  <%# elsif current_user && current_page?(member_path(current_user.id))%>
+  <!--<body style="height:100vh;background-image: url('/images/background-101-no-logo.jpg');background-size:cover;background-position: center;">-->
+  <%# elsif current_user && current_page?(new_tenant_project_path(tenant_id: current_user.member.tenant.id))%>
+  <!--<body style="height:100vh;background-color: #306770;">-->
+  <% elsif current_user && controller.controller_name == "projects" && controller.action_name == "new" %>
+  <body style="height:100vh;background-color: #306770;">
+  <% elsif current_user && controller.controller_name == "projects" && controller.action_name == "create" %>
+  <body style="height:100vh;background-color: #306770;">
+  <% elsif current_user && controller.controller_name == "members" && controller.action_name == "show" %>
+  <body style="height:100vh;background-color: #306770;">
+  <% else %>
+  <body>
+  <% end %>
+  
+  <% if current_page?(user_session_path) || current_page?(new_user_password_path) || current_page?(new_user_confirmation_path) || current_page?(edit_user_registration_path) %>
+    <!-- no render of navbar -->
+  <% else %>
+    <%= render 'common/navbar' %>
+  <% end %>
+
+
+<!-- headers -->
+<!-- Logged in Home page search bar -->
+  <% if current_user && current_page?(root_path) %>    
+  <div class="row print-none ws-search-bar">
+    <%= search_form_for @q, url: root_path do |f| %>
+      <%#= f.search_field :name_cont %>
+      <div class="col-lg-1">
       </div>
-    </div>
+      <div class="col-lg-7">
+        <h1 style="color:#fff;margin-top:0;margin-bottom:0;" class="header-bar-title">Portfolio</h1>
+      </div>
+      <div class="col-lg-3">
+        
+        <%= f.search_field :name_cont, :class => "form-control ws-border-style border-dark", :placeholder => "Search for..." %>
+      </div>
+      <div class="col-lg-1">
+      </div>
+      <!-- these are in case he wants the buttons back
+      <div class="col-lg-2">
+        <%#= f.submit "Search", :class => "btn btn-primary-branded jicon", :style => "padding: 8px 12px;" %>
+        <%#= link_to "Clear", request.path, :class => "btn btn-default jicon", :style => "padding: 8px 12px;" %>
+      </div>
+      -->
+    <% end %>
+  </div>
+  <% end %>
+  <!-- END Logged in Home page search bar -->
+<!-- END headers -->
+    
 
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
           <%= bootstrap_flash %>
           <%= yield %>
+          <% if !current_user && current_page?(root_path) %>
+            <div style="height:120px;"></div>
+            <% else %>
+            <!--<div style="height:120px;"></div>-->
+          <% end %>
         </div>
       </div><!--/row-->
-
-      <footer>
-        <% if current_user %>
-        <p>&copy; <a href="http://workshop-mg.com/" target="_blank">work.shopMG</a> - 
-        <a href="https://github.com/workshopmgorg/spmockup201" target="_blank">https://github.com/workshopmgorg/spmockup201</a>
-        </p>
-        <% end %>
-      </footer>
-
     </div> <!-- /container -->
+
+
+<!-- Footers -->
+    <% if !current_user && current_page?(root_path) %>
+      <div class="row print-none" style="background-color:#fff;border-top:thin solid #231f20;">
+          <div class="col-lg-12" style="text-align:center">-->
+            <footer style="background-color: #f8f8f8;">
+              <a href="http://workshop-mg.com/" target="_blank" class="createdBy">
+                  <!--created by--> <img src="/images/work.shop-logo-750.png" class="createdByImage" />
+              </a>
+            </footer>
+            
+          </div>
+      </div>
+      
+    <% elsif current_user && (controller_name == "projects" && controller.action_name == "show") %>
+      <!-- Tenant Project Path -->
+      <div class="row print-none" style="/*background-color:#000;border-top:thin solid #231f20;*/">
+          <div class="col-lg-12" style="text-align:center">
+            <footer style="background-color: #231f20;" class="affixfooter" data-spy="affix-bottom">
+                <%= link_to '<i class="fa fa-print"></i> print page'.html_safe, 'print', 
+                  :onclick => 'window.print();return false;', 
+                  :class => 'btn btn-primary print-none float-right-until',
+                  :style => 'margin-right:60px;border-color:#fff;' %>
+                  
+                <%#= link_to 'Download .XLS', tenant_project_path(project: @project, 
+                  tenant: @project.tenant_id, format: :xlsx), 
+                  :class => 'btn btn-primary print-none float-right-until', 
+                  :style => 'margin-right:6px;border-color:#fff;' %>
+            </footer>
+          </div>
+      </div>
+
+    <% else %>
+      <!-- no footer -->
+    <% end %>
+<!-- END Footers -->
 
   </body>
 </html>
