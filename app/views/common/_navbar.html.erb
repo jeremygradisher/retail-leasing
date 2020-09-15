@@ -1,0 +1,244 @@
+<div class="navbar navbar-default navbar-static-top border-bottom-dark" style="margin-bottom:1px;">
+  <div class="container-fluid">
+    <div class="col-lg-1">
+    </div>
+    <!-- logo/link upper left-hand corner -->
+    <!-- quick change here to get the linking right and see if this is working -->
+    <ul class="nav navbar-middle col-lg-3" style="text-align:left;float:left;">
+      <% if current_page?(root_path) && !current_user %>
+        <!-- this is displaying the same whether logged in or not currently -->
+        <li class="">
+          <a href="/" style="padding:10px 0;">
+            <img src="/images/status-plan-logo.png" style="height:50px;margin-top:0;"/>
+          </a>
+        </li>
+      <% else %>
+        <li class="">
+          <a href="/" style="padding:10px 0;">
+            <img src="/images/status-plan-logo.png" style="height:50px;margin-top:0;"/>
+          </a>
+        </li>
+      <% end %>
+    </ul>
+    <!-- end logo/link upper left-hand corner -->
+
+    <button type="button" style="margin-top:14px;" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+
+    <br class="only-768" style="clear:both;">
+
+    <div class="navbar-collapse collapse navbar-responsive-collapse">
+
+      <!-- navbar links -->
+      <div class="col-lg-4">
+        <ul class="nav navbar-nav" style="float:right;">
+          <% if current_user %>
+            <li class="dropdown-menu-right"><%= link_to 'Portfolio', root_path %></li>
+            <%# if @project.present? && controller.action_name != "new" %>
+            <% if @project.present? && controller.action_name == "show" %>
+              <li class="dropdown-menu-right">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Reports
+                  <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li class="dropdown-submenu dropdown-menu-right">
+                    <a href="#" class="dropdown-toggle secondMenu">
+                    Lease Status Reports
+                    <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li class="dropdown-submenu dropdown-menu-right"><%#= link_to 'PDF', leasestatusreport_tenant_project_path(id: @project.id, tenant_id: @project.tenant_id, format: :pdf), target: '_blank' %></li>
+                      <li class="dropdown-submenu dropdown-menu-right"><%#= link_to 'XLSX', leasestatusreport_tenant_project_path(id: @project.id, tenant_id: @project.tenant_id, format: :xlsx) %></li>
+                    </ul>
+                    <%#= link_to 'Ad hoc Report', adhoc_tenant_project_path(id: @project.id, tenant_id: @project.tenant_id) %>
+                  </li>
+                  
+                  <li class="dropdown-submenu dropdown-menu-right">
+                    <a href="#" class="dropdown-toggle secondMenu">
+                    Lease Deal Reports
+                    <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li class="dropdown-submenu dropdown-menu-right"><%#= link_to 'PDF', leasedealreport_tenant_project_path(id: @project.id, tenant_id: @project.tenant_id, format: :pdf), target: '_blank' %></li>
+                      <li class="dropdown-submenu dropdown-menu-right"><%#= link_to 'XLSX', leasedealreport_tenant_project_path(id: @project.id, tenant_id: @project.tenant_id, format: :xlsx) %></li>
+                    </ul>
+                    <%#= link_to 'Ad hoc Report', adhoc_tenant_project_path(id: @project.id, tenant_id: @project.tenant_id) %>
+                  </li>
+                  
+
+                  <!-- new links for Tenant Status Report -->
+                  <% if @map.present? && controller.action_name != "new" %>
+                  <li class="dropdown-submenu dropdown-menu-right">
+                    <a href="#" class="dropdown-toggle secondMenu">
+                    Tenant Status Reports
+                    <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                      <!-- this is coming -->
+                      <li class="dropdown-submenu dropdown-menu-right"><%#= link_to 'PDF', tenantstatusreport_tenant_project_path(id: @project.id, tenant_id: @project.tenant_id, format: :pdf), target: '_blank' %></li>
+                      <li class="dropdown-submenu dropdown-menu-right"><%#= link_to 'XLSX', tenantstatusreport_tenant_project_path(id: @project.id, tenant_id: @project.tenant_id, format: :xlsx) %></li>
+                    </ul>
+                  </li>
+                  <% end %>
+                  <!-- END new links for Tenant Status Report -->
+                  
+                  <!-- new links for close out report-->
+                  <% if @map.present? && controller.action_name != "new" %>
+                  <li class="dropdown-submenu dropdown-menu-right">
+                    <a href="#" class="dropdown-toggle secondMenu">
+                    Close-out Reports
+                    <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li class="dropdown-submenu dropdown-menu-right"><%#= link_to 'PDF', closeoutreport_tenant_project_path(id: @project.id, tenant_id: @project.tenant_id, format: :pdf), target: '_blank' %></li>
+                      <li class="dropdown-submenu dropdown-menu-right"><%#= link_to 'XLSX', closeoutreport_tenant_project_path(id: @project.id, tenant_id: @project.tenant_id, format: :xlsx) %></li>
+                    </ul>
+                  </li>
+                  <% end %>
+                  <!-- END new links for close out report-->
+                  
+                  <!-- new links for deal contact report-->
+                  <% if @map.present? && controller.action_name != "new" %>
+                  <li class="dropdown-submenu dropdown-menu-right">
+                    <a href="#" class="dropdown-toggle secondMenu">
+                    Deal Directory Reports
+                    <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                      <!--
+                      <li class="dropdown-submenu dropdown-menu-right"><%#= link_to 'PDF', dealdirectoryreport_tenant_project_path(id: @project.id, tenant_id: @project.tenant_id, format: :pdf), target: '_blank' %></li>
+                      -->
+                      <li class="dropdown-submenu dropdown-menu-right"><%#= link_to 'XLSX', dealdirectoryreport_tenant_project_path(id: @project.id, tenant_id: @project.tenant_id, format: :xlsx) %></li>
+                    </ul>
+                  </li>
+                  <% end %>
+                  <!-- END new links for deal contact report-->
+                  
+                  <!-- Adhoc links-->
+                  <!--
+                  <li class="dropdown-submenu dropdown-menu-right">
+                    <a href="#" class="dropdown-toggle secondMenu">
+                    Ad Hoc Reports
+                    <span class="caret"></span>
+                    </a>
+                    
+                    <ul class="dropdown-menu">
+                      <li class="dropdown-submenu dropdown-menu-right"><%#= link_to 'Ad Hoc', adhocreport_tenant_project_path(id: @project.id, tenant_id: @project.tenant_id) %></li>
+                    </ul>
+                  </li>
+                  -->
+                  <!-- END Adhoc links-->
+                </ul>
+              </li>
+
+            <% end %>
+            
+            <% if current_user.is_admin? || current_user.role == 'Admin' %>
+              <li class="dropdown-menu-right"><%= link_to 'Users', users_path %></li>
+            <% end %>
+            
+            <% if current_user.is_admin? %>
+              <li class="dropdown-menu-right"><%#= link_to 'Archives', archived_projects_path %></li>
+            <% end %>
+            
+            <li class="dropdown-menu-right" id="link1"><%= link_to 'Profile', user_path(current_user) %></li>
+            <li class="dropdown-menu-right" id="link2"><%= link_to('Logout', destroy_user_session_path,
+                                                                   class: '', title: 'Logout', :method => :delete) %></li>
+          <% end %>
+        </ul>
+      </div>
+      <!--end navbar links -->
+
+
+      <% if current_user %>
+        <!-- if logged in profile info and image -->
+        <div class="col-lg-3">
+          <ul class="nav /*navbar-right*/ /*col-lg-3*/ display-above-1200" style="padding-top:10px;padding-left:0px;">
+            <li class="">
+
+                  <!--
+                  <div style="float:left;" class="dropdown" data-behavior="notifications">
+                    <a class="btn btn-secondary dropdown-toggle fas fa-bell" style="margin-top:2px;padding-left:6px;padding-right:6px;" href="#" role="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-behavior="notifications-link">
+                      <span data-behavior="unread-count"></span>
+                    </a>
+                  
+                    <div id="notification-dropdown" class="dropdown-menu pull-right" aria-labelledby="dropdownMenu1" data-behavior="notification-items">
+                      <div style='width:100%;text-align:left;'><b>Notifications:</b><a href='/notifications' style='float:right;'>See All</a></div>
+                    </div>
+                  </div>
+                  -->
+
+              <% if current_user.user_avatars.exists? %>
+                <%= link_to image_tag(current_user.user_avatars.first.avatar, :alt => '', :title => '', :class => 'ws-border-style border-dark'), user_path(current_user), :class => 'profile-link', :style => 'padding:0 0;float:left;' %>
+                <!--<img src="<%#= current_user.memberimages.first.memberimage %>" style="height:42px;float:left;margin-top:5px;">-->
+              <% else %>
+                <%= link_to image_tag("/images/NO-IMAGE-AVAILABLE.jpg", :alt => '', :title => '', :class => 'ws-border-style border-dark'), user_path(current_user), :class => 'profile-link', :style => 'padding:0 0;float:left;' %>
+                <!--<img src="/images/NO-IMAGE-AVAILABLE.jpg" style="height:42px;float:left;">-->
+              <% end %>
+
+
+              <ul class="" style="max-width:200px;list-style-type: none;float:left;margin-top:5px;padding-left:10px;/*-webkit-padding-start: 10px;*/">
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle branded-font" style="font-size:16pt;color:#000;underline:none;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                    <%= truncate(current_user.first_name + " " + current_user.last_name, length: 25).html_safe %>
+                    <span class="caret"></span>
+                  </a>
+
+                  <ul class="dropdown-menu">
+                    <li><%= link_to 'profile', user_path(current_user) %></li>
+                    <li role="separator" class="divider"></li>
+                    <!--<li><%#= link_to 'change password', edit_user_registration_path %></li>-->
+                    <!--<li role="separator" class="divider"></li>-->
+                    <li><%= link_to('logout', destroy_user_session_path,
+                                    class: '', title: 'Logout', :method => :delete) %></li>
+                  </ul>
+
+                </li>
+              </ul>
+
+              <% if current_user.is_admin? || current_user.role == 'Admin' %>
+                <%= link_to image_tag("/images/black-belt2.png", :border => 0, :alt => '', :title => ''), user_path(current_user), :class => 'belt-style', :style => 'padding:0 0;float:left;margin-left:3px;' %>
+              <% elsif current_user.role == 'Editor' %>
+                <%= link_to image_tag("/images/green-belt2.png", :border => 0, :alt => '', :title => ''), user_path(current_user), :class => 'belt-style', :style => 'padding:0 0;float:left;margin-left:3px;' %>
+              <% else %>
+                <%= link_to image_tag("/images/yellow-belt2.png", :border => 0, :alt => '', :title => ''), user_path(current_user), :class => 'belt-style', :style => 'padding:0 0;float:left;margin-left:3px;' %>
+              <% end %>
+            </li>
+          </ul>
+        </div>
+        <!-- end if logged in profile info and image -->
+      <% else %>
+        <!-- sign-in button -->
+        <ul class="nav navbar-right col-lg-3">
+          <li class="">
+            <%- if controller_name == 'sessions' %>
+              <div style="height:41px;clear:both;margin-top:5%;margin-bottom:5%;"></div>
+            <% else %>
+              <%= link_to('Sign In', new_user_session_path, class: 'btn btn-primary btn-primary-altered', title: 'Sign In') %>
+            <% end %>
+          </li>
+        </ul>
+        <!-- sign-in button -->
+      <% end %>
+
+    </div><!-- navbar-collapse collapse navbar-responsive-collapse -->
+    <div class="col-lg-1">
+    </div>
+  </div><!-- end container-fluid -->
+</div><!-- end navbar navbar-default navbar-static-top -->
+
+
+<script>
+  //<!-- for the dropdown -->
+  $(document).ready(function(){
+    $('.dropdown-submenu a.secondMenu').on("click", function(e){
+      $(this).next('ul').toggle();
+      e.stopPropagation();
+      e.preventDefault();
+    });
+  });
+</script>
