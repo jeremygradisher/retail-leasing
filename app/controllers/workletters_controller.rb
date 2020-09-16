@@ -40,18 +40,12 @@ class WorklettersController < ApplicationController
     @area = Area.find(@workletter.area_id)
     @project = Project.find(@workletter.project_id)
     
-    if @area.primary_deal == nil || @area.primary_deal == ''
-      @deal = @area.deals.first
-    elsif Deal.where(id: @area.primary_deal.to_i).exists?
-      @deal = Deal.find(@area.primary_deal.to_i)
-    else
-      @deal = @area.deals.first
-    end
-   
+    @deal = @area.deals.first
+
     @project_id = @area.project_id
     @map_id = @area.map_id
     @area_id = @area.id
-    @name = @area.name
+    @name = @area.suite_number
     
     @workletter_templates = @project.workletter_templates.all
   end

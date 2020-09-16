@@ -68,7 +68,8 @@
   <% end %>
 
 
-<!-- headers -->
+<!-- search bars/headers -->
+
 <!-- Logged in Home page search bar -->
   <% if current_user && current_page?(root_path) %>    
   <div class="row print-none ws-search-bar">
@@ -95,7 +96,203 @@
   </div>
   <% end %>
   <!-- END Logged in Home page search bar -->
-<!-- END headers -->
+  
+  <!-- Logged in Archive Projects search bar -->
+  <% if current_user && current_page?(archived_projects_path) %>    
+  <div class="row print-none ws-search-bar">
+    
+    <%= search_form_for @q, url: archived_projects_path do |f| %>
+      <%#= f.search_field :name_cont %>
+      <div class="col-lg-1">
+      </div>
+      <div class="col-lg-7">
+        <h1 style="color:#fff;margin-top:0;margin-bottom:0;" class="header-bar-title">Archived Projects</h1>
+      </div>
+      <div class="col-lg-3">
+        <%= f.search_field :name_cont, :class => "form-control ws-border-style border-dark", :placeholder => "Search for..." %>
+      </div>
+      <div class="col-lg-1">
+      </div>
+      <!-- these are in case he wants the buttons back
+      <div class="col-lg-2">
+        <%#= f.submit "Search", :class => "btn btn-primary-branded jicon", :style => "padding: 8px 12px;" %>
+        <%#= link_to "Clear", request.path, :class => "btn btn-default jicon", :style => "padding: 8px 12px;" %>
+      </div>
+      -->
+    <% end %>
+    
+  </div>
+  <% end %>
+  <!-- END Logged in Archive Projects search bar -->
+  
+  <!-- Logged in Edit Workletter top bar -->
+    <% if controller.controller_name == "workletters" && (controller.action_name == "new" || controller.action_name == "edit")  %>
+    <%# if current_user && controller.controller_name == "workletters" && controller.action_name == "edit" %>
+    <div class="row print-none ws-workletter-bar">
+      <div class="col-lg-1">
+      </div>
+      <div class="col-lg-8">
+        <% if controller.controller_name == "workletters" && controller.action_name == "edit" %>
+          <h1 style="color:#fff;margin-top:0;margin-bottom:0;" class="header-bar-title">Edit Workletter</h1>
+        <% elsif controller.controller_name == "workletters" && controller.action_name == "new" %>
+          <h1 style="color:#fff;margin-top:0;margin-bottom:0;" class="header-bar-title">New Workletter</h1>
+        <% end %>
+      </div>
+      <div class="col-lg-3">
+        <%= link_to '<i class="fa fa-times" style="margin-right:4px"></i> Cancel'.html_safe,
+                area_path(@area), :class => 'btn btn-default ws-border-style border-light branded-font',
+                :style => 'font-size:16pt;width:100px;background-color:#1F7970;color:#fff;' %>
+      </div>
+    </div>
+    <% end %>
+  <!-- END Logged in Edit Workletter top bar -->
+  
+  <!-- Logged in Edit Deal top bar -->
+    <% if controller.controller_name == "deals" && (controller.action_name == "edit" || controller.action_name == "new")  %>
+    <%# if current_user && controller.controller_name == "workletters" && controller.action_name == "edit" %>
+    <div class="row print-none ws-deal-bar">
+      <div class="col-lg-1">
+      </div>
+      <div class="col-lg-8">
+        <% if controller.controller_name == "deals" && controller.action_name == "edit" %>
+          <h1 style="color:#fff;margin-top:0;margin-bottom:0;" class="header-bar-title">Edit Deal</h1>
+        <% elsif controller.controller_name == "deals" && controller.action_name == "new" %>
+          <h1 style="color:#fff;margin-top:0;margin-bottom:0;" class="header-bar-title">New Deal</h1>
+        <% end %>
+      </div>
+      <div class="col-lg-3">
+        <%= link_to '<i class="fa fa-times" style="margin-right:4px"></i> Cancel'.html_safe,
+                project_path(@project), :class => 'btn btn-default ws-border-style border-light branded-font',
+                :style => 'font-size:16pt;width:100px;background-color:#CB562D;color:#fff;' %>
+      </div>
+    </div>
+    <% end %>
+  <!-- END Logged in Edit Deal top bar -->
+  
+  <!-- Logged in Area Edit top bar -->
+    <% if controller.controller_name == "areas" && (controller.action_name == "edit" || controller.action_name == "new" || controller.action_name == "show")  %>
+    <%# if current_user && controller.controller_name == "workletters" && controller.action_name == "edit" %>
+    <div class="row print-none ws-area-bar">
+      <div class="col-lg-1">
+      </div>
+      <% if controller.controller_name == "areas" && (controller.action_name == "edit" || controller.action_name == "new")  %>
+      <div class="col-lg-8">
+        <% if controller.controller_name == "areas" && controller.action_name == "edit" %>
+          <h1 style="color:#fff;margin-top:0;margin-bottom:0;" class="header-bar-title">Edit Area</h1>
+        <% elsif controller.controller_name == "areas" && controller.action_name == "new" %>
+          <h1 style="color:#fff;margin-top:0;margin-bottom:0;" class="header-bar-title">New Area</h1>
+        <% end %>
+      </div>
+      <% elsif controller.controller_name == "areas" && controller.action_name == "show" %>
+      <div class="col-lg-3">
+        <h1 class="header-bar-title" style="margin-top:0px;margin-bottom:2px;color:#fff;"><%= @area.suite_number %></h1>
+      </div>
+      <div class="col-lg-5">
+        <h3 style="margin-top:10px;font-size:12pt;color:#fff;">Project: <%= link_to @project.name, project_url(@project.id), :style => 'color:#fff;' %>
+        <!--- Map: <%#= link_to @map.name, map_path(@map), :style => 'color:#fff;' %>-->
+        </h3>
+      </div>
+      <% end %>
+      <div class="col-lg-3">
+        <% if controller.controller_name == "areas" && (controller.action_name == "edit")  %>
+        <%= link_to '<i class="fa fa-times" style="margin-right:4px"></i> Cancel'.html_safe,
+                area_path(@area), :class => 'btn btn-default ws-border-style border-light branded-font',
+                :style => 'font-size:16pt;width:100px;background-color:#69A020;color:#fff;' %>
+        <% elsif controller.controller_name == "areas" && controller.action_name == "show" %>
+          
+          <!-- switched from a font awesome icon to an image -->
+          <%#= link_to ('<i class="fa fa-folder-open"></i>').html_safe,
+		              "#", :title => 'Tenant Documents/Landlord Work', :class => 'print-none', :style => "color: #fff;font-size:36pt;line-height:36pt;margin-left:10px;", :id => "folder-icon" %>
+
+          <%= link_to "#", class: "folder-icon-link" do %><%= image_tag "/images/Folder-open-white-120.png", :class => "print-none", :style => "height:28px;margin-top:6px;", :id => "folder-icon" %><% end %>
+          <!-- END switched from a font awesome icon to an image -->
+          
+          <% if current_user.is_admin? || current_user.member.role == 'Admin' || current_user.member.role == 'Editor' %>
+              <%= link_to '<i class="fa fa-pencil-alt" style="margin-right:4px;"></i> Edit'.html_safe,
+                  edit_area_path(@area), :class => 'btn btn-default ws-border-style border-light branded-font',
+                  :style => 'font-size:16pt;width:120px;background-color:#69A020;color:#fff;vertical-align:top;margin-left:10px;' %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <% end %>
+  <!-- END Logged in Area Edit top bar -->
+
+<!-- Logged in Map Edit top bar -->
+    <% if controller.controller_name == "maps" && (controller.action_name == "edit" || controller.action_name == "new" || controller.action_name == "show")  %>
+    <%# if current_user && controller.controller_name == "workletters" && controller.action_name == "edit" %>
+    <div class="row print-none ws-green-bar">
+      <div class="col-lg-1">
+      </div>
+      <% if controller.controller_name == "maps" && (controller.action_name == "edit" || controller.action_name == "new")  %>
+      <div class="col-lg-8">
+        <% if controller.controller_name == "maps" && controller.action_name == "edit" %>
+          <h1 style="color:#fff;margin-top:0;margin-bottom:0;" class="header-bar-title">Edit Map</h1>
+        <% elsif controller.controller_name == "maps" && controller.action_name == "new" %>
+          <h1 style="color:#fff;margin-top:0;margin-bottom:0;" class="header-bar-title">New Map</h1>
+        <% elsif controller.controller_name == "maps" && controller.action_name == "show" %>
+          <h1 style="color:#fff;margin-top:0;margin-bottom:0;" class="header-bar-title"><%= @map.name %></h1>
+        <% end %>
+      </div>
+      <% elsif controller.controller_name == "maps" && controller.action_name == "show" %>
+      <div class="col-lg-4">
+          <h1 style="color:#fff;margin-top:0;margin-bottom:0;" class="header-bar-title"><%= @map.name %></h1>
+      </div>
+      <div class="col-lg-4">
+        <h1 class="branded-font" style="color:#fff;margin-top:0;">Project: <%= link_to @project.name, project_url(@project.id), :style => 'color:#fff;' %></h1>
+      </div>
+      <% end %>
+      <div class="col-lg-3">
+        
+        <%= link_to "< Back to Project",
+                project_url(@project.id), 
+                :class => 'btn btn-default ws-border-style border-light branded-font',
+                :style => 'font-size:16pt;width:130px;background-color:#1f7970;color:#fff;' %>
+        <% if current_user.is_admin? || current_user.member.role == 'Admin' || current_user.member.role == 'Editor' %>
+          <% if @project.maps.present? && !controller.action_name == "new" %>
+            <%= link_to ('<i class="fa fa-pencil-alt"></i> ').html_safe,
+                  edit_map_path(@map), title: 'Edit Profile', :class => 'branded-color responsive-none print-none', :style => 'color: #210f5b;font-size:24pt;margin-left:10px;' %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <% end %>
+  <!-- END Logged in Map Edit top bar -->
+  
+  <!-- Logged in Projects show top bar -->
+    <% if controller.controller_name == "projects" && (controller.action_name == "edit" || controller.action_name == "show")  %>
+    <%# if current_user && controller.controller_name == "workletters" && controller.action_name == "edit" %>
+    <div class="row print-none ws-blue-bar">
+      <div class="col-lg-1">
+      </div>
+      <div class="col-lg-8">
+        <% if controller.controller_name == "projects" && controller.action_name == "edit" %>
+          <h1 style="color:#fff;margin-top:0;margin-bottom:0;" class="header-bar-title">Edit Project</h1>
+        <% elsif controller.controller_name == "projects" && controller.action_name == "show" %>
+          <h1 style="color:#fff;margin-top:0;margin-bottom:0;" class="header-bar-title"><%= @project.name %></h1>
+        <% end %>
+      </div>
+      <div class="col-lg-3">
+        <% if controller.controller_name == "projects" && controller.action_name == "edit" %>
+        <%= link_to '<i class="fa fa-times" style="margin-right:4px"></i> Cancel'.html_safe,
+                project_url(@project.id), 
+                :class => 'btn btn-default ws-border-style border-light branded-font',
+                :style => 'font-size:16pt;width:100px;background-color:#008398;color:#fff;' %>
+        <% elsif controller.controller_name == "projects" && controller.action_name == "show" %>
+          <% if current_user.is_admin? || current_user.member.role == 'Admin' || current_user.member.role == 'Editor' %>
+            <%= link_to '<i class="fa fa-pencil-alt" style="margin-right:4px"></i> Edit'.html_safe,
+                  edit_project_path(@project), 
+                  :class => 'btn btn-default ws-border-style border-light branded-font',
+                  :style => 'font-size:16pt;width:100px;background-color:#008398;color:#fff;' %>
+          <% end %>
+        <% end %>
+        
+      </div>
+    </div>
+    <% end %>
+  <!-- END Logged in Projects show top bar -->
+  
+<!-- END search bars/headers -->
     
 
     <div class="container">
