@@ -68,7 +68,7 @@
   <% end %>
 
 
-<!-- headers -->
+<!-- search bars/headers -->
 
 <!-- Logged in Home page search bar -->
   <% if current_user && current_page?(root_path) %>    
@@ -125,7 +125,51 @@
   <% end %>
   <!-- END Logged in Archive Projects search bar -->
   
-<!-- END headers -->
+  <!-- Logged in Edit Workletter top bar -->
+    <% if controller.controller_name == "workletters" && (controller.action_name == "new" || controller.action_name == "edit")  %>
+    <%# if current_user && controller.controller_name == "workletters" && controller.action_name == "edit" %>
+    <div class="row print-none ws-workletter-bar">
+      <div class="col-lg-1">
+      </div>
+      <div class="col-lg-8">
+        <% if controller.controller_name == "workletters" && controller.action_name == "edit" %>
+          <h1 style="color:#fff;margin-top:0;margin-bottom:0;" class="header-bar-title">Edit Workletter</h1>
+        <% elsif controller.controller_name == "workletters" && controller.action_name == "new" %>
+          <h1 style="color:#fff;margin-top:0;margin-bottom:0;" class="header-bar-title">New Workletter</h1>
+        <% end %>
+      </div>
+      <div class="col-lg-3">
+        <%= link_to '<i class="fa fa-times" style="margin-right:4px"></i> Cancel'.html_safe,
+                area_path(@area), :class => 'btn btn-default ws-border-style border-light branded-font',
+                :style => 'font-size:16pt;width:100px;background-color:#1F7970;color:#fff;' %>
+      </div>
+    </div>
+    <% end %>
+  <!-- END Logged in Edit Workletter top bar -->
+  
+  <!-- Logged in Edit Deal top bar -->
+    <% if controller.controller_name == "deals" && (controller.action_name == "edit" || controller.action_name == "new")  %>
+    <%# if current_user && controller.controller_name == "workletters" && controller.action_name == "edit" %>
+    <div class="row print-none ws-deal-bar">
+      <div class="col-lg-1">
+      </div>
+      <div class="col-lg-8">
+        <% if controller.controller_name == "deals" && controller.action_name == "edit" %>
+          <h1 style="color:#fff;margin-top:0;margin-bottom:0;" class="header-bar-title">Edit Deal</h1>
+        <% elsif controller.controller_name == "deals" && controller.action_name == "new" %>
+          <h1 style="color:#fff;margin-top:0;margin-bottom:0;" class="header-bar-title">New Deal</h1>
+        <% end %>
+      </div>
+      <div class="col-lg-3">
+        <%= link_to '<i class="fa fa-times" style="margin-right:4px"></i> Cancel'.html_safe,
+                project_path(@project), :class => 'btn btn-default ws-border-style border-light branded-font',
+                :style => 'font-size:16pt;width:100px;background-color:#CB562D;color:#fff;' %>
+      </div>
+    </div>
+    <% end %>
+  <!-- END Logged in Edit Deal top bar -->
+  
+<!-- END search bars/headers -->
     
 
     <div class="container">

@@ -11,8 +11,6 @@ class WelcomeController < ApplicationController
         @q = Project.by_user_plan(current_user).where.not(status: ['Complete', 'Archived']).search(params[:q])
         @projects = @q.result(distinct: true)
       end
-      
-
     end
   end
 end
