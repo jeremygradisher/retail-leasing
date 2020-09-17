@@ -63,6 +63,8 @@ $(document).ready(function(){
       <% else %>
         <%= link_to image_tag(@area.deals.first.dealimages.first.dealimage_url, :style => 'max-width:300px !important;'), deal_path(@area.deals.first) %>
       <% end %>
+    <% else %>
+      <%= image_tag('/images/status-plan-logo.png', :style => 'max-width:300px !important;') %>
     <% end %>
     <br><hr>
     SqFt: <%= number_with_delimiter(@area.area_sqft, :delimiter => ',') %><br>
@@ -84,7 +86,7 @@ $(document).ready(function(){
                       :class => '/*btn btn-danger*/' %>
           <% end %><br>
         <% end %>
-      <% else %>There are no deals associated.<% end %>
+      <% else %><i>There are no deals associated.</i><% end %>
     <br>
     <% if current_user.is_admin? || current_user.role == 'Admin' || current_user.role == 'Editor' %>
     <br>
