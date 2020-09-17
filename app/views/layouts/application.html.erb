@@ -55,7 +55,7 @@
   <body style="height:100vh;background-color: #306770;">
   <% elsif current_user && controller.controller_name == "projects" && controller.action_name == "create" %>
   <body style="height:100vh;background-color: #306770;">
-  <% elsif current_user && controller.controller_name == "members" && controller.action_name == "show" %>
+  <% elsif current_user && controller.controller_name == "users" && controller.action_name == "show" %>
   <body style="height:100vh;background-color: #306770;">
   <% else %>
   <body>
@@ -207,7 +207,7 @@
           <%= link_to "#", class: "folder-icon-link" do %><%= image_tag "/images/Folder-open-white-120.png", :class => "print-none", :style => "height:28px;margin-top:6px;", :id => "folder-icon" %><% end %>
           <!-- END switched from a font awesome icon to an image -->
           
-          <% if current_user.is_admin? || current_user.member.role == 'Admin' || current_user.member.role == 'Editor' %>
+          <% if current_user.is_admin? || current_user.role == 'Admin' || current_user.role == 'Editor' %>
               <%= link_to '<i class="fa fa-pencil-alt" style="margin-right:4px;"></i> Edit'.html_safe,
                   edit_area_path(@area), :class => 'btn btn-default ws-border-style border-light branded-font',
                   :style => 'font-size:16pt;width:120px;background-color:#69A020;color:#fff;vertical-align:top;margin-left:10px;' %>
@@ -248,7 +248,7 @@
                 project_url(@project.id), 
                 :class => 'btn btn-default ws-border-style border-light branded-font',
                 :style => 'font-size:16pt;width:130px;background-color:#1f7970;color:#fff;' %>
-        <% if current_user.is_admin? || current_user.member.role == 'Admin' || current_user.member.role == 'Editor' %>
+        <% if current_user.is_admin? || current_user.role == 'Admin' || current_user.role == 'Editor' %>
           <% if @project.maps.present? && !controller.action_name == "new" %>
             <%= link_to ('<i class="fa fa-pencil-alt"></i> ').html_safe,
                   edit_map_path(@map), title: 'Edit Profile', :class => 'branded-color responsive-none print-none', :style => 'color: #210f5b;font-size:24pt;margin-left:10px;' %>
@@ -279,7 +279,7 @@
                 :class => 'btn btn-default ws-border-style border-light branded-font',
                 :style => 'font-size:16pt;width:100px;background-color:#008398;color:#fff;' %>
         <% elsif controller.controller_name == "projects" && controller.action_name == "show" %>
-          <% if current_user.is_admin? || current_user.member.role == 'Admin' || current_user.member.role == 'Editor' %>
+          <% if current_user.is_admin? || current_user.role == 'Admin' || current_user.role == 'Editor' %>
             <%= link_to '<i class="fa fa-pencil-alt" style="margin-right:4px"></i> Edit'.html_safe,
                   edit_project_path(@project), 
                   :class => 'btn btn-default ws-border-style border-light branded-font',
@@ -310,7 +310,7 @@
     </div> <!-- /container -->
 
 
-<!-- Footers -->
+<!-- footer bars -->    
     <% if !current_user && current_page?(root_path) %>
       <div class="row print-none" style="background-color:#fff;border-top:thin solid #231f20;">
           <div class="col-lg-12" style="text-align:center">-->
@@ -322,7 +322,7 @@
             
           </div>
       </div>
-      
+
     <% elsif current_user && (controller_name == "projects" && controller.action_name == "show") %>
       <!-- Tenant Project Path -->
       <div class="row print-none" style="/*background-color:#000;border-top:thin solid #231f20;*/">
@@ -340,11 +340,225 @@
             </footer>
           </div>
       </div>
+    
+    <% elsif current_user && (controller_name == "projects" && controller.action_name == "edit") %>
+      <!-- Tenant Project Path -->
+      <div class="row print-none" style="background-color:#f8f8f8;border-top:thin solid #231f20;">
+          <div class="col-lg-12" style="text-align:center">
+            <footer style="background-color: #f8f8f8;" class="affixfooter" data-spy="affix-bottom">
+              
+                <% if current_user.is_admin? %>
+                  <%= link_to 'Delete Project',
+                    project_path(@project),
+                    :method => 'delete',
+                    :data => { :confirm => 'Are you sure you want to DELETE this project?'},
+                    :class => 'btn btn-danger print-none float-left-until',
+                    :style => 'margin-left:6px;margin-right:6px;' %>
+                <% end %>
+              
+              <% if current_user.is_admin? || current_user.role == 'Admin' %>
+                <%= submit_tag 'Update Project', 
+                  :form => 'edit_project_' + @project.id.to_s,
+                  :class => 'btn btn-primary print-none float-right-until', 
+                  :style => 'margin-right:6px;background-color:#16A3BA;border-color:#16A3BA;' %>
+              <% end %>
+                  
+                <%= link_to 'Cancel', project_path(@project), 
+                  :class => 'btn btn-primary print-none float-right-until', 
+                  :style => 'margin-right:6px;background-color:#fff;color:#16A3BA;border-color:#16A3BA;' %>
+            </footer>
+          </div>
+      </div>
+      
+    <% elsif (current_user && (controller_name == "areas" && controller.action_name == "new")) || (current_user && (controller_name == "areas" && controller.action_name == "create")) %>
+      <!-- Tenant Project Path -->
+      <div class="row print-none" style="background-color:#f8f8f8;border-top:thin solid #231f20;">
+          <div class="col-lg-12" style="text-align:center">
+            <footer style="background-color: #f8f8f8;" class="affixfooter" data-spy="affix-bottom">
+              
+                <%= submit_tag 'Create Area', 
+                  :form => 'new_area',
+                  :class => 'btn btn-primary print-none float-right-until', 
+                  :style => 'margin-right:6px;background-color:#8BC53F;border-color:#8BC53F;' %>
+                  
+                <%= link_to 'Cancel', #map_path(@map), 
+                    project_path(@project), 
+                  :class => 'btn btn-primary print-none float-right-until', 
+                  :style => 'margin-right:6px;background-color:#fff;color:#8BC53F;border-color:#8BC53F;' %>
+            </footer>
+          </div>
+      </div>
+      
+      <% elsif current_user && (controller_name == "areas" && controller.action_name == "edit") %>
+      <!-- Tenant Project Path -->
+      <div class="row print-none" style="background-color:#f8f8f8;border-top:thin solid #231f20;">
+          <div class="col-lg-12" style="text-align:center">
+            <footer style="background-color: #f8f8f8;" class="affixfooter" data-spy="affix-bottom">
+              
+                <% if current_user.is_admin? || current_user.role == 'Admin' || current_user.role == 'Editor'  %>
+                  <%= link_to 'Delete Area',
+                    area_path(@area),
+                    :method => 'delete',
+                    :data => { :confirm => 'Are you sure you want to DELETE this Area?'},
+                    :class => 'btn btn-danger print-none float-left-until',
+                    :style => 'margin-left:6px;margin-right:6px;' %>
+                <% end %>
+              
+              <% if current_user.is_admin? || current_user.role == 'Admin' || current_user.role == 'Editor' %>
+                <%= submit_tag 'Update Area', 
+                  :form => 'edit_area_' + @area.id.to_s,
+                  :class => 'btn btn-primary print-none float-right-until', 
+                  :style => 'margin-right:6px;background-color:#8BC53F;border-color:#8BC53F;' %>
+              <% end %>
+              
+                <%= link_to 'Cancel', area_path(@area), 
+                  :class => 'btn btn-primary print-none float-right-until', 
+                  :style => 'margin-right:6px;background-color:#fff;color:#8BC53F;border-color:#8BC53F;' %>
+            </footer>
+          </div>
+      </div>
+      
+      <% elsif current_user && (controller_name == "areas" && controller.action_name == "show") %>
+      <!-- Tenant Project Path -->
+      <div class="row print-none" style="background-color:#f8f8f8;border-top:thin solid #231f20;">
+          <div class="col-lg-12" style="text-align:center">-->
+            <footer style="background-color: #f8f8f8;" class="affixfooter" data-spy="affix-bottom">
+              
+            <% if current_user.is_admin? || current_user.role == 'Admin' || current_user.role == 'Editor'   %>
+              <%= link_to 'Delete Area',
+                area_path(@area),
+                :method => 'delete',
+                :data => { :confirm => 'Are you sure you want to DELETE this Area?'},
+                :class => 'btn btn-danger print-none float-left-until',
+                :style => 'margin-left:6px;margin-right:6px;' %>
+            <% end %>
+                
+            <%= link_to 'Back to Project',
+              project_path(@project), 
+              :class => 'btn btn-default print-none',
+              :style => 'border-color:#8BC53F;color:#8BC53F;' %>
+              
+      		  <%#= link_to 'Back to Map',
+      		    map_path(@map), :class => 'btn btn-default print-none',
+      		    :style => 'border-color:#8BC53F;color:#8BC53F;' %>
+              
+            <% if current_user.is_admin? || current_user.role == 'Admin' || current_user.role == 'Editor' %>
+            <%= link_to 'Edit',
+      		      edit_area_path(@area), :class => 'btn btn-primary float-right-until print-none',
+      		    :style => 'background-color:#8BC53F;border-color:#8BC53F;' %>
+      		  <% end %>
+            </footer>
+          </div>
+      </div>
+      
+      <% elsif current_user && (controller_name == "deals" && controller.action_name == "edit") %>
+      <!-- Tenant Project Path -->
+      <div class="row print-none" style="background-color:#f8f8f8;border-top:thin solid #231f20;">
+          <div class="col-lg-12" style="text-align:center">
+            <footer style="background-color: #f8f8f8;" class="affixfooter" data-spy="affix-bottom">
+              
+                <% if current_user.is_admin? || current_user.role == 'Admin' || current_user.role == 'Editor'  %>
+                  <%= link_to 'Kill Deal',
+                    deal_path(@deal),
+                    :method => 'delete',
+                    :data => { :confirm => 'Are you sure you want to DELETE this Deal?'},
+                    :class => 'btn btn-danger print-none float-left-until',
+                    :style => 'margin-left:6px;margin-right:6px;' %>
+                <% end %>
+              
+              <% if current_user.is_admin? || current_user.role == 'Admin' || current_user.role == 'Editor' %>
+                <%= submit_tag 'Update Deal', 
+                  :form => 'edit_deal_' + @deal.id.to_s,
+                  :class => 'btn btn-primary print-none float-right-until', 
+                  :style => 'margin-right:6px;background-color:#f16528;border-color:#f16528;' %>
+              <% end %>
+              
+                <%= link_to 'Cancel', area_path(@area), 
+                  :class => 'btn btn-primary print-none float-right-until', 
+                  :style => 'margin-right:6px;background-color:#fff;color:#f16528;border-color:#f16528;' %>
+            </footer>
+          </div>
+      </div>
+      
+      <% elsif controller_name == "workletters" && ( controller.action_name == "edit" ) %>
+      <!-- Tenant Project Path -->
+      <div class="row print-none" style="background-color:#f8f8f8;border-top:thin solid #231f20;">
+          <div class="col-lg-12" style="text-align:center">
+            <footer style="background-color: #f8f8f8;" class="affixfooter" data-spy="affix-bottom">
+              
+                <% if current_user.is_admin? || current_user.role == 'Admin' || current_user.role == 'Editor'  %>
+                  <%= link_to 'Delete Workletter',
+                    workletter_path(@workletter),
+                    :method => 'delete',
+                    :data => { :confirm => 'Are you sure you want to DELETE this Workletter?'},
+                    :class => 'btn btn-danger print-none float-left-until',
+                    :style => 'margin-left:6px;margin-right:6px;' %>
+                <% end %>
+              
+              <% if current_user.is_admin? || current_user.role == 'Admin' || current_user.role == 'Editor' %>
+                <%= submit_tag 'Update Workletter', 
+                  :form => 'edit_workletter_' + @workletter.id.to_s,
+                  :class => 'btn btn-primary print-none float-right-until', 
+                  :style => 'margin-right:6px;background-color:#26968B;border-color:#26968B;' %>
+              <% end %>
+              
+                <%= link_to 'Cancel', area_path(@area), 
+                  :class => 'btn btn-primary print-none float-right-until', 
+                  :style => 'margin-right:6px;background-color:#fff;color:#26968B;border-color:#26968B;' %>
+            </footer>
+          </div>
+      </div>
+      
+      <% elsif current_user && (controller_name == "maps" && controller.action_name == "show") %>
+      <!-- Tenant Project Path -->
+      <div class="row print-none" style="background-color:#f8f8f8;border-top:thin solid #231f20;">
+          <div class="col-lg-12" style="text-align:center">
+            <footer style="background-color: #f8f8f8;" class="affixfooter" data-spy="affix-bottom">
+              
+            <% if current_user.is_admin? || current_user.role == 'Admin' %>
+              <% if current_user.is_admin? %>
+              <%= link_to 'Delete Map',
+                map_path(@map),
+                :method => 'delete',
+                :data => { :confirm => 'This will also delete all associated Areas, Deals, etc. Do you really want to delete it? There is no way to undo...', title: 'Delete Map and Associated Models?', commit: 'Confirm Delete', cancel: 'Cancel'},
+                :class => 'btn btn-danger print-none float-left-until',
+                :style => 'margin-left:6px;margin-right:6px;' %>
+              <% end %>
+              <%= link_to 'Edit Map Image',
+      		      edit_map_path(@map), :class => 'btn btn-primary float-left-until print-none',
+      		    :style => 'background-color:#8BC53F;border-color:#8BC53F;' %>
+                
+            <% else %>
+              <%= link_to '<i class="fa fa-print"></i> print page'.html_safe, 'print', :onclick => 'window.print();return false;', 
+              :class => 'btn btn-primary responsive-none print-none float-left-until'%>
+            <% end %>
+                
+            <%= link_to 'Back to Project',
+              tenant_project_url(id: @map.project_id, tenant_id: @map.project.tenant_id), 
+              :class => 'btn btn-default print-none',
+              :style => 'border-color:#24b9ae;color:#24b9ae;' %>
+              
+            
+      		  
+      		  <% if current_user.is_admin? || current_user.role == 'Admin' || current_user.role == 'Editor' %>
+      		  
+            <%= link_to '+ Add space', new_area_path(:map_id => @map),
+                    :class => 'btn btn-primary responsive-none print-none float-right-until',
+                    :style => 'margin-left:2px;margin-right:2px;color:#fff;background-color:#24b9ae;border-color:#24b9ae;' %>
+            <%# else %>
+            <%#= link_to 'Download as .xlsx', map_path(@map, format: :xlsx), 
+                    :class => 'btn btn-primary responsive-none print-none float-right-until',
+                    :style => 'margin-left:2px;margin-right:2px;' %>
+            <% end %>
 
+            </footer>
+          </div>
+      </div>
+    
     <% else %>
       <!-- no footer -->
     <% end %>
-<!-- END Footers -->
+<!-- END footer bars -->
 
   </body>
 </html>
