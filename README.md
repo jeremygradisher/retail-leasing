@@ -1,6 +1,7 @@
 # StatusPlan2 - Running Rails 5
 ## a place to build and test
 Pulled this over into where we need this to be 09/23/2020
+Double testing to see that I have everything running
 
 # Before:
 ## Good base build - user auth w/ user model, save image to aws, sendgrid sign-up
