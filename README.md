@@ -1,7 +1,6 @@
-# Mockup101 - Running Rails 5
+# StatusPlan2 - Running Rails 5
 ## a place to build and test
-This now has Projects, Maps, Areas, Deals and Areas_Deals (join table)
-Project has_many Users through UserProjects.
+Pulled this over into where we need this to be 09/23/2020
 
 # Before:
 ## Good base build - user auth w/ user model, save image to aws, sendgrid sign-up
