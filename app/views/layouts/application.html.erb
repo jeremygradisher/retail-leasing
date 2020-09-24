@@ -534,7 +534,7 @@
             <% end %>
                 
             <%= link_to 'Back to Project',
-              tenant_project_url(id: @map.project_id, tenant_id: @map.project.tenant_id), 
+              project_url(@map.project_id), 
               :class => 'btn btn-default print-none',
               :style => 'border-color:#24b9ae;color:#24b9ae;' %>
               
