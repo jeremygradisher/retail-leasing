@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <style>
+    <%= Rails.application.assets.find_asset('bootstrap.css').to_s.html_safe %>
+  </style>
+
+  <!-- tried these - they do not seem to work -->
+  <%= javascript_include_tag "https://cdn.jsdelivr.net/npm/canvasjs@1.8.3/src/main/index.min.js" %>
+  <%#= wicked_pdf_javascript_include_tag "https://cdn.jsdelivr.net/npm/canvasjs@1.8.3/src/main/index.min.js" %>
+  
+  <%= javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js" %>
+  <%#= wicked_pdf_javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js" %>
+
+
+
+  <%= stylesheet_link_tag 'https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css' %>
+  <!--The following two refer to the new version of the code which 
+  causes a Loading... hang up with the report -->
+  <%#= javascript_include_tag "https://www.google.com/jsapi" %>
+  <%#= javascript_include_tag "https://www.gstatic.com/charts/loader.js" %>
+  
+  <%#= javascript_include_tag "/assets/javascripts/jsapi.js" %>
+  <%= wicked_pdf_javascript_include_tag "chartkick" %>
+  <%#= javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/chartkick/2.3.0/chartkick.min.js" %>
+  <!-- number pages -->
+  <script>
+      function number_pages() {
+        var vars={};
+        var x=document.location.search.substring(1).split('&');
+        for(var i in x) {var z=x[i].split('=',2);vars[z[0]] = decodeURIComponent(z[1]);}
+        var x=['frompage','topage','page','webpage','section','subsection','subsubsection'];
+        for(var i in x) {
+          var y = document.getElementsByClassName(x[i]);
+          for(var j=0; j<y.length; ++j) y[j].textContent = vars[x[i]];
+        }
+      }
+  </script>
+  
+  <style>
+    @font-face {
+      font-family: 'simplifica';
+      src: url('<%= Rails.root.join('app', 'assets', 'fonts', 'simplifica.ttf') %>') format('truetype'),
+      url('<%= Rails.root.join('app', 'assets', 'fonts', 'simplifica_typeface-webfont.woff') %>') format('woff');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    .simplifica {
+      font-family: "simplifica", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+    .row {
+      overflow: hidden;
+      margin: 0;
+      width: 100%;
+    }
+
+    .col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6,
+    .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12 {
+      padding: 0;
+    }
+
+    .header {
+      background-color: #2f9f00;
+      height: 1in;
+      width: 100%;
+      color: white;
+      padding-left: 0.5in;
+      padding-right: 0.5in;
+      padding-top: 0.2in;
+    }
+
+    #legend td {
+      padding-bottom: 0.7em;
+    }
+
+    table thead {
+      background-color: rgb(206,206,206);
+      display: table-row-group
+    }
+
+  .leased {color: #8BC53F !important;-webkit-print-color-adjust: exact;}
+  .at_lease {color:#15958A !important;-webkit-print-color-adjust: exact;}
+  .loi {color:#F16528 !important;-webkit-print-color-adjust: exact;}
+  .prospect {color:#E5BA21 !important;-webkit-print-color-adjust: exact;}
+  .available {color:#D13E27 !important;-webkit-print-color-adjust: exact;}
+    
+  .auto_gas {color:#66635f !important;-webkit-print-color-adjust: exact;}
+  .candy_confectionary {color:#f9ef7b !important;-webkit-print-color-adjust: exact;}
+  .department_store {color:#fed389 !important;-webkit-print-color-adjust: exact;}
+  .electronics {color:#be8b67 !important;-webkit-print-color-adjust: exact;}
+  .entertainment {color:#e62536 !important;-webkit-print-color-adjust: exact;}
+  .fashion {color:#67a5d7 !important;-webkit-print-color-adjust: exact;}
+  .food_beverage {color:#f7b131 !important;-webkit-print-color-adjust: exact;}
+  .footwear {color:#388b00 !important;-webkit-print-color-adjust: exact;}
+  .grocery_hypermarket {color:#b6cf42 !important;-webkit-print-color-adjust: exact;}
+  .home_furnishings {color:#f38a7c !important;-webkit-print-color-adjust: exact;}
+  .jewelry_handbags {color:#a6749c !important;-webkit-print-color-adjust: exact;}
+  .mobiles_accessories {color:#3a63a8 !important;-webkit-print-color-adjust: exact;}
+  .perfume_cosmetics {color:#ec4f92 !important;-webkit-print-color-adjust: exact;}
+  .pets {color:#e29423 !important;-webkit-print-color-adjust: exact;}
+  .services_specialty_stores {color:#efa1c5 !important;-webkit-print-color-adjust: exact;}
+  .sports_outdoor_fitness {color:#7ca180 !important;-webkit-print-color-adjust: exact;}
+  .toys_hobbies_gifts_books {color:#b2cce9 !important;-webkit-print-color-adjust: exact;}
+
+    div.alwaysbreak { page-break-before: always; }
+    
+    /* Trying to get thead to repeat per page within the table */
+    .nobreak:before { clear: both; }
+    .nobreak { position: relative; page-break-inside: avoid; }
+    
+    thead { display: table-header-group !important; }
+    tfoot { display: table-row-group !important; }
+    tr { page-break-inside: avoid !important; }
+    /* END Trying to get thead to repeat per page within the table */
+
+  </style>
+</head>
+<body onload="number_pages()">
+  <%= yield %>
+</body>
+</html>

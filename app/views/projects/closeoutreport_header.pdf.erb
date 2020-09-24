@@ -1,0 +1,13 @@
+<style>
+  div.header {
+    background-color: #4e58a3;
+    color: white;
+  }
+</style>
+<div class="header">
+  <span class="col-xs-6" style="font-size: 35px;"><%= @project.name %></span>
+  <div class="col-xs-6" style="display: inline-block; text-align: right;">
+    <span style="font-size: 30px;" class="simplifica">Tenant Close-out Report</span><br>
+    <span style="font-size: 15px"><%= Time.zone.now.strftime("%B %d, %Y") %></span>
+  </div>
+</div>
