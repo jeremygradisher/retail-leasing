@@ -51,7 +51,7 @@
                     <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
-                      <li class="dropdown-submenu dropdown-menu-right"><%#= link_to 'PDF', leasestatusreport_tenant_project_path(id: @project.id, tenant_id: @project.tenant_id, format: :pdf), target: '_blank' %></li>
+                      <li class="dropdown-submenu dropdown-menu-right"><%= link_to 'PDF', leasestatusreport_project_path(@project.id, format: :pdf), target: '_blank' %></li>
                       <li class="dropdown-submenu dropdown-menu-right"><%#= link_to 'XLSX', leasestatusreport_tenant_project_path(id: @project.id, tenant_id: @project.tenant_id, format: :xlsx) %></li>
                     </ul>
                     <%#= link_to 'Ad hoc Report', adhoc_tenant_project_path(id: @project.id, tenant_id: @project.tenant_id) %>
