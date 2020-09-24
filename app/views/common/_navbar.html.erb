@@ -52,7 +52,7 @@
                     </a>
                     <ul class="dropdown-menu">
                       <li class="dropdown-submenu dropdown-menu-right"><%= link_to 'PDF', leasestatusreport_project_path(@project.id, format: :pdf), target: '_blank' %></li>
-                      <li class="dropdown-submenu dropdown-menu-right"><%#= link_to 'XLSX', leasestatusreport_tenant_project_path(id: @project.id, tenant_id: @project.tenant_id, format: :xlsx) %></li>
+                      <li class="dropdown-submenu dropdown-menu-right"><%= link_to 'XLSX', leasestatusreport_project_path(@project.id, format: :xlsx) %></li>
                     </ul>
                     <%#= link_to 'Ad hoc Report', adhoc_tenant_project_path(id: @project.id, tenant_id: @project.tenant_id) %>
                   </li>
@@ -63,8 +63,8 @@
                     <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
-                      <li class="dropdown-submenu dropdown-menu-right"><%#= link_to 'PDF', leasedealreport_tenant_project_path(id: @project.id, tenant_id: @project.tenant_id, format: :pdf), target: '_blank' %></li>
-                      <li class="dropdown-submenu dropdown-menu-right"><%#= link_to 'XLSX', leasedealreport_tenant_project_path(id: @project.id, tenant_id: @project.tenant_id, format: :xlsx) %></li>
+                      <li class="dropdown-submenu dropdown-menu-right"><%= link_to 'PDF', leasedealreport_project_path(@project.id, format: :pdf), target: '_blank' %></li>
+                      <li class="dropdown-submenu dropdown-menu-right"><%= link_to 'XLSX', leasedealreport_project_path(@project.id, format: :xlsx) %></li>
                     </ul>
                     <%#= link_to 'Ad hoc Report', adhoc_tenant_project_path(id: @project.id, tenant_id: @project.tenant_id) %>
                   </li>
@@ -79,8 +79,8 @@
                     </a>
                     <ul class="dropdown-menu">
                       <!-- this is coming -->
-                      <li class="dropdown-submenu dropdown-menu-right"><%#= link_to 'PDF', tenantstatusreport_tenant_project_path(id: @project.id, tenant_id: @project.tenant_id, format: :pdf), target: '_blank' %></li>
-                      <li class="dropdown-submenu dropdown-menu-right"><%#= link_to 'XLSX', tenantstatusreport_tenant_project_path(id: @project.id, tenant_id: @project.tenant_id, format: :xlsx) %></li>
+                      <li class="dropdown-submenu dropdown-menu-right"><%= link_to 'PDF', tenantstatusreport_project_path(@project.id, format: :pdf), target: '_blank' %></li>
+                      <li class="dropdown-submenu dropdown-menu-right"><%= link_to 'XLSX', tenantstatusreport_project_path(@project.id, format: :xlsx) %></li>
                     </ul>
                   </li>
                   <% end %>
@@ -94,8 +94,8 @@
                     <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
-                      <li class="dropdown-submenu dropdown-menu-right"><%#= link_to 'PDF', closeoutreport_tenant_project_path(id: @project.id, tenant_id: @project.tenant_id, format: :pdf), target: '_blank' %></li>
-                      <li class="dropdown-submenu dropdown-menu-right"><%#= link_to 'XLSX', closeoutreport_tenant_project_path(id: @project.id, tenant_id: @project.tenant_id, format: :xlsx) %></li>
+                      <li class="dropdown-submenu dropdown-menu-right"><%= link_to 'PDF', closeoutreport_project_path(@project.id, format: :pdf), target: '_blank' %></li>
+                      <li class="dropdown-submenu dropdown-menu-right"><%= link_to 'XLSX', closeoutreport_project_path(@project.id, format: :xlsx) %></li>
                     </ul>
                   </li>
                   <% end %>
@@ -112,7 +112,7 @@
                       <!--
                       <li class="dropdown-submenu dropdown-menu-right"><%#= link_to 'PDF', dealdirectoryreport_tenant_project_path(id: @project.id, tenant_id: @project.tenant_id, format: :pdf), target: '_blank' %></li>
                       -->
-                      <li class="dropdown-submenu dropdown-menu-right"><%#= link_to 'XLSX', dealdirectoryreport_tenant_project_path(id: @project.id, tenant_id: @project.tenant_id, format: :xlsx) %></li>
+                      <li class="dropdown-submenu dropdown-menu-right"><%= link_to 'XLSX', dealdirectoryreport_project_path(@project.id, format: :xlsx) %></li>
                     </ul>
                   </li>
                   <% end %>
