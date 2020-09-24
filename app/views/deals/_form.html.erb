@@ -668,23 +668,16 @@
   <div class="form-group" style="display:none;">
     <%= f.label :project_id, :class => 'control-label col-lg-2' %>
     <div class="col-lg-10">
-      <%= f.text_field :project_id, value: @project_id, :class => 'form-control' %>
+      <%= f.hidden_field :project_id, value: @project_id, :class => 'form-control' %>
     </div>
     <%=f.error_span(:project_id) %>
   </div>
   <div class="form-group" style="display:none;">
     <%= f.label :map_id, :class => 'control-label col-lg-2' %>
     <div class="col-lg-10">
-      <%= f.text_field :map_id, value: @map_id, :class => 'form-control' %>
+      <%= f.hidden_field :map_id, value: @map_id, :class => 'form-control' %>
     </div>
     <%=f.error_span(:map_id) %>
-  </div>
-  <div class="form-group" style="display:none;">
-    <%= f.label :area_id, :class => 'control-label col-lg-2' %>
-    <div class="col-lg-10">
-      <%= f.text_field :area_id, value: @area_id, :class => 'form-control' %>
-    </div>
-    <%=f.error_span(:area_id) %>
   </div>
   <% end %>
   <!-- END hidden fields for new form only -->

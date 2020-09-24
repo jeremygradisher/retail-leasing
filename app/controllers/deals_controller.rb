@@ -31,6 +31,9 @@ class DealsController < ApplicationController
     @project = Project.find(params[:project_id])
     @dealimage = @deal.dealimages.build
     @dealimages = @deal.dealimages.all
+    
+    @map_id = params[:map_id]
+    @project_id = params[:project_id]
   end
 
   # GET /deals/1/edit
@@ -38,12 +41,16 @@ class DealsController < ApplicationController
     @project = Project.find(@deal.project_id)
     @dealimage = @deal.dealimages.build
     @dealimages = @deal.dealimages.all
+    @map_id = @deal.map_id
+    @project_id = @deal.project_id
   end
 
   # POST /deals
   # POST /deals.json
   def create
     @deal = Deal.new(deal_params)
+    @project = Project.find(@deal.project_id)
+    @dealimages = @deal.dealimages.all
 
     respond_to do |format|
       if @deal.save

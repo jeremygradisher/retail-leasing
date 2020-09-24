@@ -1,0 +1,345 @@
+<%= form_for @project, :html => { :class => "form form-horizontal project" }, :id => "test" do |f| %>
+
+  <% if @project.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @project.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+
+
+  <div class="row">
+    <div style="text-align:right;">
+      <!--<span class="fa fa-close"></span>-->
+      <%#= link_to 'X Cancel', root_path, :class => '/*btn-xs btn-default*/', :style => 'color:#fff;' %>
+      <%= link_to("#{content_tag :i, nil, class: 'fa fa-close'} Cancel".html_safe,
+    root_path, class: "cancel-link", style: "color:#fff;underline:none;") %>
+    </div>
+  </div>
+  
+    <div class="row">
+        <div class="step">
+          <fieldset style="width:100%;clear:both;">
+
+            <h2 class="fs-title" style="">Create New Project</h2>
+            <hr>
+            <!--<h3 class="fs-subtitle">This is step 1</h3>-->
+            <div class="form-group">
+              <div class="col-lg-12">
+                <%= f.text_field :name, :class => 'form-control', :placeholder => 'Project Name' %>
+              </div>
+              <%=f.error_span(:name) %>
+              <div class="col-lg-12">
+                <%= f.text_field :address, :class => 'form-control', :placeholder => 'Address' %>
+              </div>
+              <%=f.error_span(:address) %>
+              <div class="col-lg-4">
+                <%= f.text_field :city, :class => 'form-control', :placeholder => 'City' %>
+              </div>
+              <%=f.error_span(:city) %>
+              <div class="col-lg-4 added" style="margin-bottom:10px;">
+                <%= f.select :state, ['AL', 'AK', 'AR', 'AZ', 'CA', 'CO', 'CT', 'DE', 'FL', 'GA', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MD', 'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 'OH', 'OK', 'OR', 'PA', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VA', 'WA', 'WV', 'WI', 'WY'], 
+                :prompt => "State" %>
+              </div>
+              <%=f.error_span(:state) %>
+              <div class="col-lg-4">
+                <%= f.text_field :zip, :class => 'form-control', :placeholder => 'Zip' %>
+              </div>
+              <%=f.error_span(:zip) %>
+            </div>
+
+        		<button type="button" style="margin-top:16px;" class="action btn-sky text-capitalize next btn status-btn-red">Next</button>
+          </fieldset>
+      </div>
+      <div class="step">
+        <fieldset style="width:100%;clear:both;">
+            <h2 class="fs-title">Upload Image</h2>
+            <!--<h3 class="fs-subtitle">Project Status</h3>-->
+            <hr>
+        
+          <div class="form-group">
+            <div class="col-lg-12">
+
+            <!--original-->
+            <%= f.file_field :icon, :multiple => false, name: "icons[icon][]",
+            :class => 'form-control', :style => 'height:160px;padding: 160px 0 0 0;overflow: hidden;', onchange: "validateFiles(this);",
+            data: { max_file_size: 2.megabytes } %>
+            <!--end original-->
+            <!--<output id="list"></output>-->
+            <div id="fileDisplayArea"></div>
+            <div id="removeMessage"></div>
+
+            </div>
+        
+          </div>
+          <!--<button type="button" style="margin-top:10px;" class="action btn-sky text-capitalize back btn status-btn-red">Back</button>-->
+      		<button type="button" style="margin-top:10px;" class="action btn-sky text-capitalize next btn status-btn-yellow">Next</button>
+          
+        </fieldset> 
+      </div>
+      <div class="step">
+        <fieldset style="width:100%;clear:both;"> 
+          <h2 class="fs-title">Project Type</h2>
+          <hr>
+          <!--<h3 class="fs-subtitle">*Required field</h3>-->
+          <div class="form-group">
+            <!--
+            <div class="col-lg-12" style="margin-bottom:10px;">
+              <%#= f.text_field :project_type, :class => 'form-control' %>
+              <%#= f.select :project_type, ['Retail', 'Office', 'Mixed-use', 'Multi-family', 'Healthcare', 'Leisure'], {include_blank: true}, :class => 'form-control' %>
+            </div>
+            -->
+            <a id="retail" class="projectTypeInput">Retail</a>
+            <a id="office" class="projectTypeInput">Office</a>
+            <a id="mixed-use" class="projectTypeInput">Mixed-use</a>
+            <a id="multi-family" class="projectTypeInput">Multi-family</a>
+            <a id="healthcare" class="projectTypeInput">Healthcare</a>
+            <a id="leisure" class="projectTypeInput">Leisure</a>
+            <%=f.error_span(:project_type) %>
+          </div>
+        
+          <div class="form-group" style="display:none;">
+            <div class="col-lg-12">
+              <!--<input type="hidden" name="accion" id="accion"/>-->
+              <%= f.hidden_field :status, :value => '' %>
+              <%= f.hidden_field :project_type, :value => '' %>
+              <%#= f.hidden_field :tenant_id, value: params[:tenant_id], :class => 'form-control' %>
+              <%= f.hidden_field :user_id, value: current_user.id, :class => 'form-control' %>
+ 
+              <%#= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                        root_path, :class => 'btn btn-default' %>
+            </div>
+          </div>
+          
+          <!--<button type="button" style="margin-top:10px;" class="action btn-sky text-capitalize back btn status-btn-yellow">Back</button>-->
+      		<%= f.submit nil, :class => 'action btn-sky text-capitalize submit btn status-btn-green', :style => 'width:140px;margin-top:20px;font-size:14px;border-radius:16px;color:#fff;' %>
+        </fieldset>
+      </div>
+  </div><!--row end-->
+
+  <div class="row">
+    <!-- progressbar -->
+	  <div class="progress">
+		  <div class="progress-bar progress-bar-danger progress-bar-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+		</div>
+    <!-- progressbar -->
+  </div>
+
+<% end %>
+
+
+
+<!--// click change hidden field project_type to value -->
+<script>
+// click change hidden field project_type to value
+$("#retail").click(function() {
+    $("#project_project_type").val("Retail");
+});
+$("#office").click(function() {
+    $("#project_project_type").val("Office");
+});
+$("#mixed-use").click(function() {
+    $("#project_project_type").val("Mixed-use");
+});
+$("#multi-family").click(function() {
+    $("#project_project_type").val("Multi-family");
+});
+$("#healthcare").click(function() {
+    $("#project_project_type").val("Healthcare");
+});
+$("#leisure").click(function() {
+    $("#project_project_type").val("Leisure");
+});
+//onClick addClass Clicked to this and remove from all others
+$(".projectTypeInput").click(function() {
+    $(this).addClass('Clicked');
+    $(".projectTypeInput").not(this).removeClass('Clicked');
+});
+</script>
+<!--// end click change hidden field project_type to value -->
+
+
+<!-- file input thumbnail - step 2 of form -->
+<!-- uses the HTML5 FileReader API -->
+<style>
+  #fileDisplayArea {
+  margin-top: 2em;
+  /*margin-bottom: 2em;*/
+  width: 100%;
+  overflow-x: auto;
+}
+
+div#fileDisplayArea img {max-width:100%;}
+</style>
+
+<script>
+window.onload = function() {
+
+		var fileInput = document.getElementById('project_icon');
+		var fileDisplayArea = document.getElementById('fileDisplayArea');
+
+
+		fileInput.addEventListener('change', function(e) {
+			var file = fileInput.files[0];
+			var imageType = /image.*/;
+
+			if (file.type.match(imageType)) {
+				var reader = new FileReader();
+
+				reader.onload = function(e) {
+					fileDisplayArea.innerHTML = "";
+
+					var img = new Image();
+					img.src = reader.result;
+
+					fileDisplayArea.appendChild(img);
+				}
+
+				reader.readAsDataURL(file);	
+        
+        //original - was good until you dropped a second image
+				//$('<p>*Click image to remove</p>').appendTo('#removeMessage');
+				//replace empty div#removeMessage, with div#removeMessage around paragraph text 
+				$('#removeMessage').replaceWith('<div id="removeMessage"><p>*Click image to remove</p></div>');
+			} else {
+				fileDisplayArea.innerHTML = "File not supported!";
+			}
+		});
+
+}  
+</script>
+<!-- this allows a click of the image to remove it 
+  along with the message -->
+<script>
+  $( "#fileDisplayArea" ).click(function() {
+  $('#project_icon').val('');
+  fileDisplayArea.innerHTML = "";
+  $('#removeMessage').empty();
+  });
+</script>
+<!-- end file input thumbnail -->
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		var current = 1;
+		
+		widget      = $(".step");
+		btnnext     = $(".next");
+		btnback     = $(".back"); 
+		btnsubmit   = $(".submit");
+
+		// Init buttons and UI
+		widget.not(':eq(0)').hide();
+		hideButtons(current);
+		setProgress(current);
+
+		// Next button click action
+		btnnext.click(function(){
+			if(current < widget.length){
+				// Check validation
+				if($(".form").valid()){
+					widget.show();
+					widget.not(':eq('+(current++)+')').hide();
+					setProgress(current);
+				}
+			}
+			hideButtons(current);
+			// editions to change progress bar colors
+			if(current == 1){
+	      $(".progress-bar").removeClass('progress-bar-success');
+	      $(".progress-bar").addClass('progress-bar-danger');
+	    }
+			if(current == 2){
+	      $(".progress-bar").removeClass('progress-bar-danger');
+	      $(".progress-bar").addClass('progress-bar-warning');
+	    }
+	    if(current == 3){
+	      $(".progress-bar").removeClass('progress-bar-warning');
+	      $(".progress-bar").addClass('progress-bar-success');
+	    }
+		})
+		
+
+
+		// Back button click action
+		btnback.click(function(){
+			if(current > 1){
+				current = current - 2;
+				if(current < widget.length){
+					widget.show();
+					widget.not(':eq('+(current++)+')').hide();
+					setProgress(current);
+				}
+			}
+			hideButtons(current);
+			// editions to change progress bar colors
+			if(current == 1){
+	      $(".progress-bar").removeClass('progress-bar-warning');
+	      $(".progress-bar").addClass('progress-bar-danger');
+	    }
+			if(current == 2){
+	      $(".progress-bar").removeClass('progress-bar-success');
+	      $(".progress-bar").addClass('progress-bar-warning');
+	    }
+	    if(current == 3){
+	      $(".progress-bar").removeClass('progress-bar-warning');
+	      $(".progress-bar").addClass('progress-bar-success');
+	    }
+		})
+
+	    $('.form').validate({ // initialize plugin
+			ignore:":not(:visible)",			
+			rules: {
+				"project[name]"     : "required",
+				"project[project_type]"     : "required",
+				//email    : {required : true, email:true},
+
+			},
+	    });
+
+	});
+	
+	
+
+	// Change progress bar action
+	//THIS WAS THE ORIGINAL USING PERCENT
+	/*
+	setProgress = function(currstep){
+		var percent = parseFloat(100 / widget.length) * currstep;
+		percent = percent.toFixed();
+		$(".progress-bar").css("width",percent+"%").html(percent+"%");		
+	}*/
+	//this was a quick hack to make it say step 1, 2 and 3 on the status bar
+	setProgress = function(currstep){
+		var percent = parseFloat(33.3333) * currstep;
+		//percent = percent.toFixed();
+		$(".progress-bar").css("width",percent+"%").html("Step "+currstep);		
+	}
+
+	// Hide buttons according to the current step
+	hideButtons = function(current){
+		var limit = parseInt(widget.length); 
+
+		$(".action").hide();
+
+		if(current < limit) btnnext.show();
+		if(current > 1) btnback.show();
+		if (current == limit) { 
+			// Show entered values
+			$(".display label:not(.control-label)").each(function(){
+				console.log($(this).find("label:not(.control-label)").html($("#"+$(this).data("id")).val()));	
+			});
+			btnnext.hide(); 
+			btnsubmit.show();
+		}
+	}
+</script>

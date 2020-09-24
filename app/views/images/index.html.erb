@@ -7,7 +7,7 @@
   <thead>
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
-      <!--<th><%#= model_class.human_attribute_name(:project_id) %></th>-->
+      <th><%= model_class.human_attribute_name(:project_id) %></th>
       <th><%= model_class.human_attribute_name(:map_id) %></th>
       <th><%= model_class.human_attribute_name(:image) %></th>
       <th><%= model_class.human_attribute_name(:width) %></th>
@@ -20,7 +20,7 @@
     <% @images.each do |image| %>
       <tr>
         <td><%= link_to image.id, image_path(image) %></td>
-        <!--<td><%#= image.project_id %></td>-->
+        <td><%= image.project_id %></td>
         <td><%= image.map_id %></td>
         <td>
           <% if image.image_url != nil %>

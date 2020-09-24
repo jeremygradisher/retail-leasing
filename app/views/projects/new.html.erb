@@ -1,13 +1,12 @@
-<% if (current_user && current_user.is_admin?) %>
 <%- model_class = Project -%>
+<!--
 <div class="page-header">
-  <h1><%=t '.title', :default => [:'helpers.titles.new', 'New %{model}'], :model => model_class.model_name.human.titleize %></h1>
+  <h1><%#=t '.title', :default => [:'helpers.titles.new', 'New %{model}'], :model => model_class.model_name.human.titleize %></h1>
 </div>
-<%= render :partial => 'form' %>
-<% else %>
-  <h2>You are not authorized to be here. <a href="/" class="btn btn-default">Return Home</a></h2>
+-->
+<% if (current_user && current_user.is_admin?) || (current_user && current_user.member.role == 'Editor')  %>
+<%= render :partial => 'newform' %>
 <% end %>
-
 
 <!-- This is a client side validation for the project icon -->
 <script>
