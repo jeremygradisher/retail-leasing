@@ -1,0 +1,84 @@
+wb = xlsx_package.workbook
+wb.styles do |style|
+  general_cell = style.add_style(sz: 16, bg_color: "FFFFFF", b: true, alignment: { horizontal: :center, vertical: :center }, border: Axlsx::STYLE_THIN_BORDER)
+  leasing_cell = style.add_style(sz: 16, bg_color: "FF0000", fg_color: "FFFFFF", b: true, alignment: { horizontal: :center, vertical: :center }, border: Axlsx::STYLE_THIN_BORDER)
+  lease_negotiation_cell = style.add_style(sz: 16, bg_color: "f15b28", fg_color: "FFFFFF", b: true, alignment: { horizontal: :center, vertical: :center }, border: Axlsx::STYLE_THIN_BORDER)
+  ll_construction_cell = style.add_style(sz: 16, bg_color: "dddd4e", fg_color: "FFFFFF", b: true, alignment: { horizontal: :center, vertical: :center }, border: Axlsx::STYLE_THIN_BORDER)
+  tenant_design_cell = style.add_style(sz: 16, bg_color: "24b9ae", fg_color: "FFFFFF", b: true, alignment: { horizontal: :center, vertical: :center }, border: Axlsx::STYLE_THIN_BORDER)
+  permit_cell = style.add_style(sz: 16, bg_color: "2296ae", fg_color: "FFFFFF", b: true, alignment: { horizontal: :center, vertical: :center }, border: Axlsx::STYLE_THIN_BORDER)
+  signage_cell = style.add_style(sz: 16, bg_color: "19375c", fg_color: "FFFFFF", b: true, alignment: { horizontal: :center, vertical: :center }, border: Axlsx::STYLE_THIN_BORDER)
+  tenant_fit_out_cell = style.add_style(sz: 16, bg_color: "c9e1f7", fg_color: "FFFFFF", b: true, alignment: { horizontal: :center, vertical: :center }, border: Axlsx::STYLE_THIN_BORDER)
+  close_out_cell = style.add_style(sz: 16, bg_color: "6e4a86", fg_color: "FFFFFF", b: true, alignment: { horizontal: :center, vertical: :center }, border: Axlsx::STYLE_THIN_BORDER)
+  
+  center_cell = style.add_style(sz: 14, alignment: { horizontal: :center, vertical: :center })
+  left_cell = style.add_style(sz: 14, alignment: { horizontal: :left, vertical: :center })
+  center_cell_main = style.add_style(alignment: { horizontal: :center, vertical: :center, wrap_text: :true }, b: true, border: Axlsx::STYLE_THIN_BORDER)
+  bolder_cell = style.add_style(sz: 20)
+  
+  project_header_cell = style.add_style(sz: 40, bg_color: "3f3f3f", fg_color: "FFFFFF", alignment: { horizontal: :left, vertical: :center })
+  header_cell_tcor = style.add_style(sz: 40, bg_color: "3f3f3f", fg_color: "FFFFFF", alignment: { horizontal: :center, vertical: :center })
+  header_cell = style.add_style(sz: 16, bg_color: "3f3f3f", fg_color: "FFFFFF", alignment: { horizontal: :center, vertical: :center })
+  header_cell_ralign = style.add_style(sz: 16, bg_color: "3f3f3f", fg_color: "FFFFFF", alignment: { horizontal: :right, vertical: :center })
+  header_wrap = style.add_style(sz: 22, b: true, alignment: { horizontal: :center, wrap_text: true}, border: Axlsx::STYLE_THIN_BORDER)
+
+  empty_row = ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '']
+  
+  wb.add_worksheet(name: "Areas") do |sheet|
+      sheet.add_row(empty_row, style: 33.times.map{style.add_style(bg_color: "3f3f3f")})
+      sheet.add_row(empty_row, style: 33.times.map{style.add_style(bg_color: "3f3f3f")})
+  
+      sheet.add_row ["", @project.name, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Tenant Status Report (TSR)"], 
+        style: [header_cell, project_header_cell, header_cell, header_cell, header_cell, header_cell, header_cell, header_cell, header_cell,header_cell, header_cell, header_cell, header_cell, header_cell, header_cell, header_cell, header_cell, header_cell, header_cell, header_cell, header_cell, header_cell,  header_cell, header_cell_tcor, header_cell_tcor, header_cell_tcor, header_cell_tcor,  header_cell_tcor, header_cell_tcor, header_cell_tcor, header_cell_ralign], height: 60.0
+      sheet.add_row ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", Time.zone.now.strftime("%B %d, %Y")], 
+        style: [project_header_cell, header_cell, header_cell, header_cell, header_cell, header_cell, header_cell, header_cell, header_cell,header_cell, header_cell, header_cell, header_cell, header_cell, header_cell, header_cell, header_cell, header_cell, header_cell, header_cell, header_cell, header_cell,  header_cell, header_cell_tcor, header_cell_tcor, header_cell_tcor, header_cell_tcor,  header_cell_tcor, header_cell_tcor, header_cell_tcor, header_cell_ralign], height: 30.0
+
+      sheet.add_row(empty_row, style: 33.times.map{style.add_style(bg_color: "3f3f3f")})
+      sheet.add_row(empty_row, style: 33.times.map{style.add_style(bg_color: "ffffff")})
+
+      sheet.add_row ["General Information:", "", "", "", "Leasing Information:", "", "", "", "", "LL Construction", "", "Tenant Design", "", "", "Tenant Design (Plans)", "", "", "", "Permit", "", "Signage", "", "", "Tenant Fit-out", "", "", "", "", "", "", "", "", "Comments"], 
+        style: [general_cell, general_cell, general_cell, general_cell, leasing_cell, leasing_cell, leasing_cell, leasing_cell, leasing_cell, ll_construction_cell, ll_construction_cell, tenant_design_cell, tenant_design_cell, tenant_design_cell, tenant_design_cell, tenant_design_cell, tenant_design_cell, tenant_design_cell, 
+        permit_cell, permit_cell, signage_cell, signage_cell, signage_cell, tenant_fit_out_cell, tenant_fit_out_cell, tenant_fit_out_cell, tenant_fit_out_cell, tenant_fit_out_cell, tenant_fit_out_cell, tenant_fit_out_cell, tenant_fit_out_cell, tenant_fit_out_cell, general_cell], :height => 30.0
+      sheet.add_row ["Opening Status:", "Suite #:", "Area Name:", "Sq ft:", "Lease Status:", "Lease Execution:", "Turn Over Condition:", "Fit-Out Duration", "Date of Possession", "LL work sent:",  "Tenant Approval of LL work", "Welcome Package:", "Base Building cds:", "Kick off call:", "CAD Release Form", "Final plans received:", "Final plans reviewed:", "Final plans status", "Permit submitted:", "Permit received:", "Signage Received:", "Signage Reviewed:", "Signage Status:", "Check in:", "Premises Acceptance:", "Construction start:", "Lay-out & rough-in:", "Fit-out & Finishes:", "Fixtures:", "Final inspections:", "Merchandising", "Open for business:", ""], 
+        style: [center_cell_main, center_cell_main, center_cell_main, center_cell_main, center_cell_main, center_cell_main, center_cell_main, center_cell_main, center_cell_main, center_cell_main, center_cell_main, center_cell_main, center_cell_main, center_cell_main, center_cell_main, center_cell_main, center_cell_main, center_cell_main, center_cell_main, center_cell_main, center_cell_main, center_cell_main, center_cell_main, center_cell_main, center_cell_main, center_cell_main, center_cell_main, center_cell_main, center_cell_main, center_cell_main, center_cell_main, center_cell_main, center_cell_main, center_cell_main, center_cell_main, center_cell_main, center_cell_main, center_cell_main, center_cell_main, center_cell_main, center_cell_main, center_cell_main, center_cell_main, center_cell_main, center_cell_main, center_cell_main, center_cell_main], :height => 30.0
+
+      sheet.column_widths 10, 10, 30, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 60
+      sheet.merge_cells('B3:I3')
+      sheet.merge_cells('AE3:AG3')
+      sheet.merge_cells('AE4:AG4')
+      sheet.merge_cells('A7:D7')
+      sheet.merge_cells('E7:I7')
+      sheet.merge_cells('J7:K7')
+      sheet.merge_cells('L7:N7')
+      sheet.merge_cells('O7:R7')
+      sheet.merge_cells('S7:T7')
+      sheet.merge_cells('U7:W7')
+      sheet.merge_cells('X7:AF7')
+    @areasxlsx.each do |area|
+      lease_status = style.add_style(
+          alignment: {
+            horizontal: :center,
+            vertical: :center,
+            wrap_text: :true
+          },
+          font_name: 'Helvetica'#,
+          #fg_color: Area.lease_status_color.fetch(area[:lease_status].to_s.to_sym, "231f20")
+        )
+        
+      opening_status = style.add_style(
+          alignment: {
+            horizontal: :center,
+            vertical: :center,
+            wrap_text: :true
+          },
+          font_name: 'Helvetica',
+          #bg_color: Area.opening_status_color.fetch(area[:opening_status].to_s.to_sym, "231f20"),
+          fg_color: "FFFFFF",
+          border: Axlsx::STYLE_THIN_BORDER
+        )
+    
+      sheet.add_row [area[:opening_status], area[:suite_number], area[:name], number_with_delimiter(area[:area_square_feet],delimiter: ','), area[:lease_status], area[:lease_execution], area[:turn_over_condition], area[:fit_out_duration], area[:date_of_possession], area[:landlord_work_sent], area[:tenant_approval], area[:welcome_package], area[:base_building_cds], area[:kick_off_call], area[:cad_release_form], area[:final_plans_received], area[:final_plans_reviewed], area[:final_plans_status], area[:permit_submitted], area[:permit_received], area[:signage_received], area[:signage_reviewed], area[:signage_status], area[:check_in], area[:premises_acceptance], area[:construction_start], area[:lay_out_rough_in], area[:fit_out_finishes], area[:fixtures], area[:final_inspections], area[:merchandising], area[:open_for_business], area[:area_comments]  ], 
+        style: [opening_status, center_cell, left_cell, center_cell, lease_status, center_cell, center_cell, center_cell, center_cell, center_cell, center_cell, center_cell, center_cell, center_cell, center_cell, center_cell, center_cell, center_cell, center_cell, center_cell, center_cell, center_cell, center_cell, center_cell, center_cell, center_cell, center_cell, center_cell, center_cell, center_cell, center_cell, center_cell, left_cell], :height => 30.0
+    end
+  end
+  
+end

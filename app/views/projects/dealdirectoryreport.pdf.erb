@@ -1,0 +1,511 @@
+<div style="padding-top: 0.3in; padding-left: 0.7in; padding-right: 0.7in">
+  <span style="font-size: 35px">Property Statistics</span>
+  <hr>
+</div>
+
+<!-- overall row one -->
+<div class="row" id="leasingStatusRow">
+  <div class="col-xs-5" style="text-align:center;">
+    <div id="chart-12" style="text-align: center; color: #999; 
+    height: 500px; width: 600px; line-height: 600px; margin-left:100px;
+    font-size: 16pt; font-family: 'Lucida Grande', 'Lucida Sans Unicode', Verdana, Arial, Helvetica, sans-serif;">Loading...</div>
+    <script type="text/javascript">
+      new Chartkick.PieChart("chart-12", {
+          "Available":<%= @deals.where(lease_status: "Available").count %>,
+          "Prospect":<%= @deals.where(lease_status: "Prospect").count %>,
+          "LOI":<%= @deals.where(lease_status: "LOI").count %>,
+          "At Lease":<%= @deals.where(lease_status: "At Lease").count %>,
+          "Leased":<%= @deals.where(lease_status: "Leased").count %>
+        },
+        {
+          "donut": true, "library": {
+            "pieSliceText": "value",
+            "backgroundColor": "none",
+            "pieHole": 0.4,
+            "legend": {"position": "none"},
+            "slices": [{"color": "#D13E27"}, {"color": "#E5BA21"}, {"color": "#F16528"}, {"color": "#15958A"}, {"color": "#8BC53F"}]
+          }
+        });
+    </script>
+
+    <span style="font-size: 27px;font-weight: bold;">Deals: <%= @dealscount %></span><br>
+    <span style="font-size: 27px;font-weight: bold;">Spaces: <%= @tenants %></span>
+  </div>
+  <div class="col-xs-5" style="text-align:center;">
+    <div id="chart-13" style="text-align: center; color: #999; 
+    height: 500px; width: 600px; line-height: 600px; margin-left:100px;
+    font-size: 16pt; font-family: 'Lucida Grande', 'Lucida Sans Unicode', Verdana, Arial, Helvetica, sans-serif;">Loading...</div>
+    <script type="text/javascript">
+      new Chartkick.PieChart("chart-13", {
+        "Available":<%= @deals.where(lease_status: "Available").sum(:net_rentable_area) %>,
+        "Prospect":<%= @deals.where(lease_status: "Prospect").sum(:net_rentable_area) %>,
+        "LOI":<%= @deals.where(lease_status: "LOI").sum(:net_rentable_area) %>,
+        "At Lease":<%= @deals.where(lease_status: "At Lease").sum(:net_rentable_area) %>,
+        "Leased":<%= @deals.where(lease_status: "Leased").sum(:net_rentable_area) %>
+      }, {
+        "donut": true,
+        "library": {
+          "pieSliceText": "value",
+          "backgroundColor": "none",
+          "font-size": "16pt",
+          "pieHole": 0.4,
+          "legend": {"position": "none"},
+
+          "slices": {
+            "0": {"color": "#D13E27"},
+            "1": {"color": "#E5BA21"},
+            "2": {"color": "#F16528"},
+            "3": {"color": "#15958A"},
+            "4": {"color": "#8BC53F"}
+          }
+        }
+      });
+    </script>
+
+    <span style="font-size: 27px; font-weight: bold;"><%= number_with_delimiter(@netrentablearea.compact.sum, :delimiter => ',') %> Potential (sf)</span><br>
+    <span style="font-size: 27px; font-weight: bold;"><%= number_with_delimiter(@areasquarefootage.compact.sum, :delimiter => ',') %> GLA (sf)</span>
+
+  </div>
+
+
+  <div class="col-xs-2" style="text-align:left; font-size: 20pt; height: 100%; padding-top: 80px">
+      <div><i class="fa fa-certificate" style="color:#D13E27 !important;"></i> Available</div>
+      <div><i class="fa fa-certificate" style="color:#E5BA21 !important;"></i> Prospect</div>
+      <div><i class="fa fa-certificate" style="color:#F16528 !important;"></i> LOI</div>
+      <div><i class="fa fa-certificate" style="color:#15958A !important;"></i> At Lease</div>
+      <div><i class="fa fa-certificate" style="color:#8BC53F !important;"></i> Leased</div>
+  </div>
+</div>
+<!-- End overall row one -->
+
+<div style="margin-top: 10px; margin-bottom: 10px; padding-left: 0.7in; padding-right: 0.7in">
+  <hr>
+</div>
+
+<!-- Additional table -->
+<div class="row">
+  <div class="col-xs-5"></div>
+  <div class="col-xs-5" style="font-size: 20px; padding-left: 40px; padding-right: 40px;">
+    <div class="row" style="">
+      <div class="col-xs-3" style="text-align: left; display: inline-block;">
+        <span style="">Deal Status</span><br>
+        <div style="border-top: black 2px solid"></div>
+        <span style="color: #8BC53F;">Leased</span> <br>
+        <span style="color: #15958A;">At Lease</span><br>
+        <span style="color: #F16528;">LOI</span><br>
+        <span style="color: #E5BA21;">Prospect</span><br>
+        <span style="color: #D13E27;">Available</span><br>
+        <div style="border-top: black 2px solid"></div>
+      </div>
+      
+      <div class="col-xs-3" style="text-align: right;">
+        <!-- Sizes -->
+        <span style="">Size (sf)</span><br>
+        <div style="border-top: black 2px solid"></div>
+        <div style="color: #8BC53F;text-align: right;">
+          <%= number_with_delimiter(@deals.where(lease_status: "Leased").sum(:net_rentable_area), :delimiter => ',') %>
+        </div>
+        <div style="color: #15958A;text-align: right;">
+          <%= number_with_delimiter(@deals.where(lease_status: "At Lease").sum(:net_rentable_area), :delimiter => ',') %>
+        </div>
+        <div style="color: #F16528;text-align: right;">
+          <%= number_with_delimiter(@deals.where(lease_status: "LOI").sum(:net_rentable_area), :delimiter => ',') %>
+        </div>
+        <div style="color: #E5BA21;text-align: right;">
+          <%= number_with_delimiter(@deals.where(lease_status: "Prospect").sum(:net_rentable_area), :delimiter => ',') %>
+        </div>
+        <div style="color: #D13E27;text-align: right;">
+          <%= number_with_delimiter(@deals.where(lease_status: "Available").sum(:net_rentable_area), :delimiter => ',') %>
+        </div>
+        <div style="border-top: black 2px solid;text-align: right;">
+          <%= number_with_delimiter(@deals.sum(:net_rentable_area), :delimiter => ',') %>
+        </div>
+      </div>
+
+      <div class="col-xs-3" style="text-align: right;">
+        <!-- % of GLA -->
+        <span style="">% of GLA</span><br>
+        <div style="border-top: black 2px solid"></div>
+        <% gla = @gla.compact.sum %>
+        <div style="color: #8BC53F;text-align: right;">
+          <%= number_to_percentage((@deals.where(lease_status: "Leased").sum(:net_rentable_area).to_f * 100 / gla), precision: 2, strip_insignificant_zeros: true) %>
+        </div>
+        <div style="color: #15958A;text-align: right;">
+          <%= number_to_percentage((@deals.where(lease_status: "At Lease").sum(:net_rentable_area).to_f * 100 / gla), precision: 2, strip_insignificant_zeros: true) %>
+        </div>
+        <div style="color: #F16528;text-align: right;">
+          <%= number_to_percentage((@deals.where(lease_status: "LOI").sum(:net_rentable_area).to_f * 100 / gla), precision: 2, strip_insignificant_zeros: true) %>
+        </div>
+        <div style="color: #E5BA21;text-align: right;">
+          <%= number_to_percentage((@deals.where(lease_status: "Prospect").sum(:net_rentable_area).to_f * 100 / gla), precision: 2, strip_insignificant_zeros: true) %>
+        </div>
+        <div style="color: #D13E27;text-align: right;">
+          <%= number_to_percentage((@deals.where(lease_status: "Available").sum(:net_rentable_area).to_f * 100 / gla), precision: 2, strip_insignificant_zeros: true) %>
+        </div>
+        <div style="border-top: black 2px solid;text-align: right;">
+          
+        </div>
+      </div>
+      
+      <div class="col-xs-3" style="text-align: right;">
+        <!-- WHO -->
+        <span style="">Running Total</span><br>
+        <div style="border-top: black 2px solid"></div>
+        <div style="color: #8BC53F;text-align: right;">
+          <%= number_to_percentage((@deals.where(lease_status: "Leased").sum(:net_rentable_area).to_f * 100 / gla), precision: 2, strip_insignificant_zeros: true) %>
+        </div>
+        <div style="color: #15958A;text-align: right;">
+          <%= number_to_percentage(((@deals.where(lease_status: "Leased").sum(:net_rentable_area).to_f + @deals.where(lease_status: "At Lease").sum(:net_rentable_area).to_f) * 100 / gla), precision: 2, strip_insignificant_zeros: true) %>
+        </div>
+        <div style="color: #F16528;text-align: right;">
+          <%= number_to_percentage(((@deals.where(lease_status: "Leased").sum(:net_rentable_area).to_f + @deals.where(lease_status: "At Lease").sum(:net_rentable_area).to_f + @deals.where(lease_status: "LOI").sum(:net_rentable_area).to_f) * 100 / gla), precision: 2, strip_insignificant_zeros: true) %>
+        </div>
+        <div style="color: #E5BA21;text-align: right;">
+          <%= number_to_percentage(((@deals.where(lease_status: "Leased").sum(:net_rentable_area).to_f + @deals.where(lease_status: "At Lease").sum(:net_rentable_area).to_f + @deals.where(lease_status: "LOI").sum(:net_rentable_area).to_f + @deals.where(lease_status: "Prospect").sum(:net_rentable_area).to_f) * 100 / gla), precision: 2, strip_insignificant_zeros: true) %>
+        </div>
+        <div style="color: #D13E27;text-align: right;">
+          <%= number_to_percentage(((@deals.where(lease_status: "Leased").sum(:net_rentable_area).to_f + @deals.where(lease_status: "At Lease").sum(:net_rentable_area).to_f + @deals.where(lease_status: "LOI").sum(:net_rentable_area).to_f + @deals.where(lease_status: "Prospect").sum(:net_rentable_area).to_f + @deals.where(lease_status: "Available").sum(:net_rentable_area).to_f) * 100 / gla), precision: 2, strip_insignificant_zeros: true) %>
+        </div>
+        <div style="border-top: black 2px solid;text-align: right;">
+          
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-1"></div>
+  
+
+  
+</div>
+<!-- END Additional table -->
+
+
+
+<!-- overall row two -->
+<div class="row alwaysbreak" id="leasingStatusRow">
+  
+  <div style="padding-top: 0.3in; padding-left: 0.7in; padding-right: 0.7in">
+    <span style="font-size: 35px">Merchandising</span>
+    <hr>
+  </div>
+  
+  <div class="col-xs-6" style="text-align:center;">
+    <div id="chart-22" style="height: 300px; width: 100%; text-align: center; color: #999; 
+    line-height: 300px; height: 500px; width: 600px; /*margin-left:100px;*/
+    font-size: 14px; font-family: 'Lucida Grande', 'Lucida Sans Unicode', Verdana, Arial, Helvetica, sans-serif;">Loading...</div>
+    <script type="text/javascript">
+      new Chartkick.PieChart("chart-22", {"Auto / Gas":<%= @areas.where(merchandising_status: "Auto / Gas").count %>,
+      "Candy / Confectionary":<%= @areas.where(merchandising_status: "Candy / Confectionary").count %>, 
+      "Department Store":<%= @areas.where(merchandising_status: "Department Store").count %>, 
+      "Electronics":<%= @areas.where(merchandising_status: "Electronics").count %>,
+      "Entertainment":<%= @areas.where(merchandising_status: "Entertainment").count %>,
+      "Fashion":<%= @areas.where(merchandising_status: "Fashion").count %>,
+      "Food & Beverage":<%= @areas.where(merchandising_status: "Food & Beverage").count %>,
+      "Footwear":<%= @areas.where(merchandising_status: "Footwear").count %>,
+      "Grocery / Hypermarket":<%= @areas.where(merchandising_status: "Grocery / Hypermarket").count %>,
+      "Home / Furnishings":<%= @areas.where(merchandising_status: "Home / Furnishings").count %>,
+      "Jewelry / Handbags":<%= @areas.where(merchandising_status: "Jewelry / Handbags").count %>,
+      "Mobiles / Accessories":<%= @areas.where(merchandising_status: "Mobiles / Accessories").count %>,
+      "Perfume / Cosmetics":<%= @areas.where(merchandising_status: "Perfume / Cosmetics").count %>,
+      "Pets":<%= @areas.where(merchandising_status: "Pets").count %>,
+      "Services / Specialty Stores":<%= @areas.where(merchandising_status: "Services / Specialty Stores").count %>,
+      "Sports / Outdoor / Fitness":<%= @areas.where(merchandising_status: "Sports / Outdoor / Fitness").count %>,
+      "Toys & Hobbies / Gifts / Books":<%= @areas.where(merchandising_status: "Toys & Hobbies / Gifts / Books").count %>},
+      {"donut":true,"library":{"pieSliceText":"value","backgroundColor":"none","pieHole":0.4,
+      "legend":{"position":"none"},
+      "slices":[{"color":"#66635f"},{"color":"#f9ef7b"},{"color":"#fed389"},{"color":"#be8b67"},{"color":"#e62536"},{"color":"#67a5d7"},{"color":"#f7b131"},{"color":"#388b00"},{"color":"#b6cf42"},{"color":"#f38a7c"},{"color":"#a6749c"},{"color":"#3a63a8"},{"color":"#ec4f92"},{"color":"#e29423"},{"color":"#efa1c5"},{"color":"#7ca180"},{"color":"#b2cce9"}]}});
+    </script>
+
+    <div id="chart-25" style="height: 300px; width: 100%; text-align: center; color: #999; 
+    line-height: 300px; height: 500px; width: 600px; /*margin-left:100px;*/
+    font-size: 14px; font-family: 'Lucida Grande', 'Lucida Sans Unicode', Verdana, Arial, Helvetica, sans-serif;">Loading...</div>
+    <script type="text/javascript">
+      //new Chartkick.PieChart("chart-9", {"01 Available":5300,"02 Lease Negotiation":7050,"05 Open for Business":4300,"06 Close-Out":1200,"07 Operating":1756}, {"donut":true,"library":{"pieSliceText":"value","backgroundColor":"none","pieHole":0.4,"legend":{"position":"none"},"slices":{"0":{"color":"#D13E27"},"1":{"color":"#F16528"},"2":{"color":"#d7b920"},"3":{"color":"#89cadc"},"4":{"color":"#38b449"},"5":{"color":"#561871"},"6":{"color":"#337198"}}}});
+      new Chartkick.PieChart("chart-25", {"Auto / Gas":<%= @areas.where(merchandising_status: "Auto / Gas").sum(:area_square_feet) %>,
+      "Candy / Confectionary":<%= @areas.where(merchandising_status: "Candy / Confectionary").sum(:area_square_feet) %>,
+      "Department Store":<%= @areas.where(merchandising_status: "Department Store").sum(:area_square_feet) %>,
+      "Electronics":<%= @areas.where(merchandising_status: "Electronics").sum(:area_square_feet) %>,
+      "Entertainment":<%= @areas.where(merchandising_status: "Entertainment").sum(:area_square_feet) %>,
+      "Fashion":<%= @areas.where(merchandising_status: "Fashion").sum(:area_square_feet) %>,
+      "Food & Beverage":<%= @areas.where(merchandising_status: "Food & Beverage").sum(:area_square_feet) %>,
+      "Footwear":<%= @areas.where(merchandising_status: "Footwear").sum(:area_square_feet) %>,
+      "Grocery / Hypermarket":<%= @areas.where(merchandising_status: "Grocery / Hypermarket").sum(:area_square_feet) %>,
+      "Home / Furnishings":<%= @areas.where(merchandising_status: "Home / Furnishings").sum(:area_square_feet) %>,
+      "Jewelry / Handbags":<%= @areas.where(merchandising_status: "Jewelry / Handbags").sum(:area_square_feet) %>,
+      "Mobiles / Accessories":<%= @areas.where(merchandising_status: "Mobiles / Accessories").sum(:area_square_feet) %>,
+      "Perfume / Cosmetics":<%= @areas.where(merchandising_status: "Perfume / Cosmetics").sum(:area_square_feet) %>,
+      "Pets":<%= @areas.where(merchandising_status: "Pets").sum(:area_square_feet) %>,
+      "Services / Specialty Stores":<%= @areas.where(merchandising_status: "Services / Specialty Stores").sum(:area_square_feet) %>,
+      "Sports / Outdoor / Fitness":<%= @areas.where(merchandising_status: "Sports / Outdoor / Fitness").sum(:area_square_feet) %>,
+      "Toys & Hobbies / Gifts / Books":<%= @areas.where(merchandising_status: "Toys & Hobbies / Gifts / Books").sum(:area_square_feet) %>}, 
+      {"donut":true,"library":{"pieSliceText":"value","backgroundColor":"none","pieHole":0.4,"legend":{"position":"none"},"slices":{"0":{"color":"#66635f"},"1":{"color":"#f9ef7b"},"2":{"color":"#fed389"},"3":{"color":"#be8b67"},"4":{"color":"#e62536"},"5":{"color":"#67a5d7"},"6":{"color":"#f7b131"},"7":{"color":"#388b00"},"8":{"color":"#b6cf42"},"9":{"color":"#f38a7c"},"10":{"color":"#a6749c"},"11":{"color":"#3a63a8"},"12":{"color":"#ec4f92"},"13":{"color":"#e29423"},"14":{"color":"#efa1c5"},"15":{"color":"#7ca180"},"16":{"color":"#b2cce9"}}}});
+    </script>
+
+
+  </div>
+
+
+  <div class="col-xs-6" style="text-align:left; font-size: 14pt; height: 100%; padding-top: 30px">
+    <div class="row" style="padding-right: 0.7in">
+      <div class="col-xs-6" style="text-align: left; display: inline-block;margin-top:140px;">
+        <span style="">Category</span><br>
+        <div style="border-top: black 2px solid"></div>
+        <span style="color: #66635f;"><i class="fa fa-certificate" style="color:#66635f !important;"></i> Auto / Gas</span> <br>
+        <span style="color: #f9ef7b;"><i class="fa fa-certificate" style="color:#f9ef7b !important;"></i> Candy / Confectionary</span><br>
+        <span style="color: #fed389;"><i class="fa fa-certificate" style="color:#fed389 !important;"></i> Department Store</span><br>
+        <span style="color: #be8b67;"><i class="fa fa-certificate" style="color:#be8b67 !important;"></i> Electronics</span><br>
+        <span style="color: #e62536;"><i class="fa fa-certificate" style="color:#e62536 !important;"></i> Entertainment</span><br>
+        <span style="color: #67a5d7;"><i class="fa fa-certificate" style="color:#67a5d7 !important;"></i> Fashion</span><br>
+        <span style="color: #f7b131;"><i class="fa fa-certificate" style="color:#f7b131 !important;"></i> Food & Beverage</span><br>
+        <span style="color: #388b00;"><i class="fa fa-certificate" style="color:#388b00 !important;"></i> Footwear</span><br>
+        <span style="color: #b6cf42;"><i class="fa fa-certificate" style="color:#b6cf42 !important;"></i> Grocery / Hypermarket</span><br>
+        <span style="color: #f38a7c;"><i class="fa fa-certificate" style="color:#f38a7c !important;"></i> Home / Furnishings</span><br>
+        <span style="color: #a6749c;"><i class="fa fa-certificate" style="color:#a6749c !important;"></i> Jewelry / Handbags</span><br>
+        <span style="color: #3a63a8;"><i class="fa fa-certificate" style="color:#3a63a8 !important;"></i> Mobiles / Accessories</span><br>
+        <span style="color: #ec4f92;"><i class="fa fa-certificate" style="color:#ec4f92 !important;"></i> Perfume / Cosmetics</span><br>
+        <span style="color: #e29423;"><i class="fa fa-certificate" style="color:#e29423 !important;"></i> Pets</span><br>
+        <span style="color: #efa1c5;"><i class="fa fa-certificate" style="color:#efa1c5 !important;"></i> Services / Specialty Stores</span><br>
+        <span style="color: #7ca180;"><i class="fa fa-certificate" style="color:#7ca180 !important;"></i> Sports / Outdoor / Fitness</span><br>
+        <span style="color: #b2cce9;"><i class="fa fa-certificate" style="color:#b2cce9 !important;"></i> Toys & Hobbies / Gifts / Books</span><br>
+        <div style="border-top: black 2px solid"></div>
+
+      </div>
+      
+      <div class="col-xs-2" style="text-align: right;margin-top:140px;">
+        <!-- Sizes -->
+        <span style="">Count</span><br>
+        <div style="border-top: black 2px solid"></div>
+        <div style="color: #66635f;text-align: right;">
+          <%= @areas.where(merchandising_status: "Auto / Gas").count %>
+        </div>
+        <div style="color: #f9ef7b;text-align: right;">
+          <%= @areas.where(merchandising_status: "Candy / Confectionary").count %>
+        </div>
+        <div style="color: #fed389;text-align: right;">
+          <%= @areas.where(merchandising_status: "Department Store").count %>
+        </div>
+        <div style="color: #be8b67;text-align: right;">
+          <%= @areas.where(merchandising_status: "Electronics").count %>
+        </div>
+        <div style="color: #e62536;text-align: right;">
+          <%= @areas.where(merchandising_status: "Entertainment").count %>
+        </div>
+        <div style="color: #67a5d7;text-align: right;">
+          <%= @areas.where(merchandising_status: "Fashion").count %>
+        </div>
+        <div style="color: #f7b131;text-align: right;">
+          <%= @areas.where(merchandising_status: "Food & Beverage").count %>
+        </div>
+        <div style="color: #388b00;text-align: right;">
+          <%= @areas.where(merchandising_status: "Footwear").count %>
+        </div>
+        <div style="color: #b6cf42;text-align: right;">
+          <%= @areas.where(merchandising_status: "Grocery / Hypermarket").count %>
+        </div>
+        <div style="color: #f38a7c;text-align: right;">
+          <%= @areas.where(merchandising_status: "Home / Furnishings").count %>
+        </div>
+        <div style="color: #a6749c;text-align: right;">
+          <%= @areas.where(merchandising_status: "Jewelry / Handbags").count %>
+        </div>
+        <div style="color: #3a63a8;text-align: right;">
+          <%= @areas.where(merchandising_status: "Mobiles / Accessories").count %>
+        </div>
+        <div style="color: #ec4f92;text-align: right;">
+          <%= @areas.where(merchandising_status: "Perfume / Cosmetics").count %>
+        </div>
+        <div style="color: #e29423;text-align: right;">
+          <%= @areas.where(merchandising_status: "Pets").count %>
+        </div>
+        <div style="color: #efa1c5;text-align: right;">
+          <%= @areas.where(merchandising_status: "Services / Specialty Stores").count %>
+        </div>
+        <div style="color: #7ca180;text-align: right;">
+          <%= @areas.where(merchandising_status: "Sports / Outdoor / Fitness").count %>
+        </div>
+        <div style="color: #b2cce9;text-align: right;">
+          <%= @areas.where(merchandising_status: "Toys & Hobbies / Gifts / Books").count %>
+        </div>
+        <div style="border-top: black 2px solid">
+          <%= @areas.count %>
+        </div>
+      </div>
+      
+      <div class="col-xs-2" style="text-align: right;margin-top:140px;">
+        <!-- Sizes -->
+        <span style="">Size (sf)</span><br>
+        <div style="border-top: black 2px solid"></div>
+        <div style="color: #66635f;text-align: right;">
+          <%= number_with_delimiter(@areas.where(merchandising_status: "Auto / Gas").sum(:area_square_feet), :delimiter => ',') %>
+        </div>
+        <div style="color: #f9ef7b;text-align: right;">
+          <%= number_with_delimiter(@areas.where(merchandising_status: "Candy / Confectionary").sum(:area_square_feet), :delimiter => ',') %>
+        </div>
+        <div style="color: #fed389;text-align: right;">
+          <%= number_with_delimiter(@areas.where(merchandising_status: "Department Store").sum(:area_square_feet), :delimiter => ',') %>
+        </div>
+        <div style="color: #be8b67;text-align: right;">
+          <%= number_with_delimiter(@areas.where(merchandising_status: "Electronics").sum(:area_square_feet), :delimiter => ',') %>
+        </div>
+        <div style="color: #e62536;text-align: right;">
+          <%= number_with_delimiter(@areas.where(merchandising_status: "Entertainment").sum(:area_square_feet), :delimiter => ',') %>
+        </div>
+        <div style="color: #67a5d7;text-align: right;">
+          <%= number_with_delimiter(@areas.where(merchandising_status: "Fashion").sum(:area_square_feet), :delimiter => ',') %>
+        </div>
+        <div style="color: #f7b131;text-align: right;">
+          <%= number_with_delimiter(@areas.where(merchandising_status: "Food & Beverage").sum(:area_square_feet), :delimiter => ',') %>
+        </div>
+        <div style="color: #388b00;text-align: right;">
+          <%= number_with_delimiter(@areas.where(merchandising_status: "Footwear").sum(:area_square_feet), :delimiter => ',') %>
+        </div>
+        <div style="color: #b6cf42;text-align: right;">
+          <%= number_with_delimiter(@areas.where(merchandising_status: "Grocery / Hypermarket").sum(:area_square_feet), :delimiter => ',') %>
+        </div>
+        <div style="color: #f38a7c;text-align: right;">
+          <%= number_with_delimiter(@areas.where(merchandising_status: "Home / Furnishings").sum(:area_square_feet), :delimiter => ',') %>
+        </div>
+        <div style="color: #a6749c;text-align: right;">
+          <%= number_with_delimiter(@areas.where(merchandising_status: "Jewelry / Handbags").sum(:area_square_feet), :delimiter => ',') %>
+        </div>
+        <div style="color: #3a63a8;text-align: right;">
+          <%= number_with_delimiter(@areas.where(merchandising_status: "Mobiles / Accessories").sum(:area_square_feet), :delimiter => ',') %>
+        </div>
+        <div style="color: #ec4f92;text-align: right;">
+          <%= number_with_delimiter(@areas.where(merchandising_status: "Perfume / Cosmetics").sum(:area_square_feet), :delimiter => ',') %>
+        </div>
+        <div style="color: #e29423;text-align: right;">
+          <%= number_with_delimiter(@areas.where(merchandising_status: "Pets").sum(:area_square_feet), :delimiter => ',') %>
+        </div>
+        <div style="color: #efa1c5;text-align: right;">
+          <%= number_with_delimiter(@areas.where(merchandising_status: "Services / Specialty Stores").sum(:area_square_feet), :delimiter => ',') %>
+        </div>
+        <div style="color: #7ca180;text-align: right;">
+          <%= number_with_delimiter(@areas.where(merchandising_status: "Sports / Outdoor / Fitness").sum(:area_square_feet), :delimiter => ',') %>
+        </div>
+        <div style="color: #b2cce9;text-align: right;">
+          <%= number_with_delimiter(@areas.where(merchandising_status: "Toys & Hobbies / Gifts / Books").sum(:area_square_feet), :delimiter => ',') %>
+        </div>
+        <div style="border-top: black 2px solid">
+          <%= number_with_delimiter(@areas.sum(:area_square_feet), :delimiter => ',') %>
+        </div>
+      </div>
+
+      <div class="col-xs-2" style="text-align: right;margin-top:140px;">
+        <!-- % of GLA -->
+        <span style="">% of GLA</span><br>
+        <div style="border-top: black 2px solid"></div>
+        <% gla = @gla.compact.sum %>
+        <div style="color: #66635f;text-align: right;">
+          <%= number_to_percentage((@areas.where(merchandising_status: "Auto / Gas").sum(:area_square_feet).to_f * 100 / gla), precision: 2, strip_insignificant_zeros: true) %>
+        </div>
+        <div style="color: #f9ef7b;text-align: right;">
+          <%= number_to_percentage((@areas.where(merchandising_status: "Candy / Confectionary").sum(:area_square_feet).to_f * 100 / gla), precision: 2, strip_insignificant_zeros: true) %>
+        </div>
+        <div style="color: #fed389;text-align: right;">
+          <%= number_to_percentage((@areas.where(merchandising_status: "Department Store").sum(:area_square_feet).to_f * 100 / gla), precision: 2, strip_insignificant_zeros: true) %>
+        </div>
+        <div style="color: #be8b67;text-align: right;">
+          <%= number_to_percentage((@areas.where(merchandising_status: "Electronics").sum(:area_square_feet).to_f * 100 / gla), precision: 2, strip_insignificant_zeros: true) %>
+        </div>
+        <div style="color: #e62536;text-align: right;">
+          <%= number_to_percentage((@areas.where(merchandising_status: "Entertainment").sum(:area_square_feet).to_f * 100 / gla), precision: 2, strip_insignificant_zeros: true) %>
+        </div>
+        <div style="color: #67a5d7;text-align: right;">
+          <%= number_to_percentage((@areas.where(merchandising_status: "Fashion").sum(:area_square_feet).to_f * 100 / gla), precision: 2, strip_insignificant_zeros: true) %>
+        </div>
+        <div style="color: #f7b131;text-align: right;">
+          <%= number_to_percentage((@areas.where(merchandising_status: "Food & Beverage").sum(:area_square_feet).to_f * 100 / gla), precision: 2, strip_insignificant_zeros: true) %>
+        </div>
+        <div style="color: #388b00;text-align: right;">
+          <%= number_to_percentage((@areas.where(merchandising_status: "Footwear").sum(:area_square_feet).to_f * 100 / gla), precision: 2, strip_insignificant_zeros: true) %>
+        </div>
+        <div style="color: #b6cf42;text-align: right;">
+          <%= number_to_percentage((@areas.where(merchandising_status: "Grocery / Hypermarket").sum(:area_square_feet).to_f * 100 / gla), precision: 2, strip_insignificant_zeros: true) %>
+        </div>
+        <div style="color: #f38a7c;text-align: right;">
+          <%= number_to_percentage((@areas.where(merchandising_status: "Home / Furnishings").sum(:area_square_feet).to_f * 100 / gla), precision: 2, strip_insignificant_zeros: true) %>
+        </div>
+        <div style="color: #a6749c;text-align: right;">
+          <%= number_to_percentage((@areas.where(merchandising_status: "Jewelry / Handbags").sum(:area_square_feet).to_f * 100 / gla), precision: 2, strip_insignificant_zeros: true) %>
+        </div>
+        <div style="color: #3a63a8;text-align: right;">
+          <%= number_to_percentage((@areas.where(merchandising_status: "Mobiles / Accessories").sum(:area_square_feet).to_f * 100 / gla), precision: 2, strip_insignificant_zeros: true) %>
+        </div>
+        <div style="color: #ec4f92;text-align: right;">
+          <%= number_to_percentage((@areas.where(merchandising_status: "Perfume / Cosmetics").sum(:area_square_feet).to_f * 100 / gla), precision: 2, strip_insignificant_zeros: true) %>
+        </div>
+        <div style="color: #e29423;text-align: right;">
+          <%= number_to_percentage((@areas.where(merchandising_status: "Pets").sum(:area_square_feet).to_f * 100 / gla), precision: 2, strip_insignificant_zeros: true) %>
+        </div>
+        <div style="color: #efa1c5;text-align: right;">
+          <%= number_to_percentage((@areas.where(merchandising_status: "Services / Specialty Stores").sum(:area_square_feet).to_f * 100 / gla), precision: 2, strip_insignificant_zeros: true) %>
+        </div>
+        <div style="color: #7ca180;text-align: right;">
+          <%= number_to_percentage((@areas.where(merchandising_status: "Sports / Outdoor / Fitness").sum(:area_square_feet).to_f * 100 / gla), precision: 2, strip_insignificant_zeros: true) %>
+        </div>
+        <div style="color: #b2cce9;text-align: right;">
+          <%= number_to_percentage((@areas.where(merchandising_status: "Toys & Hobbies / Gifts / Books").sum(:area_square_feet).to_f * 100 / gla), precision: 2, strip_insignificant_zeros: true) %>
+        </div>
+        <div style="border-top: black 2px solid;text-align: right;"></div>
+        <div style="color: #000;text-align: right;">
+          100%
+        </div>
+      </div>
+
+    </div>
+  
+  
+  
+  
+  </div>
+</div>
+<!-- End overall row two -->
+
+
+
+
+<!-- Report by deal -->
+<style>
+ th, td {font-size: 1.0em;}
+ th.center, td.center {text-align:center;}
+</style>
+
+<div class="alwaysbreak">
+  <table class="table">
+    <thead>
+      <!-- found solution here: https://github.com/mileszs/wicked_pdf/issues/185 -->
+      <tr class="nobreak" style="page-break-inside: avoid;">
+        <th width="6%" class="center">Lease Status</th>
+        <th width="5%" class="center">Owner Approval</th>
+        <th width="10%">Tenant Name</th>
+        <th width="5%" class="center">Size</th>
+        <th width="15%" class="center">Merchant Category</th>
+        <th width="5%" class="center">Suite #</th>
+        <th width="10%" class="center">Leasing Manager</th>
+        <th>Lease Managers' Update</th>
+        <th width="20%" class="center">Action</th>
+        <th width="5%" class="center">Priority</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      <% @table_object.each do |object| %>
+        <!-- found solution here: https://github.com/mileszs/wicked_pdf/issues/185 -->
+        <tr class="nobreak" style="page-break-inside: avoid;">
+          <td class="<%= object[:lease_status].parameterize.underscore %> center"> <%= object[:lease_status] %> </td>
+          <td class="center"> <% if object[:owner_approval] == true %><i style="color:#8BC53F;" class="fa fa-check" aria-hidden="true"></i><% else %><%#= object[:owner_approval] %><% end %> </td>
+          <td> <%= object[:name] %> </td>
+          <td class="center"> <%= number_with_precision(object[:area_square_feet], precision: 0, delimiter: ',') %> </td>
+          <td class="<%= object[:merchandising_status].parameterize.underscore %> center"> <%= object[:merchandising_status] %> </td>
+          <td class="center"> <%= object[:suite_number] %> </td>
+          <td class="center"> <%= object[:leasing_manager] %> </td>
+          <td> <%= object[:status_notes].to_s.truncate(195) %> </td>
+          <td class="center"> <%= object[:action_required] %> </td>
+          <td class="center"> <% if object[:priority] == true %><i style="color:#E5BA21;" class="fa fa-star" aria-hidden="true"></i><% else %><% end %> </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<!-- END Report by deal -->

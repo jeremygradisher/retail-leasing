@@ -24,6 +24,13 @@ Rails.application.routes.draw do
     member do
       get 'users'
       put 'add_user'
+      get :leasestatusreport
+        get :leasedealreport
+        get :closeoutreport
+        get :tenantstatusreport
+        get :dealdirectoryreport
+        #adding this for /tenants/1/projects/1/adhoc
+        #get 'adhocreport'
     end
   end
   

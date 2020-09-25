@@ -1,0 +1,175 @@
+wb = xlsx_package.workbook
+
+wb.styles do |style|
+  date_cell = style.add_style(alignment: { horizontal: :center,
+                                           vertical: :center,
+                                           wrap_text: true},
+                              format_code: "m/d/yy")
+
+
+  meta_date_cell = style.add_style(alignment: { horizontal: :right,
+                                                vertical: :center,
+                                                wrap_text: false},
+                                                bg_color: "2da000",
+                                                sz: 12,
+                                                fg_color: "FFFFFF",
+                                                font_name: 'Helvetica')
+
+  meta_title_cell_style = style.add_style(bg_color: "2da000",
+					                        fg_color: "FFFFFF",
+					                        font_name: 'Helvetica',
+                                            sz: 24,
+                                            height: 15,
+                                            alignment: { horizontal: :right,
+                                                         vertical: :center,
+                                                         wrap_text: false})
+
+  meta_title_cell_style2 = style.add_style(bg_color: "2da000",
+  					                        fg_color: "FFFFFF",
+  					                        font_name: 'Helvetica',
+                                              sz: 37,
+                                              height: 15,
+                                              alignment: { horizontal: :left,
+                                                           vertical: :center,
+                                                           wrap_text: false})
+                                                           
+  meta_title_cell_style3 = style.add_style(bg_color: "2da000",
+					                        fg_color: "FFFFFF",
+					                        font_name: 'Helvetica',
+                                            sz: 24,
+                                            height: 15,
+                                            alignment: { horizontal: :left,
+                                                         vertical: :center,
+                                                         wrap_text: false})                                                         
+  
+  header_style = style.add_style(bg_color: "D8D8D8",
+                                           font_name: 'Helvetica',
+                                           border: { style: :thin, color: "00" },
+                                           alignment: { horizontal: :center,
+                                                        vertical: :center ,
+                                                        wrap_text: true})
+
+  data_name_cell = style.add_style(alignment: { horizontal: :left,
+                                             vertical: :center,
+                                             wrap_text: true,
+                                             indent: 1},
+                                font_name: 'Helvetica')
+
+  data_cell = style.add_style(alignment: { horizontal: :center,
+                                           vertical: :center,
+                                           wrap_text: true},
+                              font_name: 'Helvetica')
+                              
+  merchandising_cell = style.add_style(alignment: { horizontal: :center,
+                                           vertical: :center,
+                                           wrap_text: true},
+                              font_name: 'Helvetica')
+                              
+  percent_cell = style.add_style(num_fmt: 2,
+                                font_name: 'Helvetica',
+                                alignment: { horizontal: :center,
+                                             vertical: :center,
+                                             wrap_text: true})
+
+  price_cell = style.add_style(num_fmt: 8,
+                                font_name: 'Helvetica',
+                                alignment: { horizontal: :center,
+                                             vertical: :center,
+                                             wrap_text: true})
+
+  lease_managers_update = style.add_style(alignment: { horizontal: :center,
+                                                       vertical: :center,
+                                                       wrap_text: false},
+                                          font_name: 'Helvetica',
+                                          sz: 10)
+
+  size_cell = style.add_style(alignment: { horizontal: :center,
+                                            vertical: :center,
+                                            wrap_text: true},
+                               font_name: 'Helvetica',
+                               format_code: "#,##")
+
+
+  col_widths= [5,11,11,23,11,23,10,20,55,11,11,5]
+  empty_row = ['', '', '', '', '', '', '', '', '', '', '', '']
+  empty_row2 = ['', '', '', '', '', '', '', '', Time.zone.now.strftime("%B %d, %Y"), '', '', '']
+
+  wb.add_worksheet(name: "Products") do |sheet|
+
+    sheet.add_row(empty_row, style: 12.times.map{style.add_style(bg_color: "2da000")})
+    sheet.add_row(empty_row, style: 12.times.map{style.add_style(bg_color: "2da000")})
+
+    # We add the meta header row
+    # Jeremy changed the order here to utilize bigger cell
+    meta_header_row = ['', @project.name, '', '', '', '', '', '', 'Lease Status Report', '', '', '']
+    sheet.add_row(meta_header_row, style: 8.times.map{meta_title_cell_style3} + 3.times.map{meta_title_cell_style} + 1.times.map{meta_title_cell_style2}, height: 37)
+
+    # Jeremy Fix for Title cell in header
+    sheet.merge_cells('B3:E3')
+
+    sheet.add_row(empty_row2, style: 12.times.map{meta_date_cell})
+    sheet.add_row(empty_row, style: 12.times.map{style.add_style(bg_color: "2da000")})
+
+
+    sheet.add_row([''], height: 17)
+
+    header_row = ["", "Lease Status", "Owner Approval", "Tenant Name", "Size", "Merchandising Category", "Suite #", "Leasing Manager", "Lease Managers' Update", "Action", "Priority", ""]
+
+    sheet.add_row(header_row, style: [nil] + 12.times.map{header_style}, height: 54)
+
+    sheet.add_row([''], height: 17)
+
+    # this was original
+    # @areas.each do |area|
+    # pulling that table object method instead
+    @table_object.each do |area|
+        lease_status = style.add_style(
+          alignment: {
+            horizontal: :center,
+            vertical: :center,
+            wrap_text: true
+          },
+          font_name: 'Helvetica'#,
+          #fg_color: Area.lease_status_color.fetch(area[:lease_status].to_s.to_sym, "231f20")
+        )
+        
+        owner_approval = style.add_style(
+          alignment: {
+            horizontal: :center,
+            vertical: :center,
+            wrap_text: true
+          },
+          font_name: 'Helvetica'#,
+          #fg_color: Area.owner_approval_color.fetch(area[:owner_approval].to_s.to_sym, "231f20")
+        )
+        
+        priority = style.add_style(
+          alignment: {
+            horizontal: :center,
+            vertical: :center,
+            wrap_text: true
+          },
+          font_name: 'Helvetica'#,
+          #fg_color: Area.priority_color.fetch(area[:priority].to_s.to_sym, "231f20")
+        )
+
+        merchant_category = style.add_style(
+          alignment: {
+            horizontal: :center,
+            vertical: :center,
+            wrap_text: true
+          },
+          font_name: 'Helvetica'#,
+          #fg_color: Area.merchandising_status_color.fetch(area[:merchandising_status].to_s.to_sym, "231f20")
+        )
+
+        row = ['', area[:lease_status], area[:owner_approval], area[:name].blank? ? 'Untitled Area' : area[:name],
+                area[:area_square_feet], area[:merchandising_status], area[:suite_number],
+                area[:leasing_manager], area[:status_notes], area[:action_required], area[:priority], '']
+        sheet.add_row(row, style: [nil, lease_status, owner_approval, data_name_cell, size_cell, merchant_category, data_cell, data_cell, data_name_cell, data_cell, priority, nil], height: 45)
+    end
+
+    sheet.column_widths *col_widths
+
+  end
+end

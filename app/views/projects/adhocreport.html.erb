@@ -1,0 +1,128 @@
+<% if current_user.project_ids.include? @project.id %>
+
+<%- model_class = Project -%>
+<%#= javascript_include_tag "https://www.google.com/jsapi", "chartkick" %>
+<%#= wicked_pdf_javascript_include_tag 'chartkick' %>
+
+<script>
+$(document).ready(function(){
+  $('.table').dragableColumns({
+    drag: true,
+    dragClass: 'drag',
+    overClass: 'over',
+    movedContainerSelector: '.dnd-moved'
+  });
+
+  $("table").on("click", ".delete", function ( event ) {
+      // Get index of parent TD among its siblings (add one for nth-child)
+      var ndx = $(this).parent().index() + 1;
+      // Find all TD elements with the same index
+      $("th", event.delegateTarget).remove(":nth-child(" + ndx + ")");
+      $("td", event.delegateTarget).remove(":nth-child(" + ndx + ")");
+  });
+  
+});
+</script>
+
+<style>
+  th[draggable] a, th[draggable] { cursor: move; }
+  th[draggable] a:hover, th[draggable] a {
+  display: block;
+  text-decoration: none;
+  color: #231f20;
+}
+.drag {
+  background-color: rgba(0, 0, 0, 0.25);
+  opacity: 0.25
+}
+ 
+.dnd-drag { opacity: 0.25 }
+ 
+.over { background-color: rgba(0, 0, 255, 0.35); }
+
+    .header {
+      background-color: #2f9f00;
+      height: 80px;
+      width: 100%;
+      color: white;
+      padding-left: 0.2in;
+      padding-right: 0.2in;
+      padding-top: 0.2in;
+    }
+</style>
+
+<div class="row /*print-none*/" style="">
+  <div class="col-xs-10 col-xs-offset-1">
+    
+    
+  <div class="header">
+    <span class="col-xs-6" style="font-size: 20px; text-transform: uppercase"><%= @project.name %></span>
+    <div class="col-xs-6" style="display: inline-block; text-align: right;">
+      <span style="font-size: 14pt;">Adhoc Report</span><br>
+      <span style="font-size: 12pt"><%= Time.zone.now.strftime("%B %d, %Y") %></span>
+    </div>
+  </div>
+  
+  <div style="width:100%;text-align:right;margin-top:10px;margin-bottom:0;" class="print-none">*Drag and drop column title to re-order or click on title to eliminate.</div>
+  <hr style="margin-top:10px;">
+  
+  
+    <div class="alwaysbreak">    
+        <table class="table table-striped add-responsive /*print-none*/" style="/*display:none;*/">
+          <thead>
+            <tr class="dnd-moved nobreak" style="page-break-inside: avoid;">
+              <th class="leaseStatusCol" style="min-width:100px;"><a class="delete">Lease Status</a></th>
+              <th><a class="delete">Name</a></th>
+              <th style="min-width:80px;"><a class="delete">Suite #</a></th>
+              <th style="min-width:80px;"><a class="delete">Area SF</a></th>
+              
+              <th class="merchandisingStatusCol" style="min-width:100px;"><a class="delete">Merchandising Status</a></th>
+              
+              <th class="areaStatusCol" style="min-width:100px;"><a class="delete">Area Status</a></th>
+              <th class="openingStatusCol" style="min-width:100px;"><a class="delete">Opening Status</a></th>
+              
+            </tr>
+          </thead>
+          <tbody>
+            <%# @areas.each do |area| %>
+            <% @adhoc_object.each do |object| %>
+              <tr class="dnd-moved nobreak" style="page-break-inside: avoid;">
+                <td class="leaseStatusCol">
+                  <%# if area.deal.present? %>
+                    <% if object[:lease_status] == 'Available' %><span style="color:#D13E27;" class="<%= object[:lease_status].parameterize.underscore %>"><% elsif object[:lease_status] == 'Prospect' %><span style="color:#E5BA21;" class="<%= object[:lease_status].parameterize.underscore %>"><% elsif object[:lease_status] == 'LOI' %><span style="color:#F16528;" class="<%= object[:lease_status].parameterize.underscore %>"><% elsif object[:lease_status] == 'At Lease' %><span style="color:#15958A;" class="<%= object[:lease_status].parameterize.underscore %>"><% elsif object[:lease_status] == 'Leased' %><span style="color:#8BC53F;" class="<%= object[:lease_status].parameterize.underscore %>"><% else %><span style="color:#231f20;" class="<%= object[:lease_status].parameterize.underscore %>"><% end %><%= object[:lease_status] %></span>
+                  <%# end %>
+                </td>
+                <td><% if object[:name].blank? %>Untitled Area<% else %><%= object[:name] %><% end %></td>
+                <td><%= object[:suite_number] %></td>
+                <td><%= number_with_delimiter(object[:area_square_feet], :delimiter => ',') %></td>
+                
+                <td class="merchandisingStatusCol">
+                  <% if object[:merchandising_status] == 'Footwear' %><span style="color:#388b00;" class="<%= object[:merchandising_status].parameterize.underscore %>"><% elsif object[:merchandising_status] == 'Auto / Gas' %><span style="color:#66635f;" class="<%= object[:merchandising_status].parameterize.underscore %>"><% elsif object[:merchandising_status] == 'Candy / Confectionary' %><span style="color:#f9ef7b;" class="<%= object[:merchandising_status].parameterize.underscore %>"><% elsif object[:merchandising_status] == 'Department Store' %><span style="color:#fed389;" class="<%= object[:merchandising_status].parameterize.underscore %>"><% elsif object[:merchandising_status] == 'Electronics' %><span style="color:#be8b67;" class="<%= object[:merchandising_status].parameterize.underscore %>"><% elsif object[:merchandising_status] == 'Entertainment' %><span style="color:#e62536;" class="<%= object[:merchandising_status].parameterize.underscore %>"><% elsif object[:merchandising_status] == 'Fashion' %><span style="color:#67a5d7;" class="<%= object[:merchandising_status].parameterize.underscore %>"><% elsif object[:merchandising_status] == 'Food & Beverage' %><span style="color:#f7b131;" class="<%= object[:merchandising_status].parameterize.underscore %>"><% elsif object[:merchandising_status] == 'Grocery / Hypermarket' %><span style="color:#b6cf42;" class="<%= object[:merchandising_status].parameterize.underscore %>"><% elsif object[:merchandising_status] == 'Home / Furnishings' %><span style="color:#f38a7c;" class="<%= object[:merchandising_status].parameterize.underscore %>"><% elsif object[:merchandising_status] == 'Jewelry / Handbags' %><span style="color:#a6749c;" class="<%= object[:merchandising_status].parameterize.underscore %>"><% elsif object[:merchandising_status] == 'Mobiles / Accessories' %><span style="color:#3a63a8;" class="<%= object[:merchandising_status].parameterize.underscore %>"><% elsif object[:merchandising_status] == 'Perfume / Cosmetics' %><span style="color:#ec4f92;" class="<%= object[:merchandising_status].parameterize.underscore %>"><% elsif object[:merchandising_status] == 'Pets' %><span style="color:#e29423;" class="<%= object[:merchandising_status].parameterize.underscore %>"><% elsif object[:merchandising_status] == 'Services / Specialty Stores' %><span style="color:#efa1c5;" class="<%= object[:merchandising_status].parameterize.underscore %>"><% elsif object[:merchandising_status] == 'Sports / Outdoor / Fitness' %><span style="color:#7ca180;" class="<%= object[:merchandising_status].parameterize.underscore %>"><% elsif object[:merchandising_status] == 'Toys & Hobbies / Gifts / Books' %><span style="color:#b2cce9;" class="<%= object[:merchandising_status].parameterize.underscore %>"><% else %><span style="color:#231f20;" class="<%= object[:merchandising_status].parameterize.underscore %>"><% end %><%= object[:merchandising_status] %></span>
+                </td>
+
+                <td class="areaStatusCol">
+                  <% if object[:area_status] == '01 Available' %><span style="color:#D13E27;" class="a<%= object[:area_status].parameterize.underscore %>"><% elsif object[:area_status] == '02 Lease Negotiation' %><span style="color:#F16528;" class="a<%= object[:area_status].parameterize.underscore %>"><% elsif object[:area_status] == '03 Landlord Construction' %><span style="color:#E5BA21;" class="a<%= object[:area_status].parameterize.underscore %>"><% elsif object[:area_status] == '04 Tenant Design' %><span style="color:#24b9ae;" class="a<%= object[:area_status].parameterize.underscore %>"><% elsif object[:area_status] == '05 Tenant Fit-Out' %><span style="color:#c9e1f7;" class="a<%= object[:area_status].parameterize.underscore %>"><% elsif object[:area_status] == '06 Open for Business' %><span style="color:#15958A;" class="a<%= object[:area_status].parameterize.underscore %>"><% elsif object[:area_status] == '07 Close-Out' %><span style="color:#6e4a86;" class="a<%= object[:area_status].parameterize.underscore %>"><% elsif object[:area_status] == '08 Operating' %><span style="color:#8BC53F;" class="a<%= object[:area_status].parameterize.underscore %>"><% else %><span style="color:#231f20;" class="a<%= object[:area_status].parameterize.underscore %>"><% end %><%= object[:area_status] %></span>
+                </td>
+                <td class="openingStatusCol">
+                  <% if object[:opening_status] == 'No' %><span style="color:#D13E27;" class="<%= object[:opening_status].parameterize.underscore %>"><% elsif object[:opening_status] == 'Challenged' %><span style="color:#E5BA21;" class="<%= object[:opening_status].parameterize.underscore %>"><% elsif object[:opening_status] == 'Yes' %><span style="color:#8BC53F;" class="<%= object[:opening_status].parameterize.underscore %>"><% else %><span style="color:#231f20;" class="<%= object[:opening_status].parameterize.underscore %>"><% end %><%= object[:opening_status] %></span>
+                </td>
+                
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+    </div>
+  </div>
+</div>
+
+<%# end %> <!-- end if @project.maps.present? -->
+
+
+
+<% else %><!-- else and end for <%# if current_user.project_ids.include? @project.id %> -->
+  <h2>You are not authorized to be here. <a href="/" class="btn btn-default">Return Home</a></h2>
+<% end %><!-- END <%# if current_user.project_ids.include? @project.id %> -->
+
+
+
+

@@ -1,0 +1,56 @@
+<style>
+ th, td {font-size: 0.75em;}
+</style>
+
+<div class="alwaysbreak">
+  <table class="table">
+    <thead>
+      <!-- found solution here: https://github.com/mileszs/wicked_pdf/issues/185 -->
+      <tr class="nobreak" style="page-break-inside: avoid;">
+        <th width="5%">Lease Status</th>
+        <th width="12%">Tenant Name</th>
+        <th width="7%">Suite #</th>
+        <th width="5%">Size</th>
+        <th width="5%">Term</th>
+        <!--<th width="5%">Merchant Category</th>-->
+        <th width="8%">Budget Rate ($/sf)</th>
+        <th width="8%">Base Rent ($/sf)</th>
+        <th>Increase (%)</th>
+        <th>LL Work</th>
+        <th  width="8%">TI Allowance ($/sf)</th>
+        <!--<th width="8%"> Offer Letter / Closing Date </th>-->
+        <th>Cash On Cash Return</th>
+        <th>Budget Variance</th>
+        <th width="5%">Leasing Manager</th>
+        <th>Lease Managers Update</th>
+        <th>Action</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      <% @table_object.each do |object| %>
+        <!-- found solution here: https://github.com/mileszs/wicked_pdf/issues/185 -->
+        <tr class="nobreak" style="page-break-inside: avoid;">
+          <td class="<%= object[:lease_status].parameterize.underscore %>"> <%= object[:lease_status] %> </td>
+          <td> <%= object[:name] %> </td>
+          <td> <%= object[:suite_number] %> </td>
+          <td> <%= number_with_precision(object[:area_square_feet], precision: 0, delimiter: ',') %> </td>
+          <td style="text-align:center;"> <%= object[:deal_term] %> </td>
+          <!--<td> <%#= object[:merchandising_status] %> </td>-->
+          <td> $<%= number_with_precision(object[:budget_rate], precision: 2, delimiter: ',') %> </td>
+          <td> $<%= number_with_precision(object[:base_rent], precision: 2, delimiter: ',') %> </td>
+          <td> <%= object[:increase] %> </td>
+          <td> $<%= number_with_precision(object[:ll_work], precision: 2, delimiter: ',') %> </td>
+          <td> $<%= number_with_precision(object[:ti_allowance], precision: 2, delimiter: ',') %> </td>
+          <td> <%= object[:cash_on_cash] %>% </td>
+          <td> <%= object[:budget_variance] %>% </td>
+          <!--<td width="8%"> <%#= object[:close_out_letter] %> </td>-->
+          <td> <%= object[:leasing_manager] %> </td>
+          <td> <%= simple_format(object[:status_notes]) %> </td>
+          <td> <%= object[:action_required] %> </td>
+          
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,44 @@
+<!-- Report by deal -->
+<style>
+ th, td {font-size: 1.0em;}
+ th.center, td.center {text-align:center;}
+</style>
+
+<div class="alwaysbreak">
+  <table class="table">
+    <thead>
+      <!-- found solution here: https://github.com/mileszs/wicked_pdf/issues/185 -->
+      <tr class="nobreak" style="page-break-inside: avoid;">
+        <th width="6%" class="center">Lease Status</th>
+        <th width="5%" class="center">Owner Approval</th>
+        <th width="10%">Tenant Name</th>
+        <th width="5%" class="center">Size</th>
+        <th width="15%" class="center">Merchant Category</th>
+        <th width="5%" class="center">Suite #</th>
+        <th width="10%" class="center">Leasing Manager</th>
+        <th>Lease Managers' Update</th>
+        <th width="20%" class="center">Action</th>
+        <th width="5%" class="center">Priority</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      <% @table_object.each do |object| %>
+        <!-- found solution here: https://github.com/mileszs/wicked_pdf/issues/185 -->
+        <tr class="nobreak" style="page-break-inside: avoid;">
+          <td class="<%= object[:lease_status].parameterize.underscore %> center"> <%= object[:lease_status] %> </td>
+          <td class="center"> <% if object[:owner_approval] == true %><i style="color:#8BC53F;" class="fa fa-check" aria-hidden="true"></i><% else %><%#= object[:owner_approval] %><% end %> </td>
+          <td> <%= object[:name] %> </td>
+          <td class="center"> <%= number_with_precision(object[:area_square_feet], precision: 0, delimiter: ',') %> </td>
+          <td class="<%= object[:merchandising_status].parameterize.underscore %> center"> <%= object[:merchandising_status] %> </td>
+          <td class="center"> <%= object[:suite_number] %> </td>
+          <td class="center"> <%= object[:leasing_manager] %> </td>
+          <td> <%= object[:status_notes].to_s.truncate(195) %> </td>
+          <td class="center"> <%= object[:action_required] %> </td>
+          <td class="center"> <% if object[:priority] == true %><i style="color:#E5BA21;" class="fa fa-star" aria-hidden="true"></i><% else %><% end %> </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<!-- END Report by deal -->
