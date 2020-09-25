@@ -124,8 +124,8 @@ wb.styles do |style|
             vertical: :center,
             wrap_text: true
           },
-          font_name: 'Helvetica',
-          fg_color: Area.lease_status_color.fetch(area[:lease_status].to_s.to_sym, "231f20")
+          font_name: 'Helvetica'#,
+          #fg_color: Area.lease_status_color.fetch(area[:lease_status].to_s.to_sym, "231f20")
         )
 
         merchant_category = style.add_style(
@@ -134,8 +134,8 @@ wb.styles do |style|
             vertical: :center,
             wrap_text: true
           },
-          font_name: 'Helvetica',
-          fg_color: Area.merchandising_status_color.fetch(area[:merchandising_status].to_s.to_sym, "231f20")
+          font_name: 'Helvetica'#,
+          #fg_color: Area.merchandising_status_color.fetch(area[:merchandising_status].to_s.to_sym, "231f20")
         )
 
         row = ['', area[:lease_status], area[:name].blank? ? 'Untitled Area' : area[:name],

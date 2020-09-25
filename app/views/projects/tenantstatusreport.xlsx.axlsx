@@ -60,8 +60,8 @@ wb.styles do |style|
             vertical: :center,
             wrap_text: :true
           },
-          font_name: 'Helvetica',
-          fg_color: Area.lease_status_color.fetch(area[:lease_status].to_s.to_sym, "231f20")
+          font_name: 'Helvetica'#,
+          #fg_color: Area.lease_status_color.fetch(area[:lease_status].to_s.to_sym, "231f20")
         )
         
       opening_status = style.add_style(
@@ -71,7 +71,7 @@ wb.styles do |style|
             wrap_text: :true
           },
           font_name: 'Helvetica',
-          bg_color: Area.opening_status_color.fetch(area[:opening_status].to_s.to_sym, "231f20"),
+          #bg_color: Area.opening_status_color.fetch(area[:opening_status].to_s.to_sym, "231f20"),
           fg_color: "FFFFFF",
           border: Axlsx::STYLE_THIN_BORDER
         )
