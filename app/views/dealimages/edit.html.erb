@@ -1,9 +1,16 @@
-<h1>Editing Dealimage</h1>
+<div class="row">
+  <div class="col-xs-4 col-xs-offset-4">
 
-<%= render 'form', dealimage: @dealimage %>
-
-<%#= link_to 'Show', @dealimage %>
-<%#= link_to 'Back', dealimages_path %>
-
-<%= link_to t('.back', :default => t("helpers.links.back")),
-                      @dealimage.deal.areas.first, :class => 'btn btn-default'  %>
+    <h1>Editing Dealimage</h1>
+    
+    <%= render 'form', dealimage: @dealimage %>
+    
+    <%#= link_to 'Show', @dealimage %>
+    <%#= link_to 'Back', dealimages_path %>
+    
+    <%= link_to '<= Back to Deal',
+                          @dealimage.deal, :class => 'btn btn-primary'  %>
+    <%= link_to 'Back to Project =>',
+                          @dealimage.deal.project, :class => 'btn btn-default'  %>
+  </div>
+</div>
