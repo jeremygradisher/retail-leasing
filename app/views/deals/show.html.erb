@@ -62,7 +62,9 @@
             <%= link_to '<i class="fa fa-edit"></i>'.html_safe,
                   edit_dealimage_path(p), :class => 'btn btn-primary', 
                   :title => 'Edit Attachment'  %>
+            <% end %>
             <%#= link_to "Destroy Attachment", destroy_associate_attachment_path(p) %>
+            <% if current_user.is_admin? || current_user.role == 'Admin' %>
             <%= link_to '<i class="fa fa-trash"></i>'.html_safe,
                   dealimage_path(p),
                   :method => 'delete',
