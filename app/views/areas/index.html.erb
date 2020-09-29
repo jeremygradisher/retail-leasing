@@ -34,6 +34,8 @@
           <% if (current_user && current_user.is_admin?) || (current_user && current_user.role == 'Admin' && (current_user.project_ids.include? area.project_id)) || (current_user && current_user.role == 'Editor' && (current_user.project_ids.include? area.project_id)) %>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_area_path(area), :class => 'btn btn-primary btn-xs', :style => 'min-width:60px;margin-bottom:2px;' %>
+          <% end %>
+          <% if (current_user && current_user.is_admin?) || (current_user && current_user.role == 'Admin' && (current_user.project_ids.include? area.project_id)) %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                       area_path(area),
                       :method => :delete,

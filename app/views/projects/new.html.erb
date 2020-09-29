@@ -4,8 +4,10 @@
   <h1><%#=t '.title', :default => [:'helpers.titles.new', 'New %{model}'], :model => model_class.model_name.human.titleize %></h1>
 </div>
 -->
-<% if (current_user && current_user.is_admin?) || (current_user && current_user.member.role == 'Editor')  %>
+<% if (current_user && current_user.is_admin?) || (current_user && current_user.role == 'Admin')  %>
 <%= render :partial => 'newform' %>
+<% else %>
+ <h2 style="color:#fff;margin-left:auto;margin-right:auto;">You are not authorized to be here. <a href="/" class="btn btn-default">Return Home</a></h2>
 <% end %>
 
 <!-- This is a client side validation for the project icon -->
