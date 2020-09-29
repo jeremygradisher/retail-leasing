@@ -5,52 +5,31 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <style>
   body {
-    background-color: #EFEFEF;
+    min-width:100vw;
+    min-height:85vh;
+    background-color: #fff;
+    background-image: url("/images/pacman-background.png");
+    background-repeat: no-repeat;
+    background-position:center bottom;
+    background-size:contain;
     color: #2E2F30;
     text-align: center;
-    font-family: arial, sans-serif;
     margin: 0;
   }
 
-  div.dialog {
+  .dialog {
     width: 95%;
     max-width: 33em;
     margin: 4em auto 0;
+    
   }
 
-  div.dialog > div {
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #BBB;
-    border-top: #B00100 solid 4px;
-    border-top-left-radius: 9px;
-    border-top-right-radius: 9px;
-    background-color: white;
-    padding: 7px 12% 0;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
+  a, a:visited {
+    color:#16A3BA;
   }
 
-  h1 {
-    font-size: 100%;
-    color: #730E15;
-    line-height: 1.5em;
-  }
 
-  div.dialog > p {
-    margin: 0 0 1em;
-    padding: 1em;
-    background-color: #F7F7F7;
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #999;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-    border-top-color: #DADADA;
-    color: #666;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
+
   </style>
 </head>
 
@@ -58,10 +37,19 @@
   <!-- This file lives in public/404.html -->
   <div class="dialog">
     <div>
-      <h1>The page you were looking for doesn't exist.</h1>
-      <p>You may have mistyped the address or the page may have moved.</p>
+      <!--
+      <img src="/images/work.shop-logo-750.png" alt="work.shop logo" style="width:300px;padding:20px;" />
+      -->
+      
+      <img src="/images/Status_Plan-404.gif" alt="Status Plan 404" style="width:300px;padding:20px;" />
+      
+      <h1 style="font-size:12pt;margin-bottom:2px;">Sorry the page you wanted may have disappeared.</h1>
+      <p style="margin-top:2px;">It either doesn't exist, has moved somewhere else or ghosted.</p>
+      
+      <br><br>
+      <p>How about trying one that we know does exist?<br>
+        <a href="/" style="/*color:#f15b28;*/">www.statusplanapp.com</a></p>
     </div>
-    <p>If you are the application owner check the logs for more information.</p>
   </div>
 </body>
 </html>
