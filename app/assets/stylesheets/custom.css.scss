@@ -329,6 +329,19 @@ a.belt-style img {margin-left:5px;height:30px;}
 .createdByImage {
     height:65px; vertical-align:-75%; border-style:none;
 }
+
+.bottom-above-footer { 
+    
+    -webkit-box-shadow: 0px -4px 3px rgba(50, 50, 50, 0.15);
+  -moz-box-shadow: 0px -4px 3px rgba(50, 50, 50, 0.15);
+  box-shadow: 0px -4px 3px rgba(50, 50, 50, 0.15);  }
+  
+.bottom-above-footer button {
+    background-color: #16A3BA;
+    margin-left:4px;
+    margin-right:4px;
+    width:130px;
+}
 /* end front page stuff */
 
 /* Multi Step Form CSS */
