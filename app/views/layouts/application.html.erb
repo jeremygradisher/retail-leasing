@@ -307,11 +307,21 @@
           <button type="button" class="btn btn-primary"><i class="fa fa-cog"></i> Areas</button>
           <button type="button" class="btn btn-primary"><i class="fa fa-cog"></i> Deals</button>
           <button type="button" class="btn btn-primary"><i class="fa fa-cog"></i> Settings</button>
-          <button type="button" class="btn btn-primary"><i class="fa fa-cog"></i> Project Info</button>
+          <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#info-collapse"><i class="fa fa-cog"></i> Project Info</button>
           
           
           </div>
           <div class="col-xs-2" style="text-align:left">
+          </div>
+      </div>
+      
+      <div class="row print-none" style="background-color:#fff;">
+          <div class="col-xs-1" style="text-align:left">
+          </div>
+          <div class="col-xs-10" style="text-align:center">
+            <%= render '/projects/project_info' %>
+          </div>
+          <div class="col-xs-1" style="text-align:left">
           </div>
       </div>
       
