@@ -1,0 +1,120 @@
+<!-- navbar links -->
+      <div class="col-lg-4">
+        <ul class="nav navbar-nav" style="float:right;margin-top:8px;">
+          <% if current_user %>
+            <li class="dropdown-menu-right"><%= link_to 'Portfolio', root_path %></li>
+            <%# if @project.present? && controller.action_name != "new" %>
+            <% if @project.present? && controller.action_name == "show" %>
+              <li class="dropdown-menu-right">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Reports
+                  <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li class="dropdown-submenu dropdown-menu-right">
+                    <a href="#" class="dropdown-toggle secondMenu">
+                    Lease Status Reports
+                    <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li class="dropdown-submenu dropdown-menu-right"><%= link_to 'PDF', leasestatusreport_project_path(@project.id, format: :pdf), target: '_blank' %></li>
+                      <li class="dropdown-submenu dropdown-menu-right"><%= link_to 'XLSX', leasestatusreport_project_path(@project.id, format: :xlsx) %></li>
+                    </ul>
+                    <%#= link_to 'Ad hoc Report', adhoc_tenant_project_path(id: @project.id, tenant_id: @project.tenant_id) %>
+                  </li>
+                  
+                  <li class="dropdown-submenu dropdown-menu-right">
+                    <a href="#" class="dropdown-toggle secondMenu">
+                    Lease Deal Reports
+                    <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li class="dropdown-submenu dropdown-menu-right"><%= link_to 'PDF', leasedealreport_project_path(@project.id, format: :pdf), target: '_blank' %></li>
+                      <li class="dropdown-submenu dropdown-menu-right"><%= link_to 'XLSX', leasedealreport_project_path(@project.id, format: :xlsx) %></li>
+                    </ul>
+                    <%#= link_to 'Ad hoc Report', adhoc_tenant_project_path(id: @project.id, tenant_id: @project.tenant_id) %>
+                  </li>
+                  
+
+                  <!-- new links for Tenant Status Report -->
+                  <% if @map.present? && controller.action_name != "new" %>
+                  <li class="dropdown-submenu dropdown-menu-right">
+                    <a href="#" class="dropdown-toggle secondMenu">
+                    Tenant Status Reports
+                    <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                      <!-- this is coming -->
+                      <li class="dropdown-submenu dropdown-menu-right"><%= link_to 'PDF', tenantstatusreport_project_path(@project.id, format: :pdf), target: '_blank' %></li>
+                      <li class="dropdown-submenu dropdown-menu-right"><%= link_to 'XLSX', tenantstatusreport_project_path(@project.id, format: :xlsx) %></li>
+                    </ul>
+                  </li>
+                  <% end %>
+                  <!-- END new links for Tenant Status Report -->
+                  
+                  <!-- new links for close out report-->
+                  <% if @map.present? && controller.action_name != "new" %>
+                  <li class="dropdown-submenu dropdown-menu-right">
+                    <a href="#" class="dropdown-toggle secondMenu">
+                    Close-out Reports
+                    <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li class="dropdown-submenu dropdown-menu-right"><%= link_to 'PDF', closeoutreport_project_path(@project.id, format: :pdf), target: '_blank' %></li>
+                      <li class="dropdown-submenu dropdown-menu-right"><%= link_to 'XLSX', closeoutreport_project_path(@project.id, format: :xlsx) %></li>
+                    </ul>
+                  </li>
+                  <% end %>
+                  <!-- END new links for close out report-->
+                  
+                  <!-- new links for deal contact report-->
+                  <% if @map.present? && controller.action_name != "new" %>
+                  <li class="dropdown-submenu dropdown-menu-right">
+                    <a href="#" class="dropdown-toggle secondMenu">
+                    Deal Directory Reports
+                    <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                      <!--
+                      <li class="dropdown-submenu dropdown-menu-right"><%#= link_to 'PDF', dealdirectoryreport_tenant_project_path(id: @project.id, tenant_id: @project.tenant_id, format: :pdf), target: '_blank' %></li>
+                      -->
+                      <li class="dropdown-submenu dropdown-menu-right"><%= link_to 'XLSX', dealdirectoryreport_project_path(@project.id, format: :xlsx) %></li>
+                    </ul>
+                  </li>
+                  <% end %>
+                  <!-- END new links for deal contact report-->
+                  
+                  <!-- Adhoc links-->
+                  <!--
+                  <li class="dropdown-submenu dropdown-menu-right">
+                    <a href="#" class="dropdown-toggle secondMenu">
+                    Ad Hoc Reports
+                    <span class="caret"></span>
+                    </a>
+                    
+                    <ul class="dropdown-menu">
+                      <li class="dropdown-submenu dropdown-menu-right"><%#= link_to 'Ad Hoc', adhocreport_tenant_project_path(id: @project.id, tenant_id: @project.tenant_id) %></li>
+                    </ul>
+                  </li>
+                  -->
+                  <!-- END Adhoc links-->
+                </ul>
+              </li>
+
+            <% end %>
+            
+            <% if current_user.is_admin? || current_user.role == 'Admin' %>
+              <li class="dropdown-menu-right"><%= link_to 'Users', users_path %></li>
+            <% end %>
+            
+            <% if current_user.is_admin? %>
+              <li class="dropdown-menu-right"><%= link_to 'Archives', archived_projects_path %></li>
+            <% end %>
+            
+            <li class="dropdown-menu-right" id="link1"><%= link_to 'Profile', user_path(current_user) %></li>
+            <li class="dropdown-menu-right" id="link2"><%= link_to('Logout', destroy_user_session_path,
+                                                                   class: '', title: 'Logout', :method => :delete) %></li>
+          <% end %>
+        </ul>
+      </div>
+      <!--end navbar links -->

@@ -298,19 +298,19 @@
 
     <% elsif current_user && (controller_name == "projects" && controller.action_name == "show") %>
       <!-- Tenant Project Path -->
-      <div class="row print-none" style="/*background-color:#000;border-top:thin solid #231f20;*/">
-          <div class="col-lg-12" style="text-align:center">
-            <footer style="background-color: #231f20;" class="affixfooter" data-spy="affix-bottom">
-                <%= link_to '<i class="fa fa-print"></i> print page'.html_safe, 'print', 
-                  :onclick => 'window.print();return false;', 
-                  :class => 'btn btn-primary print-none float-right-until',
-                  :style => 'margin-right:60px;border-color:#fff;' %>
-                  
-                <%#= link_to 'Download .XLS', tenant_project_path(project: @project, 
-                  tenant: @project.tenant_id, format: :xlsx), 
-                  :class => 'btn btn-primary print-none float-right-until', 
-                  :style => 'margin-right:6px;border-color:#fff;' %>
-            </footer>
+      <div class="row print-none" style="background-color:#f2f2f2;padding-top:40px;padding-bottom:40px;">
+          <div class="col-xs-3 col-xs-offset-1" style="text-align:left">
+            <span style="padding:10px 0;">
+              <img src="/images/status-plan-logo.png" style="height:50px;margin-top:0;"/>
+            </span>
+          </div>
+          <div class="col-xs-5" style="text-align:center">
+            <%= render '/common/bottom_navbar' %>
+          </div>
+          <div class="col-xs-2" style="text-align:right">
+            <i class="fab fa-linkedin" style="font-size:16pt;margin-top:20px;margin-right:20px;"></i>
+            <i class="fab fa-twitter" style="font-size:16pt;margin-top:20px;margin-right:20px;"></i>
+            <i class="fa fa-cog" style="font-size:16pt;margin-top:20px;margin-right:20px;"></i>
           </div>
       </div>
     
