@@ -13,7 +13,7 @@
 	var map = L.map('map', {attributionControl: false, crs: L.CRS.Simple, zoomSnap: 0.25, minZoom: -3});
 	<% end %>
 
-	var attributionInfo = L.control.attribution({prefix: '<span class="AttributionClass">Map: <%= link_to @map.name, map_path(@map) %> | <%= @image.width.to_i %>w, <%= @image.height.to_i %>h</span>'}).addTo(map);
+	//var attributionInfo = L.control.attribution({prefix: '<span class="AttributionClass">Map: <%#= link_to @map.name, map_path(@map) %> | <%#= @image.width.to_i %>w, <%#= @image.height.to_i %>h</span>'}).addTo(map);
 
 
 	//If working with [y, x] coordinates with something named L.LatLng doesn’t make much sense to you, 
