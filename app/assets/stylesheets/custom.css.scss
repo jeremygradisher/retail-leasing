@@ -58,7 +58,8 @@ body {margin:0 !important;}
   text-align: center;
 }
 
-.ws-border-style {border-radius: 0 0 0 8px;}
+/*.ws-border-style {border-radius: 0 0 0 8px;}*/
+.ws-border-style {border-radius: 2px;}
 
 .border-dark {border-width: 1px;border-style: solid;border-color:#231f20;}
 .border-light {border-width: 1px;border-style: solid;border-color:#fff !important;}
@@ -258,6 +259,9 @@ input[type="radio"].ws-radio-buttons {margin-left:5px;margin-right:5px;}
     color:#fff;
 }
 .numberCircle:hover { text-decoration: none; border-color:#231f20;background-color:#231f20; }
+
+.project-admin-bar { background-color:#f9f9f9; }
+.pencil-button:hover { background-color: #16A3BA; }
 /* end Projects styling */
 
 /* members page styling */
@@ -324,6 +328,19 @@ a.belt-style img {margin-left:5px;height:30px;}
 
 .createdByImage {
     height:65px; vertical-align:-75%; border-style:none;
+}
+
+.bottom-above-footer { 
+    
+    -webkit-box-shadow: 0px -4px 3px rgba(50, 50, 50, 0.15);
+  -moz-box-shadow: 0px -4px 3px rgba(50, 50, 50, 0.15);
+  box-shadow: 0px -4px 3px rgba(50, 50, 50, 0.15);  }
+  
+.bottom-above-footer button {
+    background-color: #16A3BA;
+    margin-left:4px;
+    margin-right:4px;
+    width:130px;
 }
 /* end front page stuff */
 
@@ -477,7 +494,7 @@ div.step { border-radius: 8px 8px 0px 0px }
 .page-header {
     padding-bottom: 4px;
     margin: 0px 0 20px;
-    border-bottom: 1px solid #eee;
+    border-bottom: 0;
 }
 
 /* fixes for buttons     */
@@ -605,11 +622,6 @@ input[type="radio"].ws-radio-buttons {margin-left:5px;margin-right:5px;}
 
 
 /* clean up changes */
-.page-header {
-    padding-bottom: 9px;
-    margin: 20px 0 20px 0;
-    border-bottom: 1px solid #eee;
-}
 
 .full-width {
     width:100%;

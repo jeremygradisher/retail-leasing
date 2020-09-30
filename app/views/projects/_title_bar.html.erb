@@ -1,0 +1,66 @@
+<!-- Logged in Projects show top bar -->
+    <% if controller.controller_name == "projects" && (controller.action_name == "edit" || controller.action_name == "show")  %>
+    <%# if current_user && controller.controller_name == "workletters" && controller.action_name == "edit" %>
+    <div class="row print-none ws-blue-bar">
+      <div class="col-lg-2">
+      </div>
+      <div class="col-lg-3">
+        
+      </div>
+      <div class="col-lg-4">
+        <% if controller.controller_name == "projects" && controller.action_name == "edit" %>
+          <h1 style="color:#fff;margin-top:0;margin-bottom:0;" class="header-bar-title">Edit Project</h1>
+        <% elsif controller.controller_name == "projects" && controller.action_name == "show" %>
+          <h1 style="color:#fff;margin-top:0;margin-bottom:0;" class="header-bar-title"><%= @project.name %></h1>
+        <% end %>
+      </div>
+      <div class="col-lg-3">
+        <% if controller.controller_name == "projects" && controller.action_name == "edit" %>
+        <%= link_to '<i class="fa fa-times" style="margin-right:4px"></i> Cancel'.html_safe,
+                project_url(@project.id), 
+                :class => 'btn btn-default ws-border-style border-light branded-font',
+                :style => 'font-size:16pt;width:100px;background-color:#008398;color:#fff;' %>
+        <% end %>
+            <% if controller.controller_name == "projects" && controller.action_name == "show" %>
+              <% if current_user.is_admin? || current_user.role == 'Admin' || current_user.role == 'Editor' %>
+                <%#= link_to '<i class="fa fa-pencil-alt" style="margin-top:6px"></i>'.html_safe,
+                      edit_project_path(@project), 
+                      :class => 'pencil-button',
+                      :style => 'font-size:20pt;width:100px;color:#fff;',
+                      :title => 'Edit Project Info' %>    
+                <%#= link_to '<i class="fa fa-cog" style="margin-top:6px"></i>'.html_safe,
+                      edit_project_path(@project), 
+                      :class => 'pencil-button',
+                      :style => 'font-size:20pt;width:100px;color:#fff;',
+                      :title => 'Edit Project Info' %>  
+                
+                <div class="dropdown">
+                  <i class="fa fa-cog dropdown-toggle" id="cogmenu" style="margin-top:6px;font-size:20pt;width:100px;color:#fff;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+                  <div class="dropdown-menu" aria-labelledby="cogmenu">
+                    <button class="dropdown-item" type="button">
+                    <%= link_to '<i class="fa fa-plus" style="margin-top:6px"></i>'.html_safe + ' Add Space',
+                      new_area_path(:map_id => @map,:project_id => @project), 
+                      :class => '',
+                      :style => '' %> 
+                    </button>
+                    <button class="dropdown-item" type="button">
+                    <%= link_to '<i class="fa fa-plus" style="margin-top:6px"></i>'.html_safe + ' Add Deal',
+                      new_deal_path(:map_id => @map,:project_id => @project), 
+                      :class => '',
+                      :style => '' %> 
+                    </button>
+                    <button class="dropdown-item" type="button">
+                    <%= link_to '<i class="fa fa-cog" style="margin-top:6px"></i>'.html_safe + ' Edit Project Info',
+                      edit_project_path(@project), 
+                      :class => '',
+                      :style => '' %> 
+                    </button>
+                  </div>
+                </div>
+                
+              <% end %>
+            <% end %>
+      </div>
+    </div>
+    <% end %>
+  <!-- END Logged in Projects show top bar -->

@@ -1,23 +1,7 @@
 <% if (current_user && (current_user.project_ids.include? @project.id)) || (current_user && current_user.is_admin?) %>
 <%- model_class = Project -%>
 <% if @project.maps.present? %>
-<div class="page-header">
-  <h1 style="float:left;"><%= @project.name %></h1>
-  
-  <% if current_user.is_admin? || current_user.role == 'Admin' || current_user.role == 'Editor' %>
-  <%= link_to '+ Associate Area/Deal', new_areas_deal_path(:project_id => @project),
-                    :class => 'btn btn-primary print-none',
-                    :style => 'float:right;margin-top:20px;margin-right:10px;color:#fff;background-color:#16A3BA;border-color:#16A3BA;' %>
-  <%= link_to '+ Add space', new_area_path(:map_id => @map,:project_id => @project),
-                    :class => 'btn btn-primary print-none',
-                    :style => 'float:right;margin-top:20px;margin-right:10px;color:#fff;background-color:#F16528;border-color:#F16528;' %>
-  <%= link_to '+ Add Deal', new_deal_path(:map_id => @map,:project_id => @project),
-                    :class => 'btn btn-primary print-none',
-                    :style => 'float:right;margin-top:20px;margin-right:10px;color:#fff;background-color:#16A3BA;border-color:#16A3BA;' %>
-  <% end %>
 
-<br style="clear:both;">
-</div>
 <% else %>
 <br><br>
 <% end %>
@@ -56,16 +40,34 @@
 <%= render '/projects/switch_statuses' %>
 <% end %>
 
+<!--
+<div class="project-admin-bar" style="text-align:center;">
+  <%# if current_user.is_admin? || current_user.role == 'Admin' || current_user.role == 'Editor' %>
+  <%#= link_to '+ Add space', new_area_path(:map_id => @map,:project_id => @project),
+                    :class => 'btn btn-primary print-none',
+                    :style => 'margin-top:4px;margin-bottom:4px;margin-right:10px;color:#fff;background-color:#F16528;border-color:#F16528;' %>
+  <%#= link_to '+ Add Deal', new_deal_path(:map_id => @map,:project_id => @project),
+                    :class => 'btn btn-primary print-none',
+                    :style => 'margin-top:4px;margin-bottom:4px;margin-right:10px;color:#fff;background-color:#16A3BA;border-color:#16A3BA;' %>
+  <%# end %>
+
+</div>
+-->
+
+
+
+
 <% if @project.maps.present? %>
 <div style="page-break-inside: avoid;">
-<div class="row">
-  <div class="col-xs-12">
-    <div class="page-header">
-        <h1>Property Statistics</h1>
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="page-header" style="text-align:center;">
+          <h1 style="font-family: 'simplifica';font-size:40pt;">Property Statistics</h1>
+      </div>
     </div>
   </div>
-</div>
 <% else %>
+  
 <% end %>
 
 <% if @project.maps.present? %>
@@ -76,382 +78,29 @@
 
 </div>
 
-<br>
-<hr>
 
-<% if @project.maps.present? %>
+<!-- These are the indexes
+<%# if @project.maps.present? %>
 <div class="row /*print-none*/" style="">
-  <%= render '/projects/areas_list' %>
-  <%= render '/projects/deals_list' %>
-  <%= render '/projects/areas_deals_list' %>
+  <%#= render '/projects/areas_list' %>
+  <%#= render '/projects/deals_list' %>
+  <%#= render '/projects/areas_deals_list' %>
 </div>
-<% end %>
+<%# end %>
 
-<br>
-<hr>
-
-<% if @project.maps.present? %>
-<div class="row /*print-none*/" style="">
-  <div class="col-xs-10 col-xs-offset-1">
-    
-    <div class="page-header print-none">
-      <button data-toggle="collapse" data-target="#workletter-template-collapse" 
-      class='btn btn-primary responsive-none print-none' 
-      style='float:right;margin-left:10px;margin-top:12px;'><i class="fa fa-chevron-down"></i></button>
-      <% if current_user.is_admin? || current_user.role == 'Admin' %>
-      <%= link_to '+ Add Workletter Template',
-                  new_workletter_template_path(:project_id => @project),
-                  :class => 'btn btn-primary responsive-none print-none', :style => 'float:right;margin-top:12px;' %>
-      <% end %>
-      <h1>Workletter Templates</h1>
-    </div>
-    
-    <div id="workletter-template-collapse" class="collapse">    
-        <table class="table table-striped add-responsive /*print-none*/" style="/*display:none;*/">
-          <thead>
-            <tr>
-              <th><%= model_class.human_attribute_name(:id) %></th>
-              <th><%= model_class.human_attribute_name(:template_name) %></th>
-              <th><%= model_class.human_attribute_name(:project_id) %></th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @workletter_templates.each do |workletter_template| %>
-              <tr>
-                <td><%= link_to workletter_template.id, workletter_template_path(workletter_template) %></td>
-                <td><%= link_to workletter_template.template_name, workletter_template_path(workletter_template) %></td>
-                <td><%= workletter_template.project_id %></td>
-                <!--<td><%# if area.name.blank? %><%#= link_to 'Untitled Area', area_path(area) %><%# else %><%#= link_to area.name, area_path(area) %><%# end %></td>
-                -->
-                <td style="min-width:180px;">
-                  <%= link_to 'View',
-                              workletter_template_path(workletter_template), :class => 'btn btn-default btn-xs add-responsive-bottom print-none' %>
-                  <% if current_user.is_admin? || current_user.role == 'Admin' %>
-                  <%= link_to 'Edit',
-                              edit_workletter_template_path(workletter_template), :class => 'btn btn-primary btn-xs responsive-none print-none' %>
-                  <%= link_to 'Destroy',
-                              workletter_template_path(workletter_template),
-                              :method => :delete,
-                              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                              :class => 'btn btn-xs btn-danger responsive-none print-none' %>
-                  <% end %>
-                </td>
-              </tr>
-              <!-- this worked - I can get it to do print only - 
-              I need to decide what I want to do here report wise.
-              <tr class="print-only-table-row">
-                <td colspan="6">
-                  This is the test...
-                </td>
-              </tr>
-              -->
-            <% end %>
-          </tbody>
-        </table>
-    </div>
-  </div>
-</div>
-
-
-
-<br>
-<hr>
-<% end %>
-
-<div class="row /*print-none*/" style="margin-bottom:60px;page-break-inside: avoid;">
-  <div class="col-xs-10 col-xs-offset-1">
-    
-    <div class="page-header">
-      <button data-toggle="collapse" data-target="#info-collapse" 
-      class='btn btn-primary responsive-none print-none' 
-      style='float:right;margin-top:12px;'><i class="fa fa-chevron-down"></i></button>
-      
-    <h1>Project Info</h1>
-    </div>
-
-    <div id="info-collapse" class="collapse">    
-
-
-
-
-<div class="row">
-  <div class="col-xs-6">
-    <div style="max-width:100%;margin-bottom:20px;">
-      <% @project.icons.each do |p| %>
-        <%= image_tag(p.icon_url, :style => 'max-width:100%;', :class => 'img-rounded') %>
-      <% end %>
-    </div>
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <p>Owner</p>
-      </div>
-      <div class="panel-body">
-        <table style="width:100%;">
-          <tr>
-            <td style="width:50%;text-align:left;">
-              <p>Name:</p>
-            </td>
-            <td style="width:50%;text-align:right;">
-              <p><%= @project.owner %></p>
-            </td>
-          </tr>
-          <tr>
-            <td style="width:50%;text-align:left;">
-              <p>Address:</p>
-            </td>
-            <td style="width:50%;text-align:right;">
-              <p><%= @project.owner_address %><br>
-              <%= @project.owner_city %> <%= @project.owner_state %> <%= @project.owner_zip %></p>
-            </td>
-          </tr>
-          <tr>
-            <td style="width:50%;text-align:left;">
-              <p>Contact:</p>
-            </td>
-            <td style="width:50%;text-align:right;">
-              <p><%= @project.owner_contact %></p>
-            </td>
-          </tr>
-          <tr>
-            <td style="width:50%;text-align:left;">
-              <p>Phone:</p>
-            </td>
-            <td style="width:50%;text-align:right;">
-              <p><%= @project.owner_phone %></p>
-            </td>
-          </tr>
-          <tr>
-            <td style="width:50%;text-align:left;">
-              <p>Email:</p>
-            </td>
-            <td style="width:50%;text-align:right;">
-              <p><%= @project.owner_email %></p>
-            </td>
-          </tr>
-        </table>
-      </div>
-    </div><!-- end of panel-branded -->
-  </div>
-  
-  <div class="col-xs-6">
-    <div class="panel panel-branded">
-      <div class="panel-heading">
-        <p>Project Info</p>
-      </div>
-      <div class="panel-body">
-        <table style="width:100%;">
-          <tr>
-            <td style="width:50%;text-align:left;">
-              <p>Project Name:</p>
-            </td>
-            <td style="width:50%;text-align:right;">
-              <p><%= @project.name %></p>
-            </td>
-          </tr>
-          <tr>  
-            <td style="width:50%;text-align:left;">
-              <p>Address:</p>
-            </td>
-            <td style="width:50%;text-align:right;">
-              <p><%= @project.address %><br>
-              <%= @project.city %> <%= @project.state %> <%= @project.zip %></p>
-            </td>
-          </tr>
-          <tr>
-            <td style="width:50%;text-align:left;">
-              <p>Project type:</p>
-            </td>
-            <td style="width:50%;text-align:right;">
-              <p><%= @project.project_type %></p>
-            </td>
-          </tr>
-          <tr>
-            <td style="width:50%;text-align:left;">
-              <p>Sq ft:</p>
-            </td>
-            <td style="width:50%;text-align:right;">
-              <p><%= number_with_delimiter(@project.project_square_feet, :delimiter => ',') %></p>
-            </td>
-          </tr>
-          <% if !@project.status.blank? %>
-          <tr>
-            <td style="width:50%;text-align:left;">
-              <p>Status:</p>
-            </td>
-            <td style="width:50%;text-align:right;">
-              <p><%= @project.status %></p>
-            </td>
-          </tr>
-          <% end %>
-        </table>
-      </div>
-    </div><!-- end of panel-branded -->
-    
-    <div class="panel panel-branded">
-      <div class="panel-heading">
-        <p>Description</p>
-      </div>
-      <div class="panel-body">
-        <table style="width:100%;">
-          <tr>
-            <td style="width:100%;">
-              <p><%= simple_format(@project.description) %></p>
-            </td>
-          </tr>
-        </table>
-      </div>
-    </div><!-- end of panel-branded -->
-
-    <div class="panel panel-branded print-none">
-      <div class="panel-heading">
-        <p style="float:left;">Users</p> 
-        <% if (current_user && current_user.is_admin?) || (current_user && current_user.role == 'Admin') %> 
-        <%= link_to '+ Add/Remove Project Users',
-                  users_project_path(@project.id),
-                  :class => 'btn btn-xs btn-default responsive-none print-none', :style => 'float:right;margin-top:0;' %> 
-        <% end %>
-      <br style="clear:both;">
-      </div>
-      <div class="panel-body">
-        <table style="width:100%;">
-          <tr>
-            <td style="width:100%;">
-            <!-- Adding here -->
-
-              <fieldset class="search-field">
-                <!--<legend>Search Our Database</legend>-->
-                <%= search_form_for @q, url: project_path do |f| %>
-                  <div class="col-lg-6">
-                      <%= f.label :email_cont, "Email contains:" %><br>
-                      <%= f.text_field :email_cont, :class => "form-control", :placeholder => "Search for..." %>
-                  </div>
-        
-                  <div class="col-lg-6">
-                    <div class="actions" style="text-align:right;margin-top:23px;">
-                      <%= f.submit "Search", :class => "btn btn-primary jicon" %>
-                      <%= link_to "Clear", request.path, :class => "btn btn-default jicon" %>
-                    </div>
-                  </div>
-                <% end %>
-              </fieldset>            
-              
-      <table class="table table-striped">
-          <thead>
-              <tr>
-                  <th>Email</th>
-              </tr>
-          </thead>
-          <tbody>
-              <% @project_users.each do |project_user| %>
-              <tr>
-                  <td><%= project_user.email %></td>
-              </tr>
-              <% end %>
-          </tbody>
-      </table>
-      
-      <div style="width:100%;text-align:center;">
-        <%= will_paginate @project_users, renderer: BootstrapPagination::Rails %>
-      </div>
-            <!-- Adding here -->
-            </td>
-          </tr>
-        </table>
-      </div>
-    </div><!-- end of panel-branded -->
-
-
-<!-- adding Leasing Managers -->
-    <div class="panel panel-branded print-none">
-      <div class="panel-heading">
-        <p style="float:left;">Leasing Managers</p> 
-        <% if (current_user && current_user.is_admin?) || (current_user && current_user.role == 'Admin') %> 
-        <%= link_to '+ Add/Remove Leasing Manager',
-                  leasing_managers_path(),
-                  :class => 'btn btn-xs btn-default responsive-none print-none', :style => 'float:right;margin-top:0;' %> 
-        <% end %>
-      <br style="clear:both;">
-      </div>
-      <div class="panel-body">
-        <table style="width:100%;">
-          <tr>
-            <td style="width:100%;">
-            <!-- Adding here -->
-              
-              <table class="table table-striped">
-                  <thead>
-                      <tr>
-                          <th>Name</th>
-                          <th>Email</th>
-                      </tr>
-                  </thead>
-                  <tbody>
-                      <% @leasing_managers.each do |leasing_manager| %>
-                      <tr>
-                          <td><%= leasing_manager.name %></td>
-                          <td><%= leasing_manager.email %></td>
-                      </tr>
-                      <% end %>
-                  </tbody>
-              </table>
-              
-              <div style="width:100%;text-align:center;">
-                <%#= will_paginate @leasing_managers, renderer: BootstrapPagination::Rails %>
-              </div>
-
-            <!-- Adding here -->
-            </td>
-          </tr>
-        </table>
-      </div>
-    </div><!-- end of panel-branded -->
-<!-- end Leasing Managers -->
-
-    
-  </div> <!--end of col-xs-6 -->
-</div>    
-
-
-    <div class="row">
-      <div class="col-xs-12">
-        <hr>
-      </div>
-    </div>    
-    
-    </div><!-- end #info-collapse-->
-  </div><!-- end div -->
-</div>
-
-
-<!--
 <br>
 <hr>
 -->
 
-<%#= link_to "<= Portfolio",
-              root_path, :class => 'btn btn-default'  %>
+<!-- Workletter templates index -->
+<%#= render '/projects/workletter_templates' %>
 
-<%# if current_user.is_admin? || current_user.role == 'Admin' || current_user.role == 'Editor' %>
-<%#= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_project_path(@project), :class => 'btn btn-primary' %>
-<%# end %>
-<%# if current_user.is_admin? %>
-<%#= link_to t('.destroy', :default => t("helpers.links.destroy")),
-              project_path(@project),
-              :method => 'delete',
-              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-              :class => 'btn btn-danger' %>
-<%# end %>
+<!-- project info -->
+<%#= render '/projects/project_info' %>
 
-<% if @project.maps.present? %>
-  <% if current_user.is_admin? || current_user.role == 'Admin' || current_user.role == 'Editor' %>              
-    <%= link_to '+ Add/Remove Project Users',
-                    users_project_path(id: @project.id),
-                    :class => 'btn btn-default responsive-none print-none', :style => 'float:right;margin-top:0;' %> 
-  <% end %>
-<% end %>
+<br><br><br><br>
 
 <% else %>
  <h2>You are not authorized to be here. <a href="/" class="btn btn-default">Return Home</a></h2>
 <% end %>
+
