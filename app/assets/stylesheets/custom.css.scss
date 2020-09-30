@@ -480,7 +480,8 @@ div.step { border-radius: 8px 8px 0px 0px }
 .page-header {
     padding-bottom: 4px;
     margin: 0px 0 20px;
-    border-bottom: 1px solid #eee;
+    border-bottom: 0;
+    text-align: center;
 }
 
 /* fixes for buttons     */
@@ -608,11 +609,6 @@ input[type="radio"].ws-radio-buttons {margin-left:5px;margin-right:5px;}
 
 
 /* clean up changes */
-.page-header {
-    padding-bottom: 9px;
-    margin: 20px 0 20px 0;
-    border-bottom: 1px solid #eee;
-}
 
 .full-width {
     width:100%;
