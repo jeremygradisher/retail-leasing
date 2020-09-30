@@ -304,7 +304,7 @@
           <div class="col-xs-8" style="text-align:center">
           
           <button type="button" class="btn btn-primary"><i class="fa fa-cog"></i> Stats</button>
-          <button type="button" class="btn btn-primary"><i class="fa fa-cog"></i> Areas</button>
+          <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#areas-collapse"><i class="fa fa-cog"></i> Areas</button>
           <button type="button" class="btn btn-primary"><i class="fa fa-cog"></i> Deals</button>
           <button type="button" class="btn btn-primary"><i class="fa fa-cog"></i> Settings</button>
           <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#info-collapse"><i class="fa fa-cog"></i> Project Info</button>
@@ -320,6 +320,8 @@
           </div>
           <div class="col-xs-10" style="text-align:center">
             <%= render '/projects/project_info' %>
+            <%= render '/projects/bottom_areas_list' %>
+            <%#= render '/projects/deals_list' %>
           </div>
           <div class="col-xs-1" style="text-align:left">
           </div>
