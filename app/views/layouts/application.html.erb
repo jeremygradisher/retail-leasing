@@ -37,6 +37,8 @@
     
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    
     
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
     <!--[if lt IE 9]>
@@ -260,36 +262,7 @@
   <!-- END Logged in Map Edit top bar -->
   
   <!-- Logged in Projects show top bar -->
-    <% if controller.controller_name == "projects" && (controller.action_name == "edit" || controller.action_name == "show")  %>
-    <%# if current_user && controller.controller_name == "workletters" && controller.action_name == "edit" %>
-    <div class="row print-none ws-blue-bar">
-      <div class="col-lg-1">
-      </div>
-      <div class="col-lg-8">
-        <% if controller.controller_name == "projects" && controller.action_name == "edit" %>
-          <h1 style="color:#fff;margin-top:0;margin-bottom:0;" class="header-bar-title">Edit Project</h1>
-        <% elsif controller.controller_name == "projects" && controller.action_name == "show" %>
-          <h1 style="color:#fff;margin-top:0;margin-bottom:0;" class="header-bar-title"><%= @project.name %></h1>
-        <% end %>
-      </div>
-      <div class="col-lg-3">
-        <% if controller.controller_name == "projects" && controller.action_name == "edit" %>
-        <%= link_to '<i class="fa fa-times" style="margin-right:4px"></i> Cancel'.html_safe,
-                project_url(@project.id), 
-                :class => 'btn btn-default ws-border-style border-light branded-font',
-                :style => 'font-size:16pt;width:100px;background-color:#008398;color:#fff;' %>
-        <% elsif controller.controller_name == "projects" && controller.action_name == "show" %>
-          <% if current_user.is_admin? || current_user.role == 'Admin' || current_user.role == 'Editor' %>
-            <%= link_to '<i class="fa fa-pencil-alt" style="margin-right:4px"></i> Edit'.html_safe,
-                  edit_project_path(@project), 
-                  :class => 'btn btn-default ws-border-style border-light branded-font',
-                  :style => 'font-size:16pt;width:100px;background-color:#008398;color:#fff;' %>
-          <% end %>
-        <% end %>
-        
-      </div>
-    </div>
-    <% end %>
+  <%= render '/projects/title_bar' %>
   <!-- END Logged in Projects show top bar -->
   
 <!-- END search bars/headers -->
