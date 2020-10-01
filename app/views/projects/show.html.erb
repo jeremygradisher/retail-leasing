@@ -1,3 +1,8 @@
+
+<style>
+  .fa-minus-square {color:#d13e27;}
+</style>
+
 <% if (current_user && (current_user.project_ids.include? @project.id)) || (current_user && current_user.is_admin?) %>
 <%- model_class = Project -%>
 <% if @project.maps.present? %>
