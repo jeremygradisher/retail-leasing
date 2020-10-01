@@ -14,7 +14,7 @@
           <h1 style="color:#fff;margin-top:0;margin-bottom:0;" class="header-bar-title"><%= @project.name %></h1>
         <% end %>
       </div>
-      <div class="col-lg-3">
+      <div class="col-lg-2" style="">
         <% if controller.controller_name == "projects" && controller.action_name == "edit" %>
         <%= link_to '<i class="fa fa-times" style="margin-right:4px"></i> Cancel'.html_safe,
                 project_url(@project.id), 
@@ -35,22 +35,27 @@
                       :title => 'Edit Project Info' %>  
                 
                 <div class="dropdown">
+                  <!--
                   <i class="fa fa-cog dropdown-toggle" id="cogmenu" style="margin-top:6px;font-size:20pt;width:100px;color:#fff;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
-                  <div class="dropdown-menu" aria-labelledby="cogmenu">
+                  -->
+                  <button id="optionsmenu" type="button" class="dropdown-toggle btn btn-default ws-border-style border-light branded-font" style="float:right;font-size:16pt;width:100px;background-color:#008398;color:#fff;"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-pencil-alt" style="margin-right:4px"></i> Options
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="optionsmenu" style="top:44px;width:100px;">
                     <button class="dropdown-item" type="button">
-                    <%= link_to '<i class="fa fa-plus" style="margin-top:6px"></i>'.html_safe + ' Add Space',
+                    <%= link_to '<i class="fa fa-plus" style="margin-top:6px;"></i>'.html_safe + ' Add Space',
                       new_area_path(:map_id => @map,:project_id => @project), 
                       :class => '',
                       :style => '' %> 
                     </button>
                     <button class="dropdown-item" type="button">
-                    <%= link_to '<i class="fa fa-plus" style="margin-top:6px"></i>'.html_safe + ' Add Deal',
+                    <%= link_to '<i class="fa fa-plus" style="margin-top:6px;"></i>'.html_safe + ' Add Deal',
                       new_deal_path(:map_id => @map,:project_id => @project), 
                       :class => '',
                       :style => '' %> 
                     </button>
                     <button class="dropdown-item" type="button">
-                    <%= link_to '<i class="fa fa-cog" style="margin-top:6px"></i>'.html_safe + ' Edit Project Info',
+                    <%= link_to '<i class="fa fa-cog" style="margin-top:6px;"></i>'.html_safe + ' Edit Project Info',
                       edit_project_path(@project), 
                       :class => '',
                       :style => '' %> 
@@ -58,8 +63,17 @@
                   </div>
                 </div>
                 
+                <%# if current_user.is_admin? || current_user.member.role == 'Admin' || current_user.member.role == 'Editor' %>
+                  <%#= link_to '<i class="fa fa-pencil-alt" style="margin-right:4px"></i> Edit'.html_safe,
+                        edit_project_path(@project), 
+                        :class => 'btn btn-default ws-border-style border-light branded-font',
+                        :style => 'font-size:16pt;width:100px;background-color:#008398;color:#fff;' %>
+                <%# end %>
+                
               <% end %>
             <% end %>
+      </div>
+      <div class="col-lg-1" style="">
       </div>
     </div>
     <% end %>

@@ -186,35 +186,40 @@
         <% end %>
       </div>
       <% elsif controller.controller_name == "areas" && controller.action_name == "show" %>
-      <div class="col-lg-3">
+      <div class="col-lg-4">
         <h1 class="header-bar-title" style="margin-top:0px;margin-bottom:2px;color:#fff;"><%= @area.suite_number %></h1>
       </div>
-      <div class="col-lg-5">
+      <div class="col-lg-4">
         <h3 style="margin-top:10px;font-size:12pt;color:#fff;">Project: <%= link_to @project.name, project_url(@project.id), :style => 'color:#fff;' %>
         <!--- Map: <%#= link_to @map.name, map_path(@map), :style => 'color:#fff;' %>-->
         </h3>
       </div>
       <% end %>
-      <div class="col-lg-3">
+      <div class="col-lg-2">
         <% if controller.controller_name == "areas" && (controller.action_name == "edit")  %>
         <%= link_to '<i class="fa fa-times" style="margin-right:4px"></i> Cancel'.html_safe,
                 area_path(@area), :class => 'btn btn-default ws-border-style border-light branded-font',
-                :style => 'font-size:16pt;width:100px;background-color:#69A020;color:#fff;' %>
+                :style => 'float:right;font-size:16pt;width:100px;background-color:#69A020;color:#fff;' %>
         <% elsif controller.controller_name == "areas" && controller.action_name == "show" %>
           
-          <!-- switched from a font awesome icon to an image -->
-          <%#= link_to ('<i class="fa fa-folder-open"></i>').html_safe,
-		              "#", :title => 'Tenant Documents/Landlord Work', :class => 'print-none', :style => "color: #fff;font-size:36pt;line-height:36pt;margin-left:10px;", :id => "folder-icon" %>
-
-          <%= link_to "#", class: "folder-icon-link" do %><%= image_tag "/images/Folder-open-white-120.png", :class => "print-none", :style => "height:28px;margin-top:6px;", :id => "folder-icon" %><% end %>
-          <!-- END switched from a font awesome icon to an image -->
           
           <% if current_user.is_admin? || current_user.role == 'Admin' || current_user.role == 'Editor' %>
               <%= link_to '<i class="fa fa-pencil-alt" style="margin-right:4px;"></i> Edit'.html_safe,
                   edit_area_path(@area), :class => 'btn btn-default ws-border-style border-light branded-font',
-                  :style => 'font-size:16pt;width:120px;background-color:#69A020;color:#fff;vertical-align:top;margin-left:10px;' %>
+                  :style => 'float:right;font-size:16pt;width:120px;background-color:#69A020;color:#fff;vertical-align:top;margin-left:10px;' %>
           <% end %>
+
+          <!-- switched from a font awesome icon to an image -->
+          <%#= link_to ('<i class="fa fa-folder-open"></i>').html_safe,
+		              "#", :title => 'Tenant Documents/Landlord Work', :class => 'print-none', :style => "color: #fff;font-size:36pt;line-height:36pt;margin-left:10px;", :id => "folder-icon" %>
+
+          <%= link_to "#", class: "folder-icon-link", style: "float:right;" do %><%= image_tag "/images/Folder-open-white-120.png", :class => "print-none", :style => "height:28px;margin-top:6px;", :id => "folder-icon" %><% end %>
+          <!-- END switched from a font awesome icon to an image -->
+          
+          
         <% end %>
+      </div>
+      <div class="col-lg-1">
       </div>
     </div>
     <% end %>
@@ -268,7 +273,7 @@
 <!-- END search bars/headers -->
     
 
-    <div class="container">
+    <div class="container-fluid">
       <div class="row">
         <div class="col-lg-12">
           <%= bootstrap_flash %>
@@ -304,14 +309,30 @@
           <div class="col-xs-8" style="text-align:center">
           
           <button type="button" class="btn btn-primary"><i class="fa fa-cog"></i> Stats</button>
-          <button type="button" class="btn btn-primary"><i class="fa fa-cog"></i> Areas</button>
-          <button type="button" class="btn btn-primary"><i class="fa fa-cog"></i> Deals</button>
-          <button type="button" class="btn btn-primary"><i class="fa fa-cog"></i> Settings</button>
-          <button type="button" class="btn btn-primary"><i class="fa fa-cog"></i> Project Info</button>
-          
+          <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#areas-collapse"><i class="fa fa-cog"></i> Spaces</button>
+          <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#deals-collapse"><i class="fa fa-cog"></i> Deals</button>
+          <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#info-collapse"><i class="fa fa-cog"></i> Project Info</button>
+          <% if (current_user.is_admin?) || (current_user.role == 'Admin') || (current_user.role == 'Editor')  %>
+          <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#settings-collapse"><i class="fa fa-cog"></i> Settings</button>
+          <% end %>
           
           </div>
           <div class="col-xs-2" style="text-align:left">
+          </div>
+      </div>
+      
+      <div class="row print-none" style="background-color:#fff;">
+          <div class="col-xs-1" style="text-align:left">
+          </div>
+          <div class="col-xs-10" style="">
+            <%= render '/projects/project_info' %>
+            <% if @project.maps.present? %>
+            <%= render '/projects/bottom_areas_list' %>
+            <%= render '/projects/bottom_deals_list' %>
+            <% end %>
+            <%= render '/projects/project_settings' %>
+          </div>
+          <div class="col-xs-1" style="text-align:left">
           </div>
       </div>
       
@@ -321,10 +342,10 @@
               <img src="/images/status-plan-logo.png" style="height:50px;margin-top:0;"/>
             </span>
           </div>
-          <div class="col-xs-5" style="text-align:center">
+          <div class="col-xs-4" style="text-align:center">
             <%= render '/common/bottom_navbar' %>
           </div>
-          <div class="col-xs-2" style="text-align:right">
+          <div class="col-xs-3" style="text-align:right">
             <i class="fab fa-linkedin" style="font-size:16pt;margin-top:20px;margin-right:20px;"></i>
             <i class="fab fa-twitter" style="font-size:16pt;margin-top:20px;margin-right:20px;"></i>
             <i class="fa fa-cog" style="font-size:16pt;margin-top:20px;margin-right:20px;"></i>

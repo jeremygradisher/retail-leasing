@@ -1,6 +1,7 @@
-<div class="row /*print-none*/" style="margin-bottom:60px;page-break-inside: avoid;">
+<div class="row" style="margin-bottom:0px;page-break-inside: avoid;">
   <div class="col-xs-10 col-xs-offset-1">
     
+    <!--
     <div class="page-header">
       <button data-toggle="collapse" data-target="#info-collapse" 
       class='btn btn-primary responsive-none print-none' 
@@ -8,10 +9,11 @@
       
     <h1>Project Info</h1>
     </div>
-
+    -->
+    
     <div id="info-collapse" class="collapse">    
 
-
+    <h1 style="font-family: 'simplifica';font-size:30pt;width:100%;text-align:center;">Project Info</h1>
 
 
 <div class="row">
@@ -251,13 +253,6 @@
   </div> <!--end of col-xs-6 -->
 </div>    
 
-
-    <div class="row">
-      <div class="col-xs-12">
-        <hr>
-      </div>
-    </div>    
-    
     </div><!-- end #info-collapse-->
   </div><!-- end div -->
 </div>
@@ -283,10 +278,13 @@
               :class => 'btn btn-danger' %>
 <%# end %>
 
-<% if @project.maps.present? %>
-  <% if current_user.is_admin? || current_user.role == 'Admin' || current_user.role == 'Editor' %>              
-    <%= link_to '+ Add/Remove Project Users',
+
+<!-- older button we are not longer using
+<%# if @project.maps.present? %>
+  <%# if current_user.is_admin? || current_user.role == 'Admin' || current_user.role == 'Editor' %>              
+    <%#= link_to '+ Add/Remove Project Users',
                     users_project_path(id: @project.id),
                     :class => 'btn btn-default responsive-none print-none', :style => 'float:right;margin-top:0;' %> 
-  <% end %>
-<% end %>
+  <%# end %>
+<%# end %>
+-->
