@@ -38,7 +38,7 @@
 
 
 <% if @project.maps.present? %>
-<%= render '/projects/switch_statuses' %>
+<%= render '/projects/switch_buttons' %>
 <% end %>
 
 <!--
@@ -73,7 +73,7 @@
 
 <% if @project.maps.present? %>
   <% if @areas.count > 1 %>
-    <%= render '/maps/charts' %>
+    <%= render '/projects/switch_area' %>
   <% end %>
 <% end %>
 
@@ -105,3 +105,4 @@
  <h2>You are not authorized to be here. <a href="/" class="btn btn-default">Return Home</a></h2>
 <% end %>
 
+<%= render '/projects/switch_jquery' %>
