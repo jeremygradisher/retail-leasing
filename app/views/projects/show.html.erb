@@ -72,7 +72,7 @@
 <% end %>
 
 <% if @project.maps.present? %>
-  <% if @areas.count > 1 %>
+  <% if @areas.count > 0 %>
     <%= render '/projects/switch_area' %>
   <% end %>
 <% end %>
