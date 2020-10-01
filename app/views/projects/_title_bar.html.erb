@@ -14,7 +14,7 @@
           <h1 style="color:#fff;margin-top:0;margin-bottom:0;" class="header-bar-title"><%= @project.name %></h1>
         <% end %>
       </div>
-      <div class="col-lg-3">
+      <div class="col-lg-2" style="">
         <% if controller.controller_name == "projects" && controller.action_name == "edit" %>
         <%= link_to '<i class="fa fa-times" style="margin-right:4px"></i> Cancel'.html_safe,
                 project_url(@project.id), 
@@ -38,7 +38,7 @@
                   <!--
                   <i class="fa fa-cog dropdown-toggle" id="cogmenu" style="margin-top:6px;font-size:20pt;width:100px;color:#fff;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
                   -->
-                  <button id="optionsmenu" type="button" class="dropdown-toggle btn btn-default ws-border-style border-light branded-font" style="font-size:16pt;width:100px;background-color:#008398;color:#fff;"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <button id="optionsmenu" type="button" class="dropdown-toggle btn btn-default ws-border-style border-light branded-font" style="float:right;font-size:16pt;width:100px;background-color:#008398;color:#fff;"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="fa fa-pencil-alt" style="margin-right:4px"></i> Options
                   </button>
                   <div class="dropdown-menu" aria-labelledby="optionsmenu">
@@ -72,6 +72,8 @@
                 
               <% end %>
             <% end %>
+      </div>
+      <div class="col-lg-1" style="">
       </div>
     </div>
     <% end %>
