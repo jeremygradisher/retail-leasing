@@ -1,10 +1,13 @@
+<div class="container-fluid" style="">
+<div class="row"> 
 <div class="navbar navbar-default navbar-static-top border-bottom-dark" style="margin-bottom:1px;">
-  <div class="container-fluid">
+
     <div class="col-lg-1">
     </div>
     <!-- logo/link upper left-hand corner -->
     <!-- quick change here to get the linking right and see if this is working -->
-    <ul class="nav navbar-middle col-lg-3" style="text-align:left;float:left;">
+    <div class="col-lg-3">
+    <ul class="nav navbar-middle" style="text-align:left;float:left;">
       <% if current_page?(root_path) && !current_user %>
         <!-- this is displaying the same whether logged in or not currently -->
         <li class="">
@@ -20,6 +23,7 @@
         </li>
       <% end %>
     </ul>
+    </div>
     <!-- end logo/link upper left-hand corner -->
 
     <button type="button" style="margin-top:14px;" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
@@ -39,7 +43,7 @@
       <% if current_user %>
         <!-- if logged in profile info and image -->
         <div class="col-lg-2">
-          <ul class="nav navbar-right /*col-lg-3*/ display-above-1200" style="padding-top:10px;padding-left:0px;">
+          <ul class="nav navbar-right /*col-lg-3*/ display-above-1200" style="padding-top:10px;padding-left:0px;padding-right:12px;">
             <li class="">
 
                   <!--
@@ -111,9 +115,11 @@
     </div><!-- navbar-collapse collapse navbar-responsive-collapse -->
     <div class="col-lg-1">
     </div>
-  </div><!-- end container-fluid -->
-</div><!-- end navbar navbar-default navbar-static-top -->
 
+
+</div><!-- end navbar navbar-default navbar-static-top -->
+</div><!-- end row --> 
+</div><!-- end container-fluid -->
 
 <script>
   //<!-- for the dropdown -->
