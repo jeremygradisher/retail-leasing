@@ -307,8 +307,9 @@
           <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#areas-collapse"><i class="fa fa-cog"></i> Spaces</button>
           <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#deals-collapse"><i class="fa fa-cog"></i> Deals</button>
           <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#info-collapse"><i class="fa fa-cog"></i> Project Info</button>
+          <% if (current_user.is_admin?) || (current_user.role == 'Admin') || (current_user.role == 'Editor')  %>
           <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#settings-collapse"><i class="fa fa-cog"></i> Settings</button>
-          
+          <% end %>
           
           </div>
           <div class="col-xs-2" style="text-align:left">
@@ -320,8 +321,10 @@
           </div>
           <div class="col-xs-10" style="">
             <%= render '/projects/project_info' %>
+            <% if @project.maps.present? %>
             <%= render '/projects/bottom_areas_list' %>
             <%= render '/projects/bottom_deals_list' %>
+            <% end %>
             <%= render '/projects/project_settings' %>
           </div>
           <div class="col-xs-1" style="text-align:left">
