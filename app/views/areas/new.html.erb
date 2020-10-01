@@ -1,8 +1,9 @@
 <% if (current_user && current_user.is_admin?) || (current_user && current_user.role == 'Admin' && (current_user.project_ids.include? @project.id)) || (current_user && current_user.role == 'Editor' && (current_user.project_ids.include? @project.id)) %>
 <%- model_class = Area -%>
 
-  <h1><%=t '.title', :default => [:'helpers.titles.new', 'New %{model}'], :model => model_class.model_name.human.titleize %></h1>
-
+<!--
+  <h1><%#=t '.title', :default => [:'helpers.titles.new', 'New %{model}'], :model => model_class.model_name.human.titleize %></h1>
+-->
 
     <div class="row">
 	  <div class="col-xs-10 col-xs-offset-1">
