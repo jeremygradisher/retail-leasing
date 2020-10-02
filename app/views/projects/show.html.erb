@@ -1,3 +1,8 @@
+
+<style>
+  .fa-minus-square {color:#d13e27;}
+</style>
+
 <% if (current_user && (current_user.project_ids.include? @project.id)) || (current_user && current_user.is_admin?) %>
 <%- model_class = Project -%>
 <% if @project.maps.present? %>
@@ -38,7 +43,7 @@
 
 
 <% if @project.maps.present? %>
-<%= render '/projects/switch_statuses' %>
+<%= render '/projects/switch_buttons' %>
 <% end %>
 
 <!--
@@ -72,8 +77,8 @@
 <% end %>
 
 <% if @project.maps.present? %>
-  <% if @areas.count > 1 %>
-    <%= render '/maps/charts' %>
+  <% if @areas.count > 0 %>
+    <%= render '/projects/switch_area' %>
   <% end %>
 <% end %>
 
@@ -105,3 +110,4 @@
  <h2>You are not authorized to be here. <a href="/" class="btn btn-default">Return Home</a></h2>
 <% end %>
 
+<%= render '/projects/switch_jquery' %>

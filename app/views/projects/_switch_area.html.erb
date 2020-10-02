@@ -1,8 +1,111 @@
 <!-- go back to secondcharts -->
 <div class="row" id="leasingStatusRow">
   <div class="col-xs-6" style="text-align:center;">
-    <!-- Chart1 -->
-    <script>
+    <div id="chartContainer1" style="height: 300px; width: 100%;"></div>
+    <!-- END Chart1 -->
+
+    <h3 style="margin-top:20px;margin-bottom:2px;width:100%;">Deals: <%= @dealscount %></h3>
+    
+    <h3 style="margin-top:2px;margin-bottom:2px;width:100%;">Spaces: <%= @tenants %></h3>
+  </div>
+  <div class="col-xs-6" style="text-align:center;">
+    
+    <!-- Chart2 -->
+    <div id="chartContainer2" style="height: 300px; width: 100%;"></div>
+    <!-- END Chart2 -->
+
+    <h3 style="margin-top:20px;margin-bottom:2px;width:100%;"><%= number_with_delimiter(@netrentablearea.compact.sum, :delimiter => ',') %> Potential (sf)</h3>
+    
+    <h3 style="margin-top:2px;margin-bottom:2px;width:100%;"><%= number_with_delimiter(@areasquarefootage.compact.sum, :delimiter => ',') %> GLA (sf)</h3>
+  </div>
+</div>
+
+<div class="row" id="areaStatusRow">
+  <div class="col-xs-6" style="text-align:center;">
+     <div id="chartContainer3" style="height: 300px; width: 100%;"></div>
+    
+    <h3 style="margin-top:20px;margin-bottom:2px;">Tenants: <%= @tenants %></h3>
+  </div>
+  <div class="col-xs-6" style="text-align:center;">
+    <div id="chartContainer4" style="height: 300px; width: 100%;"></div>
+    <h3 style="margin-top:20px;margin-bottom:2px;"><%= number_with_delimiter(@areasquarefootage.compact.sum, :delimiter => ',') %> GLA (sf)</h3>
+  </div>
+</div>
+
+
+
+
+<div class="row" id="merchandisingStatusRow">
+  <div class="col-xs-6" style="text-align:center;">
+    <!-- this original way was messing up the colors -->
+    <%#= pie_chart @areas.group(:status).size, donut: true, library: {pieSliceText: "value", backgroundColor: "none", pieHole: 0.4, legend: {position: "none"}, slices: [{color: '#D13E27'}, {color: '#F16528'}, {color: '#d7b920'}, {color: '#89cadc'}, {color: '#38b449'}, {color: '#561871'}, {color: '#337198'}]} %>
+
+     <!-- Chart5 -->
+    <div id="chartContainer5" style="height: 300px; width: 100%;"></div>
+    <!-- END Chart5 -->
+    
+    <h3 style="margin-top:20px;margin-bottom:2px;width:100%;">Deals: <%= @dealscount %></h3>
+    
+    <h3 style="margin-top:2px;margin-bottom:2px;width:100%;">Spaces: <%= @tenants %></h3>
+    
+    <!--
+    <h3 style="margin-top:2px;margin-bottom:2px;width:100%;">Deals Archived: <%= @dealsarchivedcount %></h3>
+    
+    <h3 style="margin-top:2px;margin-bottom:2px;width:100%;">Deals Not Archived: <%= @dealsnotarchivedcount %></h3>
+    
+    -->
+    
+  </div>
+  <div class="col-xs-6" style="text-align:center;">
+    <!-- this original way was messing up the colors -->
+    <%#= pie_chart @deals.group(:status).sum(:area_sqft), donut: true, library: {pieSliceText: "value", backgroundColor: "none", pieHole: 0.4, legend: {position: "none"}, slices: { '0': { color: '#D13E27' }, '1': { color: '#F16528' }, '2': { color: '#d7b920' }, '3': { color: '#89cadc' }, '4': { color: '#38b449' }, '5': { color: '#561871' }, '6': { color: '#337198' } }} %>
+    
+    <!-- Chart6 -->
+    <div id="chartContainer6" style="height: 300px; width: 100%;"></div>
+    <!-- END Chart6 -->
+    
+    <h3 style="margin-top:20px;margin-bottom:2px;width:100%;"><%= number_with_delimiter(@netrentablearea.compact.sum, :delimiter => ',') %> Potential (sf)</h3>
+    
+    <h3 style="margin-top:2px;margin-bottom:2px;width:100%;"><%= number_with_delimiter(@areasquarefootage.compact.sum, :delimiter => ',') %> GLA (sf)</h3>
+
+  </div>
+</div>
+
+
+<div class="row" id="statsRow">
+  <div class="col-xs-10 col-xs-offset-1" style="">
+     <%= render '/projects/stats' %>
+  </div>
+</div>
+
+<div class="row" id="spacesRow">
+  <div class="col-xs-10 col-xs-offset-1" style="">
+     <%= render '/projects/bottom_areas_list' %>
+  </div>
+</div>
+
+<div class="row" id="dealsRow">
+  <div class="col-xs-10 col-xs-offset-1" style="">
+     <%= render '/projects/bottom_deals_list' %>
+  </div>
+</div>
+
+<div class="row" id="infoRow">
+  <div class="col-xs-10 col-xs-offset-1" style="">
+     <%= render '/projects/project_info' %>
+  </div>
+</div>
+
+<div class="row" id="settingsRow">
+  <div class="col-xs-10 col-xs-offset-1" style="">
+     <%= render '/projects/project_settings' %>
+  </div>
+</div>
+
+
+
+<br><br>
+<script>
     window.onload = function () {
     
     var chart1 = new CanvasJS.Chart("chartContainer1", {
@@ -179,79 +282,4 @@
     });
     chart6.render();
     }
-    </script>
-    
-    
-    
-
-    <div id="chartContainer1" style="height: 300px; width: 100%;"></div>
-    <!-- END Chart1 -->
-
-    <h3 style="margin-top:20px;margin-bottom:2px;width:100%;">Deals: <%= @dealscount %></h3>
-    
-    <h3 style="margin-top:2px;margin-bottom:2px;width:100%;">Spaces: <%= @tenants %></h3>
-  </div>
-  <div class="col-xs-6" style="text-align:center;">
-    
-    <!-- Chart2 -->
-    <div id="chartContainer2" style="height: 300px; width: 100%;"></div>
-    <!-- END Chart2 -->
-
-    <h3 style="margin-top:20px;margin-bottom:2px;width:100%;"><%= number_with_delimiter(@netrentablearea.compact.sum, :delimiter => ',') %> Potential (sf)</h3>
-    
-    <h3 style="margin-top:2px;margin-bottom:2px;width:100%;"><%= number_with_delimiter(@areasquarefootage.compact.sum, :delimiter => ',') %> GLA (sf)</h3>
-  </div>
-</div>
-
-<div class="row" id="areaStatusRow">
-  <div class="col-xs-6" style="text-align:center;">
-     <div id="chartContainer3" style="height: 300px; width: 100%;"></div>
-    
-    <h3 style="margin-top:20px;margin-bottom:2px;">Tenants: <%= @tenants %></h3>
-  </div>
-  <div class="col-xs-6" style="text-align:center;">
-    <div id="chartContainer4" style="height: 300px; width: 100%;"></div>
-    <h3 style="margin-top:20px;margin-bottom:2px;"><%= number_with_delimiter(@areasquarefootage.compact.sum, :delimiter => ',') %> GLA (sf)</h3>
-  </div>
-</div>
-
-
-
-
-<div class="row" id="merchandisingStatusRow">
-  <div class="col-xs-6" style="text-align:center;">
-    <!-- this original way was messing up the colors -->
-    <%#= pie_chart @areas.group(:status).size, donut: true, library: {pieSliceText: "value", backgroundColor: "none", pieHole: 0.4, legend: {position: "none"}, slices: [{color: '#D13E27'}, {color: '#F16528'}, {color: '#d7b920'}, {color: '#89cadc'}, {color: '#38b449'}, {color: '#561871'}, {color: '#337198'}]} %>
-
-     <!-- Chart5 -->
-    <div id="chartContainer5" style="height: 300px; width: 100%;"></div>
-    <!-- END Chart5 -->
-    
-    <h3 style="margin-top:20px;margin-bottom:2px;width:100%;">Deals: <%= @dealscount %></h3>
-    
-    <h3 style="margin-top:2px;margin-bottom:2px;width:100%;">Spaces: <%= @tenants %></h3>
-    
-    <!--
-    <h3 style="margin-top:2px;margin-bottom:2px;width:100%;">Deals Archived: <%= @dealsarchivedcount %></h3>
-    
-    <h3 style="margin-top:2px;margin-bottom:2px;width:100%;">Deals Not Archived: <%= @dealsnotarchivedcount %></h3>
-    
-    -->
-    
-  </div>
-  <div class="col-xs-6" style="text-align:center;">
-    <!-- this original way was messing up the colors -->
-    <%#= pie_chart @deals.group(:status).sum(:area_sqft), donut: true, library: {pieSliceText: "value", backgroundColor: "none", pieHole: 0.4, legend: {position: "none"}, slices: { '0': { color: '#D13E27' }, '1': { color: '#F16528' }, '2': { color: '#d7b920' }, '3': { color: '#89cadc' }, '4': { color: '#38b449' }, '5': { color: '#561871' }, '6': { color: '#337198' } }} %>
-    
-    <!-- Chart6 -->
-    <div id="chartContainer6" style="height: 300px; width: 100%;"></div>
-    <!-- END Chart6 -->
-    
-    <h3 style="margin-top:20px;margin-bottom:2px;width:100%;"><%= number_with_delimiter(@netrentablearea.compact.sum, :delimiter => ',') %> Potential (sf)</h3>
-    
-    <h3 style="margin-top:2px;margin-bottom:2px;width:100%;"><%= number_with_delimiter(@areasquarefootage.compact.sum, :delimiter => ',') %> GLA (sf)</h3>
-
-  </div>
-</div>
-
-<br><br>
+</script>
