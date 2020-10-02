@@ -41,7 +41,6 @@
 </div>
 <% end %>
 
-
 <% if @project.maps.present? %>
 <%= render '/projects/switch_buttons' %>
 <% end %>
@@ -68,7 +67,7 @@
   <div class="row">
     <div class="col-xs-12">
       <div class="page-header" style="text-align:center;">
-          <h1 style="font-family: 'simplifica';font-size:40pt;">Property Statistics</h1>
+          <h1 style="font-family: 'simplifica';font-size:40pt;margin-top:120px;">Property Statistics</h1>
       </div>
     </div>
   </div>
@@ -85,18 +84,6 @@
 </div>
 
 
-<!-- These are the indexes
-<%# if @project.maps.present? %>
-<div class="row /*print-none*/" style="">
-  <%#= render '/projects/areas_list' %>
-  <%#= render '/projects/deals_list' %>
-  <%#= render '/projects/areas_deals_list' %>
-</div>
-<%# end %>
-
-<br>
-<hr>
--->
 
 <!-- Workletter templates index -->
 <%#= render '/projects/workletter_templates' %>
