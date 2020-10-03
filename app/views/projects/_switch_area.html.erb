@@ -1,7 +1,8 @@
 <!-- go back to secondcharts -->
 <div class="row" id="leasingStatusRow">
   <div class="col-xs-12" style="text-align:center;">
-    <img src="/images/leasing-legend.png" style="width:400px;">
+    <img src="/images/leasing-legend.png" style="width:400px;"><br>
+    <h3 style="font-family: 'simplifica';">Leasing</h3>
   </div>
   <div class="col-xs-6" style="text-align:center;">
     <div id="chartContainer1" style="height: 300px; width: 100%;"></div>
@@ -24,6 +25,10 @@
 </div>
 
 <div class="row" id="areaStatusRow">
+  <div class="col-xs-12" style="text-align:center;">
+    <img src="/images/tc-legend.png" style="width:650px;"><br>
+    <h3 style="font-family: 'simplifica';">Tenant Coordination</h3>
+  </div>
   <div class="col-xs-6" style="text-align:center;">
      <div id="chartContainer3" style="height: 300px; width: 100%;"></div>
     
@@ -39,6 +44,10 @@
 
 
 <div class="row" id="merchandisingStatusRow">
+  <div class="col-xs-12" style="text-align:center;">
+    <!--<img src="/images/tc-legend.png" style="width:650px;"><br>-->
+    <h3 style="font-family: 'simplifica';">Merchandising</h3>
+  </div>
   <div class="col-xs-6" style="text-align:center;">
     <!-- this original way was messing up the colors -->
     <%#= pie_chart @areas.group(:status).size, donut: true, library: {pieSliceText: "value", backgroundColor: "none", pieHole: 0.4, legend: {position: "none"}, slices: [{color: '#D13E27'}, {color: '#F16528'}, {color: '#d7b920'}, {color: '#89cadc'}, {color: '#38b449'}, {color: '#561871'}, {color: '#337198'}]} %>
