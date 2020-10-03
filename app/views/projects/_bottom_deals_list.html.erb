@@ -1,5 +1,15 @@
 
-    <h1 style="font-family: 'simplifica';font-size:30pt;width:100%;text-align:center;">Deals</h1>
+<h1 style="font-family: 'simplifica';font-size:30pt;width:100%;text-align:left;">Deals
+<%= link_to '+ Add Deal',
+            new_deal_path(:project_id => @project, :map_id => @map),
+            :class => 'btn btn-default responsive-none print-none', 
+            :style => 'float:right;margin-top:12px;border-color:#ddd;font-family: verdana, arial, helvetica, sans-serif;' %>
+
+
+
+</h1>
+
+<div class="panel panel-default">
         <table class="table table-striped add-responsive /*print-none*/" style="/*display:none;*/">
           <thead>
             <tr>
@@ -45,4 +55,4 @@
             <% end %>
           </tbody>
         </table>
-
+</div>

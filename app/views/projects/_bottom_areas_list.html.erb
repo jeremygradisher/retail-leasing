@@ -1,17 +1,24 @@
+<h1 style="font-family: 'simplifica';font-size:30pt;width:100%;text-align:left;">Spaces
+<%= link_to '+ Add Space',
+            new_area_path(:project_id => @project, :map_id => @map),
+            :class => 'btn btn-default responsive-none print-none', 
+            :style => 'float:right;margin-top:12px;border-color:#ddd;font-family: verdana, arial, helvetica, sans-serif;' %>
 
-    <h1 style="font-family: 'simplifica';font-size:30pt;width:100%;text-align:center;">Spaces</h1>
-    <table class="table table-striped add-responsive /*print-none*/" style="/*display:none;*/">
+</h1>
+
+<div class="panel panel-default">
+    <table class="table table-striped tableChange add-responsive" style="border:2px !important;">
       <thead>
         <tr>
           <!--<th>Area Image:</th>-->
-          <th style="text-align:left;"><b>Suite #:</b></th>
-          <th style="text-align:left;"><b>Area SF:</b></th>
-          <th style="text-align:left;"><b>TC Status:</b></th>
-          <th style="text-align:left;"><b>Deals:</b></th>
-          <th style="text-align:left;"><b>Primary Deal:</b></th>
-          <th style="text-align:left;"><b>Lease Status:</b></th>
-          <th style="text-align:left;"><b>Merch Status:</b></th>
-          <th class="print-none" style="text-align:left;"><b>Actions:</b></th>
+          <th style="text-align:left;">Suite #:</th>
+          <th style="text-align:left;">Area SF:</th>
+          <th style="text-align:left;">TC Status:</th>
+          <th style="text-align:left;">Deals:</th>
+          <th style="text-align:left;">Primary Deal:</th>
+          <th style="text-align:left;">Lease Status:</th>
+          <th style="text-align:left;">Merch Status:</th>
+          <th class="print-none" style="text-align:left;">Actions:</th>
         </tr>
       </thead>
       <tbody>
@@ -53,4 +60,4 @@
         <% end %>
       </tbody>
     </table>
-
+</div>

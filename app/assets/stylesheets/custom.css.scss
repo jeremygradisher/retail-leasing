@@ -295,8 +295,16 @@ a.action-buttons:hover {background-color:none;}
     -webkit-box-shadow: 0px -4px 3px rgba(50, 50, 50, 0.15);
   -moz-box-shadow: 0px -4px 3px rgba(50, 50, 50, 0.15);
   box-shadow: 0px -4px 3px rgba(50, 50, 50, 0.15);  }
-  
 
+/*  
+table.tableChange { border: 1px solid #ddd; border-color: #ddd; }
+.tableChange thead tr { color: #333;
+    background-color: #f5f5f5;
+    border-color: #ddd; }
+.tableChange tbody tr { color: #333;
+    background-color: #fff;
+    border-color: #ddd; }
+*/
 /* end Projects styling */
 
 /* members page styling */
