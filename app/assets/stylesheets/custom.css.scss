@@ -277,6 +277,26 @@ input[type="radio"].ws-radio-buttons {margin-left:5px;margin-right:5px;}
 
 .action-buttons img {width:30px;}
 a.action-buttons:hover {background-color:none;}
+.bottom-buttons {background-color:#19a3bb;width:200px;border:0;border-radius:4px;}
+.bottom-buttons:hover {background-color:#19a3bb;}
+.bottom-buttons:active {background-color:#19a3bb;}
+.bottom-buttons:active:focus, .bottom-buttons:focus {background-color:#19a3bb;outline: 0px auto #19a3bb;}
+.bottom-buttons img {width:100%;border:0;margin:0;}
+.bottom-above-footer button {
+    background-color: #19a3bb;
+    margin-left:4px;
+    margin-right:4px;
+    width:130px;
+}
+
+
+.bottom-above-footer { 
+    
+    -webkit-box-shadow: 0px -4px 3px rgba(50, 50, 50, 0.15);
+  -moz-box-shadow: 0px -4px 3px rgba(50, 50, 50, 0.15);
+  box-shadow: 0px -4px 3px rgba(50, 50, 50, 0.15);  }
+  
+
 /* end Projects styling */
 
 /* members page styling */
@@ -345,18 +365,7 @@ a.belt-style img {margin-left:5px;height:30px;}
     height:65px; vertical-align:-75%; border-style:none;
 }
 
-.bottom-above-footer { 
-    
-    -webkit-box-shadow: 0px -4px 3px rgba(50, 50, 50, 0.15);
-  -moz-box-shadow: 0px -4px 3px rgba(50, 50, 50, 0.15);
-  box-shadow: 0px -4px 3px rgba(50, 50, 50, 0.15);  }
-  
-.bottom-above-footer button {
-    background-color: #16A3BA;
-    margin-left:4px;
-    margin-right:4px;
-    width:130px;
-}
+
 /* end front page stuff */
 
 /* Multi Step Form CSS */
