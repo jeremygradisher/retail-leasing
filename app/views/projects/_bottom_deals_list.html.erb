@@ -1,5 +1,15 @@
 
-    <h1 style="font-family: 'simplifica';font-size:30pt;width:100%;text-align:center;">Deals</h1>
+<h1 style="font-family: 'simplifica';font-size:30pt;width:100%;text-align:left;">Deals
+<%= link_to '+ Add Deal',
+            new_deal_path(:project_id => @project, :map_id => @map),
+            :class => 'btn btn-default responsive-none print-none', 
+            :style => 'float:right;margin-top:12px;border-color:#ddd;font-family: verdana, arial, helvetica, sans-serif;' %>
+
+
+
+</h1>
+
+<div class="panel panel-default">
         <table class="table table-striped add-responsive /*print-none*/" style="/*display:none;*/">
           <thead>
             <tr>
@@ -26,23 +36,23 @@
                 <td style="text-align:left;"><% if deal.areas.count > 0 %><%= deal.areas.first.status %><% else %>*No Space<% end %></td>
 
                 <td style="text-align:left;" class="print-none">
-                  <%= link_to 'View',
-                              deal_path(deal), :class => 'btn btn-default btn-xs add-responsive-bottom print-none',
-                          :style => 'width:60px;margin-bottom:2px;' %>
-                <br>
+                  <%= link_to image_tag('/images/view-button.png'),
+                              deal_path(deal), :class => 'action-buttons print-none',
+                          :style => '' %>
+                
                   <% if current_user.is_admin? || current_user.role == 'Admin' || current_user.role == 'Editor' %>
-                  <%= link_to 'Edit',
-                              edit_deal_path(deal), :class => 'btn btn-primary btn-xs responsive-none print-none',
-                          :style => 'width:60px;margin-bottom:2px;' %>
-                  <%#= link_to 'Destroy',
+                  <%= link_to image_tag('/images/edit-button.png'),
+                              edit_deal_path(deal), :class => 'action-buttons print-none',
+                          :style => '' %>
+                  <%= link_to image_tag('/images/delete-button.png'),
                               deal_path(deal),
                               :method => :delete,
                               :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                              :class => 'btn btn-xs btn-danger responsive-none print-none' %>
+                              :class => 'action-buttons print-none' %>
                   <% end %>
                 </td>
               </tr>
             <% end %>
           </tbody>
         </table>
-
+</div>
