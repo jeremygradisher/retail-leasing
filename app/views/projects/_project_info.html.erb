@@ -1,27 +1,111 @@
 <div class="row" style="margin-bottom:0px;page-break-inside: avoid;">
-  <div class="col-xs-10 col-xs-offset-1">
-    
-    <!--
-    <div class="page-header">
-      <button data-toggle="collapse" data-target="#info-collapse" 
-      class='btn btn-primary responsive-none print-none' 
-      style='float:right;margin-top:12px;'><i class="fa fa-chevron-down"></i></button>
-      
-    <h1>Project Info</h1>
-    </div>
-    -->
-    
+  <div class="col-xs-12">
 
-    <h1 style="font-family: 'simplifica';font-size:30pt;width:100%;text-align:center;">Project Info</h1>
+<div class="row">
+  <div class="col-xs-10 col-xs-offset-1">
+      <div class="page-header" style="text-align:center;">
+          <h1 style="font-family: 'simplifica';font-size:40pt;margin-top:120px;float:left;margin-left:15px;">Property Info</h1>
+      </div>
+  </div>
+</div>
+
+<% @project.icons.each do |p| %>
+  <%= image_tag(p.icon_url, :style => 'width:100%;', :class => '') %>
+<% end %>
+    
+    <div class="panel" 
+          style="width:25%;position:absolute;right:15%;margin-top:-200px;background-color:#e36e39;border-color:#e36e39;">
+      <div class="panel-body">
+        <table style="width:100%;">
+          <tr>
+            <td style="width:100%;" class="white">
+              <p><%= simple_format(@project.description) %></p>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div><!-- end of panel-branded -->
+
+
+    <div class="panel" style="width:75%;background-color:#f2f2f2;">
+      <div class="panel-body">
+        <table style="width:100%;">
+          <tr>
+            <td style="width:10%;text-align:left;">
+            </td>
+            <td style="width:40%;text-align:left;">
+              <p>Project Name:</p>
+            </td>
+            <td style="width:30%;text-align:right;">
+              <p style="color:#8cbe3b;font-size:200%;"><%= @project.name %></p>
+            </td>
+            <td style="text-align:left;">
+            </td>
+          </tr>
+          <tr>  
+            <td style="width:10%;text-align:left;">
+            </td>
+            <td style="width:40%;text-align:left;">
+              <p>Address:</p>
+            </td>
+            <td style="width:30%;text-align:right;">
+              <p><%= @project.address %><br>
+              <%= @project.city %> <%= @project.state %> <%= @project.zip %></p>
+            </td>
+            <td style="text-align:left;">
+            </td>
+          </tr>
+          <tr>
+            <td style="width:10%;text-align:left;">
+            </td>
+            <td style="width:40%;text-align:left;">
+              <p>Project type:</p>
+            </td>
+            <td style="width:30%;text-align:right;">
+              <p><%= @project.project_type %></p>
+            </td>
+            <td style="text-align:left;">
+            </td>
+          </tr>
+          <tr>
+            <td style="width:10%;text-align:left;">
+            </td>
+            <td style="width:40%;text-align:left;">
+              <p>Sq ft:</p>
+            </td>
+            <td style="width:30%;text-align:right;">
+              <p><%= number_with_delimiter(@project.project_square_feet, :delimiter => ',') %></p>
+            </td>
+            <td style="text-align:left;">
+            </td>
+          </tr>
+          <% if !@project.status.blank? %>
+          <tr>
+            <td style="width:10%;text-align:left;">
+            </td>
+            <td style="width:40%;text-align:left;">
+              <p>Status:</p>
+            </td>
+            <td style="width:30%;text-align:right;">
+              <p><%= @project.status %></p>
+            </td>
+            <td style="text-align:left;">
+            </td>
+          </tr>
+          <% end %>
+        </table>
+      </div>
+    </div><!-- end of panel-branded -->    
+
+
+<br style="clear:both;"><br>
+<hr>
+
 
 
 <div class="row">
-  <div class="col-xs-6">
-    <div style="max-width:100%;margin-bottom:20px;">
-      <% @project.icons.each do |p| %>
-        <%= image_tag(p.icon_url, :style => 'max-width:100%;', :class => 'img-rounded') %>
-      <% end %>
-    </div>
+  <div class="col-xs-5 col-xs-offset-1">
+    
     <div class="panel panel-default">
       <div class="panel-heading">
         <p>Owner</p>
@@ -74,74 +158,10 @@
     </div><!-- end of panel-branded -->
   </div>
   
-  <div class="col-xs-6">
-    <div class="panel panel-branded">
-      <div class="panel-heading">
-        <p>Project Info</p>
-      </div>
-      <div class="panel-body">
-        <table style="width:100%;">
-          <tr>
-            <td style="width:50%;text-align:left;">
-              <p>Project Name:</p>
-            </td>
-            <td style="width:50%;text-align:right;">
-              <p><%= @project.name %></p>
-            </td>
-          </tr>
-          <tr>  
-            <td style="width:50%;text-align:left;">
-              <p>Address:</p>
-            </td>
-            <td style="width:50%;text-align:right;">
-              <p><%= @project.address %><br>
-              <%= @project.city %> <%= @project.state %> <%= @project.zip %></p>
-            </td>
-          </tr>
-          <tr>
-            <td style="width:50%;text-align:left;">
-              <p>Project type:</p>
-            </td>
-            <td style="width:50%;text-align:right;">
-              <p><%= @project.project_type %></p>
-            </td>
-          </tr>
-          <tr>
-            <td style="width:50%;text-align:left;">
-              <p>Sq ft:</p>
-            </td>
-            <td style="width:50%;text-align:right;">
-              <p><%= number_with_delimiter(@project.project_square_feet, :delimiter => ',') %></p>
-            </td>
-          </tr>
-          <% if !@project.status.blank? %>
-          <tr>
-            <td style="width:50%;text-align:left;">
-              <p>Status:</p>
-            </td>
-            <td style="width:50%;text-align:right;">
-              <p><%= @project.status %></p>
-            </td>
-          </tr>
-          <% end %>
-        </table>
-      </div>
-    </div><!-- end of panel-branded -->
+  <div class="col-xs-5">
     
-    <div class="panel panel-branded">
-      <div class="panel-heading">
-        <p>Description</p>
-      </div>
-      <div class="panel-body">
-        <table style="width:100%;">
-          <tr>
-            <td style="width:100%;">
-              <p><%= simple_format(@project.description) %></p>
-            </td>
-          </tr>
-        </table>
-      </div>
-    </div><!-- end of panel-branded -->
+    
+    
 
     <div class="panel panel-branded print-none">
       <div class="panel-heading">

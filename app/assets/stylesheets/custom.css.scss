@@ -67,7 +67,7 @@ body {margin:0 !important;}
 
 .body {color:#231f20;}
 
-.white {color:#fff;}
+.white, .white p {color:#fff;}
 
 .navbar-default .navbar-nav>li>a {color:#231f20;}
 
@@ -678,6 +678,7 @@ input[type="radio"].ws-radio-buttons {margin-left:5px;margin-right:5px;}
     background-color: #f8f8f8;
 }
 
+/* panels */
 .panel-branded {
     border-color: #231f20;
 }
@@ -691,6 +692,8 @@ input[type="radio"].ws-radio-buttons {margin-left:5px;margin-right:5px;}
     color: #fff;
     margin-bottom:2px;
 }
+/* panels */
+
 
 table.report-table {
     width:100%;
