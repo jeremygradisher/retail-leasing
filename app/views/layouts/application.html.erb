@@ -296,34 +296,9 @@
       </div>
 
     <% elsif current_user && (controller_name == "projects" && controller.action_name == "show") %>
-      <!-- Tenant Project Path -->
-      <div class="row print-none bottom-above-footer" style="background-color:#fff;padding-top:20px;padding-bottom:20px;">
-          <div class="col-xs-2" style="text-align:left">
-          </div>
-          <div class="col-xs-8" style="text-align:center">
-          
-          <!--<button type="button" class="btn btn-primary"><i class="fa fa-cog"></i> Stats</button>-->
-          <button type="button" id="statsbtn" class="bottom-buttons statsClicked print-none"><img src="/images/stats-bottom-button.png"></button>
-          
-          <!--<button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#areas-collapse"><i class="fa fa-cog"></i> Spaces</button>-->
-          <button type="button" id="spacesbtn" class="bottom-buttons spacesClicked print-none"><img src="/images/spaces-bottom-button.png"></button>
-          
-          <!--<button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#deals-collapse"><i class="fa fa-cog"></i> Deals</button>-->
-          <button type="button" id="dealsbtn" class="bottom-buttons dealsClicked print-none"><img src="/images/deals-bottom-button.png"></button>
-          
-          <!--<button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#info-collapse"><i class="fa fa-cog"></i> Project Info</button>-->
-          <button type="button" id="infobtn" class="bottom-buttons infoClicked print-none"><img src="/images/info-bottom-button.png"></button>
-          
-          
-          <% if (current_user.is_admin?) || (current_user.role == 'Admin') || (current_user.role == 'Editor')  %>
-          <!--<button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#settings-collapse"><i class="fa fa-cog"></i> Settings</button>-->
-          <button type="button" id="settingsbtn" class="bottom-buttons settingsClicked print-none"><img src="/images/settings-bottom-button.png"></button>
-          <% end %>
-          
-          </div>
-          <div class="col-xs-2" style="text-align:left">
-          </div>
-      </div>
+      <!-- Project Path -->
+      
+      <%= render '/projects/bottom_buttons' %>
       
       <div class="row print-none" style="background-color:#f2f2f2;padding-top:40px;padding-bottom:40px;">
           <div class="col-xs-3 col-xs-offset-1" style="text-align:left">

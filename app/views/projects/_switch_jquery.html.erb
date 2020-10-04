@@ -16,14 +16,16 @@
       $('#settingsRow').hide("slow");
       $('#statsRow').hide("slow");
       
-      //$( "#leasingStatusbtn" ).removeClass( "btn-default" ).addClass( "btn-primary" );
-      //$( "#areaStatusbtn" ).removeClass( "btn-primary" ).addClass( "btn-default" );
-      //$( "#merchandisingStatusbtn" ).removeClass( "btn-primary" ).addClass( "btn-default" );
-      //$( "#spacesbtn" ).removeClass( "btn-primary" ).addClass( "btn-default" );
-      //$( "#dealsbtn" ).removeClass( "btn-primary" ).addClass( "btn-default" );
-      //$( "#infobtn" ).removeClass( "btn-primary" ).addClass( "btn-default" );
-      //$( "#settingsbtn" ).removeClass( "btn-primary" ).addClass( "btn-default" );
-      //$( "#statsbtn" ).removeClass( "btn-primary" ).addClass( "btn-default" );
+      $( "#leasingStatusbtn" ).removeClass( "" ).addClass( "switch-buttons-active" );
+      $( "#areaStatusbtn" ).removeClass( "switch-buttons-active" ).addClass( "" );
+      $( "#merchandisingStatusbtn" ).removeClass( "switch-buttons-active" ).addClass( "" );
+      
+      $( "#statsbtn" ).removeClass( "" ).addClass( "bottom-buttons-active" );
+      $( "#spacesbtn" ).removeClass( "bottom-buttons-active" ).addClass( "" );
+      $( "#dealsbtn" ).removeClass( "bottom-buttons-active" ).addClass( "" );
+      $( "#infobtn" ).removeClass( "bottom-buttons-active" ).addClass( "" );
+      $( "#settingsbtn" ).removeClass( "bottom-buttons-active" ).addClass( "" );
+      
       
       //$('#mapColorsExp').text('*Leasing Status');
       
@@ -52,24 +54,15 @@
       $('#settingsRow').hide("slow");
       $('#statsRow').hide("slow");
       
-      //$( "#areaStatusbtn" ).removeClass( "btn-default" ).addClass( "btn-primary" );
-      //$( "#leasingStatusbtn" ).removeClass( "btn-primary" ).addClass( "btn-default" );
-      //$( "#merchandisingStatusbtn" ).removeClass( "btn-primary" ).addClass( "btn-default" );
-      //$( "#spacesbtn" ).removeClass( "btn-primary" ).addClass( "btn-default" );
-      //$( "#dealsbtn" ).removeClass( "btn-primary" ).addClass( "btn-default" );
-      //$( "#infobtn" ).removeClass( "btn-primary" ).addClass( "btn-default" );
-      //$( "#settingsbtn" ).removeClass( "btn-primary" ).addClass( "btn-default" );
-      //$( "#statsbtn" ).removeClass( "btn-primary" ).addClass( "btn-default" );
+      $( "#leasingStatusbtn" ).removeClass( "switch-buttons-active" ).addClass( "" );
+      $( "#areaStatusbtn" ).removeClass( "" ).addClass( "switch-buttons-active" );
+      $( "#merchandisingStatusbtn" ).removeClass( "switch-buttons-active" ).addClass( "" );
       
-      //$('#mapColorsExp').text('*Area Status');
-      
-      //$('.leaseStatusCol').hide("slow");
-      //$('.areaStatusCol').show("slow");
-      //$('.merchandisingStatusCol').hide("slow");
-      
-      //$('.leaseStatusNotesCol').hide("slow");
-      //$('.areaStatusNotesCol').hide("slow");
-      //$('.merchandisingStatusNotesCol').hide("slow");
+      $( "#statsbtn" ).removeClass( "" ).addClass( "bottom-buttons-active" );
+      $( "#spacesbtn" ).removeClass( "bottom-buttons-active" ).addClass( "" );
+      $( "#dealsbtn" ).removeClass( "bottom-buttons-active" ).addClass( "" );
+      $( "#infobtn" ).removeClass( "bottom-buttons-active" ).addClass( "" );
+      $( "#settingsbtn" ).removeClass( "bottom-buttons-active" ).addClass( "" );
     });
     
     //click merchandising button
@@ -87,25 +80,42 @@
       $('#settingsRow').hide("slow");
       $('#statsRow').hide("slow");
       
-      //$( "#merchandisingStatusbtn" ).removeClass( "btn-default" ).addClass( "btn-primary" );
-      //$( "#areaStatusbtn" ).removeClass( "btn-primary" ).addClass( "btn-default" );
-      //$( "#leasingStatusbtn" ).removeClass( "btn-primary" ).addClass( "btn-default" );
-      //$( "#spacesbtn" ).removeClass( "btn-primary" ).addClass( "btn-default" );
-      //$( "#dealsbtn" ).removeClass( "btn-primary" ).addClass( "btn-default" );
-      //$( "#infobtn" ).removeClass( "btn-primary" ).addClass( "btn-default" );
-      //$( "#settingsbtn" ).removeClass( "btn-primary" ).addClass( "btn-default" );
-      //$( "#statsbtn" ).removeClass( "btn-primary" ).addClass( "btn-default" );
+      $( "#leasingStatusbtn" ).removeClass( "switch-buttons-active" ).addClass( "" );
+      $( "#areaStatusbtn" ).removeClass( "switch-buttons-active" ).addClass( "" );
+      $( "#merchandisingStatusbtn" ).removeClass( "" ).addClass( "switch-buttons-active" );
       
-      //$('#mapColorsExp').text('*Merchandising Status');
-      
-      //$('.leaseStatusCol').hide("slow");
-      //$('.areaStatusCol').hide("slow");
-      //$('.merchandisingStatusCol').show("slow");
-      
-      //$('.leaseStatusNotesCol').hide("slow");
-      //$('.areaStatusNotesCol').hide("slow");
-      //$('.merchandisingStatusNotesCol').hide("slow");
+      $( "#statsbtn" ).removeClass( "" ).addClass( "bottom-buttons-active" );
+      $( "#spacesbtn" ).removeClass( "bottom-buttons-active" ).addClass( "" );
+      $( "#dealsbtn" ).removeClass( "bottom-buttons-active" ).addClass( "" );
+      $( "#infobtn" ).removeClass( "bottom-buttons-active" ).addClass( "" );
+      $( "#settingsbtn" ).removeClass( "bottom-buttons-active" ).addClass( "" );
     });
+    
+    //click Stats
+    $('.statsClicked').click(function (){
+      leasingStatus.addTo(map);
+      areaStatus.removeFrom(map);
+      merchandisingStatus.removeFrom(map);
+      
+      $('#areaStatusRow').hide("slow");
+      $('#leasingStatusRow').show("slow");
+      $('#merchandisingStatusRow').hide("slow");
+      $('#spacesRow').hide("slow");
+      $('#dealsRow').hide("slow");
+      $('#infoRow').hide("slow");
+      $('#settingsRow').hide("slow");
+      $('#statsRow').hide("slow");
+      
+      $( "#leasingStatusbtn" ).removeClass( "" ).addClass( "switch-buttons-active" );
+      $( "#areaStatusbtn" ).removeClass( "switch-buttons-active" ).addClass( "" );
+      $( "#merchandisingStatusbtn" ).removeClass( "switch-buttons-active" ).addClass( "" );
+      
+      $( "#statsbtn" ).removeClass( "" ).addClass( "bottom-buttons-active" );
+      $( "#spacesbtn" ).removeClass( "bottom-buttons-active" ).addClass( "" );
+      $( "#dealsbtn" ).removeClass( "bottom-buttons-active" ).addClass( "" );
+      $( "#infobtn" ).removeClass( "bottom-buttons-active" ).addClass( "" );
+      $( "#settingsbtn" ).removeClass( "bottom-buttons-active" ).addClass( "" );
+    }); 
     
     //click space
     $('.spacesClicked').click(function (){
@@ -118,14 +128,15 @@
       $('#settingsRow').hide("slow");
       $('#statsRow').hide("slow");
       
-      //$( "#leasingStatusbtn" ).removeClass( "btn-btn-primary" ).addClass( "btn-default" );
-      //$( "#areaStatusbtn" ).removeClass( "btn-primary" ).addClass( "btn-default" );
-      //$( "#merchandisingStatusbtn" ).removeClass( "btn-primary" ).addClass( "btn-default" );
-      //$( "#spacesbtn" ).removeClass( "btn-default" ).addClass( "btn-primary" );
-      //$( "#dealsbtn" ).removeClass( "btn-primary" ).addClass( "btn-default" );
-      //$( "#infobtn" ).removeClass( "btn-primary" ).addClass( "btn-default" );
-      //$( "#settingsbtn" ).removeClass( "btn-primary" ).addClass( "btn-default" );
-      //$( "#statsbtn" ).removeClass( "btn-primary" ).addClass( "btn-default" );
+      $( "#leasingStatusbtn" ).removeClass( "switch-buttons-active" ).addClass( "" );
+      $( "#areaStatusbtn" ).removeClass( "switch-buttons-active" ).addClass( "" );
+      $( "#merchandisingStatusbtn" ).removeClass( "switch-buttons-active" ).addClass( "" );
+      
+      $( "#statsbtn" ).removeClass( "bottom-buttons-active" ).addClass( "" );
+      $( "#spacesbtn" ).removeClass( "" ).addClass( "bottom-buttons-active" );
+      $( "#dealsbtn" ).removeClass( "bottom-buttons-active" ).addClass( "" );
+      $( "#infobtn" ).removeClass( "bottom-buttons-active" ).addClass( "" );
+      $( "#settingsbtn" ).removeClass( "bottom-buttons-active" ).addClass( "" );
     }); 
     
     //click Deals
@@ -139,14 +150,15 @@
       $('#settingsRow').hide("slow");
       $('#statsRow').hide("slow");
       
-      //$( "#leasingStatusbtn" ).removeClass( "btn-btn-primary" ).addClass( "btn-default" );
-      //$( "#areaStatusbtn" ).removeClass( "btn-primary" ).addClass( "btn-default" );
-      //$( "#merchandisingStatusbtn" ).removeClass( "btn-primary" ).addClass( "btn-default" );
-      //$( "#spacesbtn" ).removeClass( "btn-primary" ).addClass( "btn-default" );
-      //$( "#dealsbtn" ).removeClass( "btn-default" ).addClass( "btn-primary" );
-      //$( "#infobtn" ).removeClass( "btn-primary" ).addClass( "btn-default" );
-      //$( "#settingsbtn" ).removeClass( "btn-primary" ).addClass( "btn-default" );
-      //$( "#statsbtn" ).removeClass( "btn-primary" ).addClass( "btn-default" );
+      $( "#leasingStatusbtn" ).removeClass( "switch-buttons-active" ).addClass( "" );
+      $( "#areaStatusbtn" ).removeClass( "switch-buttons-active" ).addClass( "" );
+      $( "#merchandisingStatusbtn" ).removeClass( "switch-buttons-active" ).addClass( "" );
+      
+      $( "#statsbtn" ).removeClass( "bottom-buttons-active" ).addClass( "" );
+      $( "#spacesbtn" ).removeClass( "bottom-buttons-active" ).addClass( "" );
+      $( "#dealsbtn" ).removeClass( "" ).addClass( "bottom-buttons-active" );
+      $( "#infobtn" ).removeClass( "bottom-buttons-active" ).addClass( "" );
+      $( "#settingsbtn" ).removeClass( "bottom-buttons-active" ).addClass( "" );
     }); 
     
     //click Info
@@ -160,15 +172,15 @@
       $('#settingsRow').hide("slow");
       $('#statsRow').hide("slow");
       
-      //$( "#leasingStatusbtn" ).removeClass( "btn-btn-primary" ).addClass( "btn-default" );
-      //$( "#areaStatusbtn" ).removeClass( "btn-primary" ).addClass( "btn-default" );
-      //$( "#merchandisingStatusbtn" ).removeClass( "btn-primary" ).addClass( "btn-default" );
-
-      //$( "#spacesbtn" ).removeClass( "btn-primary" ).addClass( "btn-default" );
-      //$( "#dealsbtn" ).removeClass( "btn-primary" ).addClass( "btn-default" );
-      //$( "#infobtn" ).removeClass( "btn-default" ).addClass( "btn-primary" );
-      //$( "#settingsbtn" ).removeClass( "btn-primary" ).addClass( "btn-default" );
-      //$( "#statsbtn" ).removeClass( "btn-primary" ).addClass( "btn-default" );
+      $( "#leasingStatusbtn" ).removeClass( "switch-buttons-active" ).addClass( "" );
+      $( "#areaStatusbtn" ).removeClass( "switch-buttons-active" ).addClass( "" );
+      $( "#merchandisingStatusbtn" ).removeClass( "switch-buttons-active" ).addClass( "" );
+      
+      $( "#statsbtn" ).removeClass( "bottom-buttons-active" ).addClass( "" );
+      $( "#spacesbtn" ).removeClass( "bottom-buttons-active" ).addClass( "" );
+      $( "#dealsbtn" ).removeClass( "bottom-buttons-active" ).addClass( "" );
+      $( "#infobtn" ).removeClass( "" ).addClass( "bottom-buttons-active" );
+      $( "#settingsbtn" ).removeClass( "bottom-buttons-active" ).addClass( "" );
     }); 
     
     //click Settings
@@ -182,38 +194,18 @@
       $('#settingsRow').show("slow");
       $('#statsRow').hide("slow");
       
-      //$( "#leasingStatusbtn" ).removeClass( "btn-btn-primary" ).addClass( "btn-default" );
-      //$( "#areaStatusbtn" ).removeClass( "btn-primary" ).addClass( "btn-default" );
-      //$( "#merchandisingStatusbtn" ).removeClass( "btn-primary" ).addClass( "btn-default" );
+      $( "#leasingStatusbtn" ).removeClass( "switch-buttons-active" ).addClass( "" );
+      $( "#areaStatusbtn" ).removeClass( "switch-buttons-active" ).addClass( "" );
+      $( "#merchandisingStatusbtn" ).removeClass( "switch-buttons-active" ).addClass( "" );
       
-      //$( "#spacesbtn" ).removeClass( "btn-primary" ).addClass( "btn-default" );
-      //$( "#dealsbtn" ).removeClass( "btn-primary" ).addClass( "btn-default" );
-      //$( "#infobtn" ).removeClass( "btn-primary" ).addClass( "btn-default" );
-      //$( "#settingsbtn" ).removeClass( "btn-default" ).addClass( "btn-primary" );
-      //$( "#statsbtn" ).removeClass( "btn-primary" ).addClass( "btn-default" );
+      $( "#statsbtn" ).removeClass( "bottom-buttons-active" ).addClass( "" );
+      $( "#spacesbtn" ).removeClass( "bottom-buttons-active" ).addClass( "" );
+      $( "#dealsbtn" ).removeClass( "bottom-buttons-active" ).addClass( "" );
+      $( "#infobtn" ).removeClass( "bottom-buttons-active" ).addClass( "" );
+      $( "#settingsbtn" ).removeClass( "" ).addClass( "bottom-buttons-active" );
     }); 
     
-    //click Stats
-    $('.statsClicked').click(function (){
-      $('#areaStatusRow').hide("slow");
-      $('#leasingStatusRow').hide("slow");
-      $('#merchandisingStatusRow').hide("slow");
-      $('#spacesRow').hide("slow");
-      $('#dealsRow').hide("slow");
-      $('#infoRow').hide("slow");
-      $('#settingsRow').hide("slow");
-      $('#statsRow').show("slow");
-      
-      //$( "#leasingStatusbtn" ).removeClass( "btn-btn-primary" ).addClass( "btn-default" );
-      //$( "#areaStatusbtn" ).removeClass( "btn-primary" ).addClass( "btn-default" );
-      //$( "#merchandisingStatusbtn" ).removeClass( "btn-primary" ).addClass( "btn-default" );
-      
-      //$( "#spacesbtn" ).removeClass( "btn-primary" ).addClass( "btn-default" );
-      //$( "#dealsbtn" ).removeClass( "btn-primary" ).addClass( "btn-default" );
-      //$( "#infobtn" ).removeClass( "btn-primary" ).addClass( "btn-default" );
-      //$( "#settingsbtn" ).removeClass( "btn-primary" ).addClass( "btn-default" );
-      //$( "#statsbtn" ).removeClass( "btn-default" ).addClass( "btn-primary" );
-    }); 
+    
     
   });
   
@@ -227,12 +219,6 @@
       $('#infoRow').hide("slow");
       $('#settingsRow').hide("slow");
       $('#statsRow').hide("slow");
-      
-      //$('.areaStatusCol').hide("slow");
-      //$('.merchandisingStatusCol').hide("slow");
-      
-      //$('.areaStatusNotesCol').hide("slow");
-      //$('.merchandisingStatusNotesCol').hide("slow");
     }, 1000);
   });
 </script>
