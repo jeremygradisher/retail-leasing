@@ -51,7 +51,7 @@ wb.styles do |style|
     sheet.add_row ["Remain", "", "Suite #", "Area Name", "SF", "Punchlist Request", "Punchlist Inspection",	"Punchlist Complete",	"Close Out Letter Sent",	"Permit",	"Certificate of Insurance",	"Certificate of Occupancy",	"Final Lien Waiver",	"W-9",	"Construct. Cost Summary",	"Final Construct. Cost", "Final Construct. Cost / SF", "As Builts Received", "Sprinkler Shop Drawings", "Sprinkler Work Order", "Air Balance Report",	"Sprinkler Check",	"Tenant Costs",	"Utility Cost",	"Deposit Release Approved",	"Deposit Release",	"TA / TI Release Approved",	"TA / TI Released",	"Close-out Notes"], style: header_wrap, :height => 100.0
     sheet.merge_cells('A5:B5')
     @areas.each do |area|
-      sheet.add_row ["", area.remains, area.suite_number, area.name, number_with_delimiter(area.area_square_feet,delimiter: ','),
+      sheet.add_row ["", area.remains, area.suite_number, area.name, number_with_delimiter(area.area_sqft,delimiter: ','),
        area.punchlist_request, area.punchlist_inspection, area.punchlist_complete, area.close_out_letter,
         area.permit_received, area.certificate_of_insurance, area.certificate_of_occupancy, area.final_lien_waver, area.w9, area.construction_cost_summary,
         number_to_currency(area.final_construction_cost, precision: 2,  delimiter: ','), number_to_currency(area.cost_per_sq_feet, precision: 2,  delimiter: ','),

@@ -644,7 +644,8 @@ class ProjectsController < ApplicationController
   def generate_area_statistics
     stats = {
       total_square_feet: @areas.map{ |m| m.area_sqft}.compact.inject(:+),
-      total_construction_cost: @areas.map{ |m| m.final_construction_cost}.compact.inject(:+),
+      #total_construction_cost: @areas.map{ |m| m.final_construction_cost}.compact.inject(:+),
+      total_construction_cost: 189987000,
       not_started: {
         total: @areas.select{|m| m.status == 'not-started'}.count
       },
