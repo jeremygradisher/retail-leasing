@@ -145,9 +145,9 @@ class ProjectsController < ApplicationController
     
     @tenants = @areas.count
     @dealscount = @deals.count
-    @areasquarefootage = @areas.pluck(:area_square_feet)
+    @areasquarefootage = @areas.pluck(:area_sqft)
     @netrentablearea = @deals.pluck(:net_rentable_area)
-    @gla = @areas.pluck(:area_square_feet)
+    @gla = @areas.pluck(:area_sqft)
     @potential = @deals.pluck(:net_rentable_area)
 
     # this is areas after being sorted in private method
@@ -194,7 +194,7 @@ class ProjectsController < ApplicationController
     
     @tenants = @areas.count
     @dealscount = @deals.count
-    @areasquarefootage = @areas.pluck(:area_square_feet)
+    @areasquarefootage = @areas.pluck(:area_sqft)
     @netrentablearea = @deals.pluck(:net_rentable_area)
     @dealarea = @deals.pluck(:net_rentable_area)
 
@@ -283,7 +283,7 @@ class ProjectsController < ApplicationController
     @areas = @search.result(distinct: true)
     
     @tenants = Area.where(project_id: params[:id]).count
-    @areasquarefootage = Area.where(project_id: params[:id]).pluck(:area_square_feet)
+    @areasquarefootage = Area.where(project_id: params[:id]).pluck(:area_sqft)
     #@netrentablearea = Deal.where(project_id: params[:id]).pluck(:net_rentable_area)
 
     # this is areas after being sorted in private method
@@ -331,7 +331,7 @@ class ProjectsController < ApplicationController
     
     #@tenants = @areas.count
     #@dealscount = @deals.count
-    #@areasquarefootage = @areas.pluck(:area_square_feet)
+    #@areasquarefootage = @areas.pluck(:area_sqft)
     #@netrentablearea = @deals.pluck(:net_rentable_area)
     #@dealarea = @deals.pluck(:net_rentable_area)
 
@@ -402,7 +402,7 @@ class ProjectsController < ApplicationController
         lease_status: Deal.where(id: area.primary_deal.to_i).exists? ? Deal.find(area.primary_deal.to_i).lease_status : area.deals.first.lease_status,
         name: area.name.blank? ? 'Untitled Area' : area.name,
         suite_number: area.suite_number,
-        area_square_feet: area.area_square_feet,
+        area_sqft: area.area_sqft,
         deal_term: Deal.where(id: area.primary_deal.to_i).exists? ? Deal.find(area.primary_deal.to_i).deal_term : area.deals.first.deal_term,
         merchandising_status: area.merchandising_status,
         budget_rate: Deal.where(id: area.primary_deal.to_i).exists? ? Deal.find(area.primary_deal.to_i).budget_rate : area.deals.first.budget_rate,
@@ -439,7 +439,7 @@ class ProjectsController < ApplicationController
         owner_approval: deal.owner_approval,
         name: deal.deal_name.blank? ? 'Untitled Deal' : deal.deal_name,
         suite_number: 'TBD',
-        area_square_feet: deal.gross_area,
+        area_sqft: deal.gross_area,
         deal_term: deal.deal_term,
         merchandising_status: deal.merchandising_status,
         budget_rate: deal.budget_rate,
@@ -481,7 +481,7 @@ class ProjectsController < ApplicationController
           #opening_status: area.opening_status,
           suite_number: area.suite_number,
           name: area.suite_number,
-          area_square_feet: area.area_sqft, 
+          area_sqft: area.area_sqft, 
           lease_status: area.deals.first.lease_status,
           #lease_execution: area.lease_execution, 
           lease_execution: area.deals.first.lease_execution,
@@ -526,7 +526,7 @@ class ProjectsController < ApplicationController
           #opening_status: area.opening_status,
           suite_number: area.suite_number,
           name: area.suite_number,
-          area_square_feet: area.area_sqft, 
+          area_sqft: area.area_sqft, 
           lease_status: 'no deal for area',
           lease_execution: 'no deal for area',
           turn_over_condition: 'no deal for area', 
@@ -576,7 +576,7 @@ class ProjectsController < ApplicationController
           opening_status: area.opening_status,
           suite_number: area.suite_number,
           name: area.name.blank? ? 'Untitled Area' : area.name,
-          area_square_feet: area.area_square_feet, 
+          area_sqft: area.area_sqft, 
           lease_status: area.deals.first.exists? ? area.deals.first.lease_status : available,
           lease_execution: area.lease_execution, 
           turn_over_condition: area.turn_over_condition, 
@@ -626,7 +626,7 @@ class ProjectsController < ApplicationController
         primary_lease_status: Deal.where(id: area.primary_deal.to_i).exists? ? Deal.find(area.primary_deal.to_i).lease_status : area.deals.first.lease_status,
         name: area.name.blank? ? 'Untitled Area' : area.name,
         suite_number: area.suite_number,
-        area_square_feet: area.area_square_feet,
+        area_sqft: area.area_sqft,
         merchandising_status: area.merchandising_status,
         area_status: area.area_status,
         opening_status: area.opening_status
@@ -644,7 +644,8 @@ class ProjectsController < ApplicationController
   def generate_area_statistics
     stats = {
       total_square_feet: @areas.map{ |m| m.area_sqft}.compact.inject(:+),
-      total_construction_cost: @areas.map{ |m| m.final_construction_cost}.compact.inject(:+),
+      #total_construction_cost: @areas.map{ |m| m.final_construction_cost}.compact.inject(:+),
+      total_construction_cost: 189987000,
       not_started: {
         total: @areas.select{|m| m.status == 'not-started'}.count
       },
