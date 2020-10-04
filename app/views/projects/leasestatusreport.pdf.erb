@@ -29,7 +29,7 @@
           <td class="<%= object[:lease_status].parameterize.underscore %> center"> <%= object[:lease_status] %> </td>
           <td class="center"> <% if object[:owner_approval] == true %><i style="color:#8BC53F;" class="fa fa-check" aria-hidden="true"></i><% else %><%#= object[:owner_approval] %><% end %> </td>
           <td> <%= object[:name] %> </td>
-          <td class="center"> <%= number_with_precision(object[:area_square_feet], precision: 0, delimiter: ',') %> </td>
+          <td class="center"> <%= number_with_precision(object[:area_sqft], precision: 0, delimiter: ',') %> </td>
           <td class="<%= object[:merchandising_status].parameterize.underscore %> center"> <%= object[:merchandising_status] %> </td>
           <td class="center"> <%= object[:suite_number] %> </td>
           <td class="center"> <%= object[:leasing_manager] %> </td>
