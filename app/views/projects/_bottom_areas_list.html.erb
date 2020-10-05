@@ -14,8 +14,8 @@
           <th style="text-align:left;">Deal Image:</th>
           <th style="text-align:left;">Suite #:</th>
           <th style="text-align:left;">Area SF:</th>
-          <th style="text-align:left;">TC Status:</th>
           <th style="text-align:left;">Deals:</th>
+          <th style="text-align:left;">TC Status:</th>
           <th style="text-align:left;">Primary Deal:</th>
           <th style="text-align:left;">Lease Status:</th>
           <th style="text-align:left;">Merch Status:</th>
@@ -38,8 +38,8 @@
             </td>
             <td style=""><%= area.suite_number %></td>
             <td style=""><%= number_with_delimiter(area.area_sqft, :delimiter => ',') %></td>
-            <td style=""><%= area.status %></td>
             <td style=""><%= area.deals.count %></td>
+            <td style=""><%= area.status %></td>
             <td style=""><% if area.deals.count > 0 %><%= area.deals.first.deal_name %><% else %>*No deal associated<% end %></td>
             <td style=""><% if area.deals.count > 0 %><%= area.deals.first.lease_status %><% else %>*No deal associated<% end %></td>
             <td style=""><% if area.deals.count > 0 %><%= area.deals.first.merchandising_status %><% else %>*No deal associated<% end %></td>
@@ -60,7 +60,7 @@
                           :class => 'action-buttons print-none',
                           :style => '' %>
               
-              <%= link_to image_tag('/images/delete-button.png'),
+              <%#= link_to image_tag('/images/delete-button.png'),
                           area_path(area),
                           :method => :delete,
                           :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
