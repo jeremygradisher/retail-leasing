@@ -14,6 +14,7 @@
           <thead>
             <tr>
               <!--<th>Area Image:</th>-->
+              <th style="min-width:80px;">Deal Image:</th>
               <th style="min-width:80px;">Deal Name:</th>
               <th style="min-width:80px;">Gross Area:</th>
               <th style="min-width:80px;">Lease Status:</th>
@@ -27,6 +28,21 @@
           <tbody>
             <% @deals.each do |deal| %>
               <tr>
+                <td style="text-align:left;">
+                  <% if deal.dealimages.count > 0 %>
+                    <% if deal.areas.count > 0 %>
+                      <%= link_to image_tag(deal.dealimages.first.dealimage_url, :style => 'width:80px;'), deal.areas.first %>
+                    <% else %>
+                      <%= link_to image_tag(deal.dealimages.first.dealimage_url, :style => 'width:80px;'), deal %>
+                    <% end %>
+                  <% else %>
+                    <% if deal.areas.count > 0 %>
+                      <%= link_to image_tag('/images/status-plan-logo.png', :style => 'width:80px;'), deal.areas.first %>
+                    <% else %>
+                      <%= link_to image_tag('/images/status-plan-logo.png', :style => 'width:80px;'), deal %>
+                    <% end %>
+                  <% end %>
+                </td>
                 <td style="text-align:left;"><%= deal.deal_name %></td>
                 <td style="text-align:left;"><%= number_with_delimiter(deal.gross_area, :delimiter => ',') %></td>
                 <td style="text-align:left;"><%= deal.lease_status %></td>
@@ -44,7 +60,7 @@
                   <%= link_to image_tag('/images/edit-button.png'),
                               edit_deal_path(deal), :class => 'action-buttons print-none',
                           :style => '' %>
-                  <%= link_to image_tag('/images/delete-button.png'),
+                  <%#= link_to image_tag('/images/delete-button.png'),
                               deal_path(deal),
                               :method => :delete,
                               :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
