@@ -1,0 +1,60 @@
+<div class="row print-none">
+  <div class="col-xs-10 col-xs-offset-1">
+    <div class="page-header">
+      <button data-toggle="collapse" data-target="#maps-collapse" 
+      class='btn btn-primary green-button responsive-none print-none' 
+      style='float:right;margin-top:12px;margin-left:10px;'><i class="fa fa-chevron-down"></i></button>
+      <% if current_user.is_admin? || current_user.member.role == 'Admin' || current_user.member.role == 'Editor' %>
+      <%= link_to '+ Lease Plan',
+                  new_map_path(:project_id => @project),
+                  :class => 'btn btn-primary green-button responsive-none print-none', :style => 'float:right;margin-top:12px;' %> 
+      <% end %>
+        <h1>Plans</h1>
+    </div>
+        <div id="maps-collapse" class="collapse">      
+              <table class="table table-striped /*print-none*/">
+                <thead>
+                  <tr>
+                    <!--<th><%#= model_class.human_attribute_name(:id) %></th>-->
+                    <th>map</th>
+                    <th>name</th>
+                    <!--<th><%#= model_class.human_attribute_name(:created_at) %></th>-->
+                    <th><%=t '.actions', :default => t("helpers.actions") %></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @maps.each do |map| %>
+                    <tr>
+                      <!--<td><%#= link_to map.id, map_path(map) %></td>-->
+                      <td>
+                        <% map.images.each do |p| %>
+                          <%= link_to image_tag(p.image_url, :style => 'max-width:50px;padding:2px;', :class => 'stay100'), map_path(map) %>
+                        <% end %>
+                      </td>
+                      <td><%= map.name %></td>
+                      <!--<td><%#= map.created_at %></td>-->
+                      <td>
+                        <%= link_to image_tag('/images/view-button.png'),
+                                    map_path(map), :class => 'action-buttons print-none' %>
+                                    
+                        <% if current_user.is_admin? || current_user.member.role == 'Admin' || current_user.member.role == 'Editor' %>
+                        <%= link_to image_tag('/images/edit-button.png'),
+                                    edit_map_path(map), :class => 'action-buttons print-none' %>
+                        <% end %>
+                        
+                        <%# if current_user.is_admin?%>
+                        <%#= link_to 'Delete Map X',
+                                    map_path(map),
+                                    :method => :delete,
+                                    data: { confirm: 'This will also delete all associated Areas, Deals, etc. Do you really want to delete it? There is no way to undo...', title: 'Delete Map and Associated Models?', commit: 'Confirm Delete', cancel: 'Cancel' },
+                                    :class => 'btn btn-xs btn-danger responsive-none print-none' %>
+                        <%#=  %>            
+                        <%# end %>
+                      </td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+        </div>      
+  </div>
+</div>

@@ -562,6 +562,12 @@ div.step { border-radius: 8px 8px 0px 0px }
 //.btn-primary-altered {background-color:#d13e27;border-color: #d13e27;color:#fff;}
 //.btn-primary-altered:hover {background-color:#d13e27;border-color: #d13e27;color:#fff;}
 
+a.green-button:visited, .green-button, a.green-button:hover, button.green-button:hover,
+.green-button:active:focus, .green-button:focus {outline: none;background-color:#8cbe3b;border:1;border-color:#8cbe3b;color:#fff;}
+
+a.orange-button:visited, .orange-button, a.orange-button:hover,
+.orange-button:active:focus, .orange-button:focus {outline: none;background-color:#e36e39;border:1;border-color:#e36e39;color:#fff;}
+
 /* fixes for portfolio */
 .project-panel-heading {background-size: cover;background-position: center center;}
 .project-panel-body { min-height:130px;}
