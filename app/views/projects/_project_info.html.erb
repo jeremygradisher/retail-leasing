@@ -1,5 +1,4 @@
-<div class="row" style="margin-bottom:0px;page-break-inside: avoid;">
-  <div class="col-xs-12">
+
 
 <div class="row">
   <div class="col-xs-10 col-xs-offset-1">
@@ -95,82 +94,29 @@
           <% end %>
         </table>
       </div>
+      <br><br><br>
     </div><!-- end of panel-branded -->    
 
 
-<br style="clear:both;"><br>
-<hr>
+<!--<br style="clear:both;">-->
 
 
-<div class="panel panel-default" style="width:40%;margin-left:auto;margin-right:auto;">
+<div class="panel panel-default" style="width:40%;position:absolute;margin-top:-60px;right:30%;">
   <div class="panel-body">
     <button type="button" id="switchUserBtn" class="switchTwo switchTwoActive print-none">User</button>
     <button type="button" id="switchLeasManBtn" class="switchTwo switchTwoNonActive print-none">Leasing Managers</button>
   </div>
 </div>
 
+<br><br><br>
 
-<div class="row">
-  <div class="col-xs-5 col-xs-offset-1">
-    
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <p>Owner</p>
-      </div>
-      <div class="panel-body">
-        <table style="width:100%;">
-          <tr>
-            <td style="width:50%;text-align:left;">
-              <p>Name:</p>
-            </td>
-            <td style="width:50%;text-align:right;">
-              <p><%= @project.owner %></p>
-            </td>
-          </tr>
-          <tr>
-            <td style="width:50%;text-align:left;">
-              <p>Address:</p>
-            </td>
-            <td style="width:50%;text-align:right;">
-              <p><%= @project.owner_address %><br>
-              <%= @project.owner_city %> <%= @project.owner_state %> <%= @project.owner_zip %></p>
-            </td>
-          </tr>
-          <tr>
-            <td style="width:50%;text-align:left;">
-              <p>Contact:</p>
-            </td>
-            <td style="width:50%;text-align:right;">
-              <p><%= @project.owner_contact %></p>
-            </td>
-          </tr>
-          <tr>
-            <td style="width:50%;text-align:left;">
-              <p>Phone:</p>
-            </td>
-            <td style="width:50%;text-align:right;">
-              <p><%= @project.owner_phone %></p>
-            </td>
-          </tr>
-          <tr>
-            <td style="width:50%;text-align:left;">
-              <p>Email:</p>
-            </td>
-            <td style="width:50%;text-align:right;">
-              <p><%= @project.owner_email %></p>
-            </td>
-          </tr>
-        </table>
-      </div>
-    </div><!-- end of panel-branded -->
-  </div>
-  
-  <div class="col-xs-5">
-    
     
     
 
-    <div class="panel panel-branded print-none">
+    
+    
+
+    <div id="switchTwoUsers" class="panel panel-branded print-none" style="width:40%;margin-left:auto;margin-right:auto;">
       <div class="panel-heading">
         <p style="float:left;">Users</p> 
         <% if (current_user && current_user.is_admin?) || (current_user && current_user.role == 'Admin') %> 
@@ -230,7 +176,7 @@
 
 
 <!-- adding Leasing Managers -->
-    <div class="panel panel-branded print-none">
+    <div id="switchTwoLeasingManagers" class="panel panel-branded print-none" style="width:40%;margin-left:auto;margin-right:auto;">
       <div class="panel-heading">
         <p style="float:left;">Leasing Managers</p> 
         <% if (current_user && current_user.is_admin?) || (current_user && current_user.role == 'Admin') %> 
@@ -275,13 +221,64 @@
     </div><!-- end of panel-branded -->
 <!-- end Leasing Managers -->
 
-    
-  </div> <!--end of col-xs-6 -->
-</div>    
+ 
+ 
+ 
+ <!--
+ <div class="panel panel-default" style="width:40%;margin-left:auto;margin-right:auto;">
+      <div class="panel-heading">
+        <p>Owner</p>
+      </div>
+      <div class="panel-body">
+        <table style="width:100%;">
+          <tr>
+            <td style="width:50%;text-align:left;">
+              <p>Name:</p>
+            </td>
+            <td style="width:50%;text-align:right;">
+              <p><%= @project.owner %></p>
+            </td>
+          </tr>
+          <tr>
+            <td style="width:50%;text-align:left;">
+              <p>Address:</p>
+            </td>
+            <td style="width:50%;text-align:right;">
+              <p><%= @project.owner_address %><br>
+              <%= @project.owner_city %> <%= @project.owner_state %> <%= @project.owner_zip %></p>
+            </td>
+          </tr>
+          <tr>
+            <td style="width:50%;text-align:left;">
+              <p>Contact:</p>
+            </td>
+            <td style="width:50%;text-align:right;">
+              <p><%= @project.owner_contact %></p>
+            </td>
+          </tr>
+          <tr>
+            <td style="width:50%;text-align:left;">
+              <p>Phone:</p>
+            </td>
+            <td style="width:50%;text-align:right;">
+              <p><%= @project.owner_phone %></p>
+            </td>
+          </tr>
+          <tr>
+            <td style="width:50%;text-align:left;">
+              <p>Email:</p>
+            </td>
+            <td style="width:50%;text-align:right;">
+              <p><%= @project.owner_email %></p>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>-->
+    <!-- end of panel-branded -->   
 
 
-  </div><!-- end div -->
-</div>
+
 
 
 <!--

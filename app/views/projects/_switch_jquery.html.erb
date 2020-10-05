@@ -194,6 +194,24 @@
       $( "#settingsbtn" ).removeClass( "" ).addClass( "bottom-buttons-active" );
     }); 
     
+    //click Users
+    $('#switchUserBtn').click(function (){
+      $('#switchTwoLeasingManagers').hide("slow");
+      $('#switchTwoUsers').show("slow");
+      
+      $( "#switchUserBtn" ).removeClass( "switchTwoNonActive" ).addClass( "switchTwoActive" );
+      $( "#switchLeasManBtn" ).removeClass( "switchTwoActive" ).addClass( "switchTwoNonActive" );
+    }); 
+    
+    //click Leasing Managers
+    $('#switchLeasManBtn').click(function (){
+      $('#switchTwoLeasingManagers').show("slow");
+      $('#switchTwoUsers').hide("slow");
+      
+      $( "#switchUserBtn" ).removeClass( "switchTwoActive" ).addClass( "switchTwoNonActive" );
+      $( "#switchLeasManBtn" ).removeClass( "switchTwoNonActive" ).addClass( "switchTwoActive" );
+    }); 
+    
     
     
   });
@@ -208,6 +226,7 @@
       $('#infoRow').hide("slow");
       $('#settingsRow').hide("slow");
       $('#statsRow').hide("slow");
+      $('#switchTwoLeasingManagers').hide("slow");
     }, 1000);
   });
 </script>

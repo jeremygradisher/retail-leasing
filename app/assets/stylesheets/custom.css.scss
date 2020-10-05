@@ -310,8 +310,10 @@ a.action-buttons:hover {background-color:none;}
 
 .switchTwo {height:60px;width:45%;margin-left:2%;margin-right:2%;
     border:0px;border-color:#19a3bb;border-radius:4px;
-    font-family: "simplifica";font-size: 40px;
+    font-family: "simplifica";font-size: 24pt;
 }
+.switchTwo:active:focus, .switchTwo:focus {outline: 0px auto #19a3bb;}
+
 .switchTwoActive {background-color:#8cbe3b;color:#fff;}
 .switchTwoNonActive {background-color:#fff;color:#231f20;}
 
