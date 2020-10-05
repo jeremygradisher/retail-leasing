@@ -67,7 +67,7 @@ body {margin:0 !important;}
 
 .body {color:#231f20;}
 
-.white {color:#fff;}
+.white, .white p {color:#fff;}
 
 .navbar-default .navbar-nav>li>a {color:#231f20;}
 
@@ -268,12 +268,31 @@ input[type="radio"].ws-radio-buttons {margin-left:5px;margin-right:5px;}
                     z-index:2222;
                     width:100%;text-align:center;margin-left:auto;margin-right:auto;}
 */
+.bottom-above-footer button {
+    /*background-color: #19a3bb;*/
+    margin-left:4px;
+    margin-right:4px;
+    width:130px;
+}
+
+.bottom-buttons {background-color: #19a3bb;}
+
+.bottom-above-footer { 
+-webkit-box-shadow: 0px -4px 3px rgba(50, 50, 50, 0.15);
+-moz-box-shadow: 0px -4px 3px rgba(50, 50, 50, 0.15);
+box-shadow: 0px -4px 3px rgba(50, 50, 50, 0.15);  }
+
+
 .switch-buttons {width:200px;border:1;border-color:#f9f9f9;background-color:#fff;border-radius:4;
         padding:0;margin-right:10px;margin-left:10px;box-shadow: 0px 0px 20px 0px #aaa;}
 .switch-buttons:hover {background-color:#f2f2f2}
 .switch-buttons:active {background-color:#ddd}
-.switch-buttons:active:focus, .switch-buttons:focus {outline: 5px auto #f9f9f9;}
+.switch-buttons:active:focus, .switch-buttons:focus {outline: none;background-color:#f9f9f9;border:1;border-color:#19a3bb;}
 .switch-buttons img {width:100%;border:0;margin:0;}
+//*for jQuery forn switch buttons*//
+.switch-buttons-active {background-color:#f9f9f9;border:1;border-color:#19a3bb;}
+.switch-buttons-active:active:focus, .switch-buttons-active:focus {outline: none;background-color:#f9f9f9;border:1;border-color:#19a3bb;}
+
 
 .action-buttons img {width:30px;}
 a.action-buttons:hover {background-color:none;}
@@ -282,19 +301,23 @@ a.action-buttons:hover {background-color:none;}
 .bottom-buttons:active {background-color:#19a3bb;}
 .bottom-buttons:active:focus, .bottom-buttons:focus {background-color:#19a3bb;outline: 0px auto #19a3bb;}
 .bottom-buttons img {width:100%;border:0;margin:0;}
-.bottom-above-footer button {
-    background-color: #19a3bb;
-    margin-left:4px;
-    margin-right:4px;
-    width:130px;
+
+
+//*for jQuery forn switch buttons*//
+.bottom-buttons-active {background-color:#88ccdd;border:1px;border-color:#19a3bb;}
+.bottom-buttons-active:active:focus, .bottom-buttons-active:focus {outline: none;background-color:#88ccdd;border:1px;border-color:#19a3bb;}
+
+
+.switchTwo {height:60px;width:45%;margin-left:2%;margin-right:2%;
+    border:0px;border-color:#19a3bb;border-radius:4px;
+    font-family: "simplifica";font-size: 24pt;
 }
+.switchTwo:active:focus, .switchTwo:focus {outline: 0px auto #19a3bb;}
 
+.switchTwoActive {background-color:#8cbe3b;color:#fff;}
+.switchTwoNonActive {background-color:#fff;color:#231f20;}
 
-.bottom-above-footer { 
-    
-    -webkit-box-shadow: 0px -4px 3px rgba(50, 50, 50, 0.15);
-  -moz-box-shadow: 0px -4px 3px rgba(50, 50, 50, 0.15);
-  box-shadow: 0px -4px 3px rgba(50, 50, 50, 0.15);  }
+#emailTable.table>tbody>tr>td {border-top: 0 solid #ddd;}
 
 /*  
 table.tableChange { border: 1px solid #ddd; border-color: #ddd; }
@@ -539,6 +562,12 @@ div.step { border-radius: 8px 8px 0px 0px }
 //.btn-primary-altered {background-color:#d13e27;border-color: #d13e27;color:#fff;}
 //.btn-primary-altered:hover {background-color:#d13e27;border-color: #d13e27;color:#fff;}
 
+a.green-button:visited, .green-button, a.green-button:hover, button.green-button:hover,
+.green-button:active:focus, .green-button:focus {outline: none;background-color:#8cbe3b;border:1;border-color:#8cbe3b;color:#fff;}
+
+a.orange-button:visited, .orange-button, a.orange-button:hover,
+.orange-button:active:focus, .orange-button:focus {outline: none;background-color:#e36e39;border:1;border-color:#e36e39;color:#fff;}
+
 /* fixes for portfolio */
 .project-panel-heading {background-size: cover;background-position: center center;}
 .project-panel-body { min-height:130px;}
@@ -663,6 +692,7 @@ input[type="radio"].ws-radio-buttons {margin-left:5px;margin-right:5px;}
     background-color: #f8f8f8;
 }
 
+/* panels */
 .panel-branded {
     border-color: #231f20;
 }
@@ -676,6 +706,8 @@ input[type="radio"].ws-radio-buttons {margin-left:5px;margin-right:5px;}
     color: #fff;
     margin-bottom:2px;
 }
+/* panels */
+
 
 table.report-table {
     width:100%;

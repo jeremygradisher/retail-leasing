@@ -5,12 +5,12 @@
     
     <div class="page-header print-none">
       <button data-toggle="collapse" data-target="#workletter-template-collapse" 
-      class='btn btn-primary responsive-none print-none' 
+      class='btn btn-primary responsive-none green-button print-none' 
       style='float:right;margin-left:10px;margin-top:12px;'><i class="fa fa-chevron-down"></i></button>
       <% if current_user.is_admin? || current_user.role == 'Admin' %>
       <%= link_to '+ Add Workletter Template',
                   new_workletter_template_path(:project_id => @project),
-                  :class => 'btn btn-primary responsive-none print-none', :style => 'float:right;margin-top:12px;' %>
+                  :class => 'btn btn-primary responsive-none green-button print-none', :style => 'float:right;margin-top:12px;' %>
       <% end %>
       <h1>Workletter Templates</h1>
     </div>
@@ -22,7 +22,7 @@
               <th>ID</th>
               <th>Template Name</th>
               <th>Project ID</th>
-              <th></th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -34,12 +34,14 @@
                 <!--<td><%# if area.name.blank? %><%#= link_to 'Untitled Area', area_path(area) %><%# else %><%#= link_to area.name, area_path(area) %><%# end %></td>
                 -->
                 <td style="min-width:180px;">
-                  <%= link_to 'View',
-                              workletter_template_path(workletter_template), :class => 'btn btn-default btn-xs add-responsive-bottom print-none' %>
+                  <%= link_to image_tag('/images/view-button.png'),
+                              workletter_template_path(workletter_template), 
+                              :class => 'action-buttons add-responsive-bottom print-none' %>
                   <% if current_user.is_admin? || current_user.role == 'Admin' %>
-                  <%= link_to 'Edit',
-                              edit_workletter_template_path(workletter_template), :class => 'btn btn-primary btn-xs responsive-none print-none' %>
-                  <%= link_to 'Destroy',
+                  <%= link_to image_tag('/images/edit-button.png'),
+                              edit_workletter_template_path(workletter_template), 
+                              :class => 'action-buttons responsive-none print-none' %>
+                  <%#= link_to 'Destroy',
                               workletter_template_path(workletter_template),
                               :method => :delete,
                               :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
@@ -61,8 +63,4 @@
     </div>
   </div>
 </div>
-
-
-<br>
-<hr>
 <% end %>

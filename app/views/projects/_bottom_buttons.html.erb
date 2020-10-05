@@ -1,0 +1,17 @@
+<div class="row print-none bottom-above-footer" style="background-color:#fff;padding-top:20px;padding-bottom:20px;">
+  <div class="col-xs-2" style="text-align:left">
+  </div>
+  <div class="col-xs-8" style="text-align:center">
+  
+      <button type="button" id="statsbtn" class="bottom-buttons statsClicked print-none bottom-buttons-active"><img src="/images/stats-bottom-button.png"></button>
+      <button type="button" id="spacesbtn" class="bottom-buttons spacesClicked print-none"><img src="/images/spaces-bottom-button.png"></button>
+      <button type="button" id="dealsbtn" class="bottom-buttons dealsClicked print-none"><img src="/images/deals-bottom-button.png"></button>
+      <button type="button" id="infobtn" class="bottom-buttons infoClicked print-none"><img src="/images/info-bottom-button.png"></button>
+      <% if (current_user.is_admin?) || (current_user.role == 'Admin') || (current_user.role == 'Editor')  %>
+      <button type="button" id="settingsbtn" class="bottom-buttons settingsClicked print-none"><img src="/images/settings-bottom-button.png"></button>
+      <% end %>
+  
+  </div>
+  <div class="col-xs-2" style="text-align:left">
+  </div>
+</div>

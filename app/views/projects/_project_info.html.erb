@@ -1,39 +1,37 @@
-<div class="row" style="margin-bottom:0px;page-break-inside: avoid;">
-  <div class="col-xs-10 col-xs-offset-1">
-    
-    <!--
-    <div class="page-header">
-      <button data-toggle="collapse" data-target="#info-collapse" 
-      class='btn btn-primary responsive-none print-none' 
-      style='float:right;margin-top:12px;'><i class="fa fa-chevron-down"></i></button>
-      
-    <h1>Project Info</h1>
-    </div>
-    -->
-    
-
-    <h1 style="font-family: 'simplifica';font-size:30pt;width:100%;text-align:center;">Project Info</h1>
 
 
 <div class="row">
-  <div class="col-xs-6">
-    <div style="max-width:100%;margin-bottom:20px;">
-      <% @project.icons.each do |p| %>
-        <%= image_tag(p.icon_url, :style => 'max-width:100%;', :class => 'img-rounded') %>
-      <% end %>
-    </div>
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <p>Owner</p>
+  <div class="col-xs-10 col-xs-offset-1">
+      <div class="page-header" style="text-align:center;">
+          <h1 style="font-family: 'simplifica';font-size:40pt;margin-top:80px;float:left;margin-left:15px;">Property Info</h1>
       </div>
+  </div>
+</div>
+
+<% @project.icons.each do |p| %>
+  <%= image_tag(p.icon_url, :style => 'width:100%;', :class => '') %>
+<% end %>
+    
+    <div class="panel" 
+         style="min-height:275px;width:25%;position:absolute;right:15%;margin-top:-200px;background-color:#e36e39;border-color:#e36e39;">
       <div class="panel-body">
         <table style="width:100%;">
           <tr>
-            <td style="width:50%;text-align:left;">
-              <p>Name:</p>
+            <td style="width:100%;" class="white">
+              <p><%= simple_format(@project.description) %></p>
             </td>
-            <td style="width:50%;text-align:right;">
-              <p><%= @project.owner %></p>
+          </tr>
+        </table>
+      </div>
+    </div><!-- end of panel-branded -->
+    
+     <div class="panel panel-default" 
+          style="width:25%;position:absolute;left:10%;margin-top:-500px;background-color:#fff;border-color:#fff;">
+      <div class="panel-body">
+        <table style="width:100%;">
+          <tr>
+            <td colspan="2" style="text-align:left;">
+              <p style="color:#8cbe3b;font-size:200%;"><%= @project.owner %></p>
             </td>
           </tr>
           <tr>
@@ -71,145 +69,162 @@
           </tr>
         </table>
       </div>
-    </div><!-- end of panel-branded -->
-  </div>
-  
-  <div class="col-xs-6">
-    <div class="panel panel-branded">
-      <div class="panel-heading">
-        <p>Project Info</p>
-      </div>
+    </div>
+
+
+    <div class="panel" style="width:75%;background-color:#f2f2f2;">
       <div class="panel-body">
         <table style="width:100%;">
           <tr>
-            <td style="width:50%;text-align:left;">
+            <td style="width:10%;text-align:left;">
+            </td>
+            <td style="width:40%;text-align:left;">
               <p>Project Name:</p>
             </td>
-            <td style="width:50%;text-align:right;">
-              <p><%= @project.name %></p>
+            <td style="width:30%;text-align:right;">
+              <p style="color:#8cbe3b;font-size:200%;"><%= @project.name %></p>
+            </td>
+            <td style="text-align:left;">
             </td>
           </tr>
           <tr>  
-            <td style="width:50%;text-align:left;">
+            <td style="width:10%;text-align:left;">
+            </td>
+            <td style="width:40%;text-align:left;">
               <p>Address:</p>
             </td>
-            <td style="width:50%;text-align:right;">
+            <td style="width:30%;text-align:right;">
               <p><%= @project.address %><br>
               <%= @project.city %> <%= @project.state %> <%= @project.zip %></p>
             </td>
+            <td style="text-align:left;">
+            </td>
           </tr>
           <tr>
-            <td style="width:50%;text-align:left;">
+            <td style="width:10%;text-align:left;">
+            </td>
+            <td style="width:40%;text-align:left;">
               <p>Project type:</p>
             </td>
-            <td style="width:50%;text-align:right;">
+            <td style="width:30%;text-align:right;">
               <p><%= @project.project_type %></p>
+            </td>
+            <td style="text-align:left;">
             </td>
           </tr>
           <tr>
-            <td style="width:50%;text-align:left;">
+            <td style="width:10%;text-align:left;">
+            </td>
+            <td style="width:40%;text-align:left;">
               <p>Sq ft:</p>
             </td>
-            <td style="width:50%;text-align:right;">
+            <td style="width:30%;text-align:right;">
               <p><%= number_with_delimiter(@project.project_square_feet, :delimiter => ',') %></p>
+            </td>
+            <td style="text-align:left;">
             </td>
           </tr>
           <% if !@project.status.blank? %>
           <tr>
-            <td style="width:50%;text-align:left;">
+            <td style="width:10%;text-align:left;">
+            </td>
+            <td style="width:40%;text-align:left;">
               <p>Status:</p>
             </td>
-            <td style="width:50%;text-align:right;">
+            <td style="width:30%;text-align:right;">
               <p><%= @project.status %></p>
+            </td>
+            <td style="text-align:left;">
             </td>
           </tr>
           <% end %>
         </table>
       </div>
-    </div><!-- end of panel-branded -->
+      <br><br><br>
+    </div><!-- end of panel-branded -->    
+
+
+<!--<br style="clear:both;">-->
+
+
+<div class="panel panel-default" style="width:40%;position:absolute;margin-top:-60px;right:30%;">
+  <div class="panel-body">
+    <button type="button" id="switchUserBtn" class="switchTwo switchTwoActive print-none">User</button>
+    <button type="button" id="switchLeasManBtn" class="switchTwo switchTwoNonActive print-none">Leasing Managers</button>
+  </div>
+</div>
+
+<br><br><br>
+
     
-    <div class="panel panel-branded">
-      <div class="panel-heading">
-        <p>Description</p>
-      </div>
-      <div class="panel-body">
-        <table style="width:100%;">
-          <tr>
-            <td style="width:100%;">
-              <p><%= simple_format(@project.description) %></p>
-            </td>
-          </tr>
-        </table>
-      </div>
-    </div><!-- end of panel-branded -->
+    
 
-    <div class="panel panel-branded print-none">
-      <div class="panel-heading">
-        <p style="float:left;">Users</p> 
+    
+<div id="switchTwoUsers">  
+    <div style="width:40%;margin-left:auto;margin-right:auto;">
+    <p style="float:left;font-family: 'simplifica';font-size:24pt;">Users</p> 
         <% if (current_user && current_user.is_admin?) || (current_user && current_user.role == 'Admin') %> 
-        <%= link_to '+ Add/Remove Project Users',
+          <%= link_to '+ Add/Remove Project Users',
                   users_project_path(@project.id),
-                  :class => 'btn btn-xs btn-default responsive-none print-none', :style => 'float:right;margin-top:0;' %> 
+                  :class => 'btn btn-xs orange-button btn-default responsive-none print-none', 
+                  :style => 'float:right;' %> 
         <% end %>
-      <br style="clear:both;">
+    </div>
+    <br style="clear:both;">
+    
+  <fieldset class="search-field" style="width:40%;margin-left:auto;margin-right:auto;">
+    <!--<legend>Search Our Database</legend>-->
+    <%= search_form_for @q, url: project_path do |f| %>
+      <div class="col-lg-6" style="padding-left:0;">
+          <%= f.label :email_cont, "Email contains:" %>
+          <%= f.text_field :email_cont, :class => "form-control", :placeholder => "Search for..." %>
       </div>
-      <div class="panel-body">
-        <table style="width:100%;">
-          <tr>
-            <td style="width:100%;">
-            <!-- Adding here -->
 
-              <fieldset class="search-field">
-                <!--<legend>Search Our Database</legend>-->
-                <%= search_form_for @q, url: project_path do |f| %>
-                  <div class="col-lg-6">
-                      <%= f.label :email_cont, "Email contains:" %><br>
-                      <%= f.text_field :email_cont, :class => "form-control", :placeholder => "Search for..." %>
-                  </div>
-        
-                  <div class="col-lg-6">
-                    <div class="actions" style="text-align:right;margin-top:23px;">
-                      <%= f.submit "Search", :class => "btn btn-primary jicon" %>
-                      <%= link_to "Clear", request.path, :class => "btn btn-default jicon" %>
-                    </div>
-                  </div>
-                <% end %>
-              </fieldset>            
-              
-      <table class="table table-striped">
-          <thead>
-              <tr>
-                  <th>Email</th>
-              </tr>
-          </thead>
-          <tbody>
-              <% @project_users.each do |project_user| %>
-              <tr>
-                  <td><%= project_user.email %></td>
-              </tr>
-              <% end %>
-          </tbody>
-      </table>
+      <div class="col-lg-6" style="padding-right:0;margin-bottom:6px;">
+        <div class="actions" style="text-align:right;margin-top:23px;">
+          <%= f.submit "Search", :class => "btn btn-primary jicon",
+                :style => "background-color:#8cbe3b;border:0;" %>
+          <%= link_to "Clear", request.path, 
+                :class => "btn btn-primary jicon",
+                :style => "background-color:#e36e39;border:0;"%>
+        </div>
+      </div>
+    <% end %>
+  </fieldset>  
+    
+    <div class="panel panel-default print-none" 
+      style="width:40%;margin-left:auto;margin-right:auto;">
+      <div class="panel-heading">
+        Email
+      </div>
+      <div class="panel-body" style="padding-left:10px;">
+              <table id="emailTable" class="table /*table-striped*/" style="margin-left:0;margin-right:10px;">
+                <tbody>
+                    <% @project_users.each do |project_user| %>
+                    <tr>
+                        <td><%= project_user.email %></td>
+                    </tr>
+                    <% end %>
+                </tbody>
+              </table>
       
       <div style="width:100%;text-align:center;">
         <%= will_paginate @project_users, renderer: BootstrapPagination::Rails %>
       </div>
-            <!-- Adding here -->
-            </td>
-          </tr>
-        </table>
+
       </div>
     </div><!-- end of panel-branded -->
-
+</div>
 
 <!-- adding Leasing Managers -->
-    <div class="panel panel-branded print-none">
+    <div id="switchTwoLeasingManagers" class="panel panel-default print-none" style="width:40%;margin-left:auto;margin-right:auto;">
       <div class="panel-heading">
         <p style="float:left;">Leasing Managers</p> 
         <% if (current_user && current_user.is_admin?) || (current_user && current_user.role == 'Admin') %> 
         <%= link_to '+ Add/Remove Leasing Manager',
                   leasing_managers_path(),
-                  :class => 'btn btn-xs btn-default responsive-none print-none', :style => 'float:right;margin-top:0;' %> 
+                  :class => 'btn btn-xs btn-default orange-button responsive-none print-none', 
+                  :style => 'float:right;margin-top:0;' %> 
         <% end %>
       <br style="clear:both;">
       </div>
@@ -248,13 +263,15 @@
     </div><!-- end of panel-branded -->
 <!-- end Leasing Managers -->
 
-    
-  </div> <!--end of col-xs-6 -->
-</div>    
+ 
+ 
+ 
+ <!--
+-->
+    <!-- end of panel-branded -->   
 
 
-  </div><!-- end div -->
-</div>
+
 
 
 <!--

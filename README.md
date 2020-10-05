@@ -1,5 +1,6 @@
 # StatusPlan2 - Running Rails 5
 ## a place to build and test
+Getting this close for presentation.
 Pulled this over into where we need this to be 09/23/2020
 
 # Before:

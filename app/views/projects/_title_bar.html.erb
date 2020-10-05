@@ -19,7 +19,7 @@
         <%= link_to '<i class="fa fa-times" style="margin-right:4px"></i> Cancel'.html_safe,
                 project_url(@project.id), 
                 :class => 'btn btn-default ws-border-style border-light branded-font',
-                :style => 'font-size:16pt;width:100px;background-color:#008398;color:#fff;' %>
+                :style => 'float:right;font-size:16pt;width:100px;background-color:#008398;color:#fff;' %>
         <% end %>
             <% if controller.controller_name == "projects" && controller.action_name == "show" %>
               <% if current_user.is_admin? || current_user.role == 'Admin' || current_user.role == 'Editor' %>
