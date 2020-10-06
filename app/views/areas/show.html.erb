@@ -1,3 +1,4 @@
+<!-- folder drop down stuff -->
 <script>
 $(document).ready(function(){
     $("#folder-icon").click(function(){
@@ -7,61 +8,47 @@ $(document).ready(function(){
 </script>
 
 <% if (current_user.is_admin?) || (current_user.project_ids.include? @project.id) %>
-
-<div class="everything" style="display:none;">
-  <div class="row print-none">
-    <div class="col-xs-10 col-xs-offset-1">
-      <br>
-      <% if @area.deals.any? %>
-          <%= form_for @area.deals.first, :html => { :class => "form-horizontal area" } do |f| %>
-                <p style="font-weight:bold;">Tenant Documents:</p>
-                <%= f.text_field :tenant_documents, :class => 'form-control add-tags' %>
-                <% if (current_user.is_admin?) || (current_user.role == 'Admin') || (current_user.role == 'Editor')  %>
-                <p><%= link_to 'Edit',
-                            edit_deal_path(@area.deals.first),
-                            :class => 'btn btn-primary responsive-none print-none', :style => '' %>
-  
-                </p>
-                <% end %>
-                <br>
-                <p style="font-weight:bold;">Landlord Work:</p>
-                <%= f.text_field :landlord_work, :class => 'form-control add-tags' %>
-                <% if (current_user.is_admin?) || (current_user.role == 'Admin') || (current_user.role == 'Editor')  %>
-                <p><%= link_to 'Edit',
-                            edit_deal_path(@area.deals.first),
-                            :class => 'btn btn-primary responsive-none print-none', :style => '' %>
-  
-                </p>
-                <% end %>
-                <br>
-          <% end %>
-      <% else %>
-        *There is no deal currently associated with this area.<br><br>
-      <% end %>
-      
-      <br>
+  <div class="everything" style="display:none;">
+    <div class="row print-none">
+      <div class="col-xs-10 col-xs-offset-1">
+        <br>
+        <% if @area.deals.any? %>
+            <%= form_for @area.deals.first, :html => { :class => "form-horizontal area" } do |f| %>
+                  <p style="font-weight:bold;">Tenant Documents:</p>
+                  <%= f.text_field :tenant_documents, :class => 'form-control add-tags' %>
+                  <% if (current_user.is_admin?) || (current_user.role == 'Admin') || (current_user.role == 'Editor')  %>
+                  <p><%= link_to 'Edit',
+                              edit_deal_path(@area.deals.first),
+                              :class => 'btn btn-primary responsive-none print-none', :style => '' %>
+    
+                  </p>
+                  <% end %>
+                  <br>
+                  <p style="font-weight:bold;">Landlord Work:</p>
+                  <%= f.text_field :landlord_work, :class => 'form-control add-tags' %>
+                  <% if (current_user.is_admin?) || (current_user.role == 'Admin') || (current_user.role == 'Editor')  %>
+                  <p><%= link_to 'Edit',
+                              edit_deal_path(@area.deals.first),
+                              :class => 'btn btn-primary responsive-none print-none', :style => '' %>
+    
+                  </p>
+                  <% end %>
+                  <br>
+            <% end %>
+        <% else %>
+          *There is no deal currently associated with this area.<br><br>
+        <% end %>
+        
+        <br>
+      </div>
     </div>
   </div>
-</div>
-
 <% end %>
-
+<!-- END folder drop down stuff -->
 
 
 <% if (current_user && current_user.is_admin?) || (current_user && (current_user.project_ids.include? @area.project_id)) %>
 <%- model_class = Area -%>
-<!--
-<div class="page-header" style="margin: 20px 0 20px;">
-  <h1 style="float:left;"><%#=t '.title', :default => model_class.model_name.human.titleize %>: <%= @area.suite_number %></h1>
-<%# if (current_user && current_user.is_admin?) || (current_user && current_user.role == 'Admin' && (current_user.project_ids.include? @area.project_id)) || (current_user && current_user.role == 'Editor' && (current_user.project_ids.include? @area.project_id)) %>
-
-  <%#= link_to '+ Associate Area/Deal', new_areas_deal_path(:project_id => @project),
-                    :class => 'btn btn-primary print-none',
-                    :style => 'float:right;margin-top:20px;margin-right:10px;color:#fff;background-color:#16A3BA;border-color:#16A3BA;' %>
-<%# end %>
-  <br style="clear:both;">
-</div>
--->
 
 <br><br>
 
@@ -110,24 +97,24 @@ $(document).ready(function(){
 
 
 <div class="row">
-  <div class="col-xs-10 col-xs-offset-1 print-none">
+  <div class="col-xs-8 col-xs-offset-2 print-none">
     <hr class="print-none">
 
       <div class="page-header print-none">
         <button data-toggle="collapse" data-target="#schedule-collapse" 
-          class='btn btn-primary print-none' 
+          class='btn btn-primary green-button print-none' 
           style='float:right;margin-top:12px;margin-left:10px;'><i class="fa fa-chevron-down"></i></button>
           <% if (current_user && current_user.is_admin?) || (current_user && current_user.role == 'Admin') || (current_user && current_user.role == 'Editor') %>
           
             <% if @area.schedule.present? %>
               <%= link_to '+ Edit Schedule',
                           edit_schedule_path(@area.schedule.id),
-                          :class => 'btn btn-primary responsive-none print-none', :style => 'float:right;margin-top:12px;' %>
+                          :class => 'btn btn-primary green-button responsive-none print-none', :style => 'float:right;margin-top:12px;' %>
             
             <% else %>
               <%= link_to '+ Create Schedule',
                           new_schedule_path(:area_id => @area),
-                          :class => 'btn btn-primary responsive-none print-none', :style => 'float:right;margin-top:12px;' %>
+                          :class => 'btn btn-primary green-button responsive-none print-none', :style => 'float:right;margin-top:12px;' %>
             <% end %>
           <% end %>  
           <h1 class="print-none">Schedule</h1>
@@ -144,27 +131,27 @@ $(document).ready(function(){
   </div>
 </div>
 
-<hr>
+
 
 <div class="row">
-  <div class="col-xs-10 col-xs-offset-1 print-none">
+  <div class="col-xs-8 col-xs-offset-2 print-none">
     
 
       <div class="page-header print-none">
         <button data-toggle="collapse" data-target="#workletters-collapse" 
-          class='btn btn-primary print-none' 
+          class='btn btn-primary green-button print-none' 
           style='float:right;margin-top:12px;margin-left:10px;'><i class="fa fa-chevron-down"></i></button>
           <% if (current_user && current_user.is_admin?) || (current_user && current_user.role == 'Admin') || (current_user && current_user.role == 'Editor') %>
           
             <% if @area.workletter.present? %>
               <%= link_to '+ Edit Workletter',
                           edit_workletter_path(@area.workletter.id),
-                          :class => 'btn btn-primary responsive-none print-none', :style => 'float:right;margin-top:12px;' %>
+                          :class => 'btn btn-primary green-button responsive-none print-none', :style => 'float:right;margin-top:12px;' %>
             
             <% else %>
               <%= link_to '+ Create Workletter',
                           new_workletter_path(:area_id => @area),
-                          :class => 'btn btn-primary responsive-none print-none', :style => 'float:right;margin-top:12px;' %>
+                          :class => 'btn btn-primary green-button responsive-none print-none', :style => 'float:right;margin-top:12px;' %>
             <% end %>
           <% end %>  
           <h1 class="print-none">Workletter</h1>
@@ -182,11 +169,11 @@ $(document).ready(function(){
   </div>
 </div>
 
+<br><br>
 
-<hr>
 
 <div class="row">
-  <div class="col-xs-10 col-xs-offset-1">
+  <div class="col-xs-8 col-xs-offset-2">
     <table class="report-table" style="margin-bottom:0;border:none;">
       <tr>
         <td style="text-align:center;border:none;">General</td>
@@ -224,7 +211,7 @@ $(document).ready(function(){
 
 
 <div class="row">
-  <div class="col-xs-10 col-xs-offset-1">
+  <div class="col-xs-8 col-xs-offset-2">
 <table class="report-table" style="margin-bottom:0;border:none;">
       <tr>
         <td style="text-align:center;color:#fff;background-color:#231f20;border:none;">Technical Information (HVAC) <i class="fa fa-certificate print-only-inline" style="color:#231f20 !important;"></i></td>
@@ -441,7 +428,7 @@ $(document).ready(function(){
 
 
 <div class="row">
-  <div class="col-xs-10 col-xs-offset-1">
+  <div class="col-xs-8 col-xs-offset-2">
    <table class="report-table" style="border:none;">
       <tr>
         <td style="text-align:center;color:#fff;background-color:#8BC53F;border:none;">
