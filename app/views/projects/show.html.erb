@@ -12,9 +12,9 @@
 <% end %>
 
 <% if @project.maps.present? %>
-<div class="row" style="display:none">
+<div class="row row-correction" style="display:none">
 <% else %>
-<div class="row">
+<div class="row row-correction">
 <% end %>
   <div class="col-xs-10 col-xs-offset-1">
     <div class="page-header">
@@ -33,7 +33,7 @@
 </div>
 
 <% if @project.maps.present? %>
-<div class="row" style="page-break-inside: avoid;">
+<div class="row row-correction" style="page-break-inside: avoid;">
   <div class="col-xs-10 col-xs-offset-1" style="">
     <br><br>
     <%= render '/maps/fullmap' %>

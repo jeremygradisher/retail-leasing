@@ -287,12 +287,18 @@ box-shadow: 0px -4px 3px rgba(50, 50, 50, 0.15);  }
         padding:0;margin-right:10px;margin-left:10px;box-shadow: 0px 0px 20px 0px #aaa;}
 .switch-buttons:hover {background-color:#f2f2f2}
 .switch-buttons:active {background-color:#ddd}
-.switch-buttons:active:focus, .switch-buttons:focus {outline: none;background-color:#f9f9f9;border:1;border-color:#19a3bb;}
+.switch-buttons:active:focus, .switch-buttons:focus {outline: none;background-color:#f9f9f9;border:1;}
 .switch-buttons img {width:100%;border:0;margin:0;}
 //*for jQuery forn switch buttons*//
-.switch-buttons-active {background-color:#f9f9f9;border:1;border-color:#19a3bb;}
-.switch-buttons-active:active:focus, .switch-buttons-active:focus {outline: none;background-color:#f9f9f9;border:1;border-color:#19a3bb;}
+.switch-buttons-active {background-color:#f9f9f9;border:1;}
+.switch-buttons-active:active:focus, .switch-buttons-active:focus {outline: none;background-color:#f9f9f9;border:1;}
 
+.blue-active, .blue-active:active:focus, .blue-active:active,
+             .blue-active:focus {border-color:#19a3bb;}
+.red-active, .red-active:active:focus, .red-active:active,
+             .red-active:focus {border-color:#D13E27;}
+.yellow-active, .yellow-active:active:focus, .yellow-active:active,
+             .yellow-active:focus {border-color:#E5BA21;}
 
 .action-buttons img {width:30px;}
 a.action-buttons:hover {background-color:none;}
@@ -823,6 +829,7 @@ table.report-table tr td, table.report-table tr th, table.report-table-less tr t
 
 .bottom-icons:hover {background:none}
 
+.row-correction {padding-left:0;padding-right:0;margin-right:0;margin-left:0;}
 /* end Jeremy custom Fixes */
 
 
