@@ -68,7 +68,7 @@ $(document).ready(function(){
         <%= link_to image_tag(@area.deals.first.dealimages.first.dealimage_url, :style => 'width:100% !important;'), deal_path(@area.deals.first) %>
       <% end %>
     <% else %>
-      <%= image_tag('/images/status-plan-logo.png', :style => 'max-width:300px !important;') %>
+      <%= image_tag('/images/status-plan-logo.png', :style => 'width:100% !important;') %>
     <% end %>
     <br><hr>
     <b>SqFt:</b> <span style="float:right;"><%= number_with_delimiter(@area.area_sqft, :delimiter => ',') %></span><br>
