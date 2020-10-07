@@ -50,30 +50,34 @@ $(document).ready(function(){
 <% if (current_user && current_user.is_admin?) || (current_user && (current_user.project_ids.include? @area.project_id)) %>
 <%- model_class = Area -%>
 
+<style>
+  .fa-minus-square {color:#d13e27;}
+</style>
+
 <br><br>
 
 <div class="row">
-  <div class="col-xs-5 col-xs-offset-1">
+  <div class="col-xs-6 col-xs-offset-1">
     <%= render 'areamap' %>
   </div>
-  <div class="col-xs-5">
+  <div class="col-xs-4">
     <% if @area.deals.count > 0 %>
       <% if @area.deals.first.dealimages.blank? %>
-        <%= link_to image_tag('/images/status-plan-logo.png', :style => 'max-width:300px !important;'), deal_path(@area.deals.first) %>
+        <%= link_to image_tag('/images/status-plan-logo.png', :style => 'width:100% !important;'), deal_path(@area.deals.first) %>
       <% else %>
-        <%= link_to image_tag(@area.deals.first.dealimages.first.dealimage_url, :style => 'max-width:300px !important;'), deal_path(@area.deals.first) %>
+        <%= link_to image_tag(@area.deals.first.dealimages.first.dealimage_url, :style => 'width:100% !important;'), deal_path(@area.deals.first) %>
       <% end %>
     <% else %>
       <%= image_tag('/images/status-plan-logo.png', :style => 'max-width:300px !important;') %>
     <% end %>
     <br><hr>
-    SqFt: <%= number_with_delimiter(@area.area_sqft, :delimiter => ',') %><br>
-    Suite #: <%= @area.suite_number %><br>
-    Status: <%= @area.status %><br>
-    Area Budget Rate: <%= number_with_delimiter(@area.area_budget_rate, :delimiter => ',') %><br><br>
+    <b>SqFt:</b> <span style="float:right;"><%= number_with_delimiter(@area.area_sqft, :delimiter => ',') %></span><br>
+    <b>Suite #:</b> <span style="float:right;"><%= @area.suite_number %></span><br>
+    <b>Status:</b> <span style="float:right;"><%= @area.status %></span><br>
+    <b>Area Budget Rate:</b> <span style="float:right;"><%= number_with_delimiter(@area.area_budget_rate, :delimiter => ',') %></span><br><br>
     
-    Associated Deals: <%= @area.areas_deals.count %><br>
-    Deal Titles:<br>
+    <b>Associated Deals:</b> <%= @area.areas_deals.count %><br>
+    <b>Deal Titles:</b><br>
     <% if @area.deals.count > 0 %>
         <% @area.deals.each do |deal| %>
           <%= link_to deal.deal_name, deal %> <%#= AreasDeal.where(deal_id: deal, area_id: @area).ids %> 
@@ -90,7 +94,13 @@ $(document).ready(function(){
     <br>
     <% if current_user.is_admin? || current_user.role == 'Admin' || current_user.role == 'Editor' %>
     <br>
-    <%= render :partial => 'add_deal_association' %>
+    <a class="" data-toggle="collapse" href="#AreaCollapse" role="button" aria-expanded="false" aria-controls="AreaCollapse">
+        + Deal
+    </a>
+    <div class="collapse" id="AreaCollapse">
+      <br>
+      <%= render :partial => 'add_deal_association' %>
+    </div>
     <% end %>
   </div>
 </div>
