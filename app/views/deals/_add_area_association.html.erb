@@ -1,8 +1,6 @@
 <%- model_class = Deal -%>
-<dt><strong><%= model_class.human_attribute_name(:add_area_association) %>:</strong></dt>
-<dd>
-    
-    <%= form_for @areas_deal, :html => { :class => "form-horizontal areas_deal" } do |f| %>
+<strong><%= model_class.human_attribute_name(:add_area_association) %>:</strong>
+<%= form_for @areas_deal, :html => { :class => "form-horizontal areas_deal" } do |f| %>
 
   <% if @areas_deal.errors.any? %>
     <div id="error_expl" class="panel panel-danger">
@@ -19,18 +17,17 @@
     </div>
   <% end %>
 
-<div style="width:200px;float:left;padding-right:5px;margin-bottom:20px;">
+<div style="width:160px;float:left;padding-right:5px;margin-bottom:20px;">
     <%= f.number_field :deal_id, value: params[:id], :class => 'form-control', :style => 'display:none;' %>
-    <%= f.select :area_id, @otherareas.map{ |a| [a.suite_number, a.id] }, {include_blank: false}, :class => 'form-control' %>
+    <%= f.select :area_id, @otherareas.map{ |a| [a.suite_number, a.id] }, {include_blank: false}, :class => 'form-control', :style => 'height:40px;' %>
     <%= f.number_field :project_id, value: @deal.project_id, :class => 'form-control', :style => 'display:none;' %>
 
     <%=f.error_span(:area_id) %>
     <%=f.error_span(:deal_id) %>
     <%=f.error_span(:project_id) %>
 </div>    
-    <%= f.submit "+ Area Association", :class => 'btn btn-primary', :style => 'height:40px;' %>
+    <%= f.submit '+ Associate Area', :class => 'btn btn-primary', :style => 'height:40px;' %>
 
 <% end %>
 
     
-</dd>

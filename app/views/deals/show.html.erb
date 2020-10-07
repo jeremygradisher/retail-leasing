@@ -1,87 +1,435 @@
 <% if (current_user && current_user.is_admin?) || (current_user && (current_user.project_ids.include? @deal.project_id)) %>
+
+<style>
+  .fa-minus-square {color:#d13e27;}
+</style>
+
 <%- model_class = Deal -%>
-<!--
-<div class="page-header" style="margin: 20px 0 20px;">
-  <h1 style="float:left;"><%#=t '.title', :default => model_class.model_name.human.titleize %>: <%#= @deal.deal_name %></h1>
-<%# if (current_user && current_user.is_admin?) || (current_user && current_user.role == 'Admin' && (current_user.project_ids.include? @deal.project_id)) || (current_user && current_user.role == 'Editor' && (current_user.project_ids.include? @deal.project_id)) %>
-
-  <%#= link_to '+ Associate Area/Deal', new_areas_deal_path(:project_id => @project),
-                    :class => 'btn btn-primary print-none',
-                    :style => 'float:right;margin-top:20px;margin-right:10px;color:#fff;background-color:#16A3BA;border-color:#16A3BA;' %>
-<%# end %>
-  <br style="clear:both;">
-</div>
--->
-<div class="row">
-  <div class="col-xs-10 col-xs-offset-1">
-
 <br><br>
-<dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:deal_name) %>:</strong></dt>
-  <dd><%= @deal.deal_name %></dd>
-  
-  <dt><strong><%= model_class.human_attribute_name(:associated_areas) %>:</strong></dt>
-  <dd><%= @deal.areas.count %></dd>
-  
-  <dt><strong><%= model_class.human_attribute_name(:area_titles) %>:</strong></dt>
-  <dd>
-      <% if @deal.areas.count > 0 %>
-        <% @deal.areas.each do |area| %>
-          <%= link_to area.suite_number, area %>
-          <% if current_user.is_admin? || current_user.role == 'Admin' || current_user.role == 'Editor' %>
-          <%= link_to '<i class="fa fa-minus-square"></i>'.html_safe, areas_deal_path(AreasDeal.where(deal_id: @deal, area_id: area).ids), 
-              :method => :delete, 
-              :title => 'Remove Association',
-              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) } %>
-          <% end %>
-          <br>
-        <% end %>
-      <% else %>There are no areas associated.<% end %></dd>
-  
-  
-  <% if current_user.is_admin? || current_user.role == 'Admin' || current_user.role == 'Editor' %>
-  <br>
-  <%= render :partial => 'add_area_association' %>
-  <% end %>
-  
-  <dt><strong><%= model_class.human_attribute_name(:gross_area) %>:</strong></dt>
-  <dd><%= number_with_delimiter(@deal.gross_area, :delimiter => ',') %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:net_rentable_area) %>:</strong></dt>
-  <dd><%= number_with_delimiter(@deal.net_rentable_area, :delimiter => ',') %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:lease_status) %>:</strong></dt>
-  <dd><%= @deal.lease_status %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:project_id) %>:</strong></dt>
-  <dd><%= @deal.project_id %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:map_id) %>:</strong></dt>
-  <dd><%= @deal.map_id %></dd>
-</dl>
-
-
-  </div>
-</div>
-
 <div class="row">
-  <div class="col-lg-3">
+  <div class="col-xs-3 col-xs-offset-1">
+    <div class="" style="border:0;height:176px;text-align:right;padding:4px;">
+    <% if @dealimages.exists? %>
       <% @dealimages.each do |p| %>
-            <%= image_tag p.dealimage_url, :style => 'max-width:100%;padding:5%;' %><br>
+            <%= image_tag p.dealimage_url, :style => 'height:166px;' %><br>
             
             <% if current_user.is_admin? || current_user.role == 'Admin' || current_user.role == 'Editor' %>
-            <div style="margin-left:auto;margin-right:auto;text-align:center;">
+            <div style="margin-left:5px;margin-top:-38px;">
             <%= link_to '<i class="fa fa-edit"></i>'.html_safe,
                   edit_dealimage_path(p), :class => 'btn btn-primary', 
                   :title => 'Edit Attachment'  %>
-            <%#= link_to "Destroy Attachment", destroy_associate_attachment_path(p) %>
-            <%= link_to '<i class="fa fa-trash"></i>'.html_safe,
+            <%#= link_to '<i class="fa fa-trash"></i>'.html_safe,
                   dealimage_path(p),
                   :method => 'delete',
                   :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
                   :class => 'btn btn-danger', :title => 'Delete Attachment'  %>
-            <% end %>
             </div>
-            <hr style="clear:both;">
+            <% end %>
+            
+            
       <% end %>
+    <% else %>  
+    
+          <%= image_tag '/images/status-plan-logo.png', 
+                :style => 'height:166px;' %>
+           
+           <% if current_user.is_admin? || current_user.role == 'Admin' || current_user.role == 'Editor' %>
+            <div style="margin-top:-38px;">
+            <%= link_to '<i class="fa fa-edit"></i>'.html_safe,
+                  edit_deal_path(@deal), :class => 'btn btn-primary', 
+                  :title => 'Edit Attachment'  %>
+            <%#= link_to '<i class="fa fa-trash"></i>'.html_safe,
+                  dealimage_path(p),
+                  :method => 'delete',
+                  :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                  :class => 'btn btn-danger', :title => 'Delete Attachment'  %>
+            </div>
+            <% end %>                                             
+         
+    <% end %>
+    </div>
+  </div>
+  <div class="col-xs-4">
+    <div class="panel panel-default" style="min-height:176px;">
+      <div class="panel-body">
+        <div style="margin-bottom:6px;">
+        <strong>Deal Name</strong>
+        <span style="float:right;font-size:200%;"><%= @deal.deal_name %></span>
+        </div>
+        <div style="margin-bottom:6px;">
+        <strong>Gross Area</strong>
+        <span style="float:right;"><%= number_with_delimiter(@deal.gross_area, :delimiter => ',') %></span>
+        </div>
+        <div style="margin-bottom:6px;">
+        <strong>Net Rentable Area</strong>
+        <span style="float:right;"><%= number_with_delimiter(@deal.net_rentable_area, :delimiter => ',') %></span>
+        </div>
+        <div style="margin-bottom:6px;">
+        <strong>Lease Status</strong>
+        <span style="float:right;"><%= @deal.lease_status %></span>
+        </div>
+        <div style="margin-bottom:6px;">
+        <strong>Merchandising</strong>
+        <span style="float:right;"><%= @deal.merchandising_status %></span>
+        </div>
+        
+        <div style="margin-bottom:6px;">
+        <strong>Project</strong>
+        <span style="float:right;"><%= @deal.project.name %></span>
+        </div>
+        <!--
+        <div style="margin-bottom:6px;">
+        <strong>Map id</strong>
+        <span style="float:right;"><%#= @deal.map_id %></span>
+        </div>
+        -->
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-3">
+    <div class="panel panel-default" style="min-height:176px;">
+      <div class="panel-body">
+        <div style="margin-bottom:6px;">
+        <strong>Associated Area:</strong>
+        <span style="float:right;font-size:200%;">
+          <% if @deal.areas.count > 0 %>
+            <%= link_to @deal.areas.first.suite_number, @deal.areas.first %>
+          <% end %>
+        </span>
+        </div>
+        
+        <strong>Area Titles (<%= @deal.areas.count %>):</strong><br>
+            <% if @deal.areas.count > 0 %>
+              <% @deal.areas.each do |area| %>
+                <%= link_to area.suite_number, area %>
+                <% if current_user.is_admin? || current_user.role == 'Admin' || current_user.role == 'Editor' %>
+                <%= link_to '<i class="fa fa-minus-square"></i>'.html_safe, areas_deal_path(AreasDeal.where(deal_id: @deal, area_id: area).ids), 
+                    :method => :delete, 
+                    :title => 'Remove Association',
+                    :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) } %>
+                <% end %>
+                <br>
+              <% end %>
+            <% else %>
+            There are no areas associated.
+            <br>
+            <% end %>
+        
+        
+        <% if current_user.is_admin? || current_user.role == 'Admin' || current_user.role == 'Editor' %>
+        <br>
+        <a class="" data-toggle="collapse" href="#collapseAssociation" role="button" aria-expanded="false" aria-controls="collapseAssociation">
+          + Area
+        </a><br>
+        <div class="collapse" id="collapseAssociation">
+          <br>
+        <%= render :partial => 'add_area_association' %>
+        </div>
+        <% end %>
+      </div>
+    </div>    
   </div>
 </div>
+
+<!-- overall-->
+<div class="row">
+  <div class="col-xs-10 col-xs-offset-1">
+
+
+
+<div class="row">
+  <div class="col-xs-2">
+  </div>
+  <div class="col-xs-8">
+    <strong>Status Notes:</strong> <%= simple_format(@deal.status_notes) %>
+    
+  </div>
+  <div class="col-xs-2">
+
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2">
+  </div>
+  <div class="col-xs-8">
+    <strong>Tenant Description:</strong> <%= simple_format(@deal.tenant_description) %>
+    
+  </div>
+  <div class="col-xs-2">
+
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-xs-2">
+  </div>
+  <div class="col-xs-8">
+    <strong>Tenant Contact:</strong> <%= @deal.tenant_contact %><br><br>
+  </div>
+  <div class="col-xs-2">
+
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2">
+  </div>
+  <div class="col-xs-8">
+    <strong>Key Contacts:</strong> <%= simple_format(@deal.key_contacts) %>
+    
+  </div>
+  <div class="col-xs-2">
+
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2">
+  </div>
+  <div class="col-xs-8">
+    <!--<strong>Tenant Documents:</strong> <%= @deal.tenant_documents %>-->
+      <%= form_for @deal, :html => { :class => "form-horizontal area" } do |f| %>
+            <p style="font-weight:bold;">Tenant Documents:</p>
+            <%= f.text_field :tenant_documents, :class => 'form-control add-tags' %>
+          <hr>
+      <% end %>
+  </div>
+  <div class="col-xs-2">
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2">
+  </div>
+  <div class="col-xs-8">
+    <!--<strong>Tenant Documents:</strong> <%= @deal.landlord_work %>-->
+      <%= form_for @deal, :html => { :class => "form-horizontal area" } do |f| %>
+            <p style="font-weight:bold;">Landlord Work:</p>
+            <%= f.text_field :landlord_work, :class => 'form-control add-tags' %>
+          <hr>
+      <% end %>
+  </div>
+  <div class="col-xs-2">
+  </div>
+</div>
+
+<hr>
+
+<div class="row">
+  <div class="col-xs-2">
+  </div>
+  <div class="col-xs-4">
+    <strong>Priority:</strong> <% if @deal.priority == true %><i style="color:#E5BA21;" class="fa fa-star" aria-hidden="true"></i><% else %><% end %>
+  </div>
+  <div class="col-xs-4">
+    <strong>Owner Approval:</strong> <%#= @deal.owner_approval %>
+    <% if @deal.owner_approval == true %><i style="color:#8BC53F;" class="fa fa-check" aria-hidden="true"></i><% else %><%#= object[:owner_approval] %><% end %>
+  </div>
+  <div class="col-xs-2">
+  </div>
+</div>
+
+<hr>
+
+<div class="row">
+  <div class="col-xs-12">
+    <div class="page-header"><h3>Term of Deal</h3></div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2">
+  </div>
+  <div class="col-xs-4">
+    <strong>Deal Term:</strong> <%= @deal.deal_term %> years<br>
+    <% if @deal.fit_out_duration == 'other' %>
+      <strong>Fit Out Duration:</strong> <%= @deal.fit_out_duration_if %> days
+    <% else %>
+      <strong>Fit Out Duration:</strong> <%= @deal.fit_out_duration %> days
+    <% end %>
+  </div>
+  <div class="col-xs-4">
+    <strong>Date of Possession:</strong> <%= @deal.date_of_possession %><br>
+    <strong>Action Required:</strong> <%= @deal.action_required %>
+    
+  </div>
+  <div class="col-xs-2">
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2">
+  </div>
+  <div class="col-xs-8">
+    <strong>Term Notes:</strong> <%= simple_format(@deal.term_notes) %>
+  </div>
+  <div class="col-xs-2">
+  </div>
+</div>
+<hr>
+
+<div class="row">
+  <div class="col-xs-12">
+    <div class="page-header"><h3>Budget</h3></div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2">
+  </div>
+  <div class="col-xs-4">
+    <strong>Budget Rate:</strong> $<%= number_with_delimiter(@deal.budget_rate, :delimiter => ',') %>
+  </div>
+  <div class="col-xs-4">
+    <strong>Budget TI:</strong> $<%= number_with_delimiter(@deal.budget_ti, :delimiter => ',') %><br>
+    <strong>Base Building Cost:</strong> $<%= number_with_delimiter(@deal.base_building_cost, :delimiter => ',') %>
+  </div>
+  <div class="col-xs-2">
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12">
+    <div class="page-header"><h3>Rent</h3></div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2">
+  </div>
+  <div class="col-xs-4">
+    <strong>Base Rent ($ per SqFt):</strong> $<%= number_with_delimiter(@deal.base_rent, :delimiter => ',') %><br>
+    <strong>Percentage of Rent:</strong> <%= @deal.percentage_of_rent %><% if !@deal.percentage_of_rent %><% else %>%<% end %><br>
+    <strong>Increase:</strong> <%= @deal.increase %><% if !@deal.increase %><% else %>%<% end %>
+  </div>
+  <div class="col-xs-4">
+    <strong>Total Base Rent:</strong> $<%= number_with_delimiter(@deal.total_base_rent, :delimiter => ',') %><br>
+    <strong>Break Point:</strong> $<%= number_with_delimiter(@deal.break_point, :delimiter => ',') %>
+  </div>
+  <div class="col-xs-2">
+  </div>
+</div>
+
+<hr>
+
+<div class="row">
+  <div class="col-xs-12">
+    <div class="page-header"><h3>Inducement</h3></div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2">
+  </div>
+  <div class="col-xs-4">
+    <strong>TI Allowance (per SqFt):</strong> $<%= number_with_delimiter(@deal.ti_allowance, :delimiter => ',') %><br>
+    <strong>LL Work (per SqFt):</strong> <% if @workletter != nil %>$<%= number_with_delimiter(@workletter.ll_work, :delimiter => ',') %><% end %><br>
+    <strong>Fit Out (per SqFt):</strong> $<%= number_with_delimiter(@deal.fit_out, :delimiter => ',') %>
+  </div>
+  <div class="col-xs-4">
+    <strong>TI Cost:</strong> $<%= number_with_delimiter(@deal.ti_cost, :delimiter => ',') %><br>
+    <strong>LL Work Cost:</strong> <% if @workletter != nil %>$<%= number_with_delimiter(@workletter.ll_work_cost, :delimiter => ',') %><% end %><br>
+    <strong>Fit Out Cost:</strong> $<%= number_with_delimiter(@deal.fit_out_cost, :delimiter => ',') %>
+
+  </div>
+  <div class="col-xs-2">
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2">
+  </div>
+  <div class="col-xs-8">
+    <strong>Abatement:</strong> <%= simple_format(@deal.abatement) %>
+  </div>
+  <div class="col-xs-2">
+  </div>
+</div>
+
+<hr>
+
+<div class="row">
+  <div class="col-xs-12">
+    <div class="page-header"><h3>CAM</h3></div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2">
+  </div>
+  <div class="col-xs-4">
+    <strong>CAM (per SqFt):</strong> $<%= number_with_delimiter(@deal.cam, :delimiter => ',') %>
+  </div>
+  <div class="col-xs-4">
+    <strong>CAM Cost Annually:</strong> $<%= number_with_delimiter(@deal.cam_cost, :delimiter => ',') %>
+  </div>
+  <div class="col-xs-2">
+  </div>
+</div>
+
+<hr>
+
+<div class="row">
+  <div class="col-xs-12">
+    <div class="page-header"><h3>Commission</h3></div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2">
+  </div>
+  <div class="col-xs-4">
+    <strong>Commission Inside:</strong> $<%= number_with_delimiter(@deal.comm_inside, :delimiter => ',') %>
+  </div>
+  <div class="col-xs-4">
+    <strong>Commission Outside:</strong> $<%= number_with_delimiter(@deal.comm_outside, :delimiter => ',') %>
+  </div>
+  <div class="col-xs-2">
+  </div>
+</div>
+
+<hr>
+
+<div class="row">
+  <div class="col-xs-12">
+    <div class="page-header"><h3>Fees</h3></div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2">
+  </div>
+  <div class="col-xs-4">
+    <strong>Taxes (per SqFt):</strong> $<%= number_with_delimiter(@deal.taxes, :delimiter => ',') %><br>
+    <strong>Insurance (per SqFt):</strong> $<%= number_with_delimiter(@deal.insurance, :delimiter => ',') %><br>
+    <strong>Marketing (per SqFt):</strong> $<%= number_with_delimiter(@deal.marketing, :delimiter => ',') %><br>
+    <strong>GO Marketing (per SqFt):</strong> $<%= number_with_delimiter(@deal.go_marketing, :delimiter => ',') %><br>
+    <strong>Trash (per SqFt):</strong> $<%= number_with_delimiter(@deal.trash, :delimiter => ',') %><br>
+    <strong>Other (per SqFt):</strong> $<%= number_with_delimiter(@deal.other, :delimiter => ',') %><br>
+    <strong>Fee SqFt Total:</strong> $<%= number_with_delimiter(@deal.fee_sqft_total, :delimiter => ',') %>
+  </div>
+  <div class="col-xs-4">
+    <strong>Taxes Cost:</strong> $<%= number_with_delimiter(@deal.taxes_cost, :delimiter => ',') %><br>
+    <strong>Insurance Cost:</strong> $<%= number_with_delimiter(@deal.insurance_cost, :delimiter => ',') %><br>
+    <strong>Marketing Cost:</strong> $<%= number_with_delimiter(@deal.marketing_cost, :delimiter => ',') %><br>
+    <strong>GO Marketing Cost:</strong> $<%= number_with_delimiter(@deal.go_marketing_cost, :delimiter => ',') %><br>
+    <strong>Trash Cost:</strong> $<%= number_with_delimiter(@deal.trash_cost, :delimiter => ',') %><br>
+    <strong>Other Cost:</strong> $<%= number_with_delimiter(@deal.other_cost, :delimiter => ',') %><br>
+    <strong>Fee Total Cost:</strong> $<%= number_with_delimiter(@deal.fee_cost_total, :delimiter => ',') %>
+  </div>
+  <div class="col-xs-2">
+  </div>
+</div>
+
+
+  </div>
+</div>
+<!-- overall end -->
+
+<br><br><br><br>
+
 
 
 <%#= link_to "<= Project",
@@ -103,3 +451,28 @@
 <% else %>
  <h2>You are not authorized to be here. <a href="/" class="btn btn-default">Return Home</a></h2>
 <% end %>
+
+
+
+<script type="text/javascript">
+  $(document).ready(function() {
+      $(".add-tags").tagit({
+      
+          // Options
+          readOnly: true,
+
+          // Events
+          onTagClicked: function(event, ui) {
+              console.log(ui.tag);
+              console.log(ui.tagLabel);
+              //window.location = ui.tag;
+              window.open(ui.tagLabel);
+          },
+          onTagLimitExceeded: function(event, ui) {
+              console.log(ui.tag);
+          }
+      
+      });
+
+  });
+</script> 
