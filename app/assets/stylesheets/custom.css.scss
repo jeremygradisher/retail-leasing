@@ -40,11 +40,42 @@ body {margin:0 !important;}
 /* standard stuff */
 
 
-.leased {color:#8BC53F;}
-.at_lease {color:#15958A;}
-.loi {color:#F16528;}
-.prospect {color:#E5BA21;}
-.available {color:#D13E27;}
+.leased {color:#8BC53F !important;}
+  .at_lease {color:#15958A !important;}
+  .loi {color:#F16528 !important;}
+  .prospect {color:#E5BA21 !important;}
+  .available {color:#D13E27 !important;}
+  
+  .a01_available {color:#D13E27 !important;}
+  .a02_lease_negotiation {color:#F16528 !important;}
+  .a03_landlord_construction {color:#E5BA21 !important;}
+  .a04_tenant_design {color:#24b9ae !important;}
+  .a05_tenant_fit_out {color:#c9e1f7 !important;}
+  .a06_open_for_business {color:#15958A !important;}
+  .a07_close_out {color:#6e4a86 !important;}
+  .a08_operating {color:#8BC53F !important;}
+  
+  .challenged {color:#E5BA21 !important;}
+  .yes {color:#8BC53F !important;}
+  .no {color:#D13E27 !important;}
+  
+  .auto_gas {color:#66635f !important;}
+  .candy_confectionary {color:#f9ef7b !important;}
+  .department_store {color:#fed389 !important;}
+  .electronics {color:#be8b67 !important;}
+  .entertainment {color:#e62536 !important;}
+  .fashion {color:#67a5d7 !important;}
+  .food_beverage {color:#f7b131 !important;}
+  .footwear {color:#388b00 !important;}
+  .grocery_hypermarket {color:#b6cf42 !important;}
+  .home_furnishings {color:#f38a7c !important;}
+  .jewelry_handbags {color:#a6749c !important;}
+  .mobiles_accessories {color:#3a63a8 !important;}
+  .perfume_cosmetics {color:#ec4f92 !important;}
+  .pets {color:#e29423 !important;}
+  .services_specialty_stores {color:#efa1c5 !important;}
+  .sports_outdoor_fitness {color:#7ca180 !important;}
+  .toys_hobbies_gifts_books {color:#b2cce9 !important;}
 
 
 
@@ -287,12 +318,18 @@ box-shadow: 0px -4px 3px rgba(50, 50, 50, 0.15);  }
         padding:0;margin-right:10px;margin-left:10px;box-shadow: 0px 0px 20px 0px #aaa;}
 .switch-buttons:hover {background-color:#f2f2f2}
 .switch-buttons:active {background-color:#ddd}
-.switch-buttons:active:focus, .switch-buttons:focus {outline: none;background-color:#f9f9f9;border:1;border-color:#19a3bb;}
+.switch-buttons:active:focus, .switch-buttons:focus {outline: none;background-color:#f9f9f9;border:1;}
 .switch-buttons img {width:100%;border:0;margin:0;}
 //*for jQuery forn switch buttons*//
-.switch-buttons-active {background-color:#f9f9f9;border:1;border-color:#19a3bb;}
-.switch-buttons-active:active:focus, .switch-buttons-active:focus {outline: none;background-color:#f9f9f9;border:1;border-color:#19a3bb;}
+.switch-buttons-active {background-color:#f9f9f9;border:1;}
+.switch-buttons-active:active:focus, .switch-buttons-active:focus {outline: none;background-color:#f9f9f9;border:1;}
 
+.blue-active, .blue-active:active:focus, .blue-active:active,
+             .blue-active:focus {border-color:#19a3bb;}
+.red-active, .red-active:active:focus, .red-active:active,
+             .red-active:focus {border-color:#D13E27;}
+.yellow-active, .yellow-active:active:focus, .yellow-active:active,
+             .yellow-active:focus {border-color:#E5BA21;}
 
 .action-buttons img {width:30px;}
 a.action-buttons:hover {background-color:none;}
@@ -823,6 +860,7 @@ table.report-table tr td, table.report-table tr th, table.report-table-less tr t
 
 .bottom-icons:hover {background:none}
 
+.row-correction {padding-left:0;padding-right:0;margin-right:0;margin-left:0;}
 /* end Jeremy custom Fixes */
 
 
