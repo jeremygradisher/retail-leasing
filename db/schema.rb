@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200910160335) do
+ActiveRecord::Schema.define(version: 20201019204306) do
 
   create_table "areas", force: :cascade do |t|
     t.string   "suite_number"
@@ -333,6 +333,8 @@ ActiveRecord::Schema.define(version: 20200910160335) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "role"
+    t.integer  "invited_by"
+    t.integer  "project_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["role"], name: "index_users_on_role"
