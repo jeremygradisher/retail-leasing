@@ -70,7 +70,11 @@
               <ul class="" style="max-width:200px;list-style-type: none;float:left;margin-top:15px;padding-left:10px;/*-webkit-padding-start: 10px;*/">
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle branded-font" style="font-size:16pt;color:#000;underline:none;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                    <% if !current_user.first_name.blank? %>
                     <%= truncate(current_user.first_name + " " + current_user.last_name, length: 25).html_safe %>
+                    <% else %>
+                    Update Your Name
+                    <% end %>
                     <span class="caret"></span>
                   </a>
 
