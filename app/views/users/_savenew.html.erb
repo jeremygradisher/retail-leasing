@@ -1,0 +1,100 @@
+<% if (current_user && current_user.is_admin?) || (current_user && current_user.role == 'Admin') %>
+
+<%- model_class = User -%>
+
+<div class="row">
+  <div class="col-xs-10 col-xs-offset-1">
+      <% if (current_user && current_user.is_admin?) || (current_user && current_user.role == 'Admin') %> 
+      <div class="page-header">
+      <h1><%=t '.title', :default => [:'helpers.titles.new', 'Invite New %{model}'], :model => model_class.model_name.human.titleize %></h1>
+      </div>
+      
+      <%= form_for(@user, :html => { :class => "form login" }) do |f| %>
+      <% if @user.errors.any? %>
+      <div id="error_expl" class="panel panel-danger">
+        <div class="panel-heading">
+          <h3 class="panel-title"><%= pluralize(@user.errors.count, "error") %> prohibited this User from being saved:</h3>
+        </div>
+      
+        <div class="panel-body">
+          <ul>
+          <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
+      </div>
+      <% end %>
+      
+      <% if @user.errors.any? %>
+      <div id="error_expl" class="panel panel-danger">
+        <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@user.errors.count, "error") %> prohibited this User from being saved:</h3>
+        </div>
+      
+        <div class="panel-body">
+          <ul>
+            <% @user.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+      <% end %>
+      
+      <%= fields_for( :user ) do |w| %>
+      <div class="control-group">
+        <%= w.label :email, :class => "control-label" %>
+        <div class="controls">
+        <%= w.text_field :email, :class => 'form-control' %>
+        </div>
+      </div>
+      <% end %>
+      <br />
+      
+      <div class="control-group">
+      <%= f.label :first_name, :class => "control-label" %>
+      <%= f.text_field :first_name, :class => "form-control" %>
+      </div>
+      <br />
+      
+      <div class="control-group">
+      <%= f.label :last_name, :class => "control-label" %>
+      <%= f.text_field :last_name, :class => "form-control" %>
+      </div>
+      <br />
+      
+      <div class="control-group">
+      <%= f.label :role, :class => "control-label" %>
+      <%= f.select :role, ['User', 'Editor', 'Admin'], {include_blank:false}, :class => 'form-control' %>
+      </div>
+      <br />
+      
+      
+      <div class="control-group" <% if !current_user.is_admin? %>style="display:none;"<% end %>>
+      <%= f.label :invited_by, :class => "control-label" %>
+      <%= f.text_field :invited_by, value: current_user.id, :class => "form-control" %>
+      </div>
+      <br />
+      
+      <div class="control-group" <% if !current_user.is_admin? %>style="display:none;"<% end %>>
+      <%= f.label :project_id, :class => "control-label" %>
+      <%= f.text_field :project_id, :class => "form-control" %>
+      </div>
+      <br />
+      
+      
+      <div class="control-group">
+      <button class="btn btn-primary" type="submit">
+      Create user and invite
+      </button>
+      </div>
+      <br><br>
+      <% end %>
+      <% end %>
+  </div>
+</div>
+
+<% else %>
+ <h2>Only admins can access this page. <a href="/" class="btn btn-default">Return Home</a></h2>
+<% end %>

@@ -5,8 +5,9 @@ source 'https://rubygems.org'
 gem 'rails', '~> 5.0.0'
 ruby '2.6.3'
 # Use sqlite3 as the database for Active Record
-gem 'devise'
 #gem 'sqlite3'
+gem 'devise'
+gem 'devise_invitable', '~> 2.0.0'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets

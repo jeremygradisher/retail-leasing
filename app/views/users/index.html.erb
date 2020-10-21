@@ -10,7 +10,11 @@
       <th>User:</th>
       <th>First Name:</th>
       <th>Last Name:</th>
-      <!--<th>is_admin?:</th>-->
+      <!--
+      <th>Invited By:</th>
+      <th>Invited By ID:</th>
+      <th>Project ID:</th>
+      -->
       <td>Project IDs:</td>
       <th>Role:</th>
       <th>Last Signed in at:</th>
@@ -35,7 +39,9 @@
         <td><%= link_to user.email, user_path(user) %></td>
         <td><%= user.first_name %></td>
         <td><%= user.last_name %></td>
-        <!--<td><%#= user.is_admin %></td>-->
+        <!--<td><%#= user.invited_by %></td>
+        <td><%#= user.invited_by_id %></td>
+        <td><%#= user.project_id %></td>-->
         <td><%= user.project_ids %></td>
         <td><% if user.is_admin? %>Super-Admin<% elsif user.role.blank? %>User<% else %><%= user.role %><% end %></td>
         <td><%= user.last_sign_in_at %></td>
@@ -63,6 +69,10 @@
 
 <%#= link_to 'Home', root_path, :class => 'btn btn-default' %>
 <br><br>
+
+<%#= link_to 'Invitations', new_user_invitation_path %>
+
+
 
 <%#= link_to users_path %>
 <% else %>
