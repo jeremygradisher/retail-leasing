@@ -1,16 +1,77 @@
-<h2><%= t "devise.invitations.new.header" %></h2>
+<% if (current_user && current_user.is_admin?) || (current_user && current_user.role == 'Admin') %>
+<div class="row">
+  <div class="col-xs-10 col-xs-offset-1" style="/*text-align:center;*/">
+
+  <div class="page-header">
+  <h2><%= t "devise.invitations.new.header" %></h2>
+  </div>
+
+
 
 <%= form_for(resource, as: resource_name, url: invitation_path(resource_name), html: { method: :post }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
-  <% resource.class.invite_key_fields.each do |field| -%>
-    <div class="field">
-      <%= f.label field %><br />
-      <%= f.text_field field %>
+<!--
+  <%# resource.class.invite_key_fields.each do |field| -%>
+    <div class="control-group" style="width:100%;">
+      <%#= f.label field, :class => 'control-label col-lg-2' %>
+      <div class="col-lg-4">
+      <%#= f.text_field field, :class => 'form-control' %>
+      </div>
+      <%#=f.error_span(field) %>
+      <div class="col-lg-4">
+      </div>
     </div>
-  <% end -%>
+  <%# end -%>
+-->
 
-  <div class="actions">
+
+      <div class="control-group">
+      <%= f.label :email, :class => "control-label" %>
+      <%= f.text_field :email, :class => "form-control" %>
+      </div>
+      <br />
+  
+      <div class="control-group">
+      <%= f.label :first_name, :class => "control-label" %>
+      <%= f.text_field :first_name, :class => "form-control" %>
+      </div>
+      <br />
+      
+      <div class="control-group">
+      <%= f.label :last_name, :class => "control-label" %>
+      <%= f.text_field :last_name, :class => "form-control" %>
+      </div>
+      <br />
+      
+      <div class="control-group">
+      <%= f.label :role, :class => "control-label" %>
+      <%= f.select :role, ['User', 'Editor', 'Admin'], {include_blank:false}, :class => 'form-control' %>
+      </div>
+      <br />
+      
+      <div class="control-group">
+      <%= f.label :project_id, :class => "control-label" %>
+      <%= f.text_field :project_id, :class => "form-control" %>
+      </div>
+      <br />
+      
+      
+      <div class="control-group">
+      <%= f.label :invited_by, :class => "control-label" %>
+      <%= f.text_field :invited_by, value: current_user.id, :class => "form-control" %>
+      </div>
+      <br />
+
+  <div class="control-group">
     <%= f.submit t("devise.invitations.new.submit_button") %>
   </div>
+<% end %>
+
+  </div><!-- End col-10 -->
+</div><!-- End row -->
+
+
+<% else %>
+ <h2>Only admins can access this page. <a href="/" class="btn btn-default">Return Home</a></h2>
 <% end %>
