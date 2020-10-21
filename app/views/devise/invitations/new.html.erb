@@ -58,13 +58,13 @@
       <br />
       -->
       
-      <div class="control-group">
+      <div class="control-group" style="display:none;">
       <%= f.label :invited_by, :class => "control-label" %>
       <%= f.text_field :invited_by, value: current_user.id, :class => "form-control" %>
       </div>
       <br />
       
-      <div class="control-group">
+      <div class="control-group" style="display:none;">
       <%= f.label :invited_by_id, :class => "control-label" %>
       <%= f.text_field :invited_by_id, value: current_user.id, :class => "form-control" %>
       </div>
