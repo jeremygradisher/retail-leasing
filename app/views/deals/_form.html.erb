@@ -260,6 +260,15 @@
   
 
  <hr> 
+ 
+  <div class="form-group">
+    <%= f.label :leasing_manager, 'Leasing Manager', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%#= f.text_field :leasing_manager, :class => 'form-control' %>
+      <%= f.select :leasing_manager, @leasing_managers.all.map{ |v| [v.name, v.id] }, {include_blank: true}, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:leasing_manager) %>
+  </div>
 
   <div class="form-group">
     <%= f.label :key_contacts, 'Key Contacts', :class => 'control-label col-lg-2' %>

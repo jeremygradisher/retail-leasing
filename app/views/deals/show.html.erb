@@ -77,6 +77,11 @@
         <strong>Project</strong>
         <span style="float:right;"><%= @deal.project.name %></span>
         </div>
+        
+        <div style="margin-bottom:6px;">
+        <strong>Leasing Manager</strong>
+        <span style="float:right;"><%= LeasingManager.find(@deal.leasing_manager).name %></span>
+        </div>
         <!--
         <div style="margin-bottom:6px;">
         <strong>Map id</strong>
