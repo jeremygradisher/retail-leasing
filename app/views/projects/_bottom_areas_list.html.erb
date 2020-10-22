@@ -13,9 +13,9 @@
           <!--<th>Area Image:</th>-->
           <th style="text-align:left;">Deal Image:</th>
           <th style="text-align:left;">Suite #:</th>
-          <th style="text-align:left;">Area SF:</th>
+          <th style="text-align:left;">Area:</th>
           <th style="text-align:left;">Deals:</th>
-          <th style="text-align:left;">TC Status:</th>
+          <th style="text-align:left;">Delivery Status:</th>
           <th style="text-align:left;">Primary Deal:</th>
           <th style="text-align:left;">Lease Status:</th>
           <th style="text-align:left;">Merch Status:</th>
@@ -23,7 +23,7 @@
         </tr>
       </thead>
       <tbody>
-        <% @areas.each do |area| %>
+        <% @areasforlist.each do |area| %>
           <tr>
             <td style="">
               <% if area.deals.count > 0 %>
