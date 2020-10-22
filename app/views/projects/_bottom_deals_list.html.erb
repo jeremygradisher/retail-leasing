@@ -52,7 +52,7 @@
                 <td style="text-align:left;"><% if deal.areas.count > 0 %><%= deal.areas.first.suite_number %><% else %>*No Space<% end %></td>
                 <td style="text-align:left;"><%= deal.areas.count %></td>
                 
-                <td style="text-align:left;"><%= deal.leasing_manager %></td>
+                <td style="text-align:left;"><% if !deal.leasing_manager.blank? %><%= LeasingManager.find(deal.leasing_manager).name %><% end %></td>
 
                 <td style="text-align:left;" class="print-none">
                   <%= link_to image_tag('/images/view-button.png'),
