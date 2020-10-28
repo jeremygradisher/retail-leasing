@@ -146,7 +146,6 @@ $(document).ready(function()
     $(document).on("change, keyup, blur", "#deal_net_rentable_area", updateAllMathFromArea);
     /*** END If Net Area Changes, run these functions ***/
     
-    
     function updateTiAllowance()
     {
         //create variable netarea from form input #deal_net_rentable_area change to float
@@ -1219,7 +1218,68 @@ $(document).ready(function()
     $(document).on("change, keyup, blur", "#deal_fee_cost_total", formatFeeCostTotal);
     
     
+    function formatFinalConstructionCost()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#deal_final_construction_cost").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with two decimal places
+        var variablefixed = variable.toFixed(2);
+        //add $ and make sure commas are correct
+        var variableformatted = '$' + variablefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#deal_final_construction_cost").val(variableformatted);
+        //this input field is saved as a string
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#deal_final_construction_cost", formatFinalConstructionCost);
+    
+    function formatUtilityCost()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#deal_utility_cost").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with two decimal places
+        var variablefixed = variable.toFixed(2);
+        //add $ and make sure commas are correct
+        var variableformatted = '$' + variablefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#deal_utility_cost").val(variableformatted);
+        //this input field is saved as a string
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#deal_utility_cost", formatUtilityCost);
+    
+    function formatTenantCost()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#deal_tenant_cost").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with two decimal places
+        var variablefixed = variable.toFixed(2);
+        //add $ and make sure commas are correct
+        var variableformatted = '$' + variablefixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#deal_tenant_cost").val(variableformatted);
+        //this input field is saved as a string
+    }
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#deal_tenant_cost", formatTenantCost);
+    
+    
     //run functions on page load
+    $(document).ready(formatFinalConstructionCost);
+    $(document).ready(formatUtilityCost);
+    $(document).ready(formatTenantCost);
     $(document).ready(formatBaseRent);
     $(document).ready(formatTotalBaseRent);
     $(document).ready(formatBudgetRate);
@@ -1801,6 +1861,51 @@ $(document).ready(function()
         //this input field is saved as a string
     }
     
+    function formatForFinalConstructionCost()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#deal_final_construction_cost").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with 2 decimal places
+        var variablefixed = variable.toFixed(2);
+        //change # to total
+        $("#deal_final_construction_cost").val(variablefixed);
+        //this input field is saved as a string
+    }
+    
+    function formatForUtilityCost()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#deal_utility_cost").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with 2 decimal places
+        var variablefixed = variable.toFixed(2);
+        //change # to total
+        $("#deal_utility_cost").val(variablefixed);
+        //this input field is saved as a string
+    }
+    
+    function formatForTenantCost()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var variable = parseFloat($("#deal_tenant_cost").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!variable){
+            variable = 0;
+        }
+        //make sure your float is fixed number with 2 decimal places
+        var variablefixed = variable.toFixed(2);
+        //change # to total
+        $("#deal_tenant_cost").val(variablefixed);
+        //this input field is saved as a string
+    }
+    
     //Function to take Deal Gross Area and add to hidden field Area Sq Ft (formatted for database)
     function GrossAreaToAreaSqFt()
     {
@@ -1825,6 +1930,9 @@ $(document).ready(function()
       formatForSubmitNetRentableArea();
       formatForFitOut();
       formatForFitOutCost();
+      formatForFinalConstructionCost();
+      formatForUtilityCost();
+      formatForTenantCost();
       formatForSubmitGrossArea();
       formatForSubmitBaseRent();
       formatForSubmitTotalBaseRent();

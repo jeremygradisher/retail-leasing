@@ -327,14 +327,14 @@ class ProjectsController < ApplicationController
   
   #for deal_directory_report
   def dealdirectoryreport
-    #@areas = Area.where(project_id: params[:id]).all
+    @areas = Area.where(project_id: params[:id]).all
     @deals = Deal.where(project_id: params[:id]).where.not(archive: true).all
     @project = Project.find(params[:id])
     
     #@tenants = @areas.count
     #@dealscount = @deals.count
-    #@areasquarefootage = @areas.pluck(:area_sqft)
-    #@netrentablearea = @deals.pluck(:net_rentable_area)
+    @areasquarefootage = @areas.pluck(:area_sqft)
+    @netrentablearea = @deals.pluck(:net_rentable_area)
     #@dealarea = @deals.pluck(:net_rentable_area)
 
     # this is areas after being sorted in private method
