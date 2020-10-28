@@ -448,7 +448,7 @@ class ProjectsController < ApplicationController
         base_rent: deal.base_rent,
         increase: deal.increase,
         #ll_work: Workletter.where(id: deal.area.workletter).exists? ? Workletter.find(deal.area.workletter).ll_work : 'N/A',
-        ll_work: 'TBD',
+        ll_work: 0,
         total_base_rent: deal.total_base_rent,
         ti_allowance: deal.ti_allowance,
         ti_cost: deal.ti_cost,
