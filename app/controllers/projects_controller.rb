@@ -482,7 +482,7 @@ class ProjectsController < ApplicationController
         array << {
           #opening_status: area.opening_status,
           suite_number: area.suite_number,
-          name: area.suite_number,
+          name: area.deals.first.deal_name,
           area_sqft: area.area_sqft, 
           lease_status: area.deals.first.lease_status,
           #lease_execution: area.lease_execution, 

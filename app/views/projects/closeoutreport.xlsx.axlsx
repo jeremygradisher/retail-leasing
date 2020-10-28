@@ -51,17 +51,19 @@ wb.styles do |style|
     sheet.add_row ["Remain", "", "Suite #", "Area Name", "SF", "Punchlist Request", "Punchlist Inspection",	"Punchlist Complete",	"Close Out Letter Sent",	"Permit",	"Certificate of Insurance",	"Certificate of Occupancy",	"Final Lien Waiver",	"W-9",	"Construct. Cost Summary",	"Final Construct. Cost", "Final Construct. Cost / SF", "As Builts Received", "Sprinkler Shop Drawings", "Sprinkler Work Order", "Air Balance Report",	"Sprinkler Check",	"Tenant Costs",	"Utility Cost",	"Deposit Release Approved",	"Deposit Release",	"TA / TI Release Approved",	"TA / TI Released",	"Close-out Notes"], style: header_wrap, :height => 100.0
     sheet.merge_cells('A5:B5')
     @areas.each do |area|
-      sheet.add_row ["", area.remains, area.suite_number, area.name, number_with_delimiter(area.area_sqft,delimiter: ','),
-       area.punchlist_request, area.punchlist_inspection, area.punchlist_complete, area.close_out_letter,
-        area.permit_received, area.certificate_of_insurance, area.certificate_of_occupancy, area.final_lien_waver, area.w9, area.construction_cost_summary,
-        number_to_currency(area.final_construction_cost, precision: 2,  delimiter: ','), number_to_currency(area.cost_per_sq_feet, precision: 2,  delimiter: ','),
-        area.as_builts_received, area.sprinkler_shop_drawings, area.sprinkler_work_order, area.air_balance_report, area.sprinkler_check, number_to_currency(area.tenant_cost, precision: 2,  delimiter: ','),
-        number_to_currency(area.utility_cost, precision: 2,  delimiter: ','), area.deposit_release_approved, area.deposit_released, area.ta_ti_release_approved, area.ta_ti_released,
+      if area.deals.count > 0
+      sheet.add_row ["", "", area.suite_number, area.deals.first.deal_name, number_with_delimiter(area.area_sqft,delimiter: ','),
+       area.deals.first.punchlist_request, area.deals.first.punchlist_inspection, area.deals.first.punchlist_complete, area.deals.first.close_out_letter,
+        area.deals.first.permit_received, area.deals.first.certificate_of_insurance, area.deals.first.certificate_of_occupancy, area.deals.first.final_lien_waver, area.deals.first.w9, area.deals.first.construction_cost_summary,
+        number_to_currency(area.deals.first.final_construction_cost, precision: 2,  delimiter: ','), '',
+        area.deals.first.as_builts_received, area.deals.first.sprinkler_shop_drawings, area.deals.first.sprinkler_work_order, area.deals.first.air_balance_report, area.deals.first.sprinkler_check, number_to_currency(area.deals.first.tenant_cost, precision: 2,  delimiter: ','),
+        number_to_currency(area.deals.first.utility_cost, precision: 2,  delimiter: ','), area.deals.first.deposit_release_approved, area.deals.first.deposit_released, area.deals.first.ta_ti_release_approved, area.deals.first.ta_ti_released,
         ""],
-        style: [eval(area.status.gsub('-','_')), general, general, general, general, general, general, general,
+        style: [general, general, general, general, general, general, general, general,
          general, general, general, general, general, general, general, general,
           general, general, general, general, general, general, general, general,
           general, general, general, general, general], height: 70.0
+      end
     end
     sheet.add_row ["", "", "", "Subtotal", number_with_delimiter(@stats[:total_square_feet], delimiter: ','), "", "", "", "", "", "", "", "", "", "",
       number_to_currency(@stats[:total_construction_cost], precision: 2,  delimiter: ','), number_to_currency(@stats[:total_cost_per_sq_feet], precision: 2,  delimiter: ','), "", "", "", "", "", "", "", "", "", "", "", ""],
