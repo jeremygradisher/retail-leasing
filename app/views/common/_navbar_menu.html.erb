@@ -60,7 +60,7 @@
                     <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
-                      <li class="dropdown-submenu dropdown-menu-right"><%#= link_to 'PDF', closeoutreport_project_path(@project.id, format: :pdf), target: '_blank' %></li>
+                      <li class="dropdown-submenu dropdown-menu-right"><%= link_to 'PDF', closeoutreport_project_path(@project.id, format: :pdf), target: '_blank' %></li>
                       <li class="dropdown-submenu dropdown-menu-right"><%= link_to 'XLSX', closeoutreport_project_path(@project.id, format: :xlsx) %></li>
                     </ul>
                   </li>
