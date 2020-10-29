@@ -62,7 +62,7 @@
   <table class="table table-striped table-bordered">
     <thead>
       <tr>
-        <th colspan="4" class="text-center general-info"> General Information</th>
+        <th colspan="3" class="text-center general-info"> General Information</th>
         <th colspan="5" class="text-center leasing-info"> Leasing Information</th>
         <th colspan="2" class="text-center ll-construction"> Landlord Construction</th>
         <th colspan="3" class="text-center tenant-design"> Tenant Design</th>
@@ -73,7 +73,6 @@
         <th class="text-center comments comments"> Comments</th>
       </tr>
       <tr>
-        <th class="text-center">Opening Status</th>
         <th class="text-center">Suite #</th>
         <th width="5%" class="text-center">Area Name</th>
         <th class="text-center">SF</th>
@@ -111,10 +110,9 @@
     <tbody>
       <% @areasxlsx.each do |object| %>
         <tr class="nobreak" style="page-break-inside: avoid;">
-          <td class="<%= object[:opening_status].parameterize.underscore %>-backer text-center"><%= object[:opening_status] %></td>
           <td><%= object[:suite_number] %></td>
           <td width="100px !important;"><%= object[:name] %></td>
-          <td class="text-center"><%= number_with_delimiter(object[:area_square_feet], :delimiter => ',') %></td>
+          <td class="text-center"><%= number_with_delimiter(object[:area_sqft], :delimiter => ',') %></td>
           <td class="<%= object[:lease_status].parameterize.underscore %> text-center"><%= object[:lease_status] %></td>
           <td class="text-center"><%= object[:lease_execution] %></td>
           <td class="text-center"><%= object[:turn_over_condition] %></td>

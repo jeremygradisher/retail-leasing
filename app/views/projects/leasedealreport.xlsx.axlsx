@@ -139,7 +139,7 @@ wb.styles do |style|
         )
 
         row = ['', area[:lease_status], area[:name].blank? ? 'Untitled Area' : area[:name],
-                area[:suite_number], area[:area_square_feet], area[:deal_term],
+                area[:suite_number], area[:area_sqft], area[:deal_term],
                 area[:budget_rate], area[:base_rent], area[:increase], area[:ll_work], area[:ti_allowance],
                 area[:cash_on_cash], area[:budget_variance],
                 area[:leasing_manager], area[:status_notes], area[:action_required], '']

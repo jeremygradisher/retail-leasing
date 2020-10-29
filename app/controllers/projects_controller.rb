@@ -26,6 +26,7 @@ class ProjectsController < ApplicationController
       #@areasofprimary = @map.areas.all
       @mapareas = @map.areas.all
       @areas = @map.areas.all
+      @areasforlist = @map.areas.sort_by(&:suite_number)
       @deals = Deal.where(map_id: @map.id)
       @areasquarefootage = Area.where(project_id: params[:id]).pluck(:area_sqft)
       @areas_deals = AreasDeal.where(project_id: params[:id]).all
@@ -34,6 +35,7 @@ class ProjectsController < ApplicationController
     
     @areas_deal = AreasDeal.new
     @deals = @project.deals.all
+    @dealsforlist = @project.deals.all.sort_by(&:lease_status)
     @dealscount = @deals.size
     
     @areasquarefootage = Area.where(project_id: params[:id]).pluck(:area_sqft)
@@ -325,14 +327,14 @@ class ProjectsController < ApplicationController
   
   #for deal_directory_report
   def dealdirectoryreport
-    #@areas = Area.where(project_id: params[:id]).all
+    @areas = Area.where(project_id: params[:id]).all
     @deals = Deal.where(project_id: params[:id]).where.not(archive: true).all
     @project = Project.find(params[:id])
     
     #@tenants = @areas.count
     #@dealscount = @deals.count
-    #@areasquarefootage = @areas.pluck(:area_sqft)
-    #@netrentablearea = @deals.pluck(:net_rentable_area)
+    @areasquarefootage = @areas.pluck(:area_sqft)
+    @netrentablearea = @deals.pluck(:net_rentable_area)
     #@dealarea = @deals.pluck(:net_rentable_area)
 
     # this is areas after being sorted in private method
@@ -438,7 +440,7 @@ class ProjectsController < ApplicationController
         lease_status: deal.lease_status,
         owner_approval: deal.owner_approval,
         name: deal.deal_name.blank? ? 'Untitled Deal' : deal.deal_name,
-        suite_number: 'TBD',
+        suite_number: deal.areas.blank? ? 'No Area' : deal.areas.first.suite_number,
         area_sqft: deal.gross_area,
         deal_term: deal.deal_term,
         merchandising_status: deal.merchandising_status,
@@ -446,7 +448,7 @@ class ProjectsController < ApplicationController
         base_rent: deal.base_rent,
         increase: deal.increase,
         #ll_work: Workletter.where(id: deal.area.workletter).exists? ? Workletter.find(deal.area.workletter).ll_work : 'N/A',
-        ll_work: 'TBD',
+        ll_work: 0,
         total_base_rent: deal.total_base_rent,
         ti_allowance: deal.ti_allowance,
         ti_cost: deal.ti_cost,
@@ -455,7 +457,7 @@ class ProjectsController < ApplicationController
         close_out_letter: 'TBD',
         budget_variance: deal.budget_variance,
         status_notes: deal.status_notes,
-        leasing_manager: deal.leasing_manager,
+        leasing_manager: deal.leasing_manager.blank? ? '' : LeasingManager.find(deal.leasing_manager.to_i).name,
         action_required: deal.action_required,
         priority: deal.priority,
         architect: deal.architect,
@@ -480,7 +482,7 @@ class ProjectsController < ApplicationController
         array << {
           #opening_status: area.opening_status,
           suite_number: area.suite_number,
-          name: area.suite_number,
+          name: area.deals.first.deal_name,
           area_sqft: area.area_sqft, 
           lease_status: area.deals.first.lease_status,
           #lease_execution: area.lease_execution, 

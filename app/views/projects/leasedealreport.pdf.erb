@@ -34,7 +34,7 @@
           <td class="<%= object[:lease_status].parameterize.underscore %>"> <%= object[:lease_status] %> </td>
           <td> <%= object[:name] %> </td>
           <td> <%= object[:suite_number] %> </td>
-          <td> <%= number_with_precision(object[:area_square_feet], precision: 0, delimiter: ',') %> </td>
+          <td> <%= number_with_precision(object[:area_sqft], precision: 0, delimiter: ',') %> </td>
           <td style="text-align:center;"> <%= object[:deal_term] %> </td>
           <!--<td> <%#= object[:merchandising_status] %> </td>-->
           <td> $<%= number_with_precision(object[:budget_rate], precision: 2, delimiter: ',') %> </td>

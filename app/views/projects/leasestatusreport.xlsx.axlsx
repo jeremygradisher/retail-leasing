@@ -164,7 +164,7 @@ wb.styles do |style|
         )
 
         row = ['', area[:lease_status], area[:owner_approval], area[:name].blank? ? 'Untitled Area' : area[:name],
-                area[:area_square_feet], area[:merchandising_status], area[:suite_number],
+                area[:area_sqft], area[:merchandising_status], area[:suite_number],
                 area[:leasing_manager], area[:status_notes], area[:action_required], area[:priority], '']
         sheet.add_row(row, style: [nil, lease_status, owner_approval, data_name_cell, size_cell, merchant_category, data_cell, data_cell, data_name_cell, data_cell, priority, nil], height: 45)
     end

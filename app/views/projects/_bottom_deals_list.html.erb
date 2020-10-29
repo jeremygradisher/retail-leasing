@@ -19,14 +19,15 @@
               <th style="min-width:80px;">Gross Area:</th>
               <th style="min-width:80px;">Lease Status:</th>
               <th style="min-width:80px;">Merch Status:</th>
-              <th style="min-width:80px;">Areas:</th>
               <th style="min-width:80px;">Suite #:</th>
-              <th style="min-width:80px;">TC Status:</th>
+              <th style="min-width:80px;">Areas:</th>
+              
+              <th style="min-width:80px;">Leasing Manager:</th>
               <th class="print-none"><%=t '.actions', :default => t("helpers.actions") %></th>
             </tr>
           </thead>
           <tbody>
-            <% @deals.each do |deal| %>
+            <% @dealsforlist.each do |deal| %>
               <tr>
                 <td style="text-align:left;">
                   <% if deal.dealimages.count > 0 %>
@@ -47,9 +48,11 @@
                 <td style="text-align:left;"><%= number_with_delimiter(deal.gross_area, :delimiter => ',') %></td>
                 <td style="text-align:left;"><%= deal.lease_status %></td>
                 <td style="text-align:left;"><%= deal.merchandising_status %></td>
-                <td style="text-align:left;"><%= deal.areas.count %></td>
+                
                 <td style="text-align:left;"><% if deal.areas.count > 0 %><%= deal.areas.first.suite_number %><% else %>*No Space<% end %></td>
-                <td style="text-align:left;"><% if deal.areas.count > 0 %><%= deal.areas.first.status %><% else %>*No Space<% end %></td>
+                <td style="text-align:left;"><%= deal.areas.count %></td>
+                
+                <td style="text-align:left;"><% if !deal.leasing_manager.blank? %><%= LeasingManager.find(deal.leasing_manager).name %><% end %></td>
 
                 <td style="text-align:left;" class="print-none">
                   <%= link_to image_tag('/images/view-button.png'),
