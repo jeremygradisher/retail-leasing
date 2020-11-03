@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <p>
+      Cheers <%= @user.first_name %>,<br><br>
+      <% @schedules.each do |s_id| %>
+        <%= link_to Schedule.find(s_id).area.name, Schedule.find(s_id).area %>
+        from the project <%= Schedule.find(s_id).area.map.project.name %>
+        has a Lease Execution date coming on <%= @date %>.
+        <br><br>
+      <% end %>
+    </p>
+    <p>
+      <b>Are we ready?</b>
+    </p>
+  </body>
+</html>
