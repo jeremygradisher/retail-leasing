@@ -48,6 +48,11 @@ gem 'fog-aws'
 
 #for testing
 gem 'sql_queries_count'
+
+#for background jobs
+gem 'delayed_job_active_record'
+gem "daemons"
+
 #for search
 gem 'ransack', '2.1.1'
 #for reports
