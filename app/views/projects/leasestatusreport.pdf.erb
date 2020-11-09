@@ -27,7 +27,7 @@
         <!-- found solution here: https://github.com/mileszs/wicked_pdf/issues/185 -->
         <tr class="nobreak" style="page-break-inside: avoid;">
           <td class="<%= object[:lease_status].parameterize.underscore %> center"> <%= object[:lease_status] %> </td>
-          <td class="center"> <% if object[:owner_approval] == true %><i style="color:#8BC53F;" class="fa fa-check" aria-hidden="true"></i>x<% else %><%#= object[:owner_approval] %><% end %> </td>
+          <td class="center"> <% if object[:owner_approval] == true %><i style="color:#8BC53F;" class="fa fa-check" aria-hidden="true"></i><% else %><%#= object[:owner_approval] %><% end %> </td>
           <td> <%= object[:name] %> </td>
           <td class="center"> <%= number_with_precision(object[:area_sqft], precision: 0, delimiter: ',') %> </td>
           <td class="<%= object[:merchandising_status].parameterize.underscore %> center"> <%= object[:merchandising_status] %> </td>
@@ -35,7 +35,7 @@
           <td class="center"> <%= object[:leasing_manager] %> </td>
           <td> <%= object[:status_notes].to_s.truncate(195) %> </td>
           <td class="center"> <%= object[:action_required] %> </td>
-          <td class="center"> <% if object[:priority] == true %><i style="color:#E5BA21;" class="fa fa-star" aria-hidden="true"></i>x<% else %><% end %> </td>
+          <td class="center"> <% if object[:priority] == true %><i style="color:#E5BA21;" class="fa fa-star" aria-hidden="true"></i><% else %><% end %> </td>
         </tr>
       <% end %>
     </tbody>
