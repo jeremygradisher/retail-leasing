@@ -1,7 +1,7 @@
 Cheers <%= @user.first_name %>,
 
 <% @schedules.each do |s_id| %>
-<%= Schedule.find(s_id).area.name %> from the project <%= Schedule.find(s_id).area.map.project.name %> has a Final Plans Received date coming on <%= @date %>.
+<%= Schedule.find(s_id).area.suite_number %> from the project <%= Schedule.find(s_id).area.map.project.name %> has a Final Plans Received date coming on <%= @date %>.
 
 <% end %>
 Are we ready?

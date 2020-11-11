@@ -6,7 +6,7 @@
   <body>
     <h1>Cheers <%= @user.first_name %> - (<%= @user.email %>)</h1>
     <p>
-      Status Plan is running normally as of <%= Time.now.in_time_zone('Eastern Time (US & Canada)').strftime("%A %B %d, %Y %l:%M%P %Z") %> / <%= Time.now.in_time_zone('Central Time (US & Canada)').strftime("%l:%M%P %Z") %>.
+      Status Plan 2 is running normally as of <%= Time.now.in_time_zone('Eastern Time (US & Canada)').strftime("%A %B %d, %Y %l:%M%P %Z") %> / <%= Time.now.in_time_zone('Central Time (US & Canada)').strftime("%l:%M%P %Z") %>.
     </p>
     <p>System Stats:<br>
       Projects: <%= @projectscount %><br>
