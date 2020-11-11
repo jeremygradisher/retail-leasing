@@ -16,7 +16,7 @@ class SystemMailer < ApplicationMailer
     @ucount = User.where(role: 'User').count
 
     @now = Time.now.in_time_zone('Eastern Time (US & Canada)').strftime("%A %B %d, %Y")
-    mail(to: @user.email, subject: 'Super Admin Daily ' + @now)
+    mail(to: @user.email, subject: 'StatusPlan2 Super Admin Weekly ' + @now)
   end
 end
 
