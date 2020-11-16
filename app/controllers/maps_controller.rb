@@ -1,4 +1,5 @@
 class MapsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_map, only: [:show, :edit, :update, :destroy]
 
   # GET /maps
