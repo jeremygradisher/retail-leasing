@@ -1,4 +1,5 @@
 class UserProjectsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_user_project, only: [:show, :edit, :update, :destroy]
 
   # GET /user_projects

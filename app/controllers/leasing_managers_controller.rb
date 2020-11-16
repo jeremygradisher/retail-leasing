@@ -1,4 +1,5 @@
 class LeasingManagersController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_leasing_manager, only: [:show, :edit, :update, :destroy]
 
   # GET /leasing_managers

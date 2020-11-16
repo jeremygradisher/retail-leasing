@@ -1,6 +1,9 @@
 class InvitationsController < Devise::InvitationsController
 
-  before_action :update_sanitized_params, only: [:update, :new, :create]
+  before_action :update_sanitized_params, only: [:update]
+  #before_action :update_sanitized_params, only: [:update, :new, :create]
+  #before_action :update_sanitized_params, if: :devise_controller?
+  before_action :configure_permitted_parameters, only: [:new, :create]
 
   # PUT /resource/invitation
   def update
@@ -22,5 +25,11 @@ class InvitationsController < Devise::InvitationsController
 
   def update_sanitized_params
     devise_parameter_sanitizer.permit(:accept_invitation, keys: [:first_name, :last_name, :password, :password_confirmation, :invitation_token, :project_id, :invited_by, :invited_by_id])
+  end
+  
+  def configure_permitted_parameters
+    # Permit the `subscribe_newsletter` parameter along with the other
+    # sign up parameters.
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :password, :password_confirmation, :invitation_token, :project_id, :invited_by, :invited_by_id])
   end
 end
