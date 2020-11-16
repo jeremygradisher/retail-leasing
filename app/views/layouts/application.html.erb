@@ -218,8 +218,9 @@
                 :style => 'float:right;font-size:16pt;width:100px;background-color:#69A020;color:#fff;' %>
         <% elsif controller.controller_name == "areas" && controller.action_name == "show" %>
           
-          
-          <% if current_user.is_admin? || current_user.role == 'Admin' || current_user.role == 'Editor' %>
+
+         
+          <% if (current_user && current_user.is_admin?) || (current_user && current_user.role == 'Admin') || (current_user && current_user.role == 'Editor') %>
               <%= link_to '<i class="fa fa-pencil-alt" style="margin-right:4px;"></i> Edit'.html_safe,
                   edit_area_path(@area), :class => 'btn btn-default ws-border-style border-light branded-font',
                   :style => 'float:right;font-size:16pt;width:120px;background-color:#69A020;color:#fff;vertical-align:top;margin-left:10px;' %>

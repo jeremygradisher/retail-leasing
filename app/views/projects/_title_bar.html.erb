@@ -22,7 +22,7 @@
                 :style => 'float:right;font-size:16pt;width:100px;background-color:#008398;color:#fff;' %>
         <% end %>
             <% if controller.controller_name == "projects" && controller.action_name == "show" %>
-              <% if current_user.is_admin? || current_user.role == 'Admin' || current_user.role == 'Editor' %>
+              <% if (current_user && current_user.is_admin?) || (current_user && current_user.role == 'Admin') || (current_user && current_user.role == 'Editor') %>
                 <%#= link_to '<i class="fa fa-pencil-alt" style="margin-top:6px"></i>'.html_safe,
                       edit_project_path(@project), 
                       :class => 'pencil-button',
