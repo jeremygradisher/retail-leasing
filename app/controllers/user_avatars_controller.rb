@@ -1,4 +1,5 @@
 class UserAvatarsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_user_avatar, only: [:show, :edit, :update, :destroy]
 
   # GET /user_avatars

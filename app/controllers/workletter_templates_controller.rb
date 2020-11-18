@@ -1,4 +1,5 @@
 class WorkletterTemplatesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_workletter_template, only: [:show, :edit, :update, :destroy]
 
   # GET /workletter_templates

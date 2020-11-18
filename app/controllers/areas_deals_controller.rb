@@ -1,4 +1,5 @@
 class AreasDealsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_areas_deal, only: [:show, :edit, :update, :destroy]
 
   # GET /areas_deals
