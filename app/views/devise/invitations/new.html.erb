@@ -51,17 +51,17 @@
       </div>
       <br />
       
-      <div class="control-group">
+      <div class="control-group" style="display:none;">
       <%= f.label :project_id, :class => "control-label" %>
-      <%= f.number_field :project_id, :class => "form-control" %>
+      <%= f.number_field :project_id, value: params[:project_id], :class => "form-control" %>
       </div>
-      <br />
 
-      <div class="control-group" style="/*display:none;*/">
+
+      <div class="control-group" style="display:none;">
       <%= f.label :invited_by_id, :class => "control-label" %>
       <%= f.number_field :invited_by_id, value: current_user.id, :class => "form-control" %>
       </div>
-      <br />
+
       
 
   <div class="control-group">

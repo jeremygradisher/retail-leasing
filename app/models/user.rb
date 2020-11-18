@@ -14,7 +14,9 @@ class User < ApplicationRecord
   after_create :create_user_project
 
   def create_user_project
-    UserProject.create!(:user_id => id, :project_id => project_id)
+    if project_id != nil;
+      UserProject.create!(:user_id => id, :project_id => project_id)
+    end
   end
   
   def is_admin?
