@@ -18,13 +18,13 @@
               <th style="min-width:80px;">Deal Name:</th>
               <th style="min-width:80px;">Gross Area:</th>
               <th style="min-width:80px;">Lease Status:</th>
-              <th style="min-width:80px;">Merch Status:</th>
+              <!--<th style="min-width:80px;">Merch Status:</th>-->
               <th style="min-width:80px;">Suite #:</th>
               <th style="min-width:80px;">Areas:</th>
               
               <!--<th style="min-width:80px;">Leasing Manager:</th>-->
               
-              <th style="width:25%;">Deal Term Notes:</th>
+              <th style="min-width:25%;">Deal Term Notes:</th>
               
               <th class="print-none"><%=t '.actions', :default => t("helpers.actions") %></th>
             </tr>
@@ -50,7 +50,7 @@
                 <td style="text-align:left;"><%= deal.deal_name %></td>
                 <td style="text-align:left;"><%= number_with_delimiter(deal.gross_area, :delimiter => ',') %></td>
                 <td style="text-align:left;"><%= deal.lease_status %></td>
-                <td style="text-align:left;"><%= deal.merchandising_status %></td>
+                <!--<td style="text-align:left;"><%#= deal.merchandising_status %></td>-->
                 
                 <td style="text-align:left;"><% if deal.areas.count > 0 %><%= deal.areas.first.suite_number %><% else %>*No Space<% end %></td>
                 <td style="text-align:left;"><%= deal.areas.count %></td>
