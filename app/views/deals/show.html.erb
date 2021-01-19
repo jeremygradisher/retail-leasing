@@ -11,7 +11,7 @@
     <div class="" style="border:0;height:176px;text-align:right;padding:4px;">
     <% if @dealimages.exists? %>
       <% @dealimages.each do |p| %>
-            <%= image_tag p.dealimage_url, :style => 'height:166px;' %><br>
+            <%= image_tag p.dealimage_url, :style => 'max-height:166px;max-width:100%;' %><br>
             
             <% if current_user.is_admin? || current_user.role == 'Admin' || current_user.role == 'Editor' %>
             <div style="margin-left:5px;margin-top:-38px;">
