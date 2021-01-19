@@ -59,7 +59,7 @@
                 <td style="text-align:left;"><% if !deal.leasing_manager.blank? %><%= LeasingManager.find(deal.leasing_manager).name %><% end %></td>
                 -->
                 
-                <td style="text-align:left;"><%= deal.term_notes.to_s.truncate(180) %></td>
+                <td style="text-align:left;width:30%;"><%= deal.term_notes.to_s.truncate(180) %></td>
 
 
                 <td style="text-align:left;" class="print-none">
