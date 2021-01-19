@@ -22,7 +22,10 @@
               <th style="min-width:80px;">Suite #:</th>
               <th style="min-width:80px;">Areas:</th>
               
-              <th style="min-width:80px;">Leasing Manager:</th>
+              <!--<th style="min-width:80px;">Leasing Manager:</th>-->
+              
+              <th style="width:25%;">Deal Term Notes:</th>
+              
               <th class="print-none"><%=t '.actions', :default => t("helpers.actions") %></th>
             </tr>
           </thead>
@@ -52,7 +55,12 @@
                 <td style="text-align:left;"><% if deal.areas.count > 0 %><%= deal.areas.first.suite_number %><% else %>*No Space<% end %></td>
                 <td style="text-align:left;"><%= deal.areas.count %></td>
                 
+                <!--
                 <td style="text-align:left;"><% if !deal.leasing_manager.blank? %><%= LeasingManager.find(deal.leasing_manager).name %><% end %></td>
+                -->
+                
+                <td style="text-align:left;"><%= deal.term_notes.to_s.truncate(180) %></td>
+
 
                 <td style="text-align:left;" class="print-none">
                   <%= link_to image_tag('/images/view-button.png'),
