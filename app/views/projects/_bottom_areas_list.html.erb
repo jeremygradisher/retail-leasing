@@ -15,10 +15,11 @@
           <th style="text-align:left;">Suite #:</th>
           <th style="text-align:left;">Area:</th>
           <th style="text-align:left;">Deals:</th>
-          <th style="text-align:left;">Delivery Status:</th>
-          <th style="text-align:left;">Primary Deal:</th>
+          <!--<th style="text-align:left;">Delivery Status:</th>-->
+          <!--<th style="text-align:left;">Primary Deal:</th>-->
           <th style="text-align:left;">Lease Status:</th>
-          <th style="text-align:left;">Merch Status:</th>
+          <th style="text-align:left;">Deal Status Notes:</th>
+          <!--<th style="text-align:left;">Merch Status:</th>-->
           <th class="print-none" style="text-align:left;">Actions:</th>
         </tr>
       </thead>
@@ -39,11 +40,26 @@
             <td style=""><%= area.suite_number %></td>
             <td style=""><%= number_with_delimiter(area.area_sqft, :delimiter => ',') %></td>
             <td style=""><%= area.deals.count %></td>
-            <td style=""><%= area.status %></td>
+            <!--<td style=""><%= area.status %></td>-->
+            <!--
             <td style=""><% if area.deals.count > 0 %><%= area.deals.first.deal_name %><% else %>*No deal associated<% end %></td>
+            -->
+            
+            
             <td style=""><% if area.deals.count > 0 %><%= area.deals.first.lease_status %><% else %>*No deal associated<% end %></td>
-            <td style=""><% if area.deals.count > 0 %><%= area.deals.first.merchandising_status %><% else %>*No deal associated<% end %></td>
-     
+            <td style="width:30%;">
+            
+                <% if area.deals.count > 0 %>
+                  <%= area.deals.first.status_notes.to_s.truncate(180) %>
+                <% else %>
+                  No deal for area
+                <% end %>
+            
+            </td>
+            
+            <!--<td style=""><% if area.deals.count > 0 %><%= area.deals.first.merchandising_status %><% else %>*No deal associated<% end %></td>
+             -->
+             
             <td style="text-align:left;" class="print-none">
               <%#= link_to 'View',
                           area_path(area), 
