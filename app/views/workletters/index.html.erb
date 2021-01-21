@@ -10,6 +10,9 @@
       <th><%= model_class.human_attribute_name(:project_id) %></th>
       <th><%= model_class.human_attribute_name(:map_id) %></th>
       <th><%= model_class.human_attribute_name(:area_id) %></th>
+      <th><%= model_class.human_attribute_name(:deal_id) %></th>
+      
+      <!--
       <th><%= model_class.human_attribute_name(:slab) %></th>
       <th><%= model_class.human_attribute_name(:studs) %></th>
       <th><%= model_class.human_attribute_name(:drywall) %></th>
@@ -239,6 +242,7 @@
       <th><%= model_class.human_attribute_name(:other_sqft) %></th>
       <th><%= model_class.human_attribute_name(:other_unit) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
+      -->
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -250,6 +254,9 @@
         <td><%= workletter.project_id %></td>
         <td><%= workletter.map_id %></td>
         <td><%= workletter.area_id %></td>
+        <td><%= workletter.deal_id %></td>
+        
+        <!--
         <td><%= workletter.slab %></td>
         <td><%= workletter.studs %></td>
         <td><%= workletter.drywall %></td>
@@ -479,6 +486,7 @@
         <td><%= workletter.other_sqft %></td>
         <td><%= workletter.other_unit %></td>
         <td><%=l workletter.created_at %></td>
+        -->
         <td>
           <%= link_to t('.show', :default => t("helpers.links.show")),
                       workletter_path(workletter), :class => 'btn btn-default btn-xs' %>
@@ -495,6 +503,8 @@
   </tbody>
 </table>
 
-<%= link_to t('.new', :default => t("helpers.links.new")),
+
+
+<%#= link_to t('.new', :default => t("helpers.links.new")),
             new_workletter_path,
             :class => 'btn btn-primary' %>

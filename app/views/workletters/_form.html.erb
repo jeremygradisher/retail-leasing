@@ -13,7 +13,8 @@
   <% end %>
 
 <!-- these are for the newform only -->
-  <div class="form-group" style="display:none;">
+<%# if controller.action_name == "new" %>
+  <div class="form-group" style="/*display:none;*/">
     <%= f.label :project_id, :class => 'control-label col-lg-2' %>
     <div class="col-lg-10">
     <%= f.number_field :project_id, value: @project_id, :class => 'form-control' %>
@@ -21,7 +22,7 @@
     </div>
   </div>
   
-  <div class="form-group" style="display:none;">
+  <div class="form-group" style="/*display:none;*/">
     <%= f.label :map_id, :class => 'control-label col-lg-2' %>
     <div class="col-lg-10">
     <%= f.number_field :map_id, value: @map_id, :class => 'form-control' %>
@@ -29,7 +30,7 @@
     </div>
   </div>
   
-  <div class="form-group" style="display:none;">
+  <div class="form-group" style="/*display:none;*/">
     <%= f.label :area_id, :class => 'control-label col-lg-2' %>
     <div class="col-lg-10">
     <%= f.number_field :area_id, value: @area_id, :class => 'form-control' %>
@@ -37,13 +38,14 @@
     </div>
   </div>
   
-  <div class="form-group" style="display:none;">
-    <%= f.label :key, :class => 'control-label col-lg-2' %>
+  <div class="form-group" style="/*display:none;*/">
+    <%= f.label :deal_id, :class => 'control-label col-lg-2' %>
     <div class="col-lg-10">
-    <%= f.text_field :key, value: @area_id, :class => 'form-control' %>
-    <%=f.error_span(:key) %>
+    <%= f.number_field :deal_id, value: @deal_id, :class => 'form-control' %>
+    <%=f.error_span(:deal_id) %>
     </div>
   </div>
+<%# end %>
 <!-- end these are for the newform only -->
 
 

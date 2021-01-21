@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20201106004645) do
+ActiveRecord::Schema.define(version: 20210121015221) do
 
   create_table "areas", force: :cascade do |t|
     t.string   "suite_number"
@@ -695,6 +695,7 @@ ActiveRecord::Schema.define(version: 20201106004645) do
     t.float    "other_unit"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
+    t.integer  "deal_id"
     t.index ["area_id"], name: "index_workletters_on_area_id"
   end
 
