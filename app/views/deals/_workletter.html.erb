@@ -1,0 +1,1106 @@
+  
+
+
+  <div class="row">
+    <div class="col-xs-4" style="text-align:center">
+      <strong>LL Work (per SqFt):</strong> $<%= number_with_delimiter(@deal.workletter.ll_work, :delimiter => ',') %>
+    </div>
+    <div class="col-xs-4" style="text-align:center">
+     <strong>LL Work Cost:</strong> $<%= number_with_delimiter(@deal.workletter.ll_work_cost, :delimiter => ',') %>
+    </div>
+    <div class="col-xs-4" style="text-align:center">
+      <strong>LL Count Total:</strong> <%= number_with_delimiter(@deal.workletter.ll_count_total, :delimiter => ',') %>
+    </div>
+  </div>
+  
+  <hr>
+  
+  <style>
+  .affix {
+      top: 0;
+      /*width: 83.3333333%;*/
+      /*width: 975px;*/
+      background-color:#fff !important;
+      z-index: 999999;
+  }
+
+  .affix + .container {
+      padding-top: 70px;
+  }
+  
+  </style>
+  
+  <div class="row">
+    <div style="background-color:#fff;">
+      <div data-spy="affix" data-offset-top="800" class="responsive-none">
+        <div class="col-xs-1"><strong class="affix-smaller">Scope:</strong></div>
+        <div class="col-xs-4"><strong class="affix-smaller">Description:</strong></div>
+        <div class="col-xs-1" style="text-align:center"><strong class="affix-smaller">Typical:</strong></div>
+        <div class="col-xs-3" style="text-align:center"><strong class="affix-smaller">Responsibility:</strong><!--<br>LL | Tenant | N/A--></div>
+        <div class="col-xs-1" style="text-align:center"><strong class="affix-smaller">Complete:</strong></div>
+        <div class="col-xs-2" style="text-align:center"><strong class="affix-smaller">Date:</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+  
+  
+  <div class="row">
+    <div class="col-xs-1 responsive-center responsive100">
+      <strong>Structure:</strong>
+    </div>
+    <div class="col-xs-4 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@deal.workletter.structure_description) %>
+      <br>Cost: <%= number_to_currency(@deal.workletter.structure_cost, :unit => "$") %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @deal.workletter.structure_typical == true %>
+        <span class="fa fa-check-square ws-checked-typical"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @deal.workletter.structure %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Complete:</span>
+      <% if @deal.workletter.structure_complete == true %>
+        <span class="fa fa-check-square ws-check-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-complete"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-2" style="text-align:center">
+      <span class="responsive-only">Completion:</span>
+      <%= @deal.workletter.structure_date %>
+    </div>
+  </div>
+  
+  <hr>
+  
+  
+  
+  <div class="row">
+    <div class="col-xs-1 responsive-center responsive100">
+      <strong>Slab:</strong>
+    </div>
+    <div class="col-xs-4 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@deal.workletter.slab_description) %>
+      <br>Cost: <%= number_to_currency(@deal.workletter.slab_cost, :unit => "$") %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @deal.workletter.slab_typical == true %>
+        <span class="fa fa-check-square ws-checked-typical"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @deal.workletter.slab %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Complete:</span>
+      <% if @deal.workletter.slab_complete == true %>
+        <span class="fa fa-check-square ws-check-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-complete"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-2" style="text-align:center">
+      <span class="responsive-only">Completion:</span>
+      <%= @deal.workletter.slab_date %>
+    </div>
+  </div>
+  
+  <hr>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <div class="row">
+    <div class="col-xs-1 responsive-center responsive100">
+      <strong>Studs:</strong>
+    </div>
+    <div class="col-xs-4 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@deal.workletter.studs_description) %>
+      <br>Cost: <%= number_to_currency(@deal.workletter.studs_cost, :unit => "$") %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @deal.workletter.studs_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @deal.workletter.studs %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Complete:</span>
+      <% if @deal.workletter.studs_complete == true %>
+        <span class="fa fa-check-square ws-check-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-complete"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-2" style="text-align:center">
+      <span class="responsive-only">Completion:</span>
+      <%= @deal.workletter.studs_date %>
+    </div>
+  </div>
+  
+  <hr>
+
+  <div class="row">
+    <div class="col-xs-1 responsive-center responsive100">
+      <strong>Drywall:</strong>
+    </div>
+    <div class="col-xs-4 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@deal.workletter.drywall_description) %>
+      <br>Cost: <%= number_to_currency(@deal.workletter.drywall_cost, :unit => "$") %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @deal.workletter.drywall_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @deal.workletter.drywall %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Complete:</span>
+      <% if @deal.workletter.drywall_complete == true %>
+        <span class="fa fa-check-square ws-check-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-complete"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-2" style="text-align:center">
+      <span class="responsive-only">Completion:</span>
+      <%= @deal.workletter.drywall_date %>
+    </div>
+  </div>
+  
+  <hr>
+  
+  <div class="row">
+    <div class="col-xs-1 responsive-center responsive100">
+      <strong>Insulation:</strong>
+    </div>
+    <div class="col-xs-4 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@deal.workletter.insulation_description) %>
+      <br>Cost: <%= number_to_currency(@deal.workletter.insulation_cost, :unit => "$") %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @deal.workletter.insulation_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @deal.workletter.insulation %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Complete:</span>
+      <% if @deal.workletter.insulation_complete == true %>
+        <span class="fa fa-check-square ws-check-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-complete"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-2" style="text-align:center">
+      <span class="responsive-only">Completion:</span>
+      <%= @deal.workletter.insulation_date %>
+    </div>
+  </div>
+  
+  <hr>
+  
+  <div class="row">
+    <div class="col-xs-1 responsive-center responsive100">
+      <strong>Service Door:</strong>
+    </div>
+    <div class="col-xs-4 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@deal.workletter.servicedoor_description) %>
+      <br>Cost: <%= number_to_currency(@deal.workletter.service_door_cost, :unit => "$") %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @deal.workletter.service_door_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @deal.workletter.service_door %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Complete:</span>
+      <% if @deal.workletter.service_door_complete == true %>
+        <span class="fa fa-check-square ws-check-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-complete"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-2" style="text-align:center">
+      <span class="responsive-only">Completion:</span>
+      <%= @deal.workletter.service_door_date %>
+    </div>
+  </div>
+  
+  <hr>
+  
+  <div class="row">
+    <div class="col-xs-1 responsive-center responsive100">
+      <strong>Storefront:</strong>
+    </div>
+    <div class="col-xs-4 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@deal.workletter.storefront_description) %>
+      <br>Cost: <%= number_to_currency(@deal.workletter.storefront_cost, :unit => "$") %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @deal.workletter.storefront_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @deal.workletter.storefront %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Complete:</span>
+      <% if @deal.workletter.storefront_complete == true %>
+        <span class="fa fa-check-square ws-check-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-complete"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-2" style="text-align:center">
+      <span class="responsive-only">Completion:</span>
+      <%= @deal.workletter.storefront_date %>
+    </div>
+  </div>
+  
+  <hr>
+
+
+  <div class="row">
+    <div class="col-xs-1 responsive-center responsive100">
+      <strong>HVAC Unit(s):</strong>
+    </div>
+    <div class="col-xs-4 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@deal.workletter.untis_description) %>
+      <br>Cost: <%= number_to_currency(@deal.workletter.unit_cost, :unit => "$") %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @deal.workletter.unit_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @deal.workletter.unit %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Complete:</span>
+      <% if @deal.workletter.unit_complete == true %>
+        <span class="fa fa-check-square ws-check-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-complete"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-2" style="text-align:center">
+      <span class="responsive-only">Completion:</span>
+      <%= @deal.workletter.unit_date %>
+    </div>
+  </div>
+  
+  <hr>
+
+
+  
+  <div class="row">
+    <div class="col-xs-1 responsive-center responsive100">
+      <strong>Supply Duct:</strong>
+    </div>
+    <div class="col-xs-4 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@deal.workletter.supplyduct_description) %>
+      <br>Cost: <%= number_to_currency(@deal.workletter.supply_cost, :unit => "$") %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @deal.workletter.supply_duct_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @deal.workletter.supply %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Complete:</span>
+      <% if @deal.workletter.supply_duct_complete == true %>
+        <span class="fa fa-check-square ws-check-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-complete"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-2" style="text-align:center">
+      <span class="responsive-only">Completion:</span>
+      <%= @deal.workletter.supply_date %>
+    </div>
+  </div>
+  
+  <hr>
+  
+  <div class="row">
+    <div class="col-xs-1 responsive-center responsive100">
+      <strong>Exhaust:</strong>
+    </div>
+    <div class="col-xs-4 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@deal.workletter.exhaustduct_description) %>
+      <br>Cost: <%= number_to_currency(@deal.workletter.exhaust_cost, :unit => "$") %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @deal.workletter.exhaust_duct_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @deal.workletter.exhaust %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Complete:</span>
+      <% if @deal.workletter.exhaust_duct_complete == true %>
+        <span class="fa fa-check-square ws-check-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-complete"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-2" style="text-align:center">
+      <span class="responsive-only">Completion:</span>
+      <%= @deal.workletter.exhaust_date %>
+    </div>
+  </div>
+  
+  <hr>
+  
+
+  
+  <div class="row">
+    <div class="col-xs-1 responsive-center responsive100">
+      <strong>Line Set Pathways:</strong>
+    </div>
+    <div class="col-xs-4 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@deal.workletter.linesetpathway_description) %>
+      <br>Cost: <%= number_to_currency(@deal.workletter.line_set_pathways_cost, :unit => "$") %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @deal.workletter.line_set_pathways_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @deal.workletter.line_set_pathways %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Complete:</span>
+      <% if @deal.workletter.line_set_pathways_complete == true %>
+        <span class="fa fa-check-square ws-check-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-complete"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-2" style="text-align:center">
+      <span class="responsive-only">Completion:</span>
+      <%= @deal.workletter.line_set_pathways_date %>
+    </div>
+  </div>
+  
+  <hr>
+  
+  <div class="row">
+    <div class="col-xs-1 responsive-center responsive100">
+      <strong>EMS:</strong>
+    </div>
+    <div class="col-xs-4 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@deal.workletter.emergency_description) %>
+      <br>Cost: <%= number_to_currency(@deal.workletter.ems_cost, :unit => "$") %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @deal.workletter.ems_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @deal.workletter.ems %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Complete:</span>
+      <% if @deal.workletter.ems_complete == true %>
+        <span class="fa fa-check-square ws-check-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-complete"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-2" style="text-align:center">
+      <span class="responsive-only">Completion:</span>
+      <%= @deal.workletter.ems_date %>
+    </div>
+  </div>
+  
+  <hr>
+  
+  
+  <div class="row">
+    <div class="col-xs-1 responsive-center responsive100">
+      <strong>Electrical:</strong>
+    </div>
+    <div class="col-xs-4 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@deal.workletter.electrical_description) %>
+      <br>Cost: <%= number_to_currency(@deal.workletter.electrical_cost, :unit => "$") %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @deal.workletter.electrical_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @deal.workletter.electrical %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Complete:</span>
+      <% if @deal.workletter.electrical_complete == true %>
+        <span class="fa fa-check-square ws-check-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-complete"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-2" style="text-align:center">
+      <span class="responsive-only">Completion:</span>
+      <%= @deal.workletter.electrical_date %>
+    </div>
+  </div>
+  
+  <hr>
+  
+  
+  
+  
+  
+    <div class="row">
+    <div class="col-xs-1 responsive-center responsive100">
+      <strong>Voltage:</strong>
+    </div>
+    <div class="col-xs-4 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@deal.workletter.voltage_description) %>
+      <br>Cost: <%= number_to_currency(@deal.workletter.voltage_cost, :unit => "$") %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @deal.workletter.voltage_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @deal.workletter.voltage %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Complete:</span>
+      <% if @deal.workletter.voltage_complete == true %>
+        <span class="fa fa-check-square ws-check-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-complete"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-2" style="text-align:center">
+      <span class="responsive-only">Completion:</span>
+      <%= @deal.workletter.voltage_date %>
+    </div>
+  </div>
+  
+  <hr>
+  
+  <div class="row">
+    <div class="col-xs-1 responsive-center responsive100">
+      <strong>Amperage:</strong>
+    </div>
+    <div class="col-xs-4 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@deal.workletter.amperage_description) %>
+      <br>Cost: <%= number_to_currency(@deal.workletter.amperage_cost, :unit => "$") %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @deal.workletter.amperage_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @deal.workletter.amperage %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Complete:</span>
+      <% if @deal.workletter.amperage_complete == true %>
+        <span class="fa fa-check-square ws-check-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-complete"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-2" style="text-align:center">
+      <span class="responsive-only">Completion:</span>
+      <%= @deal.workletter.amperage_date %>
+    </div>
+  </div>
+  
+  <hr>
+  
+  <div class="row">
+    <div class="col-xs-1 responsive-center responsive100">
+      <strong>Conduit Size:</strong>
+    </div>
+    <div class="col-xs-4 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@deal.workletter.conduitsize_description) %>
+      <br>Cost: <%= number_to_currency(@deal.workletter.conduit_size_cost, :unit => "$") %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @deal.workletter.conduit_size_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @deal.workletter.conduit_size %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Complete:</span>
+      <% if @deal.workletter.conduit_size_complete == true %>
+        <span class="fa fa-check-square ws-check-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-complete"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-2" style="text-align:center">
+      <span class="responsive-only">Completion:</span>
+      <%= @deal.workletter.conduit_size_date %>
+    </div>
+  </div>
+  
+  <hr>
+  
+  
+  
+  <div class="row">
+    <div class="col-xs-1 responsive-center responsive100">
+      <strong>Electrical Meter:</strong>
+    </div>
+    <div class="col-xs-4 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@deal.workletter.meter_description) %>
+      <br>Cost: <%= number_to_currency(@deal.workletter.electrical_meter_cost, :unit => "$") %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @deal.workletter.electrical_meter_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @deal.workletter.electrical_meter %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Complete:</span>
+      <% if @deal.workletter.electrical_meter_complete == true %>
+        <span class="fa fa-check-square ws-check-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-complete"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-2" style="text-align:center">
+      <span class="responsive-only">Completion:</span>
+      <%= @deal.workletter.electrical_meter_date %>
+    </div>
+  </div>
+  
+  <hr>
+  
+  <div class="row">
+    <div class="col-xs-1 responsive-center responsive100">
+      <strong>Telephone:</strong>
+    </div>
+    <div class="col-xs-4 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@deal.workletter.telephone_description) %>
+      <br>Cost: <%= number_to_currency(@deal.workletter.telephone_cost, :unit => "$") %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @deal.workletter.telephone_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @deal.workletter.tele_conduit_size %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Complete:</span>
+      <% if @deal.workletter.telephone_complete == true %>
+        <span class="fa fa-check-square ws-check-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-complete"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-2" style="text-align:center">
+      <span class="responsive-only">Completion:</span>
+      <%= @deal.workletter.tele_conduit_size_date %>
+    </div>
+  </div>
+  
+  <hr>
+  
+  <div class="row">
+    <div class="col-xs-1 responsive-center responsive100">
+      <strong>Sanitary:</strong>
+    </div>
+    <div class="col-xs-4 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@deal.workletter.sanitary_description) %>
+      <br>Cost: <%= number_to_currency(@deal.workletter.sanitary_cost, :unit => "$") %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @deal.workletter.sanitary_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @deal.workletter.sanitary %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Complete:</span>
+      <% if @deal.workletter.sanitary_complete == true %>
+        <span class="fa fa-check-square ws-check-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-complete"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-2" style="text-align:center">
+      <span class="responsive-only">Completion:</span>
+      <%= @deal.workletter.sanitary_date %>
+    </div>
+  </div>
+  
+  <hr>
+  
+  <div class="row">
+    <div class="col-xs-1 responsive-center responsive100">
+      <strong>Sanitary Vent:</strong>
+    </div>
+    <div class="col-xs-4 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@deal.workletter.sanitaryvent_description) %>
+      <br>Cost: <%= number_to_currency(@deal.workletter.sanitary_vent_cost, :unit => "$") %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @deal.workletter.sanitary_vent_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @deal.workletter.sanitary_vent %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Complete:</span>
+      <% if @deal.workletter.sanitary_vent_complete == true %>
+        <span class="fa fa-check-square ws-check-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-complete"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-2" style="text-align:center">
+      <span class="responsive-only">Completion:</span>
+      <%= @deal.workletter.sanitary_vent_date %>
+    </div>
+  </div>
+  
+  <hr>
+  
+  <div class="row">
+    <div class="col-xs-1 responsive-center responsive100">
+      <strong>Grease:</strong>
+    </div>
+    <div class="col-xs-4 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@deal.workletter.grease_description) %>
+      <br>Cost: <%= number_to_currency(@deal.workletter.grease_cost, :unit => "$") %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @deal.workletter.grease_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @deal.workletter.grease %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Complete:</span>
+      <% if @deal.workletter.grease_complete == true %>
+        <span class="fa fa-check-square ws-check-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-complete"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-2" style="text-align:center">
+      <span class="responsive-only">Completion:</span>
+      <%= @deal.workletter.grease_date %>
+    </div>
+  </div>
+  
+  <hr>
+  
+  <div class="row">
+    <div class="col-xs-1 responsive-center responsive100">
+      <strong>Water:</strong>
+    </div>
+    <div class="col-xs-4 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@deal.workletter.water_description) %>
+      <br>Cost: <%= number_to_currency(@deal.workletter.water_cost, :unit => "$") %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @deal.workletter.water_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @deal.workletter.water %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Complete:</span>
+      <% if @deal.workletter.water_complete == true %>
+        <span class="fa fa-check-square ws-check-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-complete"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-2" style="text-align:center">
+      <span class="responsive-only">Completion:</span>
+      <%= @deal.workletter.water_date %>
+    </div>
+  </div>
+  
+  <hr>
+  
+<div class="row">
+    <div class="col-xs-1 responsive-center responsive100">
+      <strong>Gas:</strong>
+    </div>
+    <div class="col-xs-4 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@deal.workletter.gas_description) %>
+      <br>Cost: <%= number_to_currency(@deal.workletter.gas_cost, :unit => "$") %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @deal.workletter.gas_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @deal.workletter.gas %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Complete:</span>
+      <% if @deal.workletter.gas_complete == true %>
+        <span class="fa fa-check-square ws-check-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-complete"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-2" style="text-align:center">
+      <span class="responsive-only">Completion:</span>
+      <%= @deal.workletter.gas_date %>
+    </div>
+  </div>
+  
+  <hr>
+  
+  <div class="row">
+    <div class="col-xs-1 responsive-center responsive100">
+      <strong>Sprinkler Stub:</strong>
+    </div>
+    <div class="col-xs-4 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@deal.workletter.sprinklerstub_description) %>
+      <br>Cost: <%= number_to_currency(@deal.workletter.sprinkler_stub_cost, :unit => "$") %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @deal.workletter.sprinkler_stub_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @deal.workletter.sprinkler_stub %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Complete:</span>
+      <% if @deal.workletter.sprinkler_stub_complete == true %>
+        <span class="fa fa-check-square ws-check-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-complete"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-2" style="text-align:center">
+      <span class="responsive-only">Completion:</span>
+      <%= @deal.workletter.sprinkler_stub_date %>
+    </div>
+  </div>
+  
+  <hr>
+  
+  <div class="row">
+    <div class="col-xs-1 responsive-center responsive100">
+      <strong>Sprinkler Grid:</strong>
+    </div>
+    <div class="col-xs-4 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@deal.workletter.sprinklergrid_description) %>
+      <br>Cost: <%= number_to_currency(@deal.workletter.sprinkler_grid_cost, :unit => "$") %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @deal.workletter.sprinkler_grid_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @deal.workletter.sprinkler_grid %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Complete:</span>
+      <% if @deal.workletter.sprinkler_grid_complete == true %>
+        <span class="fa fa-check-square ws-check-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-complete"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-2" style="text-align:center">
+      <span class="responsive-only">Completion:</span>
+      <%= @deal.workletter.sprinkler_grid_date %>
+    </div>
+  </div>
+  
+  <hr>
+  
+  <div class="row">
+    <div class="col-xs-1 responsive-center responsive100">
+      <strong>Fire Alarm:</strong>
+    </div>
+    <div class="col-xs-4 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@deal.workletter.firealarm_description) %>
+      <br>Cost: <%= number_to_currency(@deal.workletter.fire_alarm_cost, :unit => "$") %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @deal.workletter.fire_alarm_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @deal.workletter.fire_alarm %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Complete:</span>
+      <% if @deal.workletter.fire_alarm_complete == true %>
+        <span class="fa fa-check-square ws-check-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-complete"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-2" style="text-align:center">
+      <span class="responsive-only">Completion:</span>
+      <%= @deal.workletter.fire_alarm_date %>
+    </div>
+  </div>
+  
+  <hr>
+  
+  <div class="row">
+    <div class="col-xs-1 responsive-center responsive100">
+      <strong>Demolition:</strong>
+    </div>
+    <div class="col-xs-4 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@deal.workletter.demolition_description) %>
+      <br>Cost: <%= number_to_currency(@deal.workletter.demolition_cost, :unit => "$") %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @deal.workletter.demolition_typical == true %>
+        <span class="fa fa-check-square ws-checked-typical"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @deal.workletter.demolition %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Complete:</span>
+      <% if @deal.workletter.demolition_complete == true %>
+        <span class="fa fa-check-square ws-check-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-complete"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-2" style="text-align:center">
+      <span class="responsive-only">Completion:</span>
+      <%= @deal.workletter.demolition_date %>
+    </div>
+  </div>
+  
+  <hr>
+  
+  <div class="row">
+    <div class="col-xs-1 responsive-center responsive100">
+      <strong>Other:</strong>
+    </div>
+    <div class="col-xs-4 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@deal.workletter.other_description) %>
+      <br>Cost: <%= number_to_currency(@deal.workletter.other_cost, :unit => "$") %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @deal.workletter.other_typical == true %>
+        <span class="fa fa-check-square ws-checked-typical"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @deal.workletter.other %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Complete:</span>
+      <% if @deal.workletter.other_complete == true %>
+        <span class="fa fa-check-square ws-check-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-complete"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-2" style="text-align:center">
+      <span class="responsive-only">Completion:</span>
+      <%= @deal.workletter.other_date %>
+    </div>
+  </div>
+  
+  <hr>

@@ -13,6 +13,7 @@
   <% end %>
 
 <!-- these are for the newform only -->
+<% if controller.action_name == "new" %>
   <div class="form-group" style="display:none;">
     <%= f.label :project_id, :class => 'control-label col-lg-2' %>
     <div class="col-lg-10">
@@ -28,22 +29,15 @@
     <%=f.error_span(:map_id) %>
     </div>
   </div>
-  
+
   <div class="form-group" style="display:none;">
-    <%= f.label :area_id, :class => 'control-label col-lg-2' %>
+    <%= f.label :deal_id, :class => 'control-label col-lg-2' %>
     <div class="col-lg-10">
-    <%= f.number_field :area_id, value: @area_id, :class => 'form-control' %>
-    <%=f.error_span(:area_id) %>
+    <%= f.number_field :deal_id, value: @deal_id, :class => 'form-control' %>
+    <%=f.error_span(:deal_id) %>
     </div>
   </div>
-  
-  <div class="form-group" style="display:none;">
-    <%= f.label :key, :class => 'control-label col-lg-2' %>
-    <div class="col-lg-10">
-    <%= f.text_field :key, value: @area_id, :class => 'form-control' %>
-    <%=f.error_span(:key) %>
-    </div>
-  </div>
+<% end %>
 <!-- end these are for the newform only -->
 
 
@@ -1732,7 +1726,7 @@
     <div class="col-lg-offset-2 col-lg-10">
       <%= f.submit nil, :class => 'btn btn-primary' %>
       <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                area_path(@area), :class => 'btn btn-default' %>
+                deal_path(@deal), :class => 'btn btn-default' %>
       
       <%# if @workletter.id != nil %>
       <%#= link_to t('.destroy', :default => t("helpers.links.destroy")),
