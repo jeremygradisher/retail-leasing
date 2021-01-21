@@ -24,6 +24,7 @@ class DealsController < ApplicationController
     
     @areas_deal = AreasDeal.new
     @otherareas = @project.areas.all - @deal.areas
+    @otherareasordered = @otherareas.sort_by(&:suite_number)
     
     @schedule = @deal.schedule
   end
