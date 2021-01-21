@@ -36,6 +36,7 @@ class ProjectsController < ApplicationController
     
     @areas_deal = AreasDeal.new
     @deals = @project.deals.all
+    @dealsforpopup = @project.deals.all.sort_by(&:deal_name)
     @dealsforlist = @project.deals.all.sort_by(&:lease_status)
     @dealscount = @deals.size
     
