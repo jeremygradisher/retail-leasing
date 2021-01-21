@@ -49,6 +49,8 @@ class DealsController < ApplicationController
     @map_id = @deal.map_id
     @project_id = @deal.project_id
     @leasing_managers = LeasingManager.where(project_id: @project).all
+    
+    @workletter = @deal.workletter
   end
 
   # POST /deals
