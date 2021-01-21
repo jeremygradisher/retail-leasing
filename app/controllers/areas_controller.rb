@@ -28,6 +28,7 @@ class AreasController < ApplicationController
     #@deals = @area.deals.all
     @areas_deal = AreasDeal.new
     @otherdeals = @project.deals.all - @area.deals
+    @otherdealsordered = @otherdeals.sort_by(&:deal_name)
     
     #@schedule = @area.schedule
   end
