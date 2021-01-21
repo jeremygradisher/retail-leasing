@@ -34,10 +34,7 @@ class DealsController < ApplicationController
     @project = Project.find(params[:project_id])
     @dealimage = @deal.dealimages.build
     @dealimages = @deal.dealimages.all
-    
-    @map_id = params[:map_id]
-    @project_id = params[:project_id]
-    
+
     @leasing_managers = LeasingManager.where(project_id: @project).all
   end
 
