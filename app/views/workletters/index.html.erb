@@ -1,3 +1,7 @@
+<div class="row">
+  <div class="col-xs-10 col-xs-offset-1">
+
+
 <%- model_class = Workletter -%>
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
@@ -9,7 +13,6 @@
       <th><%= model_class.human_attribute_name(:name) %></th>
       <th><%= model_class.human_attribute_name(:project_id) %></th>
       <th><%= model_class.human_attribute_name(:map_id) %></th>
-      <th><%= model_class.human_attribute_name(:area_id) %></th>
       <th><%= model_class.human_attribute_name(:deal_id) %></th>
       
       <!--
@@ -253,7 +256,6 @@
         <td><%= workletter.name %></td>
         <td><%= workletter.project_id %></td>
         <td><%= workletter.map_id %></td>
-        <td><%= workletter.area_id %></td>
         <td><%= workletter.deal_id %></td>
         
         <!--
@@ -488,15 +490,15 @@
         <td><%=l workletter.created_at %></td>
         -->
         <td>
-          <%= link_to t('.show', :default => t("helpers.links.show")),
-                      workletter_path(workletter), :class => 'btn btn-default btn-xs' %>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_workletter_path(workletter), :class => 'btn btn-default btn-xs' %>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+          <%= link_to image_tag('/images/view-button.png'),
+                      workletter_path(workletter), :class => 'action-buttons print-none' %>
+          <%= link_to image_tag('/images/edit-button.png'),
+                      edit_workletter_path(workletter), :class => 'action-buttons print-none' %>
+          <%= link_to image_tag('/images/delete-button.png'),
                       workletter_path(workletter),
                       :method => :delete,
                       :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                      :class => 'btn btn-xs btn-danger' %>
+                      :class => 'action-buttons print-none' %>
         </td>
       </tr>
     <% end %>
@@ -508,3 +510,7 @@
 <%#= link_to t('.new', :default => t("helpers.links.new")),
             new_workletter_path,
             :class => 'btn btn-primary' %>
+
+
+  </div>
+</div>

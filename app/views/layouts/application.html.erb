@@ -134,10 +134,12 @@
           <h1 style="color:#fff;margin-top:0;margin-bottom:0;" class="header-bar-title">New Workletter</h1>
         <% end %>
       </div>
-      <div class="col-lg-3">
+      <div class="col-lg-2">
         <%= link_to '<i class="fa fa-times" style="margin-right:4px"></i> Cancel'.html_safe,
-                area_path(@area), :class => 'btn btn-default ws-border-style border-light branded-font',
-                :style => 'font-size:16pt;width:100px;background-color:#1F7970;color:#fff;' %>
+                deal_path(@deal), :class => 'btn btn-default ws-border-style border-light branded-font',
+                :style => 'font-size:16pt;width:100px;background-color:#1F7970;color:#fff;float:right;' %>
+      </div>
+      <div class="col-lg-1">
       </div>
     </div>
     <% end %>
@@ -503,7 +505,7 @@
                   :style => 'margin-right:6px;background-color:#26968B;border-color:#26968B;' %>
               <% end %>
               
-                <%= link_to 'Cancel', area_path(@area), 
+                <%= link_to 'Cancel', deal_path(@deal), 
                   :class => 'btn btn-primary print-none float-right-until', 
                   :style => 'margin-right:6px;background-color:#fff;color:#26968B;border-color:#26968B;' %>
             </footer>

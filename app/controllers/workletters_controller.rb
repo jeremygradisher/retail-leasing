@@ -19,34 +19,27 @@ class WorklettersController < ApplicationController
   def new
     @workletter = Workletter.new
     
-    @area = Area.find(params[:area_id])
-    @area_id = @area.id
-    @map_id = @area.map_id
-    @project_id = @area.project_id
-    @name = @area.suite_number
-    #@map = Map.find(params[:map_id])
+    @deal = Deal.find(params[:deal_id])
+    @deal_id = @deal.id
     
-    #this needs a change:
-    #@deal = @area.deals.first
+    
+    @map_id = @deal.map_id
+    @project_id = @deal.project_id
+    @name = @deal.deal_name
 
-    @deal = @area.deals.first
-    
-    
-    @project = Project.find(@area.project_id)
+    @project = Project.find(@deal.project_id)
     @workletter_templates = @project.workletter_templates.all
   end
 
   # GET /workletters/1/edit
   def edit
-    @area = Area.find(@workletter.area_id)
-    @project = Project.find(@workletter.project_id)
-    
-    @deal = @area.deals.first
+    @deal = Deal.find(@workletter.deal_id)
+    @project = Project.find(@deal.project_id)
 
-    @project_id = @area.project_id
-    @map_id = @area.map_id
-    @area_id = @area.id
-    @name = @area.suite_number
+    @project_id = @deal.project_id
+    @map_id = @deal.map_id
+    @area_id = @deal.id
+    @name = @deal.deal_name
     
     @workletter_templates = @project.workletter_templates.all
   end
@@ -59,7 +52,7 @@ class WorklettersController < ApplicationController
 
     respond_to do |format|
       if @workletter.save
-        format.html { redirect_to area_path(@workletter.area_id), notice: 'Workletter was successfully created.' }
+        format.html { redirect_to deal_path(@workletter.deal_id), notice: 'Workletter was successfully created.' }
         format.json { render :show, status: :created, location: @workletter }
       else
         format.html { render :new }
@@ -75,7 +68,7 @@ class WorklettersController < ApplicationController
     
     respond_to do |format|
       if @workletter.update(workletter_params)
-        format.html { redirect_to area_path(@workletter.area_id), notice: 'Workletter was successfully updated.' }
+        format.html { redirect_to deal_path(@workletter.deal_id), notice: 'Workletter was successfully updated.' }
         format.json { render :show, status: :ok, location: @workletter }
       else
         format.html { render :edit }

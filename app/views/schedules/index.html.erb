@@ -1,3 +1,6 @@
+<div class="row">
+  <div class="col-xs-10 col-xs-offset-1">
+
 <%- model_class = Schedule -%>
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
@@ -8,7 +11,6 @@
       <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:project_id) %></th>
       <th><%= model_class.human_attribute_name(:map_id) %></th>
-      <th><%= model_class.human_attribute_name(:area_id) %></th>
       <th><%= model_class.human_attribute_name(:deal_id) %></th>
       <!--
       <th><%= model_class.human_attribute_name(:lease_execution_date) %></th>
@@ -38,7 +40,6 @@
         <td><%= link_to schedule.id, schedule_path(schedule) %></td>
         <td><%= schedule.project_id %></td>
         <td><%= schedule.map_id %></td>
-        <td><%= schedule.area_id %></td>
         <td><%= schedule.deal_id %></td>
         <!--
         <td><%= schedule.lease_execution_date %></td>
@@ -60,15 +61,17 @@
         <td><%=l schedule.created_at %></td>
         -->
         <td>
-          <%= link_to t('.show', :default => t("helpers.links.show")),
-                      schedule_path(schedule), :class => 'btn btn-default btn-xs' %>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_schedule_path(schedule), :class => 'btn btn-default btn-xs' %>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+          <%= link_to image_tag('/images/view-button.png'),
+                      schedule_path(schedule), :class => 'action-buttons print-none' %>
+          <%= link_to image_tag('/images/edit-button.png'),
+                      edit_schedule_path(schedule), :class => 'action-buttons print-none' %>
+          <%= link_to image_tag('/images/delete-button.png'),
                       schedule_path(schedule),
                       :method => :delete,
                       :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                      :class => 'btn btn-xs btn-danger' %>
+                      :class => 'action-buttons print-none' %>
+                      
+          
         </td>
       </tr>
     <% end %>
@@ -78,3 +81,7 @@
 <%#= link_to t('.new', :default => t("helpers.links.new")),
             new_schedule_path,
             :class => 'btn btn-primary' %>
+
+
+  </div>
+</div>
