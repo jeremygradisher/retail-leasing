@@ -9,6 +9,8 @@
       <th><%= model_class.human_attribute_name(:project_id) %></th>
       <th><%= model_class.human_attribute_name(:map_id) %></th>
       <th><%= model_class.human_attribute_name(:area_id) %></th>
+      <th><%= model_class.human_attribute_name(:deal_id) %></th>
+      <!--
       <th><%= model_class.human_attribute_name(:lease_execution_date) %></th>
       <th><%= model_class.human_attribute_name(:final_plans_received_date) %></th>
       <th><%= model_class.human_attribute_name(:final_plans_reviewed_date) %></th>
@@ -26,6 +28,7 @@
       <th><%= model_class.human_attribute_name(:tenant_fit_out_duration) %></th>
       <th><%= model_class.human_attribute_name(:merchandising_duration) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
+      -->
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -36,6 +39,8 @@
         <td><%= schedule.project_id %></td>
         <td><%= schedule.map_id %></td>
         <td><%= schedule.area_id %></td>
+        <td><%= schedule.deal_id %></td>
+        <!--
         <td><%= schedule.lease_execution_date %></td>
         <td><%= schedule.final_plans_received_date %></td>
         <td><%= schedule.final_plans_reviewed_date %></td>
@@ -53,6 +58,7 @@
         <td><%= schedule.tenant_fit_out_duration %></td>
         <td><%= schedule.merchandising_duration %></td>
         <td><%=l schedule.created_at %></td>
+        -->
         <td>
           <%= link_to t('.show', :default => t("helpers.links.show")),
                       schedule_path(schedule), :class => 'btn btn-default btn-xs' %>
@@ -69,6 +75,6 @@
   </tbody>
 </table>
 
-<%= link_to t('.new', :default => t("helpers.links.new")),
+<%#= link_to t('.new', :default => t("helpers.links.new")),
             new_schedule_path,
             :class => 'btn btn-primary' %>

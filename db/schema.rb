@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210121015221) do
+ActiveRecord::Schema.define(version: 20210121023251) do
 
   create_table "areas", force: :cascade do |t|
     t.string   "suite_number"
@@ -305,6 +305,7 @@ ActiveRecord::Schema.define(version: 20210121015221) do
     t.integer  "merchandising_duration"
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
+    t.integer  "deal_id"
     t.index ["area_id"], name: "index_schedules_on_area_id"
     t.index ["project_id"], name: "index_schedules_on_project_id"
   end

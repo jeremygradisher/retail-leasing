@@ -15,6 +15,7 @@
     </div>
   <% end %>
 
+<% if controller.action_name == "new" %>
   <div class="form-group" style="display:none;">
     <%= f.label :project_id, :class => 'control-label col-lg-2' %>
     <div class="col-lg-10">
@@ -30,13 +31,13 @@
     <%=f.error_span(:map_id) %>
   </div>
   <div class="form-group" style="display:none;">
-    <%= f.label :area_id, :class => 'control-label col-lg-2' %>
+    <%= f.label :deal_id, :class => 'control-label col-lg-2' %>
     <div class="col-lg-10">
-      <%= f.text_field :area_id, value: @area_id, :class => 'form-control' %>
+      <%= f.text_field :deal_id, value: @deal_id, :class => 'form-control' %>
     </div>
-    <%=f.error_span(:area_id) %>
+    <%=f.error_span(:deal_id) %>
   </div>
-  
+<% end %>  
   
   <div class="form-group">
     <div class="col-lg-2" style="text-align:center;">
@@ -208,8 +209,8 @@
   <div class="form-group">
     <div class="col-lg-offset-2 col-lg-10">
       <%= f.submit nil, :class => 'btn btn-primary' %>
-      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                area_path(@area), :class => 'btn btn-default' %>
+      <%#= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                deal_path(@deal), :class => 'btn btn-default' %>
     </div>
   </div>
 
