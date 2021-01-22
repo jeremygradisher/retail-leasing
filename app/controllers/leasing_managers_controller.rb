@@ -11,6 +11,7 @@ class LeasingManagersController < ApplicationController
   # GET /leasing_managers/1
   # GET /leasing_managers/1.json
   def show
+    @projectforcancel = @leasing_manager.project_id
   end
 
   # GET /leasing_managers/new
@@ -39,10 +40,11 @@ class LeasingManagersController < ApplicationController
   def create
     @leasing_manager = LeasingManager.new(leasing_manager_params)
     @projects = Project.where(id: current_user.project_ids)
+    @project = Project.find(@leasing_manager.project_id)
 
     respond_to do |format|
       if @leasing_manager.save
-        format.html { redirect_to @leasing_manager, notice: 'Leasing manager was successfully created.' }
+        format.html { redirect_to @project, notice: 'Leasing manager was successfully created.' }
         format.json { render :show, status: :created, location: @leasing_manager }
       else
         format.html { render :new }
@@ -55,10 +57,11 @@ class LeasingManagersController < ApplicationController
   # PATCH/PUT /leasing_managers/1.json
   def update
     @projects = Project.where(id: current_user.project_ids)
+    @project = Project.find(@leasing_manager.project_id)
     
     respond_to do |format|
       if @leasing_manager.update(leasing_manager_params)
-        format.html { redirect_to @leasing_manager, notice: 'Leasing manager was successfully updated.' }
+        format.html { redirect_to @project, notice: 'Leasing manager was successfully updated.' }
         format.json { render :show, status: :ok, location: @leasing_manager }
       else
         format.html { render :edit }

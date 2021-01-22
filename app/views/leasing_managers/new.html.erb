@@ -1,5 +1,12 @@
+<div class="row">
+  <div class="col-xs-10 col-xs-offset-1">
+
 <%- model_class = LeasingManager -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => [:'helpers.titles.new', 'New %{model}'], :model => model_class.model_name.human.titleize %></h1>
-</div>
+  <h2 class="col-lg-offset-4 col-lg-4"><%=t '.title', :default => [:'helpers.titles.new', 'New %{model}'], :model => model_class.model_name.human.titleize %></h1>
+</div><br style="clear:both;"><br><br>
 <%= render :partial => 'form' %>
+
+
+  </div>
+</div>

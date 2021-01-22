@@ -1,3 +1,6 @@
+<div class="row">
+  <div class="col-xs-10 col-xs-offset-1">
+
 <%- model_class = LeasingManager -%>
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
@@ -24,15 +27,15 @@
         <td><%= leasing_manager.project_id %></td>
         <td><%=l leasing_manager.created_at %></td>
         <td>
-          <%= link_to t('.show', :default => t("helpers.links.show")),
-                      leasing_manager_path(leasing_manager), :class => 'btn btn-default btn-xs' %>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_leasing_manager_path(leasing_manager), :class => 'btn btn-default btn-xs' %>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+          <%= link_to image_tag('/images/view-button.png'),
+                      leasing_manager_path(leasing_manager), :class => 'action-buttons print-none', :title => 'View' %>
+          <%= link_to image_tag('/images/edit-button.png'),
+                      edit_leasing_manager_path(leasing_manager), :class => 'action-buttons print-none', :title => 'Edit' %>
+          <%= link_to image_tag('/images/delete-button.png'),
                       leasing_manager_path(leasing_manager),
                       :method => :delete,
                       :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                      :class => 'btn btn-xs btn-danger' %>
+                      :class => 'action-buttons print-none', :title => 'Delete' %>
         </td>
       </tr>
     <% end %>
@@ -42,3 +45,7 @@
 <%= link_to t('.new', :default => t("helpers.links.new")),
             new_leasing_manager_path,
             :class => 'btn btn-primary' %>
+
+
+  </div>
+</div>

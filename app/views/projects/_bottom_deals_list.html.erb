@@ -16,6 +16,7 @@
               <!--<th>Area Image:</th>-->
               <th style="min-width:80px;">Deal Image:</th>
               <th style="min-width:80px;">Deal Name:</th>
+              <th style="min-width:80px;text-align:center;">Archived:</th>
               <th style="min-width:80px;">Gross Area:</th>
               <th style="min-width:80px;">Lease Status:</th>
               <!--<th style="min-width:80px;">Merch Status:</th>-->
@@ -40,6 +41,7 @@
                   <% end %>
                 </td>
                 <td style="text-align:left;"><%= deal.deal_name %></td>
+                <td style="text-align:center;"><% if deal.archive == true %><i class="fa fa-check"></i><% end %></td>
                 <td style="text-align:left;"><%= number_with_delimiter(deal.gross_area, :delimiter => ',') %></td>
                 <td style="text-align:left;"><%= deal.lease_status %></td>
                 <!--<td style="text-align:left;"><%#= deal.merchandising_status %></td>-->

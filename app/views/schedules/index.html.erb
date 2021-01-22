@@ -62,10 +62,10 @@
         -->
         <td>
           <%= link_to image_tag('/images/view-button.png'),
-                      schedule_path(schedule), :class => 'action-buttons print-none' %>
+                      schedule_path(schedule), :class => 'action-buttons print-none', :title => 'View' %>
           <%= link_to image_tag('/images/edit-button.png'),
-                      edit_schedule_path(schedule), :class => 'action-buttons print-none' %>
-          <%= link_to image_tag('/images/delete-button.png'),
+                      edit_schedule_path(schedule), :class => 'action-buttons print-none', :title => 'Edit' %>
+          <%#= link_to image_tag('/images/delete-button.png'),
                       schedule_path(schedule),
                       :method => :delete,
                       :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },

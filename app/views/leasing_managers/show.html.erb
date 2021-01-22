@@ -1,3 +1,6 @@
+<div class="row">
+  <div class="col-xs-4 col-xs-offset-4">
+
 <%- model_class = LeasingManager -%>
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
@@ -14,12 +17,15 @@
   <dd><%= @leasing_manager.project_id %></dd>
 </dl>
 
-<%= link_to t('.back', :default => t("helpers.links.back")),
-              leasing_managers_path, :class => 'btn btn-default'  %>
+<%= link_to '<= Back to Project',
+              project_path(@projectforcancel), :class => 'btn btn-default'  %>
 <%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_leasing_manager_path(@leasing_manager), :class => 'btn btn-default' %>
+              edit_leasing_manager_path(@leasing_manager), :class => 'btn btn-primary' %>
 <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
               leasing_manager_path(@leasing_manager),
               :method => 'delete',
               :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
               :class => 'btn btn-danger' %>
+
+  </div>
+</div>
