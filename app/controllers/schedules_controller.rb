@@ -25,10 +25,11 @@ class SchedulesController < ApplicationController
 
   # GET /schedules/1/edit
   def edit
-    #@project_id = @deal.project_id
-    #@map_id = @deal.map_id
-    #@deal = Deal.find(@schedule.deal)
-    #@deal_id = @deal.id
+    @deal = Deal.find(@schedule.deal)
+    @deal_id = @deal.id
+    @project_id = @deal.project_id
+    @map_id = @deal.map_id
+    
   end
 
   # POST /schedules
