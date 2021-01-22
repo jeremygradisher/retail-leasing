@@ -1,3 +1,7 @@
+<div class="row">
+  <div class="col-xs-10 col-xs-offset-1">
+
+
 <% if current_user %>
 <%- model_class = Area -%>
 <div class="page-header">
@@ -12,7 +16,7 @@
       <th><%= model_class.human_attribute_name(:project_id) %></th>
       <th><%= model_class.human_attribute_name(:area_sqft) %></th>
       <th><%= model_class.human_attribute_name(:status) %></th>
-      <th><%= model_class.human_attribute_name(:coords) %></th>
+      <!--<th><%= model_class.human_attribute_name(:coords) %></th>-->
       <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
@@ -26,21 +30,24 @@
         <td><%= area.project_id %></td>
         <td><%= number_with_delimiter(area.area_sqft, :delimiter => ',') %></td>
         <td><%= area.status %></td>
-        <td><%= area.coords %></td>
+        <!--<td><%= area.coords %></td>-->
         <td><%=l area.created_at %></td>
         <td>
-          <%= link_to t('.show', :default => t("helpers.links.show")),
-                      area_path(area), :class => 'btn btn-default btn-xs', :style => 'min-width:60px;margin-bottom:2px;' %>
+          <%= link_to image_tag('/images/view-button.png'),
+                      area_path(area), :class => 'action-buttons print-none', 
+                      :style => 'min-width:60px;margin-bottom:2px;', :title => 'View' %>
           <% if (current_user && current_user.is_admin?) || (current_user && current_user.role == 'Admin' && (current_user.project_ids.include? area.project_id)) || (current_user && current_user.role == 'Editor' && (current_user.project_ids.include? area.project_id)) %>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_area_path(area), :class => 'btn btn-primary btn-xs', :style => 'min-width:60px;margin-bottom:2px;' %>
+          <%= link_to image_tag('/images/edit-button.png'),
+                      edit_area_path(area), :class => 'action-buttons print-none', 
+                      :style => 'min-width:60px;margin-bottom:2px;', :title => 'Edit' %>
           <% end %>
           <% if (current_user && current_user.is_admin?) || (current_user && current_user.role == 'Admin' && (current_user.project_ids.include? area.project_id)) %>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+          <%= link_to image_tag('/images/delete-button.png'),
                       area_path(area),
                       :method => :delete,
                       :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                      :class => 'btn btn-xs btn-danger', :style => 'min-width:60px;margin-bottom:2px;' %>
+                      :class => 'action-buttons print-none', 
+                      :style => 'min-width:60px;margin-bottom:2px;', :title => 'Delete' %>
           <% end %>
         </td>
       </tr>
@@ -55,3 +62,6 @@
 <% else %>
  <h2>Must be logged in. <a href="/" class="btn btn-default">Return Home</a></h2>
 <% end %>
+
+  </div>
+</div>
