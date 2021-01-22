@@ -35,6 +35,9 @@ class DealsController < ApplicationController
     @project = Project.find(params[:project_id])
     @dealimage = @deal.dealimages.build
     @dealimages = @deal.dealimages.all
+    
+    @map_id = @deal.map_id
+    @project_id = @deal.project_id
 
     @leasing_managers = LeasingManager.where(project_id: @project).all
   end
@@ -56,6 +59,7 @@ class DealsController < ApplicationController
   def create
     @deal = Deal.new(deal_params)
     @project = Project.find(@deal.project_id)
+    @project_id = @deal.project_id
     @dealimages = @deal.dealimages.all
 
     respond_to do |format|

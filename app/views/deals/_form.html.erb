@@ -674,17 +674,17 @@
 
 <!-- hidden fields for new form only -->
   <% if controller.action_name == "new" %>
-  <div class="form-group" style="display:none;">
+  <div class="form-group" style="/*display:none;*/">
     <%= f.label :project_id, :class => 'control-label col-lg-2' %>
     <div class="col-lg-10">
-      <%= f.hidden_field :project_id, value: @project_id, :class => 'form-control' %>
+      <%= f.number_field :project_id, value: params[:project_id], :class => 'form-control' %>
     </div>
     <%=f.error_span(:project_id) %>
   </div>
-  <div class="form-group" style="display:none;">
+  <div class="form-group" style="/*display:none;*/">
     <%= f.label :map_id, :class => 'control-label col-lg-2' %>
     <div class="col-lg-10">
-      <%= f.hidden_field :map_id, value: @map_id, :class => 'form-control' %>
+      <%= f.number_field :map_id, value: params[:map_id], :class => 'form-control' %>
     </div>
     <%=f.error_span(:map_id) %>
   </div>
