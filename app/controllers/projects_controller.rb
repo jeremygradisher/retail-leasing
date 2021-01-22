@@ -35,14 +35,14 @@ class ProjectsController < ApplicationController
     @tenants = Area.where(project_id: params[:id]).size
     
     @areas_deal = AreasDeal.new
-    @deals = @project.deals.all
+    @deals = @project.deals.where.not(archive: true).all
     @dealsforpopup = @project.deals.all.sort_by(&:deal_name)
     @dealsforlist = @project.deals.where.not(archive: true).all.sort_by(&:lease_status)
     @dealsforarchivedlist = @project.deals.where(archive: true).all.sort_by(&:deal_name)
-    @dealscount = @deals.size
+    @dealscount = @deals.where.not(archive: true).size
     
     @areasquarefootage = Area.where(project_id: params[:id]).pluck(:area_sqft)
-    @netrentablearea = @deals.pluck(:net_rentable_area)
+    @netrentablearea = @deals.where.not(archive: true).pluck(:net_rentable_area)
     
     #Going to need something like this:
     @q = @project.users.where(is_admin: false).ransack(params[:q])
