@@ -1,3 +1,6 @@
+<div class="row">
+  <div class="col-xs-10 col-xs-offset-1">
+
 <% if current_user %>
 <%- model_class = Project -%>
 <div class="page-header">
@@ -11,6 +14,7 @@
       <th><%= model_class.human_attribute_name(:name) %></th>
       <!--<th><%#= model_class.human_attribute_name(:users) %></th>-->
       <th><%= model_class.human_attribute_name(:owned_by) %></th>
+      <th><%= model_class.human_attribute_name(:status) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
@@ -29,23 +33,25 @@
         <td><%= link_to project.name, project_path(project) %></td>
         <!--<td><%#= project.users.count %></td>-->
         <td><%= project.user_id %></td>
+        <td><%= project.status %></td>
         <td><%=l project.created_at %></td>
         <td>
           
-          <%= link_to t('.show', :default => t("helpers.links.show")),
-                      project_path(project), :class => 'btn btn-default' %>
+          <%= link_to image_tag('/images/view-button.png'),
+                      project_path(project), :class => 'action-buttons print-none' %>
           
           <% if (current_user && current_user.is_admin?) || (current_user && current_user.role == 'Admin') || (current_user && current_user.role == 'Editor')  %>
-            <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                        edit_project_path(project), :class => 'btn btn-primary' %>
+            <%= link_to image_tag('/images/edit-button.png'),
+                        edit_project_path(project), :class => 'action-buttons print-none' %>
           <% end %>
           <% if (current_user && current_user.is_admin?) %>
 
-            <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+            <%= link_to image_tag('/images/delete-button.png'),
                         project_path(project),
                         :method => :delete,
-                        :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                        :class => 'btn btn-danger' %>
+                        :data => { :confirm => t('.confirm', 
+                        :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                        :class => 'action-buttons print-none' %>
           <% end %>
         </td>
       </tr>
@@ -59,3 +65,7 @@
 <% else %>
   <h2>You are not authorized to be here. <a href="/" class="btn btn-default">Return Home</a></h2>
 <% end %>
+
+
+  </div>
+</div>
