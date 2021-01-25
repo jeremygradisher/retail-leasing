@@ -36,7 +36,7 @@ class ProjectsController < ApplicationController
     
     @areas_deal = AreasDeal.new
     @deals = @project.deals.where.not(archive: true).all
-    @dealsforpopup = @project.deals.all.sort_by(&:deal_name)
+    @dealsforpopup = @project.deals.where.not(archive: true).all.sort_by(&:deal_name)
     @dealsforlist = @project.deals.where.not(archive: true).all.sort_by(&:lease_status)
     @dealsforarchivedlist = @project.deals.where(archive: true).all.sort_by(&:deal_name)
     @dealscount = @deals.where.not(archive: true).size
