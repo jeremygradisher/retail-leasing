@@ -28,8 +28,8 @@
           <tr>
             <td style="">
               <% if area.deals.count > 0 %>
-                  <% if area.deals.first.dealimages.count > 0 %>
-                    <%= link_to image_tag(area.deals.first.dealimages.first.dealimage_url, :style => 'width:80px;'), area %>
+                  <% if area.deals.last.dealimages.count > 0 %>
+                    <%= link_to image_tag(area.deals.last.dealimages.first.dealimage_url, :style => 'width:80px;'), area %>
                   <% else %>
                     <%= link_to image_tag('/images/status-plan-logo.png', :style => 'width:80px;'), area %>
                   <% end %>
@@ -42,22 +42,22 @@
             <td style=""><%= area.deals.count %></td>
             <!--<td style=""><%= area.status %></td>-->
             <!--
-            <td style=""><% if area.deals.count > 0 %><%= area.deals.first.deal_name %><% else %>*No deal associated<% end %></td>
+            <td style=""><% if area.deals.count > 0 %><%= area.deals.last.deal_name %><% else %>*No deal associated<% end %></td>
             -->
             
             
-            <td style=""><% if area.deals.count > 0 %><%= area.deals.first.lease_status %><% else %>*No deal associated<% end %></td>
+            <td style=""><% if area.deals.count > 0 %><%= area.deals.last.lease_status %><% else %>*No deal associated<% end %></td>
             <td style="width:30%;">
             
                 <% if area.deals.count > 0 %>
-                  <%= area.deals.first.status_notes.to_s.truncate(180) %>
+                  <%= area.deals.last.status_notes.to_s.truncate(180) %>
                 <% else %>
                   No deal for area
                 <% end %>
             
             </td>
             
-            <!--<td style=""><% if area.deals.count > 0 %><%= area.deals.first.merchandising_status %><% else %>*No deal associated<% end %></td>
+            <!--<td style=""><% if area.deals.count > 0 %><%= area.deals.last.merchandising_status %><% else %>*No deal associated<% end %></td>
              -->
              
             <td style="text-align:left;" class="print-none">
