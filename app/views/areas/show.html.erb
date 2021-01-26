@@ -13,12 +13,12 @@ $(document).ready(function(){
       <div class="col-xs-10 col-xs-offset-1">
         <br>
         <% if @area.deals.any? %>
-            <%= form_for @area.deals.first, :html => { :class => "form-horizontal area" } do |f| %>
+            <%= form_for @area.deals.last, :html => { :class => "form-horizontal area" } do |f| %>
                   <p style="font-weight:bold;">Tenant Documents:</p>
                   <%= f.text_field :tenant_documents, :class => 'form-control add-tags' %>
                   <% if (current_user.is_admin?) || (current_user.role == 'Admin') || (current_user.role == 'Editor')  %>
                   <p><%= link_to 'Edit',
-                              edit_deal_path(@area.deals.first),
+                              edit_deal_path(@area.deals.last),
                               :class => 'btn btn-primary responsive-none print-none', :style => '' %>
     
                   </p>
@@ -28,7 +28,7 @@ $(document).ready(function(){
                   <%= f.text_field :landlord_work, :class => 'form-control add-tags' %>
                   <% if (current_user.is_admin?) || (current_user.role == 'Admin') || (current_user.role == 'Editor')  %>
                   <p><%= link_to 'Edit',
-                              edit_deal_path(@area.deals.first),
+                              edit_deal_path(@area.deals.last),
                               :class => 'btn btn-primary responsive-none print-none', :style => '' %>
     
                   </p>
@@ -62,10 +62,10 @@ $(document).ready(function(){
   </div>
   <div class="col-xs-4">
     <% if @area.deals.count > 0 %>
-      <% if @area.deals.first.dealimages.blank? %>
-        <%= link_to image_tag('/images/status-plan-logo.png', :style => 'width:100% !important;'), deal_path(@area.deals.first) %>
+      <% if @area.deals.last.dealimages.blank? %>
+        <%= link_to image_tag('/images/status-plan-logo.png', :style => 'width:100% !important;'), deal_path(@area.deals.last) %>
       <% else %>
-        <%= link_to image_tag(@area.deals.first.dealimages.first.dealimage_url, :style => 'width:100% !important;'), deal_path(@area.deals.first) %>
+        <%= link_to image_tag(@area.deals.last.dealimages.first.dealimage_url, :style => 'width:100% !important;'), deal_path(@area.deals.last) %>
       <% end %>
     <% else %>
       <%= image_tag('/images/status-plan-logo.png', :style => 'width:100% !important;') %>
