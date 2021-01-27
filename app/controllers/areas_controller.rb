@@ -84,9 +84,10 @@ class AreasController < ApplicationController
   # DELETE /areas/1
   # DELETE /areas/1.json
   def destroy
+    @project = Project.find(@area.project_id)
     @area.destroy
     respond_to do |format|
-      format.html { redirect_to areas_url, notice: 'Area was successfully destroyed.' }
+      format.html { redirect_to @project, notice: 'Area was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
