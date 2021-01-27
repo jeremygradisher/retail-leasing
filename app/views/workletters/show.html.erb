@@ -1,483 +1,1132 @@
-<%- model_class = Workletter -%>
-<div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
-</div>
+<div class="row">
+  <div class="col-xs-10 col-xs-offset-1">
+<br><br>
 
-<dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
-  <dd><%= @workletter.name %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:project_id) %>:</strong></dt>
-  <dd><%= @workletter.project_id %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:map_id) %>:</strong></dt>
-  <dd><%= @workletter.map_id %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:area_id) %>:</strong></dt>
-  <dd><%= @workletter.area_id %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:deal_id) %>:</strong></dt>
-  <dd><%= @workletter.deal_id %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:slab) %>:</strong></dt>
-  <dd><%= @workletter.slab %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:studs) %>:</strong></dt>
-  <dd><%= @workletter.studs %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:drywall) %>:</strong></dt>
-  <dd><%= @workletter.drywall %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:insulation) %>:</strong></dt>
-  <dd><%= @workletter.insulation %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:service_door) %>:</strong></dt>
-  <dd><%= @workletter.service_door %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:storefront) %>:</strong></dt>
-  <dd><%= @workletter.storefront %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:supply) %>:</strong></dt>
-  <dd><%= @workletter.supply %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:exhaust) %>:</strong></dt>
-  <dd><%= @workletter.exhaust %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:unit) %>:</strong></dt>
-  <dd><%= @workletter.unit %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:line_set_pathways) %>:</strong></dt>
-  <dd><%= @workletter.line_set_pathways %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:ems) %>:</strong></dt>
-  <dd><%= @workletter.ems %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:voltage) %>:</strong></dt>
-  <dd><%= @workletter.voltage %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:amperage) %>:</strong></dt>
-  <dd><%= @workletter.amperage %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:conduit_size) %>:</strong></dt>
-  <dd><%= @workletter.conduit_size %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:electrical_meter) %>:</strong></dt>
-  <dd><%= @workletter.electrical_meter %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:tele_conduit_size) %>:</strong></dt>
-  <dd><%= @workletter.tele_conduit_size %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:sanitary) %>:</strong></dt>
-  <dd><%= @workletter.sanitary %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:sanitary_vent) %>:</strong></dt>
-  <dd><%= @workletter.sanitary_vent %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:grease) %>:</strong></dt>
-  <dd><%= @workletter.grease %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:water) %>:</strong></dt>
-  <dd><%= @workletter.water %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:gas) %>:</strong></dt>
-  <dd><%= @workletter.gas %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:sprinkler_stub) %>:</strong></dt>
-  <dd><%= @workletter.sprinkler_stub %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:sprinkler_grid) %>:</strong></dt>
-  <dd><%= @workletter.sprinkler_grid %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:fire_alarm) %>:</strong></dt>
-  <dd><%= @workletter.fire_alarm %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:slab_description) %>:</strong></dt>
-  <dd><%= @workletter.slab_description %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:studs_description) %>:</strong></dt>
-  <dd><%= @workletter.studs_description %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:drywall_description) %>:</strong></dt>
-  <dd><%= @workletter.drywall_description %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:storefront_description) %>:</strong></dt>
-  <dd><%= @workletter.storefront_description %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:servicedoor_description) %>:</strong></dt>
-  <dd><%= @workletter.servicedoor_description %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:untis_description) %>:</strong></dt>
-  <dd><%= @workletter.untis_description %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:supplyduct_description) %>:</strong></dt>
-  <dd><%= @workletter.supplyduct_description %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:exhaustduct_description) %>:</strong></dt>
-  <dd><%= @workletter.exhaustduct_description %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:linesetpathway_description) %>:</strong></dt>
-  <dd><%= @workletter.linesetpathway_description %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:emergency_description) %>:</strong></dt>
-  <dd><%= @workletter.emergency_description %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:voltage_description) %>:</strong></dt>
-  <dd><%= @workletter.voltage_description %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:amperage_description) %>:</strong></dt>
-  <dd><%= @workletter.amperage_description %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:conduitsize_description) %>:</strong></dt>
-  <dd><%= @workletter.conduitsize_description %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:panels_description) %>:</strong></dt>
-  <dd><%= @workletter.panels_description %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:meter_description) %>:</strong></dt>
-  <dd><%= @workletter.meter_description %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:telephone_description) %>:</strong></dt>
-  <dd><%= @workletter.telephone_description %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:sanitary_description) %>:</strong></dt>
-  <dd><%= @workletter.sanitary_description %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:sanitaryvent_description) %>:</strong></dt>
-  <dd><%= @workletter.sanitaryvent_description %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:grease_description) %>:</strong></dt>
-  <dd><%= @workletter.grease_description %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:water_description) %>:</strong></dt>
-  <dd><%= @workletter.water_description %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:gas_description) %>:</strong></dt>
-  <dd><%= @workletter.gas_description %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:sprinklerstub_description) %>:</strong></dt>
-  <dd><%= @workletter.sprinklerstub_description %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:sprinklergrid_description) %>:</strong></dt>
-  <dd><%= @workletter.sprinklergrid_description %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:firealarm_description) %>:</strong></dt>
-  <dd><%= @workletter.firealarm_description %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:insulation_description) %>:</strong></dt>
-  <dd><%= @workletter.insulation_description %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:slab_complete) %>:</strong></dt>
-  <dd><%= @workletter.slab_complete %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:slab_typical) %>:</strong></dt>
-  <dd><%= @workletter.slab_typical %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:slab_date) %>:</strong></dt>
-  <dd><%= @workletter.slab_date %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:studs_typical) %>:</strong></dt>
-  <dd><%= @workletter.studs_typical %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:drywall_typical) %>:</strong></dt>
-  <dd><%= @workletter.drywall_typical %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:insulation_typical) %>:</strong></dt>
-  <dd><%= @workletter.insulation_typical %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:service_door_typical) %>:</strong></dt>
-  <dd><%= @workletter.service_door_typical %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:storefront_typical) %>:</strong></dt>
-  <dd><%= @workletter.storefront_typical %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:supply_duct_typical) %>:</strong></dt>
-  <dd><%= @workletter.supply_duct_typical %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:exhaust_duct_typical) %>:</strong></dt>
-  <dd><%= @workletter.exhaust_duct_typical %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:unit_typical) %>:</strong></dt>
-  <dd><%= @workletter.unit_typical %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:line_set_pathways_typical) %>:</strong></dt>
-  <dd><%= @workletter.line_set_pathways_typical %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:ems_typical) %>:</strong></dt>
-  <dd><%= @workletter.ems_typical %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:voltage_typical) %>:</strong></dt>
-  <dd><%= @workletter.voltage_typical %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:amperage_typical) %>:</strong></dt>
-  <dd><%= @workletter.amperage_typical %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:conduit_size_typical) %>:</strong></dt>
-  <dd><%= @workletter.conduit_size_typical %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:electrical_meter_typical) %>:</strong></dt>
-  <dd><%= @workletter.electrical_meter_typical %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:telephone_typical) %>:</strong></dt>
-  <dd><%= @workletter.telephone_typical %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:sanitary_typical) %>:</strong></dt>
-  <dd><%= @workletter.sanitary_typical %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:sanitary_vent_typical) %>:</strong></dt>
-  <dd><%= @workletter.sanitary_vent_typical %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:grease_typical) %>:</strong></dt>
-  <dd><%= @workletter.grease_typical %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:water_typical) %>:</strong></dt>
-  <dd><%= @workletter.water_typical %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:gas_typical) %>:</strong></dt>
-  <dd><%= @workletter.gas_typical %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:sprinkler_stub_typical) %>:</strong></dt>
-  <dd><%= @workletter.sprinkler_stub_typical %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:sprinkler_grid_typical) %>:</strong></dt>
-  <dd><%= @workletter.sprinkler_grid_typical %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:fire_alarm_typical) %>:</strong></dt>
-  <dd><%= @workletter.fire_alarm_typical %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:studs_complete) %>:</strong></dt>
-  <dd><%= @workletter.studs_complete %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:drywall_complete) %>:</strong></dt>
-  <dd><%= @workletter.drywall_complete %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:insulation_complete) %>:</strong></dt>
-  <dd><%= @workletter.insulation_complete %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:service_door_complete) %>:</strong></dt>
-  <dd><%= @workletter.service_door_complete %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:storefront_complete) %>:</strong></dt>
-  <dd><%= @workletter.storefront_complete %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:supply_duct_complete) %>:</strong></dt>
-  <dd><%= @workletter.supply_duct_complete %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:exhaust_duct_complete) %>:</strong></dt>
-  <dd><%= @workletter.exhaust_duct_complete %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:unit_complete) %>:</strong></dt>
-  <dd><%= @workletter.unit_complete %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:line_set_pathways_complete) %>:</strong></dt>
-  <dd><%= @workletter.line_set_pathways_complete %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:ems_complete) %>:</strong></dt>
-  <dd><%= @workletter.ems_complete %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:voltage_complete) %>:</strong></dt>
-  <dd><%= @workletter.voltage_complete %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:amperage_complete) %>:</strong></dt>
-  <dd><%= @workletter.amperage_complete %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:conduit_size_complete) %>:</strong></dt>
-  <dd><%= @workletter.conduit_size_complete %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:electrical_meter_complete) %>:</strong></dt>
-  <dd><%= @workletter.electrical_meter_complete %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:telephone_complete) %>:</strong></dt>
-  <dd><%= @workletter.telephone_complete %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:sanitary_complete) %>:</strong></dt>
-  <dd><%= @workletter.sanitary_complete %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:sanitary_vent_complete) %>:</strong></dt>
-  <dd><%= @workletter.sanitary_vent_complete %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:grease_complete) %>:</strong></dt>
-  <dd><%= @workletter.grease_complete %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:water_complete) %>:</strong></dt>
-  <dd><%= @workletter.water_complete %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:gas_complete) %>:</strong></dt>
-  <dd><%= @workletter.gas_complete %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:sprinkler_stub_complete) %>:</strong></dt>
-  <dd><%= @workletter.sprinkler_stub_complete %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:sprinkler_grid_complete) %>:</strong></dt>
-  <dd><%= @workletter.sprinkler_grid_complete %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:fire_alarm_complete) %>:</strong></dt>
-  <dd><%= @workletter.fire_alarm_complete %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:studs_date) %>:</strong></dt>
-  <dd><%= @workletter.studs_date %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:drywall_date) %>:</strong></dt>
-  <dd><%= @workletter.drywall_date %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:insulation_date) %>:</strong></dt>
-  <dd><%= @workletter.insulation_date %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:service_door_date) %>:</strong></dt>
-  <dd><%= @workletter.service_door_date %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:storefront_date) %>:</strong></dt>
-  <dd><%= @workletter.storefront_date %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:supply_date) %>:</strong></dt>
-  <dd><%= @workletter.supply_date %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:exhaust_date) %>:</strong></dt>
-  <dd><%= @workletter.exhaust_date %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:unit_date) %>:</strong></dt>
-  <dd><%= @workletter.unit_date %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:line_set_pathways_date) %>:</strong></dt>
-  <dd><%= @workletter.line_set_pathways_date %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:ems_date) %>:</strong></dt>
-  <dd><%= @workletter.ems_date %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:voltage_date) %>:</strong></dt>
-  <dd><%= @workletter.voltage_date %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:amperage_date) %>:</strong></dt>
-  <dd><%= @workletter.amperage_date %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:conduit_size_date) %>:</strong></dt>
-  <dd><%= @workletter.conduit_size_date %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:electrical_meter_date) %>:</strong></dt>
-  <dd><%= @workletter.electrical_meter_date %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:tele_conduit_size_date) %>:</strong></dt>
-  <dd><%= @workletter.tele_conduit_size_date %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:sanitary_date) %>:</strong></dt>
-  <dd><%= @workletter.sanitary_date %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:grease_date) %>:</strong></dt>
-  <dd><%= @workletter.grease_date %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:water_date) %>:</strong></dt>
-  <dd><%= @workletter.water_date %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:sprinkler_stub_date) %>:</strong></dt>
-  <dd><%= @workletter.sprinkler_stub_date %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:sprinkler_grid_date) %>:</strong></dt>
-  <dd><%= @workletter.sprinkler_grid_date %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:fire_alarm_date) %>:</strong></dt>
-  <dd><%= @workletter.fire_alarm_date %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:gas_date) %>:</strong></dt>
-  <dd><%= @workletter.gas_date %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:sanitary_vent_date) %>:</strong></dt>
-  <dd><%= @workletter.sanitary_vent_date %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:electrical) %>:</strong></dt>
-  <dd><%= @workletter.electrical %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:electrical_description) %>:</strong></dt>
-  <dd><%= @workletter.electrical_description %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:electrical_typical) %>:</strong></dt>
-  <dd><%= @workletter.electrical_typical %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:electrical_responsibility) %>:</strong></dt>
-  <dd><%= @workletter.electrical_responsibility %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:electrical_complete) %>:</strong></dt>
-  <dd><%= @workletter.electrical_complete %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:electrical_date) %>:</strong></dt>
-  <dd><%= @workletter.electrical_date %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:ll_work) %>:</strong></dt>
-  <dd><%= @workletter.ll_work %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:ll_work_cost) %>:</strong></dt>
-  <dd><%= @workletter.ll_work_cost %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:slab_cost) %>:</strong></dt>
-  <dd><%= @workletter.slab_cost %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:studs_cost) %>:</strong></dt>
-  <dd><%= @workletter.studs_cost %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:drywall_cost) %>:</strong></dt>
-  <dd><%= @workletter.drywall_cost %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:insulation_cost) %>:</strong></dt>
-  <dd><%= @workletter.insulation_cost %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:service_door_cost) %>:</strong></dt>
-  <dd><%= @workletter.service_door_cost %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:storefront_cost) %>:</strong></dt>
-  <dd><%= @workletter.storefront_cost %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:supply_cost) %>:</strong></dt>
-  <dd><%= @workletter.supply_cost %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:exhaust_cost) %>:</strong></dt>
-  <dd><%= @workletter.exhaust_cost %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:unit_cost) %>:</strong></dt>
-  <dd><%= @workletter.unit_cost %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:ems_cost) %>:</strong></dt>
-  <dd><%= @workletter.ems_cost %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:voltage_cost) %>:</strong></dt>
-  <dd><%= @workletter.voltage_cost %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:amperage_cost) %>:</strong></dt>
-  <dd><%= @workletter.amperage_cost %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:conduit_size_cost) %>:</strong></dt>
-  <dd><%= @workletter.conduit_size_cost %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:electrical_cost) %>:</strong></dt>
-  <dd><%= @workletter.electrical_cost %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:electrical_meter_cost) %>:</strong></dt>
-  <dd><%= @workletter.electrical_meter_cost %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:telephone_cost) %>:</strong></dt>
-  <dd><%= @workletter.telephone_cost %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:sanitary_cost) %>:</strong></dt>
-  <dd><%= @workletter.sanitary_cost %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:sanitary_vent_cost) %>:</strong></dt>
-  <dd><%= @workletter.sanitary_vent_cost %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:grease_cost) %>:</strong></dt>
-  <dd><%= @workletter.grease_cost %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:water_cost) %>:</strong></dt>
-  <dd><%= @workletter.water_cost %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:gas_cost) %>:</strong></dt>
-  <dd><%= @workletter.gas_cost %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:sprinkler_stub_cost) %>:</strong></dt>
-  <dd><%= @workletter.sprinkler_stub_cost %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:sprinkler_grid_cost) %>:</strong></dt>
-  <dd><%= @workletter.sprinkler_grid_cost %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:fire_alarm_cost) %>:</strong></dt>
-  <dd><%= @workletter.fire_alarm_cost %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:line_set_pathways_cost) %>:</strong></dt>
-  <dd><%= @workletter.line_set_pathways_cost %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:structure) %>:</strong></dt>
-  <dd><%= @workletter.structure %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:structure_description) %>:</strong></dt>
-  <dd><%= @workletter.structure_description %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:structure_typical) %>:</strong></dt>
-  <dd><%= @workletter.structure_typical %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:structure_complete) %>:</strong></dt>
-  <dd><%= @workletter.structure_complete %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:structure_date) %>:</strong></dt>
-  <dd><%= @workletter.structure_date %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:structure_cost) %>:</strong></dt>
-  <dd><%= @workletter.structure_cost %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:demolition) %>:</strong></dt>
-  <dd><%= @workletter.demolition %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:demolition_description) %>:</strong></dt>
-  <dd><%= @workletter.demolition_description %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:demolition_typical) %>:</strong></dt>
-  <dd><%= @workletter.demolition_typical %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:demolition_complete) %>:</strong></dt>
-  <dd><%= @workletter.demolition_complete %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:demolition_date) %>:</strong></dt>
-  <dd><%= @workletter.demolition_date %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:demolition_cost) %>:</strong></dt>
-  <dd><%= @workletter.demolition_cost %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:other) %>:</strong></dt>
-  <dd><%= @workletter.other %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:other_description) %>:</strong></dt>
-  <dd><%= @workletter.other_description %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:other_typical) %>:</strong></dt>
-  <dd><%= @workletter.other_typical %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:other_complete) %>:</strong></dt>
-  <dd><%= @workletter.other_complete %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:other_date) %>:</strong></dt>
-  <dd><%= @workletter.other_date %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:other_cost) %>:</strong></dt>
-  <dd><%= @workletter.other_cost %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:structure_sqft) %>:</strong></dt>
-  <dd><%= @workletter.structure_sqft %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:structure_unit) %>:</strong></dt>
-  <dd><%= @workletter.structure_unit %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:slab_sqft) %>:</strong></dt>
-  <dd><%= @workletter.slab_sqft %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:slab_unit) %>:</strong></dt>
-  <dd><%= @workletter.slab_unit %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:studs_sqft) %>:</strong></dt>
-  <dd><%= @workletter.studs_sqft %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:studs_unit) %>:</strong></dt>
-  <dd><%= @workletter.studs_unit %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:drywall_sqft) %>:</strong></dt>
-  <dd><%= @workletter.drywall_sqft %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:drywall_unit) %>:</strong></dt>
-  <dd><%= @workletter.drywall_unit %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:insulation_sqft) %>:</strong></dt>
-  <dd><%= @workletter.insulation_sqft %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:insulation_unit) %>:</strong></dt>
-  <dd><%= @workletter.insulation_unit %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:service_door_sqft) %>:</strong></dt>
-  <dd><%= @workletter.service_door_sqft %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:service_door_unit) %>:</strong></dt>
-  <dd><%= @workletter.service_door_unit %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:storefront_sqft) %>:</strong></dt>
-  <dd><%= @workletter.storefront_sqft %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:storefront_unit) %>:</strong></dt>
-  <dd><%= @workletter.storefront_unit %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:hvac_unit_sqft) %>:</strong></dt>
-  <dd><%= @workletter.hvac_unit_sqft %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:hvac_unit_unit) %>:</strong></dt>
-  <dd><%= @workletter.hvac_unit_unit %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:supply_duct_sqft) %>:</strong></dt>
-  <dd><%= @workletter.supply_duct_sqft %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:supply_duct_unit) %>:</strong></dt>
-  <dd><%= @workletter.supply_duct_unit %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:exhaust_sqft) %>:</strong></dt>
-  <dd><%= @workletter.exhaust_sqft %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:exhaust_unit) %>:</strong></dt>
-  <dd><%= @workletter.exhaust_unit %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:line_set_pathways_sqft) %>:</strong></dt>
-  <dd><%= @workletter.line_set_pathways_sqft %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:line_set_pathways_unit) %>:</strong></dt>
-  <dd><%= @workletter.line_set_pathways_unit %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:ems_sqft) %>:</strong></dt>
-  <dd><%= @workletter.ems_sqft %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:ems_unit) %>:</strong></dt>
-  <dd><%= @workletter.ems_unit %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:electrical_sqft) %>:</strong></dt>
-  <dd><%= @workletter.electrical_sqft %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:electrical_unit) %>:</strong></dt>
-  <dd><%= @workletter.electrical_unit %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:voltage_sqft) %>:</strong></dt>
-  <dd><%= @workletter.voltage_sqft %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:voltage_unit) %>:</strong></dt>
-  <dd><%= @workletter.voltage_unit %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:amperage_sqft) %>:</strong></dt>
-  <dd><%= @workletter.amperage_sqft %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:amperage_unit) %>:</strong></dt>
-  <dd><%= @workletter.amperage_unit %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:conduit_size_sqft) %>:</strong></dt>
-  <dd><%= @workletter.conduit_size_sqft %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:conduit_size_unit) %>:</strong></dt>
-  <dd><%= @workletter.conduit_size_unit %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:electrical_meter_sqft) %>:</strong></dt>
-  <dd><%= @workletter.electrical_meter_sqft %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:electrical_meter_unit) %>:</strong></dt>
-  <dd><%= @workletter.electrical_meter_unit %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:telephone_sqft) %>:</strong></dt>
-  <dd><%= @workletter.telephone_sqft %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:telephone_unit) %>:</strong></dt>
-  <dd><%= @workletter.telephone_unit %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:sanitary_sqft) %>:</strong></dt>
-  <dd><%= @workletter.sanitary_sqft %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:sanitary_unit) %>:</strong></dt>
-  <dd><%= @workletter.sanitary_unit %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:sanitary_vent_sqft) %>:</strong></dt>
-  <dd><%= @workletter.sanitary_vent_sqft %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:sanitary_vent_unit) %>:</strong></dt>
-  <dd><%= @workletter.sanitary_vent_unit %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:grease_sqft) %>:</strong></dt>
-  <dd><%= @workletter.grease_sqft %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:grease_unit) %>:</strong></dt>
-  <dd><%= @workletter.grease_unit %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:water_sqft) %>:</strong></dt>
-  <dd><%= @workletter.water_sqft %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:water_unit) %>:</strong></dt>
-  <dd><%= @workletter.water_unit %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:gas_sqft) %>:</strong></dt>
-  <dd><%= @workletter.gas_sqft %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:gas_unit) %>:</strong></dt>
-  <dd><%= @workletter.gas_unit %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:sprinkler_stub_sqft) %>:</strong></dt>
-  <dd><%= @workletter.sprinkler_stub_sqft %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:sprinkler_stub_unit) %>:</strong></dt>
-  <dd><%= @workletter.sprinkler_stub_unit %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:sprinkler_grid_sqft) %>:</strong></dt>
-  <dd><%= @workletter.sprinkler_grid_sqft %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:sprinkler_grid_unit) %>:</strong></dt>
-  <dd><%= @workletter.sprinkler_grid_unit %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:fire_alarm_sqft) %>:</strong></dt>
-  <dd><%= @workletter.fire_alarm_sqft %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:fire_alarm_unit) %>:</strong></dt>
-  <dd><%= @workletter.fire_alarm_unit %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:demolition_sqft) %>:</strong></dt>
-  <dd><%= @workletter.demolition_sqft %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:demolition_unit) %>:</strong></dt>
-  <dd><%= @workletter.demolition_unit %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:other_sqft) %>:</strong></dt>
-  <dd><%= @workletter.other_sqft %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:other_unit) %>:</strong></dt>
-  <dd><%= @workletter.other_unit %></dd>
-</dl>
+  <div class="row">
+    <div class="col-xs-12" style="text-align:left">
+      <h1><strong>Workletter Name:</strong> <%= @workletter.name %></h1>
+      <hr>
+    </div>
+  </div>
 
-<%= link_to t('.back', :default => t("helpers.links.back")),
-              workletters_path, :class => 'btn btn-default'  %>
+  <div class="row">
+    <div class="col-xs-4" style="text-align:center">
+      <strong>LL Work (per SqFt):</strong> $<%= number_with_delimiter(@workletter.ll_work, :delimiter => ',') %>
+    </div>
+    <div class="col-xs-4" style="text-align:center">
+     <strong>LL Work Cost:</strong> $<%= number_with_delimiter(@workletter.ll_work_cost, :delimiter => ',') %>
+    </div>
+    <div class="col-xs-4" style="text-align:center">
+      <strong>LL Count Total:</strong> <%= number_with_delimiter(@workletter.ll_count_total, :delimiter => ',') %>
+    </div>
+  </div>
+  
+  <hr>
+  
+  <style>
+  .affix {
+      top: 0;
+      /*width: 83.3333333%;*/
+      /*width: 975px;*/
+      background-color:#fff !important;
+      z-index: 999999;
+  }
+
+  .affix + .container {
+      padding-top: 70px;
+  }
+  
+  </style>
+  
+  <div class="row">
+    <div style="background-color:#fff;">
+      <div data-spy="affix" data-offset-top="800" class="responsive-none">
+        <div class="col-xs-1"><strong class="affix-smaller">Scope:</strong></div>
+        <div class="col-xs-4"><strong class="affix-smaller">Description:</strong></div>
+        <div class="col-xs-1" style="text-align:center"><strong class="affix-smaller">Typical:</strong></div>
+        <div class="col-xs-3" style="text-align:center"><strong class="affix-smaller">Responsibility:</strong><!--<br>LL | Tenant | N/A--></div>
+        <div class="col-xs-1" style="text-align:center"><strong class="affix-smaller">Complete:</strong></div>
+        <div class="col-xs-2" style="text-align:center"><strong class="affix-smaller">Date:</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+  
+  
+  <div class="row">
+    <div class="col-xs-1 responsive-center responsive100">
+      <strong>Structure:</strong>
+    </div>
+    <div class="col-xs-4 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@workletter.structure_description) %>
+      <br>Cost: <%= number_to_currency(@workletter.structure_cost, :unit => "$") %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @workletter.structure_typical == true %>
+        <span class="fa fa-check-square ws-checked-typical"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @workletter.structure %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Complete:</span>
+      <% if @workletter.structure_complete == true %>
+        <span class="fa fa-check-square ws-check-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-complete"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-2" style="text-align:center">
+      <span class="responsive-only">Completion:</span>
+      <%= @workletter.structure_date %>
+    </div>
+  </div>
+  
+  <hr>
+  
+  
+  
+  <div class="row">
+    <div class="col-xs-1 responsive-center responsive100">
+      <strong>Slab:</strong>
+    </div>
+    <div class="col-xs-4 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@workletter.slab_description) %>
+      <br>Cost: <%= number_to_currency(@workletter.slab_cost, :unit => "$") %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @workletter.slab_typical == true %>
+        <span class="fa fa-check-square ws-checked-typical"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @workletter.slab %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Complete:</span>
+      <% if @workletter.slab_complete == true %>
+        <span class="fa fa-check-square ws-check-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-complete"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-2" style="text-align:center">
+      <span class="responsive-only">Completion:</span>
+      <%= @workletter.slab_date %>
+    </div>
+  </div>
+  
+  <hr>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <div class="row">
+    <div class="col-xs-1 responsive-center responsive100">
+      <strong>Studs:</strong>
+    </div>
+    <div class="col-xs-4 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@workletter.studs_description) %>
+      <br>Cost: <%= number_to_currency(@workletter.studs_cost, :unit => "$") %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @workletter.studs_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @workletter.studs %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Complete:</span>
+      <% if @workletter.studs_complete == true %>
+        <span class="fa fa-check-square ws-check-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-complete"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-2" style="text-align:center">
+      <span class="responsive-only">Completion:</span>
+      <%= @workletter.studs_date %>
+    </div>
+  </div>
+  
+  <hr>
+
+  <div class="row">
+    <div class="col-xs-1 responsive-center responsive100">
+      <strong>Drywall:</strong>
+    </div>
+    <div class="col-xs-4 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@workletter.drywall_description) %>
+      <br>Cost: <%= number_to_currency(@workletter.drywall_cost, :unit => "$") %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @workletter.drywall_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @workletter.drywall %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Complete:</span>
+      <% if @workletter.drywall_complete == true %>
+        <span class="fa fa-check-square ws-check-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-complete"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-2" style="text-align:center">
+      <span class="responsive-only">Completion:</span>
+      <%= @workletter.drywall_date %>
+    </div>
+  </div>
+  
+  <hr>
+  
+  <div class="row">
+    <div class="col-xs-1 responsive-center responsive100">
+      <strong>Insulation:</strong>
+    </div>
+    <div class="col-xs-4 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@workletter.insulation_description) %>
+      <br>Cost: <%= number_to_currency(@workletter.insulation_cost, :unit => "$") %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @workletter.insulation_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @workletter.insulation %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Complete:</span>
+      <% if @workletter.insulation_complete == true %>
+        <span class="fa fa-check-square ws-check-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-complete"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-2" style="text-align:center">
+      <span class="responsive-only">Completion:</span>
+      <%= @workletter.insulation_date %>
+    </div>
+  </div>
+  
+  <hr>
+  
+  <div class="row">
+    <div class="col-xs-1 responsive-center responsive100">
+      <strong>Service Door:</strong>
+    </div>
+    <div class="col-xs-4 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@workletter.servicedoor_description) %>
+      <br>Cost: <%= number_to_currency(@workletter.service_door_cost, :unit => "$") %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @workletter.service_door_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @workletter.service_door %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Complete:</span>
+      <% if @workletter.service_door_complete == true %>
+        <span class="fa fa-check-square ws-check-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-complete"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-2" style="text-align:center">
+      <span class="responsive-only">Completion:</span>
+      <%= @workletter.service_door_date %>
+    </div>
+  </div>
+  
+  <hr>
+  
+  <div class="row">
+    <div class="col-xs-1 responsive-center responsive100">
+      <strong>Storefront:</strong>
+    </div>
+    <div class="col-xs-4 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@workletter.storefront_description) %>
+      <br>Cost: <%= number_to_currency(@workletter.storefront_cost, :unit => "$") %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @workletter.storefront_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @workletter.storefront %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Complete:</span>
+      <% if @workletter.storefront_complete == true %>
+        <span class="fa fa-check-square ws-check-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-complete"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-2" style="text-align:center">
+      <span class="responsive-only">Completion:</span>
+      <%= @workletter.storefront_date %>
+    </div>
+  </div>
+  
+  <hr>
+
+
+  <div class="row">
+    <div class="col-xs-1 responsive-center responsive100">
+      <strong>HVAC Unit(s):</strong>
+    </div>
+    <div class="col-xs-4 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@workletter.untis_description) %>
+      <br>Cost: <%= number_to_currency(@workletter.unit_cost, :unit => "$") %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @workletter.unit_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @workletter.unit %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Complete:</span>
+      <% if @workletter.unit_complete == true %>
+        <span class="fa fa-check-square ws-check-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-complete"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-2" style="text-align:center">
+      <span class="responsive-only">Completion:</span>
+      <%= @workletter.unit_date %>
+    </div>
+  </div>
+  
+  <hr>
+
+
+  
+  <div class="row">
+    <div class="col-xs-1 responsive-center responsive100">
+      <strong>Supply Duct:</strong>
+    </div>
+    <div class="col-xs-4 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@workletter.supplyduct_description) %>
+      <br>Cost: <%= number_to_currency(@workletter.supply_cost, :unit => "$") %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @workletter.supply_duct_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @workletter.supply %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Complete:</span>
+      <% if @workletter.supply_duct_complete == true %>
+        <span class="fa fa-check-square ws-check-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-complete"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-2" style="text-align:center">
+      <span class="responsive-only">Completion:</span>
+      <%= @workletter.supply_date %>
+    </div>
+  </div>
+  
+  <hr>
+  
+  <div class="row">
+    <div class="col-xs-1 responsive-center responsive100">
+      <strong>Exhaust:</strong>
+    </div>
+    <div class="col-xs-4 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@workletter.exhaustduct_description) %>
+      <br>Cost: <%= number_to_currency(@workletter.exhaust_cost, :unit => "$") %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @workletter.exhaust_duct_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @workletter.exhaust %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Complete:</span>
+      <% if @workletter.exhaust_duct_complete == true %>
+        <span class="fa fa-check-square ws-check-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-complete"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-2" style="text-align:center">
+      <span class="responsive-only">Completion:</span>
+      <%= @workletter.exhaust_date %>
+    </div>
+  </div>
+  
+  <hr>
+  
+
+  
+  <div class="row">
+    <div class="col-xs-1 responsive-center responsive100">
+      <strong>Line Set Pathways:</strong>
+    </div>
+    <div class="col-xs-4 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@workletter.linesetpathway_description) %>
+      <br>Cost: <%= number_to_currency(@workletter.line_set_pathways_cost, :unit => "$") %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @workletter.line_set_pathways_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @workletter.line_set_pathways %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Complete:</span>
+      <% if @workletter.line_set_pathways_complete == true %>
+        <span class="fa fa-check-square ws-check-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-complete"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-2" style="text-align:center">
+      <span class="responsive-only">Completion:</span>
+      <%= @workletter.line_set_pathways_date %>
+    </div>
+  </div>
+  
+  <hr>
+  
+  <div class="row">
+    <div class="col-xs-1 responsive-center responsive100">
+      <strong>EMS:</strong>
+    </div>
+    <div class="col-xs-4 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@workletter.emergency_description) %>
+      <br>Cost: <%= number_to_currency(@workletter.ems_cost, :unit => "$") %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @workletter.ems_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @workletter.ems %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Complete:</span>
+      <% if @workletter.ems_complete == true %>
+        <span class="fa fa-check-square ws-check-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-complete"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-2" style="text-align:center">
+      <span class="responsive-only">Completion:</span>
+      <%= @workletter.ems_date %>
+    </div>
+  </div>
+  
+  <hr>
+  
+  
+  <div class="row">
+    <div class="col-xs-1 responsive-center responsive100">
+      <strong>Electrical:</strong>
+    </div>
+    <div class="col-xs-4 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@workletter.electrical_description) %>
+      <br>Cost: <%= number_to_currency(@workletter.electrical_cost, :unit => "$") %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @workletter.electrical_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @workletter.electrical %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Complete:</span>
+      <% if @workletter.electrical_complete == true %>
+        <span class="fa fa-check-square ws-check-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-complete"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-2" style="text-align:center">
+      <span class="responsive-only">Completion:</span>
+      <%= @workletter.electrical_date %>
+    </div>
+  </div>
+  
+  <hr>
+  
+  
+  
+  
+  
+    <div class="row">
+    <div class="col-xs-1 responsive-center responsive100">
+      <strong>Voltage:</strong>
+    </div>
+    <div class="col-xs-4 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@workletter.voltage_description) %>
+      <br>Cost: <%= number_to_currency(@workletter.voltage_cost, :unit => "$") %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @workletter.voltage_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @workletter.voltage %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Complete:</span>
+      <% if @workletter.voltage_complete == true %>
+        <span class="fa fa-check-square ws-check-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-complete"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-2" style="text-align:center">
+      <span class="responsive-only">Completion:</span>
+      <%= @workletter.voltage_date %>
+    </div>
+  </div>
+  
+  <hr>
+  
+  <div class="row">
+    <div class="col-xs-1 responsive-center responsive100">
+      <strong>Amperage:</strong>
+    </div>
+    <div class="col-xs-4 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@workletter.amperage_description) %>
+      <br>Cost: <%= number_to_currency(@workletter.amperage_cost, :unit => "$") %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @workletter.amperage_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @workletter.amperage %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Complete:</span>
+      <% if @workletter.amperage_complete == true %>
+        <span class="fa fa-check-square ws-check-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-complete"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-2" style="text-align:center">
+      <span class="responsive-only">Completion:</span>
+      <%= @workletter.amperage_date %>
+    </div>
+  </div>
+  
+  <hr>
+  
+  <div class="row">
+    <div class="col-xs-1 responsive-center responsive100">
+      <strong>Conduit Size:</strong>
+    </div>
+    <div class="col-xs-4 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@workletter.conduitsize_description) %>
+      <br>Cost: <%= number_to_currency(@workletter.conduit_size_cost, :unit => "$") %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @workletter.conduit_size_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @workletter.conduit_size %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Complete:</span>
+      <% if @workletter.conduit_size_complete == true %>
+        <span class="fa fa-check-square ws-check-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-complete"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-2" style="text-align:center">
+      <span class="responsive-only">Completion:</span>
+      <%= @workletter.conduit_size_date %>
+    </div>
+  </div>
+  
+  <hr>
+  
+  
+  
+  <div class="row">
+    <div class="col-xs-1 responsive-center responsive100">
+      <strong>Electrical Meter:</strong>
+    </div>
+    <div class="col-xs-4 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@workletter.meter_description) %>
+      <br>Cost: <%= number_to_currency(@workletter.electrical_meter_cost, :unit => "$") %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @workletter.electrical_meter_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @workletter.electrical_meter %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Complete:</span>
+      <% if @workletter.electrical_meter_complete == true %>
+        <span class="fa fa-check-square ws-check-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-complete"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-2" style="text-align:center">
+      <span class="responsive-only">Completion:</span>
+      <%= @workletter.electrical_meter_date %>
+    </div>
+  </div>
+  
+  <hr>
+  
+  <div class="row">
+    <div class="col-xs-1 responsive-center responsive100">
+      <strong>Telephone:</strong>
+    </div>
+    <div class="col-xs-4 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@workletter.telephone_description) %>
+      <br>Cost: <%= number_to_currency(@workletter.telephone_cost, :unit => "$") %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @workletter.telephone_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @workletter.tele_conduit_size %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Complete:</span>
+      <% if @workletter.telephone_complete == true %>
+        <span class="fa fa-check-square ws-check-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-complete"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-2" style="text-align:center">
+      <span class="responsive-only">Completion:</span>
+      <%= @workletter.tele_conduit_size_date %>
+    </div>
+  </div>
+  
+  <hr>
+  
+  <div class="row">
+    <div class="col-xs-1 responsive-center responsive100">
+      <strong>Sanitary:</strong>
+    </div>
+    <div class="col-xs-4 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@workletter.sanitary_description) %>
+      <br>Cost: <%= number_to_currency(@workletter.sanitary_cost, :unit => "$") %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @workletter.sanitary_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @workletter.sanitary %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Complete:</span>
+      <% if @workletter.sanitary_complete == true %>
+        <span class="fa fa-check-square ws-check-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-complete"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-2" style="text-align:center">
+      <span class="responsive-only">Completion:</span>
+      <%= @workletter.sanitary_date %>
+    </div>
+  </div>
+  
+  <hr>
+  
+  <div class="row">
+    <div class="col-xs-1 responsive-center responsive100">
+      <strong>Sanitary Vent:</strong>
+    </div>
+    <div class="col-xs-4 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@workletter.sanitaryvent_description) %>
+      <br>Cost: <%= number_to_currency(@workletter.sanitary_vent_cost, :unit => "$") %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @workletter.sanitary_vent_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @workletter.sanitary_vent %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Complete:</span>
+      <% if @workletter.sanitary_vent_complete == true %>
+        <span class="fa fa-check-square ws-check-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-complete"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-2" style="text-align:center">
+      <span class="responsive-only">Completion:</span>
+      <%= @workletter.sanitary_vent_date %>
+    </div>
+  </div>
+  
+  <hr>
+  
+  <div class="row">
+    <div class="col-xs-1 responsive-center responsive100">
+      <strong>Grease:</strong>
+    </div>
+    <div class="col-xs-4 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@workletter.grease_description) %>
+      <br>Cost: <%= number_to_currency(@workletter.grease_cost, :unit => "$") %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @workletter.grease_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @workletter.grease %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Complete:</span>
+      <% if @workletter.grease_complete == true %>
+        <span class="fa fa-check-square ws-check-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-complete"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-2" style="text-align:center">
+      <span class="responsive-only">Completion:</span>
+      <%= @workletter.grease_date %>
+    </div>
+  </div>
+  
+  <hr>
+  
+  <div class="row">
+    <div class="col-xs-1 responsive-center responsive100">
+      <strong>Water:</strong>
+    </div>
+    <div class="col-xs-4 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@workletter.water_description) %>
+      <br>Cost: <%= number_to_currency(@workletter.water_cost, :unit => "$") %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @workletter.water_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @workletter.water %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Complete:</span>
+      <% if @workletter.water_complete == true %>
+        <span class="fa fa-check-square ws-check-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-complete"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-2" style="text-align:center">
+      <span class="responsive-only">Completion:</span>
+      <%= @workletter.water_date %>
+    </div>
+  </div>
+  
+  <hr>
+  
+<div class="row">
+    <div class="col-xs-1 responsive-center responsive100">
+      <strong>Gas:</strong>
+    </div>
+    <div class="col-xs-4 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@workletter.gas_description) %>
+      <br>Cost: <%= number_to_currency(@workletter.gas_cost, :unit => "$") %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @workletter.gas_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @workletter.gas %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Complete:</span>
+      <% if @workletter.gas_complete == true %>
+        <span class="fa fa-check-square ws-check-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-complete"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-2" style="text-align:center">
+      <span class="responsive-only">Completion:</span>
+      <%= @workletter.gas_date %>
+    </div>
+  </div>
+  
+  <hr>
+  
+  <div class="row">
+    <div class="col-xs-1 responsive-center responsive100">
+      <strong>Sprinkler Stub:</strong>
+    </div>
+    <div class="col-xs-4 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@workletter.sprinklerstub_description) %>
+      <br>Cost: <%= number_to_currency(@workletter.sprinkler_stub_cost, :unit => "$") %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @workletter.sprinkler_stub_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @workletter.sprinkler_stub %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Complete:</span>
+      <% if @workletter.sprinkler_stub_complete == true %>
+        <span class="fa fa-check-square ws-check-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-complete"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-2" style="text-align:center">
+      <span class="responsive-only">Completion:</span>
+      <%= @workletter.sprinkler_stub_date %>
+    </div>
+  </div>
+  
+  <hr>
+  
+  <div class="row">
+    <div class="col-xs-1 responsive-center responsive100">
+      <strong>Sprinkler Grid:</strong>
+    </div>
+    <div class="col-xs-4 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@workletter.sprinklergrid_description) %>
+      <br>Cost: <%= number_to_currency(@workletter.sprinkler_grid_cost, :unit => "$") %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @workletter.sprinkler_grid_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @workletter.sprinkler_grid %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Complete:</span>
+      <% if @workletter.sprinkler_grid_complete == true %>
+        <span class="fa fa-check-square ws-check-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-complete"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-2" style="text-align:center">
+      <span class="responsive-only">Completion:</span>
+      <%= @workletter.sprinkler_grid_date %>
+    </div>
+  </div>
+  
+  <hr>
+  
+  <div class="row">
+    <div class="col-xs-1 responsive-center responsive100">
+      <strong>Fire Alarm:</strong>
+    </div>
+    <div class="col-xs-4 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@workletter.firealarm_description) %>
+      <br>Cost: <%= number_to_currency(@workletter.fire_alarm_cost, :unit => "$") %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @workletter.fire_alarm_typical == true %>
+        <span class="fa fa-check-square ws-checked-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @workletter.fire_alarm %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Complete:</span>
+      <% if @workletter.fire_alarm_complete == true %>
+        <span class="fa fa-check-square ws-check-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-complete"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-2" style="text-align:center">
+      <span class="responsive-only">Completion:</span>
+      <%= @workletter.fire_alarm_date %>
+    </div>
+  </div>
+  
+  <hr>
+  
+  <div class="row">
+    <div class="col-xs-1 responsive-center responsive100">
+      <strong>Demolition:</strong>
+    </div>
+    <div class="col-xs-4 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@workletter.demolition_description) %>
+      <br>Cost: <%= number_to_currency(@workletter.demolition_cost, :unit => "$") %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @workletter.demolition_typical == true %>
+        <span class="fa fa-check-square ws-checked-typical"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @workletter.demolition %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Complete:</span>
+      <% if @workletter.demolition_complete == true %>
+        <span class="fa fa-check-square ws-check-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-complete"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-2" style="text-align:center">
+      <span class="responsive-only">Completion:</span>
+      <%= @workletter.demolition_date %>
+    </div>
+  </div>
+  
+  <hr>
+  
+  <div class="row">
+    <div class="col-xs-1 responsive-center responsive100">
+      <strong>Other:</strong>
+    </div>
+    <div class="col-xs-4 responsive-left">
+      <span class="responsive-only">Description:<br></span>
+      <%= simple_format(@workletter.other_description) %>
+      <br>Cost: <%= number_to_currency(@workletter.other_cost, :unit => "$") %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Typical:</span>
+      <% if @workletter.other_typical == true %>
+        <span class="fa fa-check-square ws-checked-typical"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-typical"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-3" style="text-align:center">
+      <span class="responsive-only">Responsibility:</span>
+      <%= @workletter.other %>
+    </div>
+    <div class="col-xs-1 responsive100" style="text-align:center">
+      <span class="responsive-only">Complete:</span>
+      <% if @workletter.other_complete == true %>
+        <span class="fa fa-check-square ws-check-complete"></span>
+      <% else %>
+        <span class="fa fa-square-o ws-unchecked-complete"></span>
+      <% end %>
+    </div>
+    <div class="col-xs-2" style="text-align:center">
+      <span class="responsive-only">Completion:</span>
+      <%= @workletter.other_date %>
+    </div>
+  </div>
+  
+  <hr>
+
+<%= link_to '<= Project',
+              project_path(@workletter.project_id), :class => 'btn btn-default'  %>
 <%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_workletter_path(@workletter), :class => 'btn btn-default' %>
+              edit_workletter_path(@workletter), :class => 'btn btn-primary' %>
 <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
               workletter_path(@workletter),
               :method => 'delete',
               :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
               :class => 'btn btn-danger' %>
+
+
+
+
+  </div>
+</div>
+
+<br><br><br><br>
