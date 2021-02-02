@@ -24,6 +24,7 @@ class MapsController < ApplicationController
     
     @areas_deal = AreasDeal.new
     @deals = @project.deals.all
+    @dealsforpopup = @project.deals.where.not(archive: true).all.sort_by(&:deal_name)
   end
 
   # GET /maps/new
