@@ -159,9 +159,15 @@
         <% end %>
       </div>
       <div class="col-lg-2">
-        <%= link_to '<i class="fa fa-times" style="margin-right:4px"></i> Cancel'.html_safe,
+        <% if controller.controller_name == "deals" && controller.action_name == "new" %>
+          <%= link_to '<i class="fa fa-times" style="margin-right:4px"></i> Cancel'.html_safe,
+                project_path(@project), :class => 'btn btn-default ws-border-style border-light branded-font',
+                :style => 'float:right;font-size:16pt;width:100px;background-color:#CB562D;color:#fff;' %>
+        <% else %>
+          <%= link_to '<i class="fa fa-times" style="margin-right:4px"></i> Cancel'.html_safe,
                 deal_path(@deal), :class => 'btn btn-default ws-border-style border-light branded-font',
                 :style => 'float:right;font-size:16pt;width:100px;background-color:#CB562D;color:#fff;' %>
+        <% end %>
       </div>
       <div class="col-lg-1">
       </div>
