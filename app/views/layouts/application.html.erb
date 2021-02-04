@@ -486,6 +486,36 @@
           </div>
       </div>
       
+      <% elsif current_user && (controller_name == "deals" && controller.action_name == "new") %>
+      <!-- Tenant Project Path -->
+      <div class="row row-correction print-none" style="background-color:#f8f8f8;border-top:thin solid #231f20;">
+          <div class="col-lg-12" style="text-align:center">
+            <footer style="background-color: #f8f8f8;" class="affixfooter" data-spy="affix-bottom">
+              
+                <%# if current_user.is_admin? || current_user.role == 'Admin' || current_user.role == 'Editor'  %>
+                  <%#= link_to 'Kill Deal',
+                    deal_path(@deal),
+                    :method => 'delete',
+                    :data => { :confirm => 'Are you sure you want to DELETE this Deal?'},
+                    :class => 'btn btn-danger print-none float-left-until',
+                    :style => 'margin-left:6px;margin-right:6px;' %>
+                <%# end %>
+              
+              <% if current_user.is_admin? || current_user.role == 'Admin' || current_user.role == 'Editor' %>
+                <%#= f.submit nil, :class => 'btn btn-primary' %>
+                <%= submit_tag 'Create Deal', 
+                  :form => 'new_deal',
+                  :class => 'btn btn-primary print-none float-right-until', 
+                  :style => 'margin-right:6px;background-color:#f16528;border-color:#f16528;' %>
+              <% end %>
+              
+                <%= link_to 'Cancel', project_path(@project), 
+                  :class => 'btn btn-primary print-none float-right-until', 
+                  :style => 'float:right;margin-right:6px;background-color:#fff;color:#f16528;border-color:#f16528;' %>
+            </footer>
+          </div>
+      </div>
+      
       <% elsif current_user && (controller_name == "deals" && controller.action_name == "show") %>
       <%= render '/deals/bottom_bar' %>
       
