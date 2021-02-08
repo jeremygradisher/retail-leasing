@@ -1,7 +1,7 @@
 # StatusPlan2 - Running Rails 5
 ## a place to build and test
-Getting this close for presentation.
-Pulled this over into where we need this to be 09/23/2020
+Have this going closer to completion.
+Adding sendgrid api/upgrade.
 
 # Before:
 ## Good base build - user auth w/ user model, save image to aws, sendgrid sign-up
