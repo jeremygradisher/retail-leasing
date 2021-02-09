@@ -65,6 +65,8 @@ gem 'chartkick', '2.3.5'
 gem 'will_paginate', '3.1.5'
 gem 'will_paginate-bootstrap', '1.0.1'
 
+gem 'sendgrid-ruby'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'sqlite3', '~> 1.3.6'
