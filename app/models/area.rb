@@ -6,4 +6,6 @@ class Area < ApplicationRecord
   
   has_many :areas_deals, :dependent => :destroy
   has_many :deals, through: :areas_deals
+  
+  has_many :primary_deals, :dependent => :destroy
 end

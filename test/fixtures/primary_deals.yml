@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  area: one
+  deal: one
+  project: one
+
+two:
+  area: two
+  deal: two
+  project: two
