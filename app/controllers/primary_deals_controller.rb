@@ -32,7 +32,7 @@ class PrimaryDealsController < ApplicationController
 
     respond_to do |format|
       if @primary_deal.save
-        format.html { redirect_to @primary_deal, notice: 'Primary deal was successfully created.' }
+        format.html { redirect_to @project, notice: 'Primary deal was successfully created.' }
         format.json { render :show, status: :created, location: @primary_deal }
       else
         format.html { render :new }
@@ -58,9 +58,10 @@ class PrimaryDealsController < ApplicationController
   # DELETE /primary_deals/1
   # DELETE /primary_deals/1.json
   def destroy
+    @project = Project.find(@primary_deal.project_id)
     @primary_deal.destroy
     respond_to do |format|
-      format.html { redirect_to primary_deals_url, notice: 'Primary deal was successfully destroyed.' }
+      format.html { redirect_to @project, notice: 'Primary deal was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
