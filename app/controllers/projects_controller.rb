@@ -35,6 +35,8 @@ class ProjectsController < ApplicationController
     @tenants = Area.where(project_id: params[:id]).size
     
     @areas_deal = AreasDeal.new
+    @primary_deal = PrimaryDeal.new
+    
     @deals = @project.deals.where.not(archive: true).all
     @dealsforpopup = @project.deals.where.not(archive: true).all.sort_by(&:deal_name)
     @dealsforlist = @project.deals.where.not(archive: true).all.sort_by(&:lease_status)
