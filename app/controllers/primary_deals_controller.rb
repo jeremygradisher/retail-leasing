@@ -15,10 +15,12 @@ class PrimaryDealsController < ApplicationController
   # GET /primary_deals/new
   def new
     @primary_deal = PrimaryDeal.new
+    @project = Project.find(params[:project_id])
   end
 
   # GET /primary_deals/1/edit
   def edit
+    @project = Project.find(@primary_deal.project_id)
   end
 
   # POST /primary_deals

@@ -1,0 +1,11 @@
+<%= form_for @areas_deal, :html => { :class => "form-horizontal areas_deal" } do |f| %>
+<%= f.number_field :area_id, value: area.id, :class => 'form-control', :style => 'display:none;' %>
+
+<%= f.select :deal_id, (@dealsforpopup - area.deals).map{ |d| [d.deal_name, d.id] }, 
+{include_blank: false}, 
+:class => 'form-control select-css', 
+:style => 'float:left;height:40px;width:70%;' %>
+
+<%= f.number_field :project_id, value: @project.id, :class => 'form-control', :style => 'display:none;' %>
+<%= f.submit "+ Deal", :class => 'btn btn-primary', :style => 'float:left;height:40px;width:28%;margin-left:2%;' %>
+<% end %>

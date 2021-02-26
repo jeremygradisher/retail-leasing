@@ -17,22 +17,30 @@
 
   <div class="form-group">
     <%= f.label :area_id, :class => 'control-label col-lg-2' %>
-    <div class="col-lg-10">
-      <%= f.text_field :area_id, :class => 'form-control' %>
+    <div class="col-lg-4">
+      <%#= f.text_field :area_id, :class => 'form-control' %>
+      <%= f.select :area_id, @project.areas.all.map{ |a| [a.suite_number, a.id] }, {include_blank: false}, :class => 'form-control' %>
+
     </div>
     <%=f.error_span(:area_id) %>
   </div>
   <div class="form-group">
     <%= f.label :deal_id, :class => 'control-label col-lg-2' %>
-    <div class="col-lg-10">
-      <%= f.text_field :deal_id, :class => 'form-control' %>
+    <div class="col-lg-4">
+      <%#= f.text_field :deal_id, :class => 'form-control' %>
+      <%= f.select :deal_id, @project.deals.all.map{ |d| [d.deal_name, d.id] }, {include_blank: false}, :class => 'form-control' %>
     </div>
     <%=f.error_span(:deal_id) %>
   </div>
   <div class="form-group">
     <%= f.label :project_id, :class => 'control-label col-lg-2' %>
-    <div class="col-lg-10">
-      <%= f.text_field :project_id, :class => 'form-control' %>
+    <div class="col-lg-4">
+      <%#= f.text_field :project_id, :class => 'form-control' %>
+      <% if controller.action_name == "new" %>
+      <%= f.number_field :project_id, value: params[:project_id], :class => 'form-control' %>
+      <% else %>
+      <%= f.number_field :project_id, :class => 'form-control' %>
+      <% end %>
     </div>
     <%=f.error_span(:project_id) %>
   </div>
