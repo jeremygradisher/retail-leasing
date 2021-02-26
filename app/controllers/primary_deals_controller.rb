@@ -27,6 +27,8 @@ class PrimaryDealsController < ApplicationController
   # POST /primary_deals.json
   def create
     @primary_deal = PrimaryDeal.new(primary_deal_params)
+    
+    @project = Project.find(@primary_deal.project_id)
 
     respond_to do |format|
       if @primary_deal.save
