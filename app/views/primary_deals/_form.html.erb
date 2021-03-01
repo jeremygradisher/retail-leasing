@@ -1,0 +1,56 @@
+<%= form_for @primary_deal, :html => { :class => "form-horizontal primary_deal" } do |f| %>
+
+  <% if @primary_deal.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@primary_deal.errors.count, "error") %> prohibited this primary_deal from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @primary_deal.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :area_id, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%#= f.text_field :area_id, :class => 'form-control' %>
+      <%= f.select :area_id, @project.areas.all.map{ |a| [a.suite_number, a.id] }, {include_blank: false}, :class => 'form-control' %>
+
+    </div>
+    <%=f.error_span(:area_id) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :deal_id, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%#= f.text_field :deal_id, :class => 'form-control' %>
+      <%= f.select :deal_id, @project.deals.all.map{ |d| [d.deal_name, d.id] }, {include_blank: false}, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:deal_id) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :project_id, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-4">
+      <%#= f.text_field :project_id, :class => 'form-control' %>
+      <% if controller.action_name == "new" %>
+      <%= f.number_field :project_id, value: params[:project_id], :class => 'form-control' %>
+      <% else %>
+      <%= f.number_field :project_id, :class => 'form-control' %>
+      <% end %>
+    </div>
+    <%=f.error_span(:project_id) %>
+  </div>
+
+  <div class="form-group">
+    <div class="col-lg-offset-2 col-lg-10">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                primary_deals_path, :class => 'btn btn-default' %>
+    </div>
+  </div>
+
+<% end %>
