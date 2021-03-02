@@ -132,30 +132,30 @@
           <td><%= area.suite_number %></td>
           <td width="100px !important;"><%= area.suite_number %></td>
           <td><%= number_with_delimiter(area.area_sqft, :delimiter => ',') %></td>
-          <td><% if area.deals.count > 0 %><%= area.deals.first.punchlist_request %><% end %></td>
-          <td><% if area.deals.count > 0 %><%= area.deals.first.punchlist_inspection %><% end %></td>
-          <td><% if area.deals.count > 0 %><%= area.deals.first.punchlist_complete %><% end %></td>
-          <td><% if area.deals.count > 0 %><%= area.deals.first.close_out_letter %><% end %></td>
-          <td><% if area.deals.count > 0 %><%= area.deals.first.permit_received %><% end %></td>
-          <td><% if area.deals.count > 0 %><%= area.deals.first.certificate_of_insurance %><% end %></td>
-          <td><% if area.deals.count > 0 %><%= area.deals.first.certificate_of_occupancy %><% end %></td>
-          <td><% if area.deals.count > 0 %><%= area.deals.first.final_lien_waver %><% end %></td>
-          <td><% if area.deals.count > 0 %><%= area.deals.first.w9 %><% end %></td>
-          <td><% if area.deals.count > 0 %><%= area.deals.first.construction_cost_summary %><% end %></td>
-          <td class="text-right"><% if area.deals.count > 0 %><%= number_to_currency(area.deals.first.final_construction_cost, precision: 2, separator: '.', delimiter: ',') %><% end %></td>
-          <td class="text-right"><%#= number_to_currency(area.deals.first.cost_per_sq_feet, precision: 2, separator: '.', delimiter: ',') %></td>
-          <td><% if area.deals.count > 0 %><%= area.deals.first.as_builts_received %><% end %></td>
-          <td><% if area.deals.count > 0 %><%= area.deals.first.sprinkler_shop_drawings %><% end %></td>
-          <td><% if area.deals.count > 0 %><%= area.deals.first.sprinkler_work_order %><% end %></td>
-          <td><% if area.deals.count > 0 %><%= area.deals.first.air_balance_report %><% end %></td>
-          <td><% if area.deals.count > 0 %><%= area.deals.first.sprinkler_check %><% end %></td>
-          <td class="text-right"><% if area.deals.count > 0 %><%= number_to_currency(area.deals.first.tenant_cost, precision: 2, separator: '.', delimiter: ',') %><% end %></td>
-          <td class="text-right"><% if area.deals.count > 0 %><%= number_to_currency(area.deals.first.utility_cost, precision: 2, separator: '.', delimiter: ',') %><% end %></td>
-          <td><% if area.deals.count > 0 %><%= area.deals.first.deposit_release_approved %><% end %></td>
-          <td><% if area.deals.count > 0 %><%= area.deals.first.deposit_released %><% end %></td>
-          <td><% if area.deals.count > 0 %><%= area.deals.first.ta_ti_release_approved %><% end %></td>
-          <td><% if area.deals.count > 0 %><%= area.deals.first.ta_ti_released %><% end %></td>
-          <td><% if area.deals.count > 0 %><%= area.deals.first.close_out_notes %><% end %></td>
+          <td><% if area.deals.count > 0 %><%= area.deals.last.punchlist_request %><% end %></td>
+          <td><% if area.deals.count > 0 %><%= area.deals.last.punchlist_inspection %><% end %></td>
+          <td><% if area.deals.count > 0 %><%= area.deals.last.punchlist_complete %><% end %></td>
+          <td><% if area.deals.count > 0 %><%= area.deals.last.close_out_letter %><% end %></td>
+          <td><% if area.deals.count > 0 %><%= area.deals.last.permit_received %><% end %></td>
+          <td><% if area.deals.count > 0 %><%= area.deals.last.certificate_of_insurance %><% end %></td>
+          <td><% if area.deals.count > 0 %><%= area.deals.last.certificate_of_occupancy %><% end %></td>
+          <td><% if area.deals.count > 0 %><%= area.deals.last.final_lien_waver %><% end %></td>
+          <td><% if area.deals.count > 0 %><%= area.deals.last.w9 %><% end %></td>
+          <td><% if area.deals.count > 0 %><%= area.deals.last.construction_cost_summary %><% end %></td>
+          <td class="text-right"><% if area.deals.count > 0 %><%= number_to_currency(area.deals.last.final_construction_cost, precision: 2, separator: '.', delimiter: ',') %><% end %></td>
+          <td class="text-right"><%#= number_to_currency(area.deals.last.cost_per_sq_feet, precision: 2, separator: '.', delimiter: ',') %></td>
+          <td><% if area.deals.count > 0 %><%= area.deals.last.as_builts_received %><% end %></td>
+          <td><% if area.deals.count > 0 %><%= area.deals.last.sprinkler_shop_drawings %><% end %></td>
+          <td><% if area.deals.count > 0 %><%= area.deals.last.sprinkler_work_order %><% end %></td>
+          <td><% if area.deals.count > 0 %><%= area.deals.last.air_balance_report %><% end %></td>
+          <td><% if area.deals.count > 0 %><%= area.deals.last.sprinkler_check %><% end %></td>
+          <td class="text-right"><% if area.deals.count > 0 %><%= number_to_currency(area.deals.last.tenant_cost, precision: 2, separator: '.', delimiter: ',') %><% end %></td>
+          <td class="text-right"><% if area.deals.count > 0 %><%= number_to_currency(area.deals.last.utility_cost, precision: 2, separator: '.', delimiter: ',') %><% end %></td>
+          <td><% if area.deals.count > 0 %><%= area.deals.last.deposit_release_approved %><% end %></td>
+          <td><% if area.deals.count > 0 %><%= area.deals.last.deposit_released %><% end %></td>
+          <td><% if area.deals.count > 0 %><%= area.deals.last.ta_ti_release_approved %><% end %></td>
+          <td><% if area.deals.count > 0 %><%= area.deals.last.ta_ti_released %><% end %></td>
+          <td><% if area.deals.count > 0 %><%= area.deals.last.close_out_notes %><% end %></td>
         </tr>
       <% end %>
       <tr class="nobreak total">
