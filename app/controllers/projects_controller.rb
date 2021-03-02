@@ -445,7 +445,7 @@ class ProjectsController < ApplicationController
         lease_status: deal.lease_status,
         owner_approval: deal.owner_approval,
         name: deal.deal_name.blank? ? 'Untitled Deal' : deal.deal_name,
-        suite_number: deal.areas.blank? ? 'No Area' : deal.areas.first.suite_number,
+        suite_number: deal.areas.blank? ? 'No Area' : deal.areas.last.suite_number,
         area_sqft: deal.gross_area,
         deal_term: deal.deal_term,
         merchandising_status: deal.merchandising_status,
