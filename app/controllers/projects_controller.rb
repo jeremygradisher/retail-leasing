@@ -158,7 +158,6 @@ class ProjectsController < ApplicationController
     @potential = @deals.pluck(:net_rentable_area)
 
     # this is areas after being sorted in private method
-    #@table_object = generate_area_object(@areas)
     @table_object = generate_deal_object(@deals)
 
     respond_to do |format|
@@ -206,7 +205,6 @@ class ProjectsController < ApplicationController
     @dealarea = @deals.pluck(:net_rentable_area)
 
     # this is areas after being sorted in private method
-    #@table_object = generate_area_object(@areas)
     @table_object = generate_deal_object(@deals)
 
     respond_to do |format|
@@ -247,6 +245,8 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
     @search = Area.where(project_id: params[:id]).search(params[:q])
     @areas = @search.result(distinct: true)
+    
+    @table_object = generate_area_object(@areas)
 
     @stats = generate_area_statistics
 
@@ -343,7 +343,6 @@ class ProjectsController < ApplicationController
     #@dealarea = @deals.pluck(:net_rentable_area)
 
     # this is areas after being sorted in private method
-    #@table_object = generate_area_object(@areas)
     @table_object = generate_deal_object(@deals)
 
     respond_to do |format|
