@@ -405,27 +405,23 @@ class ProjectsController < ApplicationController
     array = []
     areas.each do |area|
       array << {
-        lease_status: Deal.where(id: area.primary_deal.to_i).exists? ? Deal.find(area.primary_deal.to_i).lease_status : area.deals.last.lease_status,
-        name: area.name.blank? ? 'Untitled Area' : area.name,
         suite_number: area.suite_number,
+        lease_status: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.lease_status : area.deals.last.lease_status,
         area_sqft: area.area_sqft,
-        deal_term: Deal.where(id: area.primary_deal.to_i).exists? ? Deal.find(area.primary_deal.to_i).deal_term : area.deals.last.deal_term,
-        merchandising_status: area.merchandising_status,
-        budget_rate: Deal.where(id: area.primary_deal.to_i).exists? ? Deal.find(area.primary_deal.to_i).budget_rate : area.deals.last.budget_rate,
-        base_rent: Deal.where(id: area.primary_deal.to_i).exists? ? Deal.find(area.primary_deal.to_i).base_rent : area.deals.last.base_rent,
-        increase: Deal.where(id: area.primary_deal.to_i).exists? ? Deal.find(area.primary_deal.to_i).increase : area.deals.last.increase,
-        
-        ll_work: Workletter.where(id: area.workletter).exists? ? Workletter.find(area.workletter).ll_work : 'N/A',
-
-        total_base_rent: Deal.where(id: area.primary_deal.to_i).exists? ? Deal.find(area.primary_deal.to_i).total_base_rent : area.deals.last.total_base_rent,
-        ti_allowance: Deal.where(id: area.primary_deal.to_i).exists? ? Deal.find(area.primary_deal.to_i).ti_allowance : area.deals.last.ti_allowance,
-        ti_cost: Deal.where(id: area.primary_deal.to_i).exists? ? Deal.find(area.primary_deal.to_i).ti_cost : area.deals.last.ti_cost,
-        cash_on_cash: Deal.where(id: area.primary_deal.to_i).exists? ? Deal.find(area.primary_deal.to_i).cash_on_cash : area.deals.last.cash_on_cash,
-        close_out_letter: area.close_out_letter.present? ? Date.strptime(area.close_out_letter,"%m/%d/%Y").strftime("%m/%d/%y") : '',
-        budget_variance: Deal.where(id: area.primary_deal.to_i).exists? ? Deal.find(area.primary_deal.to_i).budget_variance : area.deals.last.budget_variance,
-        status_notes: Deal.where(id: area.primary_deal.to_i).exists? ? Deal.find(area.primary_deal.to_i).status_notes : area.deals.last.status_notes,
-        leasing_manager: Deal.where(id: area.primary_deal.to_i).exists? ? Deal.find(area.primary_deal.to_i).leasing_manager : area.deals.last.leasing_manager,
-        action_required: Deal.where(id: area.primary_deal.to_i).exists? ? Deal.find(area.primary_deal.to_i).action_required : area.deals.last.action_required
+        deal_name: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.deal_name : area.deals.last.deal_name,
+        punchlist_request: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.punchlist_request : area.deals.last.punchlist_request,
+        punchlist_inspection: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.punchlist_inspection : area.deals.last.punchlist_inspection,
+        punchlist_complete: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.punchlist_complete : area.deals.last.punchlist_complete,
+        close_out_letter: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.close_out_letter : area.deals.last.close_out_letter,
+        permit_received: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.permit_received : area.deals.last.permit_received,
+        certificate_of_insurance: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.certificate_of_insurance : area.deals.last.certificate_of_insurance,
+        certificate_of_occupancy: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.certificate_of_occupancy : area.deals.last.certificate_of_occupancy,
+        final_lien_waver: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.final_lien_waver : area.deals.last.final_lien_waver,
+        w9: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.punchlist_complete : area.deals.last.punchlist_complete,
+        construction_cost_summary: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.w9 : area.deals.last.w9,
+        final_construction_cost: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.final_construction_cost : area.deals.last.final_construction_cost,
+        as_builts_received: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.as_builts_received : area.deals.last.as_builts_received,
+        sprinkler_shop_drawings: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.sprinkler_shop_drawings : area.deals.last.sprinkler_shop_drawings
       }
     end
     ordering = ['Leased', 'At Lease', 'LOI', 'Prospect', 'Available']
