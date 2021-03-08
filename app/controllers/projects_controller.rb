@@ -158,7 +158,6 @@ class ProjectsController < ApplicationController
     @potential = @deals.pluck(:net_rentable_area)
 
     # this is areas after being sorted in private method
-    #@table_object = generate_area_object(@areas)
     @table_object = generate_deal_object(@deals)
 
     respond_to do |format|
@@ -206,7 +205,6 @@ class ProjectsController < ApplicationController
     @dealarea = @deals.pluck(:net_rentable_area)
 
     # this is areas after being sorted in private method
-    #@table_object = generate_area_object(@areas)
     @table_object = generate_deal_object(@deals)
 
     respond_to do |format|
@@ -247,6 +245,8 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
     @search = Area.where(project_id: params[:id]).search(params[:q])
     @areas = @search.result(distinct: true)
+    
+    @table_object = generate_area_object(@areas)
 
     @stats = generate_area_statistics
 
@@ -343,7 +343,6 @@ class ProjectsController < ApplicationController
     #@dealarea = @deals.pluck(:net_rentable_area)
 
     # this is areas after being sorted in private method
-    #@table_object = generate_area_object(@areas)
     @table_object = generate_deal_object(@deals)
 
     respond_to do |format|
@@ -405,31 +404,49 @@ class ProjectsController < ApplicationController
   def generate_area_object(areas)
     array = []
     areas.each do |area|
-      array << {
-        lease_status: Deal.where(id: area.primary_deal.to_i).exists? ? Deal.find(area.primary_deal.to_i).lease_status : area.deals.last.lease_status,
-        name: area.name.blank? ? 'Untitled Area' : area.name,
-        suite_number: area.suite_number,
-        area_sqft: area.area_sqft,
-        deal_term: Deal.where(id: area.primary_deal.to_i).exists? ? Deal.find(area.primary_deal.to_i).deal_term : area.deals.last.deal_term,
-        merchandising_status: area.merchandising_status,
-        budget_rate: Deal.where(id: area.primary_deal.to_i).exists? ? Deal.find(area.primary_deal.to_i).budget_rate : area.deals.last.budget_rate,
-        base_rent: Deal.where(id: area.primary_deal.to_i).exists? ? Deal.find(area.primary_deal.to_i).base_rent : area.deals.last.base_rent,
-        increase: Deal.where(id: area.primary_deal.to_i).exists? ? Deal.find(area.primary_deal.to_i).increase : area.deals.last.increase,
-        
-        ll_work: Workletter.where(id: area.workletter).exists? ? Workletter.find(area.workletter).ll_work : 'N/A',
-
-        total_base_rent: Deal.where(id: area.primary_deal.to_i).exists? ? Deal.find(area.primary_deal.to_i).total_base_rent : area.deals.last.total_base_rent,
-        ti_allowance: Deal.where(id: area.primary_deal.to_i).exists? ? Deal.find(area.primary_deal.to_i).ti_allowance : area.deals.last.ti_allowance,
-        ti_cost: Deal.where(id: area.primary_deal.to_i).exists? ? Deal.find(area.primary_deal.to_i).ti_cost : area.deals.last.ti_cost,
-        cash_on_cash: Deal.where(id: area.primary_deal.to_i).exists? ? Deal.find(area.primary_deal.to_i).cash_on_cash : area.deals.last.cash_on_cash,
-        close_out_letter: area.close_out_letter.present? ? Date.strptime(area.close_out_letter,"%m/%d/%Y").strftime("%m/%d/%y") : '',
-        budget_variance: Deal.where(id: area.primary_deal.to_i).exists? ? Deal.find(area.primary_deal.to_i).budget_variance : area.deals.last.budget_variance,
-        status_notes: Deal.where(id: area.primary_deal.to_i).exists? ? Deal.find(area.primary_deal.to_i).status_notes : area.deals.last.status_notes,
-        leasing_manager: Deal.where(id: area.primary_deal.to_i).exists? ? Deal.find(area.primary_deal.to_i).leasing_manager : area.deals.last.leasing_manager,
-        action_required: Deal.where(id: area.primary_deal.to_i).exists? ? Deal.find(area.primary_deal.to_i).action_required : area.deals.last.action_required
-      }
+      if area.deals.count > 0
+        array << {
+          suite_number: area.suite_number,
+          lease_status: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.lease_status : area.deals.last.lease_status,
+          area_sqft: area.area_sqft,
+          deal_name: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.deal_name : area.deals.last.deal_name,
+          punchlist_request: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.punchlist_request : area.deals.last.punchlist_request,
+          punchlist_inspection: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.punchlist_inspection : area.deals.last.punchlist_inspection,
+          punchlist_complete: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.punchlist_complete : area.deals.last.punchlist_complete,
+          close_out_letter: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.close_out_letter : area.deals.last.close_out_letter,
+          permit_received: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.permit_received : area.deals.last.permit_received,
+          certificate_of_insurance: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.certificate_of_insurance : area.deals.last.certificate_of_insurance,
+          certificate_of_occupancy: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.certificate_of_occupancy : area.deals.last.certificate_of_occupancy,
+          final_lien_waver: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.final_lien_waver : area.deals.last.final_lien_waver,
+          w9: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.punchlist_complete : area.deals.last.punchlist_complete,
+          construction_cost_summary: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.w9 : area.deals.last.w9,
+          final_construction_cost: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.final_construction_cost : area.deals.last.final_construction_cost,
+          as_builts_received: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.as_builts_received : area.deals.last.as_builts_received,
+          sprinkler_shop_drawings: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.sprinkler_shop_drawings : area.deals.last.sprinkler_shop_drawings
+        }
+      else
+        array << {
+          suite_number: area.suite_number,
+          lease_status: '',
+          area_sqft: area.area_sqft,
+          deal_name: 'No deal',
+          punchlist_request: '',
+          punchlist_inspection: '',
+          punchlist_complete: '',
+          close_out_letter: '',
+          permit_received: '',
+          certificate_of_insurance: '',
+          certificate_of_occupancy: '',
+          final_lien_waver: '',
+          w9: '',
+          construction_cost_summary: '',
+          final_construction_cost: '',
+          as_builts_received: '',
+          sprinkler_shop_drawings: ''
+        }
+      end
     end
-    ordering = ['Leased', 'At Lease', 'LOI', 'Prospect', 'Available']
+    ordering = ['Leased', 'At Lease', 'LOI', 'Prospect', 'Available', '']
     sorted_array = []
     ordering.each do |order|
       selected_array = array.select{|m| m[:lease_status] == order}
@@ -445,7 +462,7 @@ class ProjectsController < ApplicationController
         lease_status: deal.lease_status,
         owner_approval: deal.owner_approval,
         name: deal.deal_name.blank? ? 'Untitled Deal' : deal.deal_name,
-        suite_number: deal.areas.blank? ? 'No Area' : deal.areas.first.suite_number,
+        suite_number: deal.areas.blank? ? 'No Area' : deal.areas.last.suite_number,
         area_sqft: deal.gross_area,
         deal_term: deal.deal_term,
         merchandising_status: deal.merchandising_status,
@@ -485,52 +502,41 @@ class ProjectsController < ApplicationController
     areas.each do |area|
       if area.deals.count > 0
         array << {
-          #opening_status: area.opening_status,
           suite_number: area.suite_number,
-          name: area.deals.last.deal_name,
-          area_sqft: area.area_sqft, 
-          lease_status: area.deals.last.lease_status,
-          #lease_execution: area.lease_execution, 
-          lease_execution: area.deals.last.lease_execution,
-          #turn_over_condition: area.turn_over_condition, 
-          turn_over_condition: area.deals.last.turn_over_condition,
-          #fit_out_duration: Deal.where(id: area.primary_deal.to_i).exists? ? Deal.find(area.primary_deal.to_i).fit_out_duration : area.deals.last.fit_out_duration,
-          fit_out_duration: area.deals.last.fit_out_duration,
-          #date_of_possession: Deal.where(id: area.primary_deal.to_i).exists? ? Deal.find(area.primary_deal.to_i).date_of_possession : area.deals.last.date_of_possession,
-          date_of_possession: area.deals.last.date_of_possession,
-          #landlord_work_sent: area.landlord_work_sent, 
-          landlord_work_sent: area.deals.last.landlord_work_sent,
+          name: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.deal_name : area.deals.last.deal_name,
+          area_sqft: area.area_sqft,
+          lease_status: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.lease_status : area.deals.last.lease_status,
+          lease_execution: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.lease_execution : area.deals.last.lease_execution,
+          turn_over_condition: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.turn_over_condition : area.deals.last.turn_over_condition,
+          fit_out_duration: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.fit_out_duration : area.deals.last.fit_out_duration,
+          date_of_possession: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.date_of_possession : area.deals.last.date_of_possession,
+          landlord_work_sent: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.landlord_work_sent : area.deals.last.landlord_work_sent,
           tenant_approval: area.tenant_approval, 
-          #welcome_package: area.welcome_package, 
-          welcome_package: area.deals.last.welcome_package,
-          #base_building_cds: area.base_building_cds, 
-          base_building_cds: area.deals.last.base_building_cds,
-          #kick_off_call: area.kick_off_call, 
-          kick_off_call: area.deals.last.kick_off_call,
-          #cad_release_form: area.cad_release_form, 
-          cad_release_form: area.deals.last.cad_release_form,
-          final_plans_received: area.deals.last.final_plans_received,
-          final_plans_reviewed: area.deals.last.final_plans_reviewed,
-          final_plans_status: area.deals.last.final_plans_status,
-          permit_submitted: area.deals.last.permit_submitted,
-          permit_received: area.deals.last.permit_received,
-          signage_received: area.deals.last.signage_received,
-          signage_reviewed: area.deals.last.signage_reviewed,
-          signage_status: area.deals.last.signage_status,
-          check_in: area.deals.last.check_in,
-          premises_acceptance: area.deals.last.premises_acceptance,
-          construction_start: area.deals.last.construction_start,
-          lay_out_rough_in: area.deals.last.lay_out_rough_in,
-          fit_out_finishes: area.deals.last.fit_out_finishes,
-          fixtures: area.deals.last.fixtures,
-          final_inspections: area.deals.last.final_inspections,
-          merchandising: area.deals.last.merchandising,
-          open_for_business: area.deals.last.open_for_business,
+          welcome_package: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.welcome_package : area.deals.last.welcome_package,
+          base_building_cds: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.base_building_cds : area.deals.last.base_building_cds,
+          kick_off_call: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.kick_off_call : area.deals.last.kick_off_call,
+          cad_release_form: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.cad_release_form : area.deals.last.cad_release_form,
+          final_plans_received: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.final_plans_received : area.deals.last.final_plans_received,
+          final_plans_reviewed: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.final_plans_reviewed : area.deals.last.final_plans_reviewed,
+          final_plans_status: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.final_plans_status : area.deals.last.final_plans_status,
+          permit_submitted: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.permit_submitted : area.deals.last.permit_submitted,
+          permit_received: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.permit_received : area.deals.last.permit_received,
+          signage_received: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.signage_received : area.deals.last.signage_received,
+          signage_reviewed: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.signage_reviewed : area.deals.last.signage_reviewed,
+          signage_status: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.signage_status : area.deals.last.signage_status,
+          check_in: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.check_in : area.deals.last.check_in,
+          premises_acceptance: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.premises_acceptance : area.deals.last.premises_acceptance,
+          construction_start: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.construction_start : area.deals.last.construction_start,
+          lay_out_rough_in: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.lay_out_rough_in : area.deals.last.lay_out_rough_in,
+          fit_out_finishes: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.fit_out_finishes : area.deals.last.fit_out_finishes,
+          fixtures: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.fixtures : area.deals.last.fixtures,
+          final_inspections: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.final_inspections : area.deals.last.final_inspections,
+          merchandising: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.merchandising : area.deals.last.merchandising,
+          open_for_business: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.open_for_business : area.deals.last.open_for_business,
           area_comments: area.area_comments
         }
       else
         array << {
-          #opening_status: area.opening_status,
           suite_number: area.suite_number,
           name: area.suite_number,
           area_sqft: area.area_sqft, 
@@ -651,7 +657,12 @@ class ProjectsController < ApplicationController
   def generate_area_statistics
     stats = {
       total_square_feet: @areas.map{ |m| m.area_sqft}.compact.inject(:+),
-      #total_construction_cost: @areas.map{ |m| m.final_construction_cost}.compact.inject(:+),
+      #if 
+      #  total_construction_cost: @areas.deals.last.map{ |m| m.final_construction_cost}.compact.inject(:+),
+      #else
+      #  total_construction_cost: @areas.deals.last.map{ |m| m.final_construction_cost}.compact.inject(:+),
+      #end
+      #  total_construction_cost: @areas.map{ |m| m.final_construction_cost}.compact.inject(:+),
       total_construction_cost: 189987000,
       not_started: {
         total: @areas.select{|m| m.status == 'not-started'}.count
