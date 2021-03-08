@@ -404,27 +404,49 @@ class ProjectsController < ApplicationController
   def generate_area_object(areas)
     array = []
     areas.each do |area|
-      array << {
-        suite_number: area.suite_number,
-        lease_status: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.lease_status : area.deals.last.lease_status,
-        area_sqft: area.area_sqft,
-        deal_name: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.deal_name : area.deals.last.deal_name,
-        punchlist_request: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.punchlist_request : area.deals.last.punchlist_request,
-        punchlist_inspection: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.punchlist_inspection : area.deals.last.punchlist_inspection,
-        punchlist_complete: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.punchlist_complete : area.deals.last.punchlist_complete,
-        close_out_letter: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.close_out_letter : area.deals.last.close_out_letter,
-        permit_received: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.permit_received : area.deals.last.permit_received,
-        certificate_of_insurance: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.certificate_of_insurance : area.deals.last.certificate_of_insurance,
-        certificate_of_occupancy: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.certificate_of_occupancy : area.deals.last.certificate_of_occupancy,
-        final_lien_waver: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.final_lien_waver : area.deals.last.final_lien_waver,
-        w9: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.punchlist_complete : area.deals.last.punchlist_complete,
-        construction_cost_summary: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.w9 : area.deals.last.w9,
-        final_construction_cost: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.final_construction_cost : area.deals.last.final_construction_cost,
-        as_builts_received: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.as_builts_received : area.deals.last.as_builts_received,
-        sprinkler_shop_drawings: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.sprinkler_shop_drawings : area.deals.last.sprinkler_shop_drawings
-      }
+      if area.deals.count > 0
+        array << {
+          suite_number: area.suite_number,
+          lease_status: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.lease_status : area.deals.last.lease_status,
+          area_sqft: area.area_sqft,
+          deal_name: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.deal_name : area.deals.last.deal_name,
+          punchlist_request: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.punchlist_request : area.deals.last.punchlist_request,
+          punchlist_inspection: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.punchlist_inspection : area.deals.last.punchlist_inspection,
+          punchlist_complete: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.punchlist_complete : area.deals.last.punchlist_complete,
+          close_out_letter: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.close_out_letter : area.deals.last.close_out_letter,
+          permit_received: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.permit_received : area.deals.last.permit_received,
+          certificate_of_insurance: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.certificate_of_insurance : area.deals.last.certificate_of_insurance,
+          certificate_of_occupancy: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.certificate_of_occupancy : area.deals.last.certificate_of_occupancy,
+          final_lien_waver: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.final_lien_waver : area.deals.last.final_lien_waver,
+          w9: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.punchlist_complete : area.deals.last.punchlist_complete,
+          construction_cost_summary: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.w9 : area.deals.last.w9,
+          final_construction_cost: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.final_construction_cost : area.deals.last.final_construction_cost,
+          as_builts_received: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.as_builts_received : area.deals.last.as_builts_received,
+          sprinkler_shop_drawings: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.sprinkler_shop_drawings : area.deals.last.sprinkler_shop_drawings
+        }
+      else
+        array << {
+          suite_number: area.suite_number,
+          lease_status: '',
+          area_sqft: area.area_sqft,
+          deal_name: 'No deal',
+          punchlist_request: '',
+          punchlist_inspection: '',
+          punchlist_complete: '',
+          close_out_letter: '',
+          permit_received: '',
+          certificate_of_insurance: '',
+          certificate_of_occupancy: '',
+          final_lien_waver: '',
+          w9: '',
+          construction_cost_summary: '',
+          final_construction_cost: '',
+          as_builts_received: '',
+          sprinkler_shop_drawings: ''
+        }
+      end
     end
-    ordering = ['Leased', 'At Lease', 'LOI', 'Prospect', 'Available']
+    ordering = ['Leased', 'At Lease', 'LOI', 'Prospect', 'Available', '']
     sorted_array = []
     ordering.each do |order|
       selected_array = array.select{|m| m[:lease_status] == order}
@@ -635,7 +657,12 @@ class ProjectsController < ApplicationController
   def generate_area_statistics
     stats = {
       total_square_feet: @areas.map{ |m| m.area_sqft}.compact.inject(:+),
-      #total_construction_cost: @areas.map{ |m| m.final_construction_cost}.compact.inject(:+),
+      #if 
+      #  total_construction_cost: @areas.deals.last.map{ |m| m.final_construction_cost}.compact.inject(:+),
+      #else
+      #  total_construction_cost: @areas.deals.last.map{ |m| m.final_construction_cost}.compact.inject(:+),
+      #end
+      #  total_construction_cost: @areas.map{ |m| m.final_construction_cost}.compact.inject(:+),
       total_construction_cost: 189987000,
       not_started: {
         total: @areas.select{|m| m.status == 'not-started'}.count
