@@ -427,7 +427,7 @@ class ProjectsController < ApplicationController
       else
         array << {
           suite_number: area.suite_number,
-          lease_status: '',
+          lease_status: 'available',
           area_sqft: area.area_sqft,
           deal_name: 'No deal',
           punchlist_request: '',
