@@ -12,4 +12,5 @@ class Deal < ApplicationRecord
   
   has_many :dealimages, dependent: :destroy
   accepts_nested_attributes_for :dealimages
+
 end
