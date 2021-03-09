@@ -406,6 +406,7 @@ class ProjectsController < ApplicationController
     areas.each do |area|
       if area.deals.count > 0
         array << {
+          areastatus: area.status,
           suite_number: area.suite_number,
           lease_status: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.lease_status : area.deals.last.lease_status,
           area_sqft: area.area_sqft,
@@ -426,6 +427,7 @@ class ProjectsController < ApplicationController
         }
       else
         array << {
+          areastatus: area.status,
           suite_number: area.suite_number,
           lease_status: 'Available',
           area_sqft: area.area_sqft,

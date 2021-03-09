@@ -126,8 +126,8 @@
       <% @table_object.each do |object| %>
         <tr class="nobreak" style="page-break-inside: avoid;">
           <td>
-            <div class="circle <%= object[:suite_number] %>"></div>
-            <%= object.remains %>
+            <div class="circle <%= object[:areastatus] %>"></div>
+            <%= object[:remains] %>
           </td>
           <td><%= object[:suite_number] %></td>
           <td width="100px !important;"><%= object[:deal_name] %></td>
