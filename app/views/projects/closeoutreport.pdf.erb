@@ -123,41 +123,39 @@
       </tr>
     </thead>
     <tbody>
-      <% @table_object.each do |object| %>
-        <tr class="nobreak" style="page-break-inside: avoid;">
+      <% @areas.each do |area| %>
+                <tr class="nobreak" style="page-break-inside: avoid;">
           <td>
-            <div class="circle <%= object[:areastatus] %>"></div>
-            <%= object[:remains] %>
+            <div class="circle <%= area.status %>"></div>
+            <% if area.deals.count > 0 %><%= area.deals.last.remains %><% else %>10<% end %>
           </td>
-          <td><%= object[:suite_number] %></td>
-          <td width="100px !important;"><%= object[:deal_name] %></td>
-          <td><%= number_with_delimiter(object[:area_sqft], :delimiter => ',') %></td>
-          
-          <td><%= object[:punchlist_request] %></td>
-          <td><%= object[:punchlist_inspection] %></td>
-          <td><%= object[:punchlist_complete] %></td>
-          <td><%= object[:close_out_letter] %></td>
-          <td><%= object[:permit_received] %></td>
-          <td><%= object[:certificate_of_insurance] %></td>
-          <td><%= object[:certificate_of_occupancy] %></td>
-          <td><%= object[:final_lien_waver] %></td>
-          <td><%= object[:w9] %></td>
-          <td><%= object[:construction_cost_summary] %></td>
-          <td class="text-right"><%= number_to_currency(object[:final_construction_cost], precision: 2, separator: '.', delimiter: ',') %></td>
-          <td class="text-right"><%= number_to_currency(object[:cost_per_sq_feet], precision: 2, separator: '.', delimiter: ',') %></td>
-          <td><%= object[:as_builts_received] %></td>
-          <td><%= object[:sprinkler_shop_drawings] %></td>
-          <td><%= object[:sprinkler_work_order] %></td>
-          <td><%= object[:air_balance_report] %></td>
-          <td><%= object[:sprinkler_check] %></td>
-          <td><%= object[:tenant_cost] %></td>
-          <td><%= object[:utility_cost] %></td>
-          <td><%= object[:deposit_release_approved] %></td>
-          <td><%= object[:deposit_released] %></td>
-          <td><%= object[:ta_ti_release_approved] %></td>
-          <td><%= object[:ta_ti_release] %></td>
-          <td><%= object[:close_out_notes] %></td>
-          
+          <td><%= area.suite_number %></td>
+          <td width="100px !important;"><%= area.suite_number %></td>
+          <td><%= number_with_delimiter(area.area_sqft, :delimiter => ',') %></td>
+          <td><% if area.deals.count > 0 %><%= area.deals.last.punchlist_request %><% end %></td>
+          <td><% if area.deals.count > 0 %><%= area.deals.last.punchlist_inspection %><% end %></td>
+          <td><% if area.deals.count > 0 %><%= area.deals.last.punchlist_complete %><% end %></td>
+          <td><% if area.deals.count > 0 %><%= area.deals.last.close_out_letter %><% end %></td>
+          <td><% if area.deals.count > 0 %><%= area.deals.last.permit_received %><% end %></td>
+          <td><% if area.deals.count > 0 %><%= area.deals.last.certificate_of_insurance %><% end %></td>
+          <td><% if area.deals.count > 0 %><%= area.deals.last.certificate_of_occupancy %><% end %></td>
+          <td><% if area.deals.count > 0 %><%= area.deals.last.final_lien_waver %><% end %></td>
+          <td><% if area.deals.count > 0 %><%= area.deals.last.w9 %><% end %></td>
+          <td><% if area.deals.count > 0 %><%= area.deals.last.construction_cost_summary %><% end %></td>
+          <td class="text-right"><% if area.deals.count > 0 %><%= number_to_currency(area.deals.last.final_construction_cost, precision: 2, separator: '.', delimiter: ',') %><% end %></td>
+          <td class="text-right"><%#= number_to_currency(area.deals.last.cost_per_sq_feet, precision: 2, separator: '.', delimiter: ',') %></td>
+          <td><% if area.deals.count > 0 %><%= area.deals.last.as_builts_received %><% end %></td>
+          <td><% if area.deals.count > 0 %><%= area.deals.last.sprinkler_shop_drawings %><% end %></td>
+          <td><% if area.deals.count > 0 %><%= area.deals.last.sprinkler_work_order %><% end %></td>
+          <td><% if area.deals.count > 0 %><%= area.deals.last.air_balance_report %><% end %></td>
+          <td><% if area.deals.count > 0 %><%= area.deals.last.sprinkler_check %><% end %></td>
+          <td class="text-right"><% if area.deals.count > 0 %><%= number_to_currency(area.deals.last.tenant_cost, precision: 2, separator: '.', delimiter: ',') %><% end %></td>
+          <td class="text-right"><% if area.deals.count > 0 %><%= number_to_currency(area.deals.last.utility_cost, precision: 2, separator: '.', delimiter: ',') %><% end %></td>
+          <td><% if area.deals.count > 0 %><%= area.deals.last.deposit_release_approved %><% end %></td>
+          <td><% if area.deals.count > 0 %><%= area.deals.last.deposit_released %><% end %></td>
+          <td><% if area.deals.count > 0 %><%= area.deals.last.ta_ti_release_approved %><% end %></td>
+          <td><% if area.deals.count > 0 %><%= area.deals.last.ta_ti_released %><% end %></td>
+          <td><% if area.deals.count > 0 %><%= area.deals.last.close_out_notes %><% end %></td>
         </tr>
       <% end %>
       <tr class="nobreak total">
