@@ -246,6 +246,8 @@ class ProjectsController < ApplicationController
     @search = Area.where(project_id: params[:id]).search(params[:q])
     @areas = @search.result(distinct: true)
     
+    #@areas_with = @areas.where(self.deals.count > 0)
+    
     @table_object = generate_area_object(@areas)
 
     @stats = generate_area_statistics
@@ -406,6 +408,7 @@ class ProjectsController < ApplicationController
     areas.each do |area|
       if area.deals.count > 0
         array << {
+          areastatus: area.status,
           suite_number: area.suite_number,
           lease_status: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.lease_status : area.deals.last.lease_status,
           area_sqft: area.area_sqft,
@@ -426,6 +429,7 @@ class ProjectsController < ApplicationController
         }
       else
         array << {
+          areastatus: area.status,
           suite_number: area.suite_number,
           lease_status: 'Available',
           area_sqft: area.area_sqft,
@@ -657,13 +661,9 @@ class ProjectsController < ApplicationController
   def generate_area_statistics
     stats = {
       total_square_feet: @areas.map{ |m| m.area_sqft}.compact.inject(:+),
-      #if 
-      #  total_construction_cost: @areas.deals.last.map{ |m| m.final_construction_cost}.compact.inject(:+),
-      #else
-      #  total_construction_cost: @areas.deals.last.map{ |m| m.final_construction_cost}.compact.inject(:+),
-      #end
-      #  total_construction_cost: @areas.map{ |m| m.final_construction_cost}.compact.inject(:+),
-      total_construction_cost: 189987000,
+      #total_construction_cost: @areas.deals.last.map{ |m| m.final_construction_cost}.compact.inject(:+),
+      total_construction_cost: 1000,
+
       not_started: {
         total: @areas.select{|m| m.status == 'not-started'}.count
       },

@@ -127,12 +127,12 @@
         <tr class="nobreak" style="page-break-inside: avoid;">
           <td>
             <div class="circle <%= object[:suite_number] %>"></div>
-            <%= object.remains %>
+            <%#= object.remains %>
           </td>
           <td><%= object[:suite_number] %></td>
           <td width="100px !important;"><%= object[:deal_name] %></td>
           <td><%= number_with_delimiter(object[:area_sqft], :delimiter => ',') %></td>
-          
+
           <td><%= object[:punchlist_request] %></td>
           <td><%= object[:punchlist_inspection] %></td>
           <td><%= object[:punchlist_complete] %></td>
@@ -157,7 +157,7 @@
           <td><%= object[:ta_ti_release_approved] %></td>
           <td><%= object[:ta_ti_release] %></td>
           <td><%= object[:close_out_notes] %></td>
-          
+
         </tr>
       <% end %>
       <tr class="nobreak total">
