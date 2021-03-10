@@ -246,7 +246,7 @@ class ProjectsController < ApplicationController
     @search = Area.where(project_id: params[:id]).search(params[:q])
     @areas = @search.result(distinct: true)
     
-    @areas_with = @areas.where(self.deals.count > 0)
+    #@areas_with = @areas.where(self.deals.count > 0)
     
     @table_object = generate_area_object(@areas)
 
@@ -661,7 +661,9 @@ class ProjectsController < ApplicationController
   def generate_area_statistics
     stats = {
       total_square_feet: @areas.map{ |m| m.area_sqft}.compact.inject(:+),
-      total_construction_cost: @areas.deals.last.map{ |m| m.final_construction_cost}.compact.inject(:+),
+      #total_construction_cost: @areas.deals.last.map{ |m| m.final_construction_cost}.compact.inject(:+),
+      total_construction_cost: 1000,
+
       not_started: {
         total: @areas.select{|m| m.status == 'not-started'}.count
       },

@@ -13,59 +13,6 @@ class Deal < ApplicationRecord
   has_many :dealimages, dependent: :destroy
   accepts_nested_attributes_for :dealimages
 
-  def self.lease_status_color
-    {
-      'Available': 'd13e27',
-      'Prospect': 'e5ba21',
-      'LOI': 'f16528',
-      'At Lease': '15958A',
-      'Leased': '8bc53f'
-    }
-  end
-  
-#  def self.opening_status_color
-#    {
-#      'No': 'D13E27',
-#      'Challenged': 'E5BA21',
-#      'Yes': '8BC53F'
-#    }
-#  end
-
-  def self.owner_approval_color
-    {
-      false: 'FFFFFF',
-      true: '8BC53F'
-    }
-  end
-  
-  def self.priority_color
-    {
-      false: 'FFFFFF',
-      true: '8BC53F'
-    }
-  end
-
-  def self.merchandising_status_color
-    {
-      'Footwear': '388b00',
-      'Auto / Gas': '66635f',
-      'Candy / Confectionary': 'f9ef7b',
-      'Department Store': 'fed389',
-      'Electronics': 'be8b67',
-      'Entertainment': 'e62536',
-      'Fashion': '67a5d7',
-      'Food & Beverage': 'f7b131',
-      'Grocery / Hypermarket': 'b6cf42',
-      'Home / Furnishings': 'f38a7c',
-      'Jewelry / Handbags': 'a6749c',
-      'Mobiles / Accessories': '3a63a8',
-      'Perfume / Cosmetics': 'ec4f92',
-      'Pets': 'e29423',
-      'Services / Specialty Stores': 'efa1c5',
-      'Sports / Outdoor / Fitness': '7ca180',
-      'Toys & Hobbies / Gifts / Books': 'b2cce9'
-    }
-  end
 
   def cost_per_sq_feet
     final_construction_cost.to_f / area_square_feet.to_f

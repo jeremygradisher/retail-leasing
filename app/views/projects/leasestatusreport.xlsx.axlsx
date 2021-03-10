@@ -129,8 +129,8 @@ wb.styles do |style|
             vertical: :center,
             wrap_text: true
           },
-          font_name: 'Helvetica'#,
-          #fg_color: Area.lease_status_color.fetch(area[:lease_status].to_s.to_sym, "231f20")
+          font_name: 'Helvetica',
+          fg_color: Area.lease_status_color.fetch(area[:lease_status].to_s.to_sym, "231f20")
         )
         
         owner_approval = style.add_style(
