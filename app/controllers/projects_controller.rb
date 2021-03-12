@@ -25,7 +25,7 @@ class ProjectsController < ApplicationController
       @maptitle = @map.name
       @image = @map.images.first
       #@areasofprimary = @map.areas.all
-      @mapareas = @map.areas.all
+      @mapareas = @map.areas.sort_by(&:suite_number)
       @areas = @map.areas.all
       @areasforlist = @map.areas.sort_by(&:suite_number)
       @deals = Deal.where(map_id: @map.id)
