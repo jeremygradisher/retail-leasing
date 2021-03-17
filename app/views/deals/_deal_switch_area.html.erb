@@ -1,9 +1,9 @@
 <div class="row">
 <!-- buttons for changing the color layers with script for buttons -->
   <div class="" style="width:100%;margin-top:10px;margin-bottom:10px;text-align:center;">
-    <button type="button" id="firstDealbtn" style="" class="btn firstDealClicked print-none deal-switch-buttons deal-buttons-active">First</button>
-    <button type="button" id="secondDealbtn" style="" class="btn secondDealClicked print-none deal-switch-buttons">Second</button>
-    <button type="button" id="thirdDealbtn" style="" class="btn thirdDealClicked print-none deal-switch-buttons">Third</button>
+    <button type="button" id="dealInfoButton" style="" class="btn print-none deal-switch-buttons deal-buttons-active">Deal Info</button>
+    <button type="button" id="secondDealbtn" style="" class="btn print-none deal-switch-buttons">Second</button>
+    <button type="button" id="thirdDealbtn" style="" class="btn print-none deal-switch-buttons">Third</button>
   </div>
 </div>
 
@@ -29,7 +29,9 @@
 
 
 <style>
-.deal-buttons-active { background-color: #F00; border:0; outline:0 !important; }
+.deal-buttons-active,.deal-buttons-active:focus { background-color: #000; color:#fff;
+            border:0; outline:0 !important; }
+.deal-buttons-active:hover {color:#ddd;}
 .deal-switch-buttons:focus { outline:0 !important; }
 </style>
 
@@ -38,32 +40,32 @@
   $(document).ready(function(){
       
       //click leasing
-    $('.firstDealClicked').click(function (){
+    $('#dealInfoButton').click(function (){
       $('#firstDealRow').show("slow");
       $('#secondDealRow').hide("slow");
       $('#thirdDealRow').hide("slow");
       
-      $( "#firstDealbtn" ).removeClass( "" ).addClass( "deal-buttons-active" );
+      $( "#dealInfoButton" ).removeClass( "" ).addClass( "deal-buttons-active" );
       $( "#secondDealbtn" ).removeClass( "deal-buttons-active" ).addClass( "" );
       $( "#thirdDealbtn" ).removeClass( "deal-buttons-active" ).addClass( "" );
     });  
     
-    $('.secondDealClicked').click(function (){
+    $('#secondDealbtn').click(function (){
       $('#firstDealRow').hide("slow");
       $('#secondDealRow').show("slow");
       $('#thirdDealRow').hide("slow");
       
-      $( "#firstDealbtn" ).removeClass( "deal-buttons-active" ).addClass( "" );
+      $( "#dealInfoButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
       $( "#secondDealbtn" ).removeClass( "" ).addClass( "deal-buttons-active" );
       $( "#thirdDealbtn" ).removeClass( "deal-buttons-active" ).addClass( "" );
     });  
     
-    $('.thirdDealClicked').click(function (){
+    $('#thirdDealbtn').click(function (){
       $('#firstDealRow').hide("slow");
       $('#secondDealRow').hide("slow");
       $('#thirdDealRow').show("slow");
       
-      $( "#firstDealbtn" ).removeClass( "deal-buttons-active" ).addClass( "" );
+      $( "#dealInfoButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
       $( "#secondDealbtn" ).removeClass( "deal-buttons-active" ).addClass( "" );
       $( "#thirdDealbtn" ).removeClass( "" ).addClass( "deal-buttons-active" );
     });  
