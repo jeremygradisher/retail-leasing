@@ -3,15 +3,16 @@
   <div class="" style="width:100%;margin-top:10px;margin-bottom:10px;text-align:center;">
     <button type="button" id="dealInfoButton" style="" class="btn print-none deal-switch-buttons deal-buttons-active">Deal Info</button>
     <button type="button" id="dealTermButton" style="" class="btn print-none deal-switch-buttons">Term of Deal</button>
-    <button type="button" id="thirdDealButton" style="" class="btn print-none deal-switch-buttons">Third</button>
-    <button type="button" id="fourthDealButton" style="" class="btn print-none deal-switch-buttons">Fourth</button>
-    <button type="button" id="fifthDealButton" style="" class="btn print-none deal-switch-buttons">Fifth</button>
-    <button type="button" id="sixthDealButton" style="" class="btn print-none deal-switch-buttons">Sixth</button>
-    <button type="button" id="seventhDealButton" style="" class="btn print-none deal-switch-buttons">Seventh</button>
+    <button type="button" id="leasingInfoButton" style="" class="btn print-none deal-switch-buttons">Leasing Info</button>
+    <button type="button" id="tenantDesignButton" style="" class="btn print-none deal-switch-buttons">Tenant Design</button>
+    <button type="button" id="tenantFitOutButton" style="" class="btn print-none deal-switch-buttons">Tenant Fit-out</button>
+    <button type="button" id="tenantCloseOutButton" style="" class="btn print-none deal-switch-buttons">Close-out</button>
+    <button type="button" id="seventhDealButton" style="" class="btn print-none deal-switch-buttons">Schedule</button>
+    <button type="button" id="eighthDealButton" style="" class="btn print-none deal-switch-buttons">Workletter</button>
   </div>
 </div>
 
-
+<br><br>
 
 <div class="row" id="dealInfoRow"><!-- switch row -->
   <div class="col-xs-10 col-xs-offset-1"><!-- inner -->
@@ -315,31 +316,400 @@
   </div><!-- inner -->
 </div><!-- switch row -->
 
-<div class="row" id="thirdDealRow"><!-- switch row -->
+<div class="row" id="leasingInfoRow"><!-- switch row -->
   <div class="col-xs-10 col-xs-offset-1"><!-- inner -->
-    This is the third deal switch area
+
+
+<table class="report-table" style="margin-bottom:0;border:none;">
+      <tr>
+        <td style="text-align:center;color:#fff;background-color:#f00;border:none;">Leasing information <i class="fa fa-certificate print-only-inline" style="color:#f00 !important;"></i></td>
+      </tr>
+    </table>
+
+    <table class="report-table add-responsive">
+      <thead>
+      <tr>
+        <th>Lease execution:</th>
+        <th>Turn-over condition:</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td><%= @deal.lease_execution %></td>
+        <td><%= @deal.turn_over_condition %></td>
+      </tr>
+      </tbody>
+    </table>
+
   </div><!-- inner -->
 </div><!-- switch row -->
 
-<div class="row" id="fourthDealRow"><!-- switch row -->
+<div class="row" id="tenantDesignRow"><!-- switch row -->
   <div class="col-xs-10 col-xs-offset-1"><!-- inner -->
-    This is the fourth deal switch area
+
+
+<table class="report-table" style="margin-bottom:0;border:none;">
+      <tr>
+        <td style="text-align:center;color:#fff;background-color:#24b9ae;border:none;">Tenant Design <i class="fa fa-certificate print-only-inline" style="color:#24b9ae !important;"></i></td>
+      </tr>
+    </table>
+
+    <table class="report-table add-responsive">
+      <thead>
+        <tr>
+          <th>Welcome package:</th>
+          <th>Base building CDs:</th>
+          <th>Kick off call:</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= @deal.welcome_package %></td>
+          <td><%= @deal.base_building_cds %></td>
+          <td><%= @deal.kick_off_call %></td>
+        </tr>
+      </tbody>
+    </table>    
+
+    <table class="report-table" style="margin-bottom:0;border:none;">
+      <tr>
+        <td style="text-align:center;color:#fff;background-color:#24b9ae;border:none;">Tenant Design (Plans) <i class="fa fa-certificate print-only-inline" style="color:#24b9ae !important;"></i></td>
+      </tr>
+    </table>
+    
+    <table class="report-table add-responsive">
+      <thead>
+      <tr>
+        <th>Final plans received:</th>
+        <th>Final plans reviewed:</th>
+        <th>Final plans status:</th>
+        <th>CAD Release Form:</th>
+        <th>Final plans notes:</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td><%= @deal.final_plans_received %></td>
+        <td><%= @deal.final_plans_reviewed %></td>
+        <td><%= @deal.final_plans_status %></td>
+        <td><%= @deal.cad_release_form %></td>
+        <td><%= simple_format(@deal.final_plans_notes) %></td>
+      </tr>
+      </tbody>
+    </table>
+
+    <table class="report-table" style="margin-bottom:0;border:none;">
+      <tr>
+        <td style="text-align:center;color:#fff;background-color:#24b9ae;border:none;">Tenant Design (Signage) <i class="fa fa-certificate print-only-inline" style="color:#24b9ae !important;"></i></td>
+      </tr>
+    </table>
+
+    <table class="report-table add-responsive">
+      <thead>
+      <tr>
+        <th>Signage received:</th>
+        <th>Signage reviewed:</th>
+         <th>Signage status:</th>
+        <th>Signage notes:</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td><%= @deal.signage_received %></td>
+        <td><%= @deal.signage_reviewed %></td>
+        <td><%= @deal.signage_status %></td>
+        <td><%= simple_format(@deal.signage_notes) %></td>
+      </tr>
+      </tbody>
+    </table>
+
+    <table class="report-table" style="margin-bottom:0;border:none;">
+      <tr>
+        <td style="text-align:center;color:#fff;background-color:#24b9ae;border:none;">Tenant Design (Permit) <i class="fa fa-certificate print-only-inline" style="color:#24b9ae !important;"></i></td>
+      </tr>
+    </table>
+
+    <table class="report-table add-responsive">
+      <thead>
+      <tr>
+        <th>Permit Submitted:</th>
+        <th>Permit received:</th>
+        <th>Permit notes:</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td><%= @deal.permit_submitted %></td>
+        <td><%= @deal.permit_received %></td>
+        <td><%= simple_format(@deal.permit_notes) %></td>
+      </tr>
+      </tbody>
+    </table>
+
   </div><!-- inner -->
 </div><!-- switch row -->
 
-<div class="row" id="fifthDealRow"><!-- switch row -->
+<div class="row" id="tenantFitOutRow"><!-- switch row -->
   <div class="col-xs-10 col-xs-offset-1"><!-- inner -->
-    This is the fifth deal switch area
+
+<table class="report-table" style="margin-bottom:0;border:none;">
+      <tr>
+        <td style="text-align:center;color:#fff;background-color:#c9e1f7;border:none;">Tenant Fit-out <i class="fa fa-certificate print-only-inline" style="color:#c9e1f7 !important;"></i></td>
+      </tr>
+    </table>
+ 
+    <table class="report-table add-responsive">
+      <thead>
+      <tr>
+        <th>Check-in:</th>
+        <th>Premises acceptance:</th>
+        <th>Construction start:</th>
+        <th>Lay-out & rough-in:</th>
+        <th>Fit-out & Finishes:</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td><%= @deal.check_in %></td>
+        <td><%= @deal.premises_acceptance %></td>
+        <td><%= @deal.construction_start %></td>
+        <td><%= @deal.lay_out_rough_in %></td>
+        <td><%= @deal.fit_out_finishes %></td>
+      </tr>
+      </tbody>
+    </table>
+
+    <table class="report-table" style="margin-bottom:0;border:none;">
+      <tr>
+        <td style="text-align:center;color:#fff;background-color:#c9e1f7;border:none;">Tenant Fit-out <i class="fa fa-certificate print-only-inline" style="color:#c9e1f7 !important;"></i></td>
+      </tr>
+    </table>
+
+    <table class="report-table add-responsive">
+      <thead>
+      <tr>
+        <th>Fixtures:</th>
+        <th>Final Inspections:</th>
+        <th>Merchandising:</th>
+        <th>Open for business:</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td><%= @deal.fixtures %></td>
+        <td><%= @deal.final_inspections %></td>
+        <td><%= @deal.merchandising %></td>
+        <td><%= @deal.open_for_business %></td>
+      </tr>
+      </tbody>
+    </table>
+
   </div><!-- inner -->
 </div><!-- switch row -->
 
-<div class="row" id="sixthDealRow"><!-- switch row -->
+
+
+
+
+
+
+<div class="row" id="closeOutRow"><!-- switch row -->
   <div class="col-xs-10 col-xs-offset-1"><!-- inner -->
-    This is the sixth deal switch area
+
+<table class="report-table" style="margin-bottom:0;border:none;">
+      <tr>
+        <td style="text-align:center;color:#fff;background-color:#6e4a86;border:none;">Close-out <i class="fa fa-certificate print-only-inline" style="color:#6e4a86 !important;"></i></td>
+      </tr>
+    </table>
+    
+    <table class="report-table add-responsive">
+      <thead>
+      <tr>
+        <th>Close-out Letter:</th>
+        <th>Certificate of Occupancy:</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td><%= @deal.close_out_letter %></td>
+        <td><%= @deal.certificate_of_occupancy %></td>
+      </tr>
+      </tbody>
+    </table>
+
+    <table class="report-table" style="margin-bottom:0;border:none;">
+      <tr>
+        <td style="text-align:center;color:#fff;background-color:#6e4a86;border:none;">Close-out <i class="fa fa-certificate print-only-inline" style="color:#6e4a86 !important;"></i></td>
+      </tr>
+    </table>
+    
+    <table class="report-table add-responsive">
+      <thead>
+      <tr>
+        <th>Punchlist request:</th>
+        <th>Punchlist Inspections:</th>
+        <th>Punchlist complete:</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td><%= @deal.punchlist_request %></td>
+        <td><%= @deal.punchlist_inspection %></td>
+        <td><%= @deal.punchlist_complete %></td>
+      </tr>
+      </tbody>
+    </table>
+    
+    <table class="report-table" style="margin-bottom:0;border:none;">
+      <tr>
+        <td style="text-align:center;color:#fff;background-color:#6e4a86;border:none;">Close-out <i class="fa fa-certificate print-only-inline" style="color:#6e4a86 !important;"></i></td>
+      </tr>
+    </table>
+    
+    <table class="report-table add-responsive">
+      <thead>
+      <tr>
+        <th>Final Lien Waver:</th>
+        <th>Construction Cost Summary:</th>
+        <th>Final Construction Cost:</th>
+        <th>As-builts received:</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td><%= @deal.final_lien_waver %></td>
+        <td><%= @deal.construction_cost_summary %></td>
+        <td>$<%= number_with_delimiter(@deal.final_construction_cost, :delimiter => ',') %></td>
+        <td><%= @deal.as_builts_received %></td>
+      </tr>
+      </tbody>
+    </table>
+    
+    <table class="report-table" style="margin-bottom:0;border:none;">
+      <tr>
+        <td style="text-align:center;color:#fff;background-color:#6e4a86;border:none;">Close-out <i class="fa fa-certificate print-only-inline" style="color:#6e4a86 !important;"></i></td>
+      </tr>
+    </table>
+    
+    <table class="report-table add-responsive">
+      <thead>
+      <tr>
+        <th>Sprinkler Shop Drawings:</th>
+        <th>Sprinkler Work Order:</th>
+        <th>Sprinkler Check:</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td><%= @deal.sprinkler_shop_drawings %></td>
+        <td><%= @deal.sprinkler_work_order %></td>
+        <td><%= @deal.sprinkler_check %></td>
+      </tr>
+      </tbody>
+    </table>
+    
+    <table class="report-table" style="margin-bottom:0;border:none;">
+      <tr>
+        <td style="text-align:center;color:#fff;background-color:#6e4a86;border:none;">Close-out <i class="fa fa-certificate print-only-inline" style="color:#6e4a86 !important;"></i></td>
+      </tr>
+    </table>
+    
+    <table class="report-table add-responsive">
+      <thead>
+      <tr>
+        <th>Air balance report:</th>
+        <th>Deposit Release Approved:</th>
+        <th>Deposit Released:</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td><%= @deal.air_balance_report %></td>
+        <td><%= @deal.deposit_release_approved %></td>
+        <td><%= @deal.deposit_released %></td>
+      </tr>
+      </tbody>
+    </table>
+    
+    <table class="report-table" style="margin-bottom:0;border:none;">
+      <tr>
+        <td style="text-align:center;color:#fff;background-color:#6e4a86;border:none;">Close-out <i class="fa fa-certificate print-only-inline" style="color:#6e4a86 !important;"></i></td>
+      </tr>
+    </table>
+    
+    <table class="report-table add-responsive">
+      <thead>
+      <tr>
+        <th>TA/TI Release Approved:</th>
+        <th>TA/TI Released:</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td><%= @deal.ta_ti_release_approved %></td>
+        <td><%= @deal.ta_ti_released %></td>
+      </tr>
+      </tbody>
+    </table>
+    
+    <table class="report-table" style="margin-bottom:0;border:none;">
+      <tr>
+        <td style="text-align:center;color:#fff;background-color:#6e4a86;border:none;">Close-out <i class="fa fa-certificate print-only-inline" style="color:#6e4a86 !important;"></i></td>
+      </tr>
+    </table>
+    
+    <table class="report-table add-responsive">
+      <thead>
+      <tr>
+        <th>Certificate of Insurance:</th>
+        <th>W9:</th>
+        <th>Utility Cost:</th>
+        <th>Tenant Cost:</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td><%= @deal.certificate_of_insurance %></td>
+        <td><%= @deal.w9 %></td>
+        <td>$<%= number_with_delimiter(@deal.utility_cost, :delimiter => ',') %></td>
+        <td>$<%= number_with_delimiter(@deal.tenant_cost, :delimiter => ',') %></td>
+      </tr>
+      </tbody>
+    </table>
+    
+    <table class="report-table" style="margin-bottom:0;border:none;">
+      <tr>
+        <td style="text-align:center;color:#fff;background-color:#6e4a86;border:none;">Close-out <i class="fa fa-certificate print-only-inline" style="color:#6e4a86 !important;"></i></td>
+      </tr>
+    </table>
+    
+    <table class="report-table add-responsive">
+      <thead>
+      <tr>
+        <th>Close-out Notes:</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td><%= simple_format(@deal.close_out_notes) %></td>
+      </tr>
+      </tbody>
+    </table>
+
   </div><!-- inner -->
 </div><!-- switch row -->
 
-<div class="row" id="seventhDealRow"><!-- switch row -->
+
+
+
+
+
+
+
+
+
+
+<div class="row" id="scheduleRow"><!-- switch row -->
   <div class="col-xs-10 col-xs-offset-1"><!-- inner -->
 
 
@@ -348,9 +718,10 @@
     <hr class="print-none">
 
   <div class="page-header print-none">
-    <button data-toggle="collapse" data-target="#schedule-collapse" 
+    <!--<button data-toggle="collapse" data-target="#schedule-collapse" 
       class='btn btn-primary green-button print-none' 
       style='float:right;margin-top:12px;margin-left:10px;'><i class="fa fa-chevron-down"></i></button>
+      -->
       <% if (current_user && current_user.is_admin?) || (current_user && current_user.role == 'Admin') || (current_user && current_user.role == 'Editor') %>
       
         <% if @deal.schedule.present? %>
@@ -367,7 +738,7 @@
       <h1 class="print-none">Schedule</h1>
   </div>
   
-  <div id="schedule-collapse" class="collapse in">
+  <div id="schedule-collapse" class="/*collapse in*/">
     <% if @deal.schedule.present? %>
       <%= render 'schedule' %>
     <% else %>
@@ -379,17 +750,22 @@
 </div>
 <br><br>
 
+  </div><!-- inner -->
+</div><!-- switch row -->
 
 
+
+<div class="row" id="workletterRow"><!-- switch row -->
+  <div class="col-xs-10 col-xs-offset-1"><!-- inner -->
 
 <div class="row">
   <div class="col-xs-8 col-xs-offset-2 print-none">
     
 
       <div class="page-header print-none">
-        <button data-toggle="collapse" data-target="#workletters-collapse" 
+        <!--<button data-toggle="collapse" data-target="#workletters-collapse" 
           class='btn btn-primary green-button print-none' 
-          style='float:right;margin-top:12px;margin-left:10px;'><i class="fa fa-chevron-down"></i></button>
+          style='float:right;margin-top:12px;margin-left:10px;'><i class="fa fa-chevron-down"></i></button>-->
           <% if (current_user && current_user.is_admin?) || (current_user && current_user.role == 'Admin') || (current_user && current_user.role == 'Editor') %>
           
             <% if @deal.workletter.present? %>
@@ -407,7 +783,7 @@
           
       </div>
       
-      <div id="workletters-collapse" class="collapse">
+      <div id="workletters-collapse" class="/*collapse*/">
         <% if @deal.workletter.present? %>
           <%= render 'workletter' %>
         <% else %>
@@ -420,6 +796,7 @@
 
   </div><!-- inner -->
 </div><!-- switch row -->
+
 
 
 <style>
@@ -437,128 +814,162 @@
     $('#dealInfoButton').click(function (){
       $('#dealInfoRow').show("slow");
       $('#dealTermRow').hide("slow");
-      $('#thirdDealRow').hide("slow");
-      $('#fourthDealRow').hide("slow");
-      $('#fifthDealRow').hide("slow");
-      $('#sixthDealRow').hide("slow");
-      $('#seventhDealRow').hide("slow");
+      $('#leasingInfoRow').hide("slow");
+      $('#tenantDesignRow').hide("slow");
+      $('#tenantFitOutRow').hide("slow");
+      $('#closeOutRow').hide("slow");
+      $('#scheduleRow').hide("slow");
+      $('#workletterRow').hide("slow");
       
       $( "#dealInfoButton" ).removeClass( "" ).addClass( "deal-buttons-active" );
       $( "#dealTermButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
-      $( "#thirdDealButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
-      $( "#fourthDealButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
-      $( "#fifthDealButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
-      $( "#sixthDealButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
+      $( "#leasingInfoButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
+      $( "#tenantDesignButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
+      $( "#tenantFitOutButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
+      $( "#tenantCloseOutButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
       $( "#seventhDealButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
+      $( "#eighthDealButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
     });  
     
     $('#dealTermButton').click(function (){
       $('#dealInfoRow').hide("slow");
       $('#dealTermRow').show("slow");
-      $('#thirdDealRow').hide("slow");
-      $('#fourthDealRow').hide("slow");
-      $('#fifthDealRow').hide("slow");
-      $('#sixthDealRow').hide("slow");
-      $('#seventhDealRow').hide("slow");
+      $('#leasingInfoRow').hide("slow");
+      $('#tenantDesignRow').hide("slow");
+      $('#tenantFitOutRow').hide("slow");
+      $('#closeOutRow').hide("slow");
+      $('#scheduleRow').hide("slow");
+      $('#workletterRow').hide("slow");
       
       $( "#dealInfoButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
       $( "#dealTermButton" ).removeClass( "" ).addClass( "deal-buttons-active" );
-      $( "#thirdDealButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
-      $( "#fourthDealButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
-      $( "#fifthDealButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
-      $( "#sixthDealButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
+      $( "#leasingInfoButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
+      $( "#tenantDesignButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
+      $( "#tenantFitOutButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
+      $( "#tenantCloseOutButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
       $( "#seventhDealButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
+      $( "#eighthDealButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
     });  
     
-    $('#thirdDealButton').click(function (){
+    $('#leasingInfoButton').click(function (){
       $('#dealInfoRow').hide("slow");
       $('#dealTermRow').hide("slow");
-      $('#thirdDealRow').show("slow");
-      $('#fourthDealRow').hide("slow");
-      $('#fifthDealRow').hide("slow");
-      $('#sixthDealRow').hide("slow");
-      $('#seventhDealRow').hide("slow");
+      $('#leasingInfoRow').show("slow");
+      $('#tenantDesignRow').hide("slow");
+      $('#tenantFitOutRow').hide("slow");
+      $('#closeOutRow').hide("slow");
+      $('#scheduleRow').hide("slow");
+      $('#workletterRow').hide("slow");
       
       $( "#dealInfoButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
       $( "#dealTermButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
-      $( "#thirdDealButton" ).removeClass( "" ).addClass( "deal-buttons-active" );
-      $( "#fourthDealButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
-      $( "#fifthDealButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
-      $( "#sixthDealButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
+      $( "#leasingInfoButton" ).removeClass( "" ).addClass( "deal-buttons-active" );
+      $( "#tenantDesignButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
+      $( "#tenantFitOutButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
+      $( "#tenantCloseOutButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
       $( "#seventhDealButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
+      $( "#eighthDealButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
     });  
     
-    $('#fourthDealButton').click(function (){
+    $('#tenantDesignButton').click(function (){
       $('#dealInfoRow').hide("slow");
       $('#dealTermRow').hide("slow");
-      $('#thirdDealRow').hide("slow");
-      $('#fourthDealRow').show("slow");
-      $('#fifthDealRow').hide("slow");
-      $('#sixthDealRow').hide("slow");
-      $('#seventhDealRow').hide("slow");
+      $('#leasingInfoRow').hide("slow");
+      $('#tenantDesignRow').show("slow");
+      $('#tenantFitOutRow').hide("slow");
+      $('#closeOutRow').hide("slow");
+      $('#scheduleRow').hide("slow");
+      $('#workletterRow').hide("slow");
       
       $( "#dealInfoButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
       $( "#dealTermButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
-      $( "#thirdDealButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
-      $( "#fourthDealButton" ).removeClass( "" ).addClass( "deal-buttons-active" );
-      $( "#fifthDealButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
-      $( "#sixthDealButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
+      $( "#leasingInfoButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
+      $( "#tenantDesignButton" ).removeClass( "" ).addClass( "deal-buttons-active" );
+      $( "#tenantFitOutButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
+      $( "#tenantCloseOutButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
       $( "#seventhDealButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
+      $( "#eighthDealButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
     });  
     
-    $('#fifthDealButton').click(function (){
+    $('#tenantFitOutButton').click(function (){
       $('#dealInfoRow').hide("slow");
       $('#dealTermRow').hide("slow");
-      $('#thirdDealRow').hide("slow");
-      $('#fourthDealRow').hide("slow");
-      $('#fifthDealRow').show("slow");
-      $('#sixthDealRow').hide("slow");
-      $('#seventhDealRow').hide("slow");
+      $('#leasingInfoRow').hide("slow");
+      $('#tenantDesignRow').hide("slow");
+      $('#tenantFitOutRow').show("slow");
+      $('#closeOutRow').hide("slow");
+      $('#scheduleRow').hide("slow");
+      $('#workletterRow').hide("slow");
       
       $( "#dealInfoButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
       $( "#dealTermButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
-      $( "#thirdDealButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
-      $( "#fourthDealButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
-      $( "#fifthDealButton" ).removeClass( "" ).addClass( "deal-buttons-active" );
-      $( "#sixthDealButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
+      $( "#leasingInfoButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
+      $( "#tenantDesignButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
+      $( "#tenantFitOutButton" ).removeClass( "" ).addClass( "deal-buttons-active" );
+      $( "#tenantCloseOutButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
       $( "#seventhDealButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
+      $( "#eighthDealButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
     });  
     
-    $('#sixthDealButton').click(function (){
+    $('#tenantCloseOutButton').click(function (){
       $('#dealInfoRow').hide("slow");
       $('#dealTermRow').hide("slow");
-      $('#thirdDealRow').hide("slow");
-      $('#fourthDealRow').hide("slow");
-      $('#fifthDealRow').hide("slow");
-      $('#sixthDealRow').show("slow");
-      $('#seventhDealRow').hide("slow");
+      $('#leasingInfoRow').hide("slow");
+      $('#tenantDesignRow').hide("slow");
+      $('#tenantFitOutRow').hide("slow");
+      $('#closeOutRow').show("slow");
+      $('#scheduleRow').hide("slow");
+      $('#workletterRow').hide("slow");
       
       $( "#dealInfoButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
       $( "#dealTermButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
-      $( "#thirdDealButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
-      $( "#fourthDealButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
-      $( "#fifthDealButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
-      $( "#sixthDealButton" ).removeClass( "" ).addClass( "deal-buttons-active" );
+      $( "#leasingInfoButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
+      $( "#tenantDesignButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
+      $( "#tenantFitOutButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
+      $( "#tenantCloseOutButton" ).removeClass( "" ).addClass( "deal-buttons-active" );
       $( "#seventhDealButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
+      $( "#eighthDealButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
     });  
     
     $('#seventhDealButton').click(function (){
       $('#dealInfoRow').hide("slow");
       $('#dealTermRow').hide("slow");
-      $('#thirdDealRow').hide("slow");
-      $('#fourthDealRow').hide("slow");
-      $('#fifthDealRow').hide("slow");
-      $('#sixthDealRow').hide("slow");
-      $('#seventhDealRow').show("slow");
+      $('#leasingInfoRow').hide("slow");
+      $('#tenantDesignRow').hide("slow");
+      $('#tenantFitOutRow').hide("slow");
+      $('#closeOutRow').hide("slow");
+      $('#scheduleRow').show("slow");
+      $('#workletterRow').hide("slow");
       
       $( "#dealInfoButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
       $( "#dealTermButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
-      $( "#thirdDealButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
-      $( "#fourthDealButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
-      $( "#fifthDealButton" ).removeClass( "" ).addClass( "" );
-      $( "#sixthDealButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
+      $( "#leasingInfoButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
+      $( "#tenantDesignButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
+      $( "#tenantFitOutButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
+      $( "#tenantCloseOutButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
       $( "#seventhDealButton" ).removeClass( "" ).addClass( "deal-buttons-active" );
+      $( "#eighthDealButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
     });  
+    
+    $('#eighthDealButton').click(function (){
+      $('#dealInfoRow').hide("slow");
+      $('#dealTermRow').hide("slow");
+      $('#leasingInfoRow').hide("slow");
+      $('#tenantDesignRow').hide("slow");
+      $('#tenantFitOutRow').hide("slow");
+      $('#closeOutRow').hide("slow");
+      $('#scheduleRow').hide("slow");
+      $('#workletterRow').show("slow");
+      
+      $( "#dealInfoButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
+      $( "#dealTermButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
+      $( "#leasingInfoButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
+      $( "#tenantDesignButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
+      $( "#tenantFitOutButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
+      $( "#tenantCloseOutButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
+      $( "#seventhDealButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
+      $( "#eighthDealButton" ).removeClass( "" ).addClass( "deal-buttons-active" );
+    });
 
   });
 
@@ -566,9 +977,12 @@
   $(document).ready(function() {
     setTimeout(function() {
       $('#dealTermRow').hide("slow");
-      $('#thirdDealRow').hide("slow");
-      $('#fourthDealRow').hide("slow");
-      $('#fifthDealRow').hide("slow");
+      $('#leasingInfoRow').hide("slow");
+      $('#tenantDesignRow').hide("slow");
+      $('#tenantFitOutRow').hide("slow");
+      $('#closeOutRow').hide("slow");
+      $('#scheduleRow').hide("slow");
+      $('#workletterRow').hide("slow");
     }, 1000);
   });
 </script>
