@@ -1,0 +1,989 @@
+<div class="row">
+<!-- buttons for changing the color layers with script for buttons -->
+  <div class="" style="width:100%;margin-top:10px;margin-bottom:10px;text-align:center;">
+    <button type="button" id="dealInfoButton" style="" class="btn print-none deal-switch-buttons deal-buttons-active">Deal Info</button>
+    <button type="button" id="dealTermButton" style="" class="btn print-none deal-switch-buttons">Term of Deal</button>
+    <button type="button" id="leasingInfoButton" style="" class="btn print-none deal-switch-buttons">Leasing Info</button>
+    <button type="button" id="tenantDesignButton" style="" class="btn print-none deal-switch-buttons">Tenant Design</button>
+    <button type="button" id="tenantFitOutButton" style="" class="btn print-none deal-switch-buttons">Tenant Fit-out</button>
+    <button type="button" id="tenantCloseOutButton" style="" class="btn print-none deal-switch-buttons">Close-out</button>
+    <button type="button" id="seventhDealButton" style="" class="btn print-none deal-switch-buttons">Schedule</button>
+    <button type="button" id="eighthDealButton" style="" class="btn print-none deal-switch-buttons">Workletter</button>
+  </div>
+</div>
+
+<br><br>
+
+<div class="row" id="dealInfoRow"><!-- switch row -->
+  <div class="col-xs-10 col-xs-offset-1"><!-- inner -->
+
+
+<div class="row">
+  <div class="col-xs-2">
+  </div>
+  <div class="col-xs-8">
+    <strong>Status Notes:</strong> <%= simple_format(@deal.status_notes) %>
+    
+  </div>
+  <div class="col-xs-2">
+
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2">
+  </div>
+  <div class="col-xs-8">
+    <strong>Tenant Description:</strong> <%= simple_format(@deal.tenant_description) %>
+    
+  </div>
+  <div class="col-xs-2">
+
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-xs-2">
+  </div>
+  <div class="col-xs-8">
+    <strong>Tenant Contact:</strong> <%= @deal.tenant_contact %><br><br>
+  </div>
+  <div class="col-xs-2">
+
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2">
+  </div>
+  <div class="col-xs-8">
+    <strong>Key Contacts:</strong> <%= simple_format(@deal.key_contacts) %>
+    
+  </div>
+  <div class="col-xs-2">
+
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2">
+  </div>
+  <div class="col-xs-8">
+    <!--<strong>Tenant Documents:</strong> <%= @deal.tenant_documents %>-->
+      <%= form_for @deal, :html => { :class => "form-horizontal area" } do |f| %>
+            <p style="font-weight:bold;">Tenant Documents:</p>
+            <%= f.text_field :tenant_documents, :class => 'form-control add-tags' %>
+          <hr>
+      <% end %>
+  </div>
+  <div class="col-xs-2">
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2">
+  </div>
+  <div class="col-xs-8">
+    <!--<strong>Tenant Documents:</strong> <%= @deal.landlord_work %>-->
+      <%= form_for @deal, :html => { :class => "form-horizontal area" } do |f| %>
+            <p style="font-weight:bold;">Landlord Work:</p>
+            <%= f.text_field :landlord_work, :class => 'form-control add-tags' %>
+          <hr>
+      <% end %>
+  </div>
+  <div class="col-xs-2">
+  </div>
+</div>
+
+<hr>
+
+<div class="row">
+  <div class="col-xs-2">
+  </div>
+  <div class="col-xs-4">
+    <strong>Priority:</strong> <% if @deal.priority == true %><i style="color:#E5BA21;" class="fa fa-star" aria-hidden="true"></i><% else %><% end %>
+  </div>
+  <div class="col-xs-4">
+    <strong>Owner Approval:</strong> <%#= @deal.owner_approval %>
+    <% if @deal.owner_approval == true %><i style="color:#8BC53F;" class="fa fa-check" aria-hidden="true"></i><% else %><%#= object[:owner_approval] %><% end %>
+  </div>
+  <div class="col-xs-2">
+  </div>
+</div>
+
+<hr>
+
+
+  </div><!-- inner -->
+</div><!-- switch row -->
+
+
+<div class="row" id="dealTermRow"><!-- switch row -->
+  <div class="col-xs-10 col-xs-offset-1"><!-- inner -->
+
+<div class="row">
+  <div class="col-xs-12">
+    <div class="page-header"><h3>Term of Deal</h3></div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2">
+  </div>
+  <div class="col-xs-4">
+    <strong>Deal Term:</strong> <%= @deal.deal_term %> years<br>
+    <% if @deal.fit_out_duration == 'other' %>
+      <strong>Fit Out Duration:</strong> <%= @deal.fit_out_duration_if %> days
+    <% else %>
+      <strong>Fit Out Duration:</strong> <%= @deal.fit_out_duration %> days
+    <% end %>
+  </div>
+  <div class="col-xs-4">
+    <strong>Date of Possession:</strong> <%= @deal.date_of_possession %><br>
+    <strong>Action Required:</strong> <%= @deal.action_required %>
+    
+  </div>
+  <div class="col-xs-2">
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2">
+  </div>
+  <div class="col-xs-8">
+    <strong>Term Notes:</strong> <%= simple_format(@deal.term_notes) %>
+  </div>
+  <div class="col-xs-2">
+  </div>
+</div>
+<hr>
+
+<div class="row">
+  <div class="col-xs-12">
+    <div class="page-header"><h3>Budget</h3></div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2">
+  </div>
+  <div class="col-xs-4">
+    <strong>Budget Rate:</strong> $<%= number_with_delimiter(@deal.budget_rate, :delimiter => ',') %>
+  </div>
+  <div class="col-xs-4">
+    <strong>Budget TI:</strong> $<%= number_with_delimiter(@deal.budget_ti, :delimiter => ',') %><br>
+    <strong>Base Building Cost:</strong> $<%= number_with_delimiter(@deal.base_building_cost, :delimiter => ',') %>
+  </div>
+  <div class="col-xs-2">
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12">
+    <div class="page-header"><h3>Rent</h3></div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2">
+  </div>
+  <div class="col-xs-4">
+    <strong>Base Rent ($ per SqFt):</strong> $<%= number_with_delimiter(@deal.base_rent, :delimiter => ',') %><br>
+    <strong>Percentage of Rent:</strong> <%= @deal.percentage_of_rent %><% if !@deal.percentage_of_rent %><% else %>%<% end %><br>
+    <strong>Increase:</strong> <%= @deal.increase %><% if !@deal.increase %><% else %>%<% end %>
+  </div>
+  <div class="col-xs-4">
+    <strong>Total Base Rent:</strong> $<%= number_with_delimiter(@deal.total_base_rent, :delimiter => ',') %><br>
+    <strong>Break Point:</strong> $<%= number_with_delimiter(@deal.break_point, :delimiter => ',') %>
+  </div>
+  <div class="col-xs-2">
+  </div>
+</div>
+
+<hr>
+
+<div class="row">
+  <div class="col-xs-12">
+    <div class="page-header"><h3>Inducement</h3></div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2">
+  </div>
+  <div class="col-xs-4">
+    <strong>TI Allowance (per SqFt):</strong> $<%= number_with_delimiter(@deal.ti_allowance, :delimiter => ',') %><br>
+    <strong>LL Work (per SqFt):</strong> <% if @workletter != nil %>$<%= number_with_delimiter(@workletter.ll_work, :delimiter => ',') %><% end %><br>
+    <strong>Fit Out (per SqFt):</strong> $<%= number_with_delimiter(@deal.fit_out, :delimiter => ',') %>
+  </div>
+  <div class="col-xs-4">
+    <strong>TI Cost:</strong> $<%= number_with_delimiter(@deal.ti_cost, :delimiter => ',') %><br>
+    <strong>LL Work Cost:</strong> <% if @workletter != nil %>$<%= number_with_delimiter(@workletter.ll_work_cost, :delimiter => ',') %><% end %><br>
+    <strong>Fit Out Cost:</strong> $<%= number_with_delimiter(@deal.fit_out_cost, :delimiter => ',') %>
+
+  </div>
+  <div class="col-xs-2">
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2">
+  </div>
+  <div class="col-xs-8">
+    <strong>Abatement:</strong> <%= simple_format(@deal.abatement) %>
+  </div>
+  <div class="col-xs-2">
+  </div>
+</div>
+
+<hr>
+
+<div class="row">
+  <div class="col-xs-12">
+    <div class="page-header"><h3>CAM</h3></div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2">
+  </div>
+  <div class="col-xs-4">
+    <strong>CAM (per SqFt):</strong> $<%= number_with_delimiter(@deal.cam, :delimiter => ',') %>
+  </div>
+  <div class="col-xs-4">
+    <strong>CAM Cost Annually:</strong> $<%= number_with_delimiter(@deal.cam_cost, :delimiter => ',') %>
+  </div>
+  <div class="col-xs-2">
+  </div>
+</div>
+
+<hr>
+
+<div class="row">
+  <div class="col-xs-12">
+    <div class="page-header"><h3>Commission</h3></div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2">
+  </div>
+  <div class="col-xs-4">
+    <strong>Commission Inside:</strong> $<%= number_with_delimiter(@deal.comm_inside, :delimiter => ',') %>
+  </div>
+  <div class="col-xs-4">
+    <strong>Commission Outside:</strong> $<%= number_with_delimiter(@deal.comm_outside, :delimiter => ',') %>
+  </div>
+  <div class="col-xs-2">
+  </div>
+</div>
+
+<hr>
+
+<div class="row">
+  <div class="col-xs-12">
+    <div class="page-header"><h3>Fees</h3></div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2">
+  </div>
+  <div class="col-xs-4">
+    <strong>Taxes (per SqFt):</strong> $<%= number_with_delimiter(@deal.taxes, :delimiter => ',') %><br>
+    <strong>Insurance (per SqFt):</strong> $<%= number_with_delimiter(@deal.insurance, :delimiter => ',') %><br>
+    <strong>Marketing (per SqFt):</strong> $<%= number_with_delimiter(@deal.marketing, :delimiter => ',') %><br>
+    <strong>GO Marketing (per SqFt):</strong> $<%= number_with_delimiter(@deal.go_marketing, :delimiter => ',') %><br>
+    <strong>Trash (per SqFt):</strong> $<%= number_with_delimiter(@deal.trash, :delimiter => ',') %><br>
+    <strong>Other (per SqFt):</strong> $<%= number_with_delimiter(@deal.other, :delimiter => ',') %><br>
+    <strong>Fee SqFt Total:</strong> $<%= number_with_delimiter(@deal.fee_sqft_total, :delimiter => ',') %>
+  </div>
+  <div class="col-xs-4">
+    <strong>Taxes Cost:</strong> $<%= number_with_delimiter(@deal.taxes_cost, :delimiter => ',') %><br>
+    <strong>Insurance Cost:</strong> $<%= number_with_delimiter(@deal.insurance_cost, :delimiter => ',') %><br>
+    <strong>Marketing Cost:</strong> $<%= number_with_delimiter(@deal.marketing_cost, :delimiter => ',') %><br>
+    <strong>GO Marketing Cost:</strong> $<%= number_with_delimiter(@deal.go_marketing_cost, :delimiter => ',') %><br>
+    <strong>Trash Cost:</strong> $<%= number_with_delimiter(@deal.trash_cost, :delimiter => ',') %><br>
+    <strong>Other Cost:</strong> $<%= number_with_delimiter(@deal.other_cost, :delimiter => ',') %><br>
+    <strong>Fee Total Cost:</strong> $<%= number_with_delimiter(@deal.fee_cost_total, :delimiter => ',') %>
+  </div>
+  <div class="col-xs-2">
+  </div>
+</div>
+
+
+  </div><!-- inner -->
+</div><!-- switch row -->
+
+<div class="row" id="leasingInfoRow"><!-- switch row -->
+  <div class="col-xs-10 col-xs-offset-1"><!-- inner -->
+
+
+<table class="report-table" style="margin-bottom:0;border:none;">
+      <tr>
+        <td style="text-align:center;color:#fff;background-color:#f00;border:none;">Leasing information <i class="fa fa-certificate print-only-inline" style="color:#f00 !important;"></i></td>
+      </tr>
+    </table>
+
+    <table class="report-table add-responsive">
+      <thead>
+      <tr>
+        <th>Lease execution:</th>
+        <th>Turn-over condition:</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td><%= @deal.lease_execution %></td>
+        <td><%= @deal.turn_over_condition %></td>
+      </tr>
+      </tbody>
+    </table>
+
+  </div><!-- inner -->
+</div><!-- switch row -->
+
+<div class="row" id="tenantDesignRow"><!-- switch row -->
+  <div class="col-xs-10 col-xs-offset-1"><!-- inner -->
+
+
+<table class="report-table" style="margin-bottom:0;border:none;">
+      <tr>
+        <td style="text-align:center;color:#fff;background-color:#24b9ae;border:none;">Tenant Design <i class="fa fa-certificate print-only-inline" style="color:#24b9ae !important;"></i></td>
+      </tr>
+    </table>
+
+    <table class="report-table add-responsive">
+      <thead>
+        <tr>
+          <th>Welcome package:</th>
+          <th>Base building CDs:</th>
+          <th>Kick off call:</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= @deal.welcome_package %></td>
+          <td><%= @deal.base_building_cds %></td>
+          <td><%= @deal.kick_off_call %></td>
+        </tr>
+      </tbody>
+    </table>    
+
+    <table class="report-table" style="margin-bottom:0;border:none;">
+      <tr>
+        <td style="text-align:center;color:#fff;background-color:#24b9ae;border:none;">Tenant Design (Plans) <i class="fa fa-certificate print-only-inline" style="color:#24b9ae !important;"></i></td>
+      </tr>
+    </table>
+    
+    <table class="report-table add-responsive">
+      <thead>
+      <tr>
+        <th>Final plans received:</th>
+        <th>Final plans reviewed:</th>
+        <th>Final plans status:</th>
+        <th>CAD Release Form:</th>
+        <th>Final plans notes:</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td><%= @deal.final_plans_received %></td>
+        <td><%= @deal.final_plans_reviewed %></td>
+        <td><%= @deal.final_plans_status %></td>
+        <td><%= @deal.cad_release_form %></td>
+        <td><%= simple_format(@deal.final_plans_notes) %></td>
+      </tr>
+      </tbody>
+    </table>
+
+    <table class="report-table" style="margin-bottom:0;border:none;">
+      <tr>
+        <td style="text-align:center;color:#fff;background-color:#24b9ae;border:none;">Tenant Design (Signage) <i class="fa fa-certificate print-only-inline" style="color:#24b9ae !important;"></i></td>
+      </tr>
+    </table>
+
+    <table class="report-table add-responsive">
+      <thead>
+      <tr>
+        <th>Signage received:</th>
+        <th>Signage reviewed:</th>
+         <th>Signage status:</th>
+        <th>Signage notes:</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td><%= @deal.signage_received %></td>
+        <td><%= @deal.signage_reviewed %></td>
+        <td><%= @deal.signage_status %></td>
+        <td><%= simple_format(@deal.signage_notes) %></td>
+      </tr>
+      </tbody>
+    </table>
+
+    <table class="report-table" style="margin-bottom:0;border:none;">
+      <tr>
+        <td style="text-align:center;color:#fff;background-color:#24b9ae;border:none;">Tenant Design (Permit) <i class="fa fa-certificate print-only-inline" style="color:#24b9ae !important;"></i></td>
+      </tr>
+    </table>
+
+    <table class="report-table add-responsive">
+      <thead>
+      <tr>
+        <th>Permit Submitted:</th>
+        <th>Permit received:</th>
+        <th>Permit notes:</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td><%= @deal.permit_submitted %></td>
+        <td><%= @deal.permit_received %></td>
+        <td><%= simple_format(@deal.permit_notes) %></td>
+      </tr>
+      </tbody>
+    </table>
+
+  </div><!-- inner -->
+</div><!-- switch row -->
+
+<div class="row" id="tenantFitOutRow"><!-- switch row -->
+  <div class="col-xs-10 col-xs-offset-1"><!-- inner -->
+
+<table class="report-table" style="margin-bottom:0;border:none;">
+      <tr>
+        <td style="text-align:center;color:#fff;background-color:#c9e1f7;border:none;">Tenant Fit-out <i class="fa fa-certificate print-only-inline" style="color:#c9e1f7 !important;"></i></td>
+      </tr>
+    </table>
+ 
+    <table class="report-table add-responsive">
+      <thead>
+      <tr>
+        <th>Check-in:</th>
+        <th>Premises acceptance:</th>
+        <th>Construction start:</th>
+        <th>Lay-out & rough-in:</th>
+        <th>Fit-out & Finishes:</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td><%= @deal.check_in %></td>
+        <td><%= @deal.premises_acceptance %></td>
+        <td><%= @deal.construction_start %></td>
+        <td><%= @deal.lay_out_rough_in %></td>
+        <td><%= @deal.fit_out_finishes %></td>
+      </tr>
+      </tbody>
+    </table>
+
+    <table class="report-table" style="margin-bottom:0;border:none;">
+      <tr>
+        <td style="text-align:center;color:#fff;background-color:#c9e1f7;border:none;">Tenant Fit-out <i class="fa fa-certificate print-only-inline" style="color:#c9e1f7 !important;"></i></td>
+      </tr>
+    </table>
+
+    <table class="report-table add-responsive">
+      <thead>
+      <tr>
+        <th>Fixtures:</th>
+        <th>Final Inspections:</th>
+        <th>Merchandising:</th>
+        <th>Open for business:</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td><%= @deal.fixtures %></td>
+        <td><%= @deal.final_inspections %></td>
+        <td><%= @deal.merchandising %></td>
+        <td><%= @deal.open_for_business %></td>
+      </tr>
+      </tbody>
+    </table>
+
+  </div><!-- inner -->
+</div><!-- switch row -->
+
+
+
+
+
+
+
+<div class="row" id="closeOutRow"><!-- switch row -->
+  <div class="col-xs-10 col-xs-offset-1"><!-- inner -->
+
+<table class="report-table" style="margin-bottom:0;border:none;">
+      <tr>
+        <td style="text-align:center;color:#fff;background-color:#6e4a86;border:none;">Close-out <i class="fa fa-certificate print-only-inline" style="color:#6e4a86 !important;"></i></td>
+      </tr>
+    </table>
+    
+    <table class="report-table add-responsive">
+      <thead>
+      <tr>
+        <th>Close-out Letter:</th>
+        <th>Certificate of Occupancy:</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td><%= @deal.close_out_letter %></td>
+        <td><%= @deal.certificate_of_occupancy %></td>
+      </tr>
+      </tbody>
+    </table>
+
+    <table class="report-table" style="margin-bottom:0;border:none;">
+      <tr>
+        <td style="text-align:center;color:#fff;background-color:#6e4a86;border:none;">Close-out <i class="fa fa-certificate print-only-inline" style="color:#6e4a86 !important;"></i></td>
+      </tr>
+    </table>
+    
+    <table class="report-table add-responsive">
+      <thead>
+      <tr>
+        <th>Punchlist request:</th>
+        <th>Punchlist Inspections:</th>
+        <th>Punchlist complete:</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td><%= @deal.punchlist_request %></td>
+        <td><%= @deal.punchlist_inspection %></td>
+        <td><%= @deal.punchlist_complete %></td>
+      </tr>
+      </tbody>
+    </table>
+    
+    <table class="report-table" style="margin-bottom:0;border:none;">
+      <tr>
+        <td style="text-align:center;color:#fff;background-color:#6e4a86;border:none;">Close-out <i class="fa fa-certificate print-only-inline" style="color:#6e4a86 !important;"></i></td>
+      </tr>
+    </table>
+    
+    <table class="report-table add-responsive">
+      <thead>
+      <tr>
+        <th>Final Lien Waver:</th>
+        <th>Construction Cost Summary:</th>
+        <th>Final Construction Cost:</th>
+        <th>As-builts received:</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td><%= @deal.final_lien_waver %></td>
+        <td><%= @deal.construction_cost_summary %></td>
+        <td>$<%= number_with_delimiter(@deal.final_construction_cost, :delimiter => ',') %></td>
+        <td><%= @deal.as_builts_received %></td>
+      </tr>
+      </tbody>
+    </table>
+    
+    <table class="report-table" style="margin-bottom:0;border:none;">
+      <tr>
+        <td style="text-align:center;color:#fff;background-color:#6e4a86;border:none;">Close-out <i class="fa fa-certificate print-only-inline" style="color:#6e4a86 !important;"></i></td>
+      </tr>
+    </table>
+    
+    <table class="report-table add-responsive">
+      <thead>
+      <tr>
+        <th>Sprinkler Shop Drawings:</th>
+        <th>Sprinkler Work Order:</th>
+        <th>Sprinkler Check:</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td><%= @deal.sprinkler_shop_drawings %></td>
+        <td><%= @deal.sprinkler_work_order %></td>
+        <td><%= @deal.sprinkler_check %></td>
+      </tr>
+      </tbody>
+    </table>
+    
+    <table class="report-table" style="margin-bottom:0;border:none;">
+      <tr>
+        <td style="text-align:center;color:#fff;background-color:#6e4a86;border:none;">Close-out <i class="fa fa-certificate print-only-inline" style="color:#6e4a86 !important;"></i></td>
+      </tr>
+    </table>
+    
+    <table class="report-table add-responsive">
+      <thead>
+      <tr>
+        <th>Air balance report:</th>
+        <th>Deposit Release Approved:</th>
+        <th>Deposit Released:</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td><%= @deal.air_balance_report %></td>
+        <td><%= @deal.deposit_release_approved %></td>
+        <td><%= @deal.deposit_released %></td>
+      </tr>
+      </tbody>
+    </table>
+    
+    <table class="report-table" style="margin-bottom:0;border:none;">
+      <tr>
+        <td style="text-align:center;color:#fff;background-color:#6e4a86;border:none;">Close-out <i class="fa fa-certificate print-only-inline" style="color:#6e4a86 !important;"></i></td>
+      </tr>
+    </table>
+    
+    <table class="report-table add-responsive">
+      <thead>
+      <tr>
+        <th>TA/TI Release Approved:</th>
+        <th>TA/TI Released:</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td><%= @deal.ta_ti_release_approved %></td>
+        <td><%= @deal.ta_ti_released %></td>
+      </tr>
+      </tbody>
+    </table>
+    
+    <table class="report-table" style="margin-bottom:0;border:none;">
+      <tr>
+        <td style="text-align:center;color:#fff;background-color:#6e4a86;border:none;">Close-out <i class="fa fa-certificate print-only-inline" style="color:#6e4a86 !important;"></i></td>
+      </tr>
+    </table>
+    
+    <table class="report-table add-responsive">
+      <thead>
+      <tr>
+        <th>Certificate of Insurance:</th>
+        <th>W9:</th>
+        <th>Utility Cost:</th>
+        <th>Tenant Cost:</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td><%= @deal.certificate_of_insurance %></td>
+        <td><%= @deal.w9 %></td>
+        <td>$<%= number_with_delimiter(@deal.utility_cost, :delimiter => ',') %></td>
+        <td>$<%= number_with_delimiter(@deal.tenant_cost, :delimiter => ',') %></td>
+      </tr>
+      </tbody>
+    </table>
+    
+    <table class="report-table" style="margin-bottom:0;border:none;">
+      <tr>
+        <td style="text-align:center;color:#fff;background-color:#6e4a86;border:none;">Close-out <i class="fa fa-certificate print-only-inline" style="color:#6e4a86 !important;"></i></td>
+      </tr>
+    </table>
+    
+    <table class="report-table add-responsive">
+      <thead>
+      <tr>
+        <th>Close-out Notes:</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td><%= simple_format(@deal.close_out_notes) %></td>
+      </tr>
+      </tbody>
+    </table>
+
+  </div><!-- inner -->
+</div><!-- switch row -->
+
+
+
+
+
+
+
+
+
+
+
+<div class="row" id="scheduleRow"><!-- switch row -->
+  <div class="col-xs-10 col-xs-offset-1"><!-- inner -->
+
+
+<div class="row">
+  <div class="col-xs-8 col-xs-offset-2 print-none">
+    <hr class="print-none">
+
+  <div class="page-header print-none">
+    <!--<button data-toggle="collapse" data-target="#schedule-collapse" 
+      class='btn btn-primary green-button print-none' 
+      style='float:right;margin-top:12px;margin-left:10px;'><i class="fa fa-chevron-down"></i></button>
+      -->
+      <% if (current_user && current_user.is_admin?) || (current_user && current_user.role == 'Admin') || (current_user && current_user.role == 'Editor') %>
+      
+        <% if @deal.schedule.present? %>
+          <%= link_to '+ Edit Schedule',
+                      edit_schedule_path(@deal.schedule.id),
+                      :class => 'btn btn-primary green-button responsive-none print-none', :style => 'float:right;margin-top:12px;' %>
+        
+        <% else %>
+          <%= link_to '+ Create Schedule',
+                      new_schedule_path(:deal_id => @deal),
+                      :class => 'btn btn-primary green-button responsive-none print-none', :style => 'float:right;margin-top:12px;' %>
+        <% end %>
+      <% end %>  
+      <h1 class="print-none">Schedule</h1>
+  </div>
+  
+  <div id="schedule-collapse" class="/*collapse in*/">
+    <% if @deal.schedule.present? %>
+      <%= render 'schedule' %>
+    <% else %>
+      <h1 style="font-style:italic;">*There is currently no Schedule.</h1>
+    <% end %>
+  </div>
+
+  </div>
+</div>
+<br><br>
+
+  </div><!-- inner -->
+</div><!-- switch row -->
+
+
+
+<div class="row" id="workletterRow"><!-- switch row -->
+  <div class="col-xs-10 col-xs-offset-1"><!-- inner -->
+
+<div class="row">
+  <div class="col-xs-8 col-xs-offset-2 print-none">
+    
+
+      <div class="page-header print-none">
+        <!--<button data-toggle="collapse" data-target="#workletters-collapse" 
+          class='btn btn-primary green-button print-none' 
+          style='float:right;margin-top:12px;margin-left:10px;'><i class="fa fa-chevron-down"></i></button>-->
+          <% if (current_user && current_user.is_admin?) || (current_user && current_user.role == 'Admin') || (current_user && current_user.role == 'Editor') %>
+          
+            <% if @deal.workletter.present? %>
+              <%= link_to '+ Edit Workletter',
+                          edit_workletter_path(@deal.workletter.id),
+                          :class => 'btn btn-primary green-button responsive-none print-none', :style => 'float:right;margin-top:12px;' %>
+            
+            <% else %>
+              <%= link_to '+ Create Workletter',
+                          new_workletter_path(:deal_id => @deal),
+                          :class => 'btn btn-primary green-button responsive-none print-none', :style => 'float:right;margin-top:12px;' %>
+            <% end %>
+          <% end %>  
+          <h1 class="print-none">Workletter</h1>
+          
+      </div>
+      
+      <div id="workletters-collapse" class="/*collapse*/">
+        <% if @deal.workletter.present? %>
+          <%= render 'workletter' %>
+        <% else %>
+          <h1 style="font-style:italic;">*There is currently no Workletter.</h1>
+        <% end %>
+      </div>
+
+  </div>
+</div>
+
+  </div><!-- inner -->
+</div><!-- switch row -->
+
+
+
+<style>
+.deal-buttons-active,.deal-buttons-active:focus { background-color: #000; color:#fff;
+            border:0; outline:0 !important; }
+.deal-buttons-active:hover {color:#ddd;}
+.deal-switch-buttons:focus { outline:0 !important; }
+</style>
+
+
+<script>
+  $(document).ready(function(){
+      
+      //click leasing
+    $('#dealInfoButton').click(function (){
+      $('#dealInfoRow').show("slow");
+      $('#dealTermRow').hide("slow");
+      $('#leasingInfoRow').hide("slow");
+      $('#tenantDesignRow').hide("slow");
+      $('#tenantFitOutRow').hide("slow");
+      $('#closeOutRow').hide("slow");
+      $('#scheduleRow').hide("slow");
+      $('#workletterRow').hide("slow");
+      
+      $( "#dealInfoButton" ).removeClass( "" ).addClass( "deal-buttons-active" );
+      $( "#dealTermButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
+      $( "#leasingInfoButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
+      $( "#tenantDesignButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
+      $( "#tenantFitOutButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
+      $( "#tenantCloseOutButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
+      $( "#seventhDealButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
+      $( "#eighthDealButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
+    });  
+    
+    $('#dealTermButton').click(function (){
+      $('#dealInfoRow').hide("slow");
+      $('#dealTermRow').show("slow");
+      $('#leasingInfoRow').hide("slow");
+      $('#tenantDesignRow').hide("slow");
+      $('#tenantFitOutRow').hide("slow");
+      $('#closeOutRow').hide("slow");
+      $('#scheduleRow').hide("slow");
+      $('#workletterRow').hide("slow");
+      
+      $( "#dealInfoButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
+      $( "#dealTermButton" ).removeClass( "" ).addClass( "deal-buttons-active" );
+      $( "#leasingInfoButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
+      $( "#tenantDesignButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
+      $( "#tenantFitOutButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
+      $( "#tenantCloseOutButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
+      $( "#seventhDealButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
+      $( "#eighthDealButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
+    });  
+    
+    $('#leasingInfoButton').click(function (){
+      $('#dealInfoRow').hide("slow");
+      $('#dealTermRow').hide("slow");
+      $('#leasingInfoRow').show("slow");
+      $('#tenantDesignRow').hide("slow");
+      $('#tenantFitOutRow').hide("slow");
+      $('#closeOutRow').hide("slow");
+      $('#scheduleRow').hide("slow");
+      $('#workletterRow').hide("slow");
+      
+      $( "#dealInfoButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
+      $( "#dealTermButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
+      $( "#leasingInfoButton" ).removeClass( "" ).addClass( "deal-buttons-active" );
+      $( "#tenantDesignButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
+      $( "#tenantFitOutButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
+      $( "#tenantCloseOutButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
+      $( "#seventhDealButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
+      $( "#eighthDealButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
+    });  
+    
+    $('#tenantDesignButton').click(function (){
+      $('#dealInfoRow').hide("slow");
+      $('#dealTermRow').hide("slow");
+      $('#leasingInfoRow').hide("slow");
+      $('#tenantDesignRow').show("slow");
+      $('#tenantFitOutRow').hide("slow");
+      $('#closeOutRow').hide("slow");
+      $('#scheduleRow').hide("slow");
+      $('#workletterRow').hide("slow");
+      
+      $( "#dealInfoButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
+      $( "#dealTermButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
+      $( "#leasingInfoButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
+      $( "#tenantDesignButton" ).removeClass( "" ).addClass( "deal-buttons-active" );
+      $( "#tenantFitOutButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
+      $( "#tenantCloseOutButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
+      $( "#seventhDealButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
+      $( "#eighthDealButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
+    });  
+    
+    $('#tenantFitOutButton').click(function (){
+      $('#dealInfoRow').hide("slow");
+      $('#dealTermRow').hide("slow");
+      $('#leasingInfoRow').hide("slow");
+      $('#tenantDesignRow').hide("slow");
+      $('#tenantFitOutRow').show("slow");
+      $('#closeOutRow').hide("slow");
+      $('#scheduleRow').hide("slow");
+      $('#workletterRow').hide("slow");
+      
+      $( "#dealInfoButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
+      $( "#dealTermButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
+      $( "#leasingInfoButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
+      $( "#tenantDesignButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
+      $( "#tenantFitOutButton" ).removeClass( "" ).addClass( "deal-buttons-active" );
+      $( "#tenantCloseOutButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
+      $( "#seventhDealButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
+      $( "#eighthDealButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
+    });  
+    
+    $('#tenantCloseOutButton').click(function (){
+      $('#dealInfoRow').hide("slow");
+      $('#dealTermRow').hide("slow");
+      $('#leasingInfoRow').hide("slow");
+      $('#tenantDesignRow').hide("slow");
+      $('#tenantFitOutRow').hide("slow");
+      $('#closeOutRow').show("slow");
+      $('#scheduleRow').hide("slow");
+      $('#workletterRow').hide("slow");
+      
+      $( "#dealInfoButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
+      $( "#dealTermButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
+      $( "#leasingInfoButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
+      $( "#tenantDesignButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
+      $( "#tenantFitOutButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
+      $( "#tenantCloseOutButton" ).removeClass( "" ).addClass( "deal-buttons-active" );
+      $( "#seventhDealButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
+      $( "#eighthDealButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
+    });  
+    
+    $('#seventhDealButton').click(function (){
+      $('#dealInfoRow').hide("slow");
+      $('#dealTermRow').hide("slow");
+      $('#leasingInfoRow').hide("slow");
+      $('#tenantDesignRow').hide("slow");
+      $('#tenantFitOutRow').hide("slow");
+      $('#closeOutRow').hide("slow");
+      $('#scheduleRow').show("slow");
+      $('#workletterRow').hide("slow");
+      
+      $( "#dealInfoButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
+      $( "#dealTermButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
+      $( "#leasingInfoButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
+      $( "#tenantDesignButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
+      $( "#tenantFitOutButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
+      $( "#tenantCloseOutButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
+      $( "#seventhDealButton" ).removeClass( "" ).addClass( "deal-buttons-active" );
+      $( "#eighthDealButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
+    });  
+    
+    $('#eighthDealButton').click(function (){
+      $('#dealInfoRow').hide("slow");
+      $('#dealTermRow').hide("slow");
+      $('#leasingInfoRow').hide("slow");
+      $('#tenantDesignRow').hide("slow");
+      $('#tenantFitOutRow').hide("slow");
+      $('#closeOutRow').hide("slow");
+      $('#scheduleRow').hide("slow");
+      $('#workletterRow').show("slow");
+      
+      $( "#dealInfoButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
+      $( "#dealTermButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
+      $( "#leasingInfoButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
+      $( "#tenantDesignButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
+      $( "#tenantFitOutButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
+      $( "#tenantCloseOutButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
+      $( "#seventhDealButton" ).removeClass( "deal-buttons-active" ).addClass( "" );
+      $( "#eighthDealButton" ).removeClass( "" ).addClass( "deal-buttons-active" );
+    });
+
+  });
+
+  //this happens on load
+  $(document).ready(function() {
+    setTimeout(function() {
+      $('#dealTermRow').hide("slow");
+      $('#leasingInfoRow').hide("slow");
+      $('#tenantDesignRow').hide("slow");
+      $('#tenantFitOutRow').hide("slow");
+      $('#closeOutRow').hide("slow");
+      $('#scheduleRow').hide("slow");
+      $('#workletterRow').hide("slow");
+    }, 1000);
+  });
+</script>
+<!-- END buttons for changing the color layers with script for buttons -->
