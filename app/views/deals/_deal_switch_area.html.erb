@@ -46,8 +46,13 @@
 <div class="row">
   <div class="col-xs-2">
   </div>
-  <div class="col-xs-8">
-    <strong>Tenant Contact:</strong> <%= @deal.tenant_contact %><br><br>
+  <div class="col-xs-4">
+    <strong>Tenant Contact:</strong><br> <%= simple_format(@deal.tenant_contact) %><br><br>
+    <strong>General Contractor:</strong><br> <%= simple_format(@deal.general_contractor) %><br><br>
+  </div>
+  <div class="col-xs-4">
+    <strong>Architect:</strong><br> <%= simple_format(@deal.architect) %><br><br>
+    <strong>Other Contacts:</strong><br> <%= simple_format(@deal.other_contacts) %><br><br>
   </div>
   <div class="col-xs-2">
 
