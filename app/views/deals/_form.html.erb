@@ -919,7 +919,8 @@
         
         <%= f.label :storefront_plans_status, 'Storefront Plans Status', :class => 'control-label col-lg-2' %>
         <div class="col-lg-2">
-          <%= f.text_field :storefront_plans_status, :class => 'form-control' %>
+          <%#= f.text_field :storefront_plans_status, :class => 'form-control' %>
+          <%= f.select :storefront_plans_status, ['RAR', 'AAN'], {include_blank:true}, :class => 'form-control' %>
         </div>
         <%=f.error_span(:storefront_plans_status) %>
       </div>
