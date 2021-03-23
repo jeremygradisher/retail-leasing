@@ -27,7 +27,9 @@ class ProjectsController < ApplicationController
       #@areasofprimary = @map.areas.all
       @mapareas = @map.areas.sort_by(&:suite_number)
       @areas = @map.areas.all
+      #need to change this up for Ransack
       @areasforlist = @map.areas.sort_by(&:suite_number)
+      
       @deals = Deal.where(map_id: @map.id)
       @areasquarefootage = Area.where(project_id: params[:id]).pluck(:area_sqft)
       @areas_deals = AreasDeal.where(project_id: params[:id]).all
