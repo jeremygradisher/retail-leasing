@@ -6,7 +6,7 @@
 
 
 <div id="spacessearch">
-<%= search_form_for @areasfor do |f| %>
+<%= search_form_for @areasfor, url: project_path do |f| %>
 
   <!--# Search if the name field contains...-->
   <%#= f.label :suite_number %>
