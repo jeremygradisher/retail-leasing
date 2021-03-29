@@ -10,7 +10,7 @@
 
   <!--# Search if the name field contains...-->
   <%#= f.label :suite_number %>
-  <%= f.search_field :suite_number, :class => 'spaceswider' %>
+  <%= f.search_field :suite_number_cont, :class => 'spaceswider' %>
 
   <!--# Search if an associated articles.title starts with...-->
   <%#= f.label :articles_title_start %>
@@ -20,7 +20,11 @@
   <%#= f.label :name_or_description_or_email_or_articles_title_cont %>
   <%#= f.search_field :name_or_description_or_email_or_articles_title_cont %>
 
-  <%= f.submit %>
+  <%= f.submit "Search", :class => "btn btn-primary jicon",
+                :style => "background-color:#8cbe3b;border:0;"  %>
+  <%= link_to "Clear", request.path, 
+                :class => "btn btn-primary jicon",
+                :style => "background-color:#e36e39;border:0;margin-top:12px;height:35px;"%>
 <% end %>
 </div>
 
