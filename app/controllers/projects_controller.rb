@@ -67,6 +67,15 @@ class ProjectsController < ApplicationController
     
     #For Leasing Managers Index on projects#show:
     @leasing_managers = LeasingManager.where(project_id: params[:id]).all
+    
+    respond_to do |format|
+      format.html
+      format.json { head :no_content, location: @areasquery }
+      format.js   { render :layout => false }
+        
+        #format.json { render :show, status: :created, location: @pony }
+        #format.js   { render :layout => false }
+    end
   end
 
   # GET /projects/new
