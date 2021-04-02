@@ -33,10 +33,10 @@ class ProjectsController < ApplicationController
       #@q = Person.ransack(params[:q])
       #@people = @q.result(distinct: true)
       #original:
-      #@areasforlist = @map.areas.sort_by(&:suite_number)
+      @areasforlist = @map.areas.sort_by(&:suite_number)
       #with ransack
-      @areasquery = @map.areas.ransack(params[:q])
-      @areasforlist = @areasquery.result(distinct: true)
+      #@areasquery = @map.areas.ransack(params[:q])
+      #@areasforlist = @areasquery.result(distinct: true)
 
       @deals = Deal.where(map_id: @map.id)
       @areasquarefootage = Area.where(project_id: params[:id]).pluck(:area_sqft)
@@ -51,9 +51,10 @@ class ProjectsController < ApplicationController
     @dealsforpopup = @project.deals.where.not(archive: true).all.sort_by(&:deal_name)
     @dealsforarchivedlist = @project.deals.where(archive: true).all.sort_by(&:deal_name)
     @dealscount = @deals.where.not(archive: true).size
-    #@dealsforlist = @project.deals.where.not(archive: true).all.sort_by(&:lease_status)
-    @dealsquery = @project.deals.where.not(archive: true).ransack(params[:q])
-    @dealsforlist = @dealsquery.result(distinct: true)
+    
+    @dealsforlist = @project.deals.where.not(archive: true).all.sort_by(&:lease_status)
+    #@dealsquery = @project.deals.where.not(archive: true).ransack(params[:q])
+    #@dealsforlist = @dealsquery.result(distinct: true)
 
     
     @areasquarefootage = Area.where(project_id: params[:id]).pluck(:area_sqft)
@@ -67,6 +68,7 @@ class ProjectsController < ApplicationController
     
     #For Leasing Managers Index on projects#show:
     @leasing_managers = LeasingManager.where(project_id: params[:id]).all
+
   end
 
   # GET /projects/new

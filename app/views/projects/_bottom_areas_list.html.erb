@@ -1,33 +1,11 @@
+<div id='ajaxtest'>
+
 <h1 style="font-family: 'simplifica';font-size:30pt;width:100%;text-align:left;">Spaces
 <%= link_to '+ Add Space',
             new_area_path(:project_id => @project, :map_id => @map),
             :class => 'btn btn-default green-button responsive-none print-none', 
             :style => 'float:right;margin-top:12px;font-family: verdana, arial, helvetica, sans-serif;' %>
-
-
-<div id="spacessearch">
-<%= search_form_for @areasquery, url: project_path do |f| %>
-
-  <!--# Search if the name field contains...-->
-  <%#= f.label :suite_number %>
-  <%= f.search_field :suite_number_cont, :class => 'spaceswider' %>
-
-  <!--# Search if an associated articles.title starts with...-->
-  <%#= f.label :articles_title_start %>
-  <%#= f.search_field :articles_title_start %>
-
-  <!--# Attributes may be chained. Search multiple attributes for one value...-->
-  <%#= f.label :name_or_description_or_email_or_articles_title_cont %>
-  <%#= f.search_field :name_or_description_or_email_or_articles_title_cont %>
-
-  <%= f.submit "Search", :class => "btn btn-primary jicon",
-                :style => "background-color:#8cbe3b;border:0;"  %>
-  <%= link_to "Clear", request.path, 
-                :class => "btn btn-primary jicon",
-                :style => "background-color:#e36e39;border:0;margin-top:12px;height:35px;"%>
-<% end %>
-</div>
-
+            
 </h1>
 
 <div class="panel panel-default">
@@ -35,10 +13,10 @@
       <thead>
         <tr>
           <th style="text-align:left;">Deal Image:</th>
-          <th style="text-align:left;"><%= sort_link(@areasquery, :suite_number, default_order: :asc) %></th>
-          <th style="text-align:left;"><%= sort_link(@areasquery, :area) %></th>
-          <th style="text-align:left;"><%= sort_link(@areasquery, :deals) %></th>
-          <th style="text-align:left;"><%= sort_link(@areasquery, :lease_status) %></th>
+          <th style="text-align:left;"><%#= sort_link(@areasquery, :suite_number, default_order: :asc) %>Suite #:</th>
+          <th style="text-align:left;"><%#= sort_link(@areasquery, :area) %>Sq Ft:</th>
+          <th style="text-align:left;"><%#= sort_link(@areasquery, :deals) %>Associated Deals:</th>
+          <th style="text-align:left;"><%#= sort_link(@areasquery, :lease_status) %>Lease Status:</th>
           <th style="text-align:left;">Deal Status Notes:</th>
           <th class="print-none" style="text-align:left;">Actions:</th>
         </tr>
@@ -128,3 +106,8 @@
       </tbody>
     </table>
 </div>
+
+
+
+
+</div> <!-- ajaxtest -->
