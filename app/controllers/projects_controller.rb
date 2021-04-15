@@ -169,6 +169,9 @@ class ProjectsController < ApplicationController
     @maps = @project.maps.all
     @map = @project.maps.first
     @areas = @map.areas.all
+    
+    @tenants = Area.where(project_id: params[:id]).size
+    @dealscount = @deals.where.not(archive: true).size
   end
   
   def map
