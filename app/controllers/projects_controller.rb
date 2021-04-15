@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_project, only: [:show, :edit, :update, :destroy, :users, :add_user]
+  before_action :set_project, only: [:show, :edit, :update, :destroy, :users, :add_user, :spaces, :deals]
 
   # GET /projects
   # GET /projects.json
@@ -148,11 +148,16 @@ class ProjectsController < ApplicationController
   end
   
   def spaces
-    
+    @maps = @project.maps.all
+    @map = @project.maps.first
+    @areasforlist = @map.areas.sort_by(&:suite_number)
+    @projectname = @project.name
   end
   
   def deals
-    
+    @deals = @project.deals.where.not(archive: true).all
+    @dealsforlist = @project.deals.where.not(archive: true).all.sort_by(&:lease_status)
+    @projectname = @project.name
   end
 
   def add_user
