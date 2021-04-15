@@ -146,6 +146,14 @@ class ProjectsController < ApplicationController
     
     @all_users = User.all
   end
+  
+  def spaces
+    
+  end
+  
+  def deals
+    
+  end
 
   def add_user
     @project_user = UserProject.new(user_id: params[:user_id], project_id: @project.id)
