@@ -1,6 +1,7 @@
 class ProjectsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_project, only: [:show, :edit, :update, :destroy, :users, :add_user, :spaces, :deals]
+  before_action :set_project, only: [:show, :edit, :update, :destroy, 
+        :users, :add_user, :spaces, :deals, :charts, :map]
 
   # GET /projects
   # GET /projects.json
@@ -158,6 +159,42 @@ class ProjectsController < ApplicationController
     @deals = @project.deals.where.not(archive: true).all
     @dealsforlist = @project.deals.where.not(archive: true).all.sort_by(&:lease_status)
     @projectname = @project.name
+  end
+  
+  def charts
+    @deals = @project.deals.where.not(archive: true).all
+    @areasquarefootage = Area.where(project_id: params[:id]).pluck(:area_sqft)
+    @netrentablearea = @deals.where.not(archive: true).pluck(:net_rentable_area)
+    
+    @maps = @project.maps.all
+    @map = @project.maps.first
+    @areas = @map.areas.all
+  end
+  
+  def map
+    @maps = @project.maps.all
+    @map = @project.maps.first
+    
+    if @project.maps.present?
+      @maptitle = @map.name
+      @image = @map.images.first
+      @mapareas = @map.areas.sort_by(&:suite_number)
+      @areas = @map.areas.all
+
+      #@areasforlist = @map.areas.sort_by(&:suite_number)
+
+      #@deals = Deal.where(map_id: @map.id)
+      #@areasquarefootage = Area.where(project_id: params[:id]).pluck(:area_sqft)
+      #@areas_deals = AreasDeal.where(project_id: params[:id]).all
+    end
+    
+    @areas_deal = AreasDeal.new
+    @primary_deal = PrimaryDeal.new
+    
+    @deals = @project.deals.where.not(archive: true).all
+    @dealsforpopup = @project.deals.where.not(archive: true).all.sort_by(&:deal_name)
+    @dealsforarchivedlist = @project.deals.where(archive: true).all.sort_by(&:deal_name)
+    @dealscount = @deals.where.not(archive: true).size
   end
 
   def add_user

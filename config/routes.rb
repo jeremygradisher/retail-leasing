@@ -36,6 +36,8 @@ Rails.application.routes.draw do
       #get 'adhocreport'
       get 'spaces'
       get 'deals'
+      get 'charts'
+      get 'map'
     end
   end
   
