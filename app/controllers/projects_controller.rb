@@ -1,7 +1,7 @@
 class ProjectsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_project, only: [:show, :edit, :update, :destroy, 
-        :users, :add_user, :spaces, :deals, :charts, :map]
+        :users, :add_user, :spaces, :deals, :charts, :map, :retail, :merch]
 
   # GET /projects
   # GET /projects.json
@@ -198,6 +198,114 @@ class ProjectsController < ApplicationController
     @dealsforpopup = @project.deals.where.not(archive: true).all.sort_by(&:deal_name)
     @dealsforarchivedlist = @project.deals.where(archive: true).all.sort_by(&:deal_name)
     @dealscount = @deals.where.not(archive: true).size
+  end
+  
+  def retail
+    @maps = @project.maps.all
+    @map = @project.maps.first
+    
+    if @project.maps.present?
+      @maptitle = @map.name
+      @image = @map.images.first
+      #@areasofprimary = @map.areas.all
+      @mapareas = @map.areas.sort_by(&:suite_number)
+      @areas = @map.areas.all
+      
+      #need to change this up for Ransack
+      #example:
+      #@q = Person.ransack(params[:q])
+      #@people = @q.result(distinct: true)
+      #original:
+      @areasforlist = @map.areas.sort_by(&:suite_number)
+      #with ransack
+      #@areasquery = @map.areas.ransack(params[:q])
+      #@areasforlist = @areasquery.result(distinct: true)
+
+      @deals = Deal.where(map_id: @map.id)
+      @areasquarefootage = Area.where(project_id: params[:id]).pluck(:area_sqft)
+      @areas_deals = AreasDeal.where(project_id: params[:id]).all
+    end
+    @tenants = Area.where(project_id: params[:id]).size
+    
+    @areas_deal = AreasDeal.new
+    @primary_deal = PrimaryDeal.new
+    
+    @deals = @project.deals.where.not(archive: true).all
+    @dealsforpopup = @project.deals.where.not(archive: true).all.sort_by(&:deal_name)
+    @dealsforarchivedlist = @project.deals.where(archive: true).all.sort_by(&:deal_name)
+    @dealscount = @deals.where.not(archive: true).size
+    
+    @dealsforlist = @project.deals.where.not(archive: true).all.sort_by(&:lease_status)
+    #@dealsquery = @project.deals.where.not(archive: true).ransack(params[:q])
+    #@dealsforlist = @dealsquery.result(distinct: true)
+
+    
+    @areasquarefootage = Area.where(project_id: params[:id]).pluck(:area_sqft)
+    @netrentablearea = @deals.where.not(archive: true).pluck(:net_rentable_area)
+    
+    #Going to need something like this:
+    @q = @project.users.where(is_admin: false).ransack(params[:q])
+    @project_users = @q.result(distinct: true).paginate(:page => params[:page], :per_page => 5)
+    
+    @workletter_templates = WorkletterTemplate.where(project_id: params[:id])
+    
+    #For Leasing Managers Index on projects#show:
+    @leasing_managers = LeasingManager.where(project_id: params[:id]).all
+
+  end
+  
+  def merch
+    @maps = @project.maps.all
+    @map = @project.maps.first
+    
+    if @project.maps.present?
+      @maptitle = @map.name
+      @image = @map.images.first
+      #@areasofprimary = @map.areas.all
+      @mapareas = @map.areas.sort_by(&:suite_number)
+      @areas = @map.areas.all
+      
+      #need to change this up for Ransack
+      #example:
+      #@q = Person.ransack(params[:q])
+      #@people = @q.result(distinct: true)
+      #original:
+      @areasforlist = @map.areas.sort_by(&:suite_number)
+      #with ransack
+      #@areasquery = @map.areas.ransack(params[:q])
+      #@areasforlist = @areasquery.result(distinct: true)
+
+      @deals = Deal.where(map_id: @map.id)
+      @areasquarefootage = Area.where(project_id: params[:id]).pluck(:area_sqft)
+      @areas_deals = AreasDeal.where(project_id: params[:id]).all
+    end
+    @tenants = Area.where(project_id: params[:id]).size
+    
+    @areas_deal = AreasDeal.new
+    @primary_deal = PrimaryDeal.new
+    
+    @deals = @project.deals.where.not(archive: true).all
+    @dealsforpopup = @project.deals.where.not(archive: true).all.sort_by(&:deal_name)
+    @dealsforarchivedlist = @project.deals.where(archive: true).all.sort_by(&:deal_name)
+    @dealscount = @deals.where.not(archive: true).size
+    
+    @dealsforlist = @project.deals.where.not(archive: true).all.sort_by(&:lease_status)
+    #@dealsquery = @project.deals.where.not(archive: true).ransack(params[:q])
+    #@dealsforlist = @dealsquery.result(distinct: true)
+
+    
+    @areasquarefootage = Area.where(project_id: params[:id]).pluck(:area_sqft)
+    @netrentablearea = @deals.where.not(archive: true).pluck(:net_rentable_area)
+    
+    #Going to need something like this:
+    @q = @project.users.where(is_admin: false).ransack(params[:q])
+    @project_users = @q.result(distinct: true).paginate(:page => params[:page], :per_page => 5)
+    
+    @workletter_templates = WorkletterTemplate.where(project_id: params[:id])
+    
+    #For Leasing Managers Index on projects#show:
+    @leasing_managers = LeasingManager.where(project_id: params[:id]).all
+
   end
 
   def add_user
