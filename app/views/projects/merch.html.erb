@@ -1,0 +1,225 @@
+
+<style>
+  .fa-minus-square {color:#d13e27;}
+</style>
+
+<% if (current_user && (current_user.project_ids.include? @project.id)) || (current_user && current_user.is_admin?) %>
+<%- model_class = Project -%>
+<% if @project.maps.present? %>
+
+<% else %>
+<br><br>
+<% end %>
+
+<% if @project.maps.present? %>
+<div class="row row-correction" style="display:none">
+<% else %>
+<div class="row row-correction">
+<% end %>
+  <div class="col-xs-10 col-xs-offset-1">
+    <div class="page-header">
+        <h1 style="font-size: 38px;color:#231f20;">
+          <% if @project.maps.present? %>
+            <%= link_to @maptitle, map_path(@map), :style => 'color:#231f20' %>
+          <% else %>
+            Add your first image map here: 
+            <%= link_to '+ Image Map',
+                        new_map_path(:project_id => @project),
+                        :class => 'btn btn-primary responsive-none print-none', :style => 'color:#231f20;background-color:#fff;' %> 
+          <% end %>
+        </h1>
+    </div>
+  </div>
+</div>
+
+<% if @project.maps.present? %>
+<div class="row row-correction" style="page-break-inside: avoid;">
+  <div class="col-xs-10 col-xs-offset-1" style="">
+    <br><br>
+    <%= render '/maps/merchmap' %>
+  </div>
+</div>
+<% end %>
+
+<% if @project.maps.present? %>
+<!-- saving if I go back -->
+<%#= render '/projects/switch_buttons' %>
+
+<div class="row">
+  <div class="" style="width:100%;margin-top:-30px;margin-bottom:10px;text-align:center;position:absolute;z-index:2222;">
+    <a href="<%= '/projects/' + @project.id.to_s %>" type="button" id="leasingStatusbtn" style="" class="btn leasingStatusClicked print-none switch-buttons"><img src="/images/leasing-clear.png"></a>
+    <a href="<%= '/projects/' + @project.id.to_s + '/retail' %>" type="button" id="areaStatusbtn" style="" class="btn areaStatusClicked print-none switch-buttons"><img src="/images/tc-clear.png"></a>
+    <a href="<%= '/projects/' + @project.id.to_s + '/merch' %>" type="button" id="merchandisingStatusbtn" style="" class="btn merchandisingStatusClicked print-none switch-buttons switch-buttons-active blue-active"><img src="/images/merch-clear.png"></a>
+  </div>
+</div>
+<% end %>
+
+<!--
+<div class="project-admin-bar" style="text-align:center;">
+  <%# if current_user.is_admin? || current_user.role == 'Admin' || current_user.role == 'Editor' %>
+  <%#= link_to '+ Add space', new_area_path(:map_id => @map,:project_id => @project),
+                    :class => 'btn btn-primary print-none',
+                    :style => 'margin-top:4px;margin-bottom:4px;margin-right:10px;color:#fff;background-color:#F16528;border-color:#F16528;' %>
+  <%#= link_to '+ Add Deal', new_deal_path(:map_id => @map,:project_id => @project),
+                    :class => 'btn btn-primary print-none',
+                    :style => 'margin-top:4px;margin-bottom:4px;margin-right:10px;color:#fff;background-color:#16A3BA;border-color:#16A3BA;' %>
+  <%# end %>
+
+</div>
+-->
+
+
+
+
+
+<% if @project.maps.present? %>
+  <% if @areas.count > 0 %>
+
+<div class="row" id="merchandisingStatusRow">
+  <div class="col-xs-12">
+      <div class="page-header" style="text-align:center;">
+          <h1 style="font-family: 'simplifica';font-size:40pt;margin-top:120px;">Property Statistics</h1>
+      </div>
+  </div>
+  <div class="col-xs-12" style="text-align:center;">
+    <!--<img src="/images/tc-legend.png" style="width:650px;"><br>-->
+    <!--<h3 style="font-family: 'simplifica';">Merchandising</h3>-->
+  </div>
+  <div class="col-xs-5 col-xs-offset-1" style="text-align:center;">
+    <!-- this original way was messing up the colors -->
+    <%#= pie_chart @areas.group(:status).size, donut: true, library: {pieSliceText: "value", backgroundColor: "none", pieHole: 0.4, legend: {position: "none"}, slices: [{color: '#D13E27'}, {color: '#F16528'}, {color: '#d7b920'}, {color: '#89cadc'}, {color: '#38b449'}, {color: '#561871'}, {color: '#337198'}]} %>
+
+     <!-- Chart5 -->
+    <div id="chartContainer5" style="height: 300px; width: 100%;"></div>
+    <!-- END Chart5 -->
+    
+    <h3 style="margin-top:20px;margin-bottom:2px;width:100%;">Deals: <%= @dealscount %></h3>
+    
+    <h3 style="margin-top:2px;margin-bottom:2px;width:100%;">Spaces: <%= @tenants %></h3>
+    
+    <!--
+    <h3 style="margin-top:2px;margin-bottom:2px;width:100%;">Deals Archived: <%= @dealsarchivedcount %></h3>
+    
+    <h3 style="margin-top:2px;margin-bottom:2px;width:100%;">Deals Not Archived: <%= @dealsnotarchivedcount %></h3>
+    
+    -->
+    
+  </div>
+  <div class="col-xs-5" style="text-align:center;">
+    <!-- this original way was messing up the colors -->
+    <%#= pie_chart @deals.group(:status).sum(:area_sqft), donut: true, library: {pieSliceText: "value", backgroundColor: "none", pieHole: 0.4, legend: {position: "none"}, slices: { '0': { color: '#D13E27' }, '1': { color: '#F16528' }, '2': { color: '#d7b920' }, '3': { color: '#89cadc' }, '4': { color: '#38b449' }, '5': { color: '#561871' }, '6': { color: '#337198' } }} %>
+    
+    <!-- Chart6 -->
+    <div id="chartContainer6" style="height: 300px; width: 100%;"></div>
+    <!-- END Chart6 -->
+    
+    <h3 style="margin-top:20px;margin-bottom:2px;width:100%;"><%= number_with_delimiter(@netrentablearea.compact.sum, :delimiter => ',') %> Potential (sf)</h3>
+    
+    <h3 style="margin-top:2px;margin-bottom:2px;width:100%;"><%= number_with_delimiter(@areasquarefootage.compact.sum, :delimiter => ',') %> GLA (sf)</h3>
+
+  </div>
+</div>
+
+    <%= render '/projects/switch_area' %>
+  <% else %>
+    <br><br><br><br><br>
+  <% end %>
+<% end %>
+
+</div>
+
+
+
+<!-- Workletter templates index -->
+<%#= render '/projects/workletter_templates' %>
+
+<!-- project info -->
+<%#= render '/projects/project_info' %>
+
+<br>
+
+<% else %>
+ <h2>You are not authorized to be here. <a href="/" class="btn btn-default">Return Home</a></h2>
+<% end %>
+
+<%= render '/projects/switch_jquery' %>
+
+
+
+
+<script>
+    window.onload = function () {
+    
+    var chart5 = new CanvasJS.Chart("chartContainer5", {
+    	animationEnabled: true,
+    	//title:{
+    		//text: "Email Categories",
+    		//horizontalAlign: "left"
+    	//},
+    	data: [{
+    		type: "doughnut",
+    		startAngle: 60,
+    		//innerRadius: 60,
+    		indexLabelFontSize: 12,
+    		indexLabel: "{label} - {y}",
+    		toolTipContent: "<b>{label}:</b> {y} (#percent%)",
+    		dataPoints: [
+    
+    			{ y: <%= @deals.where(merchandising_status: "Auto / Gas").size %>, label: "Auto / Gas", color: "#66635f" },
+    			{ y: <%= @deals.where(merchandising_status: "Candy / Confectionary").size %>, label: "Candy / Confectionary", color: "#f9ef7b" },
+    			{ y: <%= @deals.where(merchandising_status: "Department Store").size %>, label: "Department Store", color: "#fed389" },
+    			{ y: <%= @deals.where(merchandising_status: "Electronics").size %>, label: "Electronics", color: "#be8b67" },
+    			{ y: <%= @deals.where(merchandising_status: "Entertainment").size %>, label: "Entertainment", color: "#e62536" },
+    			{ y: <%= @deals.where(merchandising_status: "Fashion").size %>, label: "Fashion", color: "#67a5d7" },
+    			{ y: <%= @deals.where(merchandising_status: "Food & Beverage").size %>, label: "Food & Beverage", color: "#f7b131" },
+    			{ y: <%= @deals.where(merchandising_status: "Grocery / Hypermarket").size %>, label: "Grocery / Hypermarket", color: "#b6cf42" },
+    			{ y: <%= @deals.where(merchandising_status: "Home / Furnishings").size %>, label: "Home / Furnishings", color: "#f38a7c" },
+    			{ y: <%= @deals.where(merchandising_status: "Jewelry / Handbags").size %>, label: "Jewelry / Handbags", color: "#a6749c" },
+    			{ y: <%= @deals.where(merchandising_status: "Mobiles / Accessories").size %>, label: "Mobiles / Accessories", color: "#3a63a8" },
+    			{ y: <%= @deals.where(merchandising_status: "Perfume / Cosmetics").size %>, label: "Perfume / Cosmetics", color: "#ec4f92" },
+    			{ y: <%= @deals.where(merchandising_status: "Pets").size %>, label: "Pets", color: "#e29423" },
+    			{ y: <%= @deals.where(merchandising_status: "Services / Specialty Stores").size %>, label: "Services / Specialty Stores", color: "#efa1c5" },
+    			{ y: <%= @deals.where(merchandising_status: "Sports / Outdoor / Fitness").size %>, label: "Sports / Outdoor / Fitness", color: "#7ca180" },
+    			{ y: <%= @deals.where(merchandising_status: "Toys & Hobbies / Gifts / Books").size %>, label: "Toys & Hobbies / Gifts / Books", color: "#b2cce9" }
+    		]
+    	}]
+    });
+    chart5.render();
+    
+    var chart6 = new CanvasJS.Chart("chartContainer6", {
+    	animationEnabled: true,
+    	//title:{
+    		//text: "Email Categories",
+    		//horizontalAlign: "left"
+    	//},
+    	data: [{
+    		type: "doughnut",
+    		startAngle: 60,
+    		//innerRadius: 60,
+    		indexLabelFontSize: 12,
+    		indexLabel: "{label} - {y}",
+    		toolTipContent: "<b>{label}:</b> {y} (#percent%)",
+    		dataPoints: [
+    
+    			{ y: <%= @deals.where(merchandising_status: "Auto / Gas").sum(:net_rentable_area) %>, label: "Auto / Gas", color: "#66635f" },
+    			{ y: <%= @deals.where(merchandising_status: "Candy / Confectionary").sum(:net_rentable_area) %>, label: "Candy / Confectionary", color: "#f9ef7b" },
+    			{ y: <%= @deals.where(merchandising_status: "Department Store").sum(:net_rentable_area) %>, label: "Department Store", color: "#fed389" },
+    			{ y: <%= @deals.where(merchandising_status: "Electronics").sum(:net_rentable_area) %>, label: "Electronics", color: "#be8b67" },
+    			{ y: <%= @deals.where(merchandising_status: "Entertainment").sum(:net_rentable_area) %>, label: "Entertainment", color: "#e62536" },
+    			{ y: <%= @deals.where(merchandising_status: "Fashion").sum(:net_rentable_area) %>, label: "Fashion", color: "#67a5d7" },
+    			{ y: <%= @deals.where(merchandising_status: "Food & Beverage").sum(:net_rentable_area) %>, label: "Food & Beverage", color: "#f7b131" },
+    			{ y: <%= @deals.where(merchandising_status: "Grocery / Hypermarket").sum(:net_rentable_area) %>, label: "Grocery / Hypermarket", color: "#b6cf42" },
+    			{ y: <%= @deals.where(merchandising_status: "Home / Furnishings").sum(:net_rentable_area) %>, label: "Home / Furnishings", color: "#f38a7c" },
+    			{ y: <%= @deals.where(merchandising_status: "Jewelry / Handbags").sum(:net_rentable_area) %>, label: "Jewelry / Handbags", color: "#a6749c" },
+    			{ y: <%= @deals.where(merchandising_status: "Mobiles / Accessories").sum(:net_rentable_area) %>, label: "Mobiles / Accessories", color: "#3a63a8" },
+    			{ y: <%= @deals.where(merchandising_status: "Perfume / Cosmetics").sum(:net_rentable_area) %>, label: "Perfume / Cosmetics", color: "#ec4f92" },
+    			{ y: <%= @deals.where(merchandising_status: "Pets").sum(:net_rentable_area) %>, label: "Pets", color: "#e29423" },
+    			{ y: <%= @deals.where(merchandising_status: "Services / Specialty Stores").sum(:net_rentable_area) %>, label: "Services / Specialty Stores", color: "#efa1c5" },
+    			{ y: <%= @deals.where(merchandising_status: "Sports / Outdoor / Fitness").sum(:net_rentable_area) %>, label: "Sports / Outdoor / Fitness", color: "#7ca180" },
+    			{ y: <%= @deals.where(merchandising_status: "Toys & Hobbies / Gifts / Books").sum(:net_rentable_area) %>, label: "Toys & Hobbies / Gifts / Books", color: "#b2cce9" }
+    		]
+    	}]
+    });
+    chart6.render();
+    }
+</script>

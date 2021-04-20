@@ -38,6 +38,8 @@ Rails.application.routes.draw do
       get 'deals'
       get 'charts'
       get 'map'
+      get 'retail'
+      get 'merch'
     end
   end
   
