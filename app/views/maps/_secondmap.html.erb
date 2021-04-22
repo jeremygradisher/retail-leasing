@@ -68,7 +68,7 @@
     
     <% @mapareas.each do |area| %>// 1. Leasing area map
         <% if area.deals.load.any? %>//2. if there is a deal
-            <% if area.primary_deals.ids.count > 0 %>//3. if there is a primary deal
+            <% if area.primary_deals.load.ids.count > 0 %>//3. if there is a primary deal
                 var <%= 'd' + area.id.to_s + area.suite_number.gsub(/\W\s?/, "") %> = <%= area.coords.html_safe %>;
                 L.geoJson(<%= 'd' + area.id.to_s + area.suite_number.gsub(/\W\s?/, "") %>, {
                 pointToLayer: function (feature, latlng) {
