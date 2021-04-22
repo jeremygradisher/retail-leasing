@@ -91,7 +91,8 @@
                 return L.marker(latlng, {icon: c_d13e27Icon});
                 }}).addTo(leasingStatus).bindPopup('<div style="width:300px;"><p style="margin-top:0;margin-bottom:4px;"><strong>*No Deal Associated</strong></p><hr style="margin-top:0;margin-bottom:6px;"><div style="float:left;width:38%;"><%= link_to image_tag('/images/status-plan-logo.png', :style => 'width:100% !important;float:left;margin-top:6px;margin-bottom:10px;'), area_path(area) %></div><div style="float:right;width:58%;"><p style="margin-top:4px;margin-bottom:4px;">Suite #: <span style="float:right;"><%= area.suite_number %></span><br>Area: <span style="float:right;"><%= number_with_delimiter(area.area_sqft, :delimiter => ',') %></span></p><hr style="margin-top:4px;margin-bottom:4px;"><p style="margin-top:4px;margin-bottom:4px;">There are no deals associated.<br><a data-toggle="collapse" href="#collapsePopButtons" role="button" aria-expanded="false" aria-controls="collapsePopButtonse">+ Deal</a></p></div><br style="clear:both;"><% if current_user.is_admin? || current_user.role == 'Admin' || current_user.role == 'Editor' %><div style="float:left;width:100%;" class="collapse" id="collapsePopButtons"><%= (render "/maps/link_deal", :area => area).squish.html_safe  %><br style="clear:both;"><% end %></div><br style="clear:both;"></div>').setStyle({
             	fillColor: '#D13E27', color: '#D13E27', weight: 1, opacity: 0.8, fillOpacity: 0.8});
-		<% end %>//2. END if there is/isn't a deal    
+		<% end %>//2. END if there is/isn't a deal  
+		
 	<% end %>// 1. Leasing area map END
     
     
