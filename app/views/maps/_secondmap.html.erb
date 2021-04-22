@@ -63,8 +63,8 @@
     <%= render '/maps/marker_variables' %>
     
     var leasingStatus = L.layerGroup();
-    var areaStatus = L.layerGroup();
-    var merchandisingStatus = L.layerGroup();
+    //var areaStatus = L.layerGroup();
+    //var merchandisingStatus = L.layerGroup();
     
     <% @mapareas.each do |area| %>// 1. Leasing area map
         <% if area.deals.load.any? %>//2. if there is a deal
