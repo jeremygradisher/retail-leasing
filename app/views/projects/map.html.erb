@@ -43,7 +43,16 @@
 <% end %>
 
 <% if @project.maps.present? %>
-<%= render '/projects/switch_buttons' %>
+<%#= render '/projects/switch_buttons' %>
+
+<div class="row">
+  <div class="" style="width:100%;margin-top:-30px;margin-bottom:10px;text-align:center;position:absolute;z-index:2222;">
+    <a href="<%= '/projects/' + @project.id.to_s %>" type="button" id="leasingStatusbtn" style="" class="btn leasingStatusClicked print-none switch-buttons"><img src="/images/leasing-clear.png"></a>
+    <a href="<%= '/projects/' + @project.id.to_s + '/retail' %>" type="button" id="areaStatusbtn" style="" class="btn areaStatusClicked print-none switch-buttons"><img src="/images/tc-clear.png"></a>
+    <a href="<%= '/projects/' + @project.id.to_s + '/merch' %>" type="button" id="merchandisingStatusbtn" style="" class="btn merchandisingStatusClicked print-none switch-buttons switch-buttons-active blue-active"><img src="/images/merch-clear.png"></a>
+  </div>
+</div>
+
 <% end %>
 
 

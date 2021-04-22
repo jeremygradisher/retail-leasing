@@ -72,6 +72,8 @@ group :development, :test do
   gem 'sqlite3', '~> 1.3.6'
   #gem 'sqlite3', '~> 1.4'
   gem 'byebug', platform: :mri
+  
+  #gem 'bullet'
 end
 
 group :development do
