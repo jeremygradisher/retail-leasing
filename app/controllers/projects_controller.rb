@@ -28,8 +28,7 @@ class ProjectsController < ApplicationController
       #@areasofprimary = @map.areas.all
       @mapareas = @map.areas.sort_by(&:suite_number)
       @areas = @map.areas.all
-      
-      #need to change this up for Ransack
+
       #example:
       #@q = Person.ransack(params[:q])
       #@people = @q.result(distinct: true)
