@@ -19,6 +19,7 @@ class ProjectsController < ApplicationController
   # GET /projects/1
   # GET /projects/1.json
   def show
+    #really need to go through these and see what I can cut down
     @maps = @project.maps.all
     @map = @project.maps.first
     
