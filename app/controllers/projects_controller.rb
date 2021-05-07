@@ -19,6 +19,7 @@ class ProjectsController < ApplicationController
   # GET /projects/1
   # GET /projects/1.json
   def show
+    #really need to go through these and see what I can cut down
     @maps = @project.maps.all
     @map = @project.maps.first
     
@@ -28,18 +29,17 @@ class ProjectsController < ApplicationController
       #@areasofprimary = @map.areas.all
       @mapareas = @map.areas.sort_by(&:suite_number)
       @areas = @map.areas.all
-      
-      #need to change this up for Ransack
+
       #example:
       #@q = Person.ransack(params[:q])
       #@people = @q.result(distinct: true)
       #original:
       @areasforlist = @map.areas.sort_by(&:suite_number)
       #with ransack
-      #@areasquery = @map.areas.ransack(params[:q])
+      #@areasquery = @areas.ransack(params[:q])
       #@areasforlist = @areasquery.result(distinct: true)
 
-      @deals = Deal.where(map_id: @map.id)
+      #@deals = Deal.where(map_id: @map.id).sort_by(&:deal_name)
       @areasquarefootage = Area.where(project_id: params[:id]).pluck(:area_sqft)
       @areas_deals = AreasDeal.where(project_id: params[:id]).all
     end
@@ -48,18 +48,23 @@ class ProjectsController < ApplicationController
     @areas_deal = AreasDeal.new
     @primary_deal = PrimaryDeal.new
     
+    #with ransack
     @deals = @project.deals.where.not(archive: true).all
+    #@dealsquery = @deals.ransack(params[:q])
+    #@dealsforlist = @dealsquery.result(distinct: true)
+    
+    #@deals = @project.deals.where.not(archive: true).all
     @dealsforpopup = @project.deals.where.not(archive: true).all.sort_by(&:deal_name)
     @dealsforarchivedlist = @project.deals.where(archive: true).all.sort_by(&:deal_name)
-    @dealscount = @deals.where.not(archive: true).size
+    @dealscount = @deals.size
     
-    @dealsforlist = @project.deals.where.not(archive: true).all.sort_by(&:lease_status)
+    @dealsforlist = @project.deals.where.not(archive: true).all.sort_by(&:deal_name)
     #@dealsquery = @project.deals.where.not(archive: true).ransack(params[:q])
     #@dealsforlist = @dealsquery.result(distinct: true)
 
     
     @areasquarefootage = Area.where(project_id: params[:id]).pluck(:area_sqft)
-    @netrentablearea = @deals.where.not(archive: true).pluck(:net_rentable_area)
+    @netrentablearea = @deals.pluck(:net_rentable_area)
     
     #Going to need something like this:
     @q = @project.users.where(is_admin: false).ransack(params[:q])
