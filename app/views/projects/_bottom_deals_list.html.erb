@@ -13,7 +13,7 @@
             <tr>
               <!--<th>Area Image:</th>-->
               <th style="min-width:80px;">Deal Image:</th>
-              <th style="min-width:80px;"><%#= sort_link(@dealsquery, :deal_name) %>Deal Name:</th>
+              <th style="min-width:80px;"><%#= sort_link(@dealsquery, :deal_name, default_order: :asc) %>Deal Name:</th>
               <th style="min-width:80px;"><%#= sort_link(@dealsquery, :gross_area) %>Gross Area:</th>
               <th style="min-width:80px;"><%#= sort_link(@dealsquery, :lease_status) %>Lease Status:</th>
               <!--<th style="min-width:80px;">Merch Status:</th>-->
