@@ -1,6 +1,7 @@
 # StatusPlan2 - Running Rails 5
 ## a place to build and test
-Closer!!!!
+Closer!!!! Testing some ajax stuff for the search 
+and trying to keep queries down on Project#show
 
 # Before:
 ## Good base build - user auth w/ user model, save image to aws, sendgrid sign-up
