@@ -157,14 +157,21 @@ class ProjectsController < ApplicationController
   def spaces
     @maps = @project.maps.all
     @map = @project.maps.first
-    @areasforlist = @map.areas.sort_by(&:suite_number)
     @projectname = @project.name
+    
+    @areas = @map.areas.all
+    #@areasforlist = @map.areas.sort_by(&:suite_number)
+    @areasquery = @areas.ransack(params[:q])
+    @areasforlist = @areasquery.result.includes(:project, :deals)
   end
   
   def deals
     @deals = @project.deals.where.not(archive: true).all
-    @dealsforlist = @project.deals.where.not(archive: true).all.sort_by(&:lease_status)
     @projectname = @project.name
+
+    #@dealsforlist = @project.deals.where.not(archive: true).all.sort_by(&:deal_name)
+    @dealsquery = @project.deals.where.not(archive: true).ransack(params[:q])
+    @dealsforlist = @dealsquery.result(distinct: true)
   end
   
   def charts
