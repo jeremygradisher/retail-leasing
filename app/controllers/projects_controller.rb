@@ -37,7 +37,8 @@ class ProjectsController < ApplicationController
       #@areasforlist = @map.areas.sort_by(&:suite_number)
       #with ransack
       @areasquery = @areas.ransack(params[:q])
-      @areasforlist = @areasquery.result(distinct: true)
+      #@areasforlist = @areasquery.result(distinct: true)
+      @areasforlist = @areasquery.result.includes(:project, :deals)
 
       #@deals = Deal.where(map_id: @map.id).sort_by(&:deal_name)
       @areasquarefootage = Area.where(project_id: params[:id]).pluck(:area_sqft)
@@ -156,14 +157,21 @@ class ProjectsController < ApplicationController
   def spaces
     @maps = @project.maps.all
     @map = @project.maps.first
-    @areasforlist = @map.areas.sort_by(&:suite_number)
     @projectname = @project.name
+    
+    @areas = @map.areas.all
+    #@areasforlist = @map.areas.sort_by(&:suite_number)
+    @areasquery = @areas.ransack(params[:q])
+    @areasforlist = @areasquery.result.includes(:project, :deals)
   end
   
   def deals
     @deals = @project.deals.where.not(archive: true).all
-    @dealsforlist = @project.deals.where.not(archive: true).all.sort_by(&:lease_status)
     @projectname = @project.name
+
+    #@dealsforlist = @project.deals.where.not(archive: true).all.sort_by(&:deal_name)
+    @dealsquery = @project.deals.where.not(archive: true).ransack(params[:q])
+    @dealsforlist = @dealsquery.result(distinct: true)
   end
   
   def charts

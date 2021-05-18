@@ -1,7 +1,7 @@
 <div class="row" id="spacesRow">
   <div class="col-xs-10 col-xs-offset-1" style="">
     <br><br>
-     <h1 style="width:100%;text-align:center;"><%= @projectname %></h1><br>
+     <h1 style="width:100%;text-align:center;"><a href="/projects/<%= @project.id %>"><%= @projectname %></a></h1><br>
      <%#= render '/projects/bottom_areas_list_search' %>
      <%= render '/projects/bottom_areas_list' %>
      <br><br>
