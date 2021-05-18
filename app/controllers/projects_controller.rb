@@ -38,14 +38,14 @@ class ProjectsController < ApplicationController
       #with ransack
       @areasquery = @areas.ransack(params[:q])
       #@areasforlist = @areasquery.result(distinct: true)
-      @areasforlist = @areasquery.result.includes(:project, :deals)
+      @areasforlist = @areasquery.result(distinct: true)
 
       #@deals = Deal.where(map_id: @map.id).sort_by(&:deal_name)
       @areasquarefootage = Area.where(project_id: params[:id]).pluck(:area_sqft)
       @areas_deals = AreasDeal.where(project_id: params[:id]).all
     end
     @tenants = Area.where(project_id: params[:id]).size
-    
+
     @areas_deal = AreasDeal.new
     @primary_deal = PrimaryDeal.new
     
