@@ -1,0 +1,102 @@
+<div class="panel panel-default">
+    <table class="table table-striped tableChange add-responsive" style="border:2px !important;">
+      <thead>
+        <tr>
+          <th style="text-align:left;">Deal Image:</th>
+          <th style="text-align:left;"><%= sort_link(@areasquery, :suite_number, 'Suite #:', default_order: :asc) %></th>
+          <th style="text-align:left;"><%= sort_link(@areasquery, :area_sqft, 'Sq Ft:') %></th>
+          <th style="text-align:left;"><%#= sort_link(@areasquery, :deals) %>Associated Deals:</th>
+          <th style="text-align:left;"><%#= sort_link(@areasquery, :lease_status, 'Lease Status:') %>Lease Status:</th>
+          <th style="text-align:left;">Deal Status Notes:</th>
+          <th class="print-none" style="text-align:left;">Actions:</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <% @areasforlist.each do |area| %>
+        <%# @mapareas.each do |area| %>
+          <tr>
+            <td style="">
+              <% if area.deals.count > 0 %><!-- 1. if there are deals -->
+                
+                <% if area.primary_deals.ids.count > 0 %><!-- 2. if there is a primary deal -->
+                    <% if area.primary_deals.last.deal.dealimages.count > 0 %>
+                      <%= link_to image_tag(area.primary_deals.last.deal.dealimages.first.dealimage_url, :style => 'width:80px;'), area %>
+                    <% else %>
+                      <%= link_to image_tag('/images/status-plan-logo.png', :style => 'width:80px;'), area %>
+                    <% end %>
+                <% else %><!-- 2. if there is a primary deal -->
+                    <% if area.deals.last.dealimages.count > 0 %>
+                      <%= link_to image_tag(area.deals.last.dealimages.first.dealimage_url, :style => 'width:80px;'), area %>
+                    <% else %>
+                      <%= link_to image_tag('/images/status-plan-logo.png', :style => 'width:80px;'), area %>
+                    <% end %>
+                <% end %><!-- 2. if there is a primary deal -->
+              
+              <% else %><!-- 1. if there are deals -->
+                <%= link_to image_tag('/images/status-plan-logo.png', :style => 'width:80px;'), area %>
+              <% end %><!-- 1. if there are deals -->
+            </td>
+            <td style=""><%= area.suite_number %></td>
+            <td style=""><%= number_with_delimiter(area.area_sqft, :delimiter => ',') %></td>
+            <td style=""><%= area.deals.count %></td>
+            
+            <td style="">
+              <% if area.deals.count > 0 %><!-- 1. if there are deals -->
+                <% if area.primary_deals.ids.count > 0 %><!-- 2. if there is a primary deal -->
+                  <%= area.primary_deals.last.deal.lease_status %>
+                <% else %><!-- 2. if there is a primary deal -->
+                  <%= area.deals.last.lease_status %>
+                <% end %><!-- 2. if there is a primary deal -->
+              <% else %><!-- 1. if there are deals -->
+                *No deal associated
+              <% end %><!-- 1. if there are deals -->
+            </td>
+            
+            <td style="width:30%;">
+            
+                <% if area.deals.count > 0 %><!-- 1. if there are deals -->
+                  <% if area.primary_deals.ids.count > 0 %><!-- 2. if there is a primary deal -->
+                    <%= area.primary_deals.last.deal.status_notes.to_s.truncate(180) %>
+                  <% else %><!-- 2. if there is a primary deal -->
+                    <%= area.deals.last.status_notes.to_s.truncate(180) %>
+                  <% end %><!-- 2. if there is a primary deal -->
+                  
+                <% else %><!-- 1. if there are deals -->
+                  No deal for area
+                <% end %><!-- 1. if there are deals -->
+            
+            </td>
+           
+            <td style="text-align:left;" class="print-none">
+              <%#= link_to 'View',
+                          area_path(area), 
+                          :class => 'btn btn-default btn-xs add-responsive-bottom print-none',
+                          :style => 'width:60px;margin-bottom:2px;' %>
+              <%= link_to image_tag('/images/view-button.png'),
+                          area_path(area), 
+                          :class => 'action-buttons print-none',
+                          :style => '' %>
+              <% if current_user.is_admin? || current_user.role == 'Admin' || current_user.role == 'Editor' %>
+              
+              <%= link_to image_tag('/images/edit-button.png'),
+                          edit_area_path(area), 
+                          :class => 'action-buttons print-none',
+                          :style => '' %>
+              
+              <%#= link_to image_tag('/images/delete-button.png'),
+                          area_path(area),
+                          :method => :delete,
+                          :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                          :class => 'action-buttons print-none',
+                          :style => '' %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+        
+
+        
+      </tbody>
+    </table>
+</div>

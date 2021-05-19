@@ -46,6 +46,8 @@ class ProjectsController < ApplicationController
     end
     @tenants = Area.where(project_id: params[:id]).size
 
+
+
     @areas_deal = AreasDeal.new
     @primary_deal = PrimaryDeal.new
     
