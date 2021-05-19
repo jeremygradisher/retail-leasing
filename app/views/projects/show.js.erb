@@ -1,2 +1,3 @@
-$("#ajaxtest").html("<%= escape_javascript(render partial: '/projects/show', locals: { areasforlist: @areasforlist } ) %>");
-$('#ajaxtest').slideDown("slow");
+$("#ajaxspaces").html("<%= escape_javascript(render partial: '/projects/show', locals: { areasforlist: @areasforlist } ) %>");
+
+$("#ajaxdeals").html("<%= escape_javascript(render partial: '/projects/showdeals', locals: { dealsforlist: @dealsforlist } ) %>");
