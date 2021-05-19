@@ -3,8 +3,8 @@
       <thead>
         <tr>
           <th style="text-align:left;">Deal Image:</th>
-          <th style="text-align:left;"><%= sort_link(@areasquery, :suite_number, 'Suite #:', default_order: :asc) %></th>
-          <th style="text-align:left;"><%= sort_link(@areasquery, :area_sqft, 'Sq Ft:') %></th>
+          <th style="text-align:left;"><%= sort_link(@areasquery, :suite_number, 'Suite #:', {}, { :remote => true, :method => :get }) %></th>
+          <th style="text-align:left;"><%= sort_link(@areasquery, :area_sqft, 'Sq Ft:', {}, { :remote => true, :method => :get }) %></th>
           <th style="text-align:left;"><%#= sort_link(@areasquery, :deals) %>Associated Deals:</th>
           <th style="text-align:left;"><%#= sort_link(@areasquery, :lease_status, 'Lease Status:') %>Lease Status:</th>
           <th style="text-align:left;">Deal Status Notes:</th>

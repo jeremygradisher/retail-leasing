@@ -4,9 +4,9 @@
             <tr>
               <!--<th>Area Image:</th>-->
               <th style="min-width:80px;">Deal Image:</th>
-              <th style="min-width:80px;"><%= sort_link(@dealsquery, :deal_name, default_order: :asc) %>:</th>
-              <th style="min-width:80px;"><%= sort_link(@dealsquery, :gross_area) %>:</th>
-              <th style="min-width:80px;"><%= sort_link(@dealsquery, :lease_status) %>:</th>
+              <th style="min-width:80px;"><%= sort_link( @dealsquery, :deal_name, 'Deal Name:', {}, { :remote => true, :method => :get }) %></th>
+              <th style="min-width:80px;"><%= sort_link(@dealsquery, :gross_area, 'Gross Area:', {}, { :remote => true, :method => :get }) %></th>
+              <th style="min-width:80px;"><%= sort_link(@dealsquery, :lease_status, 'Lease Status:', {}, { :remote => true, :method => :get }) %></th>
               <!--<th style="min-width:80px;">Merch Status:</th>-->
               <th style="min-width:80px;"><%#= sort_link(@dealsquery, :suite_number) %>Suite #:</th>
               <th style="min-width:80px;"><%#= sort_link(@dealsquery, :areas) %>Associated Spaces:</th>
