@@ -76,6 +76,8 @@ class AreasController < ApplicationController
   # PATCH/PUT /areas/1
   # PATCH/PUT /areas/1.json
   def update
+    @project = Project.find(@area.project_id)
+    
     respond_to do |format|
       if @area.update(area_params)
         #(@project.users.uniq - [current_user]).each do |user|

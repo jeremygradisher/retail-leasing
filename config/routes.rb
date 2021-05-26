@@ -47,4 +47,11 @@ Rails.application.routes.draw do
   resources :users
   
   #devise_for :users, :controllers => { registrations: 'my_devise/registrations' }
+  
+  resources :notifications do
+    collection do
+      post :mark_as_read
+    end
+  end
+  
 end

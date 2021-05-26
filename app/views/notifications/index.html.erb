@@ -1,0 +1,89 @@
+<%- model_class = Notification -%>
+
+<div class="row">
+    <div class="col-xs-2 col-xs-offset-1">
+    </div>
+    <div class="col-xs-6">
+        <b>All Notifications:</b>
+        <hr style="margin-top:2px;margin-bottom:10px;">
+            <%# @notificationsall.reverse.each do |notification| %>
+            <% @notificationspaginated.each do |notification| %>
+            
+                  <% if Memberimage.where(member_id: notification.actor_id).first.present? %>
+                      <img style="width:60px;margin-bottom:10px;margin-right:10px;float:left;" src="<%= Memberimage.where(member_id: notification.actor_id).first.memberimage %>">
+                  <% else %>
+                      <img style="width:60px;margin-bottom:10px;margin-right:10px;float:left;" src="/images/NO-IMAGE-AVAILABLE.jpg">
+                  <% end %>
+                  
+                  <div style="margin-left:10px;">
+                      <% if User.find_by_id(notification.actor_id) == nil %>
+                          (Deleted User)
+                      <% else %>
+                          <%= User.find_by_id(notification.actor_id).member.first_name %>
+                          <%= User.find_by_id(notification.actor_id).member.last_name %>
+                      <% end %>
+                  
+                  
+                  
+                   
+                  <% if notification.notifiable_type == 'Deal'%>
+                      <% if Deal.find_by_id(notification.notifiable_id) == nil %>
+                          <span><%= notification.action %> the <%= notification.notifiable_type %> for (Deleted Deal)</span>
+                      <% else %>
+                          <a href="/areas/<%= Deal.find_by_id(notification.notifiable_id).area.id %>"><%= notification.action %> the <%= notification.notifiable_type %> for <%= Deal.find_by_id(notification.notifiable_id).area.name %></a>
+                      <% end %>
+                  <% elsif notification.notifiable_type == 'Workletter' %>
+                      <% if Workletter.find_by_id(notification.notifiable_id) == nil %>
+                          <span><%= notification.action %> the <%= notification.notifiable_type %> for (Deleted Workletter)</a>
+                      <% else %>
+                          <a href="/areas/<%= Workletter.find_by_id(notification.notifiable_id).area.id %>"><%= notification.action %> the <%= notification.notifiable_type %> for <%= Workletter.find_by_id(notification.notifiable_id).area.name %></a>
+                      <% end %>
+                  <% elsif notification.notifiable_type == 'Schedule' %>
+                      <% if Schedule.find_by_id(notification.notifiable_id) == nil %>
+                          <span><%= notification.action %> the <%= notification.notifiable_type %> for (Deleted Schedule)</a>
+                      <% else %>
+                          <a href="/areas/<%= Schedule.find_by_id(notification.notifiable_id).area.id %>"><%= notification.action %> the <%= notification.notifiable_type %> for <%= Schedule.find_by_id(notification.notifiable_id).area.name %></a>
+                      <% end %>
+                  <% elsif notification.notifiable_type == 'Map' %>
+                      <% if Map.find_by_id(notification.notifiable_id) == nil %>
+                          <span><%= notification.action %> the <%= notification.notifiable_type %> for (Deleted Map)</span>
+                      <% else %>
+                          <a href="/maps/<%= notification.notifiable_id %>"><%= notification.action %> the <%= notification.notifiable_type %> for <%= Map.find_by_id(notification.notifiable_id).name %></a>
+                      <% end %>
+                  <% elsif notification.notifiable_type == 'Project' %>
+                      <% if Project.find_by_id(notification.notifiable_id) == nil %>
+                          <span><%= notification.action %> the <%= notification.notifiable_type %> for (Deleted Project)</span>
+                      <% else %>
+                          <a href="/tenants/<%= Project.find_by_id(notification.notifiable_id).tenant_id %>/projects/<%= notification.notifiable_id %>"><%= notification.action %> the <%= notification.notifiable_type %> for <%= Project.find_by_id(notification.notifiable_id).name %></a>
+                      <% end %>
+                  <% elsif notification.notifiable_type == 'Area' %>
+                      <% if Area.find_by_id(notification.notifiable_id) == nil %>
+                          <span><%= notification.action %> the <%= notification.notifiable_type %> for (Deleted Area)</span>
+                      <% else %>
+                          <a href="/areas/<%= notification.notifiable_id %>"><%= notification.action %> the <%= notification.notifiable_type %> for <%= Area.find_by_id(notification.notifiable_id).name %></a>
+                      <% end %>
+                  <% else %>
+                  -area (This shouldn't be happening)
+                  <% end %>
+           
+                   on <%= Date.strptime(notification.created_at.to_s).strftime('%a %b %d, %Y') %>
+                   at
+                   <% datetime = DateTime.parse(notification.created_at.to_s).in_time_zone('Eastern Time (US & Canada)') %>
+                   <%= datetime.strftime('%I:%M %p') %>
+                  </div>
+        
+                  <hr style="margin-top:2px;margin-bottom:10px;clear:both;">
+                  
+            <% end %>
+            
+            <div style="width:100%;text-align:center;">
+                <%= will_paginate @notificationspaginated, renderer: BootstrapPagination::Rails %>
+            </div>
+            
+    </div>
+    <div class="col-xs-2">
+    </div>
+</div>
+
+
+<br><br>
