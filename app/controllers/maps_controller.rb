@@ -51,6 +51,10 @@ class MapsController < ApplicationController
 
     respond_to do |format|
       if @map.save
+        (@project.users.uniq).each do |user|
+          Notification.create(recipient: user, actor: current_user, action: "created", notifiable: @map)
+        end
+        
         if params.has_key?(:images)
            params[:images]['image'].each do |a|
               @image = @map.images.create!(:image => a)
@@ -70,6 +74,10 @@ class MapsController < ApplicationController
   def update
     respond_to do |format|
       if @map.update(map_params)
+        (@project.users.uniq).each do |user|
+          Notification.create(recipient: user, actor: current_user, action: "edited", notifiable: @map)
+        end
+        
         if params.has_key?(:images)
            params[:images]['image'].each do |a|
               @image = @map.images.create!(:image => a)

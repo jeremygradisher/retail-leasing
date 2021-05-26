@@ -64,6 +64,11 @@ class DealsController < ApplicationController
 
     respond_to do |format|
       if @deal.save
+        #(@project.users.uniq - [current_user]).each do |user|
+        (@project.users.uniq).each do |user|
+          Notification.create(recipient: user, actor: current_user, action: "created", notifiable: @deal)
+        end 
+        
         if params.has_key?(:dealimages)
            params[:dealimages]['dealimage'].each do |a|
               @dealimage = @deal.dealimages.create!(:dealimage => a)
@@ -85,6 +90,11 @@ class DealsController < ApplicationController
 
     respond_to do |format|
       if @deal.update(deal_params)
+        #(@project.users.uniq - [current_user]).each do |user|
+        (@project.users.uniq).each do |user|
+          Notification.create(recipient: user, actor: current_user, action: "edited", notifiable: @deal)
+        end 
+        
         if params.has_key?(:dealimages)
            params[:dealimages]['dealimage'].each do |a|
               @dealimage = @deal.dealimages.create!(:dealimage => a)
