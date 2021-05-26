@@ -101,6 +101,12 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       if @project.save
+        #create notification
+        #(@project.users.uniq - [current_user]).each do |user|
+        (@project.users.uniq).each do |user|
+          Notification.create(recipient: user, actor: current_user, action: "created", notifiable: @project)
+        end
+        
         if params.has_key?(:icons)
            params[:icons]['icon'].each do |a|
               @icon = @project.icons.create!(:icon => a)
@@ -120,6 +126,11 @@ class ProjectsController < ApplicationController
   def update
     respond_to do |format|
       if @project.update(project_params)
+        #create notification
+        (@project.users.uniq).each do |user|
+          Notification.create(recipient: user, actor: current_user, action: "edited", notifiable: @project)
+        end
+        
         if params.has_key?(:icons)
            params[:icons]['icon'].each do |a|
               @icon = @project.icons.create!(:icon => a)
@@ -137,6 +148,8 @@ class ProjectsController < ApplicationController
   # DELETE /projects/1
   # DELETE /projects/1.json
   def destroy
+    #This is to ensure that only admins can destroy
+    raise "You must be an admin to delete a Project" unless current_user.is_admin? == true
     @project.destroy
     respond_to do |format|
       format.html { redirect_to projects_url, notice: 'Project was successfully destroyed.' }
