@@ -154,7 +154,7 @@ margin-right: 5px;
 }
 .nav.navbar-right li {
     .btn {
-    color: #fff !important;
+    //color: #fff !important;
     margin-top: 5%;
     }
     
@@ -663,6 +663,19 @@ table.report-table tr td, table.report-table tr th, table.report-table-less tr t
 /* fix for the workletter form */
 input[type="radio"].ws-radio-buttons {margin-left:5px;margin-right:5px;}
 /* end standard stuff */
+
+
+/* notification stuff */
+    #notification-dropdown {
+        width:500px;
+        padding:10px;
+        /*max-height: 360px;
+        overflow: scroll;
+        */
+    }
+    #dropdownMenu1 {background-color:#f8f8f8;border-color:#f8f8f8;}
+    #dropdownMenu1:hover, #dropdownMenu1:active {background-color:#f8f8f8;border-color:#f8f8f8;}
+/* END notification stuff */
 
 /* Projects styling */
 .project-panels {

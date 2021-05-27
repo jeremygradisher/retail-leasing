@@ -46,7 +46,7 @@
           <ul class="nav navbar-right /*col-lg-3*/ display-above-1200" style="padding-top:10px;padding-left:0px;padding-right:12px;">
             <li class="">
 
-                  <!--
+                  <!-- notification stuff -->
                   <div style="float:left;" class="dropdown" data-behavior="notifications">
                     <a class="btn btn-secondary dropdown-toggle fas fa-bell" style="margin-top:2px;padding-left:6px;padding-right:6px;" href="#" role="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-behavior="notifications-link">
                       <span data-behavior="unread-count"></span>
@@ -56,7 +56,7 @@
                       <div style='width:100%;text-align:left;'><b>Notifications:</b><a href='/notifications' style='float:right;'>See All</a></div>
                     </div>
                   </div>
-                  -->
+                  
 
               <% if current_user.user_avatars.exists? %>
                 <%= link_to image_tag(current_user.user_avatars.first.avatar, :alt => '', :title => '', :class => 'ws-border-style'), user_path(current_user), :class => 'profile-link', :style => 'padding:0 0;float:left;' %>
