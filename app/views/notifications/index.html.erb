@@ -62,6 +62,12 @@
                       <% else %>
                           <a href="/areas/<%= notification.notifiable_id %>"><%= notification.action %> <%#= notification.notifiable_type %> Space #<%= Area.find_by_id(notification.notifiable_id).suite_number %></a>
                       <% end %>
+                  <% elsif notification.notifiable_type == 'PrimaryDeal' %>
+                      <% if PrimaryDeal.find_by_id(notification.notifiable_id) == nil %>
+                          <span><%= notification.action %> <%= notification.notifiable_type %> #(Deleted Area)</span>
+                      <% else %>
+                          <a href="/primary_deals/<%= notification.notifiable_id %>"><%= notification.action %> <%= notification.notifiable_type %> #<%= PrimaryDeal.find_by_id(notification.notifiable_id).id %></a>
+                      <% end %>
                   <% else %>
                   -area (This shouldn't be happening)
                   <% end %>
