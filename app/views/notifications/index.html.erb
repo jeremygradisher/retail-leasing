@@ -30,7 +30,7 @@
                       <% if Deal.find_by_id(notification.notifiable_id) == nil %>
                           <span><%= notification.action %> the <%= notification.notifiable_type %> for (Deleted Deal)</span>
                       <% else %>
-                          <a href="/areas/<%= Deal.find_by_id(notification.notifiable_id).areas.first.id %>"><%= notification.action %> the <%= notification.notifiable_type %> for <%= Deal.find_by_id(notification.notifiable_id).areas.first.suite_number %></a>
+                          <a href="/deals/<%= Deal.find_by_id(notification.notifiable_id).id %>"><%= notification.action %> the <%= notification.notifiable_type %> <%= Deal.find_by_id(notification.notifiable_id).deal_name %></a>
                       <% end %>
                   <% elsif notification.notifiable_type == 'Workletter' %>
                       <% if Workletter.find_by_id(notification.notifiable_id) == nil %>
@@ -54,13 +54,13 @@
                       <% if Project.find_by_id(notification.notifiable_id) == nil %>
                           <span><%= notification.action %> the <%= notification.notifiable_type %> for (Deleted Project)</span>
                       <% else %>
-                          <a href="/projects/<%= Project.find_by_id(notification.notifiable_id) %>/projects/<%= notification.notifiable_id %>"><%= notification.action %> the <%= notification.notifiable_type %> for <%= Project.find_by_id(notification.notifiable_id).name %></a>
+                          <a href="/projects/<%= Project.find_by_id(notification.notifiable_id) %>/projects/<%= notification.notifiable_id %>"><%= notification.action %> <%= notification.notifiable_type %> <%= Project.find_by_id(notification.notifiable_id).name %></a>
                       <% end %>
                   <% elsif notification.notifiable_type == 'Area' %>
                       <% if Area.find_by_id(notification.notifiable_id) == nil %>
                           <span><%= notification.action %> the <%= notification.notifiable_type %> for (Deleted Area)</span>
                       <% else %>
-                          <a href="/areas/<%= notification.notifiable_id %>"><%= notification.action %> the <%= notification.notifiable_type %> for <%= Area.find_by_id(notification.notifiable_id).suite_number %></a>
+                          <a href="/areas/<%= notification.notifiable_id %>"><%= notification.action %> <%#= notification.notifiable_type %> Space #<%= Area.find_by_id(notification.notifiable_id).suite_number %></a>
                       <% end %>
                   <% else %>
                   -area (This shouldn't be happening)
