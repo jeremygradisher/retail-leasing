@@ -49,6 +49,9 @@ json.array! @notifications do |notification|
       elsif notification.notifiable_type.underscore.humanize.downcase == "schedule"
         json.areaname notification.notifiable.deal_id
         json.url edit_schedule_path(notification.notifiable.id)
+      elsif notification.notifiable_type.underscore.humanize.downcase == "primary deal"
+        json.areaname notification.notifiable.id
+        json.url primary_deal_path(notification.notifiable.id)
       else
         json.areaname notification.notifiable.area.name
         json.url area_path(notification.notifiable.area_id)
@@ -70,6 +73,9 @@ json.array! @notifications do |notification|
         json.areaname '(Deleted Deal)'
         json.url notifications_path()
       elsif notification.notifiable_type.underscore.humanize.downcase == "schedule"
+        json.areaname '(Deleted Schedule)'
+        json.url notifications_path()
+      elsif notification.notifiable_type.underscore.humanize.downcase == "primary deal"
         json.areaname '(Deleted Schedule)'
         json.url notifications_path()
       else
