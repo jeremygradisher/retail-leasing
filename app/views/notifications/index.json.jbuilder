@@ -42,13 +42,13 @@ json.array! @notifications do |notification|
         json.url project_path(notification.notifiable.id)
       elsif notification.notifiable_type.underscore.humanize.downcase == "deal"
         json.areaname notification.notifiable.deal_name
-        json.url project_path(notification.notifiable.id)
+        json.url deal_path(notification.notifiable.id)
       elsif notification.notifiable_type.underscore.humanize.downcase == "workletter"
         json.areaname notification.notifiable.name
-        json.url project_path(notification.notifiable.id)
+        json.url edit_workletter_path(notification.notifiable.id)
       elsif notification.notifiable_type.underscore.humanize.downcase == "schedule"
         json.areaname notification.notifiable.deal_id
-        json.url project_path(notification.notifiable.id)
+        json.url edit_schedule_path(notification.notifiable.id)
       else
         json.areaname notification.notifiable.area.name
         json.url area_path(notification.notifiable.area_id)

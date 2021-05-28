@@ -48,6 +48,8 @@ class MapsController < ApplicationController
   # POST /maps.json
   def create
     @map = Map.new(map_params)
+    @images = @map.images.all
+    @project = Project.find(@map.project_id)
 
     respond_to do |format|
       if @map.save
@@ -72,6 +74,8 @@ class MapsController < ApplicationController
   # PATCH/PUT /maps/1
   # PATCH/PUT /maps/1.json
   def update
+    @project = Project.find(@map.project_id)
+    
     respond_to do |format|
       if @map.update(map_params)
         (@project.users.uniq).each do |user|
