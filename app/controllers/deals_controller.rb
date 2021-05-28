@@ -65,7 +65,7 @@ class DealsController < ApplicationController
     respond_to do |format|
       if @deal.save
         #(@project.users.uniq - [current_user]).each do |user|
-        (@project.users.uniq).each do |user|
+        (@project.users.uniq + User.where(is_admin: true)).each do |user|
           Notification.create(recipient: user, actor: current_user, action: "created", notifiable: @deal)
         end 
         
@@ -91,7 +91,7 @@ class DealsController < ApplicationController
     respond_to do |format|
       if @deal.update(deal_params)
         #(@project.users.uniq - [current_user]).each do |user|
-        (@project.users.uniq).each do |user|
+        (@project.users.uniq + User.where(is_admin: true)).each do |user|
           Notification.create(recipient: user, actor: current_user, action: "edited", notifiable: @deal)
         end 
         

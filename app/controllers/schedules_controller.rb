@@ -41,7 +41,7 @@ class SchedulesController < ApplicationController
     respond_to do |format|
       if @schedule.save
         #(@project.users.uniq - [current_user]).each do |user|
-        (@project.users.uniq).each do |user|
+        (@project.users.uniq + User.where(is_admin: true)).each do |user|
           Notification.create(recipient: user, actor: current_user, action: "created", notifiable: @schedule)
         end
         
@@ -62,7 +62,7 @@ class SchedulesController < ApplicationController
     respond_to do |format|
       if @schedule.update(schedule_params)
         #(@project.users.uniq - [current_user]).each do |user|
-        (@project.users.uniq).each do |user|
+        (@project.users.uniq + User.where(is_admin: true)).each do |user|
           Notification.create(recipient: user, actor: current_user, action: "edited", notifiable: @schedule)
         end
         

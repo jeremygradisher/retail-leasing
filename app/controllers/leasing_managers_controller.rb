@@ -44,7 +44,7 @@ class LeasingManagersController < ApplicationController
 
     respond_to do |format|
       if @leasing_manager.save
-        (@project.users.uniq).each do |user|
+        (@project.users.uniq + User.where(is_admin: true)).each do |user|
           Notification.create(recipient: user, actor: current_user, action: "created", notifiable: @leasing_manager)
         end
         
@@ -65,7 +65,7 @@ class LeasingManagersController < ApplicationController
     
     respond_to do |format|
       if @leasing_manager.update(leasing_manager_params)
-        (@project.users.uniq).each do |user|
+        (@project.users.uniq + User.where(is_admin: true)).each do |user|
           Notification.create(recipient: user, actor: current_user, action: "edited", notifiable: @leasing_manager)
         end
         

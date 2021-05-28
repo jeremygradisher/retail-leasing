@@ -53,7 +53,7 @@ class WorklettersController < ApplicationController
     respond_to do |format|
       if @workletter.save
         #(@project.users.uniq - [current_user]).each do |user|
-        (@project.users.uniq).each do |user|
+        (@project.users.uniq + User.where(is_admin: true)).each do |user|
           Notification.create(recipient: user, actor: current_user, action: "created", notifiable: @workletter)
         end
         
@@ -74,7 +74,7 @@ class WorklettersController < ApplicationController
     respond_to do |format|
       if @workletter.update(workletter_params)
         #(@project.users.uniq - [current_user]).each do |user|
-        (@project.users.uniq).each do |user|
+        (@project.users.uniq + User.where(is_admin: true)).each do |user|
           Notification.create(recipient: user, actor: current_user, action: "edited", notifiable: @workletter)
         end
         

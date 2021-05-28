@@ -103,7 +103,7 @@ class ProjectsController < ApplicationController
       if @project.save
         #create notification
         #(@project.users.uniq - [current_user]).each do |user|
-        (@project.users.uniq).each do |user|
+        (@project.users.uniq + User.where(is_admin: true)).each do |user|
           Notification.create(recipient: user, actor: current_user, action: "created", notifiable: @project)
         end
         
@@ -127,7 +127,7 @@ class ProjectsController < ApplicationController
     respond_to do |format|
       if @project.update(project_params)
         #create notification
-        (@project.users.uniq).each do |user|
+        (@project.users.uniq + User.where(is_admin: true)).each do |user|
           Notification.create(recipient: user, actor: current_user, action: "edited", notifiable: @project)
         end
         

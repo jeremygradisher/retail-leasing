@@ -32,7 +32,7 @@ class PrimaryDealsController < ApplicationController
 
     respond_to do |format|
       if @primary_deal.save
-        (@project.users.uniq).each do |user|
+        (@project.users.uniq + User.where(is_admin: true)).each do |user|
           Notification.create(recipient: user, actor: current_user, action: "created", notifiable: @primary_deal)
         end
         
@@ -50,7 +50,7 @@ class PrimaryDealsController < ApplicationController
   def update
     respond_to do |format|
       if @primary_deal.update(primary_deal_params)
-        (@project.users.uniq).each do |user|
+        (@project.users.uniq + User.where(is_admin: true)).each do |user|
           Notification.create(recipient: user, actor: current_user, action: "edited", notifiable: @primary_deal)
         end
         
