@@ -44,6 +44,10 @@ class LeasingManagersController < ApplicationController
 
     respond_to do |format|
       if @leasing_manager.save
+        (@project.users.uniq + User.where(is_admin: true)).each do |user|
+          Notification.create(recipient: user, actor: current_user, action: "created", notifiable: @leasing_manager)
+        end
+        
         format.html { redirect_to @project, notice: 'Leasing manager was successfully created.' }
         format.json { render :show, status: :created, location: @leasing_manager }
       else
@@ -61,6 +65,10 @@ class LeasingManagersController < ApplicationController
     
     respond_to do |format|
       if @leasing_manager.update(leasing_manager_params)
+        (@project.users.uniq + User.where(is_admin: true)).each do |user|
+          Notification.create(recipient: user, actor: current_user, action: "edited", notifiable: @leasing_manager)
+        end
+        
         format.html { redirect_to @project, notice: 'Leasing manager was successfully updated.' }
         format.json { render :show, status: :ok, location: @leasing_manager }
       else

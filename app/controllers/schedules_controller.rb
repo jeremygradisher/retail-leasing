@@ -40,6 +40,11 @@ class SchedulesController < ApplicationController
 
     respond_to do |format|
       if @schedule.save
+        #(@project.users.uniq - [current_user]).each do |user|
+        (@project.users.uniq + User.where(is_admin: true)).each do |user|
+          Notification.create(recipient: user, actor: current_user, action: "created", notifiable: @schedule)
+        end
+        
         format.html { redirect_to @schedule.deal, notice: 'Schedule was successfully created.' }
         format.json { render :show, status: :created, location: @schedule }
       else
@@ -56,6 +61,11 @@ class SchedulesController < ApplicationController
     
     respond_to do |format|
       if @schedule.update(schedule_params)
+        #(@project.users.uniq - [current_user]).each do |user|
+        (@project.users.uniq + User.where(is_admin: true)).each do |user|
+          Notification.create(recipient: user, actor: current_user, action: "edited", notifiable: @schedule)
+        end
+        
         format.html { redirect_to @schedule.deal, notice: 'Schedule was successfully updated.' }
         format.json { render :show, status: :ok, location: @schedule }
       else

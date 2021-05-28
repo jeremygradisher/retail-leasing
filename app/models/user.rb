@@ -11,6 +11,8 @@ class User < ApplicationRecord
   has_many :user_projects, :dependent => :destroy
   has_many :projects, through: :user_projects
   
+  has_many :notifications, foreign_key: :recipient_id
+  
   after_create :create_user_project
 
   def create_user_project

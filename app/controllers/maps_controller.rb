@@ -48,9 +48,15 @@ class MapsController < ApplicationController
   # POST /maps.json
   def create
     @map = Map.new(map_params)
+    @images = @map.images.all
+    @project = Project.find(@map.project_id)
 
     respond_to do |format|
       if @map.save
+        (@project.users.uniq + User.where(is_admin: true)).each do |user|
+          Notification.create(recipient: user, actor: current_user, action: "created", notifiable: @map)
+        end
+        
         if params.has_key?(:images)
            params[:images]['image'].each do |a|
               @image = @map.images.create!(:image => a)
@@ -68,8 +74,14 @@ class MapsController < ApplicationController
   # PATCH/PUT /maps/1
   # PATCH/PUT /maps/1.json
   def update
+    @project = Project.find(@map.project_id)
+    
     respond_to do |format|
       if @map.update(map_params)
+        (@project.users.uniq + User.where(is_admin: true)).each do |user|
+          Notification.create(recipient: user, actor: current_user, action: "edited", notifiable: @map)
+        end
+        
         if params.has_key?(:images)
            params[:images]['image'].each do |a|
               @image = @map.images.create!(:image => a)

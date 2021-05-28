@@ -52,6 +52,11 @@ class WorklettersController < ApplicationController
 
     respond_to do |format|
       if @workletter.save
+        #(@project.users.uniq - [current_user]).each do |user|
+        (@project.users.uniq + User.where(is_admin: true)).each do |user|
+          Notification.create(recipient: user, actor: current_user, action: "created", notifiable: @workletter)
+        end
+        
         format.html { redirect_to deal_path(@workletter.deal_id), notice: 'Workletter was successfully created.' }
         format.json { render :show, status: :created, location: @workletter }
       else
@@ -68,6 +73,11 @@ class WorklettersController < ApplicationController
     
     respond_to do |format|
       if @workletter.update(workletter_params)
+        #(@project.users.uniq - [current_user]).each do |user|
+        (@project.users.uniq + User.where(is_admin: true)).each do |user|
+          Notification.create(recipient: user, actor: current_user, action: "edited", notifiable: @workletter)
+        end
+        
         format.html { redirect_to deal_path(@workletter.deal_id), notice: 'Workletter was successfully updated.' }
         format.json { render :show, status: :ok, location: @workletter }
       else

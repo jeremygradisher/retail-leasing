@@ -32,6 +32,10 @@ class PrimaryDealsController < ApplicationController
 
     respond_to do |format|
       if @primary_deal.save
+        (@project.users.uniq + User.where(is_admin: true)).each do |user|
+          Notification.create(recipient: user, actor: current_user, action: "created", notifiable: @primary_deal)
+        end
+        
         format.html { redirect_to @project, notice: 'Primary deal was successfully created.' }
         format.json { render :show, status: :created, location: @primary_deal }
       else
@@ -46,6 +50,10 @@ class PrimaryDealsController < ApplicationController
   def update
     respond_to do |format|
       if @primary_deal.update(primary_deal_params)
+        (@project.users.uniq + User.where(is_admin: true)).each do |user|
+          Notification.create(recipient: user, actor: current_user, action: "edited", notifiable: @primary_deal)
+        end
+        
         format.html { redirect_to @primary_deal, notice: 'Primary deal was successfully updated.' }
         format.json { render :show, status: :ok, location: @primary_deal }
       else
