@@ -1,6 +1,7 @@
 # StatusPlan2 - Running Rails 5
 ## a place to build and test
 Notifications working.
+Where to next?
 
 # Before:
 ## Good base build - user auth w/ user model, save image to aws, sendgrid sign-up
