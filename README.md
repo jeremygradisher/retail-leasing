@@ -1,7 +1,8 @@
 # StatusPlan2 - Running Rails 5
 ## a place to build and test
 Notifications working.
-Where to next?
+Where to next? Maybe reports?
+What else needs to move over from SP1?
 
 # Before:
 ## Good base build - user auth w/ user model, save image to aws, sendgrid sign-up
