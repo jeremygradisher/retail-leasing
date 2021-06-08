@@ -27,6 +27,9 @@ Rails.application.routes.draw do
     member do
       get 'users'
       put 'add_user'
+      # test reports
+      get :testreport
+      # reports
       get :leasestatusreport
       get :leasedealreport
       get :closeoutreport
