@@ -349,6 +349,54 @@ class ProjectsController < ApplicationController
     end
   end
   
+  def testreport
+    @areas = Area.where(project_id: params[:id]).all
+    @deals = Deal.where(project_id: params[:id]).where.not(archive: true).all
+    @project = Project.find(params[:id])
+    
+    @tenants = @areas.count
+    @dealscount = @deals.count
+    @areasquarefootage = @areas.pluck(:area_sqft)
+    @netrentablearea = @deals.pluck(:net_rentable_area)
+    @gla = @areas.pluck(:area_sqft)
+    @potential = @deals.pluck(:net_rentable_area)
+
+    # this is areas after being sorted in private method
+    @table_object = generate_deal_object(@deals)
+
+    respond_to do |format|
+      format.pdf {
+        render pdf: "#{@project.name.parameterize}-lease-status-report-#{Date.today}",
+          orientation: 'landscape',
+          javascript_delay: 2000,
+          template: '/reports/testreport.pdf.erb',
+          layout: 'pdf_layout',
+          page_size: 'A3',
+          header: {
+            html: {
+              template: '/reports/testreport_header.pdf.erb'
+            }
+          },
+          footer: {
+            html: {
+              template: '/reports/testreport_footer.pdf.erb'
+            }
+          },
+          margin: {
+            bottom: 15,
+            top: 25,
+            left: 5,
+            right: 5
+          }
+      }
+      format.html { render 'testreport.pdf.erb', layout: 'pdf_layout' }
+      format.xlsx {
+        #response.headers['Content-Disposition'] = 'attachment; filename="tenant_status.xlsx"'
+        response.headers['Content-Disposition'] = "attachment; filename=#{@project.name.parameterize}-lease-status-report-#{Date.today}.xlsx"
+      }
+    end
+  end
+  
   def leasestatusreport
     @areas = Area.where(project_id: params[:id]).all
     @deals = Deal.where(project_id: params[:id]).where.not(archive: true).all
