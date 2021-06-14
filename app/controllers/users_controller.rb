@@ -6,6 +6,11 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
+    
+    #new for ransack:
+    @q = @users.ransack(params[:q])
+    #@other_users = @q.result(distinct: true).paginate(:page => params[:page], :per_page => 5)
+    @all_users = @q.result(distinct: true).paginate(:page => params[:page], :per_page => 10)
   end
   
   def show

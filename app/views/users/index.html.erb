@@ -1,4 +1,66 @@
+<style>
+  @media only screen and (max-width: 680px) {
+    .col-xs-2 {width:83.33333333%;margin-left:8.33333333%;margin-right:8.33333333%;text-align:center;margin-bottom:10px;}
+    .col-xs-4 {width:83.33333333%;margin-left:8.33333333%;margin-right:8.33333333%;text-align:center;margin-bottom:10px;}
+    .col-xs-5 {width:83.33333333%;margin-left:8.33333333%;margin-right:8.33333333%;text-align:center;margin-bottom:10px;}
+    .col-xs-6 {width:83.33333333%;margin-left:8.33333333%;margin-right:8.33333333%;text-align:center;margin-bottom:10px;}
+  }
+  
+  .btn-xs {min-width:60px;margin-bottom:2px;}
+</style>
+
+
+<div class="row">
+  <div class="col-xs-10 col-xs-offset-1">
 <% if (current_user && current_user.is_admin?) %>
+
+
+
+
+
+            <div class="new-user-login" style="margin-top:40px;">
+                <div class="panel panel-default">
+                  <!-- Default panel contents -->
+                  <div class="panel-heading"><strong style="font-size:125%;">User Search</strong></div>
+                  <div class="panel-body">
+                
+                  <fieldset class="search-field">
+                    <!--<legend>Search Our Database</legend>-->
+                    <%= search_form_for @q do |f| %>
+                      
+                      <div class="col-lg-3">
+                          <%= f.label :first_name_cont, "First name:" %><br>
+                          <%= f.text_field :first_name_cont, :class => "form-control", :placeholder => "Search for..." %>
+                      </div>
+                      
+                      <div class="col-lg-3">
+                          <%= f.label :last_name_cont, "Last name:" %><br>
+                          <%= f.text_field :last_name_cont, :class => "form-control", :placeholder => "Search for..." %>
+                      </div>
+                      
+                      <div class="col-lg-3">
+                          <%= f.label :email_cont, "Email:" %><br>
+                          <%= f.text_field :email_cont, :class => "form-control", :placeholder => "Search for..." %>
+                      </div>
+    
+                      <div class="col-lg-3">
+                        <div class="actions" style="text-align:right;margin-top:43px;">
+                          <%= f.submit "Search", :class => "btn btn-primary btn-primary-branded jicon" %>
+                          <%= link_to "Clear", request.path, :class => "btn btn-default jicon" %>
+                        </div>
+                      </div>
+                      
+                    <% end %>
+                  </fieldset>
+                  </div>
+                </div>
+            </div>
+            
+        
+
+
+
+
 
 <h1>Users</h1>
 
@@ -23,7 +85,7 @@
     </tr>
   </thead>
   <tbody>
-    <% @users.each do |user| %>
+    <% @all_users.each do |user| %>
       <tr>
         <td><%= link_to user.id, user_path(user) %></td>
         <td>
@@ -65,11 +127,16 @@
   </tbody>
 </table>
 
-<%#= link_to 'Home', root_path, :class => 'btn btn-default' %>
+
+        <div style="width:100%;text-align:center;">
+            <%= will_paginate @all_users, renderer: BootstrapPagination::Rails %>
+        </div>
+
 <br><br>
 
 <%#= link_to 'Invitations', new_user_invitation_path %>
-
+  </div>
+</div>
 
 
 <%#= link_to users_path %>
