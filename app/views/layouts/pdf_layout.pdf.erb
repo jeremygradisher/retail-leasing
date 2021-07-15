@@ -7,23 +7,27 @@
     <%= (Rails.application.assets || ::Sprockets::Railtie.build_environment(Rails.application)).find_asset('bootstrap.css').to_s.html_safe %>
   </style>
 
-  <!-- tried these - they do not seem to work -->
-  <%= javascript_include_tag "https://cdn.jsdelivr.net/npm/canvasjs@1.8.3/src/main/index.min.js" %>
-  <%#= wicked_pdf_javascript_include_tag "https://cdn.jsdelivr.net/npm/canvasjs@1.8.3/src/main/index.min.js" %>
-  
-  <%= javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js" %>
-  <%#= wicked_pdf_javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js" %>
   <%= stylesheet_link_tag 'https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css' %>
-  <%#= wicked_pdf_javascript_include_tag "https://use.fontawesome.com/releases/v5.0.13/css/all.css" %>
+  
+  
   <!--The following two refer to the new version of the code which 
   causes a Loading... hang up with the report -->
-  <%#= javascript_include_tag "https://www.google.com/jsapi" %>
-  <%#= javascript_include_tag "https://www.gstatic.com/charts/loader.js" %>
-  
-  <%#= javascript_include_tag "/assets/javascripts/jsapi.js" %>
   <%= wicked_pdf_javascript_include_tag "chartkick" %>
-  <%#= javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/chartkick/2.3.0/chartkick.min.js" %>
-  <!-- number pages -->
+  <%= javascript_include_tag "/assets/javascripts/jsapi.js" %>
+  <%= javascript_include_tag "/assets/javascripts/loader.js" %>
+  <script src="https://www.gstatic.com/charts/loader.js"></script>
+<script>
+  google.charts.load('current', {packages: ['corechart']});
+  google.charts.setOnLoadCallback(drawChart);
+  ...
+</script>
+  
+
+
+ 
+  
+  <%#= javascript_include_tag "https://www.google.com/jsapi" %>
+  
   <script>
       function number_pages() {
         var vars={};
