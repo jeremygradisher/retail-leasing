@@ -7,7 +7,7 @@ Rails.application.configure do
   ActionMailer::Base.smtp_settings = {
     :user_name => 'apikey',
     :password => ENV['SENDGRID_API_KEY'],
-    :domain => 'statusplan2.herokuapp.com',
+    :domain => 'statusplanapp.com',
     :address => 'smtp.sendgrid.net',
     :port => 587,
     :authentication => :plain,
@@ -24,7 +24,7 @@ Rails.application.configure do
   config.eager_load = true
   config.action_mailer.delivery_method = :smtp
   #simpl addition of www here to try and change the email confirmation links
-  config.action_mailer.default_url_options = { :host => 'statusplan2.herokuapp.com', :protocol => 'https'}
+  config.action_mailer.default_url_options = { :host => 'www.statusplanapp.com', :protocol => 'https'}
 
   # Full error reports are disabled and caching is turned on.
   config.consider_all_requests_local       = false
