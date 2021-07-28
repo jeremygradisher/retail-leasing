@@ -1,7 +1,7 @@
 # StatusPlan2 - Running Rails 5
 ## a place to build and test
-Notifications working.
-Moving on to reports, I need the cover page charts working again.
+
+Change heroku db from hobby dev to hobby basic on 07/28/2021
 
 # Before:
 ## Good base build - user auth w/ user model, save image to aws, sendgrid sign-up
