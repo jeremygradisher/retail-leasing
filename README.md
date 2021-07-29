@@ -2,6 +2,7 @@
 ## a place to build and test
 
 Change heroku db from hobby dev to hobby basic on 07/28/2021
+Still need to double check db back-ups.
 
 # Before:
 ## Good base build - user auth w/ user model, save image to aws, sendgrid sign-up
