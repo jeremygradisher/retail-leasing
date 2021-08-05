@@ -2,7 +2,7 @@
 ## a place to build and test
 
 Change heroku db from hobby dev to hobby basic on 07/28/2021
-Back-ups reschedule 11pm daily.
+Back-ups reschedule 11pm daily. Double checked on 08/05/2021 - it's working
 
 # Before:
 ## Good base build - user auth w/ user model, save image to aws, sendgrid sign-up
