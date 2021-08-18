@@ -6,7 +6,7 @@
 
 <p><%= link_to t("devise.mailer.invitation_instructions.accept"), accept_invitation_url(@resource, invitation_token: @token) %></p>
 
-<p style="margin-left:auto;margin-right:auto;text-align:center;margin-top:20px;margin-bottom:20px;"><%= link_to image_tag("https://www.statusplanapp.com/images/lets-get-started.png", {:style => "width:300px;"}), user_confirmation_url(@resource, :confirmation_token => @token, locale: I18n.locale) %></p>
+<p style="margin-left:auto;margin-right:auto;text-align:center;margin-top:20px;margin-bottom:20px;"><%= link_to image_tag("https://www.statusplanapp.com/images/lets-get-started.png", {:style => "width:300px;"}), accept_invitation_url(@resource, invitation_token: @token) %></p>
 
 
 <% if @resource.invitation_due_at %>
