@@ -1,16 +1,29 @@
-<p><%= t("devise.mailer.invitation_instructions.hello", email: @resource.email) %></p>
+<%#= t("devise.mailer.invitation_instructions.hello", email: @resource.email) %>
+
+<p><%= image_tag("https://www.statusplanapp.com/images/status-plan-logo.png", {:style => "width:200px;margin-bottom:20px;"}) %></p>
 
 <h1 style="color:#81be37;margin-bottom:30px;">You’re Invited to Status Plan!</h1>
 
-<p><%= t("devise.mailer.invitation_instructions.someone_invited_you", url: root_url) %></p>
+<p>Welcome <%= @resource.email %>! A project administrator has offered you access to join their property team. But before we can let you see all of the great project and deal information, please activate your account by clicking the link below:</p>
 
-<p><%= link_to t("devise.mailer.invitation_instructions.accept"), accept_invitation_url(@resource, invitation_token: @token) %></p>
+<%#= t("devise.mailer.invitation_instructions.someone_invited_you", url: root_url) %>
+
+<%#= link_to t("devise.mailer.invitation_instructions.accept"), accept_invitation_url(@resource, invitation_token: @token) %>
 
 <p style="margin-left:auto;margin-right:auto;text-align:center;margin-top:20px;margin-bottom:20px;"><%= link_to image_tag("https://www.statusplanapp.com/images/lets-get-started.png", {:style => "width:300px;"}), accept_invitation_url(@resource, invitation_token: @token) %></p>
 
 
-<% if @resource.invitation_due_at %>
-  <p><%= t("devise.mailer.invitation_instructions.accept_until", due_date: l(@resource.invitation_due_at, format: :'devise.mailer.invitation_instructions.accept_until_format')) %></p>
-<% end %>
+<hr style="height:2px;background-color:#222;border:none;margin-bottom:20px;">
 
-<p><%= t("devise.mailer.invitation_instructions.ignore") %></p>
+<p>Never heard of Status Plan? That’s cool! It is a retail leasing and Tenant delivery web app that brings your plans to life by displaying deal progress and key space information needed to close deals and open Tenants.</p>
+
+<p>Once you activate your account, you can visit and sign in anytime at <a href="https://www.statusplanapp.com">https://www.statusplanapp.com</a>.  Here’s a quick snapshot of what can expect to see.</p>
+
+<p style="margin-left:auto;margin-right:auto;text-align:center;margin-top:20px;margin-bottom:20px;"><%= image_tag("https://www.statusplanapp.com/images/email-pop-up-2.jpg", {:style => "margin-left:auto;margin-right:auto;width:70%;"}) %></p>
+
+<p>Cheers!<br>
+The work.shop team</p>
+
+<hr style="height:2px;background-color:#222;border:none;">
+
+<p style="margin-left:auto;margin-right:auto;text-align:center;"><span style="color:#16A3BA;">Got questions?</span> Simply contact us at support@workshop-mg.com</p>
