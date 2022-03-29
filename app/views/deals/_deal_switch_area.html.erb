@@ -732,12 +732,12 @@
         <% if @deal.schedule.present? %>
           <%= link_to '+ Edit Schedule',
                       edit_schedule_path(@deal.schedule.id),
-                      :class => 'btn btn-primary green-button responsive-none print-none', :style => 'float:right;margin-top:12px;' %>
+                      :class => 'btn btn-primary green-button print-none', :style => 'float:right;margin-top:0px;' %>
         
         <% else %>
           <%= link_to '+ Create Schedule',
                       new_schedule_path(:deal_id => @deal),
-                      :class => 'btn btn-primary green-button responsive-none print-none', :style => 'float:right;margin-top:12px;' %>
+                      :class => 'btn btn-primary green-button print-none', :style => 'float:right;margin-top:0px;' %>
         <% end %>
       <% end %>  
       <h1 class="print-none">Schedule</h1>
@@ -776,12 +776,12 @@
             <% if @deal.workletter.present? %>
               <%= link_to '+ Edit Workletter',
                           edit_workletter_path(@deal.workletter.id),
-                          :class => 'btn btn-primary green-button responsive-none print-none', :style => 'float:right;margin-top:12px;' %>
+                          :class => 'btn btn-primary green-button print-none', :style => 'float:right;margin-top:0px;' %>
             
             <% else %>
               <%= link_to '+ Create Workletter',
                           new_workletter_path(:deal_id => @deal),
-                          :class => 'btn btn-primary green-button responsive-none print-none', :style => 'float:right;margin-top:12px;' %>
+                          :class => 'btn btn-primary green-button print-none', :style => 'float:right;margin-top:0px;' %>
             <% end %>
           <% end %>  
           <h1 class="print-none">Workletter</h1>
