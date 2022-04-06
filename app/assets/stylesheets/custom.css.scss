@@ -896,6 +896,8 @@ table.report-table tr td, table.report-table tr th, table.report-table-less tr t
     .responsive-none {display:none;}
     .if-responsive-up-down-padding {margin-top:10px;margin-bottom:10px;}
     
+    
+    
     .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6 {width:83.33333333%;margin-left:8.33333333%;margin-right:8.33333333%;text-align:center;margin-bottom:10px;}
     }
     /*@media only screen and (max-width: 680px)*/
@@ -921,10 +923,12 @@ table.report-table tr td, table.report-table tr th, table.report-table-less tr t
     .affix {width: 808.33px;}
     .affix-smaller {font-size:8pt;}
     .show-below-1200 {display:inline;}
+    .mobile-dropdown-fix {left:auto;right:0;}
 }
 
 @media only screen and (max-width: 992px) {
     .affix {width: 625px;}
+    
 }
 
 /* print stuff */
