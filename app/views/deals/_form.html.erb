@@ -894,8 +894,16 @@
         </div>
         <%=f.error_span(:signage_status) %>
         
+        <%= f.label :signage_install_date, 'Signage Install Date', :class => 'control-label col-lg-2' %>
+        <div class="col-lg-2">
+          <%= f.text_field :signage_install_date, 'data-provide' => 'datepicker', :class => 'form-control', :placeholder => 'mm/dd/yyyy' %>
+        </div>
+        <%=f.error_span(:signage_install_date) %>
+      </div>
+      
+      <div class="form-group">
         <%= f.label :signage_notes, 'Signage Notes', :class => 'control-label col-lg-2' %>
-        <div class="col-lg-6">
+        <div class="col-lg-10">
           <%#= f.text_field :signage_notes, :class => 'form-control' %>
           <%= f.text_area :signage_notes, :rows => 4, :class => 'form-control' %>
         </div>
