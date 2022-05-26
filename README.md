@@ -1,6 +1,5 @@
 # StatusPlan2 - Running Rails 5
 ## a place to build and test
-### quick test on 05/26/2022
 
 Change heroku db from hobby dev to hobby basic on 07/28/2021
 Back-ups reschedule 11pm daily. Double checked on 08/05/2021 - it's working
