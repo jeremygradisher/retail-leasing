@@ -674,7 +674,6 @@ class ProjectsController < ApplicationController
           certificate_of_occupancy: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.certificate_of_occupancy : area.deals.last.certificate_of_occupancy,
           final_lien_waver: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.final_lien_waver : area.deals.last.final_lien_waver,
           w9: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.punchlist_complete : area.deals.last.punchlist_complete,
-          construction_cost_summary: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.w9 : area.deals.last.w9,
           final_construction_cost: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.final_construction_cost : area.deals.last.final_construction_cost,
           as_builts_received: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.as_builts_received : area.deals.last.as_builts_received,
           sprinkler_shop_drawings: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.sprinkler_shop_drawings : area.deals.last.sprinkler_shop_drawings,
