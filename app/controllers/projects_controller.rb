@@ -780,6 +780,7 @@ class ProjectsController < ApplicationController
           signage_received: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.signage_received : area.deals.last.signage_received,
           signage_reviewed: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.signage_reviewed : area.deals.last.signage_reviewed,
           signage_status: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.signage_status : area.deals.last.signage_status,
+          signage_install_date: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.signage_install_date : area.deals.last.signage_install_date,
           check_in: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.check_in : area.deals.last.check_in,
           premises_acceptance: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.premises_acceptance : area.deals.last.premises_acceptance,
           construction_start: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.construction_start : area.deals.last.construction_start,
