@@ -58,7 +58,7 @@ wb.styles do |style|
         number_to_currency(area.deals.first.final_construction_cost, precision: 2,  delimiter: ','), '',
         area.deals.first.as_builts_received, area.deals.first.sprinkler_shop_drawings, area.deals.first.sprinkler_work_order, area.deals.first.air_balance_report, area.deals.first.sprinkler_check, number_to_currency(area.deals.first.tenant_cost, precision: 2,  delimiter: ','),
         number_to_currency(area.deals.first.utility_cost, precision: 2,  delimiter: ','), area.deals.first.deposit_release_approved, area.deals.first.deposit_released, area.deals.first.ta_ti_release_approved, area.deals.first.ta_ti_released,
-        ""],
+        area.deals.first.close_out_notes],
         style: [general, general, general, general, general, general, general, general,
          general, general, general, general, general, general, general, general,
           general, general, general, general, general, general, general, general,

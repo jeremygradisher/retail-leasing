@@ -674,10 +674,21 @@ class ProjectsController < ApplicationController
           certificate_of_occupancy: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.certificate_of_occupancy : area.deals.last.certificate_of_occupancy,
           final_lien_waver: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.final_lien_waver : area.deals.last.final_lien_waver,
           w9: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.punchlist_complete : area.deals.last.punchlist_complete,
-          construction_cost_summary: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.w9 : area.deals.last.w9,
           final_construction_cost: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.final_construction_cost : area.deals.last.final_construction_cost,
           as_builts_received: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.as_builts_received : area.deals.last.as_builts_received,
-          sprinkler_shop_drawings: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.sprinkler_shop_drawings : area.deals.last.sprinkler_shop_drawings
+          sprinkler_shop_drawings: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.sprinkler_shop_drawings : area.deals.last.sprinkler_shop_drawings,
+          close_out_notes: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.close_out_notes : area.deals.last.close_out_notes,
+          construction_cost_summary: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.construction_cost_summary : area.deals.last.construction_cost_summary,
+          sprinkler_work_order: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.sprinkler_work_order : area.deals.last.sprinkler_work_order,
+          air_balance_report: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.air_balance_report : area.deals.last.air_balance_report,
+          sprinkler_check: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.sprinkler_check : area.deals.last.sprinkler_check,
+          tenant_cost: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.tenant_cost : area.deals.last.tenant_cost,
+          utility_cost: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.utility_cost : area.deals.last.utility_cost,
+          deposit_release_approved: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.deposit_release_approved : area.deals.last.deposit_release_approved,
+          deposit_released: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.deposit_released : area.deals.last.deposit_released,
+          ta_ti_release_approved: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.ta_ti_release_approved : area.deals.last.ta_ti_release_approved,
+          ta_ti_released: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.ta_ti_released : area.deals.last.ta_ti_released,
+          
         }
       else
         array << {
@@ -698,7 +709,8 @@ class ProjectsController < ApplicationController
           construction_cost_summary: '',
           final_construction_cost: '',
           as_builts_received: '',
-          sprinkler_shop_drawings: ''
+          sprinkler_shop_drawings: '',
+          close_out_notes: ''
         }
       end
     end
@@ -741,7 +753,8 @@ class ProjectsController < ApplicationController
         architect: deal.architect,
         general_contractor: deal.general_contractor,
         other_contacts: deal.other_contacts,
-        tenant_contact: deal.tenant_contact
+        tenant_contact: deal.tenant_contact,
+        close_out_notes: deal.close_out_notes
       }
     end
     ordering = ['Leased', 'At Lease', 'LOI', 'Prospect', 'Available']
@@ -780,6 +793,7 @@ class ProjectsController < ApplicationController
           signage_received: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.signage_received : area.deals.last.signage_received,
           signage_reviewed: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.signage_reviewed : area.deals.last.signage_reviewed,
           signage_status: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.signage_status : area.deals.last.signage_status,
+          signage_install_date: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.signage_install_date : area.deals.last.signage_install_date,
           check_in: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.check_in : area.deals.last.check_in,
           premises_acceptance: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.premises_acceptance : area.deals.last.premises_acceptance,
           construction_start: area.primary_deals.ids.count > 0 ? area.primary_deals.last.deal.construction_start : area.deals.last.construction_start,

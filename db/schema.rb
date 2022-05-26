@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210526162030) do
+ActiveRecord::Schema.define(version: 20220526154609) do
 
   create_table "areas", force: :cascade do |t|
     t.string   "suite_number"
@@ -203,6 +203,7 @@ ActiveRecord::Schema.define(version: 20210526162030) do
     t.text     "other_contacts"
     t.text     "tenant_contact"
     t.integer  "deal_term"
+    t.string   "signage_install_date"
     t.index ["map_id"], name: "index_deals_on_map_id"
     t.index ["project_id"], name: "index_deals_on_project_id"
   end

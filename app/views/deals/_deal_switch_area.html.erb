@@ -414,7 +414,8 @@
       <tr>
         <th>Signage received:</th>
         <th>Signage reviewed:</th>
-         <th>Signage status:</th>
+        <th>Signage status:</th>
+        <th>Signage Install Date:</th>
         <th>Signage notes:</th>
       </tr>
       </thead>
@@ -423,6 +424,7 @@
         <td><%= @deal.signage_received %></td>
         <td><%= @deal.signage_reviewed %></td>
         <td><%= @deal.signage_status %></td>
+        <td><%= @deal.signage_install_date %></td>
         <td><%= simple_format(@deal.signage_notes) %></td>
       </tr>
       </tbody>
