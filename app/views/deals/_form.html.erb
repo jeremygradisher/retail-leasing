@@ -799,6 +799,58 @@
     </div>
 </div>
 
+
+
+
+<div class="form-group">
+    <div class="col-lg-2">
+    </div>
+    <div class="col-lg-10">
+      <div class="form-group">
+        <table class="report-table" style="border:none;">
+          <tr>
+            <td style="text-align:center;color:#fff;background-color:#c9e1f7;border:none;">
+              Tenant Design (Storefront)
+            </td>
+          </tr>
+        </table>
+      </div>
+      
+      <div class="form-group">
+        <%= f.label :storefront_plans_received, 'Storefront Plans Received', :class => 'control-label col-lg-2' %>
+        <div class="col-lg-2">
+          <%= f.text_field :storefront_plans_received, 'data-provide' => 'datepicker', :class => 'form-control', :placeholder => 'mm/dd/yyyy' %>
+        </div>
+        <%=f.error_span(:storefront_plans_received) %>
+        
+        <%= f.label :storefront_plans_reviewed, 'Storefront Plans Reviewed', :class => 'control-label col-lg-2' %>
+        <div class="col-lg-2">
+          <%= f.text_field :storefront_plans_reviewed, 'data-provide' => 'datepicker', :class => 'form-control', :placeholder => 'mm/dd/yyyy' %>
+        </div>
+        <%=f.error_span(:storefront_plans_reviewed) %>
+        
+        <%= f.label :storefront_plans_status, 'Storefront Plans Status', :class => 'control-label col-lg-2' %>
+        <div class="col-lg-2">
+          <%#= f.text_field :storefront_plans_status, :class => 'form-control' %>
+          <%= f.select :storefront_plans_status, ['RAR', 'AAN'], {include_blank:true}, :class => 'form-control' %>
+        </div>
+        <%=f.error_span(:storefront_plans_status) %>
+      </div>
+      
+      <div class="form-group">
+        <%= f.label :storefront_notes, 'Storefront Notes', :class => 'control-label col-lg-2' %>
+        <div class="col-lg-10">
+          <%#= f.text_field :close_out_notes, :class => 'form-control' %>
+          <%= f.text_area :storefront_notes, :rows => 4, :class => 'form-control' %>
+        </div>
+        <%=f.error_span(:storefront_notes) %>
+      </div>
+
+    </div>
+</div>
+
+
+
 <div class="form-group">
     <div class="col-lg-2">
     </div>
@@ -912,52 +964,7 @@
     </div>
 </div>
 
-<div class="form-group">
-    <div class="col-lg-2">
-    </div>
-    <div class="col-lg-10">
-      <div class="form-group">
-        <table class="report-table" style="border:none;">
-          <tr>
-            <td style="text-align:center;color:#fff;background-color:#c9e1f7;border:none;">
-              Tenant Design (Storefront)
-            </td>
-          </tr>
-        </table>
-      </div>
-      
-      <div class="form-group">
-        <%= f.label :storefront_plans_received, 'Storefront Plans Received', :class => 'control-label col-lg-2' %>
-        <div class="col-lg-2">
-          <%= f.text_field :storefront_plans_received, 'data-provide' => 'datepicker', :class => 'form-control', :placeholder => 'mm/dd/yyyy' %>
-        </div>
-        <%=f.error_span(:storefront_plans_received) %>
-        
-        <%= f.label :storefront_plans_reviewed, 'Storefront Plans Reviewed', :class => 'control-label col-lg-2' %>
-        <div class="col-lg-2">
-          <%= f.text_field :storefront_plans_reviewed, 'data-provide' => 'datepicker', :class => 'form-control', :placeholder => 'mm/dd/yyyy' %>
-        </div>
-        <%=f.error_span(:storefront_plans_reviewed) %>
-        
-        <%= f.label :storefront_plans_status, 'Storefront Plans Status', :class => 'control-label col-lg-2' %>
-        <div class="col-lg-2">
-          <%#= f.text_field :storefront_plans_status, :class => 'form-control' %>
-          <%= f.select :storefront_plans_status, ['RAR', 'AAN'], {include_blank:true}, :class => 'form-control' %>
-        </div>
-        <%=f.error_span(:storefront_plans_status) %>
-      </div>
-      
-      <div class="form-group">
-        <%= f.label :storefront_notes, 'Storefront Notes', :class => 'control-label col-lg-2' %>
-        <div class="col-lg-10">
-          <%#= f.text_field :close_out_notes, :class => 'form-control' %>
-          <%= f.text_area :storefront_notes, :rows => 4, :class => 'form-control' %>
-        </div>
-        <%=f.error_span(:storefront_notes) %>
-      </div>
 
-    </div>
-</div>
 
 
 <div class="form-group">
