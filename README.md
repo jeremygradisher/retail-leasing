@@ -6,7 +6,6 @@ Back-ups reschedule 11pm daily. Double checked on 08/05/2021 - it's working
 Setting up newest stable release 2.0 - 09/09/2021
 Starting some mobile changes 03/15/2022
 Checking stack upgrade to heroku 22 on July 11, 2022
-Playing around here - 09-06-2022
 
 # Before:
 ## Good base build - user auth w/ user model, save image to aws, sendgrid sign-up
