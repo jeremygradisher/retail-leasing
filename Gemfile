@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.0'
-ruby '3.1.2'
+ruby '2.6.3'
 # Use sqlite3 as the database for Active Record
 #gem 'sqlite3'
 gem 'devise'
@@ -62,15 +62,15 @@ gem 'axlsx_rails', '0.5.2'
 gem 'chartkick', '2.3.5'
 
 
-gem 'will_paginate', '3.3.1'
+gem 'will_paginate', '3.1.5'
 gem 'will_paginate-bootstrap', '1.0.1'
 
 gem 'sendgrid-ruby'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  #gem 'sqlite3', '~> 1.3.6'
-  gem 'sqlite3', '~> 1.4'
+  gem 'sqlite3', '~> 1.3.6'
+  #gem 'sqlite3', '~> 1.4'
   gem 'byebug', platform: :mri
   
   #gem 'bullet'
