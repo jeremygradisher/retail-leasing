@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :contacts
   resources :primary_deals
   resources :leasing_managers
   resources :workletter_templates
