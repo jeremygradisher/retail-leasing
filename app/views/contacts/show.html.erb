@@ -12,8 +12,13 @@
   <dd><%= @contact.phone %></dd>
   <dt><strong><%= model_class.human_attribute_name(:address) %>:</strong></dt>
   <dd><%= @contact.address %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:project_id) %>:</strong></dt>
+  
+  <dt><strong>Project id:</strong></dt>
   <dd><%= @contact.project_id %></dd>
+  
+  <dt><strong><%= model_class.human_attribute_name(:project_id) %>:</strong></dt>
+  <dd><%= Project.find(@contact.project_id).name %></dd>
+  
   <dt><strong><%= model_class.human_attribute_name(:notes) %>:</strong></dt>
   <dd><%= @contact.notes %></dd>
   <dt><strong><%= model_class.human_attribute_name(:additional) %>:</strong></dt>
@@ -23,7 +28,7 @@
 <%= link_to t('.back', :default => t("helpers.links.back")),
               contacts_path, :class => 'btn btn-default'  %>
 <%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_contact_path(@contact), :class => 'btn btn-default' %>
+              edit_contact_path(@contact), :class => 'btn btn-primary' %>
 <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
               contact_path(@contact),
               :method => 'delete',
