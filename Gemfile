@@ -72,9 +72,11 @@ gem 'will_paginate-bootstrap', '1.0.1'
 
 gem 'sendgrid-ruby'
 
+gem 'pg', '~> 0.18'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'sqlite3', '~> 1.3.6'
+  #gem 'sqlite3', '~> 1.3.6'
   #gem 'sqlite3', '~> 1.4'
   gem 'byebug', platform: :mri
   
@@ -92,7 +94,7 @@ group :development do
 end
 
 group :production do
-  gem 'pg', '~> 0.18'
+  #gem 'pg', '~> 0.18'
   gem 'rails_12factor'
   gem 'wkhtmltopdf-heroku'
 end
