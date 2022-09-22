@@ -12,11 +12,14 @@
 
 ActiveRecord::Schema.define(version: 20220919185253) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "areas", force: :cascade do |t|
     t.string   "suite_number"
-    t.integer  "map_id"
     t.string   "status"
     t.string   "coords"
+    t.integer  "map_id"
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
     t.integer  "project_id"
@@ -60,8 +63,8 @@ ActiveRecord::Schema.define(version: 20220919185253) do
     t.string   "pipe_system_note"
     t.float    "area_budget_rate"
     t.string   "service_door_quantity"
-    t.index ["map_id"], name: "index_areas_on_map_id"
-    t.index ["project_id"], name: "index_areas_on_project_id"
+    t.index ["map_id"], name: "index_areas_on_map_id", using: :btree
+    t.index ["project_id"], name: "index_areas_on_project_id", using: :btree
   end
 
   create_table "areas_deals", force: :cascade do |t|
@@ -70,10 +73,10 @@ ActiveRecord::Schema.define(version: 20220919185253) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "project_id"
-    t.index ["area_id", "deal_id"], name: "by_area_and_deal", unique: true
-    t.index ["area_id"], name: "index_areas_deals_on_area_id"
-    t.index ["deal_id"], name: "index_areas_deals_on_deal_id"
-    t.index ["project_id"], name: "index_areas_deals_on_project_id"
+    t.index ["area_id", "deal_id"], name: "by_area_and_deal", unique: true, using: :btree
+    t.index ["area_id"], name: "index_areas_deals_on_area_id", using: :btree
+    t.index ["deal_id"], name: "index_areas_deals_on_deal_id", using: :btree
+    t.index ["project_id"], name: "index_areas_deals_on_project_id", using: :btree
   end
 
   create_table "contacts", force: :cascade do |t|
@@ -86,7 +89,7 @@ ActiveRecord::Schema.define(version: 20220919185253) do
     t.text     "additional"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["project_id"], name: "index_contacts_on_project_id"
+    t.index ["project_id"], name: "index_contacts_on_project_id", using: :btree
   end
 
   create_table "dealimages", force: :cascade do |t|
@@ -94,7 +97,7 @@ ActiveRecord::Schema.define(version: 20220919185253) do
     t.string   "dealimage"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["deal_id"], name: "index_dealimages_on_deal_id"
+    t.index ["deal_id"], name: "index_dealimages_on_deal_id", using: :btree
   end
 
   create_table "deals", force: :cascade do |t|
@@ -217,8 +220,8 @@ ActiveRecord::Schema.define(version: 20220919185253) do
     t.text     "tenant_contact"
     t.integer  "deal_term"
     t.string   "signage_install_date"
-    t.index ["map_id"], name: "index_deals_on_map_id"
-    t.index ["project_id"], name: "index_deals_on_project_id"
+    t.index ["map_id"], name: "index_deals_on_map_id", using: :btree
+    t.index ["project_id"], name: "index_deals_on_project_id", using: :btree
   end
 
   create_table "delayed_jobs", force: :cascade do |t|
@@ -233,7 +236,7 @@ ActiveRecord::Schema.define(version: 20220919185253) do
     t.string   "queue"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.index ["priority", "run_at"], name: "delayed_jobs_priority"
+    t.index ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
   end
 
   create_table "icons", force: :cascade do |t|
@@ -251,7 +254,7 @@ ActiveRecord::Schema.define(version: 20220919185253) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "project_id"
-    t.index ["project_id"], name: "index_images_on_project_id"
+    t.index ["project_id"], name: "index_images_on_project_id", using: :btree
   end
 
   create_table "leasing_managers", force: :cascade do |t|
@@ -261,7 +264,7 @@ ActiveRecord::Schema.define(version: 20220919185253) do
     t.integer  "project_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["project_id"], name: "index_leasing_managers_on_project_id"
+    t.index ["project_id"], name: "index_leasing_managers_on_project_id", using: :btree
   end
 
   create_table "maps", force: :cascade do |t|
@@ -270,7 +273,7 @@ ActiveRecord::Schema.define(version: 20220919185253) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "project_id"
-    t.index ["project_id"], name: "index_maps_on_project_id"
+    t.index ["project_id"], name: "index_maps_on_project_id", using: :btree
   end
 
   create_table "notifications", force: :cascade do |t|
@@ -290,9 +293,9 @@ ActiveRecord::Schema.define(version: 20220919185253) do
     t.integer  "project_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["area_id"], name: "index_primary_deals_on_area_id"
-    t.index ["deal_id"], name: "index_primary_deals_on_deal_id"
-    t.index ["project_id"], name: "index_primary_deals_on_project_id"
+    t.index ["area_id"], name: "index_primary_deals_on_area_id", using: :btree
+    t.index ["deal_id"], name: "index_primary_deals_on_deal_id", using: :btree
+    t.index ["project_id"], name: "index_primary_deals_on_project_id", using: :btree
   end
 
   create_table "projects", force: :cascade do |t|
@@ -316,7 +319,7 @@ ActiveRecord::Schema.define(version: 20220919185253) do
     t.string   "owner_phone"
     t.integer  "project_square_feet"
     t.string   "status"
-    t.index ["user_id"], name: "index_projects_on_user_id"
+    t.index ["user_id"], name: "index_projects_on_user_id", using: :btree
   end
 
   create_table "schedules", force: :cascade do |t|
@@ -342,16 +345,16 @@ ActiveRecord::Schema.define(version: 20220919185253) do
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
     t.integer  "deal_id"
-    t.index ["area_id"], name: "index_schedules_on_area_id"
-    t.index ["project_id"], name: "index_schedules_on_project_id"
+    t.index ["area_id"], name: "index_schedules_on_area_id", using: :btree
+    t.index ["project_id"], name: "index_schedules_on_project_id", using: :btree
   end
 
   create_table "user_avatars", force: :cascade do |t|
-    t.integer  "user_id"
     t.string   "avatar"
+    t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_user_avatars_on_user_id"
+    t.index ["user_id"], name: "index_user_avatars_on_user_id", using: :btree
   end
 
   create_table "user_projects", force: :cascade do |t|
@@ -359,9 +362,9 @@ ActiveRecord::Schema.define(version: 20220919185253) do
     t.integer  "project_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["project_id"], name: "index_user_projects_on_project_id"
-    t.index ["user_id", "project_id"], name: "by_user_and_project", unique: true
-    t.index ["user_id"], name: "index_user_projects_on_user_id"
+    t.index ["project_id"], name: "index_user_projects_on_project_id", using: :btree
+    t.index ["user_id", "project_id"], name: "by_user_and_project", unique: true, using: :btree
+    t.index ["user_id"], name: "index_user_projects_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -395,13 +398,13 @@ ActiveRecord::Schema.define(version: 20220919185253) do
     t.string   "invited_by_type"
     t.integer  "invited_by_id"
     t.integer  "invitations_count",      default: 0
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["invitation_token"], name: "index_users_on_invitation_token", unique: true
-    t.index ["invitations_count"], name: "index_users_on_invitations_count"
-    t.index ["invited_by_id"], name: "index_users_on_invited_by_id"
-    t.index ["invited_by_type", "invited_by_id"], name: "index_users_on_invited_by_type_and_invited_by_id"
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-    t.index ["role"], name: "index_users_on_role"
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["invitation_token"], name: "index_users_on_invitation_token", unique: true, using: :btree
+    t.index ["invitations_count"], name: "index_users_on_invitations_count", using: :btree
+    t.index ["invited_by_id"], name: "index_users_on_invited_by_id", using: :btree
+    t.index ["invited_by_type", "invited_by_id"], name: "index_users_on_invited_by_type_and_invited_by_id", using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+    t.index ["role"], name: "index_users_on_role", using: :btree
   end
 
   create_table "workletter_templates", force: :cascade do |t|
@@ -493,7 +496,7 @@ ActiveRecord::Schema.define(version: 20220919185253) do
     t.boolean  "other_typical"
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
-    t.index ["project_id"], name: "index_workletter_templates_on_project_id"
+    t.index ["project_id"], name: "index_workletter_templates_on_project_id", using: :btree
   end
 
   create_table "workletters", force: :cascade do |t|
@@ -733,7 +736,25 @@ ActiveRecord::Schema.define(version: 20220919185253) do
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
     t.integer  "deal_id"
-    t.index ["area_id"], name: "index_workletters_on_area_id"
+    t.index ["area_id"], name: "index_workletters_on_area_id", using: :btree
   end
 
+  add_foreign_key "areas", "maps"
+  add_foreign_key "areas_deals", "areas"
+  add_foreign_key "areas_deals", "deals"
+  add_foreign_key "dealimages", "deals"
+  add_foreign_key "deals", "maps"
+  add_foreign_key "deals", "projects"
+  add_foreign_key "leasing_managers", "projects"
+  add_foreign_key "primary_deals", "areas"
+  add_foreign_key "primary_deals", "deals"
+  add_foreign_key "primary_deals", "projects"
+  add_foreign_key "projects", "users"
+  add_foreign_key "schedules", "areas"
+  add_foreign_key "schedules", "projects"
+  add_foreign_key "user_avatars", "users"
+  add_foreign_key "user_projects", "projects"
+  add_foreign_key "user_projects", "users"
+  add_foreign_key "workletter_templates", "projects"
+  add_foreign_key "workletters", "areas"
 end
