@@ -41,14 +41,14 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
-  database: statusplan2_postgres_test
+  database: #statusplan2_postgres_test
   pool: 5
-  username: jeremy
+  username: #jeremy
   password:
 production:
   adapter: postgresql
   encoding: unicode
-  database: sample_postgres_production
+  database: #sample_postgres_production
   pool: 5
-  username: sample_postgres
+  username: #sample_postgres
   password:
