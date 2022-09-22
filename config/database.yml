@@ -41,14 +41,10 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
-  database: #statusplan2_postgres_test
+  database: ubuntu
   pool: 5
-  username: #jeremy
+  username: ubuntu
   password:
+  
 production:
-  adapter: postgresql
-  encoding: unicode
-  database: #sample_postgres_production
-  pool: 5
-  username: #sample_postgres
-  password:
+  url: <%= ENV['DATABASE_URL'] %>
