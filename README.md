@@ -1,10 +1,8 @@
-# StatusPlan2 - Running Rails 5
+# StatusPlan2 - Running Rails 7
 ## a place to build and test
 
-All running good - need to update Ruby from 2.7.6 to 3.0.4 and then on to 3.1.2 09/14/2022<br>
-As soon as I try and push passed 3.0 I run into issues I can not resolve.<br>
-Potentially to do with sqlite3 which I am using.<br>
-I tried to get postgresql working locally with no luck.
+Running Ruby 3.1.2, Rails 7.0.4 and Heroku-22 stack! 09/22/2022
+Application is running, but the reports all have errors. Chasing that now.
 
 # Before:
 ## Good base build - user auth w/ user model, save image to aws, sendgrid sign-up

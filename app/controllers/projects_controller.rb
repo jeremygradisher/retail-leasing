@@ -495,8 +495,8 @@ class ProjectsController < ApplicationController
   #this is the Close Out Report
   def closeoutreport
     @project = Project.find(params[:id])
-    @search = Area.where(project_id: params[:id]).search(params[:q])
-    @areas = @search.result(distinct: true)
+    @ransack = Area.where(project_id: params[:id]).ransack(params[:q])
+    @areas = @ransack.result(distinct: true)
     
     #@areas_with = @areas.where(self.deals.count > 0)
     
@@ -540,8 +540,8 @@ class ProjectsController < ApplicationController
 
   def tenantstatusreport
     @project = Project.find(params[:id])
-    @search = Area.where(project_id: params[:id]).search(params[:q])
-    @areas = @search.result(distinct: true)
+    @ransack = Area.where(project_id: params[:id]).ransack(params[:q])
+    @areas = @ransack.result(distinct: true)
     
     @tenants = Area.where(project_id: params[:id]).count
     @areasquarefootage = Area.where(project_id: params[:id]).pluck(:area_sqft)

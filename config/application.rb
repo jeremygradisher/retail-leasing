@@ -16,7 +16,9 @@ module DeviseSandbox
     #config.active_job.queue_adapter = :sidekiq
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
-    config.active_record.raise_in_transactional_callbacks = true
+    #config.active_record.raise_in_transactional_callbacks = true
+    
+    config.hosts << "e841612c53ff48c295eb161fa22da606.vfs.cloud9.us-east-1.amazonaws.com"
     
     # Enable the asset pipeline
     #really not sure that this is necessarry

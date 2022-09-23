@@ -2,12 +2,13 @@ source 'https://rubygems.org'
 
 #ruby '2.6.3'
 #ruby '2.6.4'
-ruby '2.7.6'
+#ruby '2.7.6'
 #ruby '3.0.4'
-#ruby '3.1.2'
+ruby '3.1.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.0.0'
+#gem 'rails', '~> 5.0.0'
+gem 'rails', '~> 7.0.0'
 
 # Use sqlite3 as the database for Active Record
 #gem 'sqlite3'
@@ -18,9 +19,9 @@ gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
+#gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
-gem 'coffee-rails', '~> 4.2'
+gem 'coffee-rails', '~> 5.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
@@ -32,7 +33,8 @@ gem 'data-confirm-modal'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 #gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 2.5'
+#gem 'jbuilder', '~> 2.5'
+gem 'jbuilder', '~> 2.11', '>= 2.11.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
@@ -59,20 +61,33 @@ gem 'delayed_job_active_record'
 gem "daemons"
 
 #for search
-gem 'ransack', '2.1.1'
+#gem 'ransack', '2.1.1'
+gem 'ransack', '~> 3.2', '>= 3.2.1'
 #for reports
-gem 'axlsx_rails', '0.5.2'
+#gem 'axlsx_rails', '0.5.2'
+#gem 'axlsx_rails', '~> 0.6.1'
+gem 'caxlsx'
+gem 'caxlsx_rails'
+
+# For Generating PDF
+#gem 'wicked_pdf', '1.4.0'
+gem 'wicked_pdf', '~> 2.6', '>= 2.6.3'
+#gem 'wkhtmltopdf-binary-edge', '0.12.4'
+#gem 'wkhtmltopdf-heroku', '2.12.4.0'
 
 #for charts
 gem 'chartkick', '2.3.5'
 
 
-gem 'will_paginate', '3.1.5'
-gem 'will_paginate-bootstrap', '1.0.1'
+#gem 'will_paginate', '3.1.5'
+gem 'will_paginate', '~> 3.3', '>= 3.3.1'
+#gem 'will_paginate-bootstrap', '1.0.1'
+gem 'will_paginate-bootstrap', '~> 1.0', '>= 1.0.2'
 
 gem 'sendgrid-ruby'
 
-gem 'pg', '~> 0.18'
+#gem 'pg', '~> 0.18'
+gem 'pg', '~> 1.4', '>= 1.4.2'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -101,9 +116,3 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-
-
-# For Generating PDF
-gem 'wicked_pdf', '1.4.0'
-#gem 'wkhtmltopdf-binary-edge', '0.12.4'
-#gem 'wkhtmltopdf-heroku', '2.12.4.0'
