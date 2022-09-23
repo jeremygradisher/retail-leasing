@@ -61,7 +61,7 @@
                   </div>
 
               <% if current_user.user_avatars.exists? %>
-                <%= link_to image_tag(current_user.user_avatars.first.avatar, :alt => '', :title => '', :class => 'ws-border-style'), user_path(current_user), :class => 'profile-link', :style => 'padding:0 0;float:left;' %>
+                <%= link_to image_tag(current_user.user_avatars.first.avatar_url, :alt => '', :title => '', :class => 'ws-border-style'), user_path(current_user), :class => 'profile-link', :style => 'padding:0 0;float:left;' %>
                 <!--<img src="<%#= current_user.memberimages.first.memberimage %>" style="height:42px;float:left;margin-top:5px;">-->
               <% else %>
                 <%= link_to image_tag("/images/NO-IMAGE-AVAILABLE.jpg", :alt => '', :title => '', :class => 'ws-border-style'), user_path(current_user), :class => 'profile-link', :style => 'padding:0 0;float:left;' %>
