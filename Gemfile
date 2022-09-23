@@ -2,12 +2,13 @@ source 'https://rubygems.org'
 
 #ruby '2.6.3'
 #ruby '2.6.4'
-ruby '2.7.6'
-#ruby '3.0.4'
+#ruby '2.7.6'
+ruby '3.0.4'
 #ruby '3.1.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.0.0'
+#gem 'rails', '~> 5.0.0'
+gem 'rails', '~> 7.0.0'
 
 # Use sqlite3 as the database for Active Record
 #gem 'sqlite3'
@@ -59,7 +60,8 @@ gem 'delayed_job_active_record'
 gem "daemons"
 
 #for search
-gem 'ransack', '2.1.1'
+#gem 'ransack', '2.1.1'
+gem 'ransack', '~> 3.2', '>= 3.2.1'
 #for reports
 gem 'axlsx_rails', '0.5.2'
 
@@ -67,12 +69,15 @@ gem 'axlsx_rails', '0.5.2'
 gem 'chartkick', '2.3.5'
 
 
-gem 'will_paginate', '3.1.5'
-gem 'will_paginate-bootstrap', '1.0.1'
+#gem 'will_paginate', '3.1.5'
+gem 'will_paginate', '~> 3.3', '>= 3.3.1'
+#gem 'will_paginate-bootstrap', '1.0.1'
+gem 'will_paginate-bootstrap', '~> 1.0', '>= 1.0.2'
 
 gem 'sendgrid-ruby'
 
-gem 'pg', '~> 0.18'
+#gem 'pg', '~> 0.18'
+gem 'pg', '~> 1.4', '>= 1.4.2'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
