@@ -417,17 +417,17 @@ class ProjectsController < ApplicationController
         render pdf: "#{@project.name.parameterize}-lease-status-report-#{Date.today}",
           orientation: 'landscape',
           javascript_delay: 2000,
-          template: '/projects/leasestatusreport.pdf.erb',
+          template: '/projects/leasestatusreport',
           layout: 'pdf_layout',
           page_size: 'A3',
           header: {
             html: {
-              template: '/projects/leasestatusreport_header.pdf.erb'
+              template: '/projects/leasestatusreport_header'
             }
           },
           footer: {
             html: {
-              template: '/projects/leasestatusreport_footer.pdf.erb'
+              template: '/projects/leasestatusreport_footer'
             }
           },
           margin: {
