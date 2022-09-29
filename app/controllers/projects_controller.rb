@@ -369,7 +369,7 @@ class ProjectsController < ApplicationController
         render pdf: "#{@project.name.parameterize}-lease-status-report-#{Date.today}",
           orientation: 'landscape',
           javascript_delay: 2000,
-          template: '/reports/testreport.pdf.erb',
+          template: '/reports/testreport',
           layout: 'pdf_layout',
           page_size: 'A3',
           header: {
@@ -417,17 +417,17 @@ class ProjectsController < ApplicationController
         render pdf: "#{@project.name.parameterize}-lease-status-report-#{Date.today}",
           orientation: 'landscape',
           javascript_delay: 2000,
-          template: '/projects/leasestatusreport.pdf.erb',
+          template: '/projects/leasestatusreport',
           layout: 'pdf_layout',
           page_size: 'A3',
           header: {
             html: {
-              template: '/projects/leasestatusreport_header.pdf.erb'
+              template: '/projects/leasestatusreport_header'
             }
           },
           footer: {
             html: {
-              template: '/projects/leasestatusreport_footer.pdf.erb'
+              template: '/projects/leasestatusreport_footer'
             }
           },
           margin: {
@@ -437,7 +437,7 @@ class ProjectsController < ApplicationController
             right: 5
           }
       }
-      format.html { render 'leasestatusreport.pdf.erb', layout: 'pdf_layout' }
+      format.html { render 'leasestatusreport', layout: 'pdf_layout' }
       format.xlsx {
         #response.headers['Content-Disposition'] = 'attachment; filename="tenant_status.xlsx"'
         response.headers['Content-Disposition'] = "attachment; filename=#{@project.name.parameterize}-lease-status-report-#{Date.today}.xlsx"
@@ -464,17 +464,17 @@ class ProjectsController < ApplicationController
         render pdf: "#{@project.name.parameterize}-lease-deal-report-#{Date.today}",
           orientation: 'landscape',
           javascript_delay: 2000,
-          template: '/projects/leasedealreport.pdf.erb',
+          template: '/projects/leasedealreport',
           layout: 'pdf_layout',
           page_size: 'A3',
           header: {
             html: {
-              template: '/projects/leasedealreport_header.pdf.erb'
+              template: '/projects/leasedealreport_header'
             }
           },
           footer: {
             html: {
-              template: '/projects/leasedealreport_footer.pdf.erb'
+              template: '/projects/leasedealreport_footer'
             }
           },
           margin: {
@@ -484,7 +484,7 @@ class ProjectsController < ApplicationController
             right: 5
           }
       }
-      format.html { render 'leasedealreport.pdf.erb', layout: 'pdf_layout' }
+      format.html { render 'leasedealreport', layout: 'pdf_layout' }
       format.xlsx {
         #response.headers['Content-Disposition'] = 'attachment; filename="tenant_status.xlsx"'
         response.headers['Content-Disposition'] = "attachment; filename=#{@project.name.parameterize}-lease-deal-report-#{Date.today}.xlsx"
@@ -508,18 +508,18 @@ class ProjectsController < ApplicationController
       format.pdf {
         render pdf: "#{@project.name.parameterize}-close-out-report-#{Date.today}",
           orientation: 'landscape',
-          template: '/projects/closeoutreport.pdf.erb',
+          template: '/projects/closeoutreport',
           layout: 'pdf_layout',
           locals: { stats: @stats },
           page_size: 'A3',
           header: {
             html: {
-              template: '/projects/closeoutreport_header.pdf.erb'
+              template: '/projects/closeoutreport_header'
             }
           },
           footer: {
             html: {
-              template: '/projects/closeoutreport_footer.pdf.erb'
+              template: '/projects/closeoutreport_footer'
             }
           },
           margin: {
@@ -530,7 +530,7 @@ class ProjectsController < ApplicationController
           }
       }
       format.html { 
-        render 'closeoutreport.pdf.erb', layout: 'pdf_layout', locals: { stats: @stats } 
+        render 'closeoutreport', layout: 'pdf_layout', locals: { stats: @stats } 
       }
       format.xlsx {
         response.headers['Content-Disposition'] = "attachment; filename=#{@project.name.parameterize}-close-out-report-#{Date.today}.xlsx"
@@ -555,17 +555,17 @@ class ProjectsController < ApplicationController
         render pdf: "#{@project.name.parameterize}-tenant-status-report-#{Date.today}",
           orientation: 'landscape',
           javascript_delay: 2000,
-          template: '/projects/tenantstatusreport.pdf.erb',
+          template: '/projects/tenantstatusreport',
           layout: 'pdf_layout',
           page_size: 'A3',
           header: {
             html: {
-              template: '/projects/tenantstatusreport_header.pdf.erb'
+              template: '/projects/tenantstatusreport_header'
             }
           },
           footer: {
             html: {
-              template: '/projects/tenantstatusreport_footer.pdf.erb'
+              template: '/projects/tenantstatusreport_footer'
             }
           },
           margin: {
@@ -576,7 +576,7 @@ class ProjectsController < ApplicationController
           }
       }
       format.html { 
-        render 'tenantstatusreport.pdf.erb', layout: 'pdf_layout', locals: { stats: @stats } 
+        render 'tenantstatusreport', layout: 'pdf_layout', locals: { stats: @stats } 
       }
       format.xlsx {
           response.headers['Content-Disposition'] = "attachment; filename=#{@project.name.parameterize}-tenant-status-report-#{Date.today}.xlsx"
@@ -604,17 +604,17 @@ class ProjectsController < ApplicationController
         render pdf: "#{@project.name.parameterize}-deal-directory-report-#{Date.today}",
           orientation: 'landscape',
           javascript_delay: 2000,
-          template: '/projects/dealdirectoryreport.pdf.erb',
+          template: '/projects/dealdirectoryreport',
           layout: 'pdf_layout',
           page_size: 'A3',
           header: {
             html: {
-              template: '/projects/dealdirectoryreport_header.pdf.erb'
+              template: '/projects/dealdirectoryreport_header'
             }
           },
           footer: {
             html: {
-              template: '/projects/dealdirectoryreport_footer.pdf.erb'
+              template: '/projects/dealdirectoryreport_footer'
             }
           },
           margin: {
@@ -624,7 +624,7 @@ class ProjectsController < ApplicationController
             right: 5
           }
       }
-      format.html { render 'dealdirectoryreport.pdf.erb', layout: 'pdf_layout' }
+      format.html { render 'dealdirectoryreport', layout: 'pdf_layout' }
       format.xlsx {
         #response.headers['Content-Disposition'] = 'attachment; filename="tenant_status.xlsx"'
         response.headers['Content-Disposition'] = "attachment; filename=#{@project.name.parameterize}-deal-directory-report-#{Date.today}.xlsx"

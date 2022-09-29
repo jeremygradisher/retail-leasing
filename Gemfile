@@ -75,6 +75,7 @@ gem 'wicked_pdf', '~> 2.6', '>= 2.6.3'
 #gem 'wkhtmltopdf-binary-edge', '0.12.4'
 #gem 'wkhtmltopdf-heroku', '2.12.4.0'
 
+
 #for charts
 gem 'chartkick', '2.3.5'
 
@@ -91,11 +92,7 @@ gem 'pg', '~> 1.4', '>= 1.4.2'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  #gem 'sqlite3', '~> 1.3.6'
-  #gem 'sqlite3', '~> 1.4'
   gem 'byebug', platform: :mri
-  
-  #gem 'bullet'
 end
 
 group :development do
@@ -105,13 +102,15 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'wkhtmltopdf-binary-edge', '0.12.4'
+  #gem 'wkhtmltopdf-binary-edge', '0.12.4'
+  gem 'wkhtmltopdf-binary'
 end
 
 group :production do
   #gem 'pg', '~> 0.18'
   gem 'rails_12factor'
-  gem 'wkhtmltopdf-heroku'
+  #gem 'wkhtmltopdf-heroku'
+  gem 'wkhtmltopdf-heroku', '2.12.6.1.pre.jammy'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
