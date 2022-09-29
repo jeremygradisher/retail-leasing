@@ -109,7 +109,8 @@ end
 group :production do
   #gem 'pg', '~> 0.18'
   gem 'rails_12factor'
-  gem 'wkhtmltopdf-heroku'
+  #gem 'wkhtmltopdf-heroku'
+  gem 'wkhtmltopdf-heroku', '2.12.6.1.pre.jammy'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
