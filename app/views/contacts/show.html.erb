@@ -17,7 +17,13 @@
   <dd><%= @contact.project_id %></dd>
   
   <dt><strong><%= model_class.human_attribute_name(:project_id) %>:</strong></dt>
-  <dd><%= Project.find(@contact.project_id).name %></dd>
+  <dd><% if @contact.project_id != nil %><%= Project.find(@contact.project_id).name %><% end %></dd>
+  
+  <dt><strong>Deal id:</strong></dt>
+  <dd><%= @contact.deal_id %></dd>
+  
+  <dt><strong><%= model_class.human_attribute_name(:deal_id) %>:</strong></dt>
+  <dd><% if @contact.deal_id != nil %><%= Deal.find(@contact.deal_id).deal_name %><% end %></dd>
   
   <dt><strong><%= model_class.human_attribute_name(:notes) %>:</strong></dt>
   <dd><%= @contact.notes %></dd>
