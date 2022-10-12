@@ -50,11 +50,23 @@
     <div class="col-lg-10">
       <%#= f.text_field :project_id, :class => 'form-control' %>
       <%= f.select :project_id, (Project.all).map{ |d| [d.name, d.id] }, 
-        {include_blank: false}, 
+        {include_blank: true}, 
         :class => 'form-control select-css', 
         :style => 'float:left;height:40px;width:100%;' %>
     </div>
     <%=f.error_span(:project_id) %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :deal_id, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%#= f.text_field :project_id, :class => 'form-control' %>
+      <%= f.select :deal_id, (Deal.all).map{ |d| [d.deal_name, d.id] }, 
+        {include_blank: true}, 
+        :class => 'form-control select-css', 
+        :style => 'float:left;height:40px;width:100%;' %>
+    </div>
+    <%=f.error_span(:deal_id) %>
   </div>
   
       <br>
