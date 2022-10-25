@@ -2,7 +2,6 @@
 ## a place to build and test
 
 Running Ruby 3.1.2, Rails 7.0.4 and Heroku-22 stack! 09/22/2022
-Good to go on the reports, moving onto contacts/directory - 10/10/2022
 
 # Before:
 ## Good base build - user auth w/ user model, save image to aws, sendgrid sign-up
