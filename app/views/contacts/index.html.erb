@@ -26,17 +26,17 @@
         <td><%= contact.email %></td>
         <td><%= contact.phone %></td>
         <td><%= contact.address %></td>
-        <td><%= contact.project_id %></td>
-        <td><%= contact.deal_id %></td>
-        <td><%= contact.notes %></td>
-        <td><%= contact.additional %></td>
+        <td><% if contact.project_id != nil %><%= Project.find(contact.project_id).name %><% end %></td>
+        <td><% if contact.deal_id != nil %><%= Deal.find(contact.deal_id).deal_name %><% end %></td>
+        <td><%= simple_format(contact.notes) %></td>
+        <td><%= simple_format(contact.additional) %></td>
         <td><%=l contact.created_at %></td>
         <td>
           <%= link_to t('.show', :default => t("helpers.links.show")),
                       contact_path(contact), :class => 'btn btn-default btn-xs',
                       :style => 'width:100%;margin-bottom:2px;' %><br>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_contact_path(contact), :class => 'btn btn-default btn-xs',
+                      edit_contact_path(contact), :class => 'btn btn-primary btn-xs',
                       :style => 'width:100%;margin-bottom:2px;' %><br>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                       contact_path(contact),
