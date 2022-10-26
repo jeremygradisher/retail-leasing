@@ -35,8 +35,8 @@ wb.styles do |style|
       style: [project_header_cell, header_cell, header_cell, header_cell, header_cell, header_cell, header_cell, header_cell,header_cell, header_cell, header_cell, header_cell, header_cell, header_cell, header_cell, header_cell, header_cell, header_cell, header_cell, header_cell, header_cell,  header_cell, header_cell_tcor, header_cell_tcor, header_cell_tcor, header_cell_tcor,  header_cell_tcor, header_cell_tcor, header_cell_tcor], height: 120.0
     sheet.add_row ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", Time.zone.now.strftime("%B %d, %Y"), "", "", "", "", "", ""],
       style: header_cell, height: 50.0
-    sheet.merge_cells('A1:D2')
-    sheet.merge_cells('E1:V2')
+    sheet.merge_cells('A1:G2')
+    sheet.merge_cells('H1:V2')
     sheet.merge_cells('W1:AC1')
     sheet.merge_cells('W2:AC2')
     sheet.add_row ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], height: 3.0
@@ -48,7 +48,7 @@ wb.styles do |style|
     sheet.merge_cells('R4:U4')
     sheet.merge_cells('V4:X4')
     sheet.merge_cells('Y4:AB4')
-    sheet.add_row ["Remain", "", "Suite #", "Area Name", "SF", "Punchlist Request", "Punchlist Inspection",	"Punchlist Complete",	"Close Out Letter Sent",	"Permit",	"Certificate of Insurance",	"Certificate of Occupancy",	"Final Lien Waiver",	"W-9",	"Construct. Cost Summary",	"Final Construct. Cost", "Final Construct. Cost / SF", "As Builts Received", "Sprinkler Shop Drawings", "Sprinkler Work Order", "Air Balance Report",	"Sprinkler Check",	"Tenant Costs",	"Utility Cost",	"Deposit Release Approved",	"Deposit Release",	"TA / TI Release Approved",	"TA / TI Released",	"Close-out Notes"], style: header_wrap, :height => 100.0
+    sheet.add_row ["", "", "Suite #", "Area Name", "SF", "Punchlist Request", "Punchlist Inspection",	"Punchlist Complete",	"Close Out Letter Sent",	"Permit",	"Certificate of Insurance",	"Certificate of Occupancy",	"Final Lien Waiver",	"W-9",	"Construct. Cost Summary",	"Final Construct. Cost", "Final Construct. Cost / SF", "As Builts Received", "Sprinkler Shop Drawings", "Sprinkler Work Order", "Air Balance Report",	"Sprinkler Check",	"Tenant Costs",	"Utility Cost",	"Deposit Release Approved",	"Deposit Release",	"TA / TI Release Approved",	"TA / TI Released",	"Close-out Notes"], style: header_wrap, :height => 100.0
     sheet.merge_cells('A5:B5')
     @areas.each do |area|
       if area.deals.count > 0
@@ -70,10 +70,6 @@ wb.styles do |style|
        style: [total, total, total_bold, total, total, total, total, total, total, total, total, total, total, total, total_bold,
        total_bold, total, total, total, total, total, total, total, total, total, total, total, total, total], height: 70.0
     sheet.add_row [""]
-    sheet.add_row ["", "Not Started", @stats[:not_started][:total], number_to_percentage(@stats[:not_started][:percentage], precision: 2)], style: [general, not_started_legend, general, general], height: 70.0
-    sheet.add_row ["", "Begun", @stats[:begun][:total], number_to_percentage(@stats[:begun][:percentage], precision: 2)], style: [general, begun_legend, general, general], height: 70.0
-    sheet.add_row ["", "In Progress", @stats[:in_progress][:total], number_to_percentage(@stats[:in_progress][:percentage], precision: 2)], style: [general, in_progress_legend, general, general], height: 70.0
-    sheet.add_row ["", "Complete", @stats[:completed][:total], number_to_percentage(@stats[:completed][:percentage], precision: 2)], style: [general, completed_legend, general, general], height: 70.0
-    sheet.column_widths 2, 25, 15, 30, 15, 30, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 30
+    sheet.column_widths 2, 2, 15, 30, 15, 30, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 30
   end
 end
