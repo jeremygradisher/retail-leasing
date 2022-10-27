@@ -1,46 +1,46 @@
 wb = xlsx_package.workbook
 wb.styles do |style|
-  general_cell = style.add_style(sz: 12, bg_color: "FFFFFF", alignment: { horizontal: :center, vertical: :center }, b: true, border: Axlsx::STYLE_THIN_BORDER)
-  general = style.add_style(sz: 12, bg_color: "FFFFFF", alignment: { horizontal: :center, vertical: :center }, border: Axlsx::STYLE_THIN_BORDER)
-  punch_list = style.add_style(sz: 12, bg_color: "24a3b9", fg_color: "FFFFFF", b: true, alignment: { horizontal: :center, vertical: :center }, border: Axlsx::STYLE_THIN_BORDER)
-  lease_negotiation_cell = style.add_style(sz: 12, bg_color: "f15b28", fg_color: "FFFFFF", b: true, alignment: { horizontal: :center, vertical: :center }, border: Axlsx::STYLE_THIN_BORDER)
-  documents = style.add_style(sz: 12, bg_color: "8dc349", fg_color: "FFFFFF", b: true, alignment: { horizontal: :center, vertical: :center }, border: Axlsx::STYLE_THIN_BORDER)
-  construction_cost = style.add_style(sz: 12, bg_color: "e4b936", fg_color: "FFFFFF", b: true, alignment: { horizontal: :center, vertical: :center }, border: Axlsx::STYLE_THIN_BORDER)
-  drawings = style.add_style(sz: 12, bg_color: "cf3f2f", fg_color: "FFFFFF", b: true, alignment: { horizontal: :center, vertical: :center }, border: Axlsx::STYLE_THIN_BORDER)
-  fees = style.add_style(sz: 12, bg_color: "21958a", fg_color: "FFFFFF", b: true, alignment: { horizontal: :center, vertical: :center }, border: Axlsx::STYLE_THIN_BORDER)
-  reconsiliation = style.add_style(sz: 12, bg_color: "403350", b: true, fg_color: "FFFFFF", alignment: { horizontal: :center, vertical: :center }, border: Axlsx::STYLE_THIN_BORDER)
+  general_cell = style.add_style(sz: 11, bg_color: "FFFFFF", alignment: { horizontal: :center, vertical: :center }, b: true, border: Axlsx::STYLE_THIN_BORDER)
+  general = style.add_style(sz: 11, bg_color: "FFFFFF", alignment: { horizontal: :center, vertical: :center }, border: Axlsx::STYLE_THIN_BORDER)
+  punch_list = style.add_style(sz: 11, bg_color: "24a3b9", fg_color: "FFFFFF", b: true, alignment: { horizontal: :center, vertical: :center }, border: Axlsx::STYLE_THIN_BORDER)
+  lease_negotiation_cell = style.add_style(sz: 11, bg_color: "f15b28", fg_color: "FFFFFF", b: true, alignment: { horizontal: :center, vertical: :center }, border: Axlsx::STYLE_THIN_BORDER)
+  documents = style.add_style(sz: 11, bg_color: "8dc349", fg_color: "FFFFFF", b: true, alignment: { horizontal: :center, vertical: :center }, border: Axlsx::STYLE_THIN_BORDER)
+  construction_cost = style.add_style(sz: 11, bg_color: "e4b936", fg_color: "FFFFFF", b: true, alignment: { horizontal: :center, vertical: :center }, border: Axlsx::STYLE_THIN_BORDER)
+  drawings = style.add_style(sz: 11, bg_color: "cf3f2f", fg_color: "FFFFFF", b: true, alignment: { horizontal: :center, vertical: :center }, border: Axlsx::STYLE_THIN_BORDER)
+  fees = style.add_style(sz: 11, bg_color: "21958a", fg_color: "FFFFFF", b: true, alignment: { horizontal: :center, vertical: :center }, border: Axlsx::STYLE_THIN_BORDER)
+  reconsiliation = style.add_style(sz: 11, bg_color: "403350", b: true, fg_color: "FFFFFF", alignment: { horizontal: :center, vertical: :center }, border: Axlsx::STYLE_THIN_BORDER)
   project_header_cell = style.add_style(sz: 36, bg_color: "4e58a3", fg_color: "FFFFFF", alignment: { horizontal: :center, vertical: :center })
   header_cell_tcor = style.add_style(sz: 36, bg_color: "4e58a3", fg_color: "FFFFFF", alignment: { horizontal: :center, vertical: :center })
-  header_cell = style.add_style(sz: 12, bg_color: "4e58a3", fg_color: "FFFFFF", alignment: { horizontal: :center, vertical: :center })
-  header_wrap = style.add_style(sz: 12, b: true, alignment: { horizontal: :center, vertical: :center, wrap_text: true}, border: Axlsx::STYLE_THIN_BORDER)
+  header_cell = style.add_style(sz: 11, bg_color: "4e58a3", fg_color: "FFFFFF", alignment: { horizontal: :center, vertical: :center })
+  header_wrap = style.add_style(sz: 11, b: true, alignment: { horizontal: :center, vertical: :center, wrap_text: true}, border: Axlsx::STYLE_THIN_BORDER)
   center_cell = style.add_style(alignment: { horizontal: :center, vertical: :center })
   center_cell_main = style.add_style(alignment: { horizontal: :center, vertical: :center }, border: Axlsx::STYLE_THIN_BORDER)
-  bolder_cell = style.add_style(sz: 12)
+  bolder_cell = style.add_style(sz: 11)
 
-  not_started = style.add_style(sz: 12, bg_color: "fd2f39", alignment: { horizontal: :center, vertical: :center }, border: Axlsx::STYLE_THIN_BORDER)
-  completed = style.add_style(sz: 12, bg_color: "509e5e", alignment: { horizontal: :center, vertical: :center }, border: Axlsx::STYLE_THIN_BORDER)
-  begun = style.add_style(sz: 12, bg_color: "131313", alignment: { horizontal: :center, vertical: :center }, border: Axlsx::STYLE_THIN_BORDER)
-  in_progress = style.add_style(sz: 12, bg_color: "f6c14c", alignment: { horizontal: :center, vertical: :center }, border: Axlsx::STYLE_THIN_BORDER)
+  not_started = style.add_style(sz: 11, bg_color: "fd2f39", alignment: { horizontal: :center, vertical: :center }, border: Axlsx::STYLE_THIN_BORDER)
+  completed = style.add_style(sz: 11, bg_color: "509e5e", alignment: { horizontal: :center, vertical: :center }, border: Axlsx::STYLE_THIN_BORDER)
+  begun = style.add_style(sz: 11, bg_color: "131313", alignment: { horizontal: :center, vertical: :center }, border: Axlsx::STYLE_THIN_BORDER)
+  in_progress = style.add_style(sz: 11, bg_color: "f6c14c", alignment: { horizontal: :center, vertical: :center }, border: Axlsx::STYLE_THIN_BORDER)
 
-  not_started_legend = style.add_style(sz: 12, fg_color: "fd2f39", b: true, alignment: { horizontal: :center, vertical: :center }, border: Axlsx::STYLE_THIN_BORDER)
-  completed_legend = style.add_style(sz: 12, fg_color: "509e5e", b: true, alignment: { horizontal: :center, vertical: :center }, border: Axlsx::STYLE_THIN_BORDER)
-  begun_legend = style.add_style(sz: 12, fg_color: "131313", b: true, alignment: { horizontal: :center, vertical: :center }, border: Axlsx::STYLE_THIN_BORDER)
-  in_progress_legend = style.add_style(sz: 12, fg_color: "f6c14c", b: true, alignment: { horizontal: :center, vertical: :center }, border: Axlsx::STYLE_THIN_BORDER)
+  not_started_legend = style.add_style(sz: 11, fg_color: "fd2f39", b: true, alignment: { horizontal: :center, vertical: :center }, border: Axlsx::STYLE_THIN_BORDER)
+  completed_legend = style.add_style(sz: 11, fg_color: "509e5e", b: true, alignment: { horizontal: :center, vertical: :center }, border: Axlsx::STYLE_THIN_BORDER)
+  begun_legend = style.add_style(sz: 11, fg_color: "131313", b: true, alignment: { horizontal: :center, vertical: :center }, border: Axlsx::STYLE_THIN_BORDER)
+  in_progress_legend = style.add_style(sz: 11, fg_color: "f6c14c", b: true, alignment: { horizontal: :center, vertical: :center }, border: Axlsx::STYLE_THIN_BORDER)
 
-  total = style.add_style(sz: 12, bg_color: 'd9d9d9', fg_color: "000000", alignment: { horizontal: :center, vertical: :center }, border: { :style => :thin, :color => "000000", :edges => [:bottom] })
-  total_bold = style.add_style(sz: 12, bg_color: 'd9d9d9', fg_color: "000000", b: true, alignment: { horizontal: :center, vertical: :center }, border: { :style => :thin, :color => "000000", :edges => [:bottom] })
+  total = style.add_style(sz: 11, bg_color: 'd9d9d9', fg_color: "000000", alignment: { horizontal: :center, vertical: :center }, border: { :style => :thin, :color => "000000", :edges => [:bottom] })
+  total_bold = style.add_style(sz: 11, bg_color: 'd9d9d9', fg_color: "000000", b: true, alignment: { horizontal: :center, vertical: :center }, border: { :style => :thin, :color => "000000", :edges => [:bottom] })
 
   wb.add_worksheet(name: "Areas") do |sheet|
     sheet.add_row [@project.name, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Tenant Close-out Report", "", "", "", "", "", ""],
-      style: [project_header_cell, header_cell, header_cell, header_cell, header_cell, header_cell, header_cell, header_cell,header_cell, header_cell, header_cell, header_cell, header_cell, header_cell, header_cell, header_cell, header_cell, header_cell, header_cell, header_cell, header_cell,  header_cell, header_cell_tcor, header_cell_tcor, header_cell_tcor, header_cell_tcor,  header_cell_tcor, header_cell_tcor, header_cell_tcor], height: 120.0
+      style: [project_header_cell, header_cell, header_cell, header_cell, header_cell, header_cell, header_cell, header_cell,header_cell, header_cell, header_cell, header_cell, header_cell, header_cell, header_cell, header_cell, header_cell, header_cell, header_cell, header_cell, header_cell,  header_cell, header_cell_tcor, header_cell_tcor, header_cell_tcor, header_cell_tcor,  header_cell_tcor, header_cell_tcor, header_cell_tcor], height: 80.0
     sheet.add_row ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", Time.zone.now.strftime("%B %d, %Y"), "", "", "", "", "", ""],
-      style: header_cell, height: 50.0
+      style: header_cell, height: 40.0
     sheet.merge_cells('A1:G2')
     sheet.merge_cells('H1:V2')
     sheet.merge_cells('W1:AC1')
     sheet.merge_cells('W2:AC2')
     sheet.add_row ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], height: 3.0
-    sheet.add_row ["General Information", "", "", "", "", "Punchlist", "", "", "Documents", "", "", "", "", "", "Construction Cost", "", "", "Drawings", "", "", "", "Fees", "", "", "Reconsiliation", "", "", "", "Comments"], style: [general_cell, general_cell, general_cell, general_cell, general_cell, punch_list, punch_list, punch_list, documents, documents, documents, documents, documents, documents,  construction_cost, construction_cost, construction_cost, drawings, drawings, drawings, drawings, fees, fees, fees, reconsiliation, reconsiliation, reconsiliation, reconsiliation, general_cell], :height => 70.0
+    sheet.add_row ["General Information", "", "", "", "", "Punchlist", "", "", "Documents", "", "", "", "", "", "Construction Cost", "", "", "Drawings", "", "", "", "Fees", "", "", "Reconsiliation", "", "", "", "Comments"], style: [general_cell, general_cell, general_cell, general_cell, general_cell, punch_list, punch_list, punch_list, documents, documents, documents, documents, documents, documents,  construction_cost, construction_cost, construction_cost, drawings, drawings, drawings, drawings, fees, fees, fees, reconsiliation, reconsiliation, reconsiliation, reconsiliation, general_cell], :height => 50.0
     sheet.merge_cells('A4:E4')
     sheet.merge_cells('F4:H4')
     sheet.merge_cells('I4:N4')
@@ -48,7 +48,7 @@ wb.styles do |style|
     sheet.merge_cells('R4:U4')
     sheet.merge_cells('V4:X4')
     sheet.merge_cells('Y4:AB4')
-    sheet.add_row ["", "", "Suite #", "Area Name", "SF", "Punchlist Request", "Punchlist Inspection",	"Punchlist Complete",	"Close Out Letter Sent",	"Permit",	"Certificate of Insurance",	"Certificate of Occupancy",	"Final Lien Waiver",	"W-9",	"Construct. Cost Summary",	"Final Construct. Cost", "Final Construct. Cost / SF", "As Builts Received", "Sprinkler Shop Drawings", "Sprinkler Work Order", "Air Balance Report",	"Sprinkler Check",	"Tenant Costs",	"Utility Cost",	"Deposit Release Approved",	"Deposit Release",	"TA / TI Release Approved",	"TA / TI Released",	"Close-out Notes"], style: header_wrap, :height => 100.0
+    sheet.add_row ["", "", "Suite #", "Area Name", "SF", "Punchlist Request", "Punchlist Inspection",	"Punchlist Complete",	"Close Out Letter Sent",	"Permit",	"Certificate of Insurance",	"Certificate of Occupancy",	"Final Lien Waiver",	"W-9",	"Construct. Cost Summary",	"Final Construct. Cost", "Final Construct. Cost / SF", "As Builts Received", "Sprinkler Shop Drawings", "Sprinkler Work Order", "Air Balance Report",	"Sprinkler Check",	"Tenant Costs",	"Utility Cost",	"Deposit Release Approved",	"Deposit Release",	"TA / TI Release Approved",	"TA / TI Released",	"Close-out Notes"], style: header_wrap, :height => 60.0
     sheet.merge_cells('A5:B5')
     @areas.each do |area|
       if area.deals.count > 0
@@ -62,14 +62,14 @@ wb.styles do |style|
         style: [general, general, general, general, general, general, general, general,
          general, general, general, general, general, general, general, general,
           general, general, general, general, general, general, general, general,
-          general, general, general, general, general], height: 70.0
+          general, general, general, general, general], height: 40.0
       end
     end
     sheet.add_row ["", "", "", "Subtotal", number_with_delimiter(@stats[:total_square_feet], delimiter: ','), "", "", "", "", "", "", "", "", "", "",
       number_to_currency(@stats[:total_construction_cost], precision: 2,  delimiter: ','), number_to_currency(@stats[:total_cost_per_sq_feet], precision: 2,  delimiter: ','), "", "", "", "", "", "", "", "", "", "", "", ""],
        style: [total, total, total_bold, total, total, total, total, total, total, total, total, total, total, total, total_bold,
-       total_bold, total, total, total, total, total, total, total, total, total, total, total, total, total], height: 70.0
+       total_bold, total, total, total, total, total, total, total, total, total, total, total, total, total], height: 60.0
     sheet.add_row [""]
-    sheet.column_widths 2, 2, 15, 30, 15, 30, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 30
+    sheet.column_widths 2, 2, 14, 24, 14, 24, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 23
   end
 end
