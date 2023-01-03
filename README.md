@@ -2,6 +2,7 @@
 ## a place to build and test
 
 Running Ruby 3.1.2, Rails 7.0.4 and Heroku-22 stack! 09/22/2022
+Chasing down differences on close-out reports (pdf/xlsx) 11/07/22
 
 # Before:
 ## Good base build - user auth w/ user model, save image to aws, sendgrid sign-up
