@@ -174,11 +174,11 @@
   <div class="col-xs-2">
   </div>
   <div class="col-xs-4">
-    <strong>Budget Rate:</strong> $<%= number_with_delimiter(@deal.budget_rate, :delimiter => ',') %>
+    <strong>Budget Rate:</strong> <%= number_to_currency(@deal.budget_rate, :delimiter => ',') %>
   </div>
   <div class="col-xs-4">
-    <strong>Budget TI:</strong> $<%= number_with_delimiter(@deal.budget_ti, :delimiter => ',') %><br>
-    <strong>Base Building Cost:</strong> $<%= number_with_delimiter(@deal.base_building_cost, :delimiter => ',') %>
+    <strong>Budget TI:</strong> <%= number_to_currency(@deal.budget_ti, :delimiter => ',') %><br>
+    <strong>Base Building Cost:</strong> <%= number_to_currency(@deal.base_building_cost, :delimiter => ',') %>
   </div>
   <div class="col-xs-2">
   </div>
@@ -194,13 +194,13 @@
   <div class="col-xs-2">
   </div>
   <div class="col-xs-4">
-    <strong>Base Rent ($ per SqFt):</strong> $<%= number_with_delimiter(@deal.base_rent, :delimiter => ',') %><br>
+    <strong>Base Rent ($ per SqFt):</strong> <%= number_to_currency(@deal.base_rent, :delimiter => ',') %><br>
     <strong>Percentage of Rent:</strong> <%= @deal.percentage_of_rent %><% if !@deal.percentage_of_rent %><% else %>%<% end %><br>
     <strong>Increase:</strong> <%= @deal.increase %><% if !@deal.increase %><% else %>%<% end %>
   </div>
   <div class="col-xs-4">
-    <strong>Total Base Rent:</strong> $<%= number_with_delimiter(@deal.total_base_rent, :delimiter => ',') %><br>
-    <strong>Break Point:</strong> $<%= number_with_delimiter(@deal.break_point, :delimiter => ',') %>
+    <strong>Total Base Rent:</strong> <%= number_to_currency(@deal.total_base_rent, :delimiter => ',') %><br>
+    <strong>Break Point:</strong> <%= number_to_currency(@deal.break_point, :delimiter => ',') %>
   </div>
   <div class="col-xs-2">
   </div>
@@ -218,14 +218,14 @@
   <div class="col-xs-2">
   </div>
   <div class="col-xs-4">
-    <strong>TI Allowance (per SqFt):</strong> $<%= number_with_delimiter(@deal.ti_allowance, :delimiter => ',') %><br>
-    <strong>LL Work (per SqFt):</strong> <% if @workletter != nil %>$<%= number_with_delimiter(@workletter.ll_work, :delimiter => ',') %><% end %><br>
-    <strong>Fit Out (per SqFt):</strong> $<%= number_with_delimiter(@deal.fit_out, :delimiter => ',') %>
+    <strong>TI Allowance (per SqFt):</strong> <%= number_to_currency(@deal.ti_allowance, :delimiter => ',') %><br>
+    <strong>LL Work (per SqFt):</strong> <% if @workletter != nil %><%= number_to_currency(@workletter.ll_work, :delimiter => ',') %><% end %><br>
+    <strong>Fit Out (per SqFt):</strong> <%= number_to_currency(@deal.fit_out, :delimiter => ',') %>
   </div>
   <div class="col-xs-4">
-    <strong>TI Cost:</strong> $<%= number_with_delimiter(@deal.ti_cost, :delimiter => ',') %><br>
-    <strong>LL Work Cost:</strong> <% if @workletter != nil %>$<%= number_with_delimiter(@workletter.ll_work_cost, :delimiter => ',') %><% end %><br>
-    <strong>Fit Out Cost:</strong> $<%= number_with_delimiter(@deal.fit_out_cost, :delimiter => ',') %>
+    <strong>TI Cost:</strong> <%= number_to_currency(@deal.ti_cost, :delimiter => ',') %><br>
+    <strong>LL Work Cost:</strong> <% if @workletter != nil %><%= number_to_currency(@workletter.ll_work_cost, :delimiter => ',') %><% end %><br>
+    <strong>Fit Out Cost:</strong> <%= number_to_currency(@deal.fit_out_cost, :delimiter => ',') %>
 
   </div>
   <div class="col-xs-2">
@@ -254,10 +254,10 @@
   <div class="col-xs-2">
   </div>
   <div class="col-xs-4">
-    <strong>CAM (per SqFt):</strong> $<%= number_with_delimiter(@deal.cam, :delimiter => ',') %>
+    <strong>CAM (per SqFt):</strong> <%= number_to_currency(@deal.cam, :delimiter => ',') %>
   </div>
   <div class="col-xs-4">
-    <strong>CAM Cost Annually:</strong> $<%= number_with_delimiter(@deal.cam_cost, :delimiter => ',') %>
+    <strong>CAM Cost Annually:</strong> <%= number_to_currency(@deal.cam_cost, :delimiter => ',') %>
   </div>
   <div class="col-xs-2">
   </div>
@@ -275,10 +275,10 @@
   <div class="col-xs-2">
   </div>
   <div class="col-xs-4">
-    <strong>Commission Inside:</strong> $<%= number_with_delimiter(@deal.comm_inside, :delimiter => ',') %>
+    <strong>Commission Inside:</strong> <%= number_to_currency(@deal.comm_inside, :delimiter => ',') %>
   </div>
   <div class="col-xs-4">
-    <strong>Commission Outside:</strong> $<%= number_with_delimiter(@deal.comm_outside, :delimiter => ',') %>
+    <strong>Commission Outside:</strong> <%= number_to_currency(@deal.comm_outside, :delimiter => ',') %>
   </div>
   <div class="col-xs-2">
   </div>
@@ -296,22 +296,22 @@
   <div class="col-xs-2">
   </div>
   <div class="col-xs-4">
-    <strong>Taxes (per SqFt):</strong> $<%= number_with_delimiter(@deal.taxes, :delimiter => ',') %><br>
-    <strong>Insurance (per SqFt):</strong> $<%= number_with_delimiter(@deal.insurance, :delimiter => ',') %><br>
-    <strong>Marketing (per SqFt):</strong> $<%= number_with_delimiter(@deal.marketing, :delimiter => ',') %><br>
-    <strong>GO Marketing (per SqFt):</strong> $<%= number_with_delimiter(@deal.go_marketing, :delimiter => ',') %><br>
-    <strong>Trash (per SqFt):</strong> $<%= number_with_delimiter(@deal.trash, :delimiter => ',') %><br>
-    <strong>Other (per SqFt):</strong> $<%= number_with_delimiter(@deal.other, :delimiter => ',') %><br>
-    <strong>Fee SqFt Total:</strong> $<%= number_with_delimiter(@deal.fee_sqft_total, :delimiter => ',') %>
+    <strong>Taxes (per SqFt):</strong> <%= number_to_currency(@deal.taxes, :delimiter => ',') %><br>
+    <strong>Insurance (per SqFt):</strong> <%= number_to_currency(@deal.insurance, :delimiter => ',') %><br>
+    <strong>Marketing (per SqFt):</strong> <%= number_to_currency(@deal.marketing, :delimiter => ',') %><br>
+    <strong>GO Marketing (per SqFt):</strong> <%= number_to_currency(@deal.go_marketing, :delimiter => ',') %><br>
+    <strong>Trash (per SqFt):</strong> <%= number_to_currency(@deal.trash, :delimiter => ',') %><br>
+    <strong>Other (per SqFt):</strong> <%= number_to_currency(@deal.other, :delimiter => ',') %><br>
+    <strong>Fee SqFt Total:</strong> <%= number_to_currency(@deal.fee_sqft_total, :delimiter => ',') %>
   </div>
   <div class="col-xs-4">
-    <strong>Taxes Cost:</strong> $<%= number_with_delimiter(@deal.taxes_cost, :delimiter => ',') %><br>
-    <strong>Insurance Cost:</strong> $<%= number_with_delimiter(@deal.insurance_cost, :delimiter => ',') %><br>
-    <strong>Marketing Cost:</strong> $<%= number_with_delimiter(@deal.marketing_cost, :delimiter => ',') %><br>
-    <strong>GO Marketing Cost:</strong> $<%= number_with_delimiter(@deal.go_marketing_cost, :delimiter => ',') %><br>
-    <strong>Trash Cost:</strong> $<%= number_with_delimiter(@deal.trash_cost, :delimiter => ',') %><br>
-    <strong>Other Cost:</strong> $<%= number_with_delimiter(@deal.other_cost, :delimiter => ',') %><br>
-    <strong>Fee Total Cost:</strong> $<%= number_with_delimiter(@deal.fee_cost_total, :delimiter => ',') %>
+    <strong>Taxes Cost:</strong> <%= number_to_currency(@deal.taxes_cost, :delimiter => ',') %><br>
+    <strong>Insurance Cost:</strong> <%= number_to_currency(@deal.insurance_cost, :delimiter => ',') %><br>
+    <strong>Marketing Cost:</strong> <%= number_to_currency(@deal.marketing_cost, :delimiter => ',') %><br>
+    <strong>GO Marketing Cost:</strong> <%= number_to_currency(@deal.go_marketing_cost, :delimiter => ',') %><br>
+    <strong>Trash Cost:</strong> <%= number_to_currency(@deal.trash_cost, :delimiter => ',') %><br>
+    <strong>Other Cost:</strong> <%= number_to_currency(@deal.other_cost, :delimiter => ',') %><br>
+    <strong>Fee Total Cost:</strong> <%= number_to_currency(@deal.fee_cost_total, :delimiter => ',') %>
   </div>
   <div class="col-xs-2">
   </div>
@@ -618,7 +618,7 @@
       <tr>
         <td><%= @deal.final_lien_waver %></td>
         <td><%= @deal.construction_cost_summary %></td>
-        <td>$<%= number_with_delimiter(@deal.final_construction_cost, :delimiter => ',') %></td>
+        <td><%= number_to_currency(@deal.final_construction_cost, :delimiter => ',') %></td>
         <td><%= @deal.as_builts_received %></td>
       </tr>
       </tbody>
@@ -710,8 +710,8 @@
       <tr>
         <td><%= @deal.certificate_of_insurance %></td>
         <td><%= @deal.w9 %></td>
-        <td>$<%= number_with_delimiter(@deal.utility_cost, :delimiter => ',') %></td>
-        <td>$<%= number_with_delimiter(@deal.tenant_cost, :delimiter => ',') %></td>
+        <td><%= number_to_currency(@deal.utility_cost, :delimiter => ',') %></td>
+        <td><%= number_to_currency(@deal.tenant_cost, :delimiter => ',') %></td>
       </tr>
       </tbody>
     </table>
