@@ -219,12 +219,12 @@
   </div>
   <div class="col-xs-4">
     <strong>TI Allowance (per SqFt):</strong> <%= number_to_currency(@deal.ti_allowance, :delimiter => ',') %><br>
-    <strong>LL Work (per SqFt):</strong> <% if @workletter != nil %><%= number_to_currency(@workletter.ll_work, :delimiter => ',') %><% end %><br>
+    <strong>LL Work (per SqFt):</strong> <% if @workletter != nil %><%= number_to_currency(@workletter.ll_work, :delimiter => ',') %><% else %>$0.00<% end %><br>
     <strong>Fit Out (per SqFt):</strong> <%= number_to_currency(@deal.fit_out, :delimiter => ',') %>
   </div>
   <div class="col-xs-4">
     <strong>TI Cost:</strong> <%= number_to_currency(@deal.ti_cost, :delimiter => ',') %><br>
-    <strong>LL Work Cost:</strong> <% if @workletter != nil %><%= number_to_currency(@workletter.ll_work_cost, :delimiter => ',') %><% end %><br>
+    <strong>LL Work Cost:</strong> <% if @workletter != nil %><%= number_to_currency(@workletter.ll_work_cost, :delimiter => ',') %><% else %>$0.00<% end %><br>
     <strong>Fit Out Cost:</strong> <%= number_to_currency(@deal.fit_out_cost, :delimiter => ',') %>
 
   </div>

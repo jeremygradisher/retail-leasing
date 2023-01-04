@@ -27,6 +27,7 @@ class DealsController < ApplicationController
     @otherareasordered = @otherareas.sort_by(&:suite_number)
     
     @schedule = @deal.schedule
+    @workletter = @deal.workletter
   end
 
   # GET /deals/new
