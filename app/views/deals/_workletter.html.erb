@@ -5,10 +5,10 @@
 
   <div class="row">
     <div class="col-xs-4" style="text-align:center">
-      <strong>LL Work (per SqFt):</strong> $<%= number_with_delimiter(@deal.workletter.ll_work, :delimiter => ',') %>
+      <strong>LL Work (per SqFt):</strong> <%= number_to_currency(@deal.workletter.ll_work, :delimiter => ',') %>
     </div>
     <div class="col-xs-4" style="text-align:center">
-     <strong>LL Work Cost:</strong> $<%= number_with_delimiter(@deal.workletter.ll_work_cost, :delimiter => ',') %>
+     <strong>LL Work Cost:</strong> <%= number_to_currency(@deal.workletter.ll_work_cost, :delimiter => ',') %>
     </div>
     <div class="col-xs-4" style="text-align:center">
       <strong>LL Count Total:</strong> <%= number_with_delimiter(@deal.workletter.ll_count_total, :delimiter => ',') %>
