@@ -2,7 +2,6 @@ class CreateWorkletterTemplates < ActiveRecord::Migration[5.0]
   def change
     create_table :workletter_templates do |t|
       t.string :template_name
-      t.integer :project_id
       t.string :slab
       t.text :slab_description
       t.boolean :slab_typical

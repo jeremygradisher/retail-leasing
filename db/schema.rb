@@ -94,8 +94,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_12_195521) do
   end
 
   create_table "dealimages", id: :serial, force: :cascade do |t|
-    t.integer "deal_id"
     t.string "dealimage"
+    t.integer "deal_id"
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.index ["deal_id"], name: "index_dealimages_on_deal_id"
@@ -106,8 +106,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_12_195521) do
     t.integer "gross_area"
     t.integer "net_rentable_area"
     t.string "lease_status"
-    t.integer "project_id"
     t.integer "map_id"
+    t.integer "project_id"
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.string "merchandising_status"
@@ -324,9 +324,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_12_195521) do
   end
 
   create_table "schedules", id: :serial, force: :cascade do |t|
-    t.integer "project_id"
     t.integer "map_id"
-    t.integer "area_id"
     t.string "lease_execution_date"
     t.string "final_plans_received_date"
     t.string "final_plans_reviewed_date"
@@ -343,6 +341,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_12_195521) do
     t.integer "mobilization_duration"
     t.integer "tenant_fit_out_duration"
     t.integer "merchandising_duration"
+    t.integer "area_id"
+    t.integer "project_id"
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.integer "deal_id"
@@ -410,7 +410,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_12_195521) do
 
   create_table "workletter_templates", id: :serial, force: :cascade do |t|
     t.string "template_name"
-    t.integer "project_id"
     t.string "slab"
     t.text "slab_description"
     t.boolean "slab_typical"
@@ -495,6 +494,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_12_195521) do
     t.string "other"
     t.text "other_description"
     t.boolean "other_typical"
+    t.integer "project_id"
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.index ["project_id"], name: "index_workletter_templates_on_project_id"
@@ -504,7 +504,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_12_195521) do
     t.string "name"
     t.integer "project_id"
     t.integer "map_id"
-    t.integer "area_id"
     t.integer "ll_count_total"
     t.string "slab"
     t.string "studs"
@@ -734,6 +733,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_12_195521) do
     t.float "demolition_unit"
     t.integer "other_sqft"
     t.float "other_unit"
+    t.integer "area_id"
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.integer "deal_id"

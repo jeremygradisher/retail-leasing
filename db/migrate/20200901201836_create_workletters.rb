@@ -4,7 +4,6 @@ class CreateWorkletters < ActiveRecord::Migration[5.0]
       t.string :name
       t.integer :project_id
       t.integer :map_id
-      t.integer :area_id
       t.integer :ll_count_total
       t.string :slab
       t.string :studs

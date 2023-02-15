@@ -4,7 +4,6 @@ class CreateLeasingManagers < ActiveRecord::Migration[5.0]
       t.string :name
       t.string :email
       t.string :phone
-      t.integer :project_id
       t.belongs_to :project, index: true, foreign_key: true
 
       t.timestamps
