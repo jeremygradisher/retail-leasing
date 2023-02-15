@@ -1,8 +1,9 @@
 # Retail Leasing - Ruby on Rails SaaS application
 ## a place to build and test
 
-Running Ruby 3.1.3, Rails 7.0.4.2 and Heroku-22 stack! 09/22/2022
-Chasing down differences on close-out reports (pdf/xlsx) 11/07/22
+Retail leasing and tenant delivery app to close deals and open tenants.
+Ruby on Rails Saas app, interactive lease plans, deal essentials, milestone 
+schedulers. Ruby on Rails, Leaflet.js, google charts.
 
 # Before:
 ## Good base build - user auth w/ user model, save image to aws, sendgrid sign-up
