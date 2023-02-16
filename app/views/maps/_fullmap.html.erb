@@ -42,13 +42,13 @@
     
     //this checks image size and then sets map slightly zoomed in on image
     <% if @image.width.to_i > 10000 %>
-        map.setView(xy(<%= @image.width.to_i/2 %>, <%= @image.height.to_i/2 %>), -5);
-    <% elsif @image.width.to_i > 5000 && @image.width.to_i <= 10000 %>
         map.setView(xy(<%= @image.width.to_i/2 %>, <%= @image.height.to_i/2 %>), -3);
+    <% elsif @image.width.to_i > 5000 && @image.width.to_i <= 10000 %>
+        map.setView(xy(<%= @image.width.to_i/2 %>, <%= @image.height.to_i/2 %>), -2);
     <% elsif @image.width.to_i > 2500 && @image.width.to_i <= 5000 %>
-        map.setView(xy(<%= @image.width.to_i/2 %>, <%= @image.height.to_i/2 %>), -1.5);
+        map.setView(xy(<%= @image.width.to_i/2 %>, <%= @image.height.to_i/2 %>), -1);
     <% else %>
-        map.setView(xy(<%= @image.width.to_i/2 %>, <%= @image.height.to_i/2 %>), .25);
+        map.setView(xy(<%= @image.width.to_i/2 %>, <%= @image.height.to_i/2 %>), 0);
     <% end %>
     
     //for fullscreen
