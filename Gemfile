@@ -56,7 +56,7 @@ gem "daemons"
 
 #for search
 #gem 'ransack', '2.1.1'
-gem 'ransack'
+gem 'ransack', '~> 3.2', '>= 3.2.1'
 #for reports
 #gem 'axlsx_rails', '0.5.2'
 #gem 'axlsx_rails', '~> 0.6.1'
