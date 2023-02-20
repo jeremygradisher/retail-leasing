@@ -2,7 +2,7 @@
 ## a place to build and test
 
 Retail leasing and tenant delivery app to close deals and open tenants.
-Ruby on Rails Saas app, interactive lease plans, deal essentials, milestone 
+Ruby on Rails SaaS app, interactive lease plans, deal essentials, milestone 
 schedulers. Ruby on Rails, Leaflet.js, google charts.
 
 # Before:
